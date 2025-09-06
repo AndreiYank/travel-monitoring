@@ -73,11 +73,28 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate simple charts dashboard
+      - name: Generate all dashboard versions
         run: |
-          echo "🌐 Generating simple charts dashboard at $(date)"
+          echo "🌐 Generating all dashboard versions at $(date)"
+          
+          # Базовый дашборд (без графиков)
+          python generate_basic_dashboard.py
+          cp index.html basic.html
+          echo "✅ Basic dashboard generated"
+          
+          # Дашборд с простыми графиками
           python generate_simple_charts_dashboard.py
-          echo "✅ Simple charts dashboard generated"
+          cp index.html charts.html
+          echo "✅ Charts dashboard generated"
+          
+          # Расширенный дашборд с встроенными графиками
+          python generate_inline_charts_dashboard.py
+          cp index.html inline.html
+          echo "✅ Inline charts dashboard generated"
+          
+          # Главная страница выбора
+          cp main.html index.html
+          echo "✅ Main selection page generated"
 
       - name: Check for price alerts
         id: alerts

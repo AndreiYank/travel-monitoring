@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Price Monitor Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            border-radius: 10px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .metric {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2E86AB;
+        }
+        .hotels-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .hotels-table th, .hotels-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .hotels-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+        }
+        .hotels-table tr:hover {
+            background: #f5f5f5;
+            cursor: pointer;
+        }
+        .hotel-name {
+            color: #2E86AB;
+            font-weight: bold;
+        }
+        .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .chart-section {
+            margin: 30px 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            display: none;
+        }
+        .chart-section.active {
+            display: block;
+        }
+        .chart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .close-chart {
+            background: #dc3545;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        .close-chart:hover {
+            background: #c82333;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏨 Travel Price Monitor</h1>
+            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 06.09.2025 23:06</p>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">51</div>
+                <div>Всего предложений</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">47</div>
+                <div>Уникальных отелей</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7509 PLN</div>
+                <div>Средняя цена</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">6354 PLN</div>
+                <div>Минимальная цена</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">8047 PLN</div>
+                <div>Максимальная цена</div>
+            </div>
+        </div>
+        
+        <div>
+            <h3>🏨 Все отели (отсортированы по цене) - кликните для графика</h3>
+            <table class="hotels-table">
+                <thead>
+                    <tr>
+                        <th>Отель</th>
+                        <th>Цена</th>
+                        <th>Даты</th>
+                        <th>Длительность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr onclick="showChart('Aqua Sun Village (Ex. Eri Sun Village)')">
+                        <td class="hotel-name">Aqua Sun Village (Ex. Eri Sun Village)</td>
+                        <td class="price">6354 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Laguna Holiday Resort')">
+                        <td class="hotel-name">Laguna Holiday Resort</td>
+                        <td class="price">6572 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Gennadi Seaside Resort')">
+                        <td class="hotel-name">Gennadi Seaside Resort</td>
+                        <td class="price">6672 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Chrousso Village')">
+                        <td class="hotel-name">Chrousso Village</td>
+                        <td class="price">6800 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Atrium (Pefkohori)')">
+                        <td class="hotel-name">Atrium (Pefkohori)</td>
+                        <td class="price">6832 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Aegean View (Paradisi)')">
+                        <td class="hotel-name">Aegean View (Paradisi)</td>
+                        <td class="price">6850 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Eri Beach')">
+                        <td class="hotel-name">Eri Beach</td>
+                        <td class="price">6918 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Bali Mare')">
+                        <td class="hotel-name">Bali Mare</td>
+                        <td class="price">6927 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Alexandros Palace')">
+                        <td class="hotel-name">Alexandros Palace</td>
+                        <td class="price">7001 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Arion Resort (Vassilikos)')">
+                        <td class="hotel-name">Arion Resort (Vassilikos)</td>
+                        <td class="price">7077 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Ionian Sea & Aquapark')">
+                        <td class="hotel-name">Ionian Sea & Aquapark</td>
+                        <td class="price">7078 PLN</td>
+                        <td>25.09.2025 - 02.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Filerimos Village')">
+                        <td class="hotel-name">Filerimos Village</td>
+                        <td class="price">7091 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Evita Mare')">
+                        <td class="hotel-name">Evita Mare</td>
+                        <td class="price">7225 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Sunbay')">
+                        <td class="hotel-name">Sunbay</td>
+                        <td class="price">7264 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Cooee Akti Ouranoupolis')">
+                        <td class="hotel-name">Cooee Akti Ouranoupolis</td>
+                        <td class="price">7289 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Mediterraneo (Hersonissos)')">
+                        <td class="hotel-name">Mediterraneo (Hersonissos)</td>
+                        <td class="price">7309 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Poseidon Sea Resort (Neos Marmaras)')">
+                        <td class="hotel-name">Poseidon Sea Resort (Neos Marmaras)</td>
+                        <td class="price">7320 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Golden Odyssey')">
+                        <td class="hotel-name">Golden Odyssey</td>
+                        <td class="price">7335 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Sokol Resort')">
+                        <td class="hotel-name">Sokol Resort</td>
+                        <td class="price">7419 PLN</td>
+                        <td>20.09.2025 - 27.09.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Sirenes Beach')">
+                        <td class="hotel-name">Sirenes Beach</td>
+                        <td class="price">7423 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)')">
+                        <td class="hotel-name">Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)</td>
+                        <td class="price">7544 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Meropi Hotel & Apartments (Malia)')">
+                        <td class="hotel-name">Meropi Hotel & Apartments (Malia)</td>
+                        <td class="price">7576 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Kriopigi')">
+                        <td class="hotel-name">Kriopigi</td>
+                        <td class="price">7594 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Corfu Maris')">
+                        <td class="hotel-name">Corfu Maris</td>
+                        <td class="price">7647 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Hersonissos Village')">
+                        <td class="hotel-name">Hersonissos Village</td>
+                        <td class="price">7679 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Kipriotis Village Resort')">
+                        <td class="hotel-name">Kipriotis Village Resort</td>
+                        <td class="price">7722 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Lardos Bay')">
+                        <td class="hotel-name">Lardos Bay</td>
+                        <td class="price">7728 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)')">
+                        <td class="hotel-name">Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)</td>
+                        <td class="price">7780 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Gaia Royal')">
+                        <td class="hotel-name">Gaia Royal</td>
+                        <td class="price">7787 PLN</td>
+                        <td>27.09.2025 - 05.10.2025</td>
+                        <td>9 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Kipriotis Hippocrates')">
+                        <td class="hotel-name">Kipriotis Hippocrates</td>
+                        <td class="price">7787 PLN</td>
+                        <td>27.09.2025 - 05.10.2025</td>
+                        <td>9 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Blue Style Resort')">
+                        <td class="hotel-name">Blue Style Resort</td>
+                        <td class="price">7821 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Solimar Ruby & Ruby Royal')">
+                        <td class="hotel-name">Solimar Ruby & Ruby Royal</td>
+                        <td class="price">7847 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Afandou Bay Village Beach Resort')">
+                        <td class="hotel-name">Afandou Bay Village Beach Resort</td>
+                        <td class="price">7877 PLN</td>
+                        <td>22.09.2025 - 29.09.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)')">
+                        <td class="hotel-name">All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)</td>
+                        <td class="price">7906 PLN</td>
+                        <td>26.09.2025 - 03.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Marebello Beach Resort')">
+                        <td class="hotel-name">Marebello Beach Resort</td>
+                        <td class="price">7942 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Chrissys Paradise (ex Felicity)')">
+                        <td class="hotel-name">Chrissys Paradise (ex Felicity)</td>
+                        <td class="price">7956 PLN</td>
+                        <td>20.09.2025 - 27.09.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('San Panteleimon')">
+                        <td class="hotel-name">San Panteleimon</td>
+                        <td class="price">7981 PLN</td>
+                        <td>24.09.2025 - 04.10.2025</td>
+                        <td>11 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Mitsis Messonghi Beach')">
+                        <td class="hotel-name">Mitsis Messonghi Beach</td>
+                        <td class="price">7986 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Palladium (Kriopigi)')">
+                        <td class="hotel-name">Palladium (Kriopigi)</td>
+                        <td class="price">7986 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Mitsis Alexander the Great (Kriopigi)')">
+                        <td class="hotel-name">Mitsis Alexander the Great (Kriopigi)</td>
+                        <td class="price">7991 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Garden Palace (Laganas)')">
+                        <td class="hotel-name">Garden Palace (Laganas)</td>
+                        <td class="price">7999 PLN</td>
+                        <td>21.09.2025 - 28.09.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Pollis (ex Miramare)')">
+                        <td class="hotel-name">Pollis (ex Miramare)</td>
+                        <td class="price">8026 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Marvida Niriides Beach (Bali)')">
+                        <td class="hotel-name">Marvida Niriides Beach (Bali)</td>
+                        <td class="price">8033 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Sunshine Corfu & Spa')">
+                        <td class="hotel-name">Sunshine Corfu & Spa</td>
+                        <td class="price">8047 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Amour Holiday Resort')">
+                        <td class="hotel-name">Amour Holiday Resort</td>
+                        <td class="price">8047 PLN</td>
+                        <td>27.09.2025 - 04.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Summer Beach')">
+                        <td class="hotel-name">Summer Beach</td>
+                        <td class="price">8047 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                    <tr onclick="showChart('Horizon Beach (Stalida)')">
+                        <td class="hotel-name">Horizon Beach (Stalida)</td>
+                        <td class="price">8047 PLN</td>
+                        <td>24.09.2025 - 01.10.2025</td>
+                        <td>8 dni</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <!-- Секция для графика отеля -->
+        <div id="hotelChartSection" class="chart-section">
+            <div class="chart-header">
+                <h3 id="chartTitle">График цены отеля</h3>
+                <button class="close-chart" onclick="hideChart()">Закрыть график</button>
+            </div>
+            <div id="hotelChart" style="height: 400px;"></div>
+        </div>
+        
+        <div class="footer">
+            <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
+        </div>
+    </div>
+
+    <script>
+        // Простые функции
+        function showChart(hotelName) {
+            console.log('Showing chart for:', hotelName);
+            
+            document.getElementById('chartTitle').textContent = 'График цены: ' + hotelName;
+            document.getElementById('hotelChartSection').classList.add('active');
+            
+            // Простые тестовые данные
+            const data = [{
+                x: ['2025-09-20', '2025-09-21', '2025-09-22', '2025-09-23', '2025-09-24'],
+                y: [7508.980392156863, 7608.980392156863, 7458.980392156863, 7708.980392156863, 7658.980392156863],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: hotelName,
+                line: {{color: '#2E86AB', width: 3}},
+                marker: {{size: 8}}
+            }}];
+            
+            const layout = {{
+                title: 'История цен: ' + hotelName,
+                xaxis: {{title: 'Дата'}},
+                yaxis: {{title: 'Цена (PLN)'}}
+            }};
+            
+            Plotly.newPlot('hotelChart', data, layout);
+            
+            // Прокрутка к графику
+            document.getElementById('hotelChartSection').scrollIntoView({{ behavior: 'smooth' }});
+        }}
+        
+        function hideChart() {{
+            document.getElementById('hotelChartSection').classList.remove('active');
+        }}
+    </script>
+</body>
+</html>
