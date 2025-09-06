@@ -274,7 +274,7 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Travel Price Monitor</h1>
-            <p>Мониторинг цен на путешествия в Турцию • Обновлено: 06.09.2025 21:47</p>
+            <p>Мониторинг цен на путешествия в Турцию • Обновлено: 06.09.2025 21:54</p>
         </div>
         
         <div class="metrics">
@@ -790,7 +790,8 @@
         const modal = document.getElementById('hotelModal');
         const closeBtn = document.getElementsByClassName('close')[0];
 
-        function showHotelChart(hotelName) {{
+        // Определяем функцию в глобальной области видимости
+        window.showHotelChart = function(hotelName) {{
             console.log('Opening chart for hotel:', hotelName);
             document.getElementById('modalTitle').textContent = `График цены: ${{hotelName}}`;
             
@@ -831,7 +832,7 @@
             }});
             
             modal.style.display = 'block';
-        }}
+        }};
 
         closeBtn.onclick = function() {{
             modal.style.display = 'none';

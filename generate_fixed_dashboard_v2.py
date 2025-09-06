@@ -544,7 +544,8 @@ def generate_fixed_dashboard_v2():
         const modal = document.getElementById('hotelModal');
         const closeBtn = document.getElementsByClassName('close')[0];
 
-        function showHotelChart(hotelName) {{
+        // Определяем функцию в глобальной области видимости
+        window.showHotelChart = function(hotelName) {{
             console.log('Opening chart for hotel:', hotelName);
             document.getElementById('modalTitle').textContent = `График цены: ${{hotelName}}`;
             
@@ -585,7 +586,7 @@ def generate_fixed_dashboard_v2():
             }});
             
             modal.style.display = 'block';
-        }}
+        }};
 
         closeBtn.onclick = function() {{
             modal.style.display = 'none';
