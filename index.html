@@ -151,7 +151,7 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Travel Price Monitor</h1>
-            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 06.09.2025 22:57</p>
+            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 06.09.2025 23:00</p>
         </div>
         
         <div class="metrics">
@@ -541,9 +541,16 @@
     </div>
 
     <script>
-        // Функция показа графика
+        // Определяем функции в глобальной области видимости
         function showChart(hotelName) {
             console.log('Showing chart for:', hotelName);
+            
+            // Проверяем, что Plotly загружен
+            if (typeof Plotly === 'undefined') {
+                console.error('Plotly not loaded!');
+                alert('Ошибка: Plotly не загружен');
+                return;
+            }
             
             // Обновляем заголовок
             document.getElementById('chartTitle').textContent = 'График цены: ' + hotelName;
@@ -599,6 +606,14 @@
         function hideChart() {{
             document.getElementById('hotelChartSection').classList.remove('active');
         }}
+        
+        // Проверяем загрузку Plotly после загрузки страницы
+        window.addEventListener('load', function() {{
+            console.log('Plotly loaded:', typeof Plotly !== 'undefined');
+            if (typeof Plotly === 'undefined') {{
+                console.error('Plotly not loaded!');
+            }}
+        }});
     </script>
 </body>
 </html>

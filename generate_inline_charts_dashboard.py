@@ -343,9 +343,16 @@ def generate_inline_charts_dashboard():
     </div>
 
     <script>
-        // Функция показа графика
+        // Определяем функции в глобальной области видимости
         function showChart(hotelName) {{
             console.log('Showing chart for:', hotelName);
+            
+            // Проверяем, что Plotly загружен
+            if (typeof Plotly === 'undefined') {{
+                console.error('Plotly not loaded!');
+                alert('Ошибка: Plotly не загружен');
+                return;
+            }}
             
             // Обновляем заголовок
             document.getElementById('chartTitle').textContent = 'График цены: ' + hotelName;
@@ -401,6 +408,14 @@ def generate_inline_charts_dashboard():
         function hideChart() {{
             document.getElementById('hotelChartSection').classList.remove('active');
         }}
+        
+        // Проверяем загрузку Plotly после загрузки страницы
+        window.addEventListener('load', function() {{
+            console.log('Plotly loaded:', typeof Plotly !== 'undefined');
+            if (typeof Plotly === 'undefined') {{
+                console.error('Plotly not loaded!');
+            }}
+        }});
     </script>
 </body>
 </html>"""
