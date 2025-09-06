@@ -73,11 +73,11 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate simple dashboard
+      - name: Generate working dashboard
         run: |
-          echo "🌐 Generating simple dashboard at $(date)"
-          python generate_simple_dashboard.py
-          echo "✅ Simple dashboard generated"
+          echo "🌐 Generating working dashboard at $(date)"
+          python generate_working_dashboard.py
+          echo "✅ Working dashboard generated"
 
       - name: Check for price alerts
         id: alerts

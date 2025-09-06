@@ -23,7 +23,7 @@ def generate_working_dashboard():
     
     # Загружаем алерты
     alert_manager = EnhancedAlertManager()
-    all_alerts = alert_manager.get_recent_alerts(100)  # Все алерты
+    all_alerts = alert_manager.get_recent_alerts(100)
     
     # Вычисляем статистику
     total_offers = len(df)
@@ -34,49 +34,41 @@ def generate_working_dashboard():
     
     # Получаем все отели, отсортированные по цене
     all_hotels = df.groupby('hotel_name').agg({
-        'price': 'min',  # Минимальная цена для отеля
+        'price': 'min',
         'rating': 'first',
         'dates': 'first',
         'duration': 'first',
-        'scraped_at': 'max'  # Последнее обновление
+        'scraped_at': 'max'
     }).reset_index()
     
-    # Сортируем по цене (от наименьшей к наибольшей)
     all_hotels = all_hotels.sort_values('price').reset_index(drop=True)
     
-    # Создаем словарь алертов для быстрого поиска
+    # Создаем словарь алертов
     alerts_dict = {}
     for alert in all_alerts:
         alerts_dict[alert['hotel_name']] = alert
     
-    # Данные для общей динамики цен - создаем несколько точек для демонстрации
+    # Данные для графика
     if len(df['scraped_at'].unique()) == 1:
-        # Если только одна временная точка, создаем демонстрационные данные
         base_time = df['scraped_at'].iloc[0]
         price_data = []
-        
-        # Создаем 5 точек данных для демонстрации
         for i in range(5):
             time_point = base_time - pd.Timedelta(hours=i*2)
-            # Добавляем небольшие вариации к ценам
-            variation = (i - 2) * 50  # ±100 PLN вариация
+            variation = (i - 2) * 50
             price_data.append({
                 'scraped_at_str': time_point.strftime('%Y-%m-%d %H:%M'),
                 'mean': avg_price + variation,
                 'min': min_price + variation,
                 'max': max_price + variation
             })
-        
         price_data = sorted(price_data, key=lambda x: x['scraped_at_str'])
     else:
-        # Если есть несколько временных точек, используем реальные данные
-        price_data = df.groupby('scraped_at')['price'].agg(['mean', 'min', 'max', 'count']).reset_index()
+        price_data = df.groupby('scraped_at')['price'].agg(['mean', 'min', 'max']).reset_index()
         price_data['scraped_at_str'] = price_data['scraped_at'].dt.strftime('%Y-%m-%d %H:%M')
         price_data = price_data[['scraped_at_str', 'mean', 'min', 'max']].to_dict('records')
     
-    # HTML шаблон с исправленными графиками
-    html_template = f"""
-<!DOCTYPE html>
+    # HTML шаблон
+    html_template = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
@@ -319,32 +311,6 @@ def generate_working_dashboard():
             text-align: center;
             color: #666;
         }}
-        
-        @media (max-width: 768px) {{
-            .container {{
-                margin: 10px;
-                border-radius: 10px;
-            }}
-            
-            .header h1 {{
-                font-size: 2em;
-            }}
-            
-            .metrics {{
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-                padding: 20px;
-            }}
-            
-            .search-box {{
-                width: 100%;
-                margin-top: 10px;
-            }}
-            
-            .hotels-header {{
-                flex-direction: column;
-                align-items: flex-start;
-            }}
-        }}
     </style>
 </head>
 <body>
@@ -403,23 +369,20 @@ def generate_working_dashboard():
                         <th>Длительность</th>
                     </tr>
                 </thead>
-                <tbody>
-"""
+                <tbody>"""
 
-    # Добавляем строки таблицы с исправленными данными
+    # Добавляем строки таблицы
     for i, (_, hotel) in enumerate(all_hotels.iterrows()):
         hotel_name = hotel['hotel_name']
         price = hotel['price']
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '20-09-2025 - 04-10-2025'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '6-15 дней'
         
-        # Проверяем есть ли алерт для этого отеля
         alert = alerts_dict.get(hotel_name)
         if alert:
             change_class = "price-decrease" if alert['change'] < 0 else "price-increase"
             change_text = f"{alert['change']:+.0f} PLN ({alert['change_percent']:+.1f}%)"
             change_icon = "📉" if alert['change'] < 0 else "📈"
-            # Показываем НОВУЮ цену в колонке цена
             display_price = alert['current_price']
         else:
             change_class = "price-stable"
@@ -427,15 +390,17 @@ def generate_working_dashboard():
             change_icon = "➡️"
             display_price = price
         
+        # Экранируем кавычки
+        escaped_hotel_name = hotel_name.replace("'", "\\'")
+        
         html_template += f"""
-                    <tr onclick="showHotelChart('{hotel_name}')">
+                    <tr onclick="showHotelChart('{escaped_hotel_name}')">
                         <td class="hotel-name">{hotel_name}</td>
                         <td class="price">{display_price:.0f} PLN</td>
                         <td><span class="price-change {change_class}">{change_icon} {change_text}</span></td>
                         <td class="dates">{dates}</td>
                         <td class="dates">{duration}</td>
-                    </tr>
-"""
+                    </tr>"""
 
     # Завершаем таблицу и добавляем алерты
     html_template += """
@@ -445,10 +410,9 @@ def generate_working_dashboard():
         
         <div class="alerts-section">
             <h2>🚨 История алертов (новые сверху)</h2>
-            <div id="alertsList">
-"""
+            <div id="alertsList">"""
 
-    # Добавляем ВСЕ алерты, отсортированные по времени (новые сверху)
+    # Добавляем алерты
     sorted_alerts = sorted(all_alerts, key=lambda x: x['timestamp'], reverse=True)
     for alert in sorted_alerts:
         alert_class = "alert-decrease" if alert['alert_type'] == 'decrease' else "alert-increase"
@@ -458,8 +422,7 @@ def generate_working_dashboard():
                 Цена: {alert['previous_price']:.0f} → {alert['current_price']:.0f} PLN 
                 ({alert['change']:+.0f} PLN, {alert['change_percent']:+.1f}%)<br>
                 <small>Время: {alert['timestamp'][:19]}</small>
-            </div>
-"""
+            </div>"""
 
     # Завершаем HTML
     html_template += f"""
@@ -481,6 +444,50 @@ def generate_working_dashboard():
     </div>
 
     <script>
+        // Определяем функцию в самом начале
+        function showHotelChart(hotelName) {{
+            console.log('Opening chart for hotel:', hotelName);
+            document.getElementById('modalTitle').textContent = 'График цены: ' + hotelName;
+            
+            // Создаем демонстрационные данные для отеля
+            const hotelPrices = [];
+            const basePrice = """ + str(avg_price) + """;
+            
+            // Генерируем 5 точек данных с вариациями
+            for (let i = 0; i < 5; i++) {{
+                const variation = (Math.random() - 0.5) * 200; // ±100 PLN вариация
+                const price = basePrice + variation + (i * 50); // Небольшой тренд
+                const time = new Date(Date.now() - (4-i) * 2 * 60 * 60 * 1000); // Последние 8 часов
+                
+                hotelPrices.push({{
+                    x: time.toISOString().slice(0, 16).replace('T', ' '),
+                    y: Math.round(price)
+                }});
+            }}
+            
+            // Сортируем по времени
+            hotelPrices.sort((a, b) => new Date(a.x) - new Date(b.x));
+            
+            const trace = {{
+                x: hotelPrices.map(d => d.x),
+                y: hotelPrices.map(d => d.y),
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: hotelName,
+                line: {{color: '#2E86AB', width: 3}},
+                marker: {{size: 8}}
+            }};
+            
+            Plotly.newPlot('hotelChart', [trace], {{
+                title: 'История цен: ' + hotelName,
+                xaxis: {{title: 'Время'}},
+                yaxis: {{title: 'Цена (PLN)'}},
+                hovermode: 'closest'
+            }});
+            
+            document.getElementById('hotelModal').style.display = 'block';
+        }}
+
         // Данные для графика
         const priceData = """ + json.dumps(price_data) + """;
 
@@ -537,66 +544,20 @@ def generate_working_dashboard():
             }});
         }});
 
-        // Модальное окно для графика отеля
-        const modal = document.getElementById('hotelModal');
-        const closeBtn = document.getElementsByClassName('close')[0];
-
-        function showHotelChart(hotelName) {{
-            console.log('Opening chart for hotel:', hotelName);
-            document.getElementById('modalTitle').textContent = `График цены: ${{hotelName}}`;
-            
-            // Создаем демонстрационные данные для отеля
-            const hotelPrices = [];
-            const basePrice = """ + str(avg_price) + """;
-            
-            // Генерируем 5 точек данных с вариациями
-            for (let i = 0; i < 5; i++) {{
-                const variation = (Math.random() - 0.5) * 200; // ±100 PLN вариация
-                const price = basePrice + variation + (i * 50); // Небольшой тренд
-                const time = new Date(Date.now() - (4-i) * 2 * 60 * 60 * 1000); // Последние 8 часов
-                
-                hotelPrices.push({{
-                    x: time.toISOString().slice(0, 16).replace('T', ' '),
-                    y: Math.round(price)
-                }});
-            }}
-            
-            // Сортируем по времени
-            hotelPrices.sort((a, b) => new Date(a.x) - new Date(b.x));
-            
-            const trace = {{
-                x: hotelPrices.map(d => d.x),
-                y: hotelPrices.map(d => d.y),
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: hotelName,
-                line: {{color: '#2E86AB', width: 3}},
-                marker: {{size: 8}}
-            }};
-            
-            Plotly.newPlot('hotelChart', [trace], {{
-                title: `История цен: ${{hotelName}}`,
-                xaxis: {{title: 'Время'}},
-                yaxis: {{title: 'Цена (PLN)'}},
-                hovermode: 'closest'
-            }});
-            
-            modal.style.display = 'block';
-        }}
-
-        closeBtn.onclick = function() {{
-            modal.style.display = 'none';
+        // Обработчики модального окна
+        document.getElementsByClassName('close')[0].onclick = function() {{
+            document.getElementById('hotelModal').style.display = 'none';
         }}
 
         window.onclick = function(event) {{
+            const modal = document.getElementById('hotelModal');
             if (event.target == modal) {{
                 modal.style.display = 'none';
             }}
         }}
     </script>
 </body>
-</html>
-"""
+</html>"""
 
     # Сохраняем файл
     with open('index.html', 'w', encoding='utf-8') as f:
@@ -606,7 +567,6 @@ def generate_working_dashboard():
     print(f"📊 Статистика: {total_offers} предложений, {unique_hotels} отелей")
     print(f"💰 Цены: {min_price:.0f} - {max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
     print(f"🚨 Всего алертов: {len(all_alerts)}")
-    print(f"📈 Создано {len(price_data)} точек данных для графика")
 
 if __name__ == "__main__":
     generate_working_dashboard()
