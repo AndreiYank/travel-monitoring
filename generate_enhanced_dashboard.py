@@ -316,10 +316,6 @@ def generate_enhanced_dashboard():
             </div>
         </div>
         
-        <div class="chart-container">
-            <h3>📈 Общая динамика цен</h3>
-            <div id="price-timeline" style="height: 400px;"></div>
-        </div>
         
         <div>
             <h3>🏨 Все отели (отсортированы по цене) - кликните для графика</h3>
@@ -373,7 +369,7 @@ def generate_enhanced_dashboard():
     </div>
 
     <script>
-        // Простые функции для модального окна
+        // Определяем функцию в самом начале
         function openChart(hotelName) {{
             console.log('Opening chart for:', hotelName);
             document.getElementById('modalTitle').textContent = 'График цены: ' + hotelName;
@@ -432,43 +428,7 @@ def generate_enhanced_dashboard():
             }}
         }}
         
-        // График общей динамики
-        const priceData = """ + json.dumps(price_data) + """;
-        
-        const timelineData = [{{
-            x: priceData.map(d => d.scraped_at_str),
-            y: priceData.map(d => d.mean),
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Средняя цена',
-            line: {{color: '#2E86AB', width: 3}},
-            marker: {{size: 8}}
-        }}, {{
-            x: priceData.map(d => d.scraped_at_str),
-            y: priceData.map(d => d.min),
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Минимальная цена',
-            line: {{color: '#28a745', width: 2}},
-            marker: {{size: 6}}
-        }}, {{
-            x: priceData.map(d => d.scraped_at_str),
-            y: priceData.map(d => d.max),
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Максимальная цена',
-            line: {{color: '#dc3545', width: 2}},
-            marker: {{size: 6}}
-        }}];
-        
-        const timelineLayout = {{
-            title: 'Общая динамика цен на путешествия',
-            xaxis: {{title: 'Время'}},
-            yaxis: {{title: 'Цена (PLN)'}},
-            hovermode: 'closest'
-        }};
-        
-        Plotly.newPlot('price-timeline', timelineData, timelineLayout);
+        // График общей динамики убран по запросу пользователя
     </script>
 </body>
 </html>"""

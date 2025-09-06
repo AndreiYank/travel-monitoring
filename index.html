@@ -157,7 +157,7 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Travel Price Monitor</h1>
-            <p>Мониторинг цен на путешествия в Турцию • Обновлено: 06.09.2025 22:34</p>
+            <p>Мониторинг цен на путешествия в Турцию • Обновлено: 06.09.2025 22:41</p>
         </div>
         
         <div class="metrics">
@@ -234,10 +234,6 @@
             </div>
         </div>
         
-        <div class="chart-container">
-            <h3>📈 Общая динамика цен</h3>
-            <div id="price-timeline" style="height: 400px;"></div>
-        </div>
         
         <div>
             <h3>🏨 Все отели (отсортированы по цене) - кликните для графика</h3>
@@ -552,7 +548,7 @@
     </div>
 
     <script>
-        // Простые функции для модального окна
+        // Определяем функцию в самом начале
         function openChart(hotelName) {
             console.log('Opening chart for:', hotelName);
             document.getElementById('modalTitle').textContent = 'График цены: ' + hotelName;
@@ -611,43 +607,7 @@
             }}
         }}
         
-        // График общей динамики
-        const priceData = [{"scraped_at_str": "2025-09-06 21:21", "mean": 6354.0, "min": 6354.0, "max": 6354.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6354.0, "min": 6354.0, "max": 6354.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6572.0, "min": 6572.0, "max": 6572.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6672.0, "min": 6672.0, "max": 6672.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6800.0, "min": 6800.0, "max": 6800.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6832.0, "min": 6832.0, "max": 6832.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6850.0, "min": 6850.0, "max": 6850.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6918.0, "min": 6918.0, "max": 6918.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 6927.0, "min": 6927.0, "max": 6927.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7001.0, "min": 7001.0, "max": 7001.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7077.0, "min": 7077.0, "max": 7077.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7078.0, "min": 7078.0, "max": 7078.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7091.0, "min": 7091.0, "max": 7091.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7225.0, "min": 7225.0, "max": 7225.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7264.0, "min": 7264.0, "max": 7264.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7289.0, "min": 7289.0, "max": 7289.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7309.0, "min": 7309.0, "max": 7309.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7320.0, "min": 7320.0, "max": 7320.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7335.0, "min": 7335.0, "max": 7335.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7419.0, "min": 7419.0, "max": 7419.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7423.0, "min": 7423.0, "max": 7423.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7544.0, "min": 7544.0, "max": 7544.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7576.0, "min": 7576.0, "max": 7576.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7594.0, "min": 7594.0, "max": 7594.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7647.0, "min": 7647.0, "max": 7647.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7679.0, "min": 7679.0, "max": 7679.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7722.0, "min": 7722.0, "max": 7722.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7728.0, "min": 7728.0, "max": 7728.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7780.0, "min": 7780.0, "max": 7780.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 21:21", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7821.0, "min": 7821.0, "max": 7821.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7847.0, "min": 7847.0, "max": 7847.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7877.0, "min": 7877.0, "max": 7877.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7891.0, "min": 7891.0, "max": 7891.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7906.0, "min": 7906.0, "max": 7906.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7942.0, "min": 7942.0, "max": 7942.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7956.0, "min": 7956.0, "max": 7956.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7981.0, "min": 7981.0, "max": 7981.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7986.0, "min": 7986.0, "max": 7986.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7986.0, "min": 7986.0, "max": 7986.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7991.0, "min": 7991.0, "max": 7991.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 7999.0, "min": 7999.0, "max": 7999.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 8026.0, "min": 8026.0, "max": 8026.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 8033.0, "min": 8033.0, "max": 8033.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 21:23", "mean": 8047.0, "min": 8047.0, "max": 8047.0}];
-        
-        const timelineData = [{{
-            x: priceData.map(d => d.scraped_at_str),
-            y: priceData.map(d => d.mean),
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Средняя цена',
-            line: {{color: '#2E86AB', width: 3}},
-            marker: {{size: 8}}
-        }}, {{
-            x: priceData.map(d => d.scraped_at_str),
-            y: priceData.map(d => d.min),
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Минимальная цена',
-            line: {{color: '#28a745', width: 2}},
-            marker: {{size: 6}}
-        }}, {{
-            x: priceData.map(d => d.scraped_at_str),
-            y: priceData.map(d => d.max),
-            type: 'scatter',
-            mode: 'lines+markers',
-            name: 'Максимальная цена',
-            line: {{color: '#dc3545', width: 2}},
-            marker: {{size: 6}}
-        }}];
-        
-        const timelineLayout = {{
-            title: 'Общая динамика цен на путешествия',
-            xaxis: {{title: 'Время'}},
-            yaxis: {{title: 'Цена (PLN)'}},
-            hovermode: 'closest'
-        }};
-        
-        Plotly.newPlot('price-timeline', timelineData, timelineLayout);
+        // График общей динамики убран по запросу пользователя
     </script>
 </body>
 </html>
