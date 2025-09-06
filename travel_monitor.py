@@ -70,7 +70,7 @@ class TravelPriceMonitor:
         """Парсит предложения с сайта fly.pl с пагинацией"""
         all_offers = []
         page_number = 1
-        max_price_threshold = 9000  # Максимальная цена для остановки
+        max_price_threshold = 8100  # Максимальная цена для остановки
         
         async with async_playwright() as p:
             browser = await p.chromium.launch(
@@ -347,40 +347,20 @@ class TravelPriceMonitor:
                     '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
                 ])
             
-            # Ищем даты - расширенный поиск
-            dates = await self.extract_text_by_selectors(element, [
-                '.date', '.dates', '.departure', '.arrival', '.when',
-                '[class*="date"]', '[class*="time"]', '[class*="when"]',
-                '.departure-date', '.arrival-date', '.travel-date',
-                '[data-date]', '[data-departure]', '[data-arrival]'
-            ])
+            # Ищем даты - более специфичные селекторы для fly.pl
+            dates = await self.extract_dates_from_offer(element)
             
-            # Ищем длительность - расширенный поиск
-            duration = await self.extract_text_by_selectors(element, [
-                '.duration', '.nights', '.days', '.length',
-                '[class*="duration"]', '[class*="nights"]', '[class*="days"]',
-                '.trip-duration', '.stay-duration', '.period'
-            ])
+            # Ищем длительность - более специфичные селекторы для fly.pl
+            duration = await self.extract_duration_from_offer(element)
             
-            # Если не нашли даты в тексте, извлекаем из URL
-            if not dates:
-                dates = self.extract_dates_from_url()
-            
-            # Если не нашли длительность в тексте, извлекаем из URL
-            if not duration:
-                duration = self.extract_duration_from_url()
-            
-            # Если все еще пустые, используем значения по умолчанию из конфигурации
+            # Если не нашли, используем значения по умолчанию из конфигурации
             if not dates:
                 dates = "20-09-2025 - 04-10-2025"  # Из URL конфигурации
             if not duration:
                 duration = "6-15 дней"  # Из URL конфигурации
             
-            # Ищем рейтинг
-            rating = await self.extract_text_by_selectors(element, [
-                '.rating', '.stars', '.score',
-                '[class*="rating"]', '[class*="stars"]'
-            ])
+            # Рейтинг не извлекаем - не очень важен
+            rating = ""
             
             # Очищаем и форматируем данные
             hotel_name = self.clean_text(hotel_name) if hotel_name else f"Предложение {index + 1}"
@@ -491,6 +471,144 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.warning(f"Ошибка извлечения длительности из URL: {e}")
         return ""
+    
+    async def extract_dates_from_offer(self, element) -> str:
+        """Извлекает даты вылета-прилета из конкретного предложения"""
+        try:
+            # Ищем различные селекторы для дат на fly.pl
+            date_selectors = [
+                # Основные селекторы дат
+                '.date', '.dates', '.departure-date', '.arrival-date',
+                '.travel-date', '.trip-date', '.journey-date',
+                # Селекторы с классами
+                '[class*="date"]', '[class*="departure"]', '[class*="arrival"]',
+                '[class*="travel"]', '[class*="trip"]', '[class*="journey"]',
+                # Селекторы с data-атрибутами
+                '[data-date]', '[data-departure]', '[data-arrival]',
+                # Селекторы для периодов
+                '.period', '.range', '.from-to',
+                # Селекторы для времени
+                '.time', '.when', '.schedule'
+            ]
+            
+            for selector in date_selectors:
+                try:
+                    date_elements = await element.query_selector_all(selector)
+                    for date_element in date_elements:
+                        text = await date_element.inner_text()
+                        if text and self.is_date_text(text):
+                            return self.clean_text(text)
+                except:
+                    continue
+            
+            # Ищем в тексте элемента паттерны дат
+            full_text = await element.inner_text()
+            if full_text:
+                import re
+                # Ищем паттерны типа "20.09 - 04.10" или "20.09.2025 - 04.10.2025"
+                date_patterns = [
+                    r'\d{1,2}\.\d{1,2}\.\d{4}\s*-\s*\d{1,2}\.\d{1,2}\.\d{4}',  # 20.09.2025 - 04.10.2025
+                    r'\d{1,2}\.\d{1,2}\s*-\s*\d{1,2}\.\d{1,2}',  # 20.09 - 04.10
+                    r'\d{1,2}/\d{1,2}/\d{4}\s*-\s*\d{1,2}/\d{1,2}/\d{4}',  # 20/09/2025 - 04/10/2025
+                    r'\d{1,2}-\d{1,2}-\d{4}\s*-\s*\d{1,2}-\d{1,2}-\d{4}',  # 20-09-2025 - 04-10-2025
+                ]
+                
+                for pattern in date_patterns:
+                    matches = re.findall(pattern, full_text)
+                    if matches:
+                        return matches[0]
+            
+            return ""
+        except Exception as e:
+            logger.warning(f"Ошибка извлечения дат из предложения: {e}")
+            return ""
+    
+    async def extract_duration_from_offer(self, element) -> str:
+        """Извлекает длительность (дни/ночи) из конкретного предложения"""
+        try:
+            # Ищем различные селекторы для длительности на fly.pl
+            duration_selectors = [
+                # Основные селекторы длительности
+                '.duration', '.nights', '.days', '.length',
+                '.trip-duration', '.stay-duration', '.period',
+                # Селекторы с классами
+                '[class*="duration"]', '[class*="nights"]', '[class*="days"]',
+                '[class*="length"]', '[class*="period"]',
+                # Селекторы с data-атрибутами
+                '[data-duration]', '[data-nights]', '[data-days]'
+            ]
+            
+            for selector in duration_selectors:
+                try:
+                    duration_elements = await element.query_selector_all(selector)
+                    for duration_element in duration_elements:
+                        text = await duration_element.inner_text()
+                        if text and self.is_duration_text(text):
+                            return self.clean_text(text)
+                except:
+                    continue
+            
+            # Ищем в тексте элемента паттерны длительности
+            full_text = await element.inner_text()
+            if full_text:
+                import re
+                # Ищем паттерны типа "7 dni", "7 noclegów", "7 days", "7 nights"
+                duration_patterns = [
+                    r'(\d+)\s*(dni|noclegów|days|nights|dni|noclegi)',  # 7 dni, 7 noclegów
+                    r'(\d+)\s*(dni|noclegów|days|nights)',  # 7 dni, 7 nights
+                    r'(\d+)\s*d',  # 7d
+                    r'(\d+)\s*n',  # 7n
+                ]
+                
+                for pattern in duration_patterns:
+                    matches = re.findall(pattern, full_text, re.IGNORECASE)
+                    if matches:
+                        # Возвращаем полный текст с числом и единицей измерения
+                        return f"{matches[0][0]} {matches[0][1]}" if len(matches[0]) > 1 else f"{matches[0][0]} dni"
+            
+            return ""
+        except Exception as e:
+            logger.warning(f"Ошибка извлечения длительности из предложения: {e}")
+            return ""
+    
+    def is_date_text(self, text: str) -> bool:
+        """Проверяет, содержит ли текст дату"""
+        if not text or len(text.strip()) < 5:
+            return False
+        
+        import re
+        # Проверяем наличие паттернов дат
+        date_patterns = [
+            r'\d{1,2}\.\d{1,2}',  # 20.09
+            r'\d{1,2}/\d{1,2}',   # 20/09
+            r'\d{1,2}-\d{1,2}',   # 20-09
+            r'\d{4}',             # 2025
+        ]
+        
+        for pattern in date_patterns:
+            if re.search(pattern, text):
+                return True
+        
+        return False
+    
+    def is_duration_text(self, text: str) -> bool:
+        """Проверяет, содержит ли текст длительность"""
+        if not text or len(text.strip()) < 2:
+            return False
+        
+        import re
+        # Проверяем наличие паттернов длительности
+        duration_patterns = [
+            r'\d+\s*(dni|noclegów|days|nights|dni|noclegi)',
+            r'\d+\s*d',
+            r'\d+\s*n',
+        ]
+        
+        for pattern in duration_patterns:
+            if re.search(pattern, text, re.IGNORECASE):
+                return True
+        
+        return False
 
     def extract_price(self, price_text: str) -> float:
         """Извлекает числовое значение цены из текста"""
