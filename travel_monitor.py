@@ -577,12 +577,19 @@ class TravelPriceMonitor:
             return False
         
         import re
+        
+        # Исключаем рейтинги TripAdvisor
+        if any(keyword in text.lower() for keyword in ['tripadvisor', 'ocena', 'opinii', 'rating', 'stars']):
+            return False
+        
         # Проверяем наличие паттернов дат
         date_patterns = [
-            r'\d{1,2}\.\d{1,2}',  # 20.09
-            r'\d{1,2}/\d{1,2}',   # 20/09
-            r'\d{1,2}-\d{1,2}',   # 20-09
-            r'\d{4}',             # 2025
+            r'\d{1,2}\.\d{1,2}\.\d{4}',  # 20.09.2025
+            r'\d{1,2}\.\d{1,2}',         # 20.09
+            r'\d{1,2}/\d{1,2}/\d{4}',    # 20/09/2025
+            r'\d{1,2}/\d{1,2}',          # 20/09
+            r'\d{1,2}-\d{1,2}-\d{4}',    # 20-09-2025
+            r'\d{1,2}-\d{1,2}',          # 20-09
         ]
         
         for pattern in date_patterns:
