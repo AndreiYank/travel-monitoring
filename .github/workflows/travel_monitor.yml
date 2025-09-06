@@ -1,4 +1,4 @@
-name: Hourly Travel Price Monitor
+name: Travel Price Monitor
 
 on:
   schedule:
@@ -8,10 +8,19 @@ on:
   push:
     branches: [ main ]
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "travel-monitor"
+  cancel-in-progress: false
+
 jobs:
-  monitor:
+  monitor-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30  # Таймаут 30 минут
+    timeout-minutes: 30
 
     steps:
       - name: Checkout code
@@ -28,7 +37,7 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/.cache/pip
-          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
           restore-keys: |
             ${{ runner.os }}-pip-
 
@@ -83,18 +92,19 @@ jobs:
             echo "No alerts found"
           fi
 
-      - name: Upload data artifacts
-        uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: travel-data-${{ github.run_number }}-${{ github.run_attempt }}
-          path: |
-            data/
-            *.log
-            index.html
-          retention-days: 7
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
 
-      - name: Commit and push data
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Commit and push data updates
         if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           echo "📝 Committing data changes..."
@@ -127,10 +137,11 @@ jobs:
       - name: Create summary
         if: always()
         run: |
-          echo "## 📊 Monitoring Summary" >> $GITHUB_STEP_SUMMARY
+          echo "## 🏨 Travel Price Monitor Summary" >> $GITHUB_STEP_SUMMARY
           echo "**Run ID:** ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
           echo "**Time:** $(date)" >> $GITHUB_STEP_SUMMARY
           echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           
           if [ -f "data/travel_prices.csv" ]; then
@@ -150,3 +161,4 @@ jobs:
           echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
           echo "- [View Dashboard](https://andreiYank.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Logs](https://github.com/AndreiYank/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
