@@ -255,7 +255,7 @@ def generate_enhanced_dashboard():
     <div class="container">
         <div class="header">
             <h1>🏨 Travel Price Monitor</h1>
-            <p>Мониторинг цен на путешествия в Турцию • Обновлено: {datetime.now().strftime('%d.%m.%Y %H:%M')}</p>
+            <p>Мониторинг цен на путешествия в Грецию • Обновлено: {datetime.now().strftime('%d.%m.%Y %H:%M')}</p>
         </div>
         
         <div class="metrics">
