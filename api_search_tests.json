@@ -1,0 +1,38 @@
+{
+  "/api/search/offers": {
+    "method": "POST JSON",
+    "status": 401,
+    "content_type": "text/html; charset=iso-8859-1",
+    "content_length": "unknown",
+    "success": false
+  },
+  "/api/search": {
+    "method": "POST JSON",
+    "status": 401,
+    "content_type": "text/html; charset=iso-8859-1",
+    "content_length": "unknown",
+    "success": false
+  },
+  "/api/travel/search": {
+    "method": "POST JSON",
+    "status": 401,
+    "content_type": "text/html; charset=iso-8859-1",
+    "content_length": "unknown",
+    "success": false
+  },
+  "/ajax/search": {
+    "method": "POST JSON",
+    "status": 404,
+    "content_type": "text/html; charset=UTF-8",
+    "content_length": "unknown",
+    "success": false
+  },
+  "/search/api": {
+    "method": "POST JSON",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "content_length": "unknown",
+    "text_preview": "\n<!DOCTYPE html>\n<html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\">\n<head>\n    <meta name=\"ver\" content=\"fly_v3_1\">\n\n    <script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n  ...",
+    "success": true
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "/api/search/offers": {
+    "method": "GET",
+    "status": 401,
+    "success": false
+  },
+  "/api/offers": {
+    "method": "GET",
+    "status": 401,
+    "success": false
+  },
+  "/api/travel/search": {
+    "method": "GET",
+    "status": 401,
+    "success": false
+  },
+  "/api/search": {
+    "method": "GET",
+    "status": 401,
+    "success": false
+  },
+  "/api/v1/search": {
+    "method": "GET",
+    "status": 401,
+    "success": false
+  },
+  "/api/v2/search": {
+    "method": "GET",
+    "status": 401,
+    "success": false
+  },
+  "/search/api": {
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html",
+    "text_preview": "<!DOCTYPE html><html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\"><head><meta name=\"ver\" content=\"fly_v3_1\"><script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start'...",
+    "success": false
+  },
+  "/offers/api": {
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "text_preview": "\n<!DOCTYPE html>\n<html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\">\n<head>\n    <meta name=\"ver\" content=\"fly_v3_1\">\n\n    <script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].pus...",
+    "success": false
+  },
+  "/travel/api": {
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html; charset=UTF-8",
+    "text_preview": "\n<!DOCTYPE html>\n<html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\">\n<head>\n    <meta name=\"ver\" content=\"fly_v3_1\">\n\n    <script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].pus...",
+    "success": false
+  },
+  "/ajax/search": {
+    "method": "GET",
+    "status": 404,
+    "success": false
+  },
+  "/ajax/offers": {
+    "method": "GET",
+    "status": 404,
+    "success": false
+  },
+  "/search/ajax": {
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html",
+    "text_preview": "<!DOCTYPE html><html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\"><head><meta name=\"ver\" content=\"fly_v3_1\"><script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start'...",
+    "success": false
+  },
+  "/offers/ajax": {
+    "method": "GET",
+    "status": 200,
+    "content_type": "text/html",
+    "text_preview": "<!DOCTYPE html><html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\"><head><meta name=\"ver\" content=\"fly_v3_1\"><script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start'...",
+    "success": false
+  }
+}

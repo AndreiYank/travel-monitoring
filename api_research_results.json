@@ -1,0 +1,250 @@
+{
+  "timestamp": "2025-09-06T21:41:40.191802",
+  "api_endpoints": {
+    "/api/search/offers": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/offers": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/travel/search": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/search": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/v1/search": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/v2/search": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/search/api": {
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "note": "Not JSON response"
+    },
+    "/offers/api": {
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "note": "Not JSON response"
+    },
+    "/travel/api": {
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "note": "Not JSON response"
+    },
+    "/api/offers/search": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/travel/offers": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/search/travel": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/booking/search": {
+      "status": 401,
+      "note": "Not found or error"
+    },
+    "/api/tours/search": {
+      "status": 401,
+      "note": "Not found or error"
+    }
+  },
+  "search_tests": {
+    "/api/search": {
+      "method": "POST JSON",
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "content_length": "unknown"
+    },
+    "/api/search/offers": {
+      "method": "POST JSON",
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "content_length": "unknown"
+    },
+    "/api/travel/search": {
+      "method": "POST JSON",
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "content_length": "unknown"
+    },
+    "/api/offers/search": {
+      "method": "POST JSON",
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "content_length": "unknown"
+    },
+    "/search/api": {
+      "method": "POST JSON",
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "content_length": "unknown",
+      "text_preview": "\n<!DOCTYPE html>\n<html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\">\n<head>\n    <meta name=\"ver\" content=\"fly_v3_1\">\n\n    <script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':\n        new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],\n  ..."
+    },
+    "/api/v1/search": {
+      "method": "POST JSON",
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "content_length": "unknown"
+    }
+  },
+  "network_analysis": {
+    "status": 200,
+    "api_mentions": [
+      {
+        "line": 12,
+        "content": ":root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}</style><link rel='stylesheet' id='ppress-frontend-css' href='https://fly.pl/wp-content/plugins/wp-user-avatar/assets/css/frontend."
+      }
+    ],
+    "total_lines": 1117
+  },
+  "ajax_tests": {
+    "/ajax/search": {
+      "status": 404,
+      "content_type": "text/html; charset=UTF-8",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:35 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "Vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+        "Cache-Control": "no-cache, must-revalidate, max-age=0",
+        "Link": "<https://fly.pl/wp-json/>; rel=\"https://api.w.org/\"",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=jJhDkiVAEVVx6fDN8FPfQu3oAUJw6U25YB7FMQOJMZPO5LnsVuQsMZCWf4b%2BHaT%2FXYVPH7eCiBQUOkuYM%2FIpcbOus1AJ\"}]}",
+        "cf-cache-status": "DYNAMIC",
+        "Content-Encoding": "gzip",
+        "Set-Cookie": "cubby0=f8c59c758ffae6a347ffc266505940ec; Path=/; Max-Age=2592000; Expires=Mon, 06 Oct 2025 19:41:34 GMT",
+        "CF-RAY": "97b071d4cdfec063-WAW"
+      }
+    },
+    "/ajax/offers": {
+      "status": 404,
+      "content_type": "text/html; charset=UTF-8",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:35 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "Vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+        "Cache-Control": "no-cache, must-revalidate, max-age=0",
+        "Link": "<https://fly.pl/wp-json/>; rel=\"https://api.w.org/\"",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=u070iXmjeKIjfuOFVrAY9z7TcpbDuWhID%2BQsc7q9ZslHNReb%2BNZ6aaGyWaOe7kPhLZJiA8B5tlINkeHOytwZ9a3Vocxu\"}]}",
+        "cf-cache-status": "DYNAMIC",
+        "Content-Encoding": "gzip",
+        "Set-Cookie": "cubby0=f8c59c758ffae6a347ffc266505940ec; Path=/; Max-Age=2592000; Expires=Mon, 06 Oct 2025 19:41:35 GMT",
+        "CF-RAY": "97b071d77ed7c3ce-WAW"
+      }
+    },
+    "/ajax/travel/search": {
+      "status": 404,
+      "content_type": "text/html; charset=UTF-8",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:36 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "Vary": "Accept-Encoding",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Expires": "Wed, 11 Jan 1984 05:00:00 GMT",
+        "Cache-Control": "no-cache, must-revalidate, max-age=0",
+        "Link": "<https://fly.pl/wp-json/>; rel=\"https://api.w.org/\"",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=LcFlBZGPc%2BOHoJi7KjaoB6TCCc6PAtl1DCTBBYU8KRau12tXIW0NjJXVLYjjStSPHUlBjz9TbfhDPgnp7%2BHQrqGV60%2FN\"}]}",
+        "cf-cache-status": "DYNAMIC",
+        "Content-Encoding": "gzip",
+        "Set-Cookie": "cubby0=f8c59c758ffae6a347ffc266505940ec; Path=/; Max-Age=2592000; Expires=Mon, 06 Oct 2025 19:41:35 GMT",
+        "CF-RAY": "97b071daec2323b0-WAW"
+      }
+    },
+    "/search/ajax": {
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:37 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Link": "<https://fly.pl/wp-json/>; rel=\"https://api.w.org/\"",
+        "Vary": "Accept-Encoding",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=55BvgSK9YFvCtGvs62BG0C1I2A%2BhNfd31u4CepArVM998TNyUmexNKFXzIHtTqrsyXtn8vJDhm51vRRtSzMHqtzbVfG5\"}]}",
+        "cf-cache-status": "DYNAMIC",
+        "Content-Encoding": "gzip",
+        "Set-Cookie": "cubby0=f8c59c758ffae6a347ffc266505940ec; Path=/; Max-Age=2592000; Expires=Mon, 06 Oct 2025 19:41:36 GMT",
+        "CF-RAY": "97b071df3e19f377-WAW"
+      },
+      "text_preview": "\n<!DOCTYPE html>\n<html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\">\n<head>\n    <meta name=\"ver\" content=\"fly_v3_1\">\n\n    <script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].pus..."
+    },
+    "/offers/ajax": {
+      "status": 200,
+      "content_type": "text/html; charset=UTF-8",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:40 GMT",
+        "Content-Type": "text/html; charset=UTF-8",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Link": "<https://fly.pl/wp-json/>; rel=\"https://api.w.org/\"",
+        "Vary": "Accept-Encoding",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=re7WpF1fEWXqRCuj%2F5FdRv5fXvwhgg1gr7heHApnIYz2AdfqH5fC%2BfYE426xwDd7qE03Ui1GlNdZ9QBzZtEfi6ie60oU\"}]}",
+        "cf-cache-status": "DYNAMIC",
+        "Content-Encoding": "gzip",
+        "Set-Cookie": "cubby0=f8c59c758ffae6a347ffc266505940ec; Path=/; Max-Age=2592000; Expires=Mon, 06 Oct 2025 19:41:37 GMT",
+        "CF-RAY": "97b071e69bbff377-WAW"
+      },
+      "text_preview": "\n<!DOCTYPE html><html lang=\"pl-PL\" prefix=\"og: http://ogp.me/ns#\"><head><meta name=\"ver\" content=\"fly_v3_1\"><script data-cookieconsent=\"ignore\">(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start..."
+    },
+    "/api/ajax/search": {
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:40 GMT",
+        "Content-Type": "text/html; charset=iso-8859-1",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "WWW-Authenticate": "Basic realm=\"test\"",
+        "cf-cache-status": "DYNAMIC",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=02k6TvaQREuh6ZYVAcxRS%2BpdSHKYtlmI14Cu%2BtvCr6TkgkxuK%2BAFY7PxEoJ1UBDCulphqL13uevbsQGcl2ssIKIsP%2Fnu\"}]}",
+        "CF-RAY": "97b071f619ddf377-WAW"
+      }
+    },
+    "/api/ajax/offers": {
+      "status": 401,
+      "content_type": "text/html; charset=iso-8859-1",
+      "headers": {
+        "Date": "Sat, 06 Sep 2025 19:41:40 GMT",
+        "Content-Type": "text/html; charset=iso-8859-1",
+        "Transfer-Encoding": "chunked",
+        "Connection": "keep-alive",
+        "Server": "cloudflare",
+        "WWW-Authenticate": "Basic realm=\"test\"",
+        "cf-cache-status": "DYNAMIC",
+        "Nel": "{\"report_to\":\"cf-nel\",\"success_fraction\":0.0,\"max_age\":604800}",
+        "Report-To": "{\"group\":\"cf-nel\",\"max_age\":604800,\"endpoints\":[{\"url\":\"https://a.nel.cloudflare.com/report/v4?s=K2uVl2vxAP28Lmft4KkB10dyICpULS9kRYa4aJiXWcAhon4Ipl1qDtvgCGI4IHTvHX13VTgfiGfHXvbSNmsgmyL%2B68li\"}]}",
+        "CF-RAY": "97b071f67ad6f377-WAW"
+      }
+    }
+  }
+}
