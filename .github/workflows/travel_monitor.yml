@@ -73,11 +73,11 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate fixed dashboard v2
+      - name: Generate simple dashboard
         run: |
-          echo "🌐 Generating fixed dashboard v2 at $(date)"
-          python generate_fixed_dashboard_v2.py
-          echo "✅ Fixed dashboard v2 generated"
+          echo "🌐 Generating simple dashboard at $(date)"
+          python generate_simple_dashboard.py
+          echo "✅ Simple dashboard generated"
 
       - name: Check for price alerts
         id: alerts
