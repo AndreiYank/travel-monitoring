@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Price Monitor Dashboard</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #2E86AB 0%, #A23B72 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+        }
+        
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 30px;
+            background: #f8f9fa;
+        }
+        
+        .metric {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        
+        .metric:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric h3 {
+            margin: 0 0 10px 0;
+            color: #2E86AB;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .metric .value {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #333;
+            margin: 0;
+        }
+        
+        .content {
+            padding: 30px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section h2 {
+            color: #2E86AB;
+            border-bottom: 3px solid #A23B72;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .chart-container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        .table-container {
+            overflow-x: auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #eee;
+        }
+        
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #2E86AB;
+        }
+        
+        tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .price-low {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .price-high {
+            color: #dc3545;
+            font-weight: bold;
+        }
+        
+        .footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+        @media (max-width: 768px) {
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+            
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✈️ Travel Price Monitor</h1>
+            <p>Интерактивный дашборд для мониторинга цен на путешествия</p>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <h3>Всего предложений</h3>
+                <p class="value">83</p>
+            </div>
+            <div class="metric">
+                <h3>Уникальных отелей</h3>
+                <p class="value">78</p>
+            </div>
+            <div class="metric">
+                <h3>Средняя цена</h3>
+                <p class="value">7938 PLN</p>
+            </div>
+            <div class="metric">
+                <h3>Диапазон цен</h3>
+                <p class="value">6233 - 8999 PLN</p>
+            </div>
+        </div>
+        
+        <div class="content">
+            <div class="section">
+                <h2>📊 Топ-10 самых дешевых отелей</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Отель</th>
+                                <th>Цена (PLN)</th>
+                                <th>Дата сбора</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>1</td>
+                                <td>Aqua Sun Village (Ex. Eri Sun Village)</td>
+                                <td class="price-low">6233 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>2</td>
+                                <td>Aqua Sun Village (Ex. Eri Sun Village)</td>
+                                <td class="price-low">6233 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>3</td>
+                                <td>Gennadi Seaside Resort</td>
+                                <td class="price-low">6400 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>4</td>
+                                <td>Laguna Holiday Resort</td>
+                                <td class="price-low">6572 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>5</td>
+                                <td>Aegean View (Paradisi)</td>
+                                <td class="price-low">6728 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>6</td>
+                                <td>Eri Beach</td>
+                                <td class="price-low">6787 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>7</td>
+                                <td>Chrousso Village</td>
+                                <td class="price-low">6800 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>8</td>
+                                <td>Bali Mare</td>
+                                <td class="price-low">6927 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>9</td>
+                                <td>Filerimos Village</td>
+                                <td class="price-low">6960 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                            <tr>
+                                <td>10</td>
+                                <td>Alexandros Palace</td>
+                                <td class="price-low">7001 PLN</td>
+                                <td>2025-09-06</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>📋 Статистика по отелям</h2>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Отель</th>
+                                <th>Предложений</th>
+                                <th>Средняя цена</th>
+                                <th>Мин цена</th>
+                                <th>Макс цена</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <tr>
+                                <td>Aqua Sun Village (Ex. Eri Sun Village)</td>
+                                <td>2.0</td>
+                                <td>6233 PLN</td>
+                                <td class="price-low">6233 PLN</td>
+                                <td class="price-high">6233 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Gennadi Seaside Resort</td>
+                                <td>1.0</td>
+                                <td>6400 PLN</td>
+                                <td class="price-low">6400 PLN</td>
+                                <td class="price-high">6400 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Laguna Holiday Resort</td>
+                                <td>1.0</td>
+                                <td>6572 PLN</td>
+                                <td class="price-low">6572 PLN</td>
+                                <td class="price-high">6572 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Aegean View (Paradisi)</td>
+                                <td>1.0</td>
+                                <td>6728 PLN</td>
+                                <td class="price-low">6728 PLN</td>
+                                <td class="price-high">6728 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Eri Beach</td>
+                                <td>1.0</td>
+                                <td>6787 PLN</td>
+                                <td class="price-low">6787 PLN</td>
+                                <td class="price-high">6787 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Chrousso Village</td>
+                                <td>1.0</td>
+                                <td>6800 PLN</td>
+                                <td class="price-low">6800 PLN</td>
+                                <td class="price-high">6800 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Bali Mare</td>
+                                <td>1.0</td>
+                                <td>6927 PLN</td>
+                                <td class="price-low">6927 PLN</td>
+                                <td class="price-high">6927 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Filerimos Village</td>
+                                <td>1.0</td>
+                                <td>6960 PLN</td>
+                                <td class="price-low">6960 PLN</td>
+                                <td class="price-high">6960 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Alexandros Palace</td>
+                                <td>1.0</td>
+                                <td>7001 PLN</td>
+                                <td class="price-low">7001 PLN</td>
+                                <td class="price-high">7001 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Arion Resort (Vassilikos)</td>
+                                <td>1.0</td>
+                                <td>7077 PLN</td>
+                                <td class="price-low">7077 PLN</td>
+                                <td class="price-high">7077 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Ionian Sea & Aquapark</td>
+                                <td>1.0</td>
+                                <td>7078 PLN</td>
+                                <td class="price-low">7078 PLN</td>
+                                <td class="price-high">7078 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Evita Mare</td>
+                                <td>1.0</td>
+                                <td>7094 PLN</td>
+                                <td class="price-low">7094 PLN</td>
+                                <td class="price-high">7094 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Sunbay</td>
+                                <td>1.0</td>
+                                <td>7133 PLN</td>
+                                <td class="price-low">7133 PLN</td>
+                                <td class="price-high">7133 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Mediterraneo (Hersonissos)</td>
+                                <td>1.0</td>
+                                <td>7177 PLN</td>
+                                <td class="price-low">7177 PLN</td>
+                                <td class="price-high">7177 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Cooee Akti Ouranoupolis</td>
+                                <td>1.0</td>
+                                <td>7229 PLN</td>
+                                <td class="price-low">7229 PLN</td>
+                                <td class="price-high">7229 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Poseidon Sea Resort (Neos Marmaras)</td>
+                                <td>1.0</td>
+                                <td>7320 PLN</td>
+                                <td class="price-low">7320 PLN</td>
+                                <td class="price-high">7320 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Golden Odyssey</td>
+                                <td>1.0</td>
+                                <td>7335 PLN</td>
+                                <td class="price-low">7335 PLN</td>
+                                <td class="price-high">7335 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Sokol Resort</td>
+                                <td>1.0</td>
+                                <td>7419 PLN</td>
+                                <td class="price-low">7419 PLN</td>
+                                <td class="price-high">7419 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Sirenes Beach</td>
+                                <td>1.0</td>
+                                <td>7423 PLN</td>
+                                <td class="price-low">7423 PLN</td>
+                                <td class="price-high">7423 PLN</td>
+                            </tr>
+
+                            <tr>
+                                <td>Meropi Hotel & Apartments (Malia)</td>
+                                <td>1.0</td>
+                                <td>7444 PLN</td>
+                                <td class="price-low">7444 PLN</td>
+                                <td class="price-high">7444 PLN</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        
+        <div class="footer">
+            <p>Последнее обновление: 2025-09-06 19:05:47</p>
+        </div>
+    </div>
+</body>
+</html>

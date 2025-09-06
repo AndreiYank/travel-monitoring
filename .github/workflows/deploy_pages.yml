@@ -1,0 +1,89 @@
+name: Deploy Dashboard to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+  schedule:
+    # Запускаем каждый час для обновления дашборда
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_dashboard.txt
+
+      - name: Run data collection (if needed)
+        run: |
+          # Проверяем, нужно ли обновить данные
+          if [ ! -f "data/travel_prices.csv" ] || [ $(find data/travel_prices.csv -mmin +60 | wc -l) -gt 0 ]; then
+            echo "🔄 Data is old or missing, running monitoring..."
+            python travel_monitor.py
+          else
+            echo "✅ Data is fresh, skipping monitoring"
+          fi
+
+      - name: Generate static dashboard
+        run: |
+          echo "🌐 Generating static dashboard..."
+          python generate_static_dashboard.py
+          echo "✅ Static dashboard generated"
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v3
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v2
+
+      - name: Create deployment summary
+        if: always()
+        run: |
+          echo "## 🌐 GitHub Pages Deployment" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "**URL:** ${{ steps.deployment.outputs.page_url }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 📊 Dashboard Features" >> $GITHUB_STEP_SUMMARY
+          echo "- Interactive price monitoring" >> $GITHUB_STEP_SUMMARY
+          echo "- Real-time data updates" >> $GITHUB_STEP_SUMMARY
+          echo "- Mobile-responsive design" >> $GITHUB_STEP_SUMMARY
+          echo "- Price alerts and notifications" >> $GITHUB_STEP_SUMMARY

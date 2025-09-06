@@ -1,0 +1,151 @@
+name: Hourly Travel Price Monitor
+
+on:
+  schedule:
+    # Запускаем каждый час
+    - cron: "0 * * * *"
+  workflow_dispatch: # Позволяет запускать вручную
+  push:
+    branches: [ main ]
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30  # Таймаут 30 минут
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_dashboard.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+          playwright install-deps
+
+      - name: Run price monitoring
+        run: |
+          echo "🚀 Starting price monitoring at $(date)"
+          python travel_monitor.py
+          echo "✅ Price monitoring completed"
+
+      - name: Run data analysis
+        run: |
+          echo "📊 Starting data analysis at $(date)"
+          python analyze_data.py --charts --export
+          echo "✅ Data analysis completed"
+
+      - name: Generate static dashboard
+        run: |
+          echo "🌐 Generating static dashboard at $(date)"
+          python generate_static_dashboard.py
+          echo "✅ Static dashboard generated"
+
+      - name: Check for price alerts
+        id: alerts
+        run: |
+          echo "🚨 Checking for price alerts..."
+          if [ -f "data/price_alerts_report.txt" ]; then
+            ALERT_COUNT=$(grep -c "📉\|📈" data/price_alerts_report.txt || echo "0")
+            echo "alert_count=$ALERT_COUNT" >> $GITHUB_OUTPUT
+            echo "Found $ALERT_COUNT price changes"
+          else
+            echo "alert_count=0" >> $GITHUB_OUTPUT
+            echo "No alerts found"
+          fi
+
+      - name: Upload data artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: travel-data-${{ github.run_number }}-${{ github.run_attempt }}
+          path: |
+            data/
+            *.log
+            index.html
+          retention-days: 7
+
+      - name: Commit and push data
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          echo "📝 Committing data changes..."
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Добавляем все изменения
+          git add data/ index.html *.log
+          
+          # Проверяем, есть ли изменения для коммита
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes to commit"
+          else
+            # Создаем коммит с детальным сообщением
+            COMMIT_MSG="🔄 Hourly update - $(date '+%Y-%m-%d %H:%M:%S UTC')
+            
+            📊 Data summary:
+            - Total offers: $(wc -l < data/travel_prices.csv || echo '0')
+            - Unique hotels: $(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l || echo '0')
+            - Price range: $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1 || echo 'N/A') - $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1 || echo 'N/A') PLN
+            - Alerts: ${{ steps.alerts.outputs.alert_count }}
+            
+            🤖 Automated by GitHub Actions"
+            
+            git commit -m "$COMMIT_MSG"
+            git push
+            echo "✅ Changes committed and pushed"
+          fi
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## 📊 Monitoring Summary" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID:** ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "data/travel_prices.csv" ]; then
+            TOTAL_OFFERS=$(wc -l < data/travel_prices.csv)
+            UNIQUE_HOTELS=$(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l)
+            MIN_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1)
+            MAX_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1)
+            
+            echo "### 📈 Data Statistics" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total offers:** $TOTAL_OFFERS" >> $GITHUB_STEP_SUMMARY
+            echo "- **Unique hotels:** $UNIQUE_HOTELS" >> $GITHUB_STEP_SUMMARY
+            echo "- **Price range:** $MIN_PRICE - $MAX_PRICE PLN" >> $GITHUB_STEP_SUMMARY
+            echo "- **Price alerts:** ${{ steps.alerts.outputs.alert_count }}" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Dashboard](https://andreiYank.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data)" >> $GITHUB_STEP_SUMMARY

@@ -43,3 +43,4 @@ echo "  python analyze_data.py --charts   # Анализ данных"
 echo "  python scheduler.py               # Автоматический мониторинг"
 echo ""
 echo "📖 Подробная документация в README.md"
+

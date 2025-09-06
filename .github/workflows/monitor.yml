@@ -1,56 +1,57 @@
-name: Travel Price Monitor
+name: Daily Travel Price Monitor
 
 on:
   schedule:
     # Запускаем каждый день в 9:00 UTC (12:00 по Москве)
-    - cron: '0 9 * * *'
-  workflow_dispatch:  # Позволяет запускать вручную
+    - cron: "0 9 * * *"
+  workflow_dispatch: # Позволяет запускать вручную
 
 jobs:
   monitor:
     runs-on: ubuntu-latest
-    
+
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-        
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install -r requirements.txt
-        
-    - name: Install Playwright browsers
-      run: |
-        playwright install chromium
-        
-    - name: Run price monitoring
-      run: |
-        python travel_monitor.py
-        
-    - name: Run data analysis
-      run: |
-        python analyze_data.py --charts --export
-        
-    - name: Upload data artifacts
-      uses: actions/upload-artifact@v3
-      if: always()
-      with:
-        name: travel-data-${{ github.run_number }}
-        path: |
-          data/
-          *.log
-        retention-days: 30
-        
-    - name: Commit and push data
-      if: github.event_name == 'schedule'
-      run: |
-        git config --local user.email "action@github.com"
-        git config --local user.name "GitHub Action"
-        git add data/
-        git diff --staged --quiet || git commit -m "Update travel price data - ${{ github.run_number }}"
-        git push
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+
+      - name: Run price monitoring
+        run: |
+          python travel_monitor.py
+
+      - name: Run data analysis
+        run: |
+          python analyze_data.py --charts --export
+
+      - name: Upload data artifacts
+        uses: actions/upload-artifact@v3
+        if: always()
+        with:
+          name: travel-data-${{ github.run_number }}
+          path: |
+            data/
+            *.log
+          retention-days: 30
+
+      - name: Commit and push data
+        if: github.event_name == 'schedule'
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git add data/
+          git diff --staged --quiet || git commit -m "Update travel price data - ${{ github.run_number }}"
+          git push
+

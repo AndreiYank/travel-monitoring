@@ -195,7 +195,84 @@ class TravelDataAnalyzer:
         plt.savefig(f"{charts_dir}/top_hotels_by_offers.png", dpi=300, bbox_inches='tight')
         plt.close()
         
+        # 4. Создаем отдельные графики для топ-15 самых дешевых отелей
+        self.create_individual_hotel_charts()
+        
         print(f"✅ Расширенные графики сохранены в {charts_dir}/")
+    
+    def create_individual_hotel_charts(self):
+        """Создает отдельные графики для топ-15 самых дешевых отелей"""
+        if self.df.empty:
+            return
+        
+        # Создаем директорию для индивидуальных графиков
+        individual_charts_dir = "data/advanced_charts/individual_hotels"
+        os.makedirs(individual_charts_dir, exist_ok=True)
+        
+        # Получаем топ-15 самых дешевых отелей
+        top_15_hotels = self.df.nsmallest(15, 'price')['hotel_name'].unique()
+        
+        print(f"📊 Создаем индивидуальные графики для {len(top_15_hotels)} отелей...")
+        
+        for i, hotel_name in enumerate(top_15_hotels, 1):
+            try:
+                # Фильтруем данные по отелю
+                hotel_data = self.df[self.df['hotel_name'] == hotel_name].sort_values('scraped_at')
+                
+                if len(hotel_data) < 2:
+                    continue  # Пропускаем отели с менее чем 2 записями
+                
+                # Создаем график для отеля
+                plt.figure(figsize=(12, 8))
+                
+                # График изменения цены по времени
+                plt.plot(hotel_data['scraped_at'], hotel_data['price'], 
+                        marker='o', linewidth=2, markersize=6, color='#2E86AB')
+                
+                # Добавляем точки с ценами
+                for _, row in hotel_data.iterrows():
+                    plt.annotate(f'{row["price"]:.0f} PLN', 
+                               (row['scraped_at'], row['price']),
+                               textcoords="offset points", 
+                               xytext=(0,10), ha='center', fontsize=8)
+                
+                # Настройка графика
+                plt.title(f'{i}. {hotel_name[:60]}{"..." if len(hotel_name) > 60 else ""}', 
+                         fontsize=14, fontweight='bold', pad=20)
+                plt.xlabel('Дата сбора данных', fontsize=12)
+                plt.ylabel('Цена (PLN)', fontsize=12)
+                plt.grid(True, alpha=0.3)
+                plt.xticks(rotation=45)
+                
+                # Добавляем статистику
+                min_price = hotel_data['price'].min()
+                max_price = hotel_data['price'].max()
+                avg_price = hotel_data['price'].mean()
+                price_change = hotel_data['price'].iloc[-1] - hotel_data['price'].iloc[0]
+                price_change_pct = (price_change / hotel_data['price'].iloc[0]) * 100 if hotel_data['price'].iloc[0] > 0 else 0
+                
+                stats_text = f'Мин: {min_price:.0f} PLN | Макс: {max_price:.0f} PLN | Средн: {avg_price:.0f} PLN\n'
+                stats_text += f'Изменение: {price_change:+.0f} PLN ({price_change_pct:+.1f}%)'
+                
+                plt.figtext(0.02, 0.02, stats_text, fontsize=10, 
+                           bbox=dict(boxstyle="round,pad=0.3", facecolor="lightgray", alpha=0.8))
+                
+                plt.tight_layout()
+                
+                # Сохраняем график
+                safe_filename = "".join(c for c in hotel_name if c.isalnum() or c in (' ', '-', '_')).rstrip()
+                safe_filename = safe_filename[:50] + f"_{i:02d}"
+                plt.savefig(f"{individual_charts_dir}/{safe_filename}.png", 
+                           dpi=300, bbox_inches='tight')
+                plt.close()
+                
+                print(f"  ✅ График {i:2d}/15: {hotel_name[:50]}{'...' if len(hotel_name) > 50 else ''}")
+                
+            except Exception as e:
+                print(f"  ❌ Ошибка создания графика для {hotel_name}: {e}")
+                continue
+        
+        print(f"✅ Индивидуальные графики сохранены в {individual_charts_dir}/")
     
     def export_summary(self):
         """Экспортирует сводку в JSON"""
@@ -259,3 +336,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

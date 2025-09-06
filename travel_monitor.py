@@ -17,6 +17,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 from playwright.async_api import async_playwright
 import logging
+from price_alerts import PriceAlertManager
 
 # Настройка логирования
 logging.basicConfig(
@@ -66,8 +67,10 @@ class TravelPriceMonitor:
         return []
 
     async def scrape_offers(self) -> List[Dict[str, Any]]:
-        """Парсит предложения с сайта fly.pl"""
-        offers = []
+        """Парсит предложения с сайта fly.pl с пагинацией"""
+        all_offers = []
+        page_number = 1
+        max_price_threshold = 9000  # Максимальная цена для остановки
         
         async with async_playwright() as p:
             browser = await p.chromium.launch(
@@ -106,28 +109,65 @@ class TravelPriceMonitor:
                 logger.info("Страница загружена, ждем контент...")
                 await page.wait_for_timeout(5000)
                 
-                # Ищем предложения
-                offers_data = await self.find_offers(page)
-                
-                if not offers_data:
-                    logger.warning("Предложения не найдены, пробуем альтернативный подход...")
-                    offers_data = await self.find_offers_alternative(page)
-                
-                # Парсим предложения
-                max_offers = min(self.config['max_offers'], len(offers_data)) if offers_data else 0
-                logger.info(f"Парсим {max_offers} предложений...")
-                
-                for i in range(max_offers):
+                # Парсим страницы пока не достигнем максимальной цены
+                while page_number <= 10:  # Максимум 10 страниц для безопасности
+                    logger.info(f"Парсим страницу {page_number}...")
+                    
+                    # Ищем предложения на текущей странице
+                    offers_data = await self.find_offers(page)
+                    
+                    if not offers_data:
+                        logger.warning("Предложения не найдены, пробуем альтернативный подход...")
+                        offers_data = await self.find_offers_alternative(page)
+                    
+                    if not offers_data:
+                        logger.info("Предложения не найдены, завершаем парсинг")
+                        break
+                    
+                    # Парсим предложения с текущей страницы
+                    page_offers = []
+                    max_price_on_page = 0
+                    
+                    for i in range(len(offers_data)):
+                        try:
+                            element = offers_data[i]
+                            offer_data = await self.extract_offer_data(element, i)
+                            if offer_data and offer_data.get('price', 0) > 0:
+                                page_offers.append(offer_data)
+                                max_price_on_page = max(max_price_on_page, offer_data['price'])
+                        except Exception as e:
+                            logger.warning(f"Ошибка парсинга предложения {i}: {e}")
+                            continue
+                    
+                    if page_offers:
+                        all_offers.extend(page_offers)
+                        logger.info(f"Страница {page_number}: собрано {len(page_offers)} предложений, максимальная цена: {max_price_on_page:.0f} PLN")
+                        
+                        # Проверяем, достигли ли максимальной цены
+                        if max_price_on_page >= max_price_threshold:
+                            logger.info(f"Достигнута максимальная цена {max_price_threshold} PLN, завершаем парсинг")
+                            break
+                    else:
+                        logger.info(f"На странице {page_number} не найдено предложений")
+                        break
+                    
+                    # Ищем кнопку "Следующая страница"
+                    next_page_url = await self.find_next_page_url(page)
+                    if not next_page_url:
+                        logger.info("Кнопка 'Следующая страница' не найдена, завершаем парсинг")
+                        break
+                    
+                    # Переходим на следующую страницу
+                    logger.info(f"Переходим на страницу {page_number + 1}...")
                     try:
-                        element = offers_data[i]
-                        offer_data = await self.extract_offer_data(element, i)
-                        if offer_data and offer_data.get('price', 0) > 0:
-                            offers.append(offer_data)
+                        await page.goto(next_page_url, wait_until='domcontentloaded', timeout=self.config['wait_timeout'])
+                        await page.wait_for_timeout(3000)  # Ждем загрузки контента
+                        page_number += 1
                     except Exception as e:
-                        logger.warning(f"Ошибка парсинга предложения {i}: {e}")
-                        continue
+                        logger.warning(f"Ошибка перехода на страницу {page_number + 1}: {e}")
+                        break
                 
-                logger.info(f"Успешно собрано {len(offers)} предложений")
+                logger.info(f"Парсинг завершен. Всего собрано {len(all_offers)} предложений с {page_number} страниц")
                 
             except Exception as e:
                 logger.error(f"Ошибка при парсинге: {e}")
@@ -137,7 +177,7 @@ class TravelPriceMonitor:
                 except:
                     pass
         
-        return offers
+        return all_offers
 
     async def find_offers(self, page) -> List:
         """Ищет предложения на странице"""
@@ -188,6 +228,102 @@ class TravelPriceMonitor:
         
         return []
 
+    async def find_next_page_url(self, page) -> str:
+        """Ищет URL следующей страницы"""
+        try:
+            # Ищем кнопку "Следующая страница" или "Następna"
+            next_page_selectors = [
+                'a[aria-label*="następna"]',
+                'a[aria-label*="next"]',
+                'a[title*="następna"]',
+                'a[title*="next"]',
+                '.pagination a:contains("Następna")',
+                '.pagination a:contains("Next")',
+                '.pagination a:contains(">")',
+                '.pagination a:contains("»")',
+                'a[class*="next"]',
+                'a[class*="pagination"]',
+                'button[class*="next"]',
+                'button[class*="pagination"]'
+            ]
+            
+            for selector in next_page_selectors:
+                try:
+                    element = await page.query_selector(selector)
+                    if element:
+                        # Проверяем, что элемент активен (не disabled)
+                        is_disabled = await element.get_attribute('disabled')
+                        if not is_disabled:
+                            href = await element.get_attribute('href')
+                            if href:
+                                # Если href относительный, делаем его абсолютным
+                                if href.startswith('/'):
+                                    base_url = self.config['url'].split('?')[0]
+                                    return base_url + href
+                                elif href.startswith('http'):
+                                    return href
+                                else:
+                                    return self.config['url'] + '&' + href
+                except:
+                    continue
+            
+            # Альтернативный поиск - ищем элементы с номерами страниц
+            page_numbers = await page.query_selector_all('a[href*="page"], a[href*="strona"]')
+            current_page = 1
+            
+            for page_link in page_numbers:
+                try:
+                    href = await page_link.get_attribute('href')
+                    text = await page_link.inner_text()
+                    
+                    # Ищем номер текущей страницы
+                    if 'active' in (await page_link.get_attribute('class') or ''):
+                        try:
+                            current_page = int(text.strip())
+                        except:
+                            pass
+                    
+                    # Ищем следующую страницу
+                    try:
+                        page_num = int(text.strip())
+                        if page_num == current_page + 1:
+                            if href:
+                                if href.startswith('/'):
+                                    base_url = self.config['url'].split('?')[0]
+                                    return base_url + href
+                                elif href.startswith('http'):
+                                    return href
+                                else:
+                                    return self.config['url'] + '&' + href
+                    except:
+                        continue
+                except:
+                    continue
+            
+            # Последняя попытка - ищем кнопку с текстом "Następna" или "Next"
+            all_links = await page.query_selector_all('a, button')
+            for link in all_links:
+                try:
+                    text = await link.inner_text()
+                    if text and ('następna' in text.lower() or 'next' in text.lower() or text.strip() == '>' or text.strip() == '»'):
+                        href = await link.get_attribute('href')
+                        if href:
+                            if href.startswith('/'):
+                                base_url = self.config['url'].split('?')[0]
+                                return base_url + href
+                            elif href.startswith('http'):
+                                return href
+                            else:
+                                return self.config['url'] + '&' + href
+                except:
+                    continue
+            
+            return ""
+            
+        except Exception as e:
+            logger.warning(f"Ошибка поиска следующей страницы: {e}")
+            return ""
+
     async def extract_offer_data(self, element, index: int) -> Dict[str, Any]:
         """Извлекает данные из элемента предложения"""
         try:
@@ -203,11 +339,13 @@ class TravelPriceMonitor:
                 '[class*="title"]', '[class*="name"]', '[class*="hotel"]'
             ])
             
-            # Ищем цену
-            price = await self.extract_text_by_selectors(element, [
-                '.price', '.cost', '.amount', '.value',
-                '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
-            ])
+            # Ищем цену - сначала ищем цену за всех, потом за одного
+            price = await self.extract_price_for_all(element)
+            if not price:
+                price = await self.extract_text_by_selectors(element, [
+                    '.price', '.cost', '.amount', '.value',
+                    '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
+                ])
             
             # Ищем даты
             dates = await self.extract_text_by_selectors(element, [
@@ -252,6 +390,33 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.warning(f"Ошибка извлечения данных из элемента {index}: {e}")
             return None
+
+    async def extract_price_for_all(self, element) -> str:
+        """Извлекает цену за всех (za wszystkich)"""
+        try:
+            # Ищем элементы с текстом "za wszystkich" или "za wszystkie"
+            price_elements = await element.query_selector_all('[class*="price"]')
+            
+            for price_element in price_elements:
+                text = await price_element.inner_text()
+                if text and ('za wszystkich' in text.lower() or 'za wszystkie' in text.lower()):
+                    # Ищем число в этом элементе
+                    import re
+                    numbers = re.findall(r'[\d\s,]+', text.replace('.', '').replace(',', '.'))
+                    if numbers:
+                        return text.strip()
+            
+            # Альтернативный поиск - ищем элементы с классом price-view-2 (цена за всех)
+            price_view_2 = await element.query_selector('.price-view-2, [class*="price-view-2"]')
+            if price_view_2:
+                text = await price_view_2.inner_text()
+                if text and text.strip():
+                    return text.strip()
+            
+            return ""
+        except Exception as e:
+            logger.warning(f"Ошибка извлечения цены за всех: {e}")
+            return ""
 
     async def extract_text_by_selectors(self, element, selectors: List[str]) -> str:
         """Извлекает текст используя различные селекторы"""
@@ -328,11 +493,12 @@ class TravelPriceMonitor:
             return
         
         # Добавляем новые данные
+        file_exists = os.path.exists(filepath)
         with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
             fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             
-            if not os.path.exists(filepath):
+            if not file_exists:
                 writer.writeheader()
             
             for offer in new_offers:
@@ -451,6 +617,40 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.error(f"Ошибка генерации отчета: {e}")
 
+    def check_price_alerts(self):
+        """Проверяет изменения цен и создает алерты"""
+        try:
+            alert_manager = PriceAlertManager()
+            
+            if alert_manager.df.empty:
+                logger.warning("Нет данных для проверки алертов")
+                return
+            
+            # Создаем отчет об алертах
+            alert_manager.save_alert_report(threshold_percent=5.0)
+            
+            # Получаем топ отелей с изменениями цен
+            top_hotels = alert_manager.get_top_cheap_hotels_with_alerts(15)
+            
+            # Логируем важные изменения
+            price_drops = [h for h in top_hotels if h['price_change'] < 0]
+            price_increases = [h for h in top_hotels if h['price_change'] > 0]
+            
+            if price_drops:
+                logger.info(f"🚨 Обнаружено {len(price_drops)} снижений цен!")
+                for hotel in price_drops[:5]:  # Показываем топ-5 снижений
+                    logger.info(f"📉 {hotel['hotel_name'][:50]} - {hotel['price_change']:+.0f} PLN ({hotel['price_change_pct']:+.1f}%)")
+            
+            if price_increases:
+                logger.info(f"📈 Обнаружено {len(price_increases)} повышений цен")
+                for hotel in price_increases[:3]:  # Показываем топ-3 повышения
+                    logger.info(f"📈 {hotel['hotel_name'][:50]} - {hotel['price_change']:+.0f} PLN ({hotel['price_change_pct']:+.1f}%)")
+            
+            logger.info("✅ Проверка алертов завершена")
+            
+        except Exception as e:
+            logger.error(f"Ошибка проверки алертов: {e}")
+
     async def run_monitoring(self):
         """Запускает полный цикл мониторинга"""
         logger.info("🚀 Начинаем мониторинг цен на путешествия...")
@@ -471,6 +671,9 @@ class TravelPriceMonitor:
             
             # Генерируем отчет
             self.generate_report()
+            
+            # Проверяем изменения цен и создаем алерты
+            self.check_price_alerts()
             
             logger.info("✅ Мониторинг завершен успешно!")
             return True
@@ -500,3 +703,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
