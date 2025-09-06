@@ -64,11 +64,11 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate static dashboard
+      - name: Generate enhanced dashboard
         run: |
-          echo "🌐 Generating static dashboard at $(date)"
-          python generate_static_dashboard.py
-          echo "✅ Static dashboard generated"
+          echo "🌐 Generating enhanced dashboard at $(date)"
+          python generate_enhanced_dashboard.py
+          echo "✅ Enhanced dashboard generated"
 
       - name: Check for price alerts
         id: alerts

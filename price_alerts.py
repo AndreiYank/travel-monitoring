@@ -51,7 +51,7 @@ class PriceAlertManager:
         except Exception as e:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
-    def check_price_changes(self, threshold_percent: float = 5.0) -> List[Dict[str, Any]]:
+    def check_price_changes(self, threshold_percent: float = 1.0) -> List[Dict[str, Any]]:
         """Проверяет изменения цен и возвращает алерты"""
         if self.df.empty:
             return []

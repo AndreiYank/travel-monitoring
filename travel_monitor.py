@@ -347,17 +347,34 @@ class TravelPriceMonitor:
                     '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
                 ])
             
-            # Ищем даты
+            # Ищем даты - расширенный поиск
             dates = await self.extract_text_by_selectors(element, [
-                '.date', '.dates', '.departure', '.arrival',
-                '[class*="date"]', '[class*="time"]'
+                '.date', '.dates', '.departure', '.arrival', '.when',
+                '[class*="date"]', '[class*="time"]', '[class*="when"]',
+                '.departure-date', '.arrival-date', '.travel-date',
+                '[data-date]', '[data-departure]', '[data-arrival]'
             ])
             
-            # Ищем длительность
+            # Ищем длительность - расширенный поиск
             duration = await self.extract_text_by_selectors(element, [
-                '.duration', '.nights', '.days',
-                '[class*="duration"]', '[class*="nights"]'
+                '.duration', '.nights', '.days', '.length',
+                '[class*="duration"]', '[class*="nights"]', '[class*="days"]',
+                '.trip-duration', '.stay-duration', '.period'
             ])
+            
+            # Если не нашли даты в тексте, извлекаем из URL
+            if not dates:
+                dates = self.extract_dates_from_url()
+            
+            # Если не нашли длительность в тексте, извлекаем из URL
+            if not duration:
+                duration = self.extract_duration_from_url()
+            
+            # Если все еще пустые, используем значения по умолчанию из конфигурации
+            if not dates:
+                dates = "20-09-2025 - 04-10-2025"  # Из URL конфигурации
+            if not duration:
+                duration = "6-15 дней"  # Из URL конфигурации
             
             # Ищем рейтинг
             rating = await self.extract_text_by_selectors(element, [
@@ -436,6 +453,44 @@ class TravelPriceMonitor:
         if not text:
             return ""
         return ' '.join(text.split())
+    
+    def extract_dates_from_url(self) -> str:
+        """Извлекает даты из URL конфигурации"""
+        try:
+            url = self.config.get('url', '')
+            if 'whenFrom=' in url and 'whenTo=' in url:
+                # Извлекаем даты из URL
+                import re
+                when_from_match = re.search(r'whenFrom=(\d{2}-\d{2}-\d{4})', url)
+                when_to_match = re.search(r'whenTo=(\d{2}-\d{2}-\d{4})', url)
+                
+                if when_from_match and when_to_match:
+                    from_date = when_from_match.group(1)
+                    to_date = when_to_match.group(1)
+                    return f"{from_date} - {to_date}"
+        except Exception as e:
+            logger.warning(f"Ошибка извлечения дат из URL: {e}")
+        return ""
+    
+    def extract_duration_from_url(self) -> str:
+        """Извлекает длительность из URL конфигурации"""
+        try:
+            url = self.config.get('url', '')
+            if 'duration=' in url:
+                # Извлекаем длительность из URL
+                import re
+                duration_match = re.search(r'duration=(\d+):(\d+)', url)
+                
+                if duration_match:
+                    min_days = duration_match.group(1)
+                    max_days = duration_match.group(2)
+                    if min_days == max_days:
+                        return f"{min_days} дней"
+                    else:
+                        return f"{min_days}-{max_days} дней"
+        except Exception as e:
+            logger.warning(f"Ошибка извлечения длительности из URL: {e}")
+        return ""
 
     def extract_price(self, price_text: str) -> float:
         """Извлекает числовое значение цены из текста"""

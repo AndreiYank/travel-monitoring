@@ -17,7 +17,7 @@
         }
         
         .container {
-            max-width: 1200px;
+            max-width: 1600px;
             margin: 0 auto;
             background: white;
             border-radius: 15px;
@@ -51,110 +51,227 @@
             background: #f8f9fa;
         }
         
-        .metric {
+        .metric-card {
             background: white;
-            padding: 25px;
+            padding: 20px;
             border-radius: 10px;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        .metric:hover {
-            transform: translateY(-5px);
-        }
-        
-        .metric h3 {
-            margin: 0 0 10px 0;
-            color: #2E86AB;
-            font-size: 0.9em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        
-        .metric .value {
-            font-size: 2.5em;
+        .metric-value {
+            font-size: 2em;
             font-weight: bold;
+            color: #2E86AB;
+            margin-bottom: 5px;
+        }
+        
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .charts-section {
+            padding: 30px;
+        }
+        
+        .chart-container {
+            margin: 30px 0;
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .chart-title {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+        
+        .hotels-section {
+            padding: 30px;
+        }
+        
+        .hotels-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .hotels-title {
+            font-size: 1.8em;
             color: #333;
             margin: 0;
         }
         
-        .content {
-            padding: 30px;
+        .search-box {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 300px;
         }
         
-        .section {
-            margin-bottom: 40px;
-        }
-        
-        .section h2 {
-            color: #2E86AB;
-            border-bottom: 3px solid #A23B72;
-            padding-bottom: 10px;
-            margin-bottom: 20px;
-        }
-        
-        .chart-container {
-            background: white;
-            padding: 20px;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-            margin-bottom: 20px;
-        }
-        
-        .table-container {
-            overflow-x: auto;
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        
-        table {
+        .hotels-table {
             width: 100%;
             border-collapse: collapse;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
-        th, td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #eee;
-        }
-        
-        th {
+        .hotels-table th {
             background: #f8f9fa;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+            color: #333;
+            border-bottom: 2px solid #dee2e6;
+        }
+        
+        .hotels-table td {
+            padding: 15px;
+            border-bottom: 1px solid #dee2e6;
+            vertical-align: middle;
+        }
+        
+        .hotels-table tr:hover {
+            background: #f8f9fa;
+            cursor: pointer;
+        }
+        
+        .hotel-name {
             font-weight: 600;
             color: #2E86AB;
         }
         
-        tr:hover {
+        .price {
+            font-weight: bold;
+            font-size: 1.1em;
+        }
+        
+        .price-change {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+        
+        .price-decrease {
+            background: #d4edda;
+            color: #155724;
+        }
+        
+        .price-increase {
+            background: #f8d7da;
+            color: #721c24;
+        }
+        
+        .price-stable {
+            background: #e2e3e5;
+            color: #6c757d;
+        }
+        
+        .rating {
+            color: #ffc107;
+            font-weight: bold;
+        }
+        
+        .dates {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        .alerts-section {
+            padding: 30px;
             background: #f8f9fa;
         }
         
-        .price-low {
-            color: #28a745;
-            font-weight: bold;
+        .alert-item {
+            background: white;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border-left: 4px solid;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
         }
         
-        .price-high {
-            color: #dc3545;
+        .alert-decrease {
+            border-left-color: #28a745;
+        }
+        
+        .alert-increase {
+            border-left-color: #dc3545;
+        }
+        
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.5);
+        }
+        
+        .modal-content {
+            background-color: white;
+            margin: 5% auto;
+            padding: 20px;
+            border-radius: 10px;
+            width: 80%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
             font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover {
+            color: black;
         }
         
         .footer {
-            background: #333;
-            color: white;
-            text-align: center;
+            background: #f8f9fa;
             padding: 20px;
-            margin-top: 40px;
+            text-align: center;
+            color: #666;
         }
         
         @media (max-width: 768px) {
-            .metrics {
-                grid-template-columns: 1fr;
+            .container {
+                margin: 10px;
+                border-radius: 10px;
             }
             
             .header h1 {
                 font-size: 2em;
+            }
+            
+            .metrics {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                padding: 20px;
+            }
+            
+            .search-box {
+                width: 100%;
+                margin-top: 10px;
+            }
+            
+            .hotels-header {
+                flex-direction: column;
+                align-items: flex-start;
             }
         }
     </style>
@@ -162,303 +279,930 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>✈️ Travel Price Monitor</h1>
-            <p>Интерактивный дашборд для мониторинга цен на путешествия</p>
+            <h1>🏨 Travel Price Monitor</h1>
+            <p>Мониторинг цен на путешествия в Турцию • Обновлено: 06.09.2025 20:30</p>
         </div>
         
         <div class="metrics">
-            <div class="metric">
-                <h3>Всего предложений</h3>
-                <p class="value">83</p>
+            <div class="metric-card">
+                <div class="metric-value">82</div>
+                <div class="metric-label">Всего предложений</div>
             </div>
-            <div class="metric">
-                <h3>Уникальных отелей</h3>
-                <p class="value">78</p>
+            <div class="metric-card">
+                <div class="metric-value">79</div>
+                <div class="metric-label">Уникальных отелей</div>
             </div>
-            <div class="metric">
-                <h3>Средняя цена</h3>
-                <p class="value">7938 PLN</p>
+            <div class="metric-card">
+                <div class="metric-value">7918 PLN</div>
+                <div class="metric-label">Средняя цена</div>
             </div>
-            <div class="metric">
-                <h3>Диапазон цен</h3>
-                <p class="value">6233 - 8999 PLN</p>
+            <div class="metric-card">
+                <div class="metric-value">6102 PLN</div>
+                <div class="metric-label">Минимальная цена</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">8999 PLN</div>
+                <div class="metric-label">Максимальная цена</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">0</div>
+                <div class="metric-label">Активных алертов</div>
             </div>
         </div>
         
-        <div class="content">
-            <div class="section">
-                <h2>📊 Топ-10 самых дешевых отелей</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>#</th>
-                                <th>Отель</th>
-                                <th>Цена (PLN)</th>
-                                <th>Дата сбора</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-
-                            <tr>
-                                <td>1</td>
-                                <td>Aqua Sun Village (Ex. Eri Sun Village)</td>
-                                <td class="price-low">6233 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>2</td>
-                                <td>Aqua Sun Village (Ex. Eri Sun Village)</td>
-                                <td class="price-low">6233 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>3</td>
-                                <td>Gennadi Seaside Resort</td>
-                                <td class="price-low">6400 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>4</td>
-                                <td>Laguna Holiday Resort</td>
-                                <td class="price-low">6572 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>5</td>
-                                <td>Aegean View (Paradisi)</td>
-                                <td class="price-low">6728 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>6</td>
-                                <td>Eri Beach</td>
-                                <td class="price-low">6787 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>7</td>
-                                <td>Chrousso Village</td>
-                                <td class="price-low">6800 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>8</td>
-                                <td>Bali Mare</td>
-                                <td class="price-low">6927 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>9</td>
-                                <td>Filerimos Village</td>
-                                <td class="price-low">6960 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                            <tr>
-                                <td>10</td>
-                                <td>Alexandros Palace</td>
-                                <td class="price-low">7001 PLN</td>
-                                <td>2025-09-06</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
+        <div class="charts-section">
+            <div class="chart-container">
+                <div class="chart-title">📈 Динамика цен по времени</div>
+                <div id="price-timeline" style="height: 400px;"></div>
             </div>
             
-            <div class="section">
-                <h2>📋 Статистика по отелям</h2>
-                <div class="table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Отель</th>
-                                <th>Предложений</th>
-                                <th>Средняя цена</th>
-                                <th>Мин цена</th>
-                                <th>Макс цена</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+            <div class="chart-container">
+                <div class="chart-title">🏨 Топ-10 отелей по количеству предложений</div>
+                <div id="hotel-counts" style="height: 400px;"></div>
+            </div>
+            
+            <div class="chart-container">
+                <div class="chart-title">📊 Распределение цен</div>
+                <div id="price-distribution" style="height: 400px;"></div>
+            </div>
+        </div>
+        
+        <div class="hotels-section">
+            <div class="hotels-header">
+                <h2 class="hotels-title">🏨 Все отели (отсортированы по цене)</h2>
+                <input type="text" class="search-box" id="hotelSearch" placeholder="Поиск отеля...">
+            </div>
+            <table class="hotels-table" id="hotelsTable">
+                <thead>
+                    <tr>
+                        <th>Отель</th>
+                        <th>Цена</th>
+                        <th>Изменение</th>
+                        <th>Рейтинг</th>
+                        <th>Даты</th>
+                        <th>Длительность</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-                            <tr>
-                                <td>Aqua Sun Village (Ex. Eri Sun Village)</td>
-                                <td>2.0</td>
-                                <td>6233 PLN</td>
-                                <td class="price-low">6233 PLN</td>
-                                <td class="price-high">6233 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Aqua Sun Village (Ex. Eri Sun Village)')">
+                        <td class="hotel-name">Aqua Sun Village (Ex. Eri Sun Village)</td>
+                        <td class="price">6102 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Gennadi Seaside Resort</td>
-                                <td>1.0</td>
-                                <td>6400 PLN</td>
-                                <td class="price-low">6400 PLN</td>
-                                <td class="price-high">6400 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Gennadi Seaside Resort')">
+                        <td class="hotel-name">Gennadi Seaside Resort</td>
+                        <td class="price">6400 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Laguna Holiday Resort</td>
-                                <td>1.0</td>
-                                <td>6572 PLN</td>
-                                <td class="price-low">6572 PLN</td>
-                                <td class="price-high">6572 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Laguna Holiday Resort')">
+                        <td class="hotel-name">Laguna Holiday Resort</td>
+                        <td class="price">6572 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Aegean View (Paradisi)</td>
-                                <td>1.0</td>
-                                <td>6728 PLN</td>
-                                <td class="price-low">6728 PLN</td>
-                                <td class="price-high">6728 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Eri Beach')">
+                        <td class="hotel-name">Eri Beach</td>
+                        <td class="price">6656 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Eri Beach</td>
-                                <td>1.0</td>
-                                <td>6787 PLN</td>
-                                <td class="price-low">6787 PLN</td>
-                                <td class="price-high">6787 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Aegean View (Paradisi)')">
+                        <td class="hotel-name">Aegean View (Paradisi)</td>
+                        <td class="price">6728 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Chrousso Village</td>
-                                <td>1.0</td>
-                                <td>6800 PLN</td>
-                                <td class="price-low">6800 PLN</td>
-                                <td class="price-high">6800 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Chrousso Village')">
+                        <td class="hotel-name">Chrousso Village</td>
+                        <td class="price">6800 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Bali Mare</td>
-                                <td>1.0</td>
-                                <td>6927 PLN</td>
-                                <td class="price-low">6927 PLN</td>
-                                <td class="price-high">6927 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Bali Mare')">
+                        <td class="hotel-name">Bali Mare</td>
+                        <td class="price">6927 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Filerimos Village</td>
-                                <td>1.0</td>
-                                <td>6960 PLN</td>
-                                <td class="price-low">6960 PLN</td>
-                                <td class="price-high">6960 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Filerimos Village')">
+                        <td class="hotel-name">Filerimos Village</td>
+                        <td class="price">6960 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Alexandros Palace</td>
-                                <td>1.0</td>
-                                <td>7001 PLN</td>
-                                <td class="price-low">7001 PLN</td>
-                                <td class="price-high">7001 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Alexandros Palace')">
+                        <td class="hotel-name">Alexandros Palace</td>
+                        <td class="price">7001 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Arion Resort (Vassilikos)</td>
-                                <td>1.0</td>
-                                <td>7077 PLN</td>
-                                <td class="price-low">7077 PLN</td>
-                                <td class="price-high">7077 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Arion Resort (Vassilikos)')">
+                        <td class="hotel-name">Arion Resort (Vassilikos)</td>
+                        <td class="price">7077 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Ionian Sea & Aquapark</td>
-                                <td>1.0</td>
-                                <td>7078 PLN</td>
-                                <td class="price-low">7078 PLN</td>
-                                <td class="price-high">7078 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Ionian Sea & Aquapark')">
+                        <td class="hotel-name">Ionian Sea & Aquapark</td>
+                        <td class="price">7078 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Evita Mare</td>
-                                <td>1.0</td>
-                                <td>7094 PLN</td>
-                                <td class="price-low">7094 PLN</td>
-                                <td class="price-high">7094 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Evita Mare')">
+                        <td class="hotel-name">Evita Mare</td>
+                        <td class="price">7094 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Sunbay</td>
-                                <td>1.0</td>
-                                <td>7133 PLN</td>
-                                <td class="price-low">7133 PLN</td>
-                                <td class="price-high">7133 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Sunbay')">
+                        <td class="hotel-name">Sunbay</td>
+                        <td class="price">7133 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Mediterraneo (Hersonissos)</td>
-                                <td>1.0</td>
-                                <td>7177 PLN</td>
-                                <td class="price-low">7177 PLN</td>
-                                <td class="price-high">7177 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Mediterraneo (Hersonissos)')">
+                        <td class="hotel-name">Mediterraneo (Hersonissos)</td>
+                        <td class="price">7177 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Cooee Akti Ouranoupolis</td>
-                                <td>1.0</td>
-                                <td>7229 PLN</td>
-                                <td class="price-low">7229 PLN</td>
-                                <td class="price-high">7229 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Cooee Akti Ouranoupolis')">
+                        <td class="hotel-name">Cooee Akti Ouranoupolis</td>
+                        <td class="price">7289 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Poseidon Sea Resort (Neos Marmaras)</td>
-                                <td>1.0</td>
-                                <td>7320 PLN</td>
-                                <td class="price-low">7320 PLN</td>
-                                <td class="price-high">7320 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Meropi Hotel & Apartments (Malia)')">
+                        <td class="hotel-name">Meropi Hotel & Apartments (Malia)</td>
+                        <td class="price">7313 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Golden Odyssey</td>
-                                <td>1.0</td>
-                                <td>7335 PLN</td>
-                                <td class="price-low">7335 PLN</td>
-                                <td class="price-high">7335 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Poseidon Sea Resort (Neos Marmaras)')">
+                        <td class="hotel-name">Poseidon Sea Resort (Neos Marmaras)</td>
+                        <td class="price">7320 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Sokol Resort</td>
-                                <td>1.0</td>
-                                <td>7419 PLN</td>
-                                <td class="price-low">7419 PLN</td>
-                                <td class="price-high">7419 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Golden Odyssey')">
+                        <td class="hotel-name">Golden Odyssey</td>
+                        <td class="price">7335 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Sirenes Beach</td>
-                                <td>1.0</td>
-                                <td>7423 PLN</td>
-                                <td class="price-low">7423 PLN</td>
-                                <td class="price-high">7423 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Sokol Resort')">
+                        <td class="hotel-name">Sokol Resort</td>
+                        <td class="price">7419 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                            <tr>
-                                <td>Meropi Hotel & Apartments (Malia)</td>
-                                <td>1.0</td>
-                                <td>7444 PLN</td>
-                                <td class="price-low">7444 PLN</td>
-                                <td class="price-high">7444 PLN</td>
-                            </tr>
+                    <tr onclick="showHotelChart('Sirenes Beach')">
+                        <td class="hotel-name">Sirenes Beach</td>
+                        <td class="price">7423 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
 
-                        </tbody>
-                    </table>
-                </div>
+                    <tr onclick="showHotelChart('Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)')">
+                        <td class="hotel-name">Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)</td>
+                        <td class="price">7544 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Kriopigi')">
+                        <td class="hotel-name">Kriopigi</td>
+                        <td class="price">7594 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Corfu Maris')">
+                        <td class="hotel-name">Corfu Maris</td>
+                        <td class="price">7647 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Euro Village Achilleas')">
+                        <td class="hotel-name">Euro Village Achilleas</td>
+                        <td class="price">7660 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Hersonissos Village')">
+                        <td class="hotel-name">Hersonissos Village</td>
+                        <td class="price">7679 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Cyprotel Faliraki')">
+                        <td class="hotel-name">Cyprotel Faliraki</td>
+                        <td class="price">7700 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Kipriotis Village Resort')">
+                        <td class="hotel-name">Kipriotis Village Resort</td>
+                        <td class="price">7722 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Lardos Bay')">
+                        <td class="hotel-name">Lardos Bay</td>
+                        <td class="price">7728 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)')">
+                        <td class="hotel-name">Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)</td>
+                        <td class="price">7780 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Kipriotis Hippocrates')">
+                        <td class="hotel-name">Kipriotis Hippocrates</td>
+                        <td class="price">7787 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Gaia Royal')">
+                        <td class="hotel-name">Gaia Royal</td>
+                        <td class="price">7787 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Blue Style Resort')">
+                        <td class="hotel-name">Blue Style Resort</td>
+                        <td class="price">7821 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Solimar Ruby & Ruby Royal')">
+                        <td class="hotel-name">Solimar Ruby & Ruby Royal</td>
+                        <td class="price">7847 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Afandou Bay Village Beach Resort')">
+                        <td class="hotel-name">Afandou Bay Village Beach Resort</td>
+                        <td class="price">7877 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Atrium (Pefkohori)')">
+                        <td class="hotel-name">Atrium (Pefkohori)</td>
+                        <td class="price">7891 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)')">
+                        <td class="hotel-name">All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)</td>
+                        <td class="price">7906 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Marebello Beach Resort')">
+                        <td class="hotel-name">Marebello Beach Resort</td>
+                        <td class="price">7942 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Chrissys Paradise (ex Felicity)')">
+                        <td class="hotel-name">Chrissys Paradise (ex Felicity)</td>
+                        <td class="price">7956 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('San Panteleimon')">
+                        <td class="hotel-name">San Panteleimon</td>
+                        <td class="price">7981 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Mitsis Messonghi Beach')">
+                        <td class="hotel-name">Mitsis Messonghi Beach</td>
+                        <td class="price">7986 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Palladium (Kriopigi)')">
+                        <td class="hotel-name">Palladium (Kriopigi)</td>
+                        <td class="price">7986 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Mitsis Alexander the Great (Kriopigi)')">
+                        <td class="hotel-name">Mitsis Alexander the Great (Kriopigi)</td>
+                        <td class="price">7991 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Garden Palace (Laganas)')">
+                        <td class="hotel-name">Garden Palace (Laganas)</td>
+                        <td class="price">7999 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Pollis (ex Miramare)')">
+                        <td class="hotel-name">Pollis (ex Miramare)</td>
+                        <td class="price">8026 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Marvida Niriides Beach (Bali)')">
+                        <td class="hotel-name">Marvida Niriides Beach (Bali)</td>
+                        <td class="price">8033 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Sunshine Corfu & Spa')">
+                        <td class="hotel-name">Sunshine Corfu & Spa</td>
+                        <td class="price">8047 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Horizon Beach (Stalida)')">
+                        <td class="hotel-name">Horizon Beach (Stalida)</td>
+                        <td class="price">8047 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Amour Holiday Resort')">
+                        <td class="hotel-name">Amour Holiday Resort</td>
+                        <td class="price">8047 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Summer Beach')">
+                        <td class="hotel-name">Summer Beach</td>
+                        <td class="price">8047 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Kipriotis Aqualand')">
+                        <td class="hotel-name">Kipriotis Aqualand</td>
+                        <td class="price">8126 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Resol Liza Mary')">
+                        <td class="hotel-name">Resol Liza Mary</td>
+                        <td class="price">8191 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Diogenis Blue Palace')">
+                        <td class="hotel-name">Diogenis Blue Palace</td>
+                        <td class="price">8302 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Indigo Inn (ex. Ariane)')">
+                        <td class="hotel-name">Indigo Inn (ex. Ariane)</td>
+                        <td class="price">8332 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Aristoteles Holiday Resort & SPA')">
+                        <td class="hotel-name">Aristoteles Holiday Resort & SPA</td>
+                        <td class="price">8345 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Thinalos')">
+                        <td class="hotel-name">Thinalos</td>
+                        <td class="price">8347 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Marvida Chrispy Beach (ex. Ilianthos Village)')">
+                        <td class="hotel-name">Marvida Chrispy Beach (ex. Ilianthos Village)</td>
+                        <td class="price">8424 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Irene Palace')">
+                        <td class="hotel-name">Irene Palace</td>
+                        <td class="price">8429 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Planos Beach')">
+                        <td class="hotel-name">Planos Beach</td>
+                        <td class="price">8447 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Gemini (Messonghi)')">
+                        <td class="hotel-name">Gemini (Messonghi)</td>
+                        <td class="price">8447 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Zante Sun Resort')">
+                        <td class="hotel-name">Zante Sun Resort</td>
+                        <td class="price">8517 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Olympian Bay Grand Resort (ex. Bomo Olympus Grand Resort)')">
+                        <td class="hotel-name">Olympian Bay Grand Resort (ex. Bomo Olympus Grand Resort)</td>
+                        <td class="price">8593 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Maistrali (Tragaki)')">
+                        <td class="hotel-name">Maistrali (Tragaki)</td>
+                        <td class="price">8647 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Panorama Village (Agia Pelagia)')">
+                        <td class="hotel-name">Panorama Village (Agia Pelagia)</td>
+                        <td class="price">8647 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Bomo Zoe')">
+                        <td class="hotel-name">Bomo Zoe</td>
+                        <td class="price">8647 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Castro Beach')">
+                        <td class="hotel-name">Castro Beach</td>
+                        <td class="price">8647 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Galini Sea View (Agia Marina)')">
+                        <td class="hotel-name">Galini Sea View (Agia Marina)</td>
+                        <td class="price">8684 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Mareblue Beach (ex Blue Bay Escape)')">
+                        <td class="hotel-name">Mareblue Beach (ex Blue Bay Escape)</td>
+                        <td class="price">8687 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Arion Green Riviera')">
+                        <td class="hotel-name">Arion Green Riviera</td>
+                        <td class="price">8697 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Lambi Resort')">
+                        <td class="hotel-name">Lambi Resort</td>
+                        <td class="price">8703 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Azul Eco & Noho')">
+                        <td class="hotel-name">Azul Eco & Noho</td>
+                        <td class="price">8722 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Sunset Paradise Resort (ex. Adel Paradise)')">
+                        <td class="hotel-name">Sunset Paradise Resort (ex. Adel Paradise)</td>
+                        <td class="price">8757 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Mare Village')">
+                        <td class="hotel-name">Mare Village</td>
+                        <td class="price">8847 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Nobilis Corfu')">
+                        <td class="hotel-name">Nobilis Corfu</td>
+                        <td class="price">8847 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Louis Apostolata Island Resort (ex. Apostolata Island Resort & SPA)')">
+                        <td class="hotel-name">Louis Apostolata Island Resort (ex. Apostolata Island Resort & SPA)</td>
+                        <td class="price">8962 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Xenios Possidi Paradise')">
+                        <td class="hotel-name">Xenios Possidi Paradise</td>
+                        <td class="price">8968 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Ilyssion')">
+                        <td class="hotel-name">Ilyssion</td>
+                        <td class="price">8977 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Almyrida Village & Water Park (ex. Langley Resort Almirida Bay)')">
+                        <td class="hotel-name">Almyrida Village & Water Park (ex. Langley Resort Almirida Bay)</td>
+                        <td class="price">8978 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Aqua Blue (Liapades)')">
+                        <td class="hotel-name">Aqua Blue (Liapades)</td>
+                        <td class="price">8987 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                    <tr onclick="showHotelChart('Sandy Beach Faliraki by Sun Palace')">
+                        <td class="hotel-name">Sandy Beach Faliraki by Sun Palace</td>
+                        <td class="price">8999 PLN</td>
+                        <td><span class="price-change price-stable">➡️ Без изменений</span></td>
+                        <td class="rating">N/A</td>
+                        <td class="dates">20-09-2025 - 04-10-2025</td>
+                        <td class="dates">6-15 дней</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="alerts-section">
+            <h2>🚨 Последние алерты</h2>
+            <div id="alertsList">
+
             </div>
         </div>
         
         <div class="footer">
-            <p>Последнее обновление: 2025-09-06 19:05:47</p>
+            <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
         </div>
     </div>
+
+    <!-- Модальное окно для графика отеля -->
+    <div id="hotelModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">График цены отеля</h2>
+            <div id="hotelChart" style="height: 400px;"></div>
+        </div>
+    </div>
+
+    <script>
+        // Данные для графиков
+        const priceData = {"timeline": [{"scraped_at_str": "2025-09-06 20:25", "mean": 6102.0, "min": 6102.0, "max": 6102.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6102.0, "min": 6102.0, "max": 6102.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6400.0, "min": 6400.0, "max": 6400.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6572.0, "min": 6572.0, "max": 6572.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6656.0, "min": 6656.0, "max": 6656.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6728.0, "min": 6728.0, "max": 6728.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6800.0, "min": 6800.0, "max": 6800.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6927.0, "min": 6927.0, "max": 6927.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 6960.0, "min": 6960.0, "max": 6960.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7001.0, "min": 7001.0, "max": 7001.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7077.0, "min": 7077.0, "max": 7077.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7078.0, "min": 7078.0, "max": 7078.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7094.0, "min": 7094.0, "max": 7094.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7133.0, "min": 7133.0, "max": 7133.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7177.0, "min": 7177.0, "max": 7177.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7289.0, "min": 7289.0, "max": 7289.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7313.0, "min": 7313.0, "max": 7313.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7320.0, "min": 7320.0, "max": 7320.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7335.0, "min": 7335.0, "max": 7335.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7419.0, "min": 7419.0, "max": 7419.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7423.0, "min": 7423.0, "max": 7423.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7544.0, "min": 7544.0, "max": 7544.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7594.0, "min": 7594.0, "max": 7594.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7647.0, "min": 7647.0, "max": 7647.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7660.0, "min": 7660.0, "max": 7660.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7679.0, "min": 7679.0, "max": 7679.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7700.0, "min": 7700.0, "max": 7700.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7722.0, "min": 7722.0, "max": 7722.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7728.0, "min": 7728.0, "max": 7728.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7780.0, "min": 7780.0, "max": 7780.0}, {"scraped_at_str": "2025-09-06 20:25", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7787.0, "min": 7787.0, "max": 7787.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7821.0, "min": 7821.0, "max": 7821.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7847.0, "min": 7847.0, "max": 7847.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7877.0, "min": 7877.0, "max": 7877.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7891.0, "min": 7891.0, "max": 7891.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7906.0, "min": 7906.0, "max": 7906.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7942.0, "min": 7942.0, "max": 7942.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7956.0, "min": 7956.0, "max": 7956.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7981.0, "min": 7981.0, "max": 7981.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7986.0, "min": 7986.0, "max": 7986.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7986.0, "min": 7986.0, "max": 7986.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7991.0, "min": 7991.0, "max": 7991.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 7999.0, "min": 7999.0, "max": 7999.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8026.0, "min": 8026.0, "max": 8026.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8033.0, "min": 8033.0, "max": 8033.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8047.0, "min": 8047.0, "max": 8047.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8126.0, "min": 8126.0, "max": 8126.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8191.0, "min": 8191.0, "max": 8191.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8302.0, "min": 8302.0, "max": 8302.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8332.0, "min": 8332.0, "max": 8332.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8345.0, "min": 8345.0, "max": 8345.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8347.0, "min": 8347.0, "max": 8347.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8424.0, "min": 8424.0, "max": 8424.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8429.0, "min": 8429.0, "max": 8429.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8447.0, "min": 8447.0, "max": 8447.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8447.0, "min": 8447.0, "max": 8447.0}, {"scraped_at_str": "2025-09-06 20:26", "mean": 8517.0, "min": 8517.0, "max": 8517.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8593.0, "min": 8593.0, "max": 8593.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8593.0, "min": 8593.0, "max": 8593.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8647.0, "min": 8647.0, "max": 8647.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8647.0, "min": 8647.0, "max": 8647.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8647.0, "min": 8647.0, "max": 8647.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8647.0, "min": 8647.0, "max": 8647.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8684.0, "min": 8684.0, "max": 8684.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8687.0, "min": 8687.0, "max": 8687.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8697.0, "min": 8697.0, "max": 8697.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8703.0, "min": 8703.0, "max": 8703.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8722.0, "min": 8722.0, "max": 8722.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8757.0, "min": 8757.0, "max": 8757.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8847.0, "min": 8847.0, "max": 8847.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8847.0, "min": 8847.0, "max": 8847.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8962.0, "min": 8962.0, "max": 8962.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8968.0, "min": 8968.0, "max": 8968.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8977.0, "min": 8977.0, "max": 8977.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8978.0, "min": 8978.0, "max": 8978.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8987.0, "min": 8987.0, "max": 8987.0}, {"scraped_at_str": "2025-09-06 20:28", "mean": 8999.0, "min": 8999.0, "max": 8999.0}], "hotel_counts": {"Aqua Sun Village (Ex. Eri Sun Village)": 2, "Kipriotis Hippocrates": 2, "Olympian Bay Grand Resort (ex. Bomo Olympus Grand Resort)": 2, "Pollis (ex Miramare)": 1, "Gemini (Messonghi)": 1, "Irene Palace": 1, "Marvida Chrispy Beach (ex. Ilianthos Village)": 1, "Thinalos": 1, "Aristoteles Holiday Resort & SPA": 1, "Indigo Inn (ex. Ariane)": 1}, "price_distribution": {"(6099.103, 6391.7]": 2, "(6391.7, 6681.4]": 3, "(6681.4, 6971.1]": 4, "(6971.1, 7260.8]": 6, "(7260.8, 7550.5]": 7, "(7550.5, 7840.2]": 12, "(7840.2, 8129.9]": 18, "(8129.9, 8419.6]": 5, "(8419.6, 8709.3]": 15, "(8709.3, 8999.0]": 10}};
+
+        // График динамики цен
+        const timelineTrace = {{
+            x: priceData.timeline.map(d => d.scraped_at_str),
+            y: priceData.timeline.map(d => d.mean),
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Средняя цена',
+            line: {{color: '#2E86AB', width: 3}},
+            marker: {{size: 8}}
+        }};
+
+        const minTrace = {{
+            x: priceData.timeline.map(d => d.scraped_at_str),
+            y: priceData.timeline.map(d => d.min),
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Минимальная цена',
+            line: {{color: '#28a745', width: 2}},
+            marker: {{size: 6}}
+        }};
+
+        const maxTrace = {{
+            x: priceData.timeline.map(d => d.scraped_at_str),
+            y: priceData.timeline.map(d => d.max),
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Максимальная цена',
+            line: {{color: '#dc3545', width: 2}},
+            marker: {{size: 6}}
+        }};
+
+        Plotly.newPlot('price-timeline', [timelineTrace, minTrace, maxTrace], {{
+            title: 'Динамика цен на путешествия',
+            xaxis: {{title: 'Время'}},
+            yaxis: {{title: 'Цена (PLN)'}},
+            hovermode: 'closest'
+        }});
+
+        // График топ отелей
+        const hotelData = {{
+            x: Object.values(priceData.hotel_counts),
+            y: Object.keys(priceData.hotel_counts),
+            type: 'bar',
+            orientation: 'h',
+            marker: {{color: '#A23B72'}}
+        }};
+
+        Plotly.newPlot('hotel-counts', [hotelData], {{
+            title: 'Количество предложений по отелям',
+            xaxis: {{title: 'Количество предложений'}},
+            yaxis: {{title: 'Отель'}}
+        }});
+
+        // График распределения цен
+        const distributionData = {{
+            x: Object.keys(priceData.price_distribution),
+            y: Object.values(priceData.price_distribution),
+            type: 'bar',
+            marker: {{color: '#667eea'}}
+        }};
+
+        Plotly.newPlot('price-distribution', [distributionData], {{
+            title: 'Распределение цен',
+            xaxis: {{title: 'Диапазон цен (PLN)'}},
+            yaxis: {{title: 'Количество предложений'}}
+        }});
+
+        // Поиск по отелям
+        document.getElementById('hotelSearch').addEventListener('input', function(e) {{
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll('#hotelsTable tbody tr');
+            
+            rows.forEach(row => {{
+                const hotelName = row.querySelector('.hotel-name').textContent.toLowerCase();
+                if (hotelName.includes(searchTerm)) {{
+                    row.style.display = '';
+                }} else {{
+                    row.style.display = 'none';
+                }}
+            }});
+        }});
+
+        // Модальное окно
+        const modal = document.getElementById('hotelModal');
+        const closeBtn = document.getElementsByClassName('close')[0];
+
+        function showHotelChart(hotelName) {{
+            document.getElementById('modalTitle').textContent = `График цены: ${{hotelName}}`;
+            
+            // Здесь можно загрузить данные для конкретного отеля
+            // Пока что показываем заглушку
+            const placeholderData = {{
+                x: ['2025-09-06 10:00', '2025-09-06 12:00', '2025-09-06 14:00'],
+                y: [6500, 6400, 6300],
+                type: 'scatter',
+                mode: 'lines+markers',
+                name: hotelName,
+                line: {{color: '#2E86AB', width: 3}}
+            }};
+            
+            Plotly.newPlot('hotelChart', [placeholderData], {{
+                title: `История цен: ${{hotelName}}`,
+                xaxis: {{title: 'Время'}},
+                yaxis: {{title: 'Цена (PLN)'}}
+            }});
+            
+            modal.style.display = 'block';
+        }}
+
+        closeBtn.onclick = function() {{
+            modal.style.display = 'none';
+        }}
+
+        window.onclick = function(event) {{
+            if (event.target == modal) {{
+                modal.style.display = 'none';
+            }}
+        }}
+    </script>
 </body>
 </html>

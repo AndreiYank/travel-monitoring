@@ -62,11 +62,11 @@ jobs:
             echo "✅ Data is fresh, skipping monitoring"
           fi
 
-      - name: Generate static dashboard
+      - name: Generate enhanced dashboard
         run: |
-          echo "🌐 Generating static dashboard..."
-          python generate_static_dashboard.py
-          echo "✅ Static dashboard generated"
+          echo "🌐 Generating enhanced dashboard..."
+          python generate_enhanced_dashboard.py
+          echo "✅ Enhanced dashboard generated"
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
