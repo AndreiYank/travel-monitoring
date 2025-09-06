@@ -1,16 +1,15 @@
 #!/usr/bin/env python3
 """
-Генератор рабочего дашборда с исправленными графиками
+Финальный простой генератор дашборда без алертов
 """
 
 import pandas as pd
 import json
 from datetime import datetime
 import os
-# from price_alerts import PriceAlertManager  # Пока отключено
 
-def generate_working_dashboard():
-    """Генерирует рабочий дашборд с исправленными графиками"""
+def generate_simple_dashboard_final():
+    """Генерирует простой дашборд без алертов"""
     
     # Загружаем данные
     try:
@@ -20,9 +19,6 @@ def generate_working_dashboard():
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
         return
-    
-    # Загружаем алерты (пока отключено)
-    all_alerts = []
     
     # Вычисляем статистику
     total_offers = len(df)
@@ -41,11 +37,6 @@ def generate_working_dashboard():
     }).reset_index()
     
     all_hotels = all_hotels.sort_values('price').reset_index(drop=True)
-    
-    # Создаем словарь алертов
-    alerts_dict = {}
-    for alert in all_alerts:
-        alerts_dict[alert['hotel_name']] = alert
     
     # Данные для графика
     if len(df['scraped_at'].unique()) == 1:
@@ -220,54 +211,9 @@ def generate_working_dashboard():
             font-size: 1.1em;
         }}
         
-        .price-change {{
-            display: inline-block;
-            padding: 4px 8px;
-            border-radius: 4px;
-            font-size: 0.9em;
-            font-weight: bold;
-        }}
-        
-        .price-decrease {{
-            background: #d4edda;
-            color: #155724;
-        }}
-        
-        .price-increase {{
-            background: #f8d7da;
-            color: #721c24;
-        }}
-        
-        .price-stable {{
-            background: #e2e3e5;
-            color: #6c757d;
-        }}
-        
         .dates {{
             color: #666;
             font-size: 0.9em;
-        }}
-        
-        .alerts-section {{
-            padding: 30px;
-            background: #f8f9fa;
-        }}
-        
-        .alert-item {{
-            background: white;
-            padding: 15px;
-            margin: 10px 0;
-            border-radius: 8px;
-            border-left: 4px solid;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }}
-        
-        .alert-decrease {{
-            border-left-color: #28a745;
-        }}
-        
-        .alert-increase {{
-            border-left-color: #dc3545;
         }}
         
         .modal {{
@@ -340,10 +286,6 @@ def generate_working_dashboard():
                 <div class="metric-value">{max_price:.0f} PLN</div>
                 <div class="metric-label">Максимальная цена</div>
             </div>
-            <div class="metric-card">
-                <div class="metric-value">{len(all_alerts)}</div>
-                <div class="metric-label">Всего алертов</div>
-            </div>
         </div>
         
         <div class="charts-section">
@@ -363,7 +305,6 @@ def generate_working_dashboard():
                     <tr>
                         <th>Отель</th>
                         <th>Цена</th>
-                        <th>Изменение</th>
                         <th>Даты</th>
                         <th>Длительность</th>
                     </tr>
@@ -377,55 +318,21 @@ def generate_working_dashboard():
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '20-09-2025 - 04-10-2025'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '6-15 дней'
         
-        alert = alerts_dict.get(hotel_name)
-        if alert:
-            change_class = "price-decrease" if alert['change'] < 0 else "price-increase"
-            change_text = f"{alert['change']:+.0f} PLN ({alert['change_percent']:+.1f}%)"
-            change_icon = "📉" if alert['change'] < 0 else "📈"
-            display_price = alert['current_price']
-        else:
-            change_class = "price-stable"
-            change_text = "Без изменений"
-            change_icon = "➡️"
-            display_price = price
-        
         # Экранируем кавычки
         escaped_hotel_name = hotel_name.replace("'", "\\'")
         
         html_template += f"""
                     <tr onclick="showHotelChart('{escaped_hotel_name}')">
                         <td class="hotel-name">{hotel_name}</td>
-                        <td class="price">{display_price:.0f} PLN</td>
-                        <td><span class="price-change {change_class}">{change_icon} {change_text}</span></td>
+                        <td class="price">{price:.0f} PLN</td>
                         <td class="dates">{dates}</td>
                         <td class="dates">{duration}</td>
                     </tr>"""
 
-    # Завершаем таблицу и добавляем алерты
-    html_template += """
-                </tbody>
-            </table>
-        </div>
-        
-        <div class="alerts-section">
-            <h2>🚨 История алертов (новые сверху)</h2>
-            <div id="alertsList">"""
-
-    # Добавляем алерты
-    sorted_alerts = sorted(all_alerts, key=lambda x: x['timestamp'], reverse=True)
-    for alert in sorted_alerts:
-        alert_class = "alert-decrease" if alert['alert_type'] == 'decrease' else "alert-increase"
-        html_template += f"""
-            <div class="alert-item {alert_class}">
-                <strong>{alert['icon']} {alert['hotel_name']}</strong><br>
-                Цена: {alert['previous_price']:.0f} → {alert['current_price']:.0f} PLN 
-                ({alert['change']:+.0f} PLN, {alert['change_percent']:+.1f}%)<br>
-                <small>Время: {alert['timestamp'][:19]}</small>
-            </div>"""
-
     # Завершаем HTML
     html_template += f"""
-            </div>
+                </tbody>
+            </table>
         </div>
         
         <div class="footer">
@@ -562,10 +469,9 @@ def generate_working_dashboard():
     with open('index.html', 'w', encoding='utf-8') as f:
         f.write(html_template)
     
-    print(f"✅ Рабочий дашборд сгенерирован: index.html")
+    print(f"✅ Финальный дашборд сгенерирован: index.html")
     print(f"📊 Статистика: {total_offers} предложений, {unique_hotels} отелей")
     print(f"💰 Цены: {min_price:.0f} - {max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
-    print(f"🚨 Всего алертов: {len(all_alerts)}")
 
 if __name__ == "__main__":
-    generate_working_dashboard()
+    generate_simple_dashboard_final()
