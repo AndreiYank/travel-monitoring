@@ -73,11 +73,11 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate enhanced dashboard
+      - name: Generate inline charts dashboard
         run: |
-          echo "🌐 Generating enhanced dashboard at $(date)"
-          python generate_enhanced_dashboard.py
-          echo "✅ Enhanced dashboard generated"
+          echo "🌐 Generating inline charts dashboard at $(date)"
+          python generate_inline_charts_dashboard.py
+          echo "✅ Inline charts dashboard generated"
 
       - name: Check for price alerts
         id: alerts
