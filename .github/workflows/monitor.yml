@@ -37,7 +37,7 @@ jobs:
           python analyze_data.py --charts --export
 
       - name: Upload data artifacts
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         if: always()
         with:
           name: travel-data-${{ github.run_number }}
