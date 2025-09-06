@@ -46,11 +46,17 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements_dashboard.txt
 
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+
       - name: Run data collection (if needed)
         run: |
           # Проверяем, нужно ли обновить данные
           if [ ! -f "data/travel_prices.csv" ] || [ $(find data/travel_prices.csv -mmin +60 | wc -l) -gt 0 ]; then
             echo "🔄 Data is old or missing, running monitoring..."
+            export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+            export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
             python travel_monitor.py
           else
             echo "✅ Data is fresh, skipping monitoring"

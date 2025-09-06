@@ -30,6 +30,8 @@ jobs:
 
       - name: Run price monitoring
         run: |
+          export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+          export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
           python travel_monitor.py
 
       - name: Run data analysis

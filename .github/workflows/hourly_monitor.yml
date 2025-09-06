@@ -49,11 +49,12 @@ jobs:
       - name: Install Playwright browsers
         run: |
           playwright install chromium
-          playwright install-deps
 
       - name: Run price monitoring
         run: |
           echo "🚀 Starting price monitoring at $(date)"
+          export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+          export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
           python travel_monitor.py
           echo "✅ Price monitoring completed"
 
