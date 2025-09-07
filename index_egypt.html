@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>Мониторинг цен • Египет</title>
     <style>
         body {
@@ -31,6 +32,12 @@
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
+        }
+        .avg-top10-section {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
         }
         .metric {
             background: #f8f9fa;
@@ -154,7 +161,12 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Мониторинг цен • Египет</h1>
-            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 07.09.2025 11:05</p>
+            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 07.09.2025 11:18</p>
+        </div>
+
+        <div class="avg-top10-section">
+            <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
+            <div id="avgTop10" style="height:360px;"></div>
         </div>
         
         <div class="metrics">
@@ -757,6 +769,19 @@
     <div id="hoverThumb" class="hover-thumb"><img id="hoverImg" src="" alt="preview"/></div>
 
     <script>
+      (function(){
+        const tx = ["2025-09-07 08:00"];
+        const ty = [6420.8];
+        try {
+          const x = JSON.parse(tx);
+          const y = JSON.parse(ty);
+          if (Array.isArray(x) && Array.isArray(y) && x.length > 0 && y.length > 0 && window.Plotly) {
+            const trace = { x: x, y: y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
+            const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
+            Plotly.newPlot('avgTop10', [trace], layout);
+          }
+        } catch (e) {}
+      })();
       (function(){
         const map = {"Aqua Sun Village (Ex. Eri Sun Village)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Aqua-Sun-Village-Ex.-Eri-Sun-Village-fly-pl.jpg", "Laguna Holiday Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2019/09/Laguna-Holiday-Resort-fly-pl.jpg", "Eri Beach": "https://datacfstatic.merlinx.pl/WEZY/IMG/1306/c3a49b8e38239e3fac9eff6299690bc1ac6c31c55a7543c1673bcce85f5240c8.webp", "Gennadi Seaside Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/12/Zenith-Sea-Side-fly-pl-1.jpg", "Aegean View (Paradisi)": "https://datacfstatic.merlinx.pl/WEZY/IMG/50851/eb709ec353ddab6fbb51a4f92ec64da9119c1b9521717d3b84e245ef14a0c3b3.webp", "Bali Mare": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/bali-mare.webp", "Chrousso Village": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/Chrousso-Village.webp", "Filerimos Village": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/06/FILERIMOS-VILLAGE.webp", "Arion Resort (Vassilikos)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Arion-Renaissance-1.jpg", "Ionian Sea & Aquapark": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Ionian-Sea-Aquapark.webp", "Alexandros Palace": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Alexandros-Palace-fly-pl.jpg", "Evita Mare": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/10/Evita-Mare-fly-pl.jpg", "Sunbay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2022/02/Sunbay-fly-pl.jpg", "Mediterraneo (Hersonissos)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/03/Mediterraneo-Hersonissos-fly-pl.jpg", "Poseidon Sea Resort (Neos Marmaras)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/10/Hotel-Poseidon-Sea-Resort.webp", "Golden Odyssey": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Golden-Odyssey.jpg", "Cooee Akti Ouranoupolis": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/01/Hotel-Akti-Ouranoupoli-Beach-Resort.webp", "Sokol Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2022/03/SOKOL-RESORT.webp", "Sirenes Beach": "https://datacfstatic.merlinx.pl/SFPL/IMG/SMISBR/51ec6f584068afe41ba604c13260860fea712723b4895c989d652e23ca2db8c8.webp", "Euro Village Achilleas": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/10/Euro-Village-Achilleas-fly-pl.jpg", "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/02/Anastasia-Resort-Spa-fly-pl.jpg", "Meropi Hotel & Apartments (Malia)": "https://datacfstatic.merlinx.pl/WEZY/IMG/1351/564c89c7e46f15a6e6f1917a491f6c7aafce0dcecb4b07a8ee9ba6b67360c1d1.webp", "Corfu Maris": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/07/Corfu-Maris.jpg", "Hersonissos Village": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/HERSONISSOS-VILLAGE.webp", "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/ace51f02b6f338f488ef08630ea127c1256fa3044b889314275e4a932f9fc24a.webp", "Gaia Royal": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Gaia-Royal.webp", "Kipriotis Hippocrates": "https://fly.pl/cdn/photo/assets/uploads/582/278/2009/10/Kipriotis-Hippocrates2997.jpg", "Ilyssion": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Ilyssion.jpg", "Lardos Bay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Hotel-Lardos-Bay.webp", "Blue Style Resort": "https://datacfstatic.merlinx.pl/SFPL/IMG/SMIBSR/5878c3899403af5e0ec63d4a2937088c14945de752c455734ba136f09d76da9d.webp", "Cyprotel Faliraki": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/01/Cyprotel-Faliraki-ex-Luca-Cypria-fly-pl.jpg", "Solimar Ruby & Ruby Royal": "https://datacfstatic.merlinx.pl/ITAK/IMG/HERRUBY/1a077c6aa2e8e3432fca7b1e8208945afd2f1a50fc0c5eb72d411df3a804ccb5.webp", "Kipriotis Village Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/11/Hotel-Kipriotis-Village-Resort.webp", "Afandou Bay Village Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/12/Afandou-Bay-Village.webp", "Atrium (Pefkohori)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/Atrium-Hotel.webp", "Chrissys Paradise (ex Felicity)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Nicolas-Villas-Agia-Pelagia-fly-pl-2.jpg", "San Panteleimon": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/05/San-Panteleimon.webp", "Mitsis Alexander the Great (Kriopigi)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/Alexander-The-Great.webp", "Pollis (ex Miramare)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Miramare-Hersonissos.jpg", "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Aegean-Breeze-Resort-ex-Medblue-Fanes-fly-pl.jpg", "Amour Holiday Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/09/Amour-Holiday-Resort.webp", "Summer Beach": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/12/Summer-Beach-fly-pl.jpg", "Sunshine Corfu & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2009/04/Sunshine-Corfu216.jpg", "Horizon Beach (Stalida)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/HORIZON-BEACH-RESORT.webp", "Marebello Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/10/Hotel-Marebello-Beach.webp"};
         try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}

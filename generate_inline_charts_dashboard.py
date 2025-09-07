@@ -27,6 +27,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     avg_price = df['price'].mean()
     min_price = df['price'].min()
     max_price = df['price'].max()
+
+    # Средняя цена ТОП-10 дешёвых предложений по часам
+    try:
+        hourly = df.set_index('scraped_at').sort_index()
+        top10_avg = hourly['price'].groupby(pd.Grouper(freq='H')).apply(
+            lambda s: float(s.nsmallest(10).mean()) if len(s) else None
+        ).dropna()
+        top10_x_values = [ts.strftime('%Y-%m-%d %H:%M') for ts in top10_avg.index.to_pydatetime().tolist()]
+        top10_y_values = [float(v) for v in top10_avg.values.tolist()]
+    except Exception:
+        top10_x_values, top10_y_values = [], []
     
     # Получаем актуальные цены по каждому отелю (последнее наблюдение)
     df_sorted_all = df.sort_values(['hotel_name', 'scraped_at'])
@@ -302,6 +313,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <title>{title}</title>
     <style>
         body {{
@@ -330,6 +342,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
+        }}
+        .avg-top10-section {{
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
         }}
         .metric {{
             background: #f8f9fa;
@@ -454,6 +472,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         <div class="header">
             <h1>🏨 {title}</h1>
             <p>Мониторинг цен на путешествия в Грецию • Обновлено: {datetime.now().strftime('%d.%m.%Y %H:%M')}</p>
+        </div>
+
+        <div class="avg-top10-section">
+            <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
+            <div id="avgTop10" style="height:360px;"></div>
         </div>
         
         <div class="metrics">
@@ -595,6 +618,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Вставляем скрипт превью слиянием JSON вне f-строки, чтобы избежать конфликтов с фигурными скобками
     html_template += """
     <script>
+      (function(){
+        const tx = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
+        const ty = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
+        try {
+          const x = JSON.parse(tx);
+          const y = JSON.parse(ty);
+          if (Array.isArray(x) && Array.isArray(y) && x.length > 0 && y.length > 0 && window.Plotly) {
+            const trace = { x: x, y: y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
+            const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
+            Plotly.newPlot('avgTop10', [trace], layout);
+          }
+        } catch (e) {}
+      })();
       (function(){
         const map = """ + json.dumps(images_map, ensure_ascii=False) + """;
         try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}
