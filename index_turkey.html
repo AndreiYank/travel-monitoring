@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Travel Price Monitor • Турция</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: linear-gradient(135deg, #2E86AB, #A23B72);
+            color: white;
+            border-radius: 10px;
+        }
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .avg-top10-section {
+            background: #f8f9fa;
+            padding: 16px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+        }
+        .metric {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #2E86AB;
+        }
+        .changes-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .changes-block {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+        }
+        .changes-block h3 {
+            margin-top: 0;
+            text-align: center;
+        }
+        .change-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .change-decrease {
+            border-left-color: #28a745;
+        }
+        .change-increase {
+            border-left-color: #dc3545;
+        }
+        .change-price {
+            font-weight: bold;
+        }
+        .change-percent {
+            font-size: 0.9em;
+            opacity: 0.8;
+        }
+        .alerts-section {
+            margin-top: 30px;
+        }
+        .alert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .alert-decrease {
+            border-left-color: #28a745;
+        }
+        .alert-increase {
+            border-left-color: #dc3545;
+        }
+        .alert-missing {
+            border-left-color: #6c757d;
+        }
+        .alerts-empty {
+            color: #6c757d;
+            font-style: italic;
+        }
+        .alerts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .alerts-header:hover {
+            background: #f8f9fa;
+        }
+        .alerts-content {
+            max-height: 400px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+        }
+        .alerts-content.collapsed {
+            max-height: 0;
+            overflow: hidden;
+        }
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        .expand-icon.collapsed {
+            transform: rotate(-90deg);
+        }
+        .delta { font-weight: bold; }
+        .delta.up { color: #dc3545; }
+        .delta.down { color: #28a745; }
+        .delta.flat { color: #6c757d; }
+        .hotels-section {
+            margin-top: 30px;
+        }
+        .hotels-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        .hotels-table th, .hotels-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .hotels-table th {
+            background: #f8f9fa;
+            font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }
+        .hotels-table th:hover {
+            background: #e9ecef;
+        }
+        .hotels-table th.sortable::after {
+            content: ' ↕';
+            opacity: 0.5;
+        }
+        .hotels-table th.sort-asc::after {
+            content: ' ↑';
+            opacity: 1;
+        }
+        .hotels-table th.sort-desc::after {
+            content: ' ↓';
+            opacity: 1;
+        }
+        .hotels-table tr:hover {
+            background: #f5f5f5;
+            cursor: pointer;
+        }
+        .hotel-name {
+            color: #2E86AB;
+            font-weight: bold;
+        }
+        .price {
+            font-weight: bold;
+            color: #28a745;
+        }
+        .open-chart-link { color: #2E86AB; text-decoration: underline; }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding: 20px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+        /* Hover preview */
+        .hover-thumb { position: absolute; display: none; width: 240px; height: 160px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15); border-radius: 6px; padding: 4px; z-index: 9999; }
+        .hover-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🏨 Travel Price Monitor • Турция</h1>
+            <p>Обновлено: 07.09.2025 18:30</p>
+        </div>
+
+        <div class="avg-top10-section">
+            <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
+            <div id="avgTop10" style="height:360px;"></div>
+        </div>
+        
+        <div class="metrics">
+            <div class="metric">
+                <div class="metric-value">222</div>
+                <div>Всего предложений</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">35</div>
+                <div>Уникальных отелей</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">7431 PLN</div>
+                <div>Средняя цена</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">6236 PLN</div>
+                <div>Минимальная цена</div>
+            </div>
+            <div class="metric">
+                <div class="metric-value">8092 PLN</div>
+                <div>Максимальная цена</div>
+            </div>
+        </div>
+        
+        
+        
+        <div class="alerts-section">
+            <div class="alerts-header" onclick="toggleAlerts()">
+                <h3>🚨 История алертов</h3>
+                <span class="expand-icon" id="alertsExpandIcon">▼</span>
+            </div>
+            <div class="alerts-content" id="alertsContent">
+
+                <div class="alerts-empty">Нет алертов</div>
+
+            </div>
+        </div>
+
+        <div class="hotels-section">
+            <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
+            <table class="hotels-table" id="hotelsTable">
+                <thead>
+                    <tr>
+                        <th class="sortable" data-sort="hotel">Отель</th>
+                        <th class="sortable" data-sort="price">Цена</th>
+                        <th class="sortable" data-sort="delta48">Δ 48ч</th>
+                        <th class="sortable" data-sort="deltastart">Δ с начала</th>
+                        <th class="sortable" data-sort="dates">Даты</th>
+                        <th class="sortable" data-sort="duration">Длительность</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/first-class.html" target="_blank" onmouseover="_hoverPreview.show(event,'First Class')" onmouseout="_hoverPreview.hide()">First Class</a></td>
+                        <td class="price" data-sort-value="6236.0">6236 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/hedef-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hedef Resort & Spa')" onmouseout="_hoverPreview.hide()">Hedef Resort & Spa</a></td>
+                        <td class="price" data-sort-value="6246.0">6246 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/prestige-alanya.html" target="_blank" onmouseover="_hoverPreview.show(event,'Prestige Alanya')" onmouseout="_hoverPreview.hide()">Prestige Alanya</a></td>
+                        <td class="price" data-sort-value="6575.0">6575 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/sun-star-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sun Star Resort')" onmouseout="_hoverPreview.hide()">Sun Star Resort</a></td>
+                        <td class="price" data-sort-value="6636.0">6636 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/grand-cortez.html" target="_blank" onmouseover="_hoverPreview.show(event,'Grand Cortez')" onmouseout="_hoverPreview.hide()">Grand Cortez</a></td>
+                        <td class="price" data-sort-value="6732.0">6732 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/miarosa-incekum-beach-ex-alara-kum.html" target="_blank" onmouseover="_hoverPreview.show(event,'Miarosa Incekum Beach (ex Alara Kum)')" onmouseout="_hoverPreview.hide()">Miarosa Incekum Beach (ex Alara Kum)</a></td>
+                        <td class="price" data-sort-value="6782.0">6782 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/m-c-beach-resort-ex-otium-mc-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'M. C. Beach Resort (ex. Otium MC Beach Resort)')" onmouseout="_hoverPreview.hide()">M. C. Beach Resort (ex. Otium MC Beach Resort)</a></td>
+                        <td class="price" data-sort-value="6904.0">6904 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/viking-star.html" target="_blank" onmouseover="_hoverPreview.show(event,'Viking Star')" onmouseout="_hoverPreview.hide()">Viking Star</a></td>
+                        <td class="price" data-sort-value="6944.0">6944 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/the-marilis-hill-resort-and-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'The Marilis Hill Resort and Spa')" onmouseout="_hoverPreview.hide()">The Marilis Hill Resort and Spa</a></td>
+                        <td class="price" data-sort-value="6989.0">6989 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/drita-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Drita Resort & Spa')" onmouseout="_hoverPreview.hide()">Drita Resort & Spa</a></td>
+                        <td class="price" data-sort-value="7042.0">7042 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/perre-delta.html" target="_blank" onmouseover="_hoverPreview.show(event,'Perre Delta')" onmouseout="_hoverPreview.hide()">Perre Delta</a></td>
+                        <td class="price" data-sort-value="7106.0">7106 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/m-c-arancia-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'M. C. Arancia Resort')" onmouseout="_hoverPreview.hide()">M. C. Arancia Resort</a></td>
+                        <td class="price" data-sort-value="7258.0">7258 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/aventura-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Aventura Park')" onmouseout="_hoverPreview.hide()">Aventura Park</a></td>
+                        <td class="price" data-sort-value="7447.0">7447 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/concordia-celes-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Concordia Celes Beach')" onmouseout="_hoverPreview.hide()">Concordia Celes Beach</a></td>
+                        <td class="price" data-sort-value="7458.0">7458 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/campus-hill.html" target="_blank" onmouseover="_hoverPreview.show(event,'Campus Hill')" onmouseout="_hoverPreview.hide()">Campus Hill</a></td>
+                        <td class="price" data-sort-value="7487.0">7487 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/sunland-resort-ex-imperial-sunland-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sunland Resort (ex. Imperial Sunland Resort & Spa)')" onmouseout="_hoverPreview.hide()">Sunland Resort (ex. Imperial Sunland Resort & Spa)</a></td>
+                        <td class="price" data-sort-value="7594.0">7594 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-select-resort-ex-otium-ozkaymak-select.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Select Resort (ex Otium Ozkaymak Select)')" onmouseout="_hoverPreview.hide()">Ozkaymak Select Resort (ex Otium Ozkaymak Select)</a></td>
+                        <td class="price" data-sort-value="7634.0">7634 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/alan-xafira-deluxe-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Alan Xafira Deluxe Resort & Spa')" onmouseout="_hoverPreview.hide()">Alan Xafira Deluxe Resort & Spa</a></td>
+                        <td class="price" data-sort-value="7649.0">7649 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/insula-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Insula Resort')" onmouseout="_hoverPreview.hide()">Insula Resort</a></td>
+                        <td class="price" data-sort-value="7673.0">7673 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-falez.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Falez')" onmouseout="_hoverPreview.hide()">Ozkaymak Falez</a></td>
+                        <td class="price" data-sort-value="7704.0">7704 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/diamond-hill-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Diamond Hill Resort')" onmouseout="_hoverPreview.hide()">Diamond Hill Resort</a></td>
+                        <td class="price" data-sort-value="7768.0">7768 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/perre-la-mer-resort-spa-ex-la-mer.html" target="_blank" onmouseover="_hoverPreview.show(event,'Perre La Mer Resort & Spa (ex. La Mer)')" onmouseout="_hoverPreview.hide()">Perre La Mer Resort & Spa (ex. La Mer)</a></td>
+                        <td class="price" data-sort-value="7798.0">7798 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/holiday-park-resort-okurcalar.html" target="_blank" onmouseover="_hoverPreview.show(event,'Holiday Park Resort (Okurcalar)')" onmouseout="_hoverPreview.hide()">Holiday Park Resort (Okurcalar)</a></td>
+                        <td class="price" data-sort-value="7819.0">7819 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/holiday-garden-resort-okurcalar.html" target="_blank" onmouseover="_hoverPreview.show(event,'Holiday Garden Resort (Okurcalar)')" onmouseout="_hoverPreview.hide()">Holiday Garden Resort (Okurcalar)</a></td>
+                        <td class="price" data-sort-value="7819.0">7819 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/titan-select.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titan Select')" onmouseout="_hoverPreview.hide()">Titan Select</a></td>
+                        <td class="price" data-sort-value="7829.0">7829 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-incekum.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Incekum')" onmouseout="_hoverPreview.hide()">Ozkaymak Incekum</a></td>
+                        <td class="price" data-sort-value="7870.0">7870 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/armas-green-fugla.html" target="_blank" onmouseover="_hoverPreview.show(event,'Armas Green Fugla')" onmouseout="_hoverPreview.hide()">Armas Green Fugla</a></td>
+                        <td class="price" data-sort-value="7871.0">7871 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/daima-biz-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Daima Biz Resort')" onmouseout="_hoverPreview.hide()">Daima Biz Resort</a></td>
+                        <td class="price" data-sort-value="7880.0">7880 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/xoria-deluxe.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xoria Deluxe')" onmouseout="_hoverPreview.hide()">Xoria Deluxe</a></td>
+                        <td class="price" data-sort-value="7916.0">7916 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/miarosa-kemer-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Miarosa Kemer Beach')" onmouseout="_hoverPreview.hide()">Miarosa Kemer Beach</a></td>
+                        <td class="price" data-sort-value="7916.0">7916 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/gold-city.html" target="_blank" onmouseover="_hoverPreview.show(event,'Gold City')" onmouseout="_hoverPreview.hide()">Gold City</a></td>
+                        <td class="price" data-sort-value="7947.0">7947 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/dedeman-kemer-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dedeman Kemer Resort')" onmouseout="_hoverPreview.hide()">Dedeman Kemer Resort</a></td>
+                        <td class="price" data-sort-value="8004.0">8004 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/misal-ex-nox-inn-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Misal (ex. Nox Inn Club)')" onmouseout="_hoverPreview.hide()">Misal (ex. Nox Inn Club)</a></td>
+                        <td class="price" data-sort-value="8047.0">8047 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-kemer-marina.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Kemer Marina')" onmouseout="_hoverPreview.hide()">Ozkaymak Kemer Marina</a></td>
+                        <td class="price" data-sort-value="8088.0">8088 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/meder-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Meder Resort')" onmouseout="_hoverPreview.hide()">Meder Resort</a></td>
+                        <td class="price" data-sort-value="8092.0">8092 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
+        </div>
+    </div>
+    <div id="hoverThumb" class="hover-thumb"><img id="hoverImg" src="" alt="preview"/></div>
+
+    <script>
+      (function(){
+        const X = ["2025-09-07 16:00", "2025-09-07 17:00", "2025-09-07 18:00"];
+        const Y = [6628.0, 6385.8, 6272.9];
+        if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
+          const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
+          const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
+          Plotly.newPlot('avgTop10', [trace], layout);
+        }
+      })();
+      (function(){
+        const map = {"Aqua Sun Village (Ex. Eri Sun Village)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Aqua-Sun-Village-Ex.-Eri-Sun-Village-fly-pl.jpg", "Laguna Holiday Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2019/09/Laguna-Holiday-Resort-fly-pl.jpg", "Eri Beach": "https://datacfstatic.merlinx.pl/WEZY/IMG/1306/c3a49b8e38239e3fac9eff6299690bc1ac6c31c55a7543c1673bcce85f5240c8.webp", "Gennadi Seaside Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/12/Zenith-Sea-Side-fly-pl-1.jpg", "Aegean View (Paradisi)": "https://datacfstatic.merlinx.pl/WEZY/IMG/50851/eb709ec353ddab6fbb51a4f92ec64da9119c1b9521717d3b84e245ef14a0c3b3.webp", "Bali Mare": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/bali-mare.webp", "Chrousso Village": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/Chrousso-Village.webp", "Filerimos Village": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/06/FILERIMOS-VILLAGE.webp", "Arion Resort (Vassilikos)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Arion-Renaissance-1.jpg", "Ionian Sea & Aquapark": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Ionian-Sea-Aquapark.webp", "Alexandros Palace": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Alexandros-Palace-fly-pl.jpg", "Evita Mare": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/10/Evita-Mare-fly-pl.jpg", "Sunbay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2022/02/Sunbay-fly-pl.jpg", "Mediterraneo (Hersonissos)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/03/Mediterraneo-Hersonissos-fly-pl.jpg", "Poseidon Sea Resort (Neos Marmaras)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/10/Hotel-Poseidon-Sea-Resort.webp", "Golden Odyssey": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Golden-Odyssey.jpg", "Cooee Akti Ouranoupolis": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/01/Hotel-Akti-Ouranoupoli-Beach-Resort.webp", "Sokol Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2022/03/SOKOL-RESORT.webp", "Sirenes Beach": "https://datacfstatic.merlinx.pl/SFPL/IMG/SMISBR/51ec6f584068afe41ba604c13260860fea712723b4895c989d652e23ca2db8c8.webp", "Euro Village Achilleas": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/10/Euro-Village-Achilleas-fly-pl.jpg", "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/02/Anastasia-Resort-Spa-fly-pl.jpg", "Meropi Hotel & Apartments (Malia)": "https://datacfstatic.merlinx.pl/WEZY/IMG/1351/564c89c7e46f15a6e6f1917a491f6c7aafce0dcecb4b07a8ee9ba6b67360c1d1.webp", "Corfu Maris": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/07/Corfu-Maris.jpg", "Hersonissos Village": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/HERSONISSOS-VILLAGE.webp", "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/ace51f02b6f338f488ef08630ea127c1256fa3044b889314275e4a932f9fc24a.webp", "Gaia Royal": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Gaia-Royal.webp", "Kipriotis Hippocrates": "https://fly.pl/cdn/photo/assets/uploads/582/278/2009/10/Kipriotis-Hippocrates2997.jpg", "Ilyssion": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Ilyssion.jpg", "Lardos Bay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Hotel-Lardos-Bay.webp", "Blue Style Resort": "https://datacfstatic.merlinx.pl/SFPL/IMG/SMIBSR/5878c3899403af5e0ec63d4a2937088c14945de752c455734ba136f09d76da9d.webp", "Cyprotel Faliraki": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/01/Cyprotel-Faliraki-ex-Luca-Cypria-fly-pl.jpg", "Solimar Ruby & Ruby Royal": "https://datacfstatic.merlinx.pl/ITAK/IMG/HERRUBY/1a077c6aa2e8e3432fca7b1e8208945afd2f1a50fc0c5eb72d411df3a804ccb5.webp", "Kipriotis Village Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/11/Hotel-Kipriotis-Village-Resort.webp", "Afandou Bay Village Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/12/Afandou-Bay-Village.webp", "Atrium (Pefkohori)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/Atrium-Hotel.webp", "Chrissys Paradise (ex Felicity)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Nicolas-Villas-Agia-Pelagia-fly-pl-2.jpg", "San Panteleimon": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/05/San-Panteleimon.webp", "Mitsis Alexander the Great (Kriopigi)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/06/Alexander-The-Great.webp", "Pollis (ex Miramare)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Miramare-Hersonissos.jpg", "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Aegean-Breeze-Resort-ex-Medblue-Fanes-fly-pl.jpg", "Amour Holiday Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/09/Amour-Holiday-Resort.webp", "Summer Beach": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/12/Summer-Beach-fly-pl.jpg", "Sunshine Corfu & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2009/04/Sunshine-Corfu216.jpg", "Horizon Beach (Stalida)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/HORIZON-BEACH-RESORT.webp", "Marebello Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2017/10/Hotel-Marebello-Beach.webp", "Resol Liza Mary": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/04/Liza-Mary-fly-pl.jpg", "Marvida Niriides Beach (Bali)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/11/Niriides-Beach-Bali.jpg", "Hawaii Paradise Aqua Park Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2020/09/Hawaii-Paradise-Aqua-Park-Resort.webp", "IL Mercato Splash Aqua Park": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Il-Mercato-Hotel-Spa-Sharm-El-Sheikh.webp", "Parrotel Lagoon Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2020/10/Parrotel-Lagoon-Resort.webp", "Dreams Beach Sharm Resort (Sharm El Sheikh)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Dreams-Beach-Resort.webp", "Sunrise Alora Aqua Park Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/11/Hawaii-Caesar-Palace-Aqua-Park-ex-Mirage-Aqua-Park-fly-pl.webp", "Naama Waves": "https://fly.pl/cdn/photo/assets/uploads/582/278/2019/06/Naama-Waves.webp", "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/11/Future-Dream-Lagoon-ex.-Floriana-Dream-Lagoon-fly-pl.jpg", "Xperience Kiroseiz Premier": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/11/Xperience-Kiroseiz-Premier-fly-pl-3.jpg", "Regency Plaza Aqua Park Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Regency-Plaza-Aqua-Park-Spa-fly-pl.webp", "Xperience Kiroseiz Parkland": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/06/Xperience-Kiroseiz-Parkland-fly-pl.jpg", "Rehana Royal Beach Resort & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/11/Rehana-Royal-Beach-Resort-amp-Spa.jpg", "Dreams Vacation Sharm Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Dreams-Vacation-fly-pl.jpg", "Rewaya Majestic Resort": "https://datacfstatic.merlinx.pl/JOIN/IMG/5843/069028381c23bce59ad0042b8b2bd19bc4e0f671f57eec9f3564fcdc3ff07a82.webp", "Sharm Dreams Vacation Club": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/sharm-dreams-vacation-club.webp", "Royal Regency Club": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/royal-regency-club.webp", "Amarina Jannah Resort Aquapark": "https://fly.pl/cdn/photo/assets/uploads/582/278/2023/04/Amarina-Jannah-Resort-Aquapark.webp", "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/RADISSON-INDIVIDUALS-MARINA.webp", "Jaz Neo Naama Bay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/10/Sol-Y-Mar-Naama-Bay.webp", "Parrotel Beach Resort (ex. Radisson Blu)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Parrotel-Beach-Resort.webp", "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/10/The-Cascades-Golf-Resort-Spa-Thalasso.webp", "Seven Seas Jolie Bay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2022/03/Aqua-Mondo-Abu-Soma-Resort.webp", "Ecotel Dahab Bay View Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Ecotel-Dahab-Resort.webp", "Retac Qunay Dahab Resort & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Retac-Qunay-Dahab.webp", "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/AMC-Royal-Resort.webp", "Marina Residence & Suites Port Ghalib": "https://datacfstatic.merlinx.pl/OREX/IMG/6406/ab63f9603e523c6cb0f9675d99616c06da679ed86e12776bd07693e87b59a2f3.webp", "Naama Bay Promenade Mountain Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/naama-bay-promenade-mountain-resort.webp", "Fantazia Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/11/Fantazia-Resort.webp", "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Hilton-Sharm-Waterfalls-Resort-fly-pl-4.jpg", "Aurora Oriental Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Aurora-Oriental-Resort.webp", "Sharm Grand Plaza Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/SHARM-GRAND-PLAZA-RESORT-1.webp", "Creek Hotel and Residences": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/creek-hotel-residences.webp", "Charmillion Garden Aqua Park": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Charmillion-Gardens-Aqua-Park-ex.-Sea-Garden.webp", "Naama Bay Hotel & Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Naama-Bay.webp", "Concorde El Salam Sport": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/concorde-el-salam-sport.webp", "Jasmine Palace": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Jasmine-Palace.webp", "Jaz Neo Saraya Palms": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Jaz-Makadi-Saraya-Palms.webp", "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/10/Stella-Di-Mare-Gardens-Resort-Spa.webp", "Movenpick Waterpark Resort & Spa Soma Bay": "https://fly.pl/cdn/photo/assets/uploads/582/278/2009/02/Movenpick-Soma-Bay2539.jpg", "Serenity Alma Heights (ex. Serenity Fun City)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Serenity-Alma-Heights.webp", "Jaz Mirabel Club": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Jaz-Mirabel-Club-and-Park.webp", "Pickalbatros Laguna Club Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2023/09/Albatros-Laguna-Club-Resor.webp", "Pickalbatros Golf Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Golf-Beach-Resort-Managed-by-Rixos.webp", "Pickalbatros Luxury Suites": "https://fly.pl/cdn/photo/assets/uploads/582/278/2023/04/Pickalbatros-Luxury-Suites.webp", "Hilton Plaza (Hurghada)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/10/Hilton-Plaza.webp", "Diamond Beach by Pearl Resort": "https://datacfstatic.merlinx.pl/OREX/IMG/5919/d97196375880b1d6f4ed30bbbfa6af2955dee89d8ab4fa54caf62074f9b7a0c0.webp", "Sirena Beach Resort & Spa": "https://datacfstatic.merlinx.pl/OREX/IMG/3216/a109373dabca4cb07b9ea611d8c211d614fdfd76e2624e7e2cdbc888c02520d1.webp", "Safir Dahab Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/09/Safir-Dahab-Resort.webp", "Charmillion Club Aqua Park": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Charmillion-Club-Aqua-Park.webp", "Amarina Queen Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/amarina-queen-resort.webp", "Radisson Blu Resort (El Quseir)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/02/RADISSON-BLU-m.webp", "El Kasr Sahl Hasheesh": "https://fly.pl/cdn/photo/assets/uploads/582/278/2023/11/El-Kasr-Sahl-Hasheesh.webp", "Jaz Mirabel Park & Club": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/jaz-mirabel-park-club.webp", "Titanic Beach Spa & Aqua Park": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Titanic-Beach-Spa-Aqua-Park-fly-pl.jpg", "Royal Brayka Beach Resort (ex Zee Brayka)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Royal-Brayka-Resort.webp", "Novotel Marsa Alam": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/09/Novotel-Marsa-Alam.webp", "Amphoras Beach": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/11/AMPHORAS-BEACH.jpg", "Coral Sea Holiday Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Coral-Sea-Holiday-Resort.webp", "Casa Mare Resort (ex. Royal Tulip Beach Resort)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/12/Casa-Mare-Resort.webp", "Titanic Palace Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Titanic-Palace-Resort.webp", "Naama Bay Promenade Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2021/07/Naama-Bay-Promenade-Beach-Resort.webp", "Monte Carlo Resort Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Monte-Carlo-Sharm-Resort-Spa.webp", "Marriott Hurghada Beach Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Marriott-Hurghada-Beach-Resort.webp", "Sea Star Beau Rivage": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Sea-Star-Beau-Rivage-fly-pl.webp", "First Class": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/First-Class.jpg", "Hedef Resort & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Hedef-Resort-1.jpg", "Prestige Alanya": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/03/Euphoria-Comfort-Beach-Alanya.webp", "Sun Star Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/07/Sun-Star-Beach-Resort.jpg", "Grand Cortez": "https://datacfstatic.merlinx.pl/KOMT/IMG/66/dfab4525681927c592f7cba9d1ac17bc65aa87d0e5092e4640773948153f3098.webp", "Miarosa Incekum Beach (ex Alara Kum)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Alara-Kum-fly-pl.jpg", "M. C. Beach Resort (ex. Otium MC Beach Resort)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/02/MC-Park-Resort-amp-Spa-ex.-Serapsu-Beach-Resort.jpg", "Viking Star": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Viking-Star.webp", "The Marilis Hill Resort and Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/the-marilis-hill-resort-and-spa.webp", "Drita Resort & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/01/Drita-Resort-Spa-fly-pl-1.jpg", "Perre Delta": "https://fly.pl/cdn/photo/assets/uploads/582/278/2020/01/Perre-Delta.webp", "M. C. Arancia Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/M.-C.-Arancia-Resort-fly-pl.jpg", "Aventura Park": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Aventura-Park.webp", "Concordia Celes Beach": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/05/Concordia-Celes-Beach.webp", "Campus Hill": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/campus-hill.webp", "Sunland Resort (ex. Imperial Sunland Resort & Spa)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Imperial-Sunland-Resort-Spa.webp", "Ozkaymak Select Resort (ex Otium Ozkaymak Select)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/03/Ozkaymak-Select-Resort-Hotel.webp", "Alan Xafira Deluxe Resort & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/09/Xafira-Deluxe-Resort-Spa.webp", "Insula Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Insula-Resort-fly-pl.jpg", "Ozkaymak Falez": "https://datacfstatic.merlinx.pl/KOMT/IMG/2137/a9f54ccfd371fa255ceddb5cf16389e1ba2114a41b10cc871a97091e52dd0522.webp", "Diamond Hill Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/10/Diamond-Hill-Resort.webp", "Perre La Mer Resort & Spa (ex. La Mer)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/La-Mer-Goynuk.jpg", "Holiday Park Resort (Okurcalar)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Holiday-Park-Resort.webp", "Holiday Garden Resort (Okurcalar)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/HOLIDAY-GARDEN-RESORT.webp", "Titan Select": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/11/Titan-Select.webp", "Ozkaymak Incekum": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/03/Ozkaymak-Incekum-1.jpg", "Armas Green Fugla": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Armas-Green-Fugla.webp", "Daima Biz Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Daima-Biz-Resort-fly-pl.jpg", "Miarosa Kemer Beach": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/miarosa-kemer-beach.webp", "Xoria Deluxe": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/11/Xoria-Deluxe-fly-pl.jpg", "Gold City": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/04/Goldcity-Hotel.webp", "Dedeman Kemer Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2024/07/club-jovia-kemer-ex-armir-resort.webp", "Misal (ex. Nox Inn Club)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Hotel-Misal-Resort.webp", "Ozkaymak Kemer Marina": "https://fly.pl/cdn/photo/assets/uploads/582/278/2016/05/Ozkaymak-Kemer-Marina.webp", "Meder Resort": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Meder-Resort.webp", "Pefkos Breeze (ex. Thalia)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2015/01/Pefkos-Breeze-Family-Resort.webp", "Kolymbia Sky": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/09/Kolymbia-Sky-fly-pl.jpg", "Royal Lagoons Aqua (ex. Premium Blue)": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/10/Royal-Lagoons-Aqua.webp", "Sheraton Sharm Resort Villas & Spa": "https://fly.pl/cdn/photo/assets/uploads/582/278/2014/07/Sheraton-Sharm-Resort.webp"};
+        try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}
+        const hover = document.getElementById('hoverThumb');
+        const img = document.getElementById('hoverImg');
+        function show(e, name){ const url = map[name]; if(!url){ return; } img.src = url; hover.style.display = 'block'; hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; }
+        function move(e){ if(hover.style.display === 'block'){ hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; } }
+        function hide(){ hover.style.display = 'none'; img.src = ''; }
+        document.addEventListener('mousemove', move);
+        window._hoverPreview = { show, hide };
+      })();
+      function toggleAlerts() {
+        const content = document.getElementById('alertsContent');
+        const icon = document.getElementById('alertsExpandIcon');
+        if (content.classList.contains('collapsed')) {
+          content.classList.remove('collapsed');
+          icon.classList.remove('collapsed');
+        } else {
+          content.classList.add('collapsed');
+          icon.classList.add('collapsed');
+        }
+      }
+      
+      // Таблица сортировки
+      let currentSort = { column: null, direction: 'asc' };
+      
+      function sortTable(column) {
+        const table = document.getElementById('hotelsTable');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        
+        // Определяем направление сортировки
+        if (currentSort.column === column) {
+          currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.direction = 'asc';
+        }
+        currentSort.column = column;
+        
+        // Сортируем строки
+        rows.sort((a, b) => {
+          let aVal, bVal;
+          
+          if (column === 'hotel') {
+            aVal = a.cells[0].textContent.trim();
+            bVal = b.cells[0].textContent.trim();
+            return currentSort.direction === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+          } else {
+            aVal = parseFloat(a.cells[getColumnIndex(column)].dataset.sortValue) || 0;
+            bVal = parseFloat(b.cells[getColumnIndex(column)].dataset.sortValue) || 0;
+            return currentSort.direction === 'asc' ? aVal - bVal : bVal - aVal;
+          }
+        });
+        
+        // Обновляем таблицу
+        rows.forEach(row => tbody.appendChild(row));
+        
+        // Обновляем индикаторы сортировки
+        updateSortIndicators();
+      }
+      
+      function getColumnIndex(column) {
+        const columnMap = { 'hotel': 0, 'price': 1, 'delta48': 2, 'deltastart': 3, 'dates': 4, 'duration': 5 };
+        return columnMap[column];
+      }
+      
+      function updateSortIndicators() {
+        const headers = document.querySelectorAll('#hotelsTable th.sortable');
+        headers.forEach(header => {
+          header.classList.remove('sort-asc', 'sort-desc');
+          if (header.dataset.sort === currentSort.column) {
+            header.classList.add(currentSort.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+          }
+        });
+      }
+      
+      // Добавляем обработчики кликов на заголовки
+      document.addEventListener('DOMContentLoaded', function() {
+        const headers = document.querySelectorAll('#hotelsTable th.sortable');
+        headers.forEach(header => {
+          header.addEventListener('click', () => sortTable(header.dataset.sort));
+        });
+      });
+    </script>
+  </body>
+</html>
