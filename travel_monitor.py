@@ -31,9 +31,9 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class TravelPriceMonitor:
-    def __init__(self, config_file: str = "config.json"):
+    def __init__(self, config_file: str = "config.json", data_file: str | None = None):
         self.config_file = config_file
-        self.data_file = "travel_prices.csv"
+        self.data_file = data_file or "travel_prices.csv"
         self.config = self.load_config()
         
     def load_config(self) -> Dict[str, Any]:
@@ -840,7 +840,14 @@ class TravelPriceMonitor:
 
 def main():
     """Главная функция"""
-    monitor = TravelPriceMonitor()
+    # Параметры командной строки: --config, --data-file
+    import argparse
+    parser = argparse.ArgumentParser(description="Travel price monitor")
+    parser.add_argument("--config", default="config.json", help="Путь к конфигу JSON")
+    parser.add_argument("--data-file", default=None, help="Имя CSV файла данных (внутри data_dir)")
+    args = parser.parse_args()
+
+    monitor = TravelPriceMonitor(config_file=args.config, data_file=args.data_file)
     
     try:
         success = asyncio.run(monitor.run_monitoring())

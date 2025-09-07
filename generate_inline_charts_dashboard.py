@@ -9,12 +9,12 @@ from datetime import datetime, timedelta
 import os
 import re
 
-def generate_inline_charts_dashboard():
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд'):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
     try:
-        df = pd.read_csv('data/travel_prices.csv')
+        df = pd.read_csv(data_file)
         df['scraped_at'] = pd.to_datetime(df['scraped_at'])
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
@@ -283,7 +283,7 @@ def generate_inline_charts_dashboard():
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Price Monitor • Расширенный дашборд</title>
+    <title>{title}</title>
     <style>
         body {{
             font-family: Arial, sans-serif;
@@ -430,7 +430,7 @@ def generate_inline_charts_dashboard():
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏨 Travel Price Monitor</h1>
+            <h1>🏨 {title}</h1>
             <p>Мониторинг цен на путешествия в Грецию • Обновлено: {datetime.now().strftime('%d.%m.%Y %H:%M')}</p>
         </div>
         
@@ -567,7 +567,7 @@ def generate_inline_charts_dashboard():
 </html>"""
 
     # Сохраняем файл
-    with open('index.html', 'w', encoding='utf-8') as f:
+    with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_template)
     
     print(f"✅ Дашборд с встроенными графиками сгенерирован: index.html")
@@ -576,4 +576,10 @@ def generate_inline_charts_dashboard():
     print(f"📈 Изменения цен: {len(decreases_48h) + len(increases_48h)} отелей за 48ч")
 
 if __name__ == "__main__":
-    generate_inline_charts_dashboard()
+    import argparse
+    parser = argparse.ArgumentParser(description='Generate inline charts dashboard')
+    parser.add_argument('--data-file', default='data/travel_prices.csv')
+    parser.add_argument('--output', default='index.html')
+    parser.add_argument('--title', default='Travel Price Monitor • Расширенный дашборд')
+    args = parser.parse_args()
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title)
