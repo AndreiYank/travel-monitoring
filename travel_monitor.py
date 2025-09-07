@@ -540,30 +540,42 @@ class TravelPriceMonitor:
     async def extract_offer_url(self, element) -> str:
         """Извлекает URL ссылку на детальную страницу предложения"""
         try:
-            # 1) Проверяем, является ли сам элемент ссылкой с классом offer-con
+            # 1) Проверяем, является ли сам элемент ссылкой
             tag_name = await element.evaluate("el => el.tagName.toLowerCase()")
             if tag_name == 'a':
-                classes = await element.get_attribute('class') or ''
-                if 'offer-con' in classes:
-                    href = await element.get_attribute('href')
-                    if href and href.strip():
-                        return self.make_absolute_url(href)
+                href = await element.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
             
-            # 2) Ищем ссылку с классом offer-con внутри элемента
+            # 2) Ищем ссылку с классом image-link (основной селектор для ссылок на предложения)
+            image_link = await element.query_selector('a.image-link')
+            if image_link:
+                href = await image_link.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 3) Ищем ссылку с классом offer-con (альтернативный селектор)
             offer_link = await element.query_selector('a.offer-con')
             if offer_link:
                 href = await offer_link.get_attribute('href')
                 if href and href.strip():
                     return self.make_absolute_url(href)
             
-            # 3) Ищем другие возможные ссылки на предложения
+            # 4) Ищем ссылки на /wycieczka/ (детальные страницы предложений)
+            wycieczka_link = await element.query_selector('a[href*="/wycieczka/"]')
+            if wycieczka_link:
+                href = await wycieczka_link.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 5) Ищем другие возможные ссылки на предложения
             link_selectors = [
-                'a[href*="/wycieczka/"]',  # Ссылка содержащая "/wycieczka/"
                 'a[href*="offer"]',        # Ссылка содержащая "offer"
                 'a[href*="hotel"]',        # Ссылка содержащая "hotel"
                 'a[href*="trip"]',         # Ссылка содержащая "trip"
                 'a[href*="detail"]',       # Ссылка содержащая "detail"
                 'a[href*="view"]',         # Ссылка содержащая "view"
+                'a[class*="link"]',        # Ссылка с классом содержащим "link"
                 'a[href]'                  # Любая ссылка
             ]
             
@@ -579,17 +591,15 @@ class TravelPriceMonitor:
                 except:
                     continue
             
-            # 4) Проверяем родительские элементы на наличие ссылок
+            # 6) Проверяем родительские элементы на наличие ссылок
             try:
                 parent = await element.evaluate("el => el.parentElement")
                 if parent:
                     parent_tag = await parent.evaluate("el => el.tagName.toLowerCase()")
                     if parent_tag == 'a':
-                        parent_classes = await parent.evaluate("el => el.className")
-                        if 'offer-con' in parent_classes:
-                            href = await parent.get_attribute('href')
-                            if href and href.strip():
-                                return self.make_absolute_url(href)
+                        href = await parent.get_attribute('href')
+                        if href and href.strip():
+                            return self.make_absolute_url(href)
             except:
                 pass
                 

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <title>Travel Price Monitor • Турция</title>
+    <title>Travel Price Monitor - Turkey</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -191,6 +191,22 @@
             color: #28a745;
         }
         .open-chart-link { color: #2E86AB; text-decoration: underline; }
+        .offer-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .offer-link:hover {
+            background-color: #e3f2fd;
+            text-decoration: none;
+        }
+        .offer-link-cell {
+            text-align: center;
+            width: 80px;
+        }
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -206,8 +222,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏨 Travel Price Monitor • Турция</h1>
-            <p>Обновлено: 07.09.2025 18:30</p>
+            <h1>🏨 Travel Price Monitor - Turkey</h1>
+            <p>Обновлено: 07.09.2025 20:16</p>
         </div>
 
         <div class="avg-top10-section">
@@ -217,7 +233,7 @@
         
         <div class="metrics">
             <div class="metric">
-                <div class="metric-value">222</div>
+                <div class="metric-value">220</div>
                 <div>Всего предложений</div>
             </div>
             <div class="metric">
@@ -225,7 +241,7 @@
                 <div>Уникальных отелей</div>
             </div>
             <div class="metric">
-                <div class="metric-value">7431 PLN</div>
+                <div class="metric-value">7434 PLN</div>
                 <div>Средняя цена</div>
             </div>
             <div class="metric">
@@ -239,6 +255,30 @@
         </div>
         
         
+        <div class="changes-section">
+            <div class="changes-block">
+                <h3>📈 Наиболее подорожавшие (24ч)</h3>
+                <div class="change-item change-increase">
+                    <div>
+                        <div class="hotel-name">Ozkaymak Select Resort (ex Otium Ozkaymak Select)</div>
+                        <div class="change-percent">+206 PLN (+2.7%)</div>
+                    </div>
+                    <div class="change-price">7634 → 7840 PLN</div>
+                </div>
+            </div>
+        </div>
+        <div class="changes-section">
+            <div class="changes-block">
+                <h3>📈 Наиболее подорожавшие (7д)</h3>
+                <div class="change-item change-increase">
+                    <div>
+                        <div class="hotel-name">Ozkaymak Select Resort (ex Otium Ozkaymak Select)</div>
+                        <div class="change-percent">+206 PLN (+2.7%)</div>
+                    </div>
+                    <div class="change-price">7634 → 7840 PLN</div>
+                </div>
+            </div>
+        </div>
         
         <div class="alerts-section">
             <div class="alerts-header" onclick="toggleAlerts()">
@@ -263,288 +303,324 @@
                         <th class="sortable" data-sort="deltastart">Δ с начала</th>
                         <th class="sortable" data-sort="dates">Даты</th>
                         <th class="sortable" data-sort="duration">Длительность</th>
+                        <th>Ссылка</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/first-class.html" target="_blank" onmouseover="_hoverPreview.show(event,'First Class')" onmouseout="_hoverPreview.hide()">First Class</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/first-class.html" target="_blank" onmouseover="_hoverPreview.show(event,'First Class')" onmouseout="_hoverPreview.hide()">First Class</a></td>
                         <td class="price" data-sort-value="6236.0">6236 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/hedef-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hedef Resort & Spa')" onmouseout="_hoverPreview.hide()">Hedef Resort & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/hedef-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hedef Resort & Spa')" onmouseout="_hoverPreview.hide()">Hedef Resort & Spa</a></td>
                         <td class="price" data-sort-value="6246.0">6246 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/prestige-alanya.html" target="_blank" onmouseover="_hoverPreview.show(event,'Prestige Alanya')" onmouseout="_hoverPreview.hide()">Prestige Alanya</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/prestige-alanya.html" target="_blank" onmouseover="_hoverPreview.show(event,'Prestige Alanya')" onmouseout="_hoverPreview.hide()">Prestige Alanya</a></td>
                         <td class="price" data-sort-value="6575.0">6575 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/sun-star-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sun Star Resort')" onmouseout="_hoverPreview.hide()">Sun Star Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sun-star-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sun Star Resort')" onmouseout="_hoverPreview.hide()">Sun Star Resort</a></td>
                         <td class="price" data-sort-value="6636.0">6636 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/grand-cortez.html" target="_blank" onmouseover="_hoverPreview.show(event,'Grand Cortez')" onmouseout="_hoverPreview.hide()">Grand Cortez</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/grand-cortez.html" target="_blank" onmouseover="_hoverPreview.show(event,'Grand Cortez')" onmouseout="_hoverPreview.hide()">Grand Cortez</a></td>
                         <td class="price" data-sort-value="6732.0">6732 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/miarosa-incekum-beach-ex-alara-kum.html" target="_blank" onmouseover="_hoverPreview.show(event,'Miarosa Incekum Beach (ex Alara Kum)')" onmouseout="_hoverPreview.hide()">Miarosa Incekum Beach (ex Alara Kum)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/miarosa-incekum-beach-ex-alara-kum.html" target="_blank" onmouseover="_hoverPreview.show(event,'Miarosa Incekum Beach (ex Alara Kum)')" onmouseout="_hoverPreview.hide()">Miarosa Incekum Beach (ex Alara Kum)</a></td>
                         <td class="price" data-sort-value="6782.0">6782 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/m-c-beach-resort-ex-otium-mc-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'M. C. Beach Resort (ex. Otium MC Beach Resort)')" onmouseout="_hoverPreview.hide()">M. C. Beach Resort (ex. Otium MC Beach Resort)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/m-c-beach-resort-ex-otium-mc-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'M. C. Beach Resort (ex. Otium MC Beach Resort)')" onmouseout="_hoverPreview.hide()">M. C. Beach Resort (ex. Otium MC Beach Resort)</a></td>
                         <td class="price" data-sort-value="6904.0">6904 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/viking-star.html" target="_blank" onmouseover="_hoverPreview.show(event,'Viking Star')" onmouseout="_hoverPreview.hide()">Viking Star</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/viking-star.html" target="_blank" onmouseover="_hoverPreview.show(event,'Viking Star')" onmouseout="_hoverPreview.hide()">Viking Star</a></td>
                         <td class="price" data-sort-value="6944.0">6944 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/the-marilis-hill-resort-and-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'The Marilis Hill Resort and Spa')" onmouseout="_hoverPreview.hide()">The Marilis Hill Resort and Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/the-marilis-hill-resort-and-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'The Marilis Hill Resort and Spa')" onmouseout="_hoverPreview.hide()">The Marilis Hill Resort and Spa</a></td>
                         <td class="price" data-sort-value="6989.0">6989 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/drita-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Drita Resort & Spa')" onmouseout="_hoverPreview.hide()">Drita Resort & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/drita-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Drita Resort & Spa')" onmouseout="_hoverPreview.hide()">Drita Resort & Spa</a></td>
                         <td class="price" data-sort-value="7042.0">7042 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/perre-delta.html" target="_blank" onmouseover="_hoverPreview.show(event,'Perre Delta')" onmouseout="_hoverPreview.hide()">Perre Delta</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/perre-delta.html" target="_blank" onmouseover="_hoverPreview.show(event,'Perre Delta')" onmouseout="_hoverPreview.hide()">Perre Delta</a></td>
                         <td class="price" data-sort-value="7106.0">7106 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/m-c-arancia-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'M. C. Arancia Resort')" onmouseout="_hoverPreview.hide()">M. C. Arancia Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/m-c-arancia-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'M. C. Arancia Resort')" onmouseout="_hoverPreview.hide()">M. C. Arancia Resort</a></td>
                         <td class="price" data-sort-value="7258.0">7258 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/aventura-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Aventura Park')" onmouseout="_hoverPreview.hide()">Aventura Park</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/aventura-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Aventura Park')" onmouseout="_hoverPreview.hide()">Aventura Park</a></td>
                         <td class="price" data-sort-value="7447.0">7447 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/concordia-celes-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Concordia Celes Beach')" onmouseout="_hoverPreview.hide()">Concordia Celes Beach</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/concordia-celes-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Concordia Celes Beach')" onmouseout="_hoverPreview.hide()">Concordia Celes Beach</a></td>
                         <td class="price" data-sort-value="7458.0">7458 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/campus-hill.html" target="_blank" onmouseover="_hoverPreview.show(event,'Campus Hill')" onmouseout="_hoverPreview.hide()">Campus Hill</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/campus-hill.html" target="_blank" onmouseover="_hoverPreview.show(event,'Campus Hill')" onmouseout="_hoverPreview.hide()">Campus Hill</a></td>
                         <td class="price" data-sort-value="7487.0">7487 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/sunland-resort-ex-imperial-sunland-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sunland Resort (ex. Imperial Sunland Resort & Spa)')" onmouseout="_hoverPreview.hide()">Sunland Resort (ex. Imperial Sunland Resort & Spa)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sunland-resort-ex-imperial-sunland-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sunland Resort (ex. Imperial Sunland Resort & Spa)')" onmouseout="_hoverPreview.hide()">Sunland Resort (ex. Imperial Sunland Resort & Spa)</a></td>
                         <td class="price" data-sort-value="7594.0">7594 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-select-resort-ex-otium-ozkaymak-select.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Select Resort (ex Otium Ozkaymak Select)')" onmouseout="_hoverPreview.hide()">Ozkaymak Select Resort (ex Otium Ozkaymak Select)</a></td>
-                        <td class="price" data-sort-value="7634.0">7634 PLN</td>
-                        <td class="delta flat" data-sort-value="0">—</td>
-                        <td data-sort-value="0.0">→ 0.0%</td>
-                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/alan-xafira-deluxe-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Alan Xafira Deluxe Resort & Spa')" onmouseout="_hoverPreview.hide()">Alan Xafira Deluxe Resort & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/alan-xafira-deluxe-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Alan Xafira Deluxe Resort & Spa')" onmouseout="_hoverPreview.hide()">Alan Xafira Deluxe Resort & Spa</a></td>
                         <td class="price" data-sort-value="7649.0">7649 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/insula-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Insula Resort')" onmouseout="_hoverPreview.hide()">Insula Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/insula-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Insula Resort')" onmouseout="_hoverPreview.hide()">Insula Resort</a></td>
                         <td class="price" data-sort-value="7673.0">7673 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-falez.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Falez')" onmouseout="_hoverPreview.hide()">Ozkaymak Falez</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/ozkaymak-falez.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Falez')" onmouseout="_hoverPreview.hide()">Ozkaymak Falez</a></td>
                         <td class="price" data-sort-value="7704.0">7704 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/diamond-hill-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Diamond Hill Resort')" onmouseout="_hoverPreview.hide()">Diamond Hill Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/diamond-hill-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Diamond Hill Resort')" onmouseout="_hoverPreview.hide()">Diamond Hill Resort</a></td>
                         <td class="price" data-sort-value="7768.0">7768 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/perre-la-mer-resort-spa-ex-la-mer.html" target="_blank" onmouseover="_hoverPreview.show(event,'Perre La Mer Resort & Spa (ex. La Mer)')" onmouseout="_hoverPreview.hide()">Perre La Mer Resort & Spa (ex. La Mer)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/perre-la-mer-resort-spa-ex-la-mer.html" target="_blank" onmouseover="_hoverPreview.show(event,'Perre La Mer Resort & Spa (ex. La Mer)')" onmouseout="_hoverPreview.hide()">Perre La Mer Resort & Spa (ex. La Mer)</a></td>
                         <td class="price" data-sort-value="7798.0">7798 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/holiday-park-resort-okurcalar.html" target="_blank" onmouseover="_hoverPreview.show(event,'Holiday Park Resort (Okurcalar)')" onmouseout="_hoverPreview.hide()">Holiday Park Resort (Okurcalar)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/holiday-park-resort-okurcalar.html" target="_blank" onmouseover="_hoverPreview.show(event,'Holiday Park Resort (Okurcalar)')" onmouseout="_hoverPreview.hide()">Holiday Park Resort (Okurcalar)</a></td>
                         <td class="price" data-sort-value="7819.0">7819 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/holiday-garden-resort-okurcalar.html" target="_blank" onmouseover="_hoverPreview.show(event,'Holiday Garden Resort (Okurcalar)')" onmouseout="_hoverPreview.hide()">Holiday Garden Resort (Okurcalar)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/holiday-garden-resort-okurcalar.html" target="_blank" onmouseover="_hoverPreview.show(event,'Holiday Garden Resort (Okurcalar)')" onmouseout="_hoverPreview.hide()">Holiday Garden Resort (Okurcalar)</a></td>
                         <td class="price" data-sort-value="7819.0">7819 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/titan-select.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titan Select')" onmouseout="_hoverPreview.hide()">Titan Select</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/titan-select.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titan Select')" onmouseout="_hoverPreview.hide()">Titan Select</a></td>
                         <td class="price" data-sort-value="7829.0">7829 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-incekum.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Incekum')" onmouseout="_hoverPreview.hide()">Ozkaymak Incekum</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/ozkaymak-select-resort-ex-otium-ozkaymak-select.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Select Resort (ex Otium Ozkaymak Select)')" onmouseout="_hoverPreview.hide()">Ozkaymak Select Resort (ex Otium Ozkaymak Select)</a></td>
+                        <td class="price" data-sort-value="7840.0">7840 PLN</td>
+                        <td class="delta up" data-sort-value="2.698454283468693">↑ +2.7%</td>
+                        <td data-sort-value="2.698454283468693">↑ +2.7%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/ozkaymak-incekum.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Incekum')" onmouseout="_hoverPreview.hide()">Ozkaymak Incekum</a></td>
                         <td class="price" data-sort-value="7870.0">7870 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/armas-green-fugla.html" target="_blank" onmouseover="_hoverPreview.show(event,'Armas Green Fugla')" onmouseout="_hoverPreview.hide()">Armas Green Fugla</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/armas-green-fugla.html" target="_blank" onmouseover="_hoverPreview.show(event,'Armas Green Fugla')" onmouseout="_hoverPreview.hide()">Armas Green Fugla</a></td>
                         <td class="price" data-sort-value="7871.0">7871 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/daima-biz-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Daima Biz Resort')" onmouseout="_hoverPreview.hide()">Daima Biz Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/daima-biz-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Daima Biz Resort')" onmouseout="_hoverPreview.hide()">Daima Biz Resort</a></td>
                         <td class="price" data-sort-value="7880.0">7880 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/xoria-deluxe.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xoria Deluxe')" onmouseout="_hoverPreview.hide()">Xoria Deluxe</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/miarosa-kemer-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Miarosa Kemer Beach')" onmouseout="_hoverPreview.hide()">Miarosa Kemer Beach</a></td>
+                        <td class="price" data-sort-value="7916.0">7916 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/xoria-deluxe.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xoria Deluxe')" onmouseout="_hoverPreview.hide()">Xoria Deluxe</a></td>
                         <td class="price" data-sort-value="7916.0">7916 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="24.09.2025 - 01.10.2025">24.09.2025 - 01.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/miarosa-kemer-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Miarosa Kemer Beach')" onmouseout="_hoverPreview.hide()">Miarosa Kemer Beach</a></td>
-                        <td class="price" data-sort-value="7916.0">7916 PLN</td>
-                        <td class="delta flat" data-sort-value="0">—</td>
-                        <td data-sort-value="0.0">→ 0.0%</td>
-                        <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/gold-city.html" target="_blank" onmouseover="_hoverPreview.show(event,'Gold City')" onmouseout="_hoverPreview.hide()">Gold City</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/gold-city.html" target="_blank" onmouseover="_hoverPreview.show(event,'Gold City')" onmouseout="_hoverPreview.hide()">Gold City</a></td>
                         <td class="price" data-sort-value="7947.0">7947 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/dedeman-kemer-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dedeman Kemer Resort')" onmouseout="_hoverPreview.hide()">Dedeman Kemer Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/dedeman-kemer-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dedeman Kemer Resort')" onmouseout="_hoverPreview.hide()">Dedeman Kemer Resort</a></td>
                         <td class="price" data-sort-value="8004.0">8004 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/misal-ex-nox-inn-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Misal (ex. Nox Inn Club)')" onmouseout="_hoverPreview.hide()">Misal (ex. Nox Inn Club)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/misal-ex-nox-inn-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Misal (ex. Nox Inn Club)')" onmouseout="_hoverPreview.hide()">Misal (ex. Nox Inn Club)</a></td>
                         <td class="price" data-sort-value="8047.0">8047 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/ozkaymak-kemer-marina.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Kemer Marina')" onmouseout="_hoverPreview.hide()">Ozkaymak Kemer Marina</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/ozkaymak-kemer-marina.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ozkaymak Kemer Marina')" onmouseout="_hoverPreview.hide()">Ozkaymak Kemer Marina</a></td>
                         <td class="price" data-sort-value="8088.0">8088 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/turkey/meder-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Meder Resort')" onmouseout="_hoverPreview.hide()">Meder Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/meder-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Meder Resort')" onmouseout="_hoverPreview.hide()">Meder Resort</a></td>
                         <td class="price" data-sort-value="8092.0">8092 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="26.09.2025 - 03.10.2025">26.09.2025 - 03.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                 </tbody>
             </table>
@@ -558,8 +634,8 @@
 
     <script>
       (function(){
-        const X = ["2025-09-07 16:00", "2025-09-07 17:00", "2025-09-07 18:00"];
-        const Y = [6628.0, 6385.8, 6272.9];
+        const X = ["2025-09-07 16:00", "2025-09-07 17:00", "2025-09-07 18:00", "2025-09-07 19:00", "2025-09-07 20:00"];
+        const Y = [6628.0, 6385.8, 6628.0, 6708.6, 6628.0];
         if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
           const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
           const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };

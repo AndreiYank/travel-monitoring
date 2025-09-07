@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <title>Travel Price Monitor • Египет</title>
+    <title>Travel Price Monitor - Egypt</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -191,6 +191,22 @@
             color: #28a745;
         }
         .open-chart-link { color: #2E86AB; text-decoration: underline; }
+        .offer-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 16px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+        .offer-link:hover {
+            background-color: #e3f2fd;
+            text-decoration: none;
+        }
+        .offer-link-cell {
+            text-align: center;
+            width: 80px;
+        }
         .footer {
             text-align: center;
             margin-top: 30px;
@@ -206,8 +222,8 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏨 Travel Price Monitor • Египет</h1>
-            <p>Обновлено: 07.09.2025 18:26</p>
+            <h1>🏨 Travel Price Monitor - Egypt</h1>
+            <p>Обновлено: 07.09.2025 20:13</p>
         </div>
 
         <div class="avg-top10-section">
@@ -217,7 +233,7 @@
         
         <div class="metrics">
             <div class="metric">
-                <div class="metric-value">573</div>
+                <div class="metric-value">571</div>
                 <div>Всего предложений</div>
             </div>
             <div class="metric">
@@ -225,7 +241,7 @@
                 <div>Уникальных отелей</div>
             </div>
             <div class="metric">
-                <div class="metric-value">7408 PLN</div>
+                <div class="metric-value">7411 PLN</div>
                 <div>Средняя цена</div>
             </div>
             <div class="metric">
@@ -244,13 +260,6 @@
                 <h3>📉 Наиболее подешевевшие (24ч)</h3>
                 <div class="change-item change-decrease">
                     <div>
-                        <div class="hotel-name">Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)</div>
-                        <div class="change-percent">-260 PLN (-3.5%)</div>
-                    </div>
-                    <div class="change-price">7432 → 7172 PLN</div>
-                </div>
-                <div class="change-item change-decrease">
-                    <div>
                         <div class="hotel-name">Dreams Vacation Sharm Resort</div>
                         <div class="change-percent">-120 PLN (-1.7%)</div>
                     </div>
@@ -261,17 +270,17 @@
                 <h3>📈 Наиболее подорожавшие (24ч)</h3>
                 <div class="change-item change-increase">
                     <div>
+                        <div class="hotel-name">Royal Lagoons Aqua (ex. Premium Blue)</div>
+                        <div class="change-percent">+781 PLN (+12.8%)</div>
+                    </div>
+                    <div class="change-price">6113 → 6894 PLN</div>
+                </div>
+                <div class="change-item change-increase">
+                    <div>
                         <div class="hotel-name">Naama Bay Promenade Mountain Resort</div>
                         <div class="change-percent">+480 PLN (+6.5%)</div>
                     </div>
                     <div class="change-price">7396 → 7876 PLN</div>
-                </div>
-                <div class="change-item change-increase">
-                    <div>
-                        <div class="hotel-name">Royal Lagoons Aqua (ex. Premium Blue)</div>
-                        <div class="change-percent">+396 PLN (+6.5%)</div>
-                    </div>
-                    <div class="change-price">6113 → 6509 PLN</div>
                 </div>
                 <div class="change-item change-increase">
                     <div>
@@ -301,13 +310,6 @@
                 <h3>📉 Наиболее подешевевшие (7д)</h3>
                 <div class="change-item change-decrease">
                     <div>
-                        <div class="hotel-name">Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)</div>
-                        <div class="change-percent">-260 PLN (-3.5%)</div>
-                    </div>
-                    <div class="change-price">7432 → 7172 PLN</div>
-                </div>
-                <div class="change-item change-decrease">
-                    <div>
                         <div class="hotel-name">Dreams Vacation Sharm Resort</div>
                         <div class="change-percent">-120 PLN (-1.7%)</div>
                     </div>
@@ -318,17 +320,17 @@
                 <h3>📈 Наиболее подорожавшие (7д)</h3>
                 <div class="change-item change-increase">
                     <div>
+                        <div class="hotel-name">Royal Lagoons Aqua (ex. Premium Blue)</div>
+                        <div class="change-percent">+781 PLN (+12.8%)</div>
+                    </div>
+                    <div class="change-price">6113 → 6894 PLN</div>
+                </div>
+                <div class="change-item change-increase">
+                    <div>
                         <div class="hotel-name">Naama Bay Promenade Mountain Resort</div>
                         <div class="change-percent">+480 PLN (+6.5%)</div>
                     </div>
                     <div class="change-price">7396 → 7876 PLN</div>
-                </div>
-                <div class="change-item change-increase">
-                    <div>
-                        <div class="hotel-name">Royal Lagoons Aqua (ex. Premium Blue)</div>
-                        <div class="change-percent">+396 PLN (+6.5%)</div>
-                    </div>
-                    <div class="change-price">6113 → 6509 PLN</div>
                 </div>
                 <div class="change-item change-increase">
                     <div>
@@ -439,528 +441,594 @@
                         <th class="sortable" data-sort="deltastart">Δ с начала</th>
                         <th class="sortable" data-sort="dates">Даты</th>
                         <th class="sortable" data-sort="duration">Длительность</th>
+                        <th>Ссылка</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/hawaii-paradise-aqua-park-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hawaii Paradise Aqua Park Resort')" onmouseout="_hoverPreview.hide()">Hawaii Paradise Aqua Park Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/hawaii-paradise-aqua-park-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hawaii Paradise Aqua Park Resort')" onmouseout="_hoverPreview.hide()">Hawaii Paradise Aqua Park Resort</a></td>
                         <td class="price" data-sort-value="5963.0">5963 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/il-mercato-splash-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'IL Mercato Splash Aqua Park')" onmouseout="_hoverPreview.hide()">IL Mercato Splash Aqua Park</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/il-mercato-splash-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'IL Mercato Splash Aqua Park')" onmouseout="_hoverPreview.hide()">IL Mercato Splash Aqua Park</a></td>
                         <td class="price" data-sort-value="6022.0">6022 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/dreams-beach-sharm-resort-sharm-el-sheikh.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dreams Beach Sharm Resort (Sharm El Sheikh)')" onmouseout="_hoverPreview.hide()">Dreams Beach Sharm Resort (Sharm El Sheikh)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/dreams-beach-sharm-resort-sharm-el-sheikh.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dreams Beach Sharm Resort (Sharm El Sheikh)')" onmouseout="_hoverPreview.hide()">Dreams Beach Sharm Resort (Sharm El Sheikh)</a></td>
                         <td class="price" data-sort-value="6494.0">6494 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/royal-lagoons-aqua-ex-premium-blue.html" target="_blank" onmouseover="_hoverPreview.show(event,'Royal Lagoons Aqua (ex. Premium Blue)')" onmouseout="_hoverPreview.hide()">Royal Lagoons Aqua (ex. Premium Blue)</a></td>
-                        <td class="price" data-sort-value="6509.0">6509 PLN</td>
-                        <td class="delta up" data-sort-value="6.47799770979879">↑ +6.5%</td>
-                        <td data-sort-value="6.47799770979879">↑ +6.5%</td>
-                        <td data-sort-value="21.09.2025 - 28.09.2025">21.09.2025 - 28.09.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/sunrise-alora-aqua-park-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sunrise Alora Aqua Park Resort')" onmouseout="_hoverPreview.hide()">Sunrise Alora Aqua Park Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sunrise-alora-aqua-park-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sunrise Alora Aqua Park Resort')" onmouseout="_hoverPreview.hide()">Sunrise Alora Aqua Park Resort</a></td>
                         <td class="price" data-sort-value="6643.0">6643 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/dream-lagoon-aqua-park-resort-ex-floriana-dream-lagoon.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)')" onmouseout="_hoverPreview.hide()">Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/dream-lagoon-aqua-park-resort-ex-floriana-dream-lagoon.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)')" onmouseout="_hoverPreview.hide()">Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)</a></td>
                         <td class="price" data-sort-value="6651.0">6651 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/xperience-kiroseiz-premier.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xperience Kiroseiz Premier')" onmouseout="_hoverPreview.hide()">Xperience Kiroseiz Premier</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/xperience-kiroseiz-premier.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xperience Kiroseiz Premier')" onmouseout="_hoverPreview.hide()">Xperience Kiroseiz Premier</a></td>
                         <td class="price" data-sort-value="6674.0">6674 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/parrotel-lagoon-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Parrotel Lagoon Resort')" onmouseout="_hoverPreview.hide()">Parrotel Lagoon Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/parrotel-lagoon-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Parrotel Lagoon Resort')" onmouseout="_hoverPreview.hide()">Parrotel Lagoon Resort</a></td>
                         <td class="price" data-sort-value="6692.0">6692 PLN</td>
                         <td class="delta up" data-sort-value="4.644253322908522">↑ +4.6%</td>
                         <td data-sort-value="4.644253322908522">↑ +4.6%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/regency-plaza-aqua-park-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Regency Plaza Aqua Park Spa')" onmouseout="_hoverPreview.hide()">Regency Plaza Aqua Park Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/regency-plaza-aqua-park-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Regency Plaza Aqua Park Spa')" onmouseout="_hoverPreview.hide()">Regency Plaza Aqua Park Spa</a></td>
                         <td class="price" data-sort-value="6752.0">6752 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/dreams-vacation-sharm-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dreams Vacation Sharm Resort')" onmouseout="_hoverPreview.hide()">Dreams Vacation Sharm Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/dreams-vacation-sharm-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Dreams Vacation Sharm Resort')" onmouseout="_hoverPreview.hide()">Dreams Vacation Sharm Resort</a></td>
                         <td class="price" data-sort-value="6827.0">6827 PLN</td>
                         <td class="delta down" data-sort-value="-1.727364329926587">↓ -1.7%</td>
                         <td data-sort-value="-1.727364329926587">↓ -1.7%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/xperience-kiroseiz-parkland.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xperience Kiroseiz Parkland')" onmouseout="_hoverPreview.hide()">Xperience Kiroseiz Parkland</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/xperience-kiroseiz-parkland.html" target="_blank" onmouseover="_hoverPreview.show(event,'Xperience Kiroseiz Parkland')" onmouseout="_hoverPreview.hide()">Xperience Kiroseiz Parkland</a></td>
                         <td class="price" data-sort-value="6854.0">6854 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/naama-waves.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Waves')" onmouseout="_hoverPreview.hide()">Naama Waves</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/royal-lagoons-aqua-ex-premium-blue.html" target="_blank" onmouseover="_hoverPreview.show(event,'Royal Lagoons Aqua (ex. Premium Blue)')" onmouseout="_hoverPreview.hide()">Royal Lagoons Aqua (ex. Premium Blue)</a></td>
+                        <td class="price" data-sort-value="6894.0">6894 PLN</td>
+                        <td class="delta up" data-sort-value="12.776051038769834">↑ +12.8%</td>
+                        <td data-sort-value="12.776051038769834">↑ +12.8%</td>
+                        <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/naama-waves.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Waves')" onmouseout="_hoverPreview.hide()">Naama Waves</a></td>
                         <td class="price" data-sort-value="6975.0">6975 PLN</td>
                         <td class="delta up" data-sort-value="4.871447902571042">↑ +4.9%</td>
                         <td data-sort-value="4.871447902571042">↑ +4.9%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/rewaya-majestic-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Rewaya Majestic Resort')" onmouseout="_hoverPreview.hide()">Rewaya Majestic Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/rewaya-majestic-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Rewaya Majestic Resort')" onmouseout="_hoverPreview.hide()">Rewaya Majestic Resort</a></td>
                         <td class="price" data-sort-value="6983.0">6983 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/royal-regency-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Royal Regency Club')" onmouseout="_hoverPreview.hide()">Royal Regency Club</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/royal-regency-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Royal Regency Club')" onmouseout="_hoverPreview.hide()">Royal Regency Club</a></td>
                         <td class="price" data-sort-value="7052.0">7052 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/amarina-jannah-resort-aquapark.html" target="_blank" onmouseover="_hoverPreview.show(event,'Amarina Jannah Resort Aquapark')" onmouseout="_hoverPreview.hide()">Amarina Jannah Resort Aquapark</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/amarina-jannah-resort-aquapark.html" target="_blank" onmouseover="_hoverPreview.show(event,'Amarina Jannah Resort Aquapark')" onmouseout="_hoverPreview.hide()">Amarina Jannah Resort Aquapark</a></td>
                         <td class="price" data-sort-value="7057.0">7057 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="20.09.2025 - 28.09.2025">20.09.2025 - 28.09.2025</td>
                         <td data-sort-value="9 dni">9 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/safir-sharm-waterfalls-resort-ex-hilton-waterfalls-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)')" onmouseout="_hoverPreview.hide()">Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)</a></td>
-                        <td class="price" data-sort-value="7172.0">7172 PLN</td>
-                        <td class="delta down" data-sort-value="-3.4983853606027986">↓ -3.5%</td>
-                        <td data-sort-value="-3.4983853606027986">↓ -3.5%</td>
-                        <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/radisson-individuals-marina-port-ghalib-ex-sunrise-marina-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)')" onmouseout="_hoverPreview.hide()">Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)</a></td>
-                        <td class="price" data-sort-value="7207.0">7207 PLN</td>
-                        <td class="delta up" data-sort-value="0.6704847045676771">↑ +0.7%</td>
-                        <td data-sort-value="0.6704847045676771">↑ +0.7%</td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/radisson-individuals-marina-port-ghalib-ex-sunrise-marina-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)')" onmouseout="_hoverPreview.hide()">Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)</a></td>
+                        <td class="price" data-sort-value="7159.0">7159 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="28.09.2025 - 04.10.2025">28.09.2025 - 04.10.2025</td>
                         <td data-sort-value="7 dni">7 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/jaz-neo-naama-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Neo Naama Bay')" onmouseout="_hoverPreview.hide()">Jaz Neo Naama Bay</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/jaz-neo-naama-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Neo Naama Bay')" onmouseout="_hoverPreview.hide()">Jaz Neo Naama Bay</a></td>
                         <td class="price" data-sort-value="7207.0">7207 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/rehana-royal-beach-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Rehana Royal Beach Resort & Spa')" onmouseout="_hoverPreview.hide()">Rehana Royal Beach Resort & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/rehana-royal-beach-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Rehana Royal Beach Resort & Spa')" onmouseout="_hoverPreview.hide()">Rehana Royal Beach Resort & Spa</a></td>
                         <td class="price" data-sort-value="7259.0">7259 PLN</td>
                         <td class="delta up" data-sort-value="4.671953857245854">↑ +4.7%</td>
                         <td data-sort-value="4.671953857245854">↑ +4.7%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/seven-seas-jolie-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'Seven Seas Jolie Bay')" onmouseout="_hoverPreview.hide()">Seven Seas Jolie Bay</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/seven-seas-jolie-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'Seven Seas Jolie Bay')" onmouseout="_hoverPreview.hide()">Seven Seas Jolie Bay</a></td>
                         <td class="price" data-sort-value="7259.0">7259 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/the-cascades-golf-resort-spa-thalasso-ex-westin-soma-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)')" onmouseout="_hoverPreview.hide()">The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/the-cascades-golf-resort-spa-thalasso-ex-westin-soma-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)')" onmouseout="_hoverPreview.hide()">The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)</a></td>
                         <td class="price" data-sort-value="7259.0">7259 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/ecotel-dahab-bay-view-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ecotel Dahab Bay View Resort')" onmouseout="_hoverPreview.hide()">Ecotel Dahab Bay View Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/ecotel-dahab-bay-view-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Ecotel Dahab Bay View Resort')" onmouseout="_hoverPreview.hide()">Ecotel Dahab Bay View Resort</a></td>
                         <td class="price" data-sort-value="7317.0">7317 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/retac-qunay-dahab-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Retac Qunay Dahab Resort & Spa')" onmouseout="_hoverPreview.hide()">Retac Qunay Dahab Resort & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/retac-qunay-dahab-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Retac Qunay Dahab Resort & Spa')" onmouseout="_hoverPreview.hide()">Retac Qunay Dahab Resort & Spa</a></td>
                         <td class="price" data-sort-value="7322.0">7322 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/amc-royal-hotel-spa-ex-amc-azur-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'AMC Royal Hotel & Spa (ex. AMC Azur Resort)')" onmouseout="_hoverPreview.hide()">AMC Royal Hotel & Spa (ex. AMC Azur Resort)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/amc-royal-hotel-spa-ex-amc-azur-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'AMC Royal Hotel & Spa (ex. AMC Azur Resort)')" onmouseout="_hoverPreview.hide()">AMC Royal Hotel & Spa (ex. AMC Azur Resort)</a></td>
                         <td class="price" data-sort-value="7331.0">7331 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/marina-residence-suites-port-ghalib.html" target="_blank" onmouseover="_hoverPreview.show(event,'Marina Residence & Suites Port Ghalib')" onmouseout="_hoverPreview.hide()">Marina Residence & Suites Port Ghalib</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/marina-residence-suites-port-ghalib.html" target="_blank" onmouseover="_hoverPreview.show(event,'Marina Residence & Suites Port Ghalib')" onmouseout="_hoverPreview.hide()">Marina Residence & Suites Port Ghalib</a></td>
                         <td class="price" data-sort-value="7335.0">7335 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/sharm-dreams-vacation-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sharm Dreams Vacation Club')" onmouseout="_hoverPreview.hide()">Sharm Dreams Vacation Club</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sharm-dreams-vacation-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sharm Dreams Vacation Club')" onmouseout="_hoverPreview.hide()">Sharm Dreams Vacation Club</a></td>
                         <td class="price" data-sort-value="7376.0">7376 PLN</td>
                         <td class="delta up" data-sort-value="4.594441293250142">↑ +4.6%</td>
                         <td data-sort-value="4.594441293250142">↑ +4.6%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/sheraton-sharm-resort-villas-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sheraton Sharm Resort Villas & Spa')" onmouseout="_hoverPreview.hide()">Sheraton Sharm Resort Villas & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/safir-sharm-waterfalls-resort-ex-hilton-waterfalls-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)')" onmouseout="_hoverPreview.hide()">Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)</a></td>
+                        <td class="price" data-sort-value="7432.0">7432 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sheraton-sharm-resort-villas-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sheraton Sharm Resort Villas & Spa')" onmouseout="_hoverPreview.hide()">Sheraton Sharm Resort Villas & Spa</a></td>
                         <td class="price" data-sort-value="7492.0">7492 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/sharm-grand-plaza-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sharm Grand Plaza Resort')" onmouseout="_hoverPreview.hide()">Sharm Grand Plaza Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sharm-grand-plaza-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sharm Grand Plaza Resort')" onmouseout="_hoverPreview.hide()">Sharm Grand Plaza Resort</a></td>
                         <td class="price" data-sort-value="7507.0">7507 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/fantazia-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Fantazia Resort')" onmouseout="_hoverPreview.hide()">Fantazia Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/fantazia-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Fantazia Resort')" onmouseout="_hoverPreview.hide()">Fantazia Resort</a></td>
                         <td class="price" data-sort-value="7551.0">7551 PLN</td>
                         <td class="delta up" data-sort-value="1.7517854736558414">↑ +1.8%</td>
                         <td data-sort-value="1.7517854736558414">↑ +1.8%</td>
                         <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/creek-hotel-and-residences.html" target="_blank" onmouseover="_hoverPreview.show(event,'Creek Hotel and Residences')" onmouseout="_hoverPreview.hide()">Creek Hotel and Residences</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/creek-hotel-and-residences.html" target="_blank" onmouseover="_hoverPreview.show(event,'Creek Hotel and Residences')" onmouseout="_hoverPreview.hide()">Creek Hotel and Residences</a></td>
                         <td class="price" data-sort-value="7580.0">7580 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/parrotel-beach-resort-ex-radisson-blu.html" target="_blank" onmouseover="_hoverPreview.show(event,'Parrotel Beach Resort (ex. Radisson Blu)')" onmouseout="_hoverPreview.hide()">Parrotel Beach Resort (ex. Radisson Blu)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/parrotel-beach-resort-ex-radisson-blu.html" target="_blank" onmouseover="_hoverPreview.show(event,'Parrotel Beach Resort (ex. Radisson Blu)')" onmouseout="_hoverPreview.hide()">Parrotel Beach Resort (ex. Radisson Blu)</a></td>
                         <td class="price" data-sort-value="7596.0">7596 PLN</td>
                         <td class="delta up" data-sort-value="4.455445544554455">↑ +4.5%</td>
                         <td data-sort-value="4.455445544554455">↑ +4.5%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/charmillion-garden-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Charmillion Garden Aqua Park')" onmouseout="_hoverPreview.hide()">Charmillion Garden Aqua Park</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/charmillion-garden-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Charmillion Garden Aqua Park')" onmouseout="_hoverPreview.hide()">Charmillion Garden Aqua Park</a></td>
                         <td class="price" data-sort-value="7636.0">7636 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/sea-star-beau-rivage.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sea Star Beau Rivage')" onmouseout="_hoverPreview.hide()">Sea Star Beau Rivage</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sea-star-beau-rivage.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sea Star Beau Rivage')" onmouseout="_hoverPreview.hide()">Sea Star Beau Rivage</a></td>
                         <td class="price" data-sort-value="7679.0">7679 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="21.09.2025 - 27.09.2025">21.09.2025 - 27.09.2025</td>
                         <td data-sort-value="7 dni">7 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/jasmine-palace.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jasmine Palace')" onmouseout="_hoverPreview.hide()">Jasmine Palace</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/jasmine-palace.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jasmine Palace')" onmouseout="_hoverPreview.hide()">Jasmine Palace</a></td>
                         <td class="price" data-sort-value="7747.0">7747 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/aurora-oriental-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Aurora Oriental Resort')" onmouseout="_hoverPreview.hide()">Aurora Oriental Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/aurora-oriental-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Aurora Oriental Resort')" onmouseout="_hoverPreview.hide()">Aurora Oriental Resort</a></td>
                         <td class="price" data-sort-value="7781.0">7781 PLN</td>
                         <td class="delta up" data-sort-value="4.3449108220463994">↑ +4.3%</td>
                         <td data-sort-value="4.3449108220463994">↑ +4.3%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/jaz-neo-saraya-palms.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Neo Saraya Palms')" onmouseout="_hoverPreview.hide()">Jaz Neo Saraya Palms</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/jaz-neo-saraya-palms.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Neo Saraya Palms')" onmouseout="_hoverPreview.hide()">Jaz Neo Saraya Palms</a></td>
                         <td class="price" data-sort-value="7798.0">7798 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/stella-gardens-resort-spa-ex-stella-di-mare-gardens.html" target="_blank" onmouseover="_hoverPreview.show(event,'Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)')" onmouseout="_hoverPreview.hide()">Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/stella-gardens-resort-spa-ex-stella-di-mare-gardens.html" target="_blank" onmouseover="_hoverPreview.show(event,'Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)')" onmouseout="_hoverPreview.hide()">Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)</a></td>
                         <td class="price" data-sort-value="7834.0">7834 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/naama-bay-promenade-mountain-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Bay Promenade Mountain Resort')" onmouseout="_hoverPreview.hide()">Naama Bay Promenade Mountain Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/naama-bay-promenade-mountain-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Bay Promenade Mountain Resort')" onmouseout="_hoverPreview.hide()">Naama Bay Promenade Mountain Resort</a></td>
                         <td class="price" data-sort-value="7876.0">7876 PLN</td>
                         <td class="delta up" data-sort-value="6.489994591671174">↑ +6.5%</td>
                         <td data-sort-value="6.489994591671174">↑ +6.5%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/movenpick-waterpark-resort-spa-soma-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'Movenpick Waterpark Resort & Spa Soma Bay')" onmouseout="_hoverPreview.hide()">Movenpick Waterpark Resort & Spa Soma Bay</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/movenpick-waterpark-resort-spa-soma-bay.html" target="_blank" onmouseover="_hoverPreview.show(event,'Movenpick Waterpark Resort & Spa Soma Bay')" onmouseout="_hoverPreview.hide()">Movenpick Waterpark Resort & Spa Soma Bay</a></td>
                         <td class="price" data-sort-value="7947.0">7947 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/naama-bay-hotel-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Bay Hotel & Resort')" onmouseout="_hoverPreview.hide()">Naama Bay Hotel & Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/naama-bay-hotel-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Bay Hotel & Resort')" onmouseout="_hoverPreview.hide()">Naama Bay Hotel & Resort</a></td>
                         <td class="price" data-sort-value="8001.0">8001 PLN</td>
                         <td class="delta up" data-sort-value="4.220398593200469">↑ +4.2%</td>
                         <td data-sort-value="4.220398593200469">↑ +4.2%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/serenity-alma-heights-ex-serenity-fun-city.html" target="_blank" onmouseover="_hoverPreview.show(event,'Serenity Alma Heights (ex. Serenity Fun City)')" onmouseout="_hoverPreview.hide()">Serenity Alma Heights (ex. Serenity Fun City)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/serenity-alma-heights-ex-serenity-fun-city.html" target="_blank" onmouseover="_hoverPreview.show(event,'Serenity Alma Heights (ex. Serenity Fun City)')" onmouseout="_hoverPreview.hide()">Serenity Alma Heights (ex. Serenity Fun City)</a></td>
                         <td class="price" data-sort-value="8004.0">8004 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="28.09.2025 - 04.10.2025">28.09.2025 - 04.10.2025</td>
                         <td data-sort-value="7 dni">7 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/jaz-mirabel-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Mirabel Club')" onmouseout="_hoverPreview.hide()">Jaz Mirabel Club</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/jaz-mirabel-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Mirabel Club')" onmouseout="_hoverPreview.hide()">Jaz Mirabel Club</a></td>
                         <td class="price" data-sort-value="8007.0">8007 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/concorde-el-salam-sport.html" target="_blank" onmouseover="_hoverPreview.show(event,'Concorde El Salam Sport')" onmouseout="_hoverPreview.hide()">Concorde El Salam Sport</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/concorde-el-salam-sport.html" target="_blank" onmouseover="_hoverPreview.show(event,'Concorde El Salam Sport')" onmouseout="_hoverPreview.hide()">Concorde El Salam Sport</a></td>
                         <td class="price" data-sort-value="8037.0">8037 PLN</td>
                         <td class="delta up" data-sort-value="4.200700116686114">↑ +4.2%</td>
                         <td data-sort-value="4.200700116686114">↑ +4.2%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/pickalbatros-laguna-club-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Pickalbatros Laguna Club Resort')" onmouseout="_hoverPreview.hide()">Pickalbatros Laguna Club Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/pickalbatros-laguna-club-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Pickalbatros Laguna Club Resort')" onmouseout="_hoverPreview.hide()">Pickalbatros Laguna Club Resort</a></td>
                         <td class="price" data-sort-value="8056.0">8056 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/pickalbatros-luxury-suites.html" target="_blank" onmouseover="_hoverPreview.show(event,'Pickalbatros Luxury Suites')" onmouseout="_hoverPreview.hide()">Pickalbatros Luxury Suites</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/pickalbatros-luxury-suites.html" target="_blank" onmouseover="_hoverPreview.show(event,'Pickalbatros Luxury Suites')" onmouseout="_hoverPreview.hide()">Pickalbatros Luxury Suites</a></td>
                         <td class="price" data-sort-value="8142.0">8142 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/pickalbatros-golf-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Pickalbatros Golf Beach Resort')" onmouseout="_hoverPreview.hide()">Pickalbatros Golf Beach Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/pickalbatros-golf-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Pickalbatros Golf Beach Resort')" onmouseout="_hoverPreview.hide()">Pickalbatros Golf Beach Resort</a></td>
                         <td class="price" data-sort-value="8142.0">8142 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/hilton-plaza-hurghada.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hilton Plaza (Hurghada)')" onmouseout="_hoverPreview.hide()">Hilton Plaza (Hurghada)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/hilton-plaza-hurghada.html" target="_blank" onmouseover="_hoverPreview.show(event,'Hilton Plaza (Hurghada)')" onmouseout="_hoverPreview.hide()">Hilton Plaza (Hurghada)</a></td>
                         <td class="price" data-sort-value="8155.0">8155 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/sirena-beach-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sirena Beach Resort & Spa')" onmouseout="_hoverPreview.hide()">Sirena Beach Resort & Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/sirena-beach-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Sirena Beach Resort & Spa')" onmouseout="_hoverPreview.hide()">Sirena Beach Resort & Spa</a></td>
                         <td class="price" data-sort-value="8177.0">8177 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/safir-dahab-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Safir Dahab Resort')" onmouseout="_hoverPreview.hide()">Safir Dahab Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/safir-dahab-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Safir Dahab Resort')" onmouseout="_hoverPreview.hide()">Safir Dahab Resort</a></td>
                         <td class="price" data-sort-value="8180.0">8180 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/charmillion-club-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Charmillion Club Aqua Park')" onmouseout="_hoverPreview.hide()">Charmillion Club Aqua Park</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/charmillion-club-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Charmillion Club Aqua Park')" onmouseout="_hoverPreview.hide()">Charmillion Club Aqua Park</a></td>
                         <td class="price" data-sort-value="8203.0">8203 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/amarina-queen-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Amarina Queen Resort')" onmouseout="_hoverPreview.hide()">Amarina Queen Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/amarina-queen-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Amarina Queen Resort')" onmouseout="_hoverPreview.hide()">Amarina Queen Resort</a></td>
                         <td class="price" data-sort-value="8215.0">8215 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="27.09.2025 - 05.10.2025">27.09.2025 - 05.10.2025</td>
                         <td data-sort-value="9 dni">9 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/diamond-beach-by-pearl-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Diamond Beach by Pearl Resort')" onmouseout="_hoverPreview.hide()">Diamond Beach by Pearl Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/radisson-blu-resort-el-quseir.html" target="_blank" onmouseover="_hoverPreview.show(event,'Radisson Blu Resort (El Quseir)')" onmouseout="_hoverPreview.hide()">Radisson Blu Resort (El Quseir)</a></td>
+                        <td class="price" data-sort-value="8240.0">8240 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/diamond-beach-by-pearl-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Diamond Beach by Pearl Resort')" onmouseout="_hoverPreview.hide()">Diamond Beach by Pearl Resort</a></td>
                         <td class="price" data-sort-value="8240.0">8240 PLN</td>
                         <td class="delta up" data-sort-value="0.9927687216570659">↑ +1.0%</td>
                         <td data-sort-value="0.9927687216570659">↑ +1.0%</td>
                         <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/radisson-blu-resort-el-quseir.html" target="_blank" onmouseover="_hoverPreview.show(event,'Radisson Blu Resort (El Quseir)')" onmouseout="_hoverPreview.hide()">Radisson Blu Resort (El Quseir)</a></td>
-                        <td class="price" data-sort-value="8240.0">8240 PLN</td>
-                        <td class="delta flat" data-sort-value="0">—</td>
-                        <td data-sort-value="0.0">→ 0.0%</td>
-                        <td data-sort-value="22.09.2025 - 29.09.2025">22.09.2025 - 29.09.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/el-kasr-sahl-hasheesh.html" target="_blank" onmouseover="_hoverPreview.show(event,'El Kasr Sahl Hasheesh')" onmouseout="_hoverPreview.hide()">El Kasr Sahl Hasheesh</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/el-kasr-sahl-hasheesh.html" target="_blank" onmouseover="_hoverPreview.show(event,'El Kasr Sahl Hasheesh')" onmouseout="_hoverPreview.hide()">El Kasr Sahl Hasheesh</a></td>
                         <td class="price" data-sort-value="8284.0">8284 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="21.09.2025 - 02.10.2025">21.09.2025 - 02.10.2025</td>
                         <td data-sort-value="12 dni">12 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/jaz-mirabel-park-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Mirabel Park & Club')" onmouseout="_hoverPreview.hide()">Jaz Mirabel Park & Club</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/jaz-mirabel-park-club.html" target="_blank" onmouseover="_hoverPreview.show(event,'Jaz Mirabel Park & Club')" onmouseout="_hoverPreview.hide()">Jaz Mirabel Park & Club</a></td>
                         <td class="price" data-sort-value="8330.0">8330 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/titanic-beach-spa-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titanic Beach Spa & Aqua Park')" onmouseout="_hoverPreview.hide()">Titanic Beach Spa & Aqua Park</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/royal-brayka-beach-resort-ex-zee-brayka.html" target="_blank" onmouseover="_hoverPreview.show(event,'Royal Brayka Beach Resort (ex Zee Brayka)')" onmouseout="_hoverPreview.hide()">Royal Brayka Beach Resort (ex Zee Brayka)</a></td>
+                        <td class="price" data-sort-value="8347.0">8347 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/novotel-marsa-alam.html" target="_blank" onmouseover="_hoverPreview.show(event,'Novotel Marsa Alam')" onmouseout="_hoverPreview.hide()">Novotel Marsa Alam</a></td>
+                        <td class="price" data-sort-value="8347.0">8347 PLN</td>
+                        <td class="delta flat" data-sort-value="0">—</td>
+                        <td data-sort-value="0.0">→ 0.0%</td>
+                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
+                        <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
+                    </tr>
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/titanic-beach-spa-aqua-park.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titanic Beach Spa & Aqua Park')" onmouseout="_hoverPreview.hide()">Titanic Beach Spa & Aqua Park</a></td>
                         <td class="price" data-sort-value="8347.0">8347 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/novotel-marsa-alam.html" target="_blank" onmouseover="_hoverPreview.show(event,'Novotel Marsa Alam')" onmouseout="_hoverPreview.hide()">Novotel Marsa Alam</a></td>
-                        <td class="price" data-sort-value="8347.0">8347 PLN</td>
-                        <td class="delta flat" data-sort-value="0">—</td>
-                        <td data-sort-value="0.0">→ 0.0%</td>
-                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/royal-brayka-beach-resort-ex-zee-brayka.html" target="_blank" onmouseover="_hoverPreview.show(event,'Royal Brayka Beach Resort (ex Zee Brayka)')" onmouseout="_hoverPreview.hide()">Royal Brayka Beach Resort (ex Zee Brayka)</a></td>
-                        <td class="price" data-sort-value="8347.0">8347 PLN</td>
-                        <td class="delta flat" data-sort-value="0">—</td>
-                        <td data-sort-value="0.0">→ 0.0%</td>
-                        <td data-sort-value="27.09.2025 - 04.10.2025">27.09.2025 - 04.10.2025</td>
-                        <td data-sort-value="8 dni">8 dni</td>
-                    </tr>
-                    <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/amphoras-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Amphoras Beach')" onmouseout="_hoverPreview.hide()">Amphoras Beach</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/amphoras-beach.html" target="_blank" onmouseover="_hoverPreview.show(event,'Amphoras Beach')" onmouseout="_hoverPreview.hide()">Amphoras Beach</a></td>
                         <td class="price" data-sort-value="8400.0">8400 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/monte-carlo-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Monte Carlo Resort Spa')" onmouseout="_hoverPreview.hide()">Monte Carlo Resort Spa</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/monte-carlo-resort-spa.html" target="_blank" onmouseover="_hoverPreview.show(event,'Monte Carlo Resort Spa')" onmouseout="_hoverPreview.hide()">Monte Carlo Resort Spa</a></td>
                         <td class="price" data-sort-value="8507.0">8507 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="23.09.2025 - 30.09.2025">23.09.2025 - 30.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/coral-sea-holiday-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Coral Sea Holiday Resort')" onmouseout="_hoverPreview.hide()">Coral Sea Holiday Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/coral-sea-holiday-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Coral Sea Holiday Resort')" onmouseout="_hoverPreview.hide()">Coral Sea Holiday Resort</a></td>
                         <td class="price" data-sort-value="8536.0">8536 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/casa-mare-resort-ex-royal-tulip-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Casa Mare Resort (ex. Royal Tulip Beach Resort)')" onmouseout="_hoverPreview.hide()">Casa Mare Resort (ex. Royal Tulip Beach Resort)</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/casa-mare-resort-ex-royal-tulip-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Casa Mare Resort (ex. Royal Tulip Beach Resort)')" onmouseout="_hoverPreview.hide()">Casa Mare Resort (ex. Royal Tulip Beach Resort)</a></td>
                         <td class="price" data-sort-value="8547.0">8547 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="20.09.2025 - 27.09.2025">20.09.2025 - 27.09.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/marriott-hurghada-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Marriott Hurghada Beach Resort')" onmouseout="_hoverPreview.hide()">Marriott Hurghada Beach Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/marriott-hurghada-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Marriott Hurghada Beach Resort')" onmouseout="_hoverPreview.hide()">Marriott Hurghada Beach Resort</a></td>
                         <td class="price" data-sort-value="8577.0">8577 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/titanic-palace-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titanic Palace Resort')" onmouseout="_hoverPreview.hide()">Titanic Palace Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/titanic-palace-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Titanic Palace Resort')" onmouseout="_hoverPreview.hide()">Titanic Palace Resort</a></td>
                         <td class="price" data-sort-value="8581.0">8581 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="28.09.2025 - 04.10.2025">28.09.2025 - 04.10.2025</td>
                         <td data-sort-value="7 dni">7 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                     <tr>
-                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/egypt/naama-bay-promenade-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Bay Promenade Beach Resort')" onmouseout="_hoverPreview.hide()">Naama Bay Promenade Beach Resort</a></td>
+                        <td class="hotel-name"><a class="open-chart-link" href="hotel-charts/naama-bay-promenade-beach-resort.html" target="_blank" onmouseover="_hoverPreview.show(event,'Naama Bay Promenade Beach Resort')" onmouseout="_hoverPreview.hide()">Naama Bay Promenade Beach Resort</a></td>
                         <td class="price" data-sort-value="8596.0">8596 PLN</td>
                         <td class="delta flat" data-sort-value="0">—</td>
                         <td data-sort-value="0.0">→ 0.0%</td>
                         <td data-sort-value="25.09.2025 - 02.10.2025">25.09.2025 - 02.10.2025</td>
                         <td data-sort-value="8 dni">8 dni</td>
+                        <td class="offer-link-cell">—</td>
                     </tr>
                 </tbody>
             </table>
@@ -974,8 +1042,8 @@
 
     <script>
       (function(){
-        const X = ["2025-09-07 08:00", "2025-09-07 09:00", "2025-09-07 10:00", "2025-09-07 14:00", "2025-09-07 16:00", "2025-09-07 17:00", "2025-09-07 18:00"];
-        const Y = [6420.8, 6420.8, 6217.0, 6468.1, 6468.1, 6150.6, 6033.8];
+        const X = ["2025-09-07 08:00", "2025-09-07 09:00", "2025-09-07 10:00", "2025-09-07 14:00", "2025-09-07 16:00", "2025-09-07 17:00", "2025-09-07 18:00", "2025-09-07 19:00", "2025-09-07 20:00"];
+        const Y = [6420.8, 6420.8, 6217.0, 6468.1, 6468.1, 6150.6, 6436.3, 6557.2, 6468.1];
         if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
           const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
           const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
