@@ -967,7 +967,10 @@ class TravelPriceMonitor:
     def check_price_alerts(self):
         """Проверяет изменения цен и создает алерты"""
         try:
-            alert_manager = PriceAlertManager()
+            # Создаем региональный файл алертов на основе data_file
+            alerts_file = self.data_file.replace('.csv', '_alerts.json')
+            alert_manager = PriceAlertManager(data_file=os.path.join(self.config['data_dir'], self.data_file), 
+                                            alerts_file=os.path.join(self.config['data_dir'], alerts_file))
             
             if alert_manager.df.empty:
                 logger.warning("Нет данных для проверки алертов")
