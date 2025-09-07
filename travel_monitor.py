@@ -11,7 +11,7 @@ import json
 import csv
 import os
 import sys
-from datetime import datetime
+from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -383,7 +383,8 @@ class TravelPriceMonitor:
                 'dates': dates[:50],
                 'duration': duration[:30],
                 'rating': rating[:20],
-                'scraped_at': datetime.now().isoformat(),
+                # Записываем временную метку в UTC с таймзоной, чтобы унифицировать время между локальными и CI-запусками
+                'scraped_at': datetime.now(timezone.utc).isoformat(),
                 'url': self.config['url'],
                 'image_url': image_url or ""
             }
