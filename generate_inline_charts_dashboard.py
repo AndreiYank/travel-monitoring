@@ -7,6 +7,7 @@ import pandas as pd
 import json
 from datetime import datetime, timedelta
 import os
+import re
 
 def generate_inline_charts_dashboard():
     """Генерирует дашборд с встроенными графиками"""
@@ -27,54 +28,54 @@ def generate_inline_charts_dashboard():
     min_price = df['price'].min()
     max_price = df['price'].max()
     
-    # Получаем все отели, отсортированные по цене
-    all_hotels = df.groupby('hotel_name').agg({
-        'price': 'min',
-        'dates': 'first',
-        'duration': 'first',
-        'scraped_at': 'max'
-    }).reset_index()
-    
-    all_hotels = all_hotels.sort_values('price').reset_index(drop=True)
+    # Получаем актуальные цены по каждому отелю (последнее наблюдение)
+    df_sorted_all = df.sort_values(['hotel_name', 'scraped_at'])
+    latest_rows = []
+    for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
+        last = grp.iloc[-1]
+        latest_rows.append({
+            'hotel_name': hotel_name,
+            'price': float(last['price']),
+            'dates': last.get('dates', None),
+            'duration': last.get('duration', None),
+            'scraped_at': last['scraped_at']
+        })
+    all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     
     # Анализируем изменения цен за последние 48 часов
     now = datetime.now()
     cutoff_time = now - timedelta(hours=48)
-    
-    # Группируем по отелям и времени для анализа изменений
-    hotel_changes = []
-    
-    for hotel_name in df['hotel_name'].unique():
-        hotel_data = df[df['hotel_name'] == hotel_name].sort_values('scraped_at')
-        
-        if len(hotel_data) >= 2:
-            # Берем последние 2 записи
-            recent_data = hotel_data.tail(2)
-            
-            if len(recent_data) == 2:
-                old_price = recent_data.iloc[0]['price']
-                new_price = recent_data.iloc[1]['price']
-                change = new_price - old_price
-                change_percent = (change / old_price) * 100
-                
-                hotel_changes.append({
-                    'hotel_name': hotel_name,
-                    'old_price': old_price,
-                    'new_price': new_price,
-                    'change': change,
-                    'change_percent': change_percent,
-                    'timestamp': recent_data.iloc[1]['scraped_at']
-                })
-    
-    # Сортируем по изменению
-    hotel_changes.sort(key=lambda x: x['change'])
-    
-    # Самые подешевевшие (первые 5)
-    cheapest_changes = hotel_changes[:5]
-    
-    # Самые подорожавшие (последние 5)
-    expensive_changes = hotel_changes[-5:]
-    expensive_changes.reverse()
+
+    hotel_changes: list[dict] = []
+    df_sorted = df.sort_values(['hotel_name', 'scraped_at'])
+    for hotel_name, grp in df_sorted.groupby('hotel_name'):
+        grp = grp.sort_values('scraped_at')
+        latest_row = grp.iloc[-1]
+        latest_time = latest_row['scraped_at']
+        baseline_candidates = grp[grp['scraped_at'] <= cutoff_time]
+        if len(baseline_candidates) == 0:
+            continue  # недостаточно истории для 48ч сравнения
+        baseline_row = baseline_candidates.iloc[-1]
+        latest_price = float(latest_row['price'])
+        baseline_price = float(baseline_row['price'])
+        if baseline_price == 0:
+            continue
+        change = latest_price - baseline_price
+        if change == 0:
+            continue  # пропускаем нулевые изменения
+        change_percent = (change / baseline_price) * 100.0
+        hotel_changes.append({
+            'hotel_name': hotel_name,
+            'old_price': baseline_price,
+            'new_price': latest_price,
+            'change': change,
+            'change_percent': change_percent,
+            'timestamp': str(latest_time)
+        })
+
+    # Разделяем на подешевевшие и подорожавшие
+    decreases = sorted([h for h in hotel_changes if h['change'] < 0], key=lambda x: x['change'])[:5]
+    increases = sorted([h for h in hotel_changes if h['change'] > 0], key=lambda x: x['change'], reverse=True)[:5]
     
     # Загружаем историю алертов (если есть)
     alerts = []
@@ -96,14 +97,112 @@ def generate_inline_charts_dashboard():
 
     alerts.sort(key=lambda a: parse_iso(a.get('timestamp') or a.get('time') or ''), reverse=True)
 
+    # Функция для слуг-имени файла по названию отеля
+    def slugify(text: str) -> str:
+        text = text.lower().strip()
+        text = re.sub(r"[^a-z0-9]+", "-", text)
+        text = re.sub(r"-+", "-", text).strip('-')
+        return text or "hotel"
+
+    # Создаём директорию для страниц графиков
+    charts_dir = os.path.join('hotel-charts')
+    os.makedirs(charts_dir, exist_ok=True)
+
+    # Генерируем страницу с графиком для каждого отеля
+    for hotel_name in sorted(df['hotel_name'].unique()):
+        hotel_ts = df[df['hotel_name'] == hotel_name].sort_values('scraped_at')
+        x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at'].tolist()]
+        y_values = [float(p) for p in hotel_ts['price'].tolist()]
+
+        hotel_slug = slugify(hotel_name)
+        hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
+
+        chart_html = f"""<!DOCTYPE html>
+<html lang=\"ru\">
+<head>
+    <meta charset=\"UTF-8\">
+    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <title>График цен — {hotel_name}</title>
+    <script src=\"https://cdn.plot.ly/plotly-latest.min.js\"></script>
+    <style>
+        body {{ font-family: Arial, sans-serif; margin: 20px; }}
+        .back {{ margin-bottom: 10px; }}
+        #chart {{ height: 520px; }}
+    </style>
+<head>
+<body>
+    <div class=\"back\"><a href=\"../inline.html\">← Назад к дашборду</a></div>
+    <h2>График цен: {hotel_name}</h2>
+    <div id=\"chart\"></div>
+    <script>
+      const x = {json.dumps(x_values, ensure_ascii=False)};
+      const y = {json.dumps(y_values, ensure_ascii=False)};
+      const trace = {{
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: {{ color: '#2E86AB', width: 3 }},
+        marker: {{ size: 8 }}
+      }};
+      const layout = {{
+        title: 'История цен',
+        xaxis: {{ title: 'Время' }},
+        yaxis: {{ title: 'Цена (PLN)' }}
+      }};
+      Plotly.newPlot('chart', [trace], layout);
+    </script>
+  </body>
+</html>"""
+
+        with open(hotel_html_path, 'w', encoding='utf-8') as f:
+            f.write(chart_html)
+
     # HTML шаблон
+    # Готовим HTML блок изменений, выводим только если есть хотя бы один список
+    changes_html = ""
+    if decreases or increases:
+        changes_html += """
+        <div class=\"changes-section\">"""
+        if decreases:
+            changes_html += """
+            <div class=\"changes-block\">
+                <h3>📉 Наиболее подешевевшие (48ч)</h3>"""
+            for change in decreases:
+                changes_html += f"""
+                <div class=\"change-item change-decrease\">
+                    <div>
+                        <div class=\"hotel-name\">{change['hotel_name']}</div>
+                        <div class=\"change-percent\">{change['change']:+.0f} PLN ({change['change_percent']:+.1f}%)</div>
+                    </div>
+                    <div class=\"change-price\">{change['old_price']:.0f} → {change['new_price']:.0f} PLN</div>
+                </div>"""
+            changes_html += """
+            </div>"""
+        if increases:
+            changes_html += """
+            <div class=\"changes-block\">
+                <h3>📈 Наиболее подорожавшие (48ч)</h3>"""
+            for change in increases:
+                changes_html += f"""
+                <div class=\"change-item change-increase\">
+                    <div>
+                        <div class=\"hotel-name\">{change['hotel_name']}</div>
+                        <div class=\"change-percent\">{change['change']:+.0f} PLN ({change['change_percent']:+.1f}%)</div>
+                    </div>
+                    <div class=\"change-price\">{change['old_price']:.0f} → {change['new_price']:.0f} PLN</div>
+                </div>"""
+            changes_html += """
+            </div>"""
+        changes_html += """
+        </div>"""
+
     html_template = f"""<!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Price Monitor Dashboard</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <title>Travel Price Monitor • Расширенный дашборд</title>
     <style>
         body {{
             font-family: Arial, sans-serif;
@@ -233,33 +332,7 @@ def generate_inline_charts_dashboard():
             font-weight: bold;
             color: #28a745;
         }}
-        .chart-section {{
-            margin: 30px 0;
-            padding: 20px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            display: none;
-        }}
-        .chart-section.active {{
-            display: block;
-        }}
-        .chart-header {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-        }}
-        .close-chart {{
-            background: #dc3545;
-            color: white;
-            border: none;
-            padding: 8px 16px;
-            border-radius: 4px;
-            cursor: pointer;
-        }}
-        .close-chart:hover {{
-            background: #c82333;
-        }}
+        .open-chart-link {{ color: #2E86AB; text-decoration: underline; }}
         .footer {{
             text-align: center;
             margin-top: 30px;
@@ -299,40 +372,7 @@ def generate_inline_charts_dashboard():
             </div>
         </div>
         
-        <div class="changes-section">
-            <div class="changes-block">
-                <h3>📉 Наиболее подешевевшие (48ч)</h3>"""
-
-    # Добавляем подешевевшие отели
-    for change in cheapest_changes:
-        html_template += f"""
-                <div class="change-item change-decrease">
-                    <div>
-                        <div class="hotel-name">{change['hotel_name']}</div>
-                        <div class="change-percent">{change['change']:+.0f} PLN ({change['change_percent']:+.1f}%)</div>
-                    </div>
-                    <div class="change-price">{change['old_price']:.0f} → {change['new_price']:.0f} PLN</div>
-                </div>"""
-
-    html_template += """
-            </div>
-            <div class="changes-block">
-                <h3>📈 Наиболее подорожавшие (48ч)</h3>"""
-
-    # Добавляем подорожавшие отели
-    for change in expensive_changes:
-        html_template += f"""
-                <div class="change-item change-increase">
-                    <div>
-                        <div class="hotel-name">{change['hotel_name']}</div>
-                        <div class="change-percent">{change['change']:+.0f} PLN ({change['change_percent']:+.1f}%)</div>
-                    </div>
-                    <div class="change-price">{change['old_price']:.0f} → {change['new_price']:.0f} PLN</div>
-                </div>"""
-
-    html_template += f"""
-            </div>
-        </div>
+        {changes_html}
         
         <div class="alerts-section">
             <h3>🚨 История алертов</h3>
@@ -373,12 +413,13 @@ def generate_inline_charts_dashboard():
         </div>
 
         <div class="hotels-section">
-            <h3>🏨 Все отели (отсортированы по цене) - кликните для графика</h3>
+            <h3>🏨 Все отели (отсортированы по цене) • график откроется на отдельной странице</h3>
             <table class="hotels-table">
                 <thead>
                     <tr>
                         <th>Отель</th>
                         <th>Цена</th>
+                        <th>График</th>
                         <th>Даты</th>
                         <th>Длительность</th>
                     </tr>
@@ -392,13 +433,13 @@ def generate_inline_charts_dashboard():
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '20-09-2025 - 04-10-2025'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '6-15 дней'
         
-        # Экранируем кавычки
-        escaped_hotel_name = hotel_name.replace("'", "\\'")
-        
+        hotel_slug = slugify(hotel_name)
+        chart_href = f"hotel-charts/{hotel_slug}.html"
         html_template += f"""
-                    <tr onclick="showChart('{escaped_hotel_name}')">
-                        <td class="hotel-name">{hotel_name}</td>
+                    <tr>
+                        <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">{hotel_name}</a></td>
                         <td class="price">{price:.0f} PLN</td>
+                        <td><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">Открыть</a></td>
                         <td>{dates}</td>
                         <td>{duration}</td>
                     </tr>"""
@@ -409,95 +450,10 @@ def generate_inline_charts_dashboard():
             </table>
         </div>
         
-        <!-- Секция для графика отеля -->
-        <div id="hotelChartSection" class="chart-section">
-            <div class="chart-header">
-                <h3 id="chartTitle">График цены отеля</h3>
-                <button class="close-chart" onclick="hideChart()">Закрыть график</button>
-            </div>
-            <div id="hotelChart" style="height: 500px;"></div>
-        </div>
-        
         <div class="footer">
             <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
         </div>
     </div>
-
-    <script>
-        // Определяем функции в глобальной области видимости
-        function showChart(hotelName) {{
-            console.log('Showing chart for:', hotelName);
-            
-            // Проверяем, что Plotly загружен
-            if (typeof Plotly === 'undefined') {{
-                console.error('Plotly not loaded!');
-                alert('Ошибка: Plotly не загружен');
-                return;
-            }}
-            
-            // Обновляем заголовок
-            document.getElementById('chartTitle').textContent = 'График цены: ' + hotelName;
-            
-            // Показываем секцию с графиком
-            document.getElementById('hotelChartSection').classList.add('active');
-            
-            // Генерируем данные для графика отеля
-            const basePrice = """ + str(avg_price) + """;
-            const hotelPrices = [];
-            
-            // Создаем 7 точек данных с реалистичными вариациями
-            for (let i = 0; i < 7; i++) {{
-                const variation = (Math.random() - 0.5) * 300; // ±150 PLN вариация
-                const trend = (i - 3) * 20; // Небольшой тренд
-                const price = basePrice + variation + trend;
-                const time = new Date(Date.now() - (6-i) * 4 * 60 * 60 * 1000); // Последние 24 часа
-                
-                hotelPrices.push({{
-                    x: time.toISOString().slice(0, 16).replace('T', ' '),
-                    y: Math.round(price)
-                }});
-            }}
-            
-            // Сортируем по времени
-            hotelPrices.sort((a, b) => new Date(a.x) - new Date(b.x));
-            
-            const trace = {{
-                x: hotelPrices.map(d => d.x),
-                y: hotelPrices.map(d => d.y),
-                type: 'scatter',
-                mode: 'lines+markers',
-                name: hotelName,
-                line: {{color: '#2E86AB', width: 3}},
-                marker: {{size: 10, color: '#2E86AB'}}
-            }};
-            
-            const layout = {{
-                title: 'История цен: ' + hotelName,
-                xaxis: {{title: 'Время'}},
-                yaxis: {{title: 'Цена (PLN)'}},
-                hovermode: 'closest',
-                showlegend: false
-            }};
-            
-            Plotly.newPlot('hotelChart', [trace], layout);
-            
-            // Прокручиваем к графику
-            document.getElementById('hotelChartSection').scrollIntoView({{ behavior: 'smooth' }});
-        }}
-        
-        // Функция скрытия графика
-        function hideChart() {{
-            document.getElementById('hotelChartSection').classList.remove('active');
-        }}
-        
-        // Проверяем загрузку Plotly после загрузки страницы
-        window.addEventListener('load', function() {{
-            console.log('Plotly loaded:', typeof Plotly !== 'undefined');
-            if (typeof Plotly === 'undefined') {{
-                console.error('Plotly not loaded!');
-            }}
-        }});
-    </script>
 </body>
 </html>"""
 
