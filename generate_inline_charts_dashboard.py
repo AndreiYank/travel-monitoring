@@ -172,6 +172,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_slug = slugify(hotel_name)
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
 
+        # Определяем корректную ссылку "Назад к дашборду" в зависимости от поддиректории
+        if charts_subdir.rstrip('/').endswith('greece'):
+            back_target = 'index_greece.html'
+        elif charts_subdir.rstrip('/').endswith('egypt'):
+            back_target = 'index_egypt.html'
+        else:
+            back_target = 'index.html'
+        back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
+
         chart_html = f"""<!DOCTYPE html>
 <html lang=\"ru\">
 <head>
@@ -186,7 +195,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     </style>
 <head>
 <body>
-    <div class=\"back\"><a href=\"../inline.html\">← Назад к дашборду</a></div>
+    <div class=\"back\"><a href=\"{back_href}\">← Назад к дашборду</a></div>
     <h2>График цен: {hotel_name}</h2>
     <div id=\"chart\"></div>
     <script>
@@ -554,7 +563,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             since_display = f"{arrow2} {sign2}{since_pct:.1f}%"
 
         hotel_slug = slugify(hotel_name)
-        chart_href = f"hotel-charts/{hotel_slug}.html"
+        # Строим ссылку на страницу графика, учитывая поддиректорию
+        if charts_subdir:
+            chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
+        else:
+            chart_href = f"hotel-charts/{hotel_slug}.html"
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
