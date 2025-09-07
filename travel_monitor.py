@@ -129,14 +129,14 @@ class TravelPriceMonitor:
                     max_price_on_page = 0
                     
                     for i in range(len(offers_data)):
-                    try:
-                        element = offers_data[i]
-                        offer_data = await self.extract_offer_data(element, i)
-                        if offer_data and offer_data.get('price', 0) > 0:
+                        try:
+                            element = offers_data[i]
+                            offer_data = await self.extract_offer_data(element, i)
+                            if offer_data and offer_data.get('price', 0) > 0:
                                 page_offers.append(offer_data)
                                 max_price_on_page = max(max_price_on_page, offer_data['price'])
-                    except Exception as e:
-                        logger.warning(f"Ошибка парсинга предложения {i}: {e}")
+                        except Exception as e:
+                            logger.warning(f"Ошибка парсинга предложения {i}: {e}")
                         continue
                 
                     if page_offers:
@@ -973,25 +973,25 @@ class TravelPriceMonitor:
                 logger.warning("Нет данных для проверки алертов")
                 return
             
-            # Создаем отчет об алертах
-            alert_manager.save_alert_report(threshold_percent=5.0)
+            # Сканируем всю базу данных на изменения >= 4%
+            all_alerts = alert_manager.scan_all_price_changes(threshold_percent=4.0)
             
-            # Получаем топ отелей с изменениями цен
-            top_hotels = alert_manager.get_top_cheap_hotels_with_alerts(15)
+            # Создаем отчет об алертах
+            alert_manager.save_alert_report(threshold_percent=4.0)
             
             # Логируем важные изменения
-            price_drops = [h for h in top_hotels if h['price_change'] < 0]
-            price_increases = [h for h in top_hotels if h['price_change'] > 0]
+            price_drops = [a for a in all_alerts if a['price_change'] < 0]
+            price_increases = [a for a in all_alerts if a['price_change'] > 0]
             
             if price_drops:
-                logger.info(f"🚨 Обнаружено {len(price_drops)} снижений цен!")
-                for hotel in price_drops[:5]:  # Показываем топ-5 снижений
-                    logger.info(f"📉 {hotel['hotel_name'][:50]} - {hotel['price_change']:+.0f} PLN ({hotel['price_change_pct']:+.1f}%)")
+                logger.info(f"🚨 Обнаружено {len(price_drops)} снижений цен >= 4%!")
+                for alert in price_drops[:5]:  # Показываем топ-5 снижений
+                    logger.info(f"📉 {alert['hotel_name'][:50]} - {alert['price_change']:+.0f} PLN ({alert['price_change_pct']:+.1f}%)")
             
             if price_increases:
-                logger.info(f"📈 Обнаружено {len(price_increases)} повышений цен")
-                for hotel in price_increases[:3]:  # Показываем топ-3 повышения
-                    logger.info(f"📈 {hotel['hotel_name'][:50]} - {hotel['price_change']:+.0f} PLN ({hotel['price_change_pct']:+.1f}%)")
+                logger.info(f"📈 Обнаружено {len(price_increases)} повышений цен >= 4%")
+                for alert in price_increases[:3]:  # Показываем топ-3 повышения
+                    logger.info(f"📈 {alert['hotel_name'][:50]} - {alert['price_change']:+.0f} PLN ({alert['price_change_pct']:+.1f}%)")
             
             logger.info("✅ Проверка алертов завершена")
             

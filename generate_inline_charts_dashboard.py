@@ -5,7 +5,7 @@
 
 import pandas as pd
 import json
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import os
 import re
 
@@ -155,18 +155,29 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         try:
             with open(alerts_path, 'r', encoding='utf-8') as f:
                 alerts_data = json.load(f)
-                alerts = alerts_data.get('alerts', []) or []
+                # Поддерживаем как старый формат {"alerts": [...]}, так и новый формат [...]
+                if isinstance(alerts_data, dict) and 'alerts' in alerts_data:
+                    alerts = alerts_data.get('alerts', [])
+                elif isinstance(alerts_data, list):
+                    alerts = alerts_data
+                else:
+                    alerts = []
         except Exception:
             alerts = []
 
     # Сортируем алерты по времени (новые сверху)
     def parse_iso(ts):
         try:
-            return datetime.fromisoformat(ts)
+            dt = datetime.fromisoformat(ts)
+            # Если datetime naive, делаем его UTC
+            if dt.tzinfo is None:
+                dt = dt.replace(tzinfo=timezone.utc)
+            return dt
         except Exception:
-            return datetime.min
+            return datetime.min.replace(tzinfo=timezone.utc)
 
-    alerts.sort(key=lambda a: parse_iso(a.get('timestamp') or a.get('time') or ''), reverse=True)
+    # Сортируем по времени создания (created_at) если есть, иначе по timestamp
+    alerts.sort(key=lambda a: parse_iso(a.get('created_at') or a.get('timestamp') or a.get('time') or ''), reverse=True)
 
     # Загружаем карту изображений (если есть)
     images_map = {}
@@ -445,6 +456,31 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: #6c757d;
             font-style: italic;
         }}
+        .alerts-header {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }}
+        .alerts-header:hover {{
+            background: #f8f9fa;
+        }}
+        .alerts-content {{
+            max-height: 400px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+        }}
+        .alerts-content.collapsed {{
+            max-height: 0;
+            overflow: hidden;
+        }}
+        .expand-icon {{
+            transition: transform 0.3s ease;
+        }}
+        .expand-icon.collapsed {{
+            transform: rotate(-90deg);
+        }}
         .delta {{ font-weight: bold; }}
         .delta.up {{ color: #dc3545; }}
         .delta.down {{ color: #28a745; }}
@@ -529,14 +565,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         {changes_html}
         
         <div class="alerts-section">
-            <h3>🚨 История алертов</h3>
-            <div>
+            <div class="alerts-header" onclick="toggleAlerts()">
+                <h3>🚨 История алертов</h3>
+                <span class="expand-icon" id="alertsExpandIcon">▼</span>
+            </div>
+            <div class="alerts-content" id="alertsContent">
 """
 
     if alerts:
         for a in alerts:
             hotel_name = a.get('hotel_name') or a.get('hotel') or 'Unknown'
-            alert_type = a.get('type') or ''
+            alert_type = a.get('alert_type') or a.get('type') or ''
             old_price = a.get('old_price') or a.get('from') or a.get('previous_price')
             new_price = a.get('new_price') if 'new_price' in a else (a.get('to') or a.get('current_price'))
             ts = a.get('timestamp') or a.get('time') or ''
@@ -544,7 +583,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if alert_type == 'missing' or new_price in (None, '', 'null'):
                 direction_class = 'alert-missing'
                 arrow = '—'
-                change_text = a.get('note') or 'Отель пропал из выдачи'
+                change_text = a.get('message') or a.get('note') or 'Отель пропал из выдачи'
                 price_text = f"{old_price if old_price is not None else '—'} → —"
                 html_template += f"""
                 <div class="alert-item {direction_class}">
@@ -556,19 +595,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </div>
 """
             else:
-                # Обычный ценовой алерт
-                change_pct = 0.0
-                try:
-                    if old_price is not None and float(old_price) != 0:
-                        change_pct = (float(new_price) - float(old_price)) / float(old_price) * 100.0
-                except Exception:
-                    change_pct = 0.0
-                try:
-                    diff = float(new_price) - float(old_price if old_price is not None else 0)
-                except Exception:
-                    diff = 0.0
-                direction_class = 'alert-increase' if diff > 0 else ('alert-decrease' if diff < 0 else '')
-                arrow = '↑' if diff > 0 else ('↓' if diff < 0 else '→')
+                # Обычный ценовой алерт (новая структура)
+                change_pct = a.get('price_change_pct', 0.0)
+                price_change = a.get('price_change', 0.0)
+                direction_class = 'alert-increase' if price_change > 0 else ('alert-decrease' if price_change < 0 else '')
+                arrow = '↑' if price_change > 0 else ('↓' if price_change < 0 else '→')
                 html_template += f"""
                 <div class="alert-item {direction_class}">
                     <div>
@@ -683,6 +714,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         document.addEventListener('mousemove', move);
         window._hoverPreview = { show, hide };
       })();
+      function toggleAlerts() {
+        const content = document.getElementById('alertsContent');
+        const icon = document.getElementById('alertsExpandIcon');
+        if (content.classList.contains('collapsed')) {
+          content.classList.remove('collapsed');
+          icon.classList.remove('collapsed');
+        } else {
+          content.classList.add('collapsed');
+          icon.classList.add('collapsed');
+        }
+      }
     </script>
   </body>
 </html>

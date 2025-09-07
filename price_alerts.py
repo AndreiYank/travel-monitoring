@@ -13,7 +13,7 @@ import logging
 logger = logging.getLogger(__name__)
 
 class PriceAlertManager:
-    def __init__(self, data_file="data/travel_prices.csv", alerts_file="data/price_alerts.json"):
+    def __init__(self, data_file="data/travel_prices.csv", alerts_file="data/price_alerts_history.json"):
         self.data_file = data_file
         self.alerts_file = alerts_file
         self.df = self.load_data()
@@ -25,7 +25,9 @@ class PriceAlertManager:
         
         try:
             df = pd.read_csv(self.data_file)
-            df['scraped_at'] = pd.to_datetime(df['scraped_at'])
+            # Используем robust парсинг дат как в других файлах
+            df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True)
+            df = df.dropna(subset=['scraped_at'])
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")
@@ -38,7 +40,15 @@ class PriceAlertManager:
         
         try:
             with open(self.alerts_file, 'r', encoding='utf-8') as f:
-                return json.load(f)
+                data = json.load(f)
+                # Если это старая структура с "alerts" ключом
+                if isinstance(data, dict) and 'alerts' in data:
+                    return data['alerts']
+                # Если это уже список
+                elif isinstance(data, list):
+                    return data
+                else:
+                    return []
         except Exception as e:
             logger.error(f"Ошибка загрузки алертов: {e}")
             return []
@@ -51,8 +61,8 @@ class PriceAlertManager:
         except Exception as e:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
-    def check_price_changes(self, threshold_percent: float = 1.0) -> List[Dict[str, Any]]:
-        """Проверяет изменения цен и возвращает алерты"""
+    def check_price_changes(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
+        """Проверяет изменения цен между всеми соседними записями и возвращает алерты"""
         if self.df.empty:
             return []
         
@@ -65,43 +75,99 @@ class PriceAlertManager:
             if len(hotel_data) < 2:
                 continue
             
-            # Получаем первую и последнюю цену
-            first_price = hotel_data.iloc[0]['price']
-            last_price = hotel_data.iloc[-1]['price']
-            
-            # Вычисляем изменение
-            price_change = last_price - first_price
-            price_change_pct = (price_change / first_price) * 100 if first_price > 0 else 0
-            
-            # Проверяем, превышает ли изменение порог
-            if abs(price_change_pct) >= threshold_percent:
-                alert = {
-                    'hotel_name': hotel_name,
-                    'first_price': first_price,
-                    'last_price': last_price,
-                    'price_change': price_change,
-                    'price_change_pct': price_change_pct,
-                    'first_date': hotel_data.iloc[0]['scraped_at'].isoformat(),
-                    'last_date': hotel_data.iloc[-1]['scraped_at'].isoformat(),
-                    'alert_type': 'price_drop' if price_change < 0 else 'price_increase',
-                    'created_at': datetime.now().isoformat(),
-                    'threshold_percent': threshold_percent
-                }
-                alerts.append(alert)
+            # Проверяем изменения между всеми соседними записями
+            for i in range(1, len(hotel_data)):
+                prev_price = hotel_data.iloc[i-1]['price']
+                curr_price = hotel_data.iloc[i]['price']
+                prev_date = hotel_data.iloc[i-1]['scraped_at']
+                curr_date = hotel_data.iloc[i]['scraped_at']
+                
+                # Вычисляем изменение
+                price_change = curr_price - prev_price
+                price_change_pct = (price_change / prev_price) * 100 if prev_price > 0 else 0
+                
+                # Проверяем, превышает ли изменение порог
+                if abs(price_change_pct) >= threshold_percent:
+                    alert = {
+                        'hotel_name': hotel_name,
+                        'old_price': prev_price,
+                        'new_price': curr_price,
+                        'price_change': price_change,
+                        'price_change_pct': price_change_pct,
+                        'timestamp': curr_date.isoformat(),
+                        'alert_type': 'price_drop' if price_change < 0 else 'price_increase',
+                        'created_at': datetime.now().isoformat(),
+                        'threshold_percent': threshold_percent,
+                        # Уникальный ключ для дедупликации
+                        'unique_key': f"{hotel_name}_{curr_date.strftime('%Y-%m-%d_%H-%M')}_{price_change_pct:.1f}"
+                    }
+                    alerts.append(alert)
         
         return alerts
     
-    def get_price_drops(self, threshold_percent: float = 5.0) -> List[Dict[str, Any]]:
+    def deduplicate_alerts(self, new_alerts: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Удаляет дубликаты алертов на основе unique_key"""
+        existing_alerts = self.load_alerts()
+        existing_keys = {alert.get('unique_key') for alert in existing_alerts if 'unique_key' in alert}
+        
+        # Фильтруем новые алерты, оставляя только уникальные
+        unique_new_alerts = []
+        for alert in new_alerts:
+            if alert.get('unique_key') not in existing_keys:
+                unique_new_alerts.append(alert)
+                existing_keys.add(alert.get('unique_key'))
+        
+        return unique_new_alerts
+    
+    def save_new_alerts(self, new_alerts: List[Dict[str, Any]]):
+        """Сохраняет только новые (не дублирующиеся) алерты"""
+        if not new_alerts:
+            return
+        
+        # Загружаем существующие алерты
+        existing_alerts = self.load_alerts()
+        
+        # Дедуплицируем новые алерты
+        unique_new_alerts = self.deduplicate_alerts(new_alerts)
+        
+        if unique_new_alerts:
+            # Добавляем новые алерты к существующим
+            all_alerts = existing_alerts + unique_new_alerts
+            
+            # Сохраняем обновленный список
+            try:
+                with open(self.alerts_file, 'w', encoding='utf-8') as f:
+                    json.dump(all_alerts, f, indent=2, ensure_ascii=False, default=str)
+                logger.info(f"Сохранено {len(unique_new_alerts)} новых алертов (пропущено {len(new_alerts) - len(unique_new_alerts)} дубликатов)")
+            except Exception as e:
+                logger.error(f"Ошибка сохранения новых алертов: {e}")
+        else:
+            logger.info("Нет новых алертов для сохранения")
+    
+    def get_price_drops(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
         """Возвращает только снижения цен"""
         all_alerts = self.check_price_changes(threshold_percent)
         return [alert for alert in all_alerts if alert['price_change'] < 0]
     
-    def get_price_increases(self, threshold_percent: float = 5.0) -> List[Dict[str, Any]]:
+    def get_price_increases(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
         """Возвращает только повышения цен"""
         all_alerts = self.check_price_changes(threshold_percent)
         return [alert for alert in all_alerts if alert['price_change'] > 0]
     
-    def create_alert_report(self, threshold_percent: float = 5.0) -> str:
+    def scan_all_price_changes(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
+        """Сканирует всю базу данных и находит все изменения цен >= порога"""
+        if self.df.empty:
+            return []
+        
+        logger.info(f"🔍 Сканируем всю базу данных на изменения >= {threshold_percent}%...")
+        all_alerts = self.check_price_changes(threshold_percent)
+        
+        # Сохраняем только новые алерты (с дедупликацией)
+        self.save_new_alerts(all_alerts)
+        
+        return all_alerts
+    
+    def create_alert_report(self, threshold_percent: float = 4.0) -> str:
         """Создает отчет об изменениях цен"""
         if self.df.empty:
             return "❌ Нет данных для анализа"
