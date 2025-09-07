@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Generated data and charts
+/data/
+/hotel-charts/
+
+
+# Virtual Environment
+.venv/
+env/
+ENV/
+
+# Data files (храним в репозитории для истории)
+# data/
+# *.csv
+*.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Config files with sensitive data
+scheduler_config.json
+
