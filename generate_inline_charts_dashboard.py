@@ -47,21 +47,30 @@ def generate_inline_charts_dashboard():
     cutoff_time = now - timedelta(hours=48)
 
     hotel_changes: list[dict] = []
+    deltas_by_hotel: dict[str, tuple[float, float]] = {}
     df_sorted = df.sort_values(['hotel_name', 'scraped_at'])
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at')
         latest_row = grp.iloc[-1]
         latest_time = latest_row['scraped_at']
-        baseline_candidates = grp[grp['scraped_at'] <= cutoff_time]
-        if len(baseline_candidates) == 0:
-            continue  # недостаточно истории для 48ч сравнения
-        baseline_row = baseline_candidates.iloc[-1]
+        # Берем самую раннюю точку внутри последних 48 часов.
+        window_rows = grp[grp['scraped_at'] >= cutoff_time]
+        if len(window_rows) >= 2:
+            baseline_row = window_rows.iloc[0]
+        elif len(grp) >= 2:
+            # Фолбэк: предыдущая точка, если в окне только одна
+            baseline_row = grp.iloc[-2]
+        else:
+            deltas_by_hotel[hotel_name] = None
+            continue
         latest_price = float(latest_row['price'])
         baseline_price = float(baseline_row['price'])
         if baseline_price == 0:
+            deltas_by_hotel[hotel_name] = None
             continue
         change = latest_price - baseline_price
         if change == 0:
+            deltas_by_hotel[hotel_name] = None
             continue  # пропускаем нулевые изменения
         change_percent = (change / baseline_price) * 100.0
         hotel_changes.append({
@@ -72,6 +81,7 @@ def generate_inline_charts_dashboard():
             'change_percent': change_percent,
             'timestamp': str(latest_time)
         })
+        deltas_by_hotel[hotel_name] = (change, change_percent)
 
     # Разделяем на подешевевшие и подорожавшие
     decreases = sorted([h for h in hotel_changes if h['change'] < 0], key=lambda x: x['change'])[:5]
@@ -303,6 +313,10 @@ def generate_inline_charts_dashboard():
             color: #6c757d;
             font-style: italic;
         }}
+        .delta {{ font-weight: bold; }}
+        .delta.up {{ color: #dc3545; }}
+        .delta.down {{ color: #28a745; }}
+        .delta.flat {{ color: #6c757d; }}
         .hotels-section {{
             margin-top: 30px;
         }}
@@ -419,6 +433,7 @@ def generate_inline_charts_dashboard():
                     <tr>
                         <th>Отель</th>
                         <th>Цена</th>
+                        <th>Δ 48ч</th>
                         <th>График</th>
                         <th>Даты</th>
                         <th>Длительность</th>
@@ -433,12 +448,24 @@ def generate_inline_charts_dashboard():
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '20-09-2025 - 04-10-2025'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '6-15 дней'
         
+        # Δ 48ч
+        delta_display = "—"
+        delta_class = "delta flat"
+        delta_info = deltas_by_hotel.get(hotel_name)
+        if delta_info is not None:
+            delta_abs, delta_pct = delta_info
+            arrow = '↑' if delta_abs > 0 else ('↓' if delta_abs < 0 else '→')
+            delta_class = 'delta up' if delta_abs > 0 else ('delta down' if delta_abs < 0 else 'delta flat')
+            sign = '+' if delta_abs > 0 else ('' if delta_abs < 0 else '')
+            delta_display = f"{arrow} {sign}{delta_pct:.1f}%"
+
         hotel_slug = slugify(hotel_name)
         chart_href = f"hotel-charts/{hotel_slug}.html"
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">{hotel_name}</a></td>
                         <td class="price">{price:.0f} PLN</td>
+                        <td class=\"{delta_class}\">{delta_display}</td>
                         <td><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">Открыть</a></td>
                         <td>{dates}</td>
                         <td>{duration}</td>

@@ -117,7 +117,10 @@ jobs:
           # Обновляем локальную ветку, чтобы избежать non-fast-forward
           git fetch origin main || true
           git checkout main || true
+          # Сохраняем незакоммиченные изменения от предыдущих шагов, подтягиваем, возвращаем изменения
+          git stash push -u -m "ci-stash" || true
           git pull --rebase origin main || true
+          git stash pop || true
           
           # Добавляем все изменения (принудительно для игнорируемых путей)
           git add -f data/ || true
