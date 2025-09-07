@@ -15,13 +15,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Загружаем данные
     try:
         df = pd.read_csv(data_file)
-        # Нормализуем время: наивные метки считаем локальными для tz, aware-конвертируем в tz
-        s = pd.to_datetime(df['scraped_at'], errors='coerce', utc=False)
-        if getattr(s.dt, 'tz', None) is None:
-            local = s.dt.tz_localize(tz)
-        else:
-            local = s.dt.tz_convert(tz)
-        df['scraped_at_local'] = local
+        # Нормализуем время: аккуратно обрабатываем смешанные строки (с/без таймзоны)
+        raw = df['scraped_at'].astype(str)
+        mask_tz = raw.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
+        tz_series = pd.to_datetime(raw.where(mask_tz), errors='coerce', utc=True)
+        tz_series = tz_series.dt.tz_convert(tz)
+        naive_series = pd.to_datetime(raw.where(~mask_tz), errors='coerce')
+        try:
+            naive_series = naive_series.dt.tz_localize(tz)
+        except Exception:
+            # Если часть уже осознанно tz-aware/NaT — оставим как есть
+            pass
+        df['scraped_at_local'] = tz_series.combine_first(naive_series)
+        # Убираем строки с некорректной датой
+        df = df.dropna(subset=['scraped_at_local'])
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
@@ -182,7 +189,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Генерируем страницу с графиком для каждого отеля
     for hotel_name in sorted(df['hotel_name'].unique()):
-        hotel_ts = df[df['hotel_name'] == hotel_name].sort_values('scraped_at')
+        hotel_ts = df[df['hotel_name'] == hotel_name].dropna(subset=['scraped_at_local']).sort_values('scraped_at_local')
         x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_local'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
 
