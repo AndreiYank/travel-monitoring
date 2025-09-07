@@ -7,6 +7,7 @@ import schedule
 import time
 import subprocess
 import logging
+import csv
 from datetime import datetime
 import os
 import json
@@ -98,7 +99,7 @@ class ScheduledMonitor:
             if not os.path.exists(data_file):
                 return
             
-            df = pd.read_csv(data_file)
+            df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL)
             df['scraped_at'] = pd.to_datetime(df['scraped_at'])
             
             # Получаем последние данные

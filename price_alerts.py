@@ -6,6 +6,7 @@
 import pandas as pd
 import json
 import os
+import csv
 from datetime import datetime
 from typing import List, Dict, Any
 import logging
@@ -24,7 +25,7 @@ class PriceAlertManager:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(self.data_file)
+            df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL)
             # Используем robust парсинг дат как в других файлах
             df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True)
             df = df.dropna(subset=['scraped_at'])

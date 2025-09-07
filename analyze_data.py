@@ -6,6 +6,7 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+import csv
 from datetime import datetime
 import argparse
 import os
@@ -23,7 +24,7 @@ class TravelDataAnalyzer:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(self.data_file)
+            df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL)
             
             # Исправляем парсинг дат с поддержкой timezone
             if 'scraped_at' in df.columns:

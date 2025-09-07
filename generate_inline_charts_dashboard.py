@@ -5,6 +5,7 @@
 
 import pandas as pd
 import json
+import csv
 from datetime import datetime, timedelta, timezone
 import os
 import re
@@ -14,7 +15,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     # Загружаем данные
     try:
-        df = pd.read_csv(data_file)
+        df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL)
         # Нормализуем время: аккуратно обрабатываем смешанные строки (с/без таймзоны)
         raw = df['scraped_at'].astype(str)
         mask_tz = raw.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
