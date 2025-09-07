@@ -9,7 +9,7 @@ from datetime import datetime, timedelta, timezone
 import os
 import re
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw'):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = 'data/price_alerts_history.json'):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -150,7 +150,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     # Загружаем историю алертов (если есть)
     alerts = []
-    alerts_path = os.path.join('data', 'price_alerts_history.json')
+    alerts_path = alerts_file
     if os.path.exists(alerts_path):
         try:
             with open(alerts_path, 'r', encoding='utf-8') as f:
@@ -823,5 +823,6 @@ if __name__ == "__main__":
     parser.add_argument('--title', default='Travel Price Monitor • Расширенный дашборд')
     parser.add_argument('--charts-dir', default='hotel-charts')
     parser.add_argument('--tz', default='Europe/Warsaw')
+    parser.add_argument('--alerts-file', default='data/price_alerts_history.json')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz)
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file)
