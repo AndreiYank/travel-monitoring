@@ -200,7 +200,7 @@ class TravelPriceMonitor:
             filepath = os.path.join(self.config['data_dir'], self.data_file)
             if not os.path.exists(filepath):
                 return pd.DataFrame()
-            df = pd.read_csv(filepath)
+            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL)
             if df.empty or 'scraped_at' not in df.columns:
                 return pd.DataFrame()
             raw = df['scraped_at'].astype(str)
@@ -798,7 +798,7 @@ class TravelPriceMonitor:
         with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
             # Не меняем заголовок CSV, чтобы не ломать историю.
             fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
             
             if not file_exists:
                 writer.writeheader()
@@ -922,7 +922,7 @@ class TravelPriceMonitor:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(filepath)
+            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL)
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")
