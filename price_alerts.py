@@ -187,9 +187,9 @@ class PriceAlertManager:
             report.append("-" * 30)
             for i, alert in enumerate(price_drops, 1):
                 report.append(f"{i}. {alert['hotel_name'][:50]}")
-                report.append(f"   Было: {alert['first_price']:.0f} PLN → Стало: {alert['last_price']:.0f} PLN")
+                report.append(f"   Было: {alert['old_price']:.0f} PLN → Стало: {alert['new_price']:.0f} PLN")
                 report.append(f"   Изменение: {alert['price_change']:+.0f} PLN ({alert['price_change_pct']:+.1f}%)")
-                report.append(f"   Период: {alert['first_date'][:10]} - {alert['last_date'][:10]}")
+                report.append(f"   Время: {alert['timestamp'][:19]}")
                 report.append("")
         else:
             report.append("📉 Снижений цен не обнаружено")
@@ -200,9 +200,9 @@ class PriceAlertManager:
             report.append("-" * 30)
             for i, alert in enumerate(price_increases, 1):
                 report.append(f"{i}. {alert['hotel_name'][:50]}")
-                report.append(f"   Было: {alert['first_price']:.0f} PLN → Стало: {alert['last_price']:.0f} PLN")
+                report.append(f"   Было: {alert['old_price']:.0f} PLN → Стало: {alert['new_price']:.0f} PLN")
                 report.append(f"   Изменение: {alert['price_change']:+.0f} PLN ({alert['price_change_pct']:+.1f}%)")
-                report.append(f"   Период: {alert['first_date'][:10]} - {alert['last_date'][:10]}")
+                report.append(f"   Время: {alert['timestamp'][:19]}")
                 report.append("")
         else:
             report.append("📈 Повышений цен не обнаружено")
