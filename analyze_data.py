@@ -24,7 +24,26 @@ class TravelDataAnalyzer:
         
         try:
             df = pd.read_csv(self.data_file)
-            df['scraped_at'] = pd.to_datetime(df['scraped_at'])
+            
+            # Исправляем парсинг дат с поддержкой timezone
+            if 'scraped_at' in df.columns:
+                # Пробуем разные форматы дат
+                try:
+                    df['scraped_at'] = pd.to_datetime(df['scraped_at'], format='ISO8601', errors='coerce')
+                except:
+                    try:
+                        df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce')
+                    except:
+                        # Если ничего не работает, создаем даты заново
+                        df['scraped_at'] = pd.to_datetime('now')
+                
+                # Удаляем строки с некорректными датами
+                df = df.dropna(subset=['scraped_at'])
+                
+                # Конвертируем в UTC если нужно
+                if df['scraped_at'].dt.tz is not None:
+                    df['scraped_at'] = df['scraped_at'].dt.tz_convert('UTC')
+            
             print(f"✅ Загружено {len(df)} записей из {self.data_file}")
             return df
         except Exception as e:
@@ -156,10 +175,12 @@ class TravelDataAnalyzer:
         daily_data = []
         daily_labels = []
         for date in daily_prices.index:
-            day_prices = self.df[self.df['scraped_at'].dt.date == date]['price']
-            if len(day_prices) > 0:
-                daily_data.append(day_prices)
-                daily_labels.append(date.strftime('%m-%d'))
+            # Проверяем, что дата не пустая
+            if pd.notna(date):
+                day_prices = self.df[self.df['scraped_at'].dt.date == date]['price']
+                if len(day_prices) > 0:
+                    daily_data.append(day_prices)
+                    daily_labels.append(date.strftime('%m-%d'))
         
         if daily_data:
             plt.boxplot(daily_data, labels=daily_labels)
