@@ -9,15 +9,19 @@ from datetime import datetime, timedelta
 import os
 import re
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts'):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw'):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
     try:
         df = pd.read_csv(data_file)
-        # Нормализуем время в UTC и получаем локальное время для отображения (Europe/Warsaw)
-        df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True)
-        df['scraped_at_local'] = df['scraped_at'].dt.tz_convert('Europe/Warsaw')
+        # Нормализуем время: наивные метки считаем локальными для tz, aware-конвертируем в tz
+        s = pd.to_datetime(df['scraped_at'], errors='coerce', utc=False)
+        if getattr(s.dt, 'tz', None) is None:
+            local = s.dt.tz_localize(tz)
+        else:
+            local = s.dt.tz_convert(tz)
+        df['scraped_at_local'] = local
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
@@ -42,7 +46,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         top10_x_values, top10_y_values = [], []
     
     # Получаем актуальные цены по каждому отелю (последнее наблюдение)
-    df_sorted_all = df.sort_values(['hotel_name', 'scraped_at'])
+    df_sorted_all = df.sort_values(['hotel_name', 'scraped_at_local'])
     latest_rows = []
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
         last = grp.iloc[-1]
@@ -56,17 +60,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     
     # Анализ изменений за разные окна времени
-    df_sorted = df.sort_values(['hotel_name', 'scraped_at'])
+    df_sorted = df.sort_values(['hotel_name', 'scraped_at_local'])
 
     def compute_changes(window_hours: int):
-        cutoff = (df['scraped_at'].max() or datetime.now()) - timedelta(hours=window_hours)
+        cutoff = (df['scraped_at_local'].max() or datetime.now()) - timedelta(hours=window_hours)
         changes = []
         deltas_map = {}
         for hotel_name, grp in df_sorted.groupby('hotel_name'):
-            grp = grp.sort_values('scraped_at')
+            grp = grp.sort_values('scraped_at_local')
             latest_row = grp.iloc[-1]
-            latest_time = latest_row['scraped_at']
-            win = grp[grp['scraped_at'] >= cutoff]
+            latest_time = latest_row['scraped_at_local']
+            win = grp[grp['scraped_at_local'] >= cutoff]
             if len(win) >= 2:
                 baseline_row = win.iloc[0]
             elif len(grp) >= 2:
@@ -103,7 +107,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     decreases_7d, increases_7d, _ = compute_changes(24 * 7)
 
     # Метки нового минимума/максимума за 7д и 30д
-    ref_time = df['scraped_at'].max() or datetime.now()
+    ref_time = df['scraped_at_local'].max() or datetime.now()
     minmax_labels_by_hotel = {}
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at')
@@ -111,7 +115,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         labels = []
         for days in (7, 30):
             cutoff_d = ref_time - timedelta(days=days)
-            window = grp[grp['scraped_at'] >= cutoff_d]
+            window = grp[grp['scraped_at_local'] >= cutoff_d]
             if len(window) == 0:
                 continue
             win_min = float(window['price'].min())
@@ -125,7 +129,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Изменение с начала наблюдений (первое значение -> последнее)
     since_start_delta = {}
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
-        grp = grp.sort_values('scraped_at')
+        grp = grp.sort_values('scraped_at_local')
         first_price = float(grp.iloc[0]['price'])
         last_price = float(grp.iloc[-1]['price'])
         if first_price == 0:
@@ -669,5 +673,6 @@ if __name__ == "__main__":
     parser.add_argument('--output', default='index.html')
     parser.add_argument('--title', default='Travel Price Monitor • Расширенный дашборд')
     parser.add_argument('--charts-dir', default='hotel-charts')
+    parser.add_argument('--tz', default='Europe/Warsaw')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir)
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz)
