@@ -755,8 +755,21 @@ class TravelPriceMonitor:
             # График 1: Изменение цен по времени
             plt.figure(figsize=(15, 8))
             
-            df['scraped_at'] = pd.to_datetime(df['scraped_at'])
-            daily_prices = df.groupby(df['scraped_at'].dt.date)['price'].agg(['mean', 'min', 'max'])
+            # Робастный парсинг меток времени (смешанные ISO8601 с/без таймзоны)
+            raw = df['scraped_at'].astype(str)
+            mask_tz = raw.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
+            tz_series = pd.to_datetime(raw.where(mask_tz), errors='coerce', utc=True)
+            # Графики рисуем в локальном времени runner'а (UTC)
+            tz_series = tz_series.dt.tz_convert('UTC')
+            naive_series = pd.to_datetime(raw.where(~mask_tz), errors='coerce')
+            try:
+                naive_series = naive_series.dt.tz_localize('UTC')
+            except Exception:
+                pass
+            ts = tz_series.combine_first(naive_series)
+            df = df.assign(_ts=ts).dropna(subset=['_ts'])
+
+            daily_prices = df.groupby(df['_ts'].dt.date)['price'].agg(['mean', 'min', 'max'])
             
             plt.plot(daily_prices.index, daily_prices['mean'], marker='o', linewidth=2, label='Средняя цена')
             plt.fill_between(daily_prices.index, daily_prices['min'], daily_prices['max'], alpha=0.3, label='Диапазон цен')
