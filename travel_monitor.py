@@ -644,33 +644,9 @@ class TravelPriceMonitor:
         
         filepath = os.path.join(self.config['data_dir'], self.data_file)
         
-        # Загружаем существующие данные для проверки дубликатов
-        existing_data = []
-        if os.path.exists(filepath):
-            try:
-                existing_df = pd.read_csv(filepath)
-                existing_data = existing_df.to_dict('records')
-                logger.info(f"Загружено {len(existing_data)} существующих записей")
-            except Exception as e:
-                logger.warning(f"Ошибка загрузки существующих данных: {e}")
-        
-        # Фильтруем дубликаты
-        new_offers = []
-        for offer in offers:
-            is_duplicate = False
-            for existing in existing_data:
-                if (offer['hotel_name'] == existing['hotel_name'] and 
-                    offer['price'] == existing['price'] and
-                    offer['dates'] == existing['dates']):
-                    is_duplicate = True
-                    break
-            
-            if not is_duplicate:
-                new_offers.append(offer)
-        
-        if not new_offers:
-            logger.info("Все предложения уже существуют в базе данных")
-            return
+        # Начиная с этого момента пишем каждую запись как новую точку истории,
+        # чтобы графики и анализ имели полную временную серию даже без изменений цен.
+        new_offers = offers
         
         # Добавляем новые данные
         file_exists = os.path.exists(filepath)
@@ -684,7 +660,7 @@ class TravelPriceMonitor:
             for offer in new_offers:
                 writer.writerow(offer)
         
-        logger.info(f"Добавлено {len(new_offers)} новых предложений в {filepath}")
+        logger.info(f"Добавлено {len(new_offers)} записей (включая возможные повторы для истории) в {filepath}")
 
     def create_charts(self):
         """Создает графики"""
