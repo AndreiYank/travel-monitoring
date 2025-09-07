@@ -29,8 +29,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         df['scraped_at_local'] = tz_series.combine_first(naive_series)
         # Убираем строки с некорректной датой
         df = df.dropna(subset=['scraped_at_local'])
-        # Визуальный сдвиг +2 часа для упрощения восприятия (по просьбе)
-        df['scraped_at_display'] = df['scraped_at_local'] + pd.Timedelta(hours=2)
+        # Используем локализованное время без дополнительных сдвигов
+        df['scraped_at_display'] = df['scraped_at_local']
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
