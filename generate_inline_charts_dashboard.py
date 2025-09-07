@@ -29,6 +29,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         df['scraped_at_local'] = tz_series.combine_first(naive_series)
         # Убираем строки с некорректной датой
         df = df.dropna(subset=['scraped_at_local'])
+        # Визуальный сдвиг +2 часа для упрощения восприятия (по просьбе)
+        df['scraped_at_display'] = df['scraped_at_local'] + pd.Timedelta(hours=2)
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
@@ -43,7 +45,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Средняя цена ТОП-10 дешёвых предложений по часам
     try:
-        hourly = df.set_index('scraped_at_local').sort_index()
+        hourly = df.set_index('scraped_at_display').sort_index()
         top10_avg = hourly['price'].groupby(pd.Grouper(freq='H')).apply(
             lambda s: float(s.nsmallest(10).mean()) if len(s) else None
         ).dropna()
@@ -53,7 +55,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         top10_x_values, top10_y_values = [], []
     
     # Получаем актуальные цены по каждому отелю (последнее наблюдение)
-    df_sorted_all = df.sort_values(['hotel_name', 'scraped_at_local'])
+    df_sorted_all = df.sort_values(['hotel_name', 'scraped_at_display'])
     latest_rows = []
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
         last = grp.iloc[-1]
@@ -67,17 +69,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     
     # Анализ изменений за разные окна времени
-    df_sorted = df.sort_values(['hotel_name', 'scraped_at_local'])
+    df_sorted = df.sort_values(['hotel_name', 'scraped_at_display'])
 
     def compute_changes(window_hours: int):
-        cutoff = (df['scraped_at_local'].max() or datetime.now()) - timedelta(hours=window_hours)
+        cutoff = (df['scraped_at_display'].max() or datetime.now()) - timedelta(hours=window_hours)
         changes = []
         deltas_map = {}
         for hotel_name, grp in df_sorted.groupby('hotel_name'):
-            grp = grp.sort_values('scraped_at_local')
+            grp = grp.sort_values('scraped_at_display')
             latest_row = grp.iloc[-1]
-            latest_time = latest_row['scraped_at_local']
-            win = grp[grp['scraped_at_local'] >= cutoff]
+            latest_time = latest_row['scraped_at_display']
+            win = grp[grp['scraped_at_display'] >= cutoff]
             if len(win) >= 2:
                 baseline_row = win.iloc[0]
             elif len(grp) >= 2:
@@ -114,10 +116,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     decreases_7d, increases_7d, _ = compute_changes(24 * 7)
 
     # Метки нового минимума/максимума за 7д и 30д
-    ref_time = df['scraped_at_local'].max() or datetime.now()
+    ref_time = df['scraped_at_display'].max() or datetime.now()
     minmax_labels_by_hotel = {}
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
-        grp = grp.sort_values('scraped_at')
+        grp = grp.sort_values('scraped_at_display')
         latest_price = float(grp.iloc[-1]['price'])
         labels = []
         for days in (7, 30):
@@ -136,7 +138,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Изменение с начала наблюдений (первое значение -> последнее)
     since_start_delta = {}
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
-        grp = grp.sort_values('scraped_at_local')
+        grp = grp.sort_values('scraped_at_display')
         first_price = float(grp.iloc[0]['price'])
         last_price = float(grp.iloc[-1]['price'])
         if first_price == 0:
@@ -189,8 +191,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Генерируем страницу с графиком для каждого отеля
     for hotel_name in sorted(df['hotel_name'].unique()):
-        hotel_ts = df[df['hotel_name'] == hotel_name].dropna(subset=['scraped_at_local']).sort_values('scraped_at_local')
-        x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_local'].tolist()]
+        hotel_ts = df[df['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+        x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
 
         hotel_slug = slugify(hotel_name)
@@ -323,7 +325,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Время последнего обновления для шапки
     try:
-        updated_str = df['scraped_at_local'].max().strftime('%d.%m.%Y %H:%M')
+        updated_str = df['scraped_at_display'].max().strftime('%d.%m.%Y %H:%M')
     except Exception:
         updated_str = datetime.now().strftime('%d.%m.%Y %H:%M')
 
@@ -638,16 +640,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     html_template += """
     <script>
       (function(){
-        const x = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
-        const y = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
-        try {
-          const X = JSON.parse(x), Y = JSON.parse(y);
-          if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
-            const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
-            const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
-            Plotly.newPlot('avgTop10', [trace], layout);
-          }
-        } catch (e) {}
+        const X = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
+        const Y = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
+        if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
+          const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
+          const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
+          Plotly.newPlot('avgTop10', [trace], layout);
+        }
       })();
       (function(){
         const map = """ + json.dumps(images_map, ensure_ascii=False) + """;
