@@ -9,7 +9,7 @@ from datetime import datetime, timedelta
 import os
 import re
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд'):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts'):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -150,7 +150,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return text or "hotel"
 
     # Создаём директорию для страниц графиков
-    charts_dir = os.path.join('hotel-charts')
+    charts_dir = os.path.join(charts_subdir)
     os.makedirs(charts_dir, exist_ok=True)
 
     # Генерируем страницу с графиком для каждого отеля
@@ -581,5 +581,6 @@ if __name__ == "__main__":
     parser.add_argument('--data-file', default='data/travel_prices.csv')
     parser.add_argument('--output', default='index.html')
     parser.add_argument('--title', default='Travel Price Monitor • Расширенный дашборд')
+    parser.add_argument('--charts-dir', default='hotel-charts')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title)
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir)

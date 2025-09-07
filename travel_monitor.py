@@ -12,7 +12,7 @@ import csv
 import os
 import sys
 from datetime import datetime
-from typing import List, Dict, Any
+from typing import List, Dict, Any, Optional
 import pandas as pd
 import matplotlib.pyplot as plt
 from playwright.async_api import async_playwright
@@ -31,7 +31,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class TravelPriceMonitor:
-    def __init__(self, config_file: str = "config.json", data_file: str | None = None):
+    def __init__(self, config_file: str = "config.json", data_file: Optional[str] = None):
         self.config_file = config_file
         self.data_file = data_file or "travel_prices.csv"
         self.config = self.load_config()
