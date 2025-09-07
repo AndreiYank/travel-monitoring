@@ -161,7 +161,7 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Мониторинг цен • Греция</h1>
-            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 07.09.2025 11:18</p>
+            <p>Обновлено: 07.09.2025 12:48</p>
         </div>
 
         <div class="avg-top10-section">
@@ -831,13 +831,12 @@
 
     <script>
       (function(){
-        const tx = ["2025-09-06 21:00", "2025-09-07 07:00", "2025-09-07 10:00"];
-        const ty = [6728.0, 6381.4, 6691.6];
+        const x = ["2025-09-06 23:00", "2025-09-07 09:00", "2025-09-07 12:00"];
+        const y = [6728.0, 6381.4, 6691.6];
         try {
-          const x = JSON.parse(tx);
-          const y = JSON.parse(ty);
-          if (Array.isArray(x) && Array.isArray(y) && x.length > 0 && y.length > 0 && window.Plotly) {
-            const trace = { x: x, y: y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
+          const X = JSON.parse(x), Y = JSON.parse(y);
+          if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
+            const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
             const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
             Plotly.newPlot('avgTop10', [trace], layout);
           }

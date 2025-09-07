@@ -15,7 +15,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Загружаем данные
     try:
         df = pd.read_csv(data_file)
-        df['scraped_at'] = pd.to_datetime(df['scraped_at'])
+        # Нормализуем время в UTC и получаем локальное время для отображения (Europe/Warsaw)
+        df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True)
+        df['scraped_at_local'] = df['scraped_at'].dt.tz_convert('Europe/Warsaw')
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
@@ -30,7 +32,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Средняя цена ТОП-10 дешёвых предложений по часам
     try:
-        hourly = df.set_index('scraped_at').sort_index()
+        hourly = df.set_index('scraped_at_local').sort_index()
         top10_avg = hourly['price'].groupby(pd.Grouper(freq='H')).apply(
             lambda s: float(s.nsmallest(10).mean()) if len(s) else None
         ).dropna()
@@ -49,7 +51,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'price': float(last['price']),
             'dates': last.get('dates', None),
             'duration': last.get('duration', None),
-            'scraped_at': last['scraped_at']
+            'scraped_at_local': last['scraped_at_local']
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     
@@ -177,16 +179,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Генерируем страницу с графиком для каждого отеля
     for hotel_name in sorted(df['hotel_name'].unique()):
         hotel_ts = df[df['hotel_name'] == hotel_name].sort_values('scraped_at')
-        x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at'].tolist()]
+        x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_local'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
 
         hotel_slug = slugify(hotel_name)
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
 
         # Определяем корректную ссылку "Назад к дашборду" в зависимости от поддиректории
-        if charts_subdir.rstrip('/').endswith('greece'):
+        if charts_subdir and charts_subdir.rstrip('/').endswith('greece'):
             back_target = 'index_greece.html'
-        elif charts_subdir.rstrip('/').endswith('egypt'):
+        elif charts_subdir and charts_subdir.rstrip('/').endswith('egypt'):
             back_target = 'index_egypt.html'
         else:
             back_target = 'index.html'
@@ -307,6 +309,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </div>"""
         changes_html += """
         </div>"""
+
+    # Время последнего обновления для шапки
+    try:
+        updated_str = df['scraped_at_local'].max().strftime('%d.%m.%Y %H:%M')
+    except Exception:
+        updated_str = datetime.now().strftime('%d.%m.%Y %H:%M')
 
     html_template = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -471,7 +479,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     <div class="container">
         <div class="header">
             <h1>🏨 {title}</h1>
-            <p>Мониторинг цен на путешествия в Грецию • Обновлено: {datetime.now().strftime('%d.%m.%Y %H:%M')}</p>
+            <p>Обновлено: {updated_str}</p>
         </div>
 
         <div class="avg-top10-section">
@@ -619,13 +627,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     html_template += """
     <script>
       (function(){
-        const tx = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
-        const ty = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
+        const x = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
+        const y = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
         try {
-          const x = JSON.parse(tx);
-          const y = JSON.parse(ty);
-          if (Array.isArray(x) && Array.isArray(y) && x.length > 0 && y.length > 0 && window.Plotly) {
-            const trace = { x: x, y: y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
+          const X = JSON.parse(x), Y = JSON.parse(y);
+          if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
+            const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
             const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
             Plotly.newPlot('avgTop10', [trace], layout);
           }
