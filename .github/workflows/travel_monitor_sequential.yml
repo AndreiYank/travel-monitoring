@@ -1,0 +1,211 @@
+name: Travel Price Monitor
+
+on:
+  schedule:
+    # Запускаем каждый час
+    - cron: "0 * * * *"
+  workflow_dispatch: # Позволяет запускать вручную
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "travel-monitor"
+  cancel-in-progress: false
+
+jobs:
+  monitor-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_dashboard.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+
+      - name: Run price monitoring (Greece, Egypt & Turkey)
+        run: |
+          echo "🚀 Starting price monitoring at $(date)"
+          export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+          export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
+          # Greece (keeps historical CSV path)
+          python travel_monitor.py --config config.json --data-file travel_prices.csv
+          # Egypt (separate dataset)
+          python travel_monitor.py --config config_egypt.json --data-file egypt_travel_prices.csv
+          # Turkey (new dataset)
+          python travel_monitor.py --config config_turkey.json --data-file turkey_travel_prices.csv
+          echo "✅ Price monitoring completed"
+
+      - name: Run data analysis
+        run: |
+          echo "📊 Starting data analysis at $(date)"
+          python analyze_data.py --charts --export
+          echo "✅ Data analysis completed"
+
+      - name: Generate dashboards (Greece, Egypt & Turkey) and landing
+        run: |
+          echo "🌐 Generating dashboards at $(date)"
+          # Greece dashboard
+          python generate_inline_charts_dashboard.py \
+            --data-file data/travel_prices.csv \
+            --output index_greece.html \
+            --title "Мониторинг цен • Греция" \
+            --charts-dir hotel-charts/greece
+          # Egypt dashboard (if data exists)
+          if [ -f "data/egypt_travel_prices.csv" ]; then
+            python generate_inline_charts_dashboard.py \
+              --data-file data/egypt_travel_prices.csv \
+              --output index_egypt.html \
+              --title "Мониторинг цен • Египет" \
+              --charts-dir hotel-charts/egypt
+          else
+            echo "⚠️ Egypt dataset not found; skipping Egypt dashboard"
+          fi
+          # Turkey dashboard (if data exists)
+          if [ -f "data/turkey_travel_prices.csv" ]; then
+            python generate_inline_charts_dashboard.py \
+              --data-file data/turkey_travel_prices.csv \
+              --output index_turkey.html \
+              --title "Мониторинг цен • Турция" \
+              --charts-dir hotel-charts/turkey
+          else
+            echo "⚠️ Turkey dataset not found; skipping Turkey dashboard"
+          fi
+          # Landing page with tiles
+          python generate_landing.py
+          echo "✅ Dashboards generated (index_greece.html, index_egypt.html, index_turkey.html, index.html)"
+
+      - name: Check for price alerts
+        id: alerts
+        run: |
+          echo "🚨 Checking for price alerts..."
+          if [ -f "data/price_alerts_report.txt" ]; then
+            ALERT_COUNT=$(grep -c "📉\|📈" data/price_alerts_report.txt || echo "0")
+            echo "alert_count=$ALERT_COUNT" >> $GITHUB_OUTPUT
+            echo "Found $ALERT_COUNT price changes"
+          else
+            echo "alert_count=0" >> $GITHUB_OUTPUT
+            echo "No alerts found"
+          fi
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Commit and push data updates
+        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
+        run: |
+          echo "📝 Committing data changes..."
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          
+          # Обновляем локальную ветку, чтобы избежать non-fast-forward
+          git fetch origin main || true
+          git checkout main || true
+          # Сохраняем незакоммиченные изменения от предыдущих шагов, подтягиваем, возвращаем изменения
+          git stash push -u -m "ci-stash" || true
+          git pull --rebase origin main || true
+          git stash pop || true
+          
+          # Добавляем все изменения (принудительно для игнорируемых путей)
+          git add -f data/ || true
+          git add index.html index_greece.html index_egypt.html index_turkey.html || true
+          git add -f hotel-charts/ hotel-charts/greece/ hotel-charts/egypt/ hotel-charts/turkey/ || true
+          
+          # Проверяем, есть ли изменения для коммита
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes to commit"
+          else
+            # Создаем коммит с детальным сообщением
+            COMMIT_MSG="🔄 Hourly update - $(date '+%Y-%m-%d %H:%M:%S UTC')
+            
+            📊 Data summary:
+            - Total offers: $(wc -l < data/travel_prices.csv || echo '0')
+            - Unique hotels: $(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l || echo '0')
+            - Price range: $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1 || echo 'N/A') - $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1 || echo 'N/A') PLN
+            - Alerts: ${{ steps.alerts.outputs.alert_count }}
+            
+            🤖 Automated by GitHub Actions"
+            
+            git commit -m "$COMMIT_MSG"
+            git push origin HEAD:main
+            echo "✅ Changes committed and pushed"
+          fi
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## 🏨 Travel Price Monitor Summary" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID:** ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
+          if [ -f "data/travel_prices.csv" ]; then
+            TOTAL_OFFERS=$(wc -l < data/travel_prices.csv)
+            UNIQUE_HOTELS=$(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l)
+            MIN_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1)
+            MAX_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1)
+            
+            echo "### 📈 Data Statistics" >> $GITHUB_STEP_SUMMARY
+            echo "- **Total offers:** $TOTAL_OFFERS" >> $GITHUB_STEP_SUMMARY
+            echo "- **Unique hotels:** $UNIQUE_HOTELS" >> $GITHUB_STEP_SUMMARY
+            echo "- **Price range:** $MIN_PRICE - $MAX_PRICE PLN" >> $GITHUB_STEP_SUMMARY
+            echo "- **Price alerts:** ${{ steps.alerts.outputs.alert_count }}" >> $GITHUB_STEP_SUMMARY
+          fi
+          
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [Landing](https://andreiYank.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Greece Dashboard](https://andreiYank.github.io/travel-monitoring/index_greece.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt Dashboard](https://andreiYank.github.io/travel-monitoring/index_egypt.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Logs](https://github.com/AndreiYank/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
