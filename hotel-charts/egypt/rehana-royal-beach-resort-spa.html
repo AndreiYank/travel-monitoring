@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График цен — Rehana Royal Beach Resort & Spa</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .back { margin-bottom: 10px; }
+        #chart { height: 520px; }
+    </style>
+<head>
+<body>
+    <div class="back"><a href="../../index_egypt.html">← Назад к дашборду</a></div>
+    <h2>График цен: Rehana Royal Beach Resort & Spa</h2>
+    <div id="chart"></div>
+    <script>
+      const x = ["2025-09-07 08:41", "2025-09-07 09:20", "2025-09-07 10:18", "2025-09-07 10:48", "2025-09-07 14:31", "2025-09-07 16:23", "2025-09-07 17:21", "2025-09-07 17:50", "2025-09-07 18:01", "2025-09-07 19:21", "2025-09-07 20:11", "2025-09-07 21:18"];
+      const y = [6935.0, 6935.0, 7259.0, 7286.0, 7286.0, 7259.0, 7259.0, 7259.0, 7259.0, 7259.0, 7259.0, 7259.0];
+      const trace = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#2E86AB', width: 3 },
+        marker: { size: 8 }
+      };
+      const layout = {
+        title: 'История цен',
+        xaxis: { title: 'Время' },
+        yaxis: { title: 'Цена (PLN)' }
+      };
+      Plotly.newPlot('chart', [trace], layout);
+    </script>
+  </body>
+</html>
