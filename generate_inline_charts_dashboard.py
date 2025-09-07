@@ -573,7 +573,7 @@ def generate_inline_charts_dashboard():
     print(f"✅ Дашборд с встроенными графиками сгенерирован: index.html")
     print(f"📊 Статистика: {total_offers} предложений, {unique_hotels} отелей")
     print(f"💰 Цены: {min_price:.0f} - {max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
-    print(f"📈 Изменения цен: {len(hotel_changes)} отелей за 48ч")
+    print(f"📈 Изменения цен: {len(decreases_48h) + len(increases_48h)} отелей за 48ч")
 
 if __name__ == "__main__":
     generate_inline_charts_dashboard()
