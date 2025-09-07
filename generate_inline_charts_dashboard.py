@@ -206,14 +206,14 @@ def generate_inline_charts_dashboard():
     # HTML шаблон
     # Готовим HTML блок изменений, выводим только если есть хотя бы один список
     changes_html = ""
-    if decreases or increases:
+    if decreases_24h or increases_24h:
         changes_html += """
         <div class=\"changes-section\">"""
-        if decreases:
+        if decreases_24h:
             changes_html += """
             <div class=\"changes-block\">
-                <h3>📉 Наиболее подешевевшие (48ч)</h3>"""
-            for change in decreases:
+                <h3>📉 Наиболее подешевевшие (24ч)</h3>"""
+            for change in decreases_24h:
                 changes_html += f"""
                 <div class=\"change-item change-decrease\">
                     <div>
@@ -224,11 +224,47 @@ def generate_inline_charts_dashboard():
                 </div>"""
             changes_html += """
             </div>"""
-        if increases:
+        if increases_24h:
             changes_html += """
             <div class=\"changes-block\">
-                <h3>📈 Наиболее подорожавшие (48ч)</h3>"""
-            for change in increases:
+                <h3>📈 Наиболее подорожавшие (24ч)</h3>"""
+            for change in increases_24h:
+                changes_html += f"""
+                <div class=\"change-item change-increase\">
+                    <div>
+                        <div class=\"hotel-name\">{change['hotel_name']}</div>
+                        <div class=\"change-percent\">{change['change']:+.0f} PLN ({change['change_percent']:+.1f}%)</div>
+                    </div>
+                    <div class=\"change-price\">{change['old_price']:.0f} → {change['new_price']:.0f} PLN</div>
+                </div>"""
+            changes_html += """
+            </div>"""
+        changes_html += """
+        </div>"""
+
+    if decreases_7d or increases_7d:
+        changes_html += """
+        <div class=\"changes-section\">"""
+        if decreases_7d:
+            changes_html += """
+            <div class=\"changes-block\">
+                <h3>📉 Наиболее подешевевшие (7д)</h3>"""
+            for change in decreases_7d:
+                changes_html += f"""
+                <div class=\"change-item change-decrease\">
+                    <div>
+                        <div class=\"hotel-name\">{change['hotel_name']}</div>
+                        <div class=\"change-percent\">{change['change']:+.0f} PLN ({change['change_percent']:+.1f}%)</div>
+                    </div>
+                    <div class=\"change-price\">{change['old_price']:.0f} → {change['new_price']:.0f} PLN</div>
+                </div>"""
+            changes_html += """
+            </div>"""
+        if increases_7d:
+            changes_html += """
+            <div class=\"changes-block\">
+                <h3>📈 Наиболее подорожавшие (7д)</h3>"""
+            for change in increases_7d:
                 changes_html += f"""
                 <div class=\"change-item change-increase\">
                     <div>
