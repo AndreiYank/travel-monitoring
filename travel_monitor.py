@@ -114,12 +114,12 @@ class TravelPriceMonitor:
                     logger.info(f"Парсим страницу {page_number}...")
                     
                     # Ищем предложения на текущей странице
-                    offers_data = await self.find_offers(page)
-                    
-                    if not offers_data:
-                        logger.warning("Предложения не найдены, пробуем альтернативный подход...")
-                        offers_data = await self.find_offers_alternative(page)
-                    
+                offers_data = await self.find_offers(page)
+                
+                if not offers_data:
+                    logger.warning("Предложения не найдены, пробуем альтернативный подход...")
+                    offers_data = await self.find_offers_alternative(page)
+                
                     if not offers_data:
                         logger.info("Предложения не найдены, завершаем парсинг")
                         break
@@ -129,16 +129,16 @@ class TravelPriceMonitor:
                     max_price_on_page = 0
                     
                     for i in range(len(offers_data)):
-                        try:
-                            element = offers_data[i]
-                            offer_data = await self.extract_offer_data(element, i)
-                            if offer_data and offer_data.get('price', 0) > 0:
+                    try:
+                        element = offers_data[i]
+                        offer_data = await self.extract_offer_data(element, i)
+                        if offer_data and offer_data.get('price', 0) > 0:
                                 page_offers.append(offer_data)
                                 max_price_on_page = max(max_price_on_page, offer_data['price'])
-                        except Exception as e:
-                            logger.warning(f"Ошибка парсинга предложения {i}: {e}")
-                            continue
-                    
+                    except Exception as e:
+                        logger.warning(f"Ошибка парсинга предложения {i}: {e}")
+                        continue
+                
                     if page_offers:
                         all_offers.extend(page_offers)
                         logger.info(f"Страница {page_number}: собрано {len(page_offers)} предложений, максимальная цена: {max_price_on_page:.0f} PLN")
@@ -443,10 +443,10 @@ class TravelPriceMonitor:
             # Ищем цену - сначала ищем цену за всех, потом за одного
             price = await self.extract_price_for_all(element)
             if not price:
-                price = await self.extract_text_by_selectors(element, [
-                    '.price', '.cost', '.amount', '.value',
-                    '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
-                ])
+            price = await self.extract_text_by_selectors(element, [
+                '.price', '.cost', '.amount', '.value',
+                '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
+            ])
             
             # Ищем даты - более специфичные селекторы для fly.pl
             dates = await self.extract_dates_from_offer(element)
@@ -1012,7 +1012,7 @@ class TravelPriceMonitor:
             
             # Перед сохранением проверяем, кто исчез из выдачи, и создаём алерты
             self.detect_missing_hotels_and_alert(offers)
-
+            
             # Сохраняем данные (добавляем к существующим)
             self.save_data_append(offers)
             
