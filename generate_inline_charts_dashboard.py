@@ -142,6 +142,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     alerts.sort(key=lambda a: parse_iso(a.get('timestamp') or a.get('time') or ''), reverse=True)
 
+    # Загружаем карту изображений (если есть)
+    images_map = {}
+    images_path = os.path.join('data', 'hotel_images.json')
+    if os.path.exists(images_path):
+        try:
+            with open(images_path, 'r', encoding='utf-8') as f:
+                images_map = json.load(f) or {}
+        except Exception:
+            images_map = {}
+
     # Функция для слуг-имени файла по названию отеля
     def slugify(text: str) -> str:
         text = text.lower().strip()
@@ -417,14 +427,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: bold;
             color: #28a745;
         }}
-        .open-chart-link {{ color: #2E86AB; text-decoration: underline; }}
-        .footer {{
+        .open-chart-link {{ color: #2E86AB; text-decoration: underline; }
+        .footer {
             text-align: center;
             margin-top: 30px;
             padding: 20px;
             background: #f8f9fa;
             border-radius: 8px;
-        }}
+        }
+        /* Hover preview */
+        .hover-thumb { position: absolute; display: none; width: 240px; height: 160px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15); border-radius: 6px; padding: 4px; z-index: 9999; }
+        .hover-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
     </style>
 </head>
 <body>
@@ -544,7 +557,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         chart_href = f"hotel-charts/{hotel_slug}.html"
         html_template += f"""
                     <tr>
-                        <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">{hotel_name}</a></td>
+                        <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
                         <td class="price">{price:.0f} PLN</td>
                         <td class=\"{delta_class}\">{delta_display}</td>
                         <td>{since_display}</td>
@@ -563,10 +576,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
         </div>
     </div>
-</body>
-</html>"""
+    <div id="hoverThumb" class="hover-thumb"><img id="hoverImg" src="" alt="preview"/></div>
+    <script>
+      (function(){
+        const map = 
+"""
 
-    # Сохраняем файл
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_template)
     
