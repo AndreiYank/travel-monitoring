@@ -9,7 +9,7 @@ on:
     branches: [ main ]
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -128,8 +128,9 @@ jobs:
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
           
-          # Добавляем все изменения
-          git add data/ index.html *.log
+          # Добавляем все изменения (принудительно для игнорируемых путей)
+          git add -f data/ || true
+          git add index.html basic.html charts.html inline.html || true
           
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then

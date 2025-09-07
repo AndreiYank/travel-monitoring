@@ -82,6 +82,29 @@
             font-size: 0.9em;
             opacity: 0.8;
         }
+        .alerts-section {
+            margin-top: 30px;
+        }
+        .alert-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }
+        .alert-decrease {
+            border-left-color: #28a745;
+        }
+        .alert-increase {
+            border-left-color: #dc3545;
+        }
+        .alerts-empty {
+            color: #6c757d;
+            font-style: italic;
+        }
         .hotels-section {
             margin-top: 30px;
         }
@@ -151,7 +174,7 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Travel Price Monitor</h1>
-            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 06.09.2025 23:06</p>
+            <p>Мониторинг цен на путешествия в Грецию • Обновлено: 07.09.2025 07:44</p>
         </div>
         
         <div class="metrics">
@@ -228,6 +251,15 @@
             </div>
         </div>
         
+        <div class="alerts-section">
+            <h3>🚨 История алертов</h3>
+            <div>
+
+                <div class="alerts-empty">Нет алертов</div>
+
+            </div>
+        </div>
+
         <div class="hotels-section">
             <h3>🏨 Все отели (отсортированы по цене) - кликните для графика</h3>
             <table class="hotels-table">

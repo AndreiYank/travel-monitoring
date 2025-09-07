@@ -76,6 +76,26 @@ def generate_inline_charts_dashboard():
     expensive_changes = hotel_changes[-5:]
     expensive_changes.reverse()
     
+    # Загружаем историю алертов (если есть)
+    alerts = []
+    alerts_path = os.path.join('data', 'price_alerts_history.json')
+    if os.path.exists(alerts_path):
+        try:
+            with open(alerts_path, 'r', encoding='utf-8') as f:
+                alerts_data = json.load(f)
+                alerts = alerts_data.get('alerts', []) or []
+        except Exception:
+            alerts = []
+
+    # Сортируем алерты по времени (новые сверху)
+    def parse_iso(ts):
+        try:
+            return datetime.fromisoformat(ts)
+        except Exception:
+            return datetime.min
+
+    alerts.sort(key=lambda a: parse_iso(a.get('timestamp') or a.get('time') or ''), reverse=True)
+
     # HTML шаблон
     html_template = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -160,6 +180,29 @@ def generate_inline_charts_dashboard():
         .change-percent {{
             font-size: 0.9em;
             opacity: 0.8;
+        }}
+        .alerts-section {{
+            margin-top: 30px;
+        }}
+        .alert-item {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            margin: 5px 0;
+            background: white;
+            border-radius: 5px;
+            border-left: 4px solid;
+        }}
+        .alert-decrease {{
+            border-left-color: #28a745;
+        }}
+        .alert-increase {{
+            border-left-color: #dc3545;
+        }}
+        .alerts-empty {{
+            color: #6c757d;
+            font-style: italic;
         }}
         .hotels-section {{
             margin-top: 30px;
@@ -291,6 +334,44 @@ def generate_inline_charts_dashboard():
             </div>
         </div>
         
+        <div class="alerts-section">
+            <h3>🚨 История алертов</h3>
+            <div>
+"""
+
+    if alerts:
+        for a in alerts:
+            hotel_name = a.get('hotel_name') or a.get('hotel') or 'Unknown'
+            old_price = a.get('old_price') or a.get('from') or a.get('previous_price') or 0
+            new_price = a.get('new_price') or a.get('to') or a.get('current_price') or 0
+            change_pct = 0.0
+            try:
+                if float(old_price) != 0:
+                    change_pct = (float(new_price) - float(old_price)) / float(old_price) * 100.0
+            except Exception:
+                change_pct = 0.0
+            ts = a.get('timestamp') or a.get('time') or ''
+            direction_class = 'alert-increase' if (float(new_price) - float(old_price)) > 0 else ('alert-decrease' if (float(new_price) - float(old_price)) < 0 else '')
+            arrow = '↑' if (float(new_price) - float(old_price)) > 0 else ('↓' if (float(new_price) - float(old_price)) < 0 else '→')
+
+            html_template += f"""
+                <div class="alert-item {direction_class}">
+                    <div>
+                        <div class="hotel-name">{hotel_name}</div>
+                        <div class="change-percent">{arrow} {change_pct:+.1f}% • {ts}</div>
+                    </div>
+                    <div class="change-price">{old_price} → {new_price} PLN</div>
+                </div>
+"""
+    else:
+        html_template += """
+                <div class="alerts-empty">Нет алертов</div>
+"""
+
+    html_template += f"""
+            </div>
+        </div>
+
         <div class="hotels-section">
             <h3>🏨 Все отели (отсортированы по цене) - кликните для графика</h3>
             <table class="hotels-table">
