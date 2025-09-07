@@ -61,7 +61,7 @@ jobs:
         run: |
           playwright install chromium
 
-      - name: Run price monitoring (Greece & Egypt)
+      - name: Run price monitoring (Greece, Egypt & Turkey)
         run: |
           echo "🚀 Starting price monitoring at $(date)"
           export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
@@ -70,6 +70,8 @@ jobs:
           python travel_monitor.py --config config.json --data-file travel_prices.csv
           # Egypt (separate dataset)
           python travel_monitor.py --config config_egypt.json --data-file egypt_travel_prices.csv
+          # Turkey (new dataset)
+          python travel_monitor.py --config config_turkey.json --data-file turkey_travel_prices.csv
           echo "✅ Price monitoring completed"
 
       - name: Run data analysis
@@ -78,7 +80,7 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate dashboards (Greece & Egypt) and landing
+      - name: Generate dashboards (Greece, Egypt & Turkey) and landing
         run: |
           echo "🌐 Generating dashboards at $(date)"
           # Greece dashboard
@@ -97,9 +99,19 @@ jobs:
           else
             echo "⚠️ Egypt dataset not found; skipping Egypt dashboard"
           fi
+          # Turkey dashboard (if data exists)
+          if [ -f "data/turkey_travel_prices.csv" ]; then
+            python generate_inline_charts_dashboard.py \
+              --data-file data/turkey_travel_prices.csv \
+              --output index_turkey.html \
+              --title "Мониторинг цен • Турция" \
+              --charts-dir hotel-charts/turkey
+          else
+            echo "⚠️ Turkey dataset not found; skipping Turkey dashboard"
+          fi
           # Landing page with tiles
           python generate_landing.py
-          echo "✅ Dashboards generated (index_greece.html, index_egypt.html, index.html)"
+          echo "✅ Dashboards generated (index_greece.html, index_egypt.html, index_turkey.html, index.html)"
 
       - name: Check for price alerts
         id: alerts
@@ -144,8 +156,8 @@ jobs:
           
           # Добавляем все изменения (принудительно для игнорируемых путей)
           git add -f data/ || true
-          git add index.html index_greece.html index_egypt.html || true
-          git add -f hotel-charts/ hotel-charts/greece/ hotel-charts/egypt/ || true
+          git add index.html index_greece.html index_egypt.html index_turkey.html || true
+          git add -f hotel-charts/ hotel-charts/greece/ hotel-charts/egypt/ hotel-charts/turkey/ || true
           
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then

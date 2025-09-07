@@ -1,0 +1,193 @@
+name: Travel Price Monitor (Parallel)
+
+on:
+  schedule:
+    - cron: '0 * * * *'  # Every hour
+  workflow_dispatch:  # Manual trigger
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - config: config.json
+            data_file: travel_prices.csv
+            region: greece
+            title: "Мониторинг цен • Греция"
+            charts_dir: hotel-charts/greece
+            output_file: index_greece.html
+          - config: config_egypt.json
+            data_file: egypt_travel_prices.csv
+            region: egypt
+            title: "Мониторинг цен • Египет"
+            charts_dir: hotel-charts/egypt
+            output_file: index_egypt.html
+          - config: config_turkey.json
+            data_file: turkey_travel_prices.csv
+            region: turkey
+            title: "Мониторинг цен • Турция"
+            charts_dir: hotel-charts/turkey
+            output_file: index_turkey.html
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Cache pip dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_dashboard.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+
+      - name: Run price monitoring (${{ matrix.region }})
+        run: |
+          echo "🚀 Starting ${{ matrix.region }} monitoring at $(date)"
+          export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
+          export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
+          python travel_monitor.py --config ${{ matrix.config }} --data-file ${{ matrix.data_file }}
+          echo "✅ ${{ matrix.region }} monitoring completed"
+
+      - name: Generate dashboard (${{ matrix.region }})
+        run: |
+          echo "🌐 Generating ${{ matrix.region }} dashboard at $(date)"
+          python generate_inline_charts_dashboard.py \
+            --data-file data/${{ matrix.data_file }} \
+            --output ${{ matrix.output_file }} \
+            --title "${{ matrix.title }}" \
+            --charts-dir ${{ matrix.charts_dir }}
+          echo "✅ ${{ matrix.region }} dashboard generated"
+
+      - name: Upload data artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ${{ matrix.region }}-data
+          path: |
+            data/${{ matrix.data_file }}
+            ${{ matrix.output_file }}
+            ${{ matrix.charts_dir }}/
+          retention-days: 7
+
+  generate-landing:
+    needs: monitor
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements_dashboard.txt
+
+      - name: Download all data artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: artifacts/
+
+      - name: Restore data files
+        run: |
+          mkdir -p data hotel-charts
+          # Copy data files
+          find artifacts -name "*.csv" -exec cp {} data/ \;
+          # Copy dashboard files
+          find artifacts -name "index_*.html" -exec cp {} . \;
+          # Copy chart directories
+          find artifacts -name "hotel-charts" -type d -exec cp -r {} . \;
+
+      - name: Generate landing page
+        run: |
+          python generate_landing.py
+
+      - name: Check for price alerts
+        id: alerts
+        run: |
+          echo "🚨 Checking for price alerts..."
+          ALERT_COUNT=0
+          for csv in data/*.csv; do
+            if [ -f "$csv" ]; then
+              COUNT=$(wc -l < "$csv" || echo "0")
+              ALERT_COUNT=$((ALERT_COUNT + COUNT))
+            fi
+          done
+          echo "alert_count=$ALERT_COUNT" >> $GITHUB_OUTPUT
+          echo "📊 Total offers found: $ALERT_COUNT"
+
+      - name: Commit and push data updates
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Fetch latest changes
+          git fetch origin main || true
+          git checkout main || true
+          git stash push -u -m "ci-stash" || true
+          git pull --rebase origin main || true
+          git stash pop || true
+          
+          # Add all changes
+          git add -f data/ || true
+          git add index.html index_greece.html index_egypt.html index_turkey.html || true
+          git add -f hotel-charts/ || true
+          
+          # Check if there are changes to commit
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes to commit"
+          else
+            # Create commit
+            COMMIT_MSG="🔄 Parallel monitoring update - $(date '+%Y-%m-%d %H:%M:%S UTC')
+            
+            📊 Data summary:
+            - Total offers: ${{ steps.alerts.outputs.alert_count }}
+            - Regions: Greece, Egypt, Turkey
+            - Parallel execution: 3x faster
+            
+            🤖 Automated by GitHub Actions (Parallel)"
+            
+            git commit -m "$COMMIT_MSG"
+            git push origin HEAD:main
+            echo "✅ Changes committed and pushed"
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          exclude_assets: |
+            *.py
+            *.json
+            *.txt
+            *.log
+            .github/
+            data/

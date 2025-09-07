@@ -49,6 +49,7 @@ def generate_landing(tiles, output_file='index.html'):
 if __name__ == '__main__':
     tiles = [
         { 'title': 'Греция', 'subtitle': 'Основной мониторинг', 'href': 'index_greece.html' },
-        { 'title': 'Египет', 'subtitle': 'Альтернативный фильтр', 'href': 'index_egypt.html' }
+        { 'title': 'Египет', 'subtitle': 'Альтернативный фильтр', 'href': 'index_egypt.html' },
+        { 'title': 'Турция', 'subtitle': 'Расширенный мониторинг', 'href': 'index_turkey.html' }
     ]
     generate_landing(tiles, 'index.html')
