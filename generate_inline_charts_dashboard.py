@@ -42,50 +42,85 @@ def generate_inline_charts_dashboard():
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     
-    # Анализируем изменения цен за последние 48 часов
-    now = datetime.now()
-    cutoff_time = now - timedelta(hours=48)
-
-    hotel_changes: list[dict] = []
-    deltas_by_hotel: dict[str, tuple[float, float]] = {}
+    # Анализ изменений за разные окна времени
     df_sorted = df.sort_values(['hotel_name', 'scraped_at'])
+
+    def compute_changes(window_hours: int):
+        cutoff = (df['scraped_at'].max() or datetime.now()) - timedelta(hours=window_hours)
+        changes = []
+        deltas_map = {}
+        for hotel_name, grp in df_sorted.groupby('hotel_name'):
+            grp = grp.sort_values('scraped_at')
+            latest_row = grp.iloc[-1]
+            latest_time = latest_row['scraped_at']
+            win = grp[grp['scraped_at'] >= cutoff]
+            if len(win) >= 2:
+                baseline_row = win.iloc[0]
+            elif len(grp) >= 2:
+                baseline_row = grp.iloc[-2]
+            else:
+                deltas_map[hotel_name] = None
+                continue
+            latest_price = float(latest_row['price'])
+            baseline_price = float(baseline_row['price'])
+            if baseline_price == 0:
+                deltas_map[hotel_name] = None
+                continue
+            change = latest_price - baseline_price
+            if change == 0:
+                deltas_map[hotel_name] = None
+                continue
+            change_percent = (change / baseline_price) * 100.0
+            changes.append({
+                'hotel_name': hotel_name,
+                'old_price': baseline_price,
+                'new_price': latest_price,
+                'change': change,
+                'change_percent': change_percent,
+                'timestamp': str(latest_time)
+            })
+            deltas_map[hotel_name] = (change, change_percent)
+        decreases = sorted([h for h in changes if h['change'] < 0], key=lambda x: x['change'])[:5]
+        increases = sorted([h for h in changes if h['change'] > 0], key=lambda x: x['change'], reverse=True)[:5]
+        return decreases, increases, deltas_map
+
+    # Для таблицы оставляем 48ч, для блоков добавим 24ч и 7д
+    decreases_48h, increases_48h, deltas_by_hotel = compute_changes(48)
+    decreases_24h, increases_24h, _ = compute_changes(24)
+    decreases_7d, increases_7d, _ = compute_changes(24 * 7)
+
+    # Метки нового минимума/максимума за 7д и 30д
+    ref_time = df['scraped_at'].max() or datetime.now()
+    minmax_labels_by_hotel = {}
+    for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
+        grp = grp.sort_values('scraped_at')
+        latest_price = float(grp.iloc[-1]['price'])
+        labels = []
+        for days in (7, 30):
+            cutoff_d = ref_time - timedelta(days=days)
+            window = grp[grp['scraped_at'] >= cutoff_d]
+            if len(window) == 0:
+                continue
+            win_min = float(window['price'].min())
+            win_max = float(window['price'].max())
+            if latest_price <= win_min:
+                labels.append(f"Новый минимум {days}д")
+            if latest_price >= win_max:
+                labels.append(f"Новый максимум {days}д")
+        minmax_labels_by_hotel[hotel_name] = labels
+
+    # Изменение с начала наблюдений (первое значение -> последнее)
+    since_start_delta = {}
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at')
-        latest_row = grp.iloc[-1]
-        latest_time = latest_row['scraped_at']
-        # Берем самую раннюю точку внутри последних 48 часов.
-        window_rows = grp[grp['scraped_at'] >= cutoff_time]
-        if len(window_rows) >= 2:
-            baseline_row = window_rows.iloc[0]
-        elif len(grp) >= 2:
-            # Фолбэк: предыдущая точка, если в окне только одна
-            baseline_row = grp.iloc[-2]
-        else:
-            deltas_by_hotel[hotel_name] = None
+        first_price = float(grp.iloc[0]['price'])
+        last_price = float(grp.iloc[-1]['price'])
+        if first_price == 0:
+            since_start_delta[hotel_name] = None
             continue
-        latest_price = float(latest_row['price'])
-        baseline_price = float(baseline_row['price'])
-        if baseline_price == 0:
-            deltas_by_hotel[hotel_name] = None
-            continue
-        change = latest_price - baseline_price
-        if change == 0:
-            deltas_by_hotel[hotel_name] = None
-            continue  # пропускаем нулевые изменения
-        change_percent = (change / baseline_price) * 100.0
-        hotel_changes.append({
-            'hotel_name': hotel_name,
-            'old_price': baseline_price,
-            'new_price': latest_price,
-            'change': change,
-            'change_percent': change_percent,
-            'timestamp': str(latest_time)
-        })
-        deltas_by_hotel[hotel_name] = (change, change_percent)
-
-    # Разделяем на подешевевшие и подорожавшие
-    decreases = sorted([h for h in hotel_changes if h['change'] < 0], key=lambda x: x['change'])[:5]
-    increases = sorted([h for h in hotel_changes if h['change'] > 0], key=lambda x: x['change'], reverse=True)[:5]
+        change_abs = last_price - first_price
+        change_pct = (change_abs / first_price) * 100.0
+        since_start_delta[hotel_name] = (change_abs, change_pct)
     
     # Загружаем историю алертов (если есть)
     alerts = []
@@ -434,6 +469,7 @@ def generate_inline_charts_dashboard():
                         <th>Отель</th>
                         <th>Цена</th>
                         <th>Δ 48ч</th>
+                        <th>Δ с начала</th>
                         <th>График</th>
                         <th>Даты</th>
                         <th>Длительность</th>
@@ -459,6 +495,15 @@ def generate_inline_charts_dashboard():
             sign = '+' if delta_abs > 0 else ('' if delta_abs < 0 else '')
             delta_display = f"{arrow} {sign}{delta_pct:.1f}%"
 
+        # Δ с начала наблюдений
+        since_display = "—"
+        since_info = since_start_delta.get(hotel_name)
+        if since_info is not None:
+            since_abs, since_pct = since_info
+            arrow2 = '↑' if since_abs > 0 else ('↓' if since_abs < 0 else '→')
+            sign2 = '+' if since_abs > 0 else ('' if since_abs < 0 else '')
+            since_display = f"{arrow2} {sign2}{since_pct:.1f}%"
+
         hotel_slug = slugify(hotel_name)
         chart_href = f"hotel-charts/{hotel_slug}.html"
         html_template += f"""
@@ -466,6 +511,7 @@ def generate_inline_charts_dashboard():
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">{hotel_name}</a></td>
                         <td class="price">{price:.0f} PLN</td>
                         <td class=\"{delta_class}\">{delta_display}</td>
+                        <td>{since_display}</td>
                         <td><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">Открыть</a></td>
                         <td>{dates}</td>
                         <td>{duration}</td>
