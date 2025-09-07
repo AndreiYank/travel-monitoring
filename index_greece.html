@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <title>Мониторинг цен • Греция</title>
+    <title>Греция</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -114,6 +114,31 @@
             color: #6c757d;
             font-style: italic;
         }
+        .alerts-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            user-select: none;
+        }
+        .alerts-header:hover {
+            background: #f8f9fa;
+        }
+        .alerts-content {
+            max-height: 400px;
+            overflow-y: auto;
+            transition: max-height 0.3s ease;
+        }
+        .alerts-content.collapsed {
+            max-height: 0;
+            overflow: hidden;
+        }
+        .expand-icon {
+            transition: transform 0.3s ease;
+        }
+        .expand-icon.collapsed {
+            transform: rotate(-90deg);
+        }
         .delta { font-weight: bold; }
         .delta.up { color: #dc3545; }
         .delta.down { color: #28a745; }
@@ -163,7 +188,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>🏨 Мониторинг цен • Греция</h1>
+            <h1>🏨 Греция</h1>
             <p>Обновлено: 07.09.2025 14:29</p>
         </div>
 
@@ -354,8 +379,27 @@
         </div>
         
         <div class="alerts-section">
-            <h3>🚨 История алертов</h3>
-            <div>
+            <div class="alerts-header" onclick="toggleAlerts()">
+                <h3>🚨 История алертов</h3>
+                <span class="expand-icon" id="alertsExpandIcon">▼</span>
+            </div>
+            <div class="alerts-content" id="alertsContent">
+
+                <div class="alert-item alert-increase">
+                    <div>
+                        <div class="hotel-name">Atrium (Pefkohori)</div>
+                        <div class="change-percent">↑ +15.5% • 2025-09-06T21:23:28.060109+00:00</div>
+                    </div>
+                    <div class="change-price">6832.0 → 7891.0 PLN</div>
+                </div>
+
+                <div class="alert-item alert-decrease">
+                    <div>
+                        <div class="hotel-name">Gennadi Seaside Resort</div>
+                        <div class="change-percent">↓ -4.1% • 2025-09-07T07:14:31.550520+00:00</div>
+                    </div>
+                    <div class="change-price">6672.0 → 6400.0 PLN</div>
+                </div>
 
                 <div class="alert-item alert-missing">
                     <div>
@@ -913,6 +957,17 @@
         document.addEventListener('mousemove', move);
         window._hoverPreview = { show, hide };
       })();
+      function toggleAlerts() {
+        const content = document.getElementById('alertsContent');
+        const icon = document.getElementById('alertsExpandIcon');
+        if (content.classList.contains('collapsed')) {
+          content.classList.remove('collapsed');
+          icon.classList.remove('collapsed');
+        } else {
+          content.classList.add('collapsed');
+          icon.classList.add('collapsed');
+        }
+      }
     </script>
   </body>
 </html>
