@@ -99,7 +99,7 @@ class ScheduledMonitor:
             if not os.path.exists(data_file):
                 return
             
-            df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             df['scraped_at'] = pd.to_datetime(df['scraped_at'])
             
             # Получаем последние данные

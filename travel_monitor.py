@@ -200,7 +200,7 @@ class TravelPriceMonitor:
             filepath = os.path.join(self.config['data_dir'], self.data_file)
             if not os.path.exists(filepath):
                 return pd.DataFrame()
-            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             if df.empty or 'scraped_at' not in df.columns:
                 return pd.DataFrame()
             raw = df['scraped_at'].astype(str)
@@ -466,6 +466,9 @@ class TravelPriceMonitor:
             # Изображение отеля (если доступно на карточке)
             image_url = await self.extract_image_url_from_offer(element)
             
+            # Ссылка на детальную страницу предложения
+            offer_url = await self.extract_offer_url(element)
+            
             # Очищаем и форматируем данные
             hotel_name = self.clean_text(hotel_name) if hotel_name else f"Предложение {index + 1}"
             price_value = self.extract_price(price) if price else 0
@@ -487,7 +490,8 @@ class TravelPriceMonitor:
                 # Записываем временную метку в UTC с таймзоной, чтобы унифицировать время между локальными и CI-запусками
                 'scraped_at': datetime.now(timezone.utc).isoformat(),
                 'url': self.config['url'],
-                'image_url': image_url or ""
+                'image_url': image_url or "",
+                'offer_url': offer_url or ""
             }
             
         except Exception as e:
@@ -532,6 +536,95 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.debug(f"Не удалось извлечь изображение: {e}")
         return ""
+
+    async def extract_offer_url(self, element) -> str:
+        """Извлекает URL ссылку на детальную страницу предложения"""
+        try:
+            # 1) Проверяем, является ли сам элемент ссылкой
+            tag_name = await element.evaluate("el => el.tagName.toLowerCase()")
+            if tag_name == 'a':
+                href = await element.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 2) Ищем ссылку внутри элемента
+            link_selectors = [
+                'a[href]',  # Любая ссылка
+                'a[href*="offer"]',  # Ссылка содержащая "offer"
+                'a[href*="hotel"]',  # Ссылка содержащая "hotel"
+                'a[href*="trip"]',   # Ссылка содержащая "trip"
+                'a[href*="detail"]', # Ссылка содержащая "detail"
+                'a[href*="view"]',   # Ссылка содержащая "view"
+                '.offer-link a',     # Ссылка в классе offer-link
+                '.hotel-link a',     # Ссылка в классе hotel-link
+                '.trip-link a',      # Ссылка в классе trip-link
+                '[class*="link"] a', # Ссылка в любом классе с "link"
+                'button[data-href]', # Кнопка с data-href
+                '[data-url]',        # Элемент с data-url
+                '[data-href]'        # Элемент с data-href
+            ]
+            
+            for selector in link_selectors:
+                try:
+                    link_element = await element.query_selector(selector)
+                    if link_element:
+                        # Пробуем разные атрибуты для ссылки
+                        for attr in ['href', 'data-href', 'data-url', 'data-link']:
+                            url = await link_element.get_attribute(attr)
+                            if url and url.strip():
+                                return self.make_absolute_url(url)
+                except:
+                    continue
+            
+            # 3) Ищем JavaScript обработчики клика
+            try:
+                # Проверяем onclick атрибуты
+                onclick = await element.get_attribute('onclick')
+                if onclick and 'window.open' in onclick:
+                    import re
+                    match = re.search(r"window\.open\(['\"]([^'\"]+)['\"]", onclick)
+                    if match:
+                        return self.make_absolute_url(match.group(1))
+            except:
+                pass
+            
+            # 4) Проверяем родительские элементы на наличие ссылок
+            try:
+                parent = await element.evaluate("el => el.parentElement")
+                if parent:
+                    parent_tag = await parent.evaluate("el => el.tagName.toLowerCase()")
+                    if parent_tag == 'a':
+                        href = await parent.get_attribute('href')
+                        if href and href.strip():
+                            return self.make_absolute_url(href)
+            except:
+                pass
+                
+        except Exception as e:
+            logger.debug(f"Не удалось извлечь ссылку на предложение: {e}")
+        
+        return ""
+
+    def make_absolute_url(self, url: str) -> str:
+        """Преобразует относительный URL в абсолютный"""
+        if not url:
+            return ""
+        
+        url = url.strip()
+        
+        # Если уже абсолютный URL
+        if url.startswith(('http://', 'https://')):
+            return url
+        
+        # Если относительный URL, добавляем базовый домен
+        if url.startswith('/'):
+            return f"https://fly.pl{url}"
+        
+        # Если относительный URL без слеша
+        if not url.startswith('#'):
+            return f"https://fly.pl/{url}"
+        
+        return url
 
     async def extract_price_for_all(self, element) -> str:
         """Извлекает цену за всех (za wszystkich)"""
@@ -797,7 +890,7 @@ class TravelPriceMonitor:
         file_exists = os.path.exists(filepath)
         with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
             # Не меняем заголовок CSV, чтобы не ломать историю.
-            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url']
+            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
             
             if not file_exists:
@@ -922,7 +1015,7 @@ class TravelPriceMonitor:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")

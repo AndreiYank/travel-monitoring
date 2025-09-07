@@ -24,7 +24,7 @@ class TravelDataAnalyzer:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             
             # Исправляем парсинг дат с поддержкой timezone
             if 'scraped_at' in df.columns:
