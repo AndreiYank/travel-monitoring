@@ -114,15 +114,15 @@ class TravelPriceMonitor:
                     logger.info(f"Парсим страницу {page_number}...")
                     
                     # Ищем предложения на текущей странице
-                offers_data = await self.find_offers(page)
-                
-                if not offers_data:
-                    logger.warning("Предложения не найдены, пробуем альтернативный подход...")
-                    offers_data = await self.find_offers_alternative(page)
-                
+                    offers_data = await self.find_offers(page)
+                    
                     if not offers_data:
-                        logger.info("Предложения не найдены, завершаем парсинг")
-                        break
+                        logger.warning("Предложения не найдены, пробуем альтернативный подход...")
+                        offers_data = await self.find_offers_alternative(page)
+                    
+                        if not offers_data:
+                            logger.info("Предложения не найдены, завершаем парсинг")
+                            break
                     
                     # Парсим предложения с текущей страницы
                     page_offers = []
@@ -138,7 +138,7 @@ class TravelPriceMonitor:
                         except Exception as e:
                             logger.warning(f"Ошибка парсинга предложения {i}: {e}")
                         continue
-                
+                    
                     if page_offers:
                         all_offers.extend(page_offers)
                         logger.info(f"Страница {page_number}: собрано {len(page_offers)} предложений, максимальная цена: {max_price_on_page:.0f} PLN")
@@ -443,10 +443,10 @@ class TravelPriceMonitor:
             # Ищем цену - сначала ищем цену за всех, потом за одного
             price = await self.extract_price_for_all(element)
             if not price:
-            price = await self.extract_text_by_selectors(element, [
-                '.price', '.cost', '.amount', '.value',
-                '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
-            ])
+                price = await self.extract_text_by_selectors(element, [
+                    '.price', '.cost', '.amount', '.value',
+                    '[class*="price"]', '[class*="cost"]', '[class*="amount"]'
+                ])
             
             # Ищем даты - более специфичные селекторы для fly.pl
             dates = await self.extract_dates_from_offer(element)
