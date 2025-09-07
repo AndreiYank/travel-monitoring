@@ -362,6 +362,9 @@ class TravelPriceMonitor:
             # Рейтинг не извлекаем - не очень важен
             rating = ""
             
+            # Изображение отеля (если доступно на карточке)
+            image_url = await self.extract_image_url_from_offer(element)
+            
             # Очищаем и форматируем данные
             hotel_name = self.clean_text(hotel_name) if hotel_name else f"Предложение {index + 1}"
             price_value = self.extract_price(price) if price else 0
@@ -381,12 +384,52 @@ class TravelPriceMonitor:
                 'duration': duration[:30],
                 'rating': rating[:20],
                 'scraped_at': datetime.now().isoformat(),
-                'url': self.config['url']
+                'url': self.config['url'],
+                'image_url': image_url or ""
             }
             
         except Exception as e:
             logger.warning(f"Ошибка извлечения данных из элемента {index}: {e}")
             return None
+
+    async def extract_image_url_from_offer(self, element) -> str:
+        """Пытается извлечь URL главного изображения из карточки предложения."""
+        try:
+            # 1) Пробуем <img src> / data-src
+            img_el = await element.query_selector('img')
+            if img_el:
+                for attr in ['src', 'data-src', 'data-original', 'data-lazy']:
+                    val = await img_el.get_attribute(attr)
+                    if val and val.strip() and val.startswith('http'):
+                        return val.strip()
+            
+            # 2) Пробуем фоновые изображения из inline-style
+            bg_el = await element.query_selector('[style*="background"]')
+            if bg_el:
+                bg = await bg_el.get_attribute('style')
+                if bg and 'url(' in bg:
+                    import re
+                    m = re.search(r'url\(("|")?(?P<u>[^\)"\']+)("|")?\)', bg)
+                    if m:
+                        url = m.group('u')
+                        if url.startswith('http'):
+                            return url
+            
+            # 3) Пробуем вычисленный стиль (менее гарантировано)
+            try:
+                url = await element.evaluate("el => getComputedStyle(el).backgroundImage")
+                if url and 'url(' in url:
+                    import re
+                    m = re.search(r'url\(("|")?(?P<u>[^\)"\']+)("|")?\)', url)
+                    if m:
+                        u = m.group('u')
+                        if u.startswith('http'):
+                            return u
+            except:
+                pass
+        except Exception as e:
+            logger.debug(f"Не удалось извлечь изображение: {e}")
+        return ""
 
     async def extract_price_for_all(self, element) -> str:
         """Извлекает цену за всех (za wszystkich)"""
@@ -651,6 +694,7 @@ class TravelPriceMonitor:
         # Добавляем новые данные
         file_exists = os.path.exists(filepath)
         with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
+            # Не меняем заголовок CSV, чтобы не ломать историю.
             fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
             
@@ -658,9 +702,41 @@ class TravelPriceMonitor:
                 writer.writeheader()
             
             for offer in new_offers:
-                writer.writerow(offer)
+                # Пишем только поддерживаемые поля (без image_url в CSV)
+                writer.writerow({k: offer.get(k, '') for k in fieldnames})
         
         logger.info(f"Добавлено {len(new_offers)} записей (включая возможные повторы для истории) в {filepath}")
+
+        # Обновляем карту изображений по отелям в отдельном JSON
+        try:
+            images_path = os.path.join(self.config['data_dir'], 'hotel_images.json')
+            images_map: Dict[str, str] = {}
+            if os.path.exists(images_path):
+                try:
+                    with open(images_path, 'r', encoding='utf-8') as jf:
+                        import json as _json
+                        data = _json.load(jf)
+                        if isinstance(data, dict):
+                            images_map = data
+                except Exception:
+                    images_map = {}
+
+            updated = 0
+            for offer in new_offers:
+                h = offer.get('hotel_name')
+                img = (offer.get('image_url') or '').strip()
+                if h and img and img.startswith('http'):
+                    if h not in images_map:
+                        images_map[h] = img
+                        updated += 1
+
+            if updated:
+                with open(images_path, 'w', encoding='utf-8') as jf:
+                    import json as _json
+                    _json.dump(images_map, jf, ensure_ascii=False, indent=2)
+                logger.info(f"Обновлена карта изображений для отелей: +{updated}")
+        except Exception as e:
+            logger.warning(f"Не удалось обновить карту изображений: {e}")
 
     def create_charts(self):
         """Создает графики"""

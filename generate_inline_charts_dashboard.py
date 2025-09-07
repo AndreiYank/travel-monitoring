@@ -427,17 +427,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: bold;
             color: #28a745;
         }}
-        .open-chart-link {{ color: #2E86AB; text-decoration: underline; }
-        .footer {
+        .open-chart-link {{ color: #2E86AB; text-decoration: underline; }}
+        .footer {{
             text-align: center;
             margin-top: 30px;
             padding: 20px;
             background: #f8f9fa;
             border-radius: 8px;
-        }
+        }}
         /* Hover preview */
-        .hover-thumb { position: absolute; display: none; width: 240px; height: 160px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15); border-radius: 6px; padding: 4px; z-index: 9999; }
-        .hover-thumb img { width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }
+        .hover-thumb {{ position: absolute; display: none; width: 240px; height: 160px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15); border-radius: 6px; padding: 4px; z-index: 9999; }}
+        .hover-thumb img {{ width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }}
     </style>
 </head>
 <body>
@@ -577,9 +577,25 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </div>
     </div>
     <div id="hoverThumb" class="hover-thumb"><img id="hoverImg" src="" alt="preview"/></div>
+"""
+
+    # Вставляем скрипт превью слиянием JSON вне f-строки, чтобы избежать конфликтов с фигурными скобками
+    html_template += """
     <script>
       (function(){
-        const map = 
+        const map = """ + json.dumps(images_map, ensure_ascii=False) + """;
+        try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}
+        const hover = document.getElementById('hoverThumb');
+        const img = document.getElementById('hoverImg');
+        function show(e, name){ const url = map[name]; if(!url){ return; } img.src = url; hover.style.display = 'block'; hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; }
+        function move(e){ if(hover.style.display === 'block'){ hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; } }
+        function hide(){ hover.style.display = 'none'; img.src = ''; }
+        document.addEventListener('mousemove', move);
+        window._hoverPreview = { show, hide };
+      })();
+    </script>
+  </body>
+</html>
 """
 
     with open(output_file, 'w', encoding='utf-8') as f:
