@@ -501,6 +501,24 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .hotels-table th {{
             background: #f8f9fa;
             font-weight: bold;
+            cursor: pointer;
+            user-select: none;
+            position: relative;
+        }}
+        .hotels-table th:hover {{
+            background: #e9ecef;
+        }}
+        .hotels-table th.sortable::after {{
+            content: ' ↕';
+            opacity: 0.5;
+        }}
+        .hotels-table th.sort-asc::after {{
+            content: ' ↑';
+            opacity: 1;
+        }}
+        .hotels-table th.sort-desc::after {{
+            content: ' ↓';
+            opacity: 1;
         }}
         .hotels-table tr:hover {{
             background: #f5f5f5;
@@ -619,17 +637,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </div>
 
         <div class="hotels-section">
-            <h3>🏨 Все отели (отсортированы по цене) • график откроется на отдельной странице</h3>
-            <table class="hotels-table">
+            <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
+            <table class="hotels-table" id="hotelsTable">
                 <thead>
                     <tr>
-                        <th>Отель</th>
-                        <th>Цена</th>
-                        <th>Δ 48ч</th>
-                        <th>Δ с начала</th>
-                        <th>График</th>
-                        <th>Даты</th>
-                        <th>Длительность</th>
+                        <th class="sortable" data-sort="hotel">Отель</th>
+                        <th class="sortable" data-sort="price">Цена</th>
+                        <th class="sortable" data-sort="delta48">Δ 48ч</th>
+                        <th class="sortable" data-sort="deltastart">Δ с начала</th>
+                        <th class="sortable" data-sort="dates">Даты</th>
+                        <th class="sortable" data-sort="duration">Длительность</th>
                     </tr>
                 </thead>
                 <tbody>"""
@@ -670,12 +687,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
-                        <td class="price">{price:.0f} PLN</td>
-                        <td class=\"{delta_class}\">{delta_display}</td>
-                        <td>{since_display}</td>
-                        <td><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\">Открыть</a></td>
-                        <td>{dates}</td>
-                        <td>{duration}</td>
+                        <td class="price" data-sort-value="{price}">{price:.0f} PLN</td>
+                        <td class=\"{delta_class}\" data-sort-value="{delta_info[1] if delta_info else 0}">{delta_display}</td>
+                        <td data-sort-value="{since_info[1] if since_info else 0}">{since_display}</td>
+                        <td data-sort-value="{dates}">{dates}</td>
+                        <td data-sort-value="{duration}">{duration}</td>
                     </tr>"""
 
     # Завершаем таблицу и добавляем секцию для графика
@@ -725,6 +741,67 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           icon.classList.add('collapsed');
         }
       }
+      
+      // Таблица сортировки
+      let currentSort = { column: null, direction: 'asc' };
+      
+      function sortTable(column) {
+        const table = document.getElementById('hotelsTable');
+        const tbody = table.querySelector('tbody');
+        const rows = Array.from(tbody.querySelectorAll('tr'));
+        
+        // Определяем направление сортировки
+        if (currentSort.column === column) {
+          currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
+        } else {
+          currentSort.direction = 'asc';
+        }
+        currentSort.column = column;
+        
+        // Сортируем строки
+        rows.sort((a, b) => {
+          let aVal, bVal;
+          
+          if (column === 'hotel') {
+            aVal = a.cells[0].textContent.trim();
+            bVal = b.cells[0].textContent.trim();
+            return currentSort.direction === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
+          } else {
+            aVal = parseFloat(a.cells[getColumnIndex(column)].dataset.sortValue) || 0;
+            bVal = parseFloat(b.cells[getColumnIndex(column)].dataset.sortValue) || 0;
+            return currentSort.direction === 'asc' ? aVal - bVal : bVal - aVal;
+          }
+        });
+        
+        // Обновляем таблицу
+        rows.forEach(row => tbody.appendChild(row));
+        
+        // Обновляем индикаторы сортировки
+        updateSortIndicators();
+      }
+      
+      function getColumnIndex(column) {
+        const columnMap = { 'hotel': 0, 'price': 1, 'delta48': 2, 'deltastart': 3, 'dates': 4, 'duration': 5 };
+        return columnMap[column];
+      }
+      
+      function updateSortIndicators() {
+        const headers = document.querySelectorAll('#hotelsTable th.sortable');
+        headers.forEach(header => {
+          header.classList.remove('sort-asc', 'sort-desc');
+          if (header.dataset.sort === currentSort.column) {
+            header.classList.add(currentSort.direction === 'asc' ? 'sort-asc' : 'sort-desc');
+          }
+        });
+      }
+      
+      // Добавляем обработчики кликов на заголовки
+      document.addEventListener('DOMContentLoaded', function() {
+        const headers = document.querySelectorAll('#hotelsTable th.sortable');
+        headers.forEach(header => {
+          header.addEventListener('click', () => sortTable(header.dataset.sort));
+        });
+      });
     </script>
   </body>
 </html>
