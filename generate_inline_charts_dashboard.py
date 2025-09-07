@@ -65,7 +65,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'price': float(last['price']),
             'dates': last.get('dates', None),
             'duration': last.get('duration', None),
-            'scraped_at_local': last['scraped_at_local']
+            'scraped_at_local': last['scraped_at_local'],
+            'offer_url': last.get('offer_url', '')
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     

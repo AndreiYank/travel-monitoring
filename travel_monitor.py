@@ -540,53 +540,44 @@ class TravelPriceMonitor:
     async def extract_offer_url(self, element) -> str:
         """Извлекает URL ссылку на детальную страницу предложения"""
         try:
-            # 1) Проверяем, является ли сам элемент ссылкой
+            # 1) Проверяем, является ли сам элемент ссылкой с классом offer-con
             tag_name = await element.evaluate("el => el.tagName.toLowerCase()")
             if tag_name == 'a':
-                href = await element.get_attribute('href')
+                classes = await element.get_attribute('class') or ''
+                if 'offer-con' in classes:
+                    href = await element.get_attribute('href')
+                    if href and href.strip():
+                        return self.make_absolute_url(href)
+            
+            # 2) Ищем ссылку с классом offer-con внутри элемента
+            offer_link = await element.query_selector('a.offer-con')
+            if offer_link:
+                href = await offer_link.get_attribute('href')
                 if href and href.strip():
                     return self.make_absolute_url(href)
             
-            # 2) Ищем ссылку внутри элемента
+            # 3) Ищем другие возможные ссылки на предложения
             link_selectors = [
-                'a[href]',  # Любая ссылка
-                'a[href*="offer"]',  # Ссылка содержащая "offer"
-                'a[href*="hotel"]',  # Ссылка содержащая "hotel"
-                'a[href*="trip"]',   # Ссылка содержащая "trip"
-                'a[href*="detail"]', # Ссылка содержащая "detail"
-                'a[href*="view"]',   # Ссылка содержащая "view"
-                '.offer-link a',     # Ссылка в классе offer-link
-                '.hotel-link a',     # Ссылка в классе hotel-link
-                '.trip-link a',      # Ссылка в классе trip-link
-                '[class*="link"] a', # Ссылка в любом классе с "link"
-                'button[data-href]', # Кнопка с data-href
-                '[data-url]',        # Элемент с data-url
-                '[data-href]'        # Элемент с data-href
+                'a[href*="/wycieczka/"]',  # Ссылка содержащая "/wycieczka/"
+                'a[href*="offer"]',        # Ссылка содержащая "offer"
+                'a[href*="hotel"]',        # Ссылка содержащая "hotel"
+                'a[href*="trip"]',         # Ссылка содержащая "trip"
+                'a[href*="detail"]',       # Ссылка содержащая "detail"
+                'a[href*="view"]',         # Ссылка содержащая "view"
+                'a[href]'                  # Любая ссылка
             ]
             
             for selector in link_selectors:
                 try:
                     link_element = await element.query_selector(selector)
                     if link_element:
-                        # Пробуем разные атрибуты для ссылки
-                        for attr in ['href', 'data-href', 'data-url', 'data-link']:
-                            url = await link_element.get_attribute(attr)
-                            if url and url.strip():
-                                return self.make_absolute_url(url)
+                        href = await link_element.get_attribute('href')
+                        if href and href.strip():
+                            # Проверяем, что это ссылка на предложение
+                            if '/wycieczka/' in href or 'offer' in href.lower():
+                                return self.make_absolute_url(href)
                 except:
                     continue
-            
-            # 3) Ищем JavaScript обработчики клика
-            try:
-                # Проверяем onclick атрибуты
-                onclick = await element.get_attribute('onclick')
-                if onclick and 'window.open' in onclick:
-                    import re
-                    match = re.search(r"window\.open\(['\"]([^'\"]+)['\"]", onclick)
-                    if match:
-                        return self.make_absolute_url(match.group(1))
-            except:
-                pass
             
             # 4) Проверяем родительские элементы на наличие ссылок
             try:
@@ -594,9 +585,11 @@ class TravelPriceMonitor:
                 if parent:
                     parent_tag = await parent.evaluate("el => el.tagName.toLowerCase()")
                     if parent_tag == 'a':
-                        href = await parent.get_attribute('href')
-                        if href and href.strip():
-                            return self.make_absolute_url(href)
+                        parent_classes = await parent.evaluate("el => el.className")
+                        if 'offer-con' in parent_classes:
+                            href = await parent.get_attribute('href')
+                            if href and href.strip():
+                                return self.make_absolute_url(href)
             except:
                 pass
                 
