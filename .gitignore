@@ -20,11 +20,7 @@ wheels/
 .installed.cfg
 *.egg
 
-# Generated data and charts
-/data/*.csv
-/data/*.png
-/data/*.json
-!/data/*_alerts.json
+# Generated charts (but keep data for history)
 /hotel-charts/
 index*.html
 
