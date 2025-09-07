@@ -21,9 +21,12 @@ wheels/
 *.egg
 
 # Generated data and charts
-/data/
+/data/*.csv
+/data/*.png
+/data/*.json
+!/data/*_alerts.json
 /hotel-charts/
-
+index*.html
 
 # Virtual Environment
 .venv/

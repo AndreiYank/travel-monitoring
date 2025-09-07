@@ -150,6 +150,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     # Загружаем историю алертов (если есть)
     alerts = []
+    # Автоматически определяем файл алертов на основе файла данных
+    if alerts_file is None:
+        if 'egypt' in data_file:
+            alerts_file = 'data/egypt_travel_prices_alerts.json'
+        elif 'turkey' in data_file:
+            alerts_file = 'data/turkey_travel_prices_alerts.json'
+        else:
+            alerts_file = 'data/travel_prices_alerts.json'
+    
     alerts_path = alerts_file
     if os.path.exists(alerts_path):
         try:
@@ -823,6 +832,6 @@ if __name__ == "__main__":
     parser.add_argument('--title', default='Travel Price Monitor • Расширенный дашборд')
     parser.add_argument('--charts-dir', default='hotel-charts')
     parser.add_argument('--tz', default='Europe/Warsaw')
-    parser.add_argument('--alerts-file', default='data/price_alerts_history.json')
+    parser.add_argument('--alerts-file', default=None)
     args = parser.parse_args()
     generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file)
