@@ -438,6 +438,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .alert-increase {{
             border-left-color: #dc3545;
         }}
+        .alert-missing {{
+            border-left-color: #6c757d;
+        }}
         .alerts-empty {{
             color: #6c757d;
             font-style: italic;
@@ -533,19 +536,40 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     if alerts:
         for a in alerts:
             hotel_name = a.get('hotel_name') or a.get('hotel') or 'Unknown'
-            old_price = a.get('old_price') or a.get('from') or a.get('previous_price') or 0
-            new_price = a.get('new_price') or a.get('to') or a.get('current_price') or 0
-            change_pct = 0.0
-            try:
-                if float(old_price) != 0:
-                    change_pct = (float(new_price) - float(old_price)) / float(old_price) * 100.0
-            except Exception:
-                change_pct = 0.0
+            alert_type = a.get('type') or ''
+            old_price = a.get('old_price') or a.get('from') or a.get('previous_price')
+            new_price = a.get('new_price') if 'new_price' in a else (a.get('to') or a.get('current_price'))
             ts = a.get('timestamp') or a.get('time') or ''
-            direction_class = 'alert-increase' if (float(new_price) - float(old_price)) > 0 else ('alert-decrease' if (float(new_price) - float(old_price)) < 0 else '')
-            arrow = '↑' if (float(new_price) - float(old_price)) > 0 else ('↓' if (float(new_price) - float(old_price)) < 0 else '→')
 
-            html_template += f"""
+            if alert_type == 'missing' or new_price in (None, '', 'null'):
+                direction_class = 'alert-missing'
+                arrow = '—'
+                change_text = a.get('note') or 'Отель пропал из выдачи'
+                price_text = f"{old_price if old_price is not None else '—'} → —"
+                html_template += f"""
+                <div class="alert-item {direction_class}">
+                    <div>
+                        <div class="hotel-name">{hotel_name}</div>
+                        <div class="change-percent">{arrow} {change_text} • {ts}</div>
+                    </div>
+                    <div class="change-price">{price_text}</div>
+                </div>
+"""
+            else:
+                # Обычный ценовой алерт
+                change_pct = 0.0
+                try:
+                    if old_price is not None and float(old_price) != 0:
+                        change_pct = (float(new_price) - float(old_price)) / float(old_price) * 100.0
+                except Exception:
+                    change_pct = 0.0
+                try:
+                    diff = float(new_price) - float(old_price if old_price is not None else 0)
+                except Exception:
+                    diff = 0.0
+                direction_class = 'alert-increase' if diff > 0 else ('alert-decrease' if diff < 0 else '')
+                arrow = '↑' if diff > 0 else ('↓' if diff < 0 else '→')
+                html_template += f"""
                 <div class="alert-item {direction_class}">
                     <div>
                         <div class="hotel-name">{hotel_name}</div>

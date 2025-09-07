@@ -107,6 +107,9 @@
         .alert-increase {
             border-left-color: #dc3545;
         }
+        .alert-missing {
+            border-left-color: #6c757d;
+        }
         .alerts-empty {
             color: #6c757d;
             font-style: italic;
@@ -161,11 +164,7 @@
     <div class="container">
         <div class="header">
             <h1>🏨 Мониторинг цен • Греция</h1>
-<<<<<<< Updated upstream
-            <p>Обновлено: 07.09.2025 09:18</p>
-=======
-            <p>Обновлено: 07.09.2025 16:29</p>
->>>>>>> Stashed changes
+            <p>Обновлено: 07.09.2025 14:29</p>
         </div>
 
         <div class="avg-top10-section">
@@ -358,7 +357,53 @@
             <h3>🚨 История алертов</h3>
             <div>
 
-                <div class="alerts-empty">Нет алертов</div>
+                <div class="alert-item alert-missing">
+                    <div>
+                        <div class="hotel-name">Atrium (Pefkohori)</div>
+                        <div class="change-percent">— Отель отсутствует в результатах поиска (вероятно цена > 8100 PLN либо предложение снято) • 2025-09-07T12:42:14.314501+00:00</div>
+                    </div>
+                    <div class="change-price">7893.0 → —</div>
+                </div>
+
+                <div class="alert-item alert-missing">
+                    <div>
+                        <div class="hotel-name">Garden Palace (Laganas)</div>
+                        <div class="change-percent">— Отель отсутствует в результатах поиска (вероятно цена > 8100 PLN либо предложение снято) • 2025-09-07T12:42:14.314501+00:00</div>
+                    </div>
+                    <div class="change-price">7999.0 → —</div>
+                </div>
+
+                <div class="alert-item alert-missing">
+                    <div>
+                        <div class="hotel-name">Ilyssion</div>
+                        <div class="change-percent">— Отель отсутствует в результатах поиска (вероятно цена > 8100 PLN либо предложение снято) • 2025-09-07T12:42:14.314501+00:00</div>
+                    </div>
+                    <div class="change-price">7789.0 → —</div>
+                </div>
+
+                <div class="alert-item alert-missing">
+                    <div>
+                        <div class="hotel-name">Kriopigi</div>
+                        <div class="change-percent">— Отель отсутствует в результатах поиска (вероятно цена > 8100 PLN либо предложение снято) • 2025-09-07T12:42:14.314501+00:00</div>
+                    </div>
+                    <div class="change-price">7594.0 → —</div>
+                </div>
+
+                <div class="alert-item alert-missing">
+                    <div>
+                        <div class="hotel-name">Mitsis Messonghi Beach</div>
+                        <div class="change-percent">— Отель отсутствует в результатах поиска (вероятно цена > 8100 PLN либо предложение снято) • 2025-09-07T12:42:14.314501+00:00</div>
+                    </div>
+                    <div class="change-price">7986.0 → —</div>
+                </div>
+
+                <div class="alert-item alert-missing">
+                    <div>
+                        <div class="hotel-name">Palladium (Kriopigi)</div>
+                        <div class="change-percent">— Отель отсутствует в результатах поиска (вероятно цена > 8100 PLN либо предложение снято) • 2025-09-07T12:42:14.314501+00:00</div>
+                    </div>
+                    <div class="change-price">7986.0 → —</div>
+                </div>
 
             </div>
         </div>
@@ -849,13 +894,8 @@
 
     <script>
       (function(){
-<<<<<<< Updated upstream
-        const X = ["2025-09-06 21:00", "2025-09-07 07:00", "2025-09-07 09:00"];
-        const Y = [6728.0, 6381.4, 6661.3];
-=======
-        const X = ["2025-09-06 23:00", "2025-09-07 09:00", "2025-09-07 11:00", "2025-09-07 16:00"];
+        const X = ["2025-09-06 21:00", "2025-09-07 07:00", "2025-09-07 09:00", "2025-09-07 14:00"];
         const Y = [6728.0, 6381.4, 6661.3, 6630.8];
->>>>>>> Stashed changes
         if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
           const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
           const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };

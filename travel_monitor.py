@@ -179,6 +179,107 @@ class TravelPriceMonitor:
         
         return all_offers
 
+    def _extract_price_limit(self) -> Optional[float]:
+        """Пробует достать лимит цены из URL (filter[PriceTo]=...)."""
+        try:
+            url = self.config.get('url', '') or ''
+            import re
+            m = re.search(r'(?:PriceTo]|PriceTo)=(\d+)', url)
+            if m:
+                return float(m.group(1))
+        except Exception:
+            pass
+        return None
+
+    def _load_previous_hotels_latest(self) -> pd.DataFrame:
+        """Загружает предыдущие данные и возвращает последние цены по каждому отелю.
+
+        Использует робастный парсинг времени, чтобы корректно выделить последние записи.
+        """
+        try:
+            filepath = os.path.join(self.config['data_dir'], self.data_file)
+            if not os.path.exists(filepath):
+                return pd.DataFrame()
+            df = pd.read_csv(filepath)
+            if df.empty or 'scraped_at' not in df.columns:
+                return pd.DataFrame()
+            raw = df['scraped_at'].astype(str)
+            mask_tz = raw.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
+            tz_series = pd.to_datetime(raw.where(mask_tz), errors='coerce', utc=True)
+            tz_series = tz_series.dt.tz_convert('UTC')
+            naive_series = pd.to_datetime(raw.where(~mask_tz), errors='coerce')
+            try:
+                naive_series = naive_series.dt.tz_localize('UTC')
+            except Exception:
+                pass
+            ts = tz_series.combine_first(naive_series)
+            df = df.assign(_ts=ts).dropna(subset=['_ts'])
+            # Берем по каждому отелю последнюю запись
+            idx = df.sort_values('_ts').groupby('hotel_name').tail(1).index
+            latest = df.loc[idx, ['hotel_name', 'price', '_ts']].copy()
+            return latest
+        except Exception:
+            return pd.DataFrame()
+
+    def _append_missing_alerts(self, missing_hotels: List[str], latest_prev: pd.DataFrame):
+        """Записывает алерты для отелей, которые пропали из текущей выборки.
+
+        Формат алерта совместим с рендерером дашборда, но с типом 'missing'.
+        """
+        if not missing_hotels:
+            return
+        alerts_path = os.path.join(self.config['data_dir'], 'price_alerts_history.json')
+        alerts_doc: Dict[str, Any] = { 'alerts': [] }
+        if os.path.exists(alerts_path):
+            try:
+                with open(alerts_path, 'r', encoding='utf-8') as f:
+                    alerts_doc = json.load(f) or { 'alerts': [] }
+                    if 'alerts' not in alerts_doc or not isinstance(alerts_doc['alerts'], list):
+                        alerts_doc['alerts'] = []
+            except Exception:
+                alerts_doc = { 'alerts': [] }
+
+        price_limit = self._extract_price_limit()
+        now_iso = datetime.now(timezone.utc).isoformat()
+        for name in missing_hotels:
+            try:
+                prev_row = latest_prev[latest_prev['hotel_name'] == name]
+                last_price = float(prev_row['price'].iloc[0]) if not prev_row.empty else None
+            except Exception:
+                last_price = None
+            note = 'Отель отсутствует в результатах поиска'
+            if price_limit is not None:
+                note += f' (вероятно цена > {int(price_limit)} PLN либо предложение снято)'
+            alerts_doc['alerts'].append({
+                'type': 'missing',
+                'hotel_name': name,
+                'old_price': last_price,
+                'new_price': None,
+                'timestamp': now_iso,
+                'note': note,
+            })
+
+        try:
+            with open(alerts_path, 'w', encoding='utf-8') as f:
+                json.dump(alerts_doc, f, ensure_ascii=False, indent=2)
+        except Exception:
+            logger.warning('Не удалось сохранить алерты о пропавших отелях')
+
+    def detect_missing_hotels_and_alert(self, current_offers: List[Dict[str, Any]]):
+        """Определяет отели, исчезнувшие из текущей выдачи, и пишет алерты."""
+        try:
+            latest_prev = self._load_previous_hotels_latest()
+            if latest_prev.empty:
+                return
+            prev_hotels: set = set(latest_prev['hotel_name'].astype(str).tolist())
+            current_hotels: set = set([ (o.get('hotel_name') or '').strip() for o in current_offers if o ])
+            missing = sorted(list(prev_hotels - current_hotels))
+            if missing:
+                logger.info(f"⚠️ Обнаружены отели, исчезнувшие из текущей выдачи: {len(missing)}")
+                self._append_missing_alerts(missing, latest_prev)
+        except Exception as e:
+            logger.warning(f"Не удалось определить пропавшие отели: {e}")
+
     async def find_offers(self, page) -> List:
         """Ищет предложения на странице"""
         selectors_to_try = [
@@ -909,6 +1010,9 @@ class TravelPriceMonitor:
                 logger.error("❌ Не удалось собрать данные после всех попыток")
                 return False
             
+            # Перед сохранением проверяем, кто исчез из выдачи, и создаём алерты
+            self.detect_missing_hotels_and_alert(offers)
+
             # Сохраняем данные (добавляем к существующим)
             self.save_data_append(offers)
             
