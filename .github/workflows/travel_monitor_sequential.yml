@@ -88,14 +88,16 @@ jobs:
             --data-file data/travel_prices.csv \
             --output index_greece.html \
             --title "Мониторинг цен • Греция" \
-            --charts-dir hotel-charts/greece
+            --charts-dir hotel-charts/greece \
+            --alerts-file data/travel_prices_alerts.json
           # Egypt dashboard (if data exists)
           if [ -f "data/egypt_travel_prices.csv" ]; then
             python generate_inline_charts_dashboard.py \
               --data-file data/egypt_travel_prices.csv \
               --output index_egypt.html \
               --title "Мониторинг цен • Египет" \
-              --charts-dir hotel-charts/egypt
+              --charts-dir hotel-charts/egypt \
+              --alerts-file data/egypt_travel_prices_alerts.json
           else
             echo "⚠️ Egypt dataset not found; skipping Egypt dashboard"
           fi
@@ -105,7 +107,8 @@ jobs:
               --data-file data/turkey_travel_prices.csv \
               --output index_turkey.html \
               --title "Мониторинг цен • Турция" \
-              --charts-dir hotel-charts/turkey
+              --charts-dir hotel-charts/turkey \
+              --alerts-file data/turkey_travel_prices_alerts.json
           else
             echo "⚠️ Turkey dataset not found; skipping Turkey dashboard"
           fi
