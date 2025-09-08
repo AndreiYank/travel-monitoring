@@ -15,7 +15,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     # Загружаем данные
     try:
-        df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL)
+        df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
         # Нормализуем время: аккуратно обрабатываем смешанные строки (с/без таймзоны)
         raw = df['scraped_at'].astype(str)
         mask_tz = raw.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
@@ -44,15 +44,49 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     min_price = df['price'].min()
     max_price = df['price'].max()
 
-    # Средняя цена ТОП-10 дешёвых предложений по часам
+    # Средняя цена ТОП-10 дешёвых предложений по ранам
     try:
-        hourly = df.set_index('scraped_at_display').sort_index()
-        top10_avg = hourly['price'].groupby(pd.Grouper(freq='H')).apply(
-            lambda s: float(s.nsmallest(10).mean()) if len(s) else None
-        ).dropna()
-        top10_x_values = [ts.strftime('%Y-%m-%d %H:%M') for ts in top10_avg.index.to_pydatetime().tolist()]
-        top10_y_values = [float(v) for v in top10_avg.values.tolist()]
-    except Exception:
+        # Группируем по ранам (округленное время до минут)
+        df_sorted = df.sort_values('scraped_at_display')
+        run_data = []
+        
+        # Округляем время до минут для группировки ранов
+        df_sorted['run_time'] = df_sorted['scraped_at_display'].dt.floor('min')
+        
+        # Группируем по ранам
+        for run_time, run_group in df_sorted.groupby('run_time'):
+            if len(run_group) > 0:
+                # Для каждого рана берем последние данные по каждому отелю на момент этого рана
+                latest_prices = []
+                for hotel_name, hotel_grp in df_sorted.groupby('hotel_name'):
+                    # Берем последнюю запись для этого отеля до run_time
+                    hotel_data = hotel_grp[hotel_grp['run_time'] <= run_time]
+                    if not hotel_data.empty:
+                        latest_price = hotel_data.iloc[-1]['price']
+                        latest_prices.append(latest_price)
+                
+                if len(latest_prices) >= 10:
+                    # Берем ТОП-10 дешевых из всех отелей на этот ран
+                    top10_prices = sorted(latest_prices)[:10]
+                    avg_price = sum(top10_prices) / len(top10_prices)
+                    run_data.append((run_time, avg_price))
+                elif len(latest_prices) > 0:
+                    # Если отелей меньше 10, берем все
+                    avg_price = sum(latest_prices) / len(latest_prices)
+                    run_data.append((run_time, avg_price))
+        
+        if run_data:
+            top10_x_values = [ts.strftime('%Y-%m-%d %H:%M') for ts, _ in run_data]
+            top10_y_values = [float(price) for _, price in run_data]
+            print(f"🔍 Отладка ТОП-10: {len(run_data)} точек данных")
+            if run_data:
+                print(f"   Последняя точка: {run_data[-1][1]:.2f} PLN")
+        else:
+            top10_x_values, top10_y_values = [], []
+            print("❌ Нет данных для ТОП-10 графика")
+            
+    except Exception as e:
+        print(f"Ошибка расчета ТОП-10: {e}")
         top10_x_values, top10_y_values = [], []
     
     # Получаем актуальные цены по каждому отелю (последнее наблюдение)
