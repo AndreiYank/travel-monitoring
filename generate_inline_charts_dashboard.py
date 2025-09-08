@@ -65,7 +65,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'price': float(last['price']),
             'dates': last.get('dates', None),
             'duration': last.get('duration', None),
-            'scraped_at_local': last['scraped_at_local']
+            'scraped_at_local': last['scraped_at_local'],
+            'offer_url': last.get('offer_url', None),
+            'image_url': last.get('image_url', None)
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     
@@ -543,6 +545,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: #28a745;
         }}
         .open-chart-link {{ color: #2E86AB; text-decoration: underline; }}
+        .offer-link {{
+            color: #007bff;
+            text-decoration: none;
+            font-size: 0.9em;
+            padding: 2px 6px;
+            background: #f8f9fa;
+            border-radius: 4px;
+            border: 1px solid #dee2e6;
+            display: inline-block;
+        }}
+        .offer-link:hover {{
+            background: #e9ecef;
+            text-decoration: none;
+        }}
+        .offer-link-cell {{
+            text-align: center;
+        }}
         .footer {{
             text-align: center;
             margin-top: 30px;
@@ -657,6 +676,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <th class="sortable" data-sort="deltastart">Δ с начала</th>
                         <th class="sortable" data-sort="dates">Даты</th>
                         <th class="sortable" data-sort="duration">Длительность</th>
+                        <th>Ссылка</th>
                     </tr>
                 </thead>
                 <tbody>"""
@@ -694,6 +714,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
         else:
             chart_href = f"hotel-charts/{hotel_slug}.html"
+        
+        # Ссылка на предложение
+        offer_url = hotel.get('offer_url', '')
+        offer_link_html = ""
+        if offer_url and pd.notna(offer_url) and offer_url.strip():
+            offer_link_html = f'<a href="{offer_url}" target="_blank" class="offer-link">🔗</a>'
+        else:
+            offer_link_html = "—"
+        
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
@@ -702,6 +731,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <td data-sort-value="{since_info[1] if since_info else 0}">{since_display}</td>
                         <td data-sort-value="{dates}">{dates}</td>
                         <td data-sort-value="{duration}">{duration}</td>
+                        <td class="offer-link-cell">{offer_link_html}</td>
                     </tr>"""
 
     # Завершаем таблицу и добавляем секцию для графика
@@ -791,7 +821,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       }
       
       function getColumnIndex(column) {
-        const columnMap = { 'hotel': 0, 'price': 1, 'delta48': 2, 'deltastart': 3, 'dates': 4, 'duration': 5 };
+        const columnMap = { 'hotel': 0, 'price': 1, 'delta48': 2, 'deltastart': 3, 'dates': 4, 'duration': 5, 'offer': 6 };
         return columnMap[column];
       }
       

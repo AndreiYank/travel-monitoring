@@ -903,56 +903,46 @@ class TravelPriceMonitor:
         # чтобы графики и анализ имели полную временную серию даже без изменений цен.
         new_offers = offers
         
-        # Добавляем новые данные
+        # Всегда перезаписываем файл с правильными заголовками для совместимости
+        existing_data = []
         file_exists = os.path.exists(filepath)
         
-        # Проверяем, нужно ли обновить заголовок для добавления offer_url
-        needs_header_update = False
         if file_exists:
             try:
+                # Читаем существующие данные с обработкой ошибок структуры
                 with open(filepath, 'r', encoding='utf-8') as f:
-                    first_line = f.readline().strip()
-                    if 'offer_url' not in first_line:
-                        needs_header_update = True
-            except:
-                needs_header_update = True
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        # Заполняем отсутствующие поля пустыми значениями
+                        normalized_row = {
+                            'hotel_name': row.get('hotel_name', ''),
+                            'price': row.get('price', ''),
+                            'dates': row.get('dates', ''),
+                            'duration': row.get('duration', ''),
+                            'rating': row.get('rating', ''),
+                            'scraped_at': row.get('scraped_at', ''),
+                            'url': row.get('url', ''),
+                            'image_url': row.get('image_url', ''),
+                            'offer_url': row.get('offer_url', '')
+                        }
+                        existing_data.append(normalized_row)
+            except Exception as e:
+                logger.warning(f"Ошибка чтения существующих данных: {e}, создаем новый файл")
+                existing_data = []
         
-        if needs_header_update:
-            # Читаем существующие данные
-            existing_data = []
-            if file_exists:
-                try:
-                    with open(filepath, 'r', encoding='utf-8') as f:
-                        reader = csv.DictReader(f)
-                        existing_data = list(reader)
-                except:
-                    existing_data = []
+        # Перезаписываем файл с правильными заголовками
+        with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
+            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+            writer.writeheader()
             
-            # Перезаписываем файл с новым заголовком
-            with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
-                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
-                writer.writeheader()
-                
-                # Записываем существующие данные с пустым offer_url
-                for row in existing_data:
-                    row['offer_url'] = row.get('offer_url', '')
-                    writer.writerow({k: row.get(k, '') for k in fieldnames})
-                
-                # Добавляем новые данные
-                for offer in new_offers:
-                    writer.writerow({k: offer.get(k, '') for k in fieldnames})
-        else:
-            # Обычное добавление данных
-            with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
-                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
-                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
-                
-                if not file_exists:
-                    writer.writeheader()
-                
-                for offer in new_offers:
-                    writer.writerow({k: offer.get(k, '') for k in fieldnames})
+            # Записываем существующие данные
+            for row in existing_data:
+                writer.writerow({k: row.get(k, '') for k in fieldnames})
+            
+            # Добавляем новые данные
+            for offer in new_offers:
+                writer.writerow({k: offer.get(k, '') for k in fieldnames})
         
         logger.info(f"Добавлено {len(new_offers)} записей (включая возможные повторы для истории) в {filepath}")
 
@@ -1069,7 +1059,18 @@ class TravelPriceMonitor:
             return pd.DataFrame()
         
         try:
+            # Пробуем загрузить с обработкой ошибок структуры
             df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+            
+            # Проверяем, что все необходимые колонки присутствуют
+            required_columns = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
+            missing_columns = [col for col in required_columns if col not in df.columns]
+            
+            if missing_columns:
+                logger.warning(f"Отсутствуют колонки: {missing_columns}, добавляем пустые")
+                for col in missing_columns:
+                    df[col] = ''
+            
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")
