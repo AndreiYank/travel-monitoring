@@ -33,8 +33,9 @@ logger = logging.getLogger(__name__)
 class TravelPriceMonitor:
     def __init__(self, config_file: str = "config.json", data_file: Optional[str] = None):
         self.config_file = config_file
-        self.data_file = data_file or "travel_prices.csv"
         self.config = self.load_config()
+        # data_file из аргументов имеет приоритет над output_data_file из конфигурации
+        self.data_file = data_file or self.config.get('output_data_file', 'travel_prices.csv')
         
     def load_config(self) -> Dict[str, Any]:
         """Загружает конфигурацию из файла"""
@@ -200,7 +201,7 @@ class TravelPriceMonitor:
             filepath = os.path.join(self.config['data_dir'], self.data_file)
             if not os.path.exists(filepath):
                 return pd.DataFrame()
-            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             if df.empty or 'scraped_at' not in df.columns:
                 return pd.DataFrame()
             raw = df['scraped_at'].astype(str)
@@ -466,6 +467,9 @@ class TravelPriceMonitor:
             # Изображение отеля (если доступно на карточке)
             image_url = await self.extract_image_url_from_offer(element)
             
+            # Ссылка на детальную страницу предложения
+            offer_url = await self.extract_offer_url(element)
+            
             # Очищаем и форматируем данные
             hotel_name = self.clean_text(hotel_name) if hotel_name else f"Предложение {index + 1}"
             price_value = self.extract_price(price) if price else 0
@@ -487,7 +491,8 @@ class TravelPriceMonitor:
                 # Записываем временную метку в UTC с таймзоной, чтобы унифицировать время между локальными и CI-запусками
                 'scraped_at': datetime.now(timezone.utc).isoformat(),
                 'url': self.config['url'],
-                'image_url': image_url or ""
+                'image_url': image_url or "",
+                'offer_url': offer_url or ""
             }
             
         except Exception as e:
@@ -532,6 +537,98 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.debug(f"Не удалось извлечь изображение: {e}")
         return ""
+
+    async def extract_offer_url(self, element) -> str:
+        """Извлекает URL ссылку на детальную страницу предложения"""
+        try:
+            # 1) Проверяем, является ли сам элемент ссылкой
+            tag_name = await element.evaluate("el => el.tagName.toLowerCase()")
+            if tag_name == 'a':
+                href = await element.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 2) Ищем ссылку с классом image-link (основной селектор для ссылок на предложения)
+            image_link = await element.query_selector('a.image-link')
+            if image_link:
+                href = await image_link.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 3) Ищем ссылку с классом offer-con (альтернативный селектор)
+            offer_link = await element.query_selector('a.offer-con')
+            if offer_link:
+                href = await offer_link.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 4) Ищем ссылки на /wycieczka/ (детальные страницы предложений)
+            wycieczka_link = await element.query_selector('a[href*="/wycieczka/"]')
+            if wycieczka_link:
+                href = await wycieczka_link.get_attribute('href')
+                if href and href.strip():
+                    return self.make_absolute_url(href)
+            
+            # 5) Ищем другие возможные ссылки на предложения
+            link_selectors = [
+                'a[href*="offer"]',        # Ссылка содержащая "offer"
+                'a[href*="hotel"]',        # Ссылка содержащая "hotel"
+                'a[href*="trip"]',         # Ссылка содержащая "trip"
+                'a[href*="detail"]',       # Ссылка содержащая "detail"
+                'a[href*="view"]',         # Ссылка содержащая "view"
+                'a[class*="link"]',        # Ссылка с классом содержащим "link"
+                'a[href]'                  # Любая ссылка
+            ]
+            
+            for selector in link_selectors:
+                try:
+                    link_element = await element.query_selector(selector)
+                    if link_element:
+                        href = await link_element.get_attribute('href')
+                        if href and href.strip():
+                            # Проверяем, что это ссылка на предложение
+                            if '/wycieczka/' in href or 'offer' in href.lower():
+                                return self.make_absolute_url(href)
+                except:
+                    continue
+            
+            # 6) Проверяем родительские элементы на наличие ссылок
+            try:
+                parent = await element.evaluate("el => el.parentElement")
+                if parent:
+                    parent_tag = await parent.evaluate("el => el.tagName.toLowerCase()")
+                    if parent_tag == 'a':
+                        href = await parent.get_attribute('href')
+                        if href and href.strip():
+                            return self.make_absolute_url(href)
+            except:
+                pass
+                
+        except Exception as e:
+            logger.debug(f"Не удалось извлечь ссылку на предложение: {e}")
+        
+        return ""
+
+    def make_absolute_url(self, url: str) -> str:
+        """Преобразует относительный URL в абсолютный"""
+        if not url:
+            return ""
+        
+        url = url.strip()
+        
+        # Если уже абсолютный URL
+        if url.startswith(('http://', 'https://')):
+            return url
+        
+        # Если относительный URL, добавляем базовый домен
+        if url.startswith('/'):
+            return f"https://fly.pl{url}"
+        
+        # Если относительный URL без слеша
+        if not url.startswith('#'):
+            return f"https://fly.pl/{url}"
+        
+        return url
 
     async def extract_price_for_all(self, element) -> str:
         """Извлекает цену за всех (za wszystkich)"""
@@ -795,17 +892,54 @@ class TravelPriceMonitor:
         
         # Добавляем новые данные
         file_exists = os.path.exists(filepath)
-        with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            # Не меняем заголовок CSV, чтобы не ломать историю.
-            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        
+        # Проверяем, нужно ли обновить заголовок для добавления offer_url
+        needs_header_update = False
+        if file_exists:
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    first_line = f.readline().strip()
+                    if 'offer_url' not in first_line:
+                        needs_header_update = True
+            except:
+                needs_header_update = True
+        
+        if needs_header_update:
+            # Читаем существующие данные
+            existing_data = []
+            if file_exists:
+                try:
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        reader = csv.DictReader(f)
+                        existing_data = list(reader)
+                except:
+                    existing_data = []
             
-            if not file_exists:
+            # Перезаписываем файл с новым заголовком
+            with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
+                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
                 writer.writeheader()
-            
-            for offer in new_offers:
-                # Пишем только поддерживаемые поля (без image_url в CSV)
-                writer.writerow({k: offer.get(k, '') for k in fieldnames})
+                
+                # Записываем существующие данные с пустым offer_url
+                for row in existing_data:
+                    row['offer_url'] = row.get('offer_url', '')
+                    writer.writerow({k: row.get(k, '') for k in fieldnames})
+                
+                # Добавляем новые данные
+                for offer in new_offers:
+                    writer.writerow({k: offer.get(k, '') for k in fieldnames})
+        else:
+            # Обычное добавление данных
+            with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
+                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+                
+                if not file_exists:
+                    writer.writeheader()
+                
+                for offer in new_offers:
+                    writer.writerow({k: offer.get(k, '') for k in fieldnames})
         
         logger.info(f"Добавлено {len(new_offers)} записей (включая возможные повторы для истории) в {filepath}")
 
@@ -922,7 +1056,7 @@ class TravelPriceMonitor:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")
