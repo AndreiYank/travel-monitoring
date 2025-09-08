@@ -34,6 +34,9 @@ ENV/
 # *.csv
 *.log
 
+# Dev data files (не коммитим локальные тестовые данные)
+dev_*_travel_prices.csv
+
 # IDE
 .vscode/
 .idea/
