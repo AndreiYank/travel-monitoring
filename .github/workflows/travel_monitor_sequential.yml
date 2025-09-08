@@ -198,11 +198,47 @@ jobs:
             MIN_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1)
             MAX_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1)
             
+            # Статистика ссылок
+            if [ -f "data/travel_prices.csv" ] && grep -q "offer_url" data/travel_prices.csv; then
+              OFFERS_WITH_LINKS=$(python3 -c "
+              import pandas as pd
+              import csv
+              try:
+                  df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+                  if 'offer_url' in df.columns:
+                      links_count = len(df[df['offer_url'].notna() & (df['offer_url'] != '')])
+                      print(links_count)
+                  else:
+                      print('0')
+              except:
+                  print('0')
+              ")
+              LINK_PERCENTAGE=$(python3 -c "
+              import pandas as pd
+              import csv
+              try:
+                  df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+                  if 'offer_url' in df.columns:
+                      total = len(df)
+                      links = len(df[df['offer_url'].notna() & (df['offer_url'] != '')])
+                      percentage = (links / total * 100) if total > 0 else 0
+                      print(f'{percentage:.1f}')
+                  else:
+                      print('0.0')
+              except:
+                  print('0.0')
+              ")
+            else
+              OFFERS_WITH_LINKS="0"
+              LINK_PERCENTAGE="0.0"
+            fi
+            
             echo "### 📈 Data Statistics" >> $GITHUB_STEP_SUMMARY
             echo "- **Total offers:** $TOTAL_OFFERS" >> $GITHUB_STEP_SUMMARY
             echo "- **Unique hotels:** $UNIQUE_HOTELS" >> $GITHUB_STEP_SUMMARY
             echo "- **Price range:** $MIN_PRICE - $MAX_PRICE PLN" >> $GITHUB_STEP_SUMMARY
             echo "- **Price alerts:** ${{ steps.alerts.outputs.alert_count }}" >> $GITHUB_STEP_SUMMARY
+            echo "- **Offers with links:** $OFFERS_WITH_LINKS ($LINK_PERCENTAGE%)" >> $GITHUB_STEP_SUMMARY
           fi
           
           echo "" >> $GITHUB_STEP_SUMMARY

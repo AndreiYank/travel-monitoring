@@ -33,8 +33,9 @@ logger = logging.getLogger(__name__)
 class TravelPriceMonitor:
     def __init__(self, config_file: str = "config.json", data_file: Optional[str] = None):
         self.config_file = config_file
-        self.data_file = data_file or "travel_prices.csv"
         self.config = self.load_config()
+        # data_file из аргументов имеет приоритет над output_data_file из конфигурации
+        self.data_file = data_file or self.config.get('output_data_file', 'travel_prices.csv')
         
     def load_config(self) -> Dict[str, Any]:
         """Загружает конфигурацию из файла"""
@@ -891,17 +892,54 @@ class TravelPriceMonitor:
         
         # Добавляем новые данные
         file_exists = os.path.exists(filepath)
-        with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
-            # Не меняем заголовок CSV, чтобы не ломать историю.
-            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
-            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+        
+        # Проверяем, нужно ли обновить заголовок для добавления offer_url
+        needs_header_update = False
+        if file_exists:
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    first_line = f.readline().strip()
+                    if 'offer_url' not in first_line:
+                        needs_header_update = True
+            except:
+                needs_header_update = True
+        
+        if needs_header_update:
+            # Читаем существующие данные
+            existing_data = []
+            if file_exists:
+                try:
+                    with open(filepath, 'r', encoding='utf-8') as f:
+                        reader = csv.DictReader(f)
+                        existing_data = list(reader)
+                except:
+                    existing_data = []
             
-            if not file_exists:
+            # Перезаписываем файл с новым заголовком
+            with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
+                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
                 writer.writeheader()
-            
-            for offer in new_offers:
-                # Пишем только поддерживаемые поля (без image_url в CSV)
-                writer.writerow({k: offer.get(k, '') for k in fieldnames})
+                
+                # Записываем существующие данные с пустым offer_url
+                for row in existing_data:
+                    row['offer_url'] = row.get('offer_url', '')
+                    writer.writerow({k: row.get(k, '') for k in fieldnames})
+                
+                # Добавляем новые данные
+                for offer in new_offers:
+                    writer.writerow({k: offer.get(k, '') for k in fieldnames})
+        else:
+            # Обычное добавление данных
+            with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
+                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
+                writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+                
+                if not file_exists:
+                    writer.writeheader()
+                
+                for offer in new_offers:
+                    writer.writerow({k: offer.get(k, '') for k in fieldnames})
         
         logger.info(f"Добавлено {len(new_offers)} записей (включая возможные повторы для истории) в {filepath}")
 
