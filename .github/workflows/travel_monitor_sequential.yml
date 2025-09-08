@@ -200,34 +200,8 @@ jobs:
             
             # Статистика ссылок
             if [ -f "data/travel_prices.csv" ] && grep -q "offer_url" data/travel_prices.csv; then
-              OFFERS_WITH_LINKS=$(python3 -c "
-              import pandas as pd
-              import csv
-              try:
-                  df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip')
-                  if 'offer_url' in df.columns:
-                      links_count = len(df[df['offer_url'].notna() & (df['offer_url'] != '')])
-                      print(links_count)
-                  else:
-                      print('0')
-              except:
-                  print('0')
-              ")
-              LINK_PERCENTAGE=$(python3 -c "
-              import pandas as pd
-              import csv
-              try:
-                  df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip')
-                  if 'offer_url' in df.columns:
-                      total = len(df)
-                      links = len(df[df['offer_url'].notna() & (df['offer_url'] != '')])
-                      percentage = (links / total * 100) if total > 0 else 0
-                      print(f'{percentage:.1f}')
-                  else:
-                      print('0.0')
-              except:
-                  print('0.0')
-              ")
+              OFFERS_WITH_LINKS=$(python3 -c "import pandas as pd; import csv; df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip'); print(len(df[df['offer_url'].notna() & (df['offer_url'] != '')]) if 'offer_url' in df.columns else 0)")
+              LINK_PERCENTAGE=$(python3 -c "import pandas as pd; import csv; df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip'); total = len(df); links = len(df[df['offer_url'].notna() & (df['offer_url'] != '')]) if 'offer_url' in df.columns else 0; print(f'{(links / total * 100):.1f}' if total > 0 else '0.0')")
             else
               OFFERS_WITH_LINKS="0"
               LINK_PERCENTAGE="0.0"
