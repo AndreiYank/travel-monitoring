@@ -541,11 +541,14 @@ class TravelPriceMonitor:
     async def extract_offer_url(self, element) -> str:
         """Извлекает URL ссылку на детальную страницу предложения"""
         try:
+            logger.info("🔍 Начинаем извлечение ссылки на предложение...")
+            
             # 1) Проверяем, является ли сам элемент ссылкой
             tag_name = await element.evaluate("el => el.tagName.toLowerCase()")
             if tag_name == 'a':
                 href = await element.get_attribute('href')
                 if href and href.strip():
+                    logger.info(f"✅ Найдена ссылка в самом элементе: {href[:100]}...")
                     return self.make_absolute_url(href)
             
             # 2) Ищем ссылку с классом image-link (основной селектор для ссылок на предложения)
@@ -553,7 +556,12 @@ class TravelPriceMonitor:
             if image_link:
                 href = await image_link.get_attribute('href')
                 if href and href.strip():
+                    logger.info(f"✅ Найдена ссылка через a.image-link: {href[:100]}...")
                     return self.make_absolute_url(href)
+                else:
+                    logger.info("❌ a.image-link найден, но href пустой")
+            else:
+                logger.info("❌ a.image-link не найден")
             
             # 3) Ищем ссылку с классом offer-con (альтернативный селектор)
             offer_link = await element.query_selector('a.offer-con')
@@ -567,7 +575,12 @@ class TravelPriceMonitor:
             if wycieczka_link:
                 href = await wycieczka_link.get_attribute('href')
                 if href and href.strip():
+                    logger.info(f"✅ Найдена ссылка через a[href*='/wycieczka/']: {href[:100]}...")
                     return self.make_absolute_url(href)
+                else:
+                    logger.info("❌ a[href*='/wycieczka/'] найден, но href пустой")
+            else:
+                logger.info("❌ a[href*='/wycieczka/'] не найден")
             
             # 5) Ищем другие возможные ссылки на предложения
             link_selectors = [
@@ -917,7 +930,7 @@ class TravelPriceMonitor:
             
             # Перезаписываем файл с новым заголовком
             with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
-                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
+                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
                 writer.writeheader()
                 
@@ -932,7 +945,7 @@ class TravelPriceMonitor:
         else:
             # Обычное добавление данных
             with open(filepath, 'a', newline='', encoding='utf-8') as csvfile:
-                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'offer_url']
+                fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
                 writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
                 
                 if not file_exists:
