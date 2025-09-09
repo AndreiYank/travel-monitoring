@@ -44,11 +44,81 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     min_price = df['price'].min()
     max_price = df['price'].max()
 
-    # Средняя цена ТОП-10 дешёвых предложений по ранам
+    # Функция для генерации hover-данных с использованием встроенных возможностей Plotly
+    def generate_hover_data(detailed_data):
+        """Генерирует данные для hover с детальной информацией о ране"""
+        hover_data = {
+            'title': f"📊 ТОП-10 ({detailed_data['run_time']})",
+            'avg_change': None,
+            'price_changes': [],
+            'new_hotels': [],
+            'removed_hotels': [],
+            'no_changes': False
+        }
+        
+        # Изменение средней цены
+        if detailed_data.get('avg_price_change', 0) != 0:
+            change = detailed_data['avg_price_change']
+            change_percent = detailed_data.get('avg_price_change_percent', 0)
+            arrow = "↗️" if change > 0 else "↘️"
+            sign = "+" if change > 0 else ""
+            
+            hover_data['avg_change'] = {
+                'arrow': arrow,
+                'change': change,
+                'change_percent': change_percent,
+                'sign': sign
+            }
+        
+        # Изменения цен отелей
+        if detailed_data.get('price_changes') and len(detailed_data['price_changes']) > 0:
+            for change in detailed_data['price_changes']:
+                arrow = "↗️" if change['change'] > 0 else "↘️"
+                sign = "+" if change['change'] > 0 else ""
+                
+                hover_data['price_changes'].append({
+                    'name': change['name'],
+                    'old_price': change['old_price'],
+                    'new_price': change['new_price'],
+                    'change': change['change'],
+                    'change_percent': change['change_percent'],
+                    'arrow': arrow,
+                    'sign': sign
+                })
+        
+        # Новые отели в ТОП-10
+        if detailed_data.get('new_hotels') and len(detailed_data['new_hotels']) > 0:
+            for hotel in detailed_data['new_hotels']:
+                hover_data['new_hotels'].append({
+                    'name': hotel['name'],
+                    'price': hotel['price'],
+                    'position': hotel['position']
+                })
+        
+        # Отели, покинувшие ТОП-10
+        if detailed_data.get('removed_hotels') and len(detailed_data['removed_hotels']) > 0:
+            for hotel in detailed_data['removed_hotels']:
+                hover_data['removed_hotels'].append({
+                    'name': hotel['name'],
+                    'price': hotel['price'],
+                    'position': hotel['position']
+                })
+        
+        # Если нет изменений
+        if (not detailed_data.get('price_changes') or len(detailed_data['price_changes']) == 0) and \
+           (not detailed_data.get('new_hotels') or len(detailed_data['new_hotels']) == 0) and \
+           (not detailed_data.get('removed_hotels') or len(detailed_data['removed_hotels']) == 0) and \
+           detailed_data.get('avg_price_change', 0) == 0:
+            hover_data['no_changes'] = True
+        
+        return hover_data
+
+    # Средняя цена ТОП-10 дешёвых предложений по ранам с детальной информацией
     try:
         # Группируем по ранам (округленное время до минут)
         df_sorted = df.sort_values('scraped_at_display')
         run_data = []
+        top10_detailed_data = []  # Детальная информация для hover
         
         # Округляем время до минут для группировки ранов
         df_sorted['run_time'] = df_sorted['scraped_at_display'].dt.floor('min')
@@ -58,36 +128,143 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if len(run_group) > 0:
                 # Для каждого рана берем последние данные по каждому отелю на момент этого рана
                 latest_prices = []
+                hotel_prices = {}  # Словарь отель -> цена для этого рана
+                
                 for hotel_name, hotel_grp in df_sorted.groupby('hotel_name'):
                     # Берем последнюю запись для этого отеля до run_time
                     hotel_data = hotel_grp[hotel_grp['run_time'] <= run_time]
                     if not hotel_data.empty:
                         latest_price = hotel_data.iloc[-1]['price']
                         latest_prices.append(latest_price)
+                        hotel_prices[hotel_name] = latest_price
                 
                 if len(latest_prices) >= 10:
                     # Берем ТОП-10 дешевых из всех отелей на этот ран
-                    top10_prices = sorted(latest_prices)[:10]
+                    sorted_prices = sorted(latest_prices)
+                    top10_prices = sorted_prices[:10]
                     avg_price = sum(top10_prices) / len(top10_prices)
+                    
+                    # Находим отели, которые попали в ТОП-10
+                    top10_hotels = []
+                    for hotel_name, price in hotel_prices.items():
+                        if price in top10_prices:
+                            top10_hotels.append({
+                                'name': hotel_name,
+                                'price': price,
+                                'position': sorted_prices.index(price) + 1
+                            })
+                    
+                    # Сортируем по позиции в ТОП-10
+                    top10_hotels.sort(key=lambda x: x['position'])
+                    
                     run_data.append((run_time, avg_price))
+                    top10_detailed_data.append({
+                        'run_time': run_time,
+                        'avg_price': avg_price,
+                        'top10_hotels': top10_hotels
+                    })
                 elif len(latest_prices) > 0:
                     # Если отелей меньше 10, берем все
                     avg_price = sum(latest_prices) / len(latest_prices)
+                    
+                    # Все отели попадают в "ТОП"
+                    top_hotels = []
+                    for hotel_name, price in hotel_prices.items():
+                        top_hotels.append({
+                            'name': hotel_name,
+                            'price': price,
+                            'position': 1  # Все на позиции 1
+                        })
+                    
                     run_data.append((run_time, avg_price))
+                    top10_detailed_data.append({
+                        'run_time': run_time,
+                        'avg_price': avg_price,
+                        'top10_hotels': top_hotels
+                    })
         
         if run_data:
             top10_x_values = [ts.strftime('%Y-%m-%d %H:%M') for ts, _ in run_data]
             top10_y_values = [float(price) for _, price in run_data]
+            
+            # Добавляем информацию об изменениях цен для каждого рана
+            for i, detailed in enumerate(top10_detailed_data):
+                if i == 0:
+                    # Первый ран - нет изменений
+                    detailed['price_changes'] = []
+                    detailed['new_hotels'] = []
+                    detailed['removed_hotels'] = []
+                else:
+                    # Сравниваем с предыдущим раном
+                    prev_detailed = top10_detailed_data[i-1]
+                    current_hotels = {h['name']: h for h in detailed['top10_hotels']}
+                    prev_hotels = {h['name']: h for h in prev_detailed['top10_hotels']}
+                    
+                    # Находим изменения цен
+                    price_changes = []
+                    for hotel_name, current_hotel in current_hotels.items():
+                        if hotel_name in prev_hotels:
+                            prev_price = prev_hotels[hotel_name]['price']
+                            current_price = current_hotel['price']
+                            if prev_price != current_price:
+                                price_changes.append({
+                                    'name': hotel_name,
+                                    'old_price': prev_price,
+                                    'new_price': current_price,
+                                    'change': current_price - prev_price,
+                                    'change_percent': ((current_price - prev_price) / prev_price) * 100,
+                                    'position': current_hotel['position']
+                                })
+                    
+                    # Находим новые и удаленные отели
+                    new_hotels = []
+                    removed_hotels = []
+                    
+                    for hotel_name in current_hotels:
+                        if hotel_name not in prev_hotels:
+                            new_hotels.append({
+                                'name': hotel_name,
+                                'price': current_hotels[hotel_name]['price'],
+                                'position': current_hotels[hotel_name]['position']
+                            })
+                    
+                    for hotel_name in prev_hotels:
+                        if hotel_name not in current_hotels:
+                            removed_hotels.append({
+                                'name': hotel_name,
+                                'price': prev_hotels[hotel_name]['price'],
+                                'position': prev_hotels[hotel_name]['position']
+                            })
+                    
+                    detailed['price_changes'] = price_changes
+                    detailed['new_hotels'] = new_hotels
+                    detailed['removed_hotels'] = removed_hotels
+                
+                # Добавляем информацию об изменении средней цены
+                if i > 0:
+                    prev_avg = top10_detailed_data[i-1]['avg_price']
+                    current_avg = detailed['avg_price']
+                    detailed['avg_price_change'] = current_avg - prev_avg
+                    detailed['avg_price_change_percent'] = ((current_avg - prev_avg) / prev_avg) * 100
+                else:
+                    detailed['avg_price_change'] = 0
+                    detailed['avg_price_change_percent'] = 0
+                
+                # Создаем данные для hover с использованием встроенных возможностей Plotly
+                detailed['hover_data'] = generate_hover_data(detailed)
+            
             print(f"🔍 Отладка ТОП-10: {len(run_data)} точек данных")
             if run_data:
                 print(f"   Последняя точка: {run_data[-1][1]:.2f} PLN")
         else:
             top10_x_values, top10_y_values = [], []
+            top10_detailed_data = []
             print("❌ Нет данных для ТОП-10 графика")
             
     except Exception as e:
         print(f"Ошибка расчета ТОП-10: {e}")
         top10_x_values, top10_y_values = [], []
+        top10_detailed_data = []
     
     # Получаем актуальные цены по каждому отелю (последнее наблюдение)
     df_sorted_all = df.sort_values(['hotel_name', 'scraped_at_display'])
@@ -1251,6 +1428,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         /* Hover preview */
         .hover-thumb {{ position: absolute; display: none; width: 240px; height: 160px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15); border-radius: 6px; padding: 4px; z-index: 9999; }}
         .hover-thumb img {{ width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }}
+        
     </style>
 </head>
 <body>
@@ -1295,14 +1473,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         <!-- Theme Toggle -->
         <button class="theme-toggle" id="themeToggle">🌙</button>
         
-        <div class="container">
-            <div class="header">
+    <div class="container">
+        <div class="header">
                 <h1>
                     <span class="country-flag">{'🇬🇷' if 'Греция' in title else '🇪🇬' if 'Египет' in title else '🇹🇷' if 'Турция' in title else '🌍'}</span>
                     {title.replace('🇬🇷 ', '').replace('🇪🇬 ', '').replace('🇹🇷 ', '')}
                 </h1>
-                <p>Обновлено: {updated_str}</p>
-            </div>
+            <p>Обновлено: {updated_str}</p>
+        </div>
 
         <div class="avg-top10-section">
             <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
@@ -1411,7 +1589,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </div>
             
             <div class="table-container">
-                <table class="hotels-table" id="hotelsTable">
+            <table class="hotels-table" id="hotelsTable">
                 <thead>
                     <tr>
                         <th class="sortable" data-sort="hotel">Отель</th>
@@ -1507,9 +1685,81 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       (function(){
         const X = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
         const Y = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
+        const detailedData = """ + json.dumps(top10_detailed_data, ensure_ascii=False, default=str) + """;
+        
         if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
-          const trace = { x: X, y: Y, type: 'scatter', mode: 'lines+markers', line: { color: '#A23B72', width: 3 }, marker: { size: 6 } };
-          const layout = { margin: { t: 10, r: 10, b: 40, l: 50 }, xaxis: { title: 'Время' }, yaxis: { title: 'Цена (PLN)' } };
+          // Подготавливаем данные для hover
+          const hoverData = detailedData.map(data => data.hover_data || {});
+          
+          // Создаем простой текст для hover с правильными переносами строк
+          const hoverTexts = detailedData.map((data, index) => {
+            const hover = data.hover_data || {};
+            let text = hover.title || '';
+            
+            
+            if (hover.avg_change) {
+              text += '<br><br><b>Изменение средней цены:</b><br>';
+              text += `${hover.avg_change.arrow} ${hover.avg_change.sign}${Math.round(hover.avg_change.change)} PLN (${hover.avg_change.sign}${hover.avg_change.change_percent.toFixed(1)}%)`;
+            }
+            
+            if (hover.price_changes && hover.price_changes.length > 0) {
+              text += '<br><br><b>🏨 Изменения цен:</b><br>';
+              hover.price_changes.forEach(change => {
+                text += `• ${change.name}<br>  ${Math.round(change.old_price)} → ${Math.round(change.new_price)} PLN<br>  ${change.arrow} ${change.sign}${Math.round(change.change)} PLN (${change.sign}${change.change_percent.toFixed(1)}%)<br>`;
+              });
+            }
+            
+            if (hover.new_hotels && hover.new_hotels.length > 0) {
+              text += '<br><b>🆕 Новые в ТОП-10:</b><br>';
+              hover.new_hotels.forEach(hotel => {
+                text += `• ${hotel.name}<br>  Цена: ${Math.round(hotel.price)} PLN (позиция ${hotel.position})<br>`;
+              });
+            }
+            
+            if (hover.removed_hotels && hover.removed_hotels.length > 0) {
+              text += '<br><b>❌ Покинули ТОП-10:</b><br>';
+              hover.removed_hotels.forEach(hotel => {
+                text += `• ${hotel.name}<br>  Цена: ${Math.round(hotel.price)} PLN (была позиция ${hotel.position})<br>`;
+              });
+            }
+            
+            if (hover.no_changes) {
+              text += '<br><br><i>Нет изменений в этом ране</i>';
+            }
+            
+            return text;
+          });
+          
+          const trace = { 
+            x: X, 
+            y: Y, 
+            type: 'scatter', 
+            mode: 'lines+markers', 
+            line: { color: '#A23B72', width: 3 }, 
+            marker: { size: 8 },
+            text: hoverTexts,
+            hovertemplate: '%{text}<extra></extra>',
+            hoverinfo: 'text',
+            hoverlabel: {
+              bgcolor: 'rgba(248, 249, 250, 0.98)',
+              bordercolor: '#A23B72',
+              font: {
+                family: 'Inter, sans-serif',
+                size: 12,
+                color: '#333'
+              },
+              align: 'left',
+              namelength: -1
+            }
+          };
+          
+          const layout = { 
+            margin: { t: 10, r: 10, b: 40, l: 50 }, 
+            xaxis: { title: 'Время' }, 
+            yaxis: { title: 'Цена (PLN)' },
+            hovermode: 'closest'
+          };
+          
           Plotly.newPlot('avgTop10', [trace], layout);
         }
       })();
@@ -1524,6 +1774,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         document.addEventListener('mousemove', move);
         window._hoverPreview = { show, hide };
       })();
+      
       function toggleAlerts() {
         const content = document.getElementById('alertsContent');
         const icon = document.getElementById('alertsExpandIcon');
