@@ -25,7 +25,7 @@ class PriceAlertManager:
             return pd.DataFrame()
         
         try:
-            df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL)
+            df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             # Используем robust парсинг дат как в других файлах
             df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True)
             df = df.dropna(subset=['scraped_at'])

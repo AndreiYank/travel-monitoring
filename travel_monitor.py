@@ -18,6 +18,7 @@ import matplotlib.pyplot as plt
 from playwright.async_api import async_playwright
 import logging
 from price_alerts import PriceAlertManager
+from price_alerts_v2 import PriceAlertManagerV2
 
 # Настройка логирования
 logging.basicConfig(
@@ -1113,41 +1114,50 @@ class TravelPriceMonitor:
             logger.error(f"Ошибка генерации отчета: {e}")
 
     def check_price_alerts(self):
-        """Проверяет изменения цен и создает алерты"""
+        """Проверяет изменения цен и создает алерты (новая логика V2)"""
         try:
             # Создаем региональный файл алертов на основе data_file
             alerts_file = self.data_file.replace('.csv', '_alerts.json')
-            alert_manager = PriceAlertManager(data_file=os.path.join(self.config['data_dir'], self.data_file), 
-                                            alerts_file=os.path.join(self.config['data_dir'], alerts_file))
+            alert_manager = PriceAlertManagerV2(
+                data_file=os.path.join(self.config['data_dir'], self.data_file), 
+                alerts_file=os.path.join(self.config['data_dir'], alerts_file)
+            )
             
             if alert_manager.df.empty:
                 logger.warning("Нет данных для проверки алертов")
                 return
             
-            # Сканируем всю базу данных на изменения >= 4%
-            all_alerts = alert_manager.scan_all_price_changes(threshold_percent=4.0)
+            # Обрабатываем все изменения и получаем только новые алерты
+            new_alerts = alert_manager.process_all_changes(threshold_percent=4.0)
             
             # Создаем отчет об алертах
-            alert_manager.save_alert_report(threshold_percent=4.0)
+            report = alert_manager.create_alert_report(threshold_percent=4.0)
             
-            # Логируем важные изменения
-            price_drops = [a for a in all_alerts if a['price_change'] < 0]
-            price_increases = [a for a in all_alerts if a['price_change'] > 0]
+            # Логируем новые алерты
+            if new_alerts:
+                price_drops = [a for a in new_alerts if a['price_change'] < 0]
+                price_increases = [a for a in new_alerts if a['price_change'] > 0]
+                
+                if price_drops:
+                    logger.info(f"🚨 Обнаружено {len(price_drops)} новых снижений цен >= 4%!")
+                    for alert in price_drops[:5]:  # Показываем первые 5
+                        logger.info(f"  📉 {alert['hotel_name']}: {alert['old_price']} → {alert['new_price']} PLN ({alert['price_change_pct']:+.1f}%)")
+                
+                if price_increases:
+                    logger.info(f"🚨 Обнаружено {len(price_increases)} новых повышений цен >= 4%!")
+                    for alert in price_increases[:5]:  # Показываем первые 5
+                        logger.info(f"  📈 {alert['hotel_name']}: {alert['old_price']} → {alert['new_price']} PLN ({alert['price_change_pct']:+.1f}%)")
+            else:
+                logger.info("✅ Новых значительных изменений цен не обнаружено")
             
-            if price_drops:
-                logger.info(f"🚨 Обнаружено {len(price_drops)} снижений цен >= 4%!")
-                for alert in price_drops[:5]:  # Показываем топ-5 снижений
-                    logger.info(f"📉 {alert['hotel_name'][:50]} - {alert['price_change']:+.0f} PLN ({alert['price_change_pct']:+.1f}%)")
-            
-            if price_increases:
-                logger.info(f"📈 Обнаружено {len(price_increases)} повышений цен >= 4%")
-                for alert in price_increases[:3]:  # Показываем топ-3 повышения
-                    logger.info(f"📈 {alert['hotel_name'][:50]} - {alert['price_change']:+.0f} PLN ({alert['price_change_pct']:+.1f}%)")
-            
-            logger.info("✅ Проверка алертов завершена")
-            
+            # Сохраняем отчет
+            report_path = os.path.join(self.config['data_dir'], 'price_alerts_report.txt')
+            with open(report_path, 'w', encoding='utf-8') as f:
+                f.write(report)
+            logger.info(f"📊 Отчет об алертах сохранен: {report_path}")
+                
         except Exception as e:
-            logger.error(f"Ошибка проверки алертов: {e}")
+            logger.error(f"Ошибка при проверке алертов: {e}")
 
     async def run_monitoring(self):
         """Запускает полный цикл мониторинга"""
