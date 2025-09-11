@@ -49,6 +49,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         """Генерирует данные для hover с детальной информацией о ране"""
         hover_data = {
             'title': f"📊 ТОП-10 ({detailed_data['run_time']})",
+            'avg_price': detailed_data.get('avg_price', 0),
             'avg_change': None,
             'price_changes': [],
             'new_hotels': [],
@@ -115,73 +116,87 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Средняя цена ТОП-10 дешёвых предложений по ранам с детальной информацией
     try:
-        # Группируем по ранам (округленное время до минут)
+        # Определяем раны по большим интервалам между записями
         df_sorted = df.sort_values('scraped_at_display')
         run_data = []
         top10_detailed_data = []  # Детальная информация для hover
         
-        # Округляем время до минут для группировки ранов
-        df_sorted['run_time'] = df_sorted['scraped_at_display'].dt.floor('min')
+        # Находим границы ранов (интервалы > 5 минут)
+        df_sorted['time_diff'] = df_sorted['scraped_at_display'].diff()
+        run_boundaries = df_sorted[df_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
         
-        # Группируем по ранам
-        for run_time, run_group in df_sorted.groupby('run_time'):
-            if len(run_group) > 0:
-                # Для каждого рана берем последние данные по каждому отелю на момент этого рана
-                latest_prices = []
-                hotel_prices = {}  # Словарь отель -> цена для этого рана
+        # Добавляем начало и конец данных
+        run_starts = [0] + run_boundaries
+        run_ends = run_boundaries + [len(df_sorted)]
+        
+        print(f"🔍 Найдено {len(run_starts)} ранов")
+        
+        # Обрабатываем каждый ран
+        for i, (start_idx, end_idx) in enumerate(zip(run_starts, run_ends)):
+            run_data_slice = df_sorted.iloc[start_idx:end_idx]
+            if len(run_data_slice) == 0:
+                continue
                 
-                for hotel_name, hotel_grp in df_sorted.groupby('hotel_name'):
-                    # Берем последнюю запись для этого отеля до run_time
-                    hotel_data = hotel_grp[hotel_grp['run_time'] <= run_time]
-                    if not hotel_data.empty:
-                        latest_price = hotel_data.iloc[-1]['price']
-                        latest_prices.append(latest_price)
-                        hotel_prices[hotel_name] = latest_price
+            run_time = run_data_slice['scraped_at_display'].iloc[0]  # Время начала рана
+            
+            # Для каждого рана берем последние данные по каждому отелю в этом ране
+            latest_prices = []
+            hotel_prices = {}  # Словарь отель -> цена для этого рана
+            
+            # Берем последние данные по каждому отелю в этом ране
+            for hotel_name, hotel_grp in run_data_slice.groupby('hotel_name'):
+                if not hotel_grp.empty:
+                    latest_price = hotel_grp.iloc[-1]['price']
+                    latest_prices.append(latest_price)
+                    hotel_prices[hotel_name] = latest_price
+            
+            if len(latest_prices) >= 10:
+                # Берем ТОП-10 дешевых из всех отелей на этот ран
+                sorted_prices = sorted(latest_prices)
+                top10_prices = sorted_prices[:10]
+                avg_price = sum(top10_prices) / len(top10_prices)
                 
-                if len(latest_prices) >= 10:
-                    # Берем ТОП-10 дешевых из всех отелей на этот ран
-                    sorted_prices = sorted(latest_prices)
-                    top10_prices = sorted_prices[:10]
-                    avg_price = sum(top10_prices) / len(top10_prices)
-                    
-                    # Находим отели, которые попали в ТОП-10
-                    top10_hotels = []
-                    for hotel_name, price in hotel_prices.items():
-                        if price in top10_prices:
-                            top10_hotels.append({
-                                'name': hotel_name,
-                                'price': price,
-                                'position': sorted_prices.index(price) + 1
-                            })
-                    
-                    # Сортируем по позиции в ТОП-10
-                    top10_hotels.sort(key=lambda x: x['position'])
-                    
-                    run_data.append((run_time, avg_price))
-                    top10_detailed_data.append({
-                        'run_time': run_time,
-                        'avg_price': avg_price,
-                        'top10_hotels': top10_hotels
-                    })
-                elif len(latest_prices) > 0:
-                    # Если отелей меньше 10, берем все
-                    avg_price = sum(latest_prices) / len(latest_prices)
-                    
-                    # Все отели попадают в "ТОП"
-                    top_hotels = []
-                    for hotel_name, price in hotel_prices.items():
-                        top_hotels.append({
+                # Находим отели, которые попали в ТОП-10
+                top10_hotels = []
+                for hotel_name, price in hotel_prices.items():
+                    if price in top10_prices:
+                        top10_hotels.append({
                             'name': hotel_name,
                             'price': price,
-                            'position': 1  # Все на позиции 1
+                            'position': sorted_prices.index(price) + 1
                         })
-                    
-                    run_data.append((run_time, avg_price))
-                    top10_detailed_data.append({
-                        'run_time': run_time,
-                        'avg_price': avg_price,
-                        'top10_hotels': top_hotels
+                
+                # Сортируем по позиции в ТОП-10
+                top10_hotels.sort(key=lambda x: x['position'])
+                
+                # Добавляем точку для каждого рана (убираем фильтрацию по одинаковым ценам)
+                run_data.append((run_time, avg_price))
+                top10_detailed_data.append({
+                    'run_time': run_time,
+                    'avg_price': avg_price,
+                    'top10_hotels': top10_hotels
+                })
+            elif len(latest_prices) > 0:
+                # Если отелей меньше 10, берем все
+                avg_price = sum(latest_prices) / len(latest_prices)
+                
+                # Все отели попадают в "ТОП"
+                sorted_prices = sorted(latest_prices)
+                top_hotels = []
+                for hotel_name, price in hotel_prices.items():
+                    top_hotels.append({
+                        'name': hotel_name,
+                        'price': price,
+                        'position': sorted_prices.index(price) + 1
                     })
+                
+                # Добавляем точку для каждого рана (убираем фильтрацию по одинаковым ценам)
+                run_data.append((run_time, avg_price))
+                top10_detailed_data.append({
+                    'run_time': run_time,
+                    'avg_price': avg_price,
+                    'top10_hotels': top_hotels
+                })
         
         if run_data:
             top10_x_values = [ts.strftime('%Y-%m-%d %H:%M') for ts, _ in run_data]
@@ -265,6 +280,76 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         print(f"Ошибка расчета ТОП-10: {e}")
         top10_x_values, top10_y_values = [], []
         top10_detailed_data = []
+    
+    # Индекс ценовой динамики (Price Trend Index)
+    try:
+        print("📊 Расчет индекса ценовой динамики...")
+        trend_index_x_values, trend_index_y_values = [], []
+        trend_index_detailed_data = []
+        
+        # Словарь для хранения предыдущих цен каждого отеля
+        prev_hotel_prices = {}
+        
+        # Обрабатываем каждый ран
+        for i, (start_idx, end_idx) in enumerate(zip(run_starts, run_ends)):
+            run_data_slice = df_sorted.iloc[start_idx:end_idx]
+            if len(run_data_slice) == 0:
+                continue
+                
+            run_time = run_data_slice['scraped_at_display'].iloc[0]  # Время начала рана
+            
+            # Собираем текущие цены отелей в этом ране
+            current_hotel_prices = {}
+            for hotel_name, hotel_grp in run_data_slice.groupby('hotel_name'):
+                if not hotel_grp.empty:
+                    latest_price = hotel_grp.iloc[-1]['price']
+                    current_hotel_prices[hotel_name] = latest_price
+            
+            # Рассчитываем индекс ценовой динамики
+            total_price_change = 0
+            hotels_with_changes = 0
+            price_changes = []
+            
+            for hotel_name, current_price in current_hotel_prices.items():
+                if hotel_name in prev_hotel_prices:
+                    prev_price = prev_hotel_prices[hotel_name]
+                    if prev_price > 0:  # Избегаем деления на ноль
+                        price_change_pct = ((current_price - prev_price) / prev_price) * 100
+                        total_price_change += price_change_pct
+                        hotels_with_changes += 1
+                        price_changes.append({
+                            'hotel': hotel_name,
+                            'prev_price': prev_price,
+                            'current_price': current_price,
+                            'change_pct': price_change_pct
+                        })
+            
+            # Рассчитываем средний индекс (если есть изменения)
+            if hotels_with_changes > 0:
+                avg_price_change = total_price_change / hotels_with_changes
+                
+                # Добавляем точку для каждого рана
+                trend_index_x_values.append(run_time.strftime('%Y-%m-%d %H:%M'))
+                trend_index_y_values.append(avg_price_change)
+                trend_index_detailed_data.append({
+                    'run_time': run_time.strftime('%Y-%m-%d %H:%M'),
+                    'avg_change_pct': avg_price_change,
+                    'hotels_with_changes': hotels_with_changes,
+                    'total_hotels': len(current_hotel_prices),
+                    'price_changes': price_changes
+                })
+            
+            # Обновляем предыдущие цены для следующего рана
+            prev_hotel_prices = current_hotel_prices.copy()
+        
+        print(f"🔍 Отладка индекса тренда: {len(trend_index_x_values)} точек данных")
+        if trend_index_x_values:
+            print(f"   Последняя точка: {trend_index_y_values[-1]:.2f}%")
+    except Exception as e:
+        print(f"Ошибка расчета индекса тренда: {e}")
+        trend_index_x_values, trend_index_y_values = [], []
+        trend_index_detailed_data = []
+    
     
     # Получаем актуальные цены по каждому отелю (последнее наблюдение)
     df_sorted_all = df.sort_values(['hotel_name', 'scraped_at_display'])
@@ -770,6 +855,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: #f1f5f9;
         }}
         
+        .dark-theme .trend-section {{
+            background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
+            border: 1px solid #475569;
+        }}
+        
+        .dark-theme .trend-section h3 {{
+            color: #f1f5f9;
+        }}
+        
         .dark-theme .footer {{
             background: #1e293b;
             color: #cbd5e1;
@@ -889,6 +983,36 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             align-items: center;
             gap: 0.5rem;
         }}
+        
+        .trend-section {{
+            background: var(--gradient-card);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }}
+        
+        .trend-index-section {{
+            background: var(--gradient-card);
+            padding: 2rem;
+            border-radius: var(--radius-xl);
+            margin-bottom: 3rem;
+            box-shadow: var(--shadow-md);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-top: 3px solid #7C3AED;
+        }}
+        
+        .trend-section h3 {{
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 0 0 1.5rem 0;
+            color: #1f2937;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }}
+        
         .changes-section {{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -1487,6 +1611,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div id="avgTop10" style="height:360px;"></div>
         </div>
         
+        <div class="trend-index-section">
+            <h3>📊 Индекс ценовой динамики</h3>
+            <div id="trendIndexChart" style="height:360px;"></div>
+        </div>
+        
         <div class="metrics">
             <div class="metric">
                 <div class="metric-value">{total_offers:,}</div>
@@ -1696,6 +1825,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             const hover = data.hover_data || {};
             let text = hover.title || '';
             
+            // Добавляем среднюю цену
+            if (hover.avg_price) {
+              text += '<br><br><b>Средняя цена:</b><br>';
+              text += `${Math.round(hover.avg_price)} PLN`;
+            }
             
             if (hover.avg_change) {
               text += '<br><br><b>Изменение средней цены:</b><br>';
@@ -1761,6 +1895,83 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           };
           
           Plotly.newPlot('avgTop10', [trace], layout);
+        }
+      })();
+      
+      // График индекса ценовой динамики
+      (function(){
+        const trendIndexX = """ + json.dumps(trend_index_x_values, ensure_ascii=False) + """;
+        const trendIndexY = """ + json.dumps(trend_index_y_values, ensure_ascii=False) + """;
+        const trendIndexDetailedData = """ + json.dumps(trend_index_detailed_data, ensure_ascii=False, default=str) + """;
+        
+        if (Array.isArray(trendIndexX) && Array.isArray(trendIndexY) && trendIndexX.length > 0 && trendIndexY.length > 0 && window.Plotly) {
+          // Создаем hover текст для каждой точки
+          const trendIndexHoverTexts = trendIndexDetailedData.map((data, index) => {
+            let text = `<b>📊 Индекс ценовой динамики</b><br>`;
+            text += `<b>Время:</b> ${data.run_time}<br>`;
+            text += `<b>Среднее изменение:</b> ${data.avg_change_pct.toFixed(2)}%<br>`;
+            text += `<b>Отелей с изменениями:</b> ${data.hotels_with_changes}/${data.total_hotels}<br><br>`;
+            
+            if (data.price_changes && data.price_changes.length > 0) {
+              text += `<b>Изменения по отелям:</b><br>`;
+              data.price_changes.slice(0, 10).forEach(change => {
+                const arrow = change.change_pct > 0 ? '↗️' : change.change_pct < 0 ? '↘️' : '➡️';
+                const color = change.change_pct > 0 ? '#ef4444' : change.change_pct < 0 ? '#22c55e' : '#6b7280';
+                text += `${arrow} <span style="color: ${color}">${change.hotel}: ${change.change_pct.toFixed(1)}%</span><br>`;
+              });
+              if (data.price_changes.length > 10) {
+                text += `... и еще ${data.price_changes.length - 10} отелей`;
+              }
+            }
+            
+            return text;
+          });
+          
+          const trendIndexTrace = {
+            x: trendIndexX,
+            y: trendIndexY,
+            type: 'scatter',
+            mode: 'lines+markers',
+            name: 'Индекс ценовой динамики',
+            line: { color: '#7C3AED', width: 3 },
+            marker: { size: 6, color: '#7C3AED' },
+            text: trendIndexHoverTexts,
+            hovertemplate: '%{text}<extra></extra>',
+            hoverinfo: 'text',
+            hoverlabel: {
+              bgcolor: 'rgba(248, 249, 250, 0.98)',
+              bordercolor: '#7C3AED',
+              font: { size: 12, color: '#333' },
+              align: 'left',
+              namelength: -1
+            }
+          };
+          
+          const trendIndexLayout = {
+            title: {
+              text: 'Индекс ценовой динамики (%)',
+              font: { size: 16, color: '#374151' }
+            },
+            xaxis: {
+              title: 'Время',
+              gridcolor: '#e5e7eb',
+              showgrid: true
+            },
+            yaxis: {
+              title: 'Изменение цен (%)',
+              gridcolor: '#e5e7eb',
+              showgrid: true,
+              zeroline: true,
+              zerolinecolor: '#6b7280',
+              zerolinewidth: 2
+            },
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            font: { family: 'Inter, sans-serif' },
+            margin: { t: 50, b: 50, l: 60, r: 30 }
+          };
+          
+          Plotly.newPlot('trendIndexChart', [trendIndexTrace], trendIndexLayout);
         }
       })();
       (function(){
