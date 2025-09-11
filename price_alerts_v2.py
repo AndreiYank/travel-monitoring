@@ -30,7 +30,8 @@ class PriceAlertManagerV2:
         
         try:
             df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
-            df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True)
+            # Исправляем парсинг дат - используем format='ISO8601' для правильного парсинга
+            df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True, format='ISO8601')
             df = df.dropna(subset=['scraped_at'])
             return df
         except Exception as e:
@@ -64,23 +65,55 @@ class PriceAlertManagerV2:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
     def get_run_times(self) -> List[datetime]:
-        """Получает все времена ранов (округленные до минут)"""
+        """Получает все времена ранов (по интервалам > 5 минут)"""
         if self.df.empty:
             return []
         
-        # Группируем по ранам (округленное время до минут)
-        self.df['run_time'] = self.df['scraped_at'].dt.floor('min')
-        run_times = sorted(self.df['run_time'].unique())
-        return run_times
+        # Используем ту же логику, что и в дашбордах - группировка по интервалам > 5 минут
+        df_sorted = self.df.sort_values('scraped_at')
+        df_sorted['time_diff'] = df_sorted['scraped_at'].diff()
+        run_boundaries = df_sorted[df_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
+        
+        # Добавляем начало и конец данных
+        run_starts = [0] + run_boundaries
+        run_ends = run_boundaries + [len(df_sorted)]
+        
+        # Получаем времена начала каждого рана
+        run_times = []
+        for start_idx, end_idx in zip(run_starts, run_ends):
+            run_data_slice = df_sorted.iloc[start_idx:end_idx]
+            if len(run_data_slice) > 0:
+                run_time = run_data_slice['scraped_at'].iloc[0]
+                run_times.append(run_time)
+        
+        return sorted(run_times)
     
     def get_hotel_prices_for_run(self, run_time: datetime) -> Dict[str, float]:
         """Получает цены всех отелей для конкретного рана"""
-        run_data = self.df[self.df['run_time'] == run_time]
+        # Находим данные для этого рана используя ту же логику
+        df_sorted = self.df.sort_values('scraped_at')
+        df_sorted['time_diff'] = df_sorted['scraped_at'].diff()
+        run_boundaries = df_sorted[df_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
+        
+        # Добавляем начало и конец данных
+        run_starts = [0] + run_boundaries
+        run_ends = run_boundaries + [len(df_sorted)]
+        
+        # Находим нужный ран
+        run_data_slice = None
+        for start_idx, end_idx in zip(run_starts, run_ends):
+            slice_data = df_sorted.iloc[start_idx:end_idx]
+            if len(slice_data) > 0 and slice_data['scraped_at'].iloc[0] == run_time:
+                run_data_slice = slice_data
+                break
+        
+        if run_data_slice is None:
+            return {}
         
         # Берем последнюю цену для каждого отеля в этом ране
         hotel_prices = {}
-        for hotel_name in run_data['hotel_name'].unique():
-            hotel_data = run_data[run_data['hotel_name'] == hotel_name]
+        for hotel_name in run_data_slice['hotel_name'].unique():
+            hotel_data = run_data_slice[run_data_slice['hotel_name'] == hotel_name]
             if not hotel_data.empty:
                 # Берем последнюю запись для этого отеля в этом ране
                 latest_price = hotel_data.sort_values('scraped_at').iloc[-1]['price']
