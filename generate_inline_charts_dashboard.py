@@ -272,7 +272,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if run_data:
                 print(f"   Последняя точка: {run_data[-1][1]:.2f} PLN")
         else:
-            top10_x_values, top10_y_values = [], []
+        top10_x_values, top10_y_values = [], []
             top10_detailed_data = []
             print("❌ Нет данных для ТОП-10 графика")
             
