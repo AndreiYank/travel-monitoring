@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График цен — Delta by Marriott Bodrum</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .back { margin-bottom: 10px; }
+        #chart { height: 520px; }
+    </style>
+<head>
+<body>
+    <div class="back"><a href="../../index.html">← Назад к дашборду</a></div>
+    <h2>График цен: Delta by Marriott Bodrum</h2>
+    <div id="chart"></div>
+    <script>
+      const x = ["2025-09-12 11:26"];
+      const y = [8047.0];
+      const trace = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#2E86AB', width: 3 },
+        marker: { size: 8 }
+      };
+      const layout = {
+        title: 'История цен',
+        xaxis: { title: 'Время' },
+        yaxis: { title: 'Цена (PLN)' }
+      };
+      Plotly.newPlot('chart', [trace], layout);
+    </script>
+  </body>
+</html>
