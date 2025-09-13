@@ -9,8 +9,9 @@ import csv
 from datetime import datetime, timedelta, timezone
 import os
 import re
+from urllib.parse import urlparse, parse_qs
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -36,6 +37,27 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
         return
+    # Опционально загружаем общий датасет (любой аэропорт)
+    df_all_airports = None
+    if all_airports_data_file:
+        try:
+            df_all_airports = pd.read_csv(all_airports_data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+            raw_all = df_all_airports['scraped_at'].astype(str)
+            mask_tz_all = raw_all.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
+            tz_series_all = pd.to_datetime(raw_all.where(mask_tz_all), errors='coerce', utc=True)
+            tz_series_all = tz_series_all.dt.tz_convert(tz)
+            naive_series_all = pd.to_datetime(raw_all.where(~mask_tz_all), errors='coerce')
+            try:
+                naive_series_all = naive_series_all.dt.tz_localize(tz)
+            except Exception:
+                pass
+            df_all_airports['scraped_at_local'] = tz_series_all.combine_first(naive_series_all)
+            df_all_airports = df_all_airports.dropna(subset=['scraped_at_local'])
+            df_all_airports['scraped_at_display'] = df_all_airports['scraped_at_local']
+            print(f"✅ Загружен общий датасет (любой аэропорт): {len(df_all_airports)} записей")
+        except Exception as e:
+            print(f"❌ Ошибка загрузки общего датасета (любой аэропорт): {e}")
+            df_all_airports = None
     
     # Вычисляем статистику
     total_offers = len(df)
@@ -113,6 +135,124 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             hover_data['no_changes'] = True
         
         return hover_data
+
+    def extract_airport_from_url(url):
+        """Извлекает аэропорт вылета из URL"""
+        try:
+            if pd.isna(url) or not url:
+                return None
+            
+            # Парсим URL и извлекаем параметры
+            parsed_url = urlparse(url)
+            query_params = parse_qs(parsed_url.query)
+            
+            # Ищем параметр filter[from]
+            filter_from = query_params.get('filter[from]', [None])[0]
+            if filter_from:
+                # Разделяем по запятой и берем первый аэропорт
+                airports = [airport.strip() for airport in filter_from.split(',')]
+                return airports[0] if airports else None
+            
+            return None
+        except Exception as e:
+            print(f"Ошибка при извлечении аэропорта из URL: {e}")
+            return None
+
+    def normalize_text(value: str) -> str:
+        try:
+            return ' '.join(str(value).strip().lower().split())
+        except Exception:
+            return str(value)
+
+    def normalize_dates(value: str) -> str:
+        """Нормализует строку дат к формату YYYY-MM-DD|YYYY-MM-DD для устойчивого сравнения."""
+        try:
+            import re
+            s = str(value)
+            # Ищем две даты вида dd.mm.yyyy или dd-mm-yyyy
+            m = re.findall(r"(\d{1,2})[\.-](\d{1,2})[\.-](\d{4})", s)
+            if len(m) >= 2:
+                def to_iso(t):
+                    d, mth, y = t
+                    return f"{int(y):04d}-{int(mth):02d}-{int(d):02d}"
+                return f"{to_iso(m[0])}|{to_iso(m[1])}"
+        except Exception:
+            pass
+        return str(value).strip()
+
+    def find_cheaper_airport_alternatives(df_source, hotel_name, dates, current_price, current_airport):
+        """Находит более дешевые предложения того же отеля на те же даты из других аэропортов"""
+        try:
+            # Нормализация
+            hotel_name_norm = normalize_text(hotel_name)
+            dates_norm = normalize_dates(dates)
+            current_airport_norm = (str(current_airport).strip() if current_airport else '') or 'Warszawa'
+
+            # Фильтруем данные по отелю и датам
+            df_src = df_source.copy()
+            df_src['__hotel_norm'] = df_src['hotel_name'].astype(str).map(normalize_text)
+            df_src['__dates_norm'] = df_src['dates'].astype(str).map(normalize_dates)
+            same_hotel_dates = df_src[(df_src['__hotel_norm'] == hotel_name_norm) & (df_src['__dates_norm'] == dates_norm)].copy()
+            
+            if len(same_hotel_dates) == 0:
+                return []
+            
+            # Добавляем информацию об аэропорте с поэлементным fallback: сначала from_airport, затем извлекаем из URL
+            if 'from_airport' in same_hotel_dates.columns:
+                same_hotel_dates['airport'] = same_hotel_dates['from_airport']
+                same_hotel_dates['airport'] = same_hotel_dates['airport'].where(
+                    same_hotel_dates['airport'].astype(str).str.strip().ne(''),
+                    None
+                )
+                same_hotel_dates['airport'] = same_hotel_dates['airport'].fillna(
+                    same_hotel_dates['url'].apply(extract_airport_from_url)
+                )
+            else:
+                same_hotel_dates['airport'] = same_hotel_dates['url'].apply(extract_airport_from_url)
+            
+            # Подставляем плейсхолдер для неизвестного аэропорта, чтобы не терять альтернативы
+            same_hotel_dates['airport'] = same_hotel_dates['airport'].fillna('Другой город')
+            same_hotel_dates.loc[same_hotel_dates['airport'].astype(str).str.strip()=='', 'airport'] = 'Другой город'
+            
+            # Для каждого аэропорта выбираем запись с минимальной ценой и её offer_url (если есть)
+            idx_min_by_airport = same_hotel_dates.groupby('airport')['price'].idxmin()
+            airport_prices = same_hotel_dates.loc[
+                idx_min_by_airport, ['airport', 'price', 'offer_url', 'url']
+            ].reset_index(drop=True)
+            
+            # Фильтруем аэропорты с ценами дешевле текущей
+            cheaper_alternatives = airport_prices[
+                (airport_prices['price'] < current_price) & 
+                (airport_prices['airport'] != current_airport_norm)
+            ].sort_values('price')
+            
+            alternatives = []
+            for _, row in cheaper_alternatives.iterrows():
+                savings = current_price - row['price']
+                savings_percent = (savings / current_price) * 100
+                
+                # Предпочитаем ссылку на конкретное предложение, иначе fallback на URL поиска
+                alt_url = None
+                try:
+                    alt_url = (row.get('offer_url') or '').strip()
+                except Exception:
+                    alt_url = ''
+                if not alt_url:
+                    alt_url = (row.get('url') or '').strip()
+
+                alternatives.append({
+                    'airport': str(row['airport']).strip(),
+                    'price': float(row['price']),
+                    'savings': float(savings),
+                    'savings_percent': float(savings_percent),
+                    'url': alt_url
+                })
+            
+            return alternatives
+            
+        except Exception as e:
+            print(f"Ошибка при поиске альтернативных аэропортов: {e}")
+            return []
 
     # Средняя цена ТОП-10 дешёвых предложений по ранам с детальной информацией
     try:
@@ -362,10 +502,91 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'dates': last.get('dates', None),
             'duration': last.get('duration', None),
             'scraped_at_local': last['scraped_at_local'],
+            'url': last.get('url', None),
+            'from_airport': last.get('from_airport', None),
             'offer_url': last.get('offer_url', None),
             'image_url': last.get('image_url', None)
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
+
+    #
+    # Подготовка блока: отели до 8000 в общем фильтре, отсутствующие из Варшавы
+    #
+    missing_hotels_under_8000 = []
+    if df_all_airports is not None:
+        try:
+            warsaw_hotel_names = set(df['hotel_name'].dropna().unique())
+            # Определяем slug направления (например, 'egipt') на основе URL текущего набора
+            import re
+            def dest_slug_from_url(u: str):
+                try:
+                    s = str(u or '')
+                    m = re.search(r"/kierunek/([^/?#]+)/?", s)
+                    if m:
+                        return m.group(1).lower()
+                    m = re.search(r"/wycieczka/([^,/?#]+),", s)
+                    if m:
+                        return m.group(1).lower()
+                except Exception:
+                    pass
+                return ''
+
+            current_dest_slug = ''
+            for candidate in (df.get('offer_url'), df.get('url')):
+                if candidate is not None:
+                    for v in candidate.dropna().astype(str).values.tolist():
+                        current_dest_slug = dest_slug_from_url(v)
+                        if current_dest_slug:
+                            break
+                if current_dest_slug:
+                    break
+
+            # Набор дат (нормализованных) из варшавского датасета для согласованности выборки
+            warsaw_dates_norm = set(df['dates'].astype(str).map(normalize_dates).dropna().unique().tolist())
+
+            df_gen = df_all_airports.dropna(subset=['hotel_name', 'price']).copy()
+            # Фильтруем только по текущему направлению (например, только Egipt)
+            def row_dest_slug(row):
+                u1 = row.get('offer_url', '')
+                u2 = row.get('url', '')
+                return dest_slug_from_url(u1) or dest_slug_from_url(u2)
+            df_gen['__dest'] = df_gen.apply(row_dest_slug, axis=1)
+            if current_dest_slug:
+                df_gen = df_gen[df_gen['__dest'] == current_dest_slug]
+
+            # Оставляем строки только с подходящими датами
+            if len(warsaw_dates_norm) > 0:
+                df_gen['__dates_norm'] = df_gen['dates'].astype(str).map(normalize_dates)
+                df_gen = df_gen[df_gen['__dates_norm'].isin(warsaw_dates_norm)]
+
+            # Ищем минимальную цену по каждому отелю и берем соответствующую строку
+            idx_min = df_gen.groupby('hotel_name')['price'].idxmin()
+            gen_best = df_gen.loc[idx_min].copy()
+            gen_best = gen_best[gen_best['price'] <= 8000]
+            # Отбрасываем те, что уже есть в варшавском датасете
+            gen_best = gen_best[~gen_best['hotel_name'].isin(warsaw_hotel_names)]
+            # Аэропорт: сначала берем from_airport, потом fallback к извлечению из URL
+            if 'from_airport' in gen_best.columns:
+                gen_best['airport'] = gen_best['from_airport']
+                gen_best['airport'] = gen_best['airport'].where(
+                    gen_best['airport'].astype(str).str.strip().ne(''), None
+                )
+                gen_best['airport'] = gen_best['airport'].fillna(gen_best['url'].apply(extract_airport_from_url))
+            else:
+                gen_best['airport'] = gen_best['url'].apply(extract_airport_from_url)
+            # Собираем элементы для вывода (ограничим до 20 для компактности)
+            gen_best = gen_best.sort_values('price').head(20)
+            for _, row in gen_best.iterrows():
+                missing_hotels_under_8000.append({
+                    'hotel_name': row['hotel_name'],
+                    'price': float(row['price']),
+                    'dates': row.get('dates', None),
+                    'airport': row.get('airport', None),
+                    'offer_url': row.get('offer_url', None)
+                })
+            print(f"🛫 Отели до 8000 (любой вылет), отсутствующие из Варшавы: {len(missing_hotels_under_8000)}")
+        except Exception as e:
+            print(f"Ошибка вычисления блока 'до 8000 из любого вылета, нет из Варшавы': {e}")
     
     # Анализ изменений за разные окна времени
     df_sorted = df.sort_values(['hotel_name', 'scraped_at_display'])
@@ -815,6 +1036,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
         }}
         
+        .dark-theme .airport {{
+            background: #1e293b;
+            color: #e2e8f0;
+            border: 1px solid #475569;
+        }}
+        
+        .dark-theme .airport-alt {{
+            background: linear-gradient(135deg, #064e3b 0%, #065f46 100%);
+            border: 1px solid #10b981;
+            color: #ecfdf5;
+        }}
+        
+        .dark-theme .airport-alt:hover {{
+            background: linear-gradient(135deg, #065f46 0%, #047857 100%);
+        }}
+        
+        .dark-theme .airport-alt small {{
+            color: #6ee7b7;
+        }}
+        
         .dark-theme .filter-input,
         .dark-theme .filter-select {{
             background: #1e293b;
@@ -1225,6 +1466,48 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: 800;
             font-size: 1.1rem;
             color: var(--success-color);
+        }}
+        
+        .airport {{
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-color);
+            background: #f0f9ff;
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+            text-align: center;
+        }}
+        
+        .alternatives {{
+            font-size: 0.8rem;
+            max-width: 200px;
+        }}
+        
+        .alternatives-container {{
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }}
+        
+        .airport-alt {{
+            background: linear-gradient(135deg, #dcfce7 0%, #bbf7d0 100%);
+            border: 1px solid #16a34a;
+            border-radius: var(--radius-sm);
+            padding: 0.5rem;
+            margin: 0.125rem 0;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }}
+        
+        .airport-alt:hover {{
+            background: linear-gradient(135deg, #bbf7d0 0%, #86efac 100%);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }}
+        
+        .airport-alt small {{
+            color: #15803d;
+            font-weight: 600;
         }}
         
         .delta {{
@@ -1691,11 +1974,60 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <div class="alerts-empty">Нет алертов</div>
 """
 
-    html_template += f"""
+    # Вставляем блок с отелями до 8000 из общего фильтра, которых нет из Варшавы
+    if missing_hotels_under_8000:
+        html_template += f"""
+        </div>
+    </div>
+
+    <div class="hotels-section">
+        <h3>🛫 Отели до 8000 PLN (любой вылет), которых нет при вылете из Варшавы</h3>
+        <div class="table-container">
+            <table class="hotels-table" id="missingAirportsTable">
+                <thead>
+                    <tr>
+                        <th>Отель</th>
+                        <th>Цена</th>
+                        <th>Даты</th>
+                        <th>Аэропорт</th>
+                        <th>Ссылка</th>
+                    </tr>
+                </thead>
+                <tbody>
+        """
+        for item in missing_hotels_under_8000:
+            hotel_name = item['hotel_name']
+            price = item['price']
+            dates = item.get('dates') or '—'
+            airport = item.get('airport') or '—'
+            offer_url = item.get('offer_url') or ''
+            link_html = f'<a href="{offer_url}" target="_blank" class="offer-link">🔗</a>' if offer_url else '—'
+            html_template += f"""
+                <tr>
+                    <td class="hotel-name">{hotel_name}</td>
+                    <td class="price">{price:.0f} PLN</td>
+                    <td>{dates}</td>
+                    <td class="airport">{airport}</td>
+                    <td class="offer-link-cell">{link_html}</td>
+                </tr>
+            """
+        html_template += """
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="hotels-section">
+"""
+    else:
+        html_template += f"""
             </div>
         </div>
 
         <div class="hotels-section">
+"""
+
+    html_template += f"""
             <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
             
             <!-- Table Filters -->
@@ -1727,6 +2059,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <th class="sortable" data-sort="deltastart">Δ с начала</th>
                         <th class="sortable" data-sort="dates">Даты</th>
                         <th class="sortable" data-sort="duration">Длительность</th>
+                        <th>Аэропорт вылета</th>
+                        <th>Альтернативы</th>
                         <th>Ссылка</th>
                     </tr>
                 </thead>
@@ -1766,6 +2100,40 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             chart_href = f"hotel-charts/{hotel_slug}.html"
         
+        # Извлекаем аэропорт вылета: сначала из поля from_airport (если парсер его дал), иначе из URL
+        current_airport = None
+        fa = hotel.get('from_airport', None)
+        if isinstance(fa, str) and fa.strip():
+            current_airport = fa.strip()
+        else:
+            current_airport = extract_airport_from_url(hotel.get('url', ''))
+        airport_display = current_airport if current_airport else "—"
+        
+        # Ищем альтернативные аэропорты с более дешевыми ценами.
+        # Если доступен общий датасет (любой вылет), используем его как источник для сравнения,
+        # иначе сравниваем внутри текущего датасета.
+        source_df = df_all_airports if (df_all_airports is not None) else df
+        alternatives = find_cheaper_airport_alternatives(source_df, hotel_name, dates, price, current_airport)
+        
+        # Формируем отображение альтернатив
+        alternatives_display = "—"
+        if alternatives:
+            alternatives_html = []
+            for alt in alternatives[:3]:  # Показываем максимум 3 альтернативы
+                savings_text = f"{alt['price']:.0f} PLN • -{alt['savings']:.0f} PLN ({alt['savings_percent']:.1f}%)"
+                dest_url = alt.get('url') or ''
+                if dest_url:
+                    alternatives_html.append(
+                        f'<a href="{dest_url}" target="_blank" class="airport-alt" title="Экономия: {savings_text}">'
+                        f'✈️ {alt["airport"]}<br><small>{savings_text}</small></a>'
+                    )
+                else:
+                    alternatives_html.append(
+                        f'<span class="airport-alt" title="Экономия: {savings_text}">'
+                        f'✈️ {alt["airport"]}<br><small>{savings_text}</small></span>'
+                    )
+            alternatives_display = '<div class="alternatives-container">' + ' '.join(alternatives_html) + '</div>'
+        
         # Ссылка на предложение
         offer_url = hotel.get('offer_url', '')
         offer_link_html = ""
@@ -1782,6 +2150,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <td data-sort-value="{since_info[1] if since_info else 0}">{since_display}</td>
                         <td data-sort-value="{dates}">{dates}</td>
                         <td data-sort-value="{duration}">{duration}</td>
+                        <td class="airport" data-sort-value="{airport_display}">{airport_display}</td>
+                        <td class="alternatives">{alternatives_display}</td>
                         <td class="offer-link-cell">{offer_link_html}</td>
                     </tr>"""
 
@@ -2220,5 +2590,6 @@ if __name__ == "__main__":
     parser.add_argument('--charts-dir', default='hotel-charts')
     parser.add_argument('--tz', default='Europe/Warsaw')
     parser.add_argument('--alerts-file', default=None)
+    parser.add_argument('--all-airports-data-file', default=None, help='CSV с общим фильтром (любой аэропорт) для сравнения')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file)
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file, all_airports_data_file=args.all_airports_data_file)
