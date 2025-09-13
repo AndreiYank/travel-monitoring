@@ -32,15 +32,11 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 class TravelPriceMonitor:
-    def __init__(self, config_file: str = "config.json", data_file: Optional[str] = None, from_airports: Optional[List[str]] = None, strip_from: bool = False):
+    def __init__(self, config_file: str = "config.json", data_file: Optional[str] = None):
         self.config_file = config_file
         self.config = self.load_config()
         # data_file из аргументов имеет приоритет над output_data_file из конфигурации
         self.data_file = data_file or self.config.get('output_data_file', 'travel_prices.csv')
-        # Список аэропортов для итерации (если указан) — поверх конфигурации
-        self.from_airports: Optional[List[str]] = from_airports or self.config.get('from_airports')
-        # Режим: убрать filter[from] из URL и собрать общий датасет (любой вылет)
-        self.strip_from: bool = strip_from
         
     def load_config(self) -> Dict[str, Any]:
         """Загружает конфигурацию из файла"""
@@ -71,30 +67,6 @@ class TravelPriceMonitor:
         
         logger.error("Все попытки исчерпаны")
         return []
-
-    def _with_filter_from(self, url: str, airport: str) -> str:
-        try:
-            from urllib.parse import urlparse, parse_qs, urlencode, urlunparse, quote
-            pu = urlparse(url)
-            q = parse_qs(pu.query)
-            # В API сайта допускается запятая для нескольких аэропортов, но тут явно задаем один
-            q['filter[from]'] = [airport]
-            new_q = '&'.join([f"{k}={quote(v[0])}" for k, v in q.items()])
-            return urlunparse((pu.scheme, pu.netloc, pu.path, pu.params, new_q, pu.fragment))
-        except Exception:
-            return url
-
-    def _without_filter_from(self, url: str) -> str:
-        try:
-            from urllib.parse import urlparse, parse_qs, urlunparse, quote
-            pu = urlparse(url)
-            q = parse_qs(pu.query)
-            if 'filter[from]' in q:
-                del q['filter[from]']
-            new_q = '&'.join([f"{k}={quote(v[0])}" for k, v in q.items()])
-            return urlunparse((pu.scheme, pu.netloc, pu.path, pu.params, new_q, pu.fragment))
-        except Exception:
-            return url
 
     async def scrape_offers(self) -> List[Dict[str, Any]]:
         """Парсит предложения с сайта fly.pl с пагинацией"""
@@ -505,16 +477,6 @@ class TravelPriceMonitor:
             dates = self.clean_text(dates) if dates else ""
             duration = self.clean_text(duration) if duration else ""
             rating = self.clean_text(rating) if rating else ""
-
-            # Пытаемся извлечь аэропорт вылета из текста карточки
-            from_airport = self.extract_departure_city_from_text(full_text)
-
-            # Если не нашли — попробуем извлечь с детальной страницы предложения
-            if (not from_airport) and offer_url:
-                try:
-                    from_airport = await self.extract_departure_city_from_offer_url(offer_url)
-                except Exception:
-                    from_airport = from_airport or ""
             
             # Если не нашли название, используем первые слова из текста
             if not hotel_name or hotel_name == f"Предложение {index + 1}":
@@ -531,8 +493,7 @@ class TravelPriceMonitor:
                 'scraped_at': datetime.now(timezone.utc).isoformat(),
                 'url': self.config['url'],
                 'image_url': image_url or "",
-                'offer_url': offer_url or "",
-                'from_airport': from_airport or ""
+                'offer_url': offer_url or ""
             }
             
         except Exception as e:
@@ -682,78 +643,6 @@ class TravelPriceMonitor:
             return f"https://fly.pl/{url}"
         
         return url
-
-    async def extract_departure_city_from_offer_url(self, offer_url: str) -> str:
-        """Открывает страницу предложения и пытается извлечь город вылета.
-
-        Ищем упоминания известных аэропортов/городов Польши в видимом тексте.
-        """
-        try:
-            if not offer_url:
-                return ""
-            # Переиспользуем новый контекст для быстрого открытия
-            async with async_playwright() as p:
-                browser = await p.chromium.launch(headless=True, args=['--no-sandbox','--disable-dev-shm-usage'])
-                context = await browser.new_context(viewport={'width':1280,'height':800})
-                page = await context.new_page()
-                await page.goto(self.make_absolute_url(offer_url), wait_until='domcontentloaded', timeout=self.config.get('wait_timeout', 30000))
-                # Небольшая задержка для подгрузки
-                try:
-                    await page.wait_for_timeout(1500)
-                except Exception:
-                    pass
-                text = (await page.inner_text('body'))[:200000]
-                cities = [
-                    'Warszawa', 'Warszawa-Radom', 'Modlin', 'Kraków', 'Krakow', 'Katowice', 'Wrocław', 'Wroclaw',
-                    'Gdańsk', 'Gdansk', 'Poznań', 'Poznan', 'Rzeszów', 'Rzeszow', 'Lublin', 'Łódź', 'Lodz',
-                    'Bydgoszcz', 'Szczecin'
-                ]
-                low = text.lower()
-                # Предпочтение составным названиям
-                for name in sorted(cities, key=len, reverse=True):
-                    if name.lower() in low:
-                        mapping = {'krakow':'Kraków','wroclaw':'Wrocław','gdansk':'Gdańsk','poznan':'Poznań','rzeszow':'Rzeszów','lodz':'Łódź'}
-                        out = mapping.get(name.lower(), name)
-                        if out == 'Modlin':
-                            out = 'Warszawa-Modlin'
-                        await browser.close()
-                        return out
-                await browser.close()
-        except Exception:
-            pass
-        return ""
-
-    def extract_departure_city_from_text(self, text: str) -> str:
-        """Грубая эвристика: извлекает город вылета из текста карточки.
-        Ищем упоминания известных городов/аэропортов Польши.
-        """
-        try:
-            if not text:
-                return ""
-            lower = text.lower()
-            candidates = [
-                'warszawa', 'warszawa-radom', 'radom', 'katowice', 'kraków', 'krakow', 'wrocław', 'wroclaw',
-                'gdańsk', 'gdansk', 'poznań', 'poznan', 'rzeszów', 'rzeszow', 'lublin', 'łódź', 'lodz',
-                'bydgoszcz', 'szczecin', 'modlin'
-            ]
-            # Предпочитаем составные сначала (warszawa-radom)
-            candidates_sorted = sorted(candidates, key=len, reverse=True)
-            for name in candidates_sorted:
-                if name in lower:
-                    # Нормализуем вывод с правильной капитализацией
-                    mapping = {
-                        'krakow': 'Kraków', 'wroclaw': 'Wrocław', 'gdansk': 'Gdańsk', 'poznan': 'Poznań',
-                        'rzeszow': 'Rzeszów', 'lodz': 'Łódź'
-                    }
-                    out = mapping.get(name, name.capitalize())
-                    if out == 'Warszawa-radom':
-                        out = 'Warszawa-Radom'
-                    if out == 'Modlin':
-                        out = 'Warszawa-Modlin'
-                    return out
-        except Exception:
-            pass
-        return ""
 
     async def extract_price_for_all(self, element) -> str:
         """Извлекает цену за всех (za wszystkich)"""
@@ -1035,8 +924,7 @@ class TravelPriceMonitor:
                             'scraped_at': row.get('scraped_at', ''),
                             'url': row.get('url', ''),
                             'image_url': row.get('image_url', ''),
-                            'offer_url': row.get('offer_url', ''),
-                            'from_airport': row.get('from_airport', '')
+                            'offer_url': row.get('offer_url', '')
                         }
                         existing_data.append(normalized_row)
             except Exception as e:
@@ -1045,7 +933,7 @@ class TravelPriceMonitor:
         
         # Перезаписываем файл с правильными заголовками
         with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url', 'from_airport']
+            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
             writer.writeheader()
             
@@ -1176,7 +1064,7 @@ class TravelPriceMonitor:
             df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             
             # Проверяем, что все необходимые колонки присутствуют
-            required_columns = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url', 'from_airport']
+            required_columns = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
             missing_columns = [col for col in required_columns if col not in df.columns]
             
             if missing_columns:
@@ -1276,34 +1164,8 @@ class TravelPriceMonitor:
         logger.info("🚀 Начинаем мониторинг цен на путешествия...")
         
         try:
-            offers: List[Dict[str, Any]] = []
-            if self.strip_from:
-                base_url = self.config['url']
-                self.config['url'] = self._without_filter_from(base_url)
-                logger.info(f"🌐 Сбор без filter[from]: {self.config['url']}")
-                offers = await self.scrape_offers_with_retry()
-                self.config['url'] = base_url
-            elif self.from_airports and isinstance(self.from_airports, list) and len(self.from_airports) > 0:
-                base_url = self.config['url']
-                for ap in self.from_airports:
-                    ap = (ap or '').strip()
-                    if not ap:
-                        continue
-                    self.config['url'] = self._with_filter_from(base_url, ap)
-                    logger.info(f"✈️ Сбор для аэропорта: {ap} → {self.config['url']}")
-                    batch = await self.scrape_offers_with_retry()
-                    # Проставим from_airport явно
-                    for o in batch:
-                        if o is None:
-                            continue
-                        if not o.get('from_airport'):
-                            o['from_airport'] = ap
-                    offers.extend(batch)
-                # Вернем исходный URL
-                self.config['url'] = base_url
-            else:
-                # Собираем данные с повторными попытками как обычно
-                offers = await self.scrape_offers_with_retry()
+            # Собираем данные с повторными попытками
+            offers = await self.scrape_offers_with_retry()
             
             if not offers:
                 logger.error("❌ Не удалось собрать данные после всех попыток")
@@ -1338,15 +1200,9 @@ def main():
     parser = argparse.ArgumentParser(description="Travel price monitor")
     parser.add_argument("--config", default="config.json", help="Путь к конфигу JSON")
     parser.add_argument("--data-file", default=None, help="Имя CSV файла данных (внутри data_dir)")
-    parser.add_argument("--from-airports", default=None, help="Список аэропортов через запятую для итерации (например: Lublin,Kraków,Katowice)")
-    parser.add_argument("--strip-from", action='store_true', help="Убрать filter[from] из URL и собрать общий датасет (любой вылет)")
     args = parser.parse_args()
 
-    from_airports: Optional[List[str]] = None
-    if args.from_airports:
-        from_airports = [a.strip() for a in args.from_airports.split(',') if a.strip()]
-
-    monitor = TravelPriceMonitor(config_file=args.config, data_file=args.data_file, from_airports=from_airports, strip_from=args.strip_from)
+    monitor = TravelPriceMonitor(config_file=args.config, data_file=args.data_file)
     
     try:
         success = asyncio.run(monitor.run_monitoring())
