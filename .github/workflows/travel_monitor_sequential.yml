@@ -68,10 +68,16 @@ jobs:
           export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
           # Greece (keeps historical CSV path)
           python travel_monitor.py --config config.json --data-file travel_prices.csv
+          # Greece (any airport)
+          python travel_monitor.py --config config.json --data-file travel_prices_any.csv --strip-from
           # Egypt (separate dataset)
           python travel_monitor.py --config config_egypt.json --data-file egypt_travel_prices.csv
+          # Egypt (any airport)
+          python travel_monitor.py --config config_egypt.json --data-file egypt_travel_prices_any.csv --strip-from
           # Turkey (new dataset)
           python travel_monitor.py --config config_turkey.json --data-file turkey_travel_prices.csv
+          # Turkey (any airport)
+          python travel_monitor.py --config config_turkey.json --data-file turkey_travel_prices_any.csv --strip-from
           echo "✅ Price monitoring completed"
 
       - name: Run data analysis
@@ -89,7 +95,8 @@ jobs:
             --output index_greece.html \
             --title "Мониторинг цен • Греция" \
             --charts-dir hotel-charts/greece \
-            --alerts-file data/travel_prices_alerts.json
+            --alerts-file data/travel_prices_alerts.json \
+            --all-airports-data-file data/travel_prices_any.csv
           # Egypt dashboard (if data exists)
           if [ -f "data/egypt_travel_prices.csv" ]; then
             python generate_inline_charts_dashboard.py \
@@ -97,7 +104,8 @@ jobs:
               --output index_egypt.html \
               --title "Мониторинг цен • Египет" \
               --charts-dir hotel-charts/egypt \
-              --alerts-file data/egypt_travel_prices_alerts.json
+              --alerts-file data/egypt_travel_prices_alerts.json \
+              --all-airports-data-file data/egypt_travel_prices_any.csv
           else
             echo "⚠️ Egypt dataset not found; skipping Egypt dashboard"
           fi
@@ -108,7 +116,8 @@ jobs:
               --output index_turkey.html \
               --title "Мониторинг цен • Турция" \
               --charts-dir hotel-charts/turkey \
-              --alerts-file data/turkey_travel_prices_alerts.json
+              --alerts-file data/turkey_travel_prices_alerts.json \
+              --all-airports-data-file data/turkey_travel_prices_any.csv
           else
             echo "⚠️ Turkey dataset not found; skipping Turkey dashboard"
           fi
