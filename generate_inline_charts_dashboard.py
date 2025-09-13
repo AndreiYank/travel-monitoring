@@ -720,6 +720,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Функция для слуг-имени файла по названию отеля
     def slugify(text: str) -> str:
+        import re  # локальный импорт во избежание проблем со scope в CI
         text = text.lower().strip()
         text = re.sub(r"[^a-z0-9]+", "-", text)
         text = re.sub(r"-+", "-", text).strip('-')
