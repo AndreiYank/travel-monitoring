@@ -133,8 +133,10 @@ jobs:
           if [ -f "data/price_alerts_report.txt" ]; then
             ALERT_COUNT=$(grep -c "📉\\|📈" data/price_alerts_report.txt 2>/dev/null || echo "0")
           fi
+          # Перезаписываем файл outputs на всякий случай, затем пишем key=value
+          : > "$GITHUB_OUTPUT"
           printf "alert_count=%s\n" "$ALERT_COUNT" >> "$GITHUB_OUTPUT"
-          echo "Found $ALERT_COUNT price changes"
+          printf "Found %s price changes\n" "$ALERT_COUNT"
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
