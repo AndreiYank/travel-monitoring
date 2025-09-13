@@ -129,14 +129,12 @@ jobs:
         id: alerts
         run: |
           echo "🚨 Checking for price alerts..."
+          ALERT_COUNT="0"
           if [ -f "data/price_alerts_report.txt" ]; then
-            ALERT_COUNT=$(grep -c "📉\|📈" data/price_alerts_report.txt || echo "0")
-            echo "alert_count=$ALERT_COUNT" >> $GITHUB_OUTPUT
-            echo "Found $ALERT_COUNT price changes"
-          else
-            echo "alert_count=0" >> $GITHUB_OUTPUT
-            echo "No alerts found"
+            ALERT_COUNT=$(grep -c "📉\\|📈" data/price_alerts_report.txt 2>/dev/null || echo "0")
           fi
+          printf "alert_count=%s\n" "$ALERT_COUNT" >> "$GITHUB_OUTPUT"
+          echo "Found $ALERT_COUNT price changes"
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
