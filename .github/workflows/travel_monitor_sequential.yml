@@ -82,35 +82,71 @@ jobs:
         run: |
           echo "🌐 Generating dashboards with airport comparison at $(date)"
           
-          # Generate all dashboards with airport comparison
-          python generate_inline_charts_dashboard_with_airport_comparison_final.py
-          
-          # Verify dashboards were created
-          if [ -f "index_greece.html" ]; then
-            echo "✅ Greece dashboard generated"
+          # Generate Greece dashboard with airport comparison
+          if [ -f "data/travel_prices_airport_comparison.json" ]; then
+            python generate_inline_charts_dashboard_with_airport_comparison_final.py \
+              --data-file data/travel_prices.csv \
+              --output index_greece.html \
+              --title "Мониторинг цен • Греция" \
+              --charts-dir hotel-charts/greece \
+              --alerts-file data/travel_prices_alerts.json \
+              --airport-comparison-file data/travel_prices_airport_comparison.json
+            echo "✅ Greece dashboard with airport comparison generated"
           else
-            echo "⚠️ Greece dashboard not found"
+            echo "⚠️ Airport comparison data not found, generating standard Greece dashboard"
+            python generate_inline_charts_dashboard.py \
+              --data-file data/travel_prices.csv \
+              --output index_greece.html \
+              --title "Мониторинг цен • Греция" \
+              --charts-dir hotel-charts/greece \
+              --alerts-file data/travel_prices_alerts.json
           fi
           
-          if [ -f "index_egypt.html" ]; then
-            echo "✅ Egypt dashboard generated"
+          # Generate Egypt dashboard with airport comparison
+          if [ -f "data/egypt_travel_prices_airport_comparison.json" ]; then
+            python generate_inline_charts_dashboard_with_airport_comparison_final.py \
+              --data-file data/egypt_travel_prices.csv \
+              --output index_egypt.html \
+              --title "Мониторинг цен • Египет" \
+              --charts-dir hotel-charts/egypt \
+              --alerts-file data/egypt_travel_prices_alerts.json \
+              --airport-comparison-file data/egypt_travel_prices_airport_comparison.json
+            echo "✅ Egypt dashboard with airport comparison generated"
           else
-            echo "⚠️ Egypt dashboard not found"
+            echo "⚠️ Airport comparison data not found, generating standard Egypt dashboard"
+            python generate_inline_charts_dashboard.py \
+              --data-file data/egypt_travel_prices.csv \
+              --output index_egypt.html \
+              --title "Мониторинг цен • Египет" \
+              --charts-dir hotel-charts/egypt \
+              --alerts-file data/egypt_travel_prices_alerts.json
           fi
           
-          if [ -f "index_turkey.html" ]; then
-            echo "✅ Turkey dashboard generated"
+          # Generate Turkey dashboard with airport comparison
+          if [ -f "data/turkey_travel_prices_airport_comparison.json" ]; then
+            python generate_inline_charts_dashboard_with_airport_comparison_final.py \
+              --data-file data/turkey_travel_prices.csv \
+              --output index_turkey.html \
+              --title "Мониторинг цен • Турция" \
+              --charts-dir hotel-charts/turkey \
+              --alerts-file data/turkey_travel_prices_alerts.json \
+              --airport-comparison-file data/turkey_travel_prices_airport_comparison.json
+            echo "✅ Turkey dashboard with airport comparison generated"
           else
-            echo "⚠️ Turkey dashboard not found"
+            echo "⚠️ Airport comparison data not found, generating standard Turkey dashboard"
+            python generate_inline_charts_dashboard.py \
+              --data-file data/turkey_travel_prices.csv \
+              --output index_turkey.html \
+              --title "Мониторинг цен • Турция" \
+              --charts-dir hotel-charts/turkey \
+              --alerts-file data/turkey_travel_prices_alerts.json
           fi
           
-          if [ -f "index.html" ]; then
-            echo "✅ Landing page generated"
-          else
-            echo "⚠️ Landing page not found"
-          fi
+          # Generate landing page
+          python generate_landing.py
+          echo "✅ Landing page generated"
           
-          echo "✅ All dashboards with airport comparison generated"
+          echo "✅ All dashboards generated"
 
       - name: Check for price alerts
         id: alerts
