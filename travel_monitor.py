@@ -19,6 +19,7 @@ from playwright.async_api import async_playwright
 import logging
 from price_alerts import PriceAlertManager
 from price_alerts_v2 import PriceAlertManagerV2
+from airport_comparison import AirportComparison
 
 # Настройка логирования
 logging.basicConfig(
@@ -471,6 +472,9 @@ class TravelPriceMonitor:
             # Ссылка на детальную страницу предложения
             offer_url = await self.extract_offer_url(element)
             
+            # Извлекаем аэропорт вылета
+            departure_airport = self.extract_departure_airport_from_url(self.config['url'])
+            
             # Очищаем и форматируем данные
             hotel_name = self.clean_text(hotel_name) if hotel_name else f"Предложение {index + 1}"
             price_value = self.extract_price(price) if price else 0
@@ -489,6 +493,7 @@ class TravelPriceMonitor:
                 'dates': dates[:50],
                 'duration': duration[:30],
                 'rating': rating[:20],
+                'departure_airport': departure_airport,
                 # Записываем временную метку в UTC с таймзоной, чтобы унифицировать время между локальными и CI-запусками
                 'scraped_at': datetime.now(timezone.utc).isoformat(),
                 'url': self.config['url'],
@@ -888,6 +893,23 @@ class TravelPriceMonitor:
             except:
                 pass
         return 0
+    
+    def extract_departure_airport_from_url(self, url: str) -> str:
+        """Извлекает аэропорт вылета из URL"""
+        try:
+            if 'filter[from]=' in url:
+                # Ищем параметр filter[from] в URL
+                import re
+                match = re.search(r'filter\[from\]=([^&]*)', url)
+                if match:
+                    airports = match.group(1)
+                    if airports:
+                        # Если несколько аэропортов через запятую, берем первый
+                        return airports.split(',')[0]
+            return "Все аэропорты"
+        except Exception as e:
+            logger.warning(f"Ошибка извлечения аэропорта из URL: {e}")
+            return "Неизвестно"
 
     def save_data_append(self, offers: List[Dict[str, Any]]):
         """Сохраняет данные, добавляя к существующим"""
@@ -921,6 +943,7 @@ class TravelPriceMonitor:
                             'dates': row.get('dates', ''),
                             'duration': row.get('duration', ''),
                             'rating': row.get('rating', ''),
+                            'departure_airport': row.get('departure_airport', ''),
                             'scraped_at': row.get('scraped_at', ''),
                             'url': row.get('url', ''),
                             'image_url': row.get('image_url', ''),
@@ -933,7 +956,7 @@ class TravelPriceMonitor:
         
         # Перезаписываем файл с правильными заголовками
         with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
+            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'departure_airport', 'scraped_at', 'url', 'image_url', 'offer_url']
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
             writer.writeheader()
             
@@ -1158,6 +1181,35 @@ class TravelPriceMonitor:
                 
         except Exception as e:
             logger.error(f"Ошибка при проверке алертов: {e}")
+
+    def compare_airports(self, any_airports_config_file: str):
+        """Сравнивает данные из Варшавы и всех аэропортов"""
+        try:
+            logger.info("🛫 Начинаем сравнение аэропортов...")
+            
+            # Загружаем конфигурацию для всех аэропортов
+            with open(any_airports_config_file, 'r', encoding='utf-8') as f:
+                any_airports_config = json.load(f)
+            
+            any_airports_data_file = any_airports_config.get('output_data_file', 'travel_prices_any_airports.csv')
+            
+            # Создаем объект для сравнения
+            comparison = AirportComparison(self.config['data_dir'])
+            
+            # Сравниваем данные
+            results = comparison.compare_airports(self.data_file, any_airports_data_file)
+            
+            if results:
+                # Сохраняем результаты
+                comparison.save_comparison_results(results, f"{self.data_file.replace('.csv', '_airport_comparison.json')}")
+                comparison.save_comparison_report(results, f"{self.data_file.replace('.csv', '_airport_comparison_report.txt')}")
+                
+                logger.info("✅ Сравнение аэропортов завершено!")
+            else:
+                logger.warning("❌ Не удалось выполнить сравнение аэропортов")
+                
+        except Exception as e:
+            logger.error(f"❌ Ошибка при сравнении аэропортов: {e}")
 
     async def run_monitoring(self):
         """Запускает полный цикл мониторинга"""
