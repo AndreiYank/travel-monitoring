@@ -6,7 +6,7 @@ on:
     - cron: "0 * * * *"
   workflow_dispatch: # Позволяет запускать вручную
   push:
-    branches: [ main, feature/investigate-alerts-issue ]
+    branches: [ main, feature/investigate-alerts-issue, feature/airport-comparison ]
 
 permissions:
   contents: write
@@ -61,21 +61,16 @@ jobs:
         run: |
           playwright install chromium
 
-      - name: Run price monitoring (Greece, Egypt & Turkey)
+      - name: Run price monitoring with airport comparison (Greece, Egypt & Turkey)
         run: |
-          echo "🚀 Starting price monitoring at $(date)"
+          echo "🚀 Starting price monitoring with airport comparison at $(date)"
           export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
           export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
-          # Greece (keeps historical CSV path)
-          python travel_monitor.py --config config.json --data-file travel_prices.csv
-          # Откат: не собираем общий датасет для Греции
-          # Egypt (separate dataset)
-          python travel_monitor.py --config config_egypt.json --data-file egypt_travel_prices.csv
-          # Откат: не собираем общий датасет для Египта
-          # Turkey (new dataset)
-          python travel_monitor.py --config config_turkey.json --data-file turkey_travel_prices.csv
-          # Откат: не собираем общий датасет для Турции
-          echo "✅ Price monitoring completed"
+          
+          # Run monitoring with airport comparison for all countries
+          python run_all_countries_with_airport_comparison.py
+          
+          echo "✅ Price monitoring with airport comparison completed"
 
       - name: Run data analysis
         run: |
@@ -83,41 +78,39 @@ jobs:
           python analyze_data.py --charts --export
           echo "✅ Data analysis completed"
 
-      - name: Generate dashboards (Greece, Egypt & Turkey) and landing
+      - name: Generate dashboards with airport comparison (Greece, Egypt & Turkey) and landing
         run: |
-          echo "🌐 Generating dashboards at $(date)"
-          # Greece dashboard
-          python generate_inline_charts_dashboard.py \
-            --data-file data/travel_prices.csv \
-            --output index_greece.html \
-            --title "Мониторинг цен • Греция" \
-            --charts-dir hotel-charts/greece \
-            --alerts-file data/travel_prices_alerts.json
-          # Egypt dashboard (if data exists)
-          if [ -f "data/egypt_travel_prices.csv" ]; then
-            python generate_inline_charts_dashboard.py \
-              --data-file data/egypt_travel_prices.csv \
-              --output index_egypt.html \
-              --title "Мониторинг цен • Египет" \
-              --charts-dir hotel-charts/egypt \
-              --alerts-file data/egypt_travel_prices_alerts.json
+          echo "🌐 Generating dashboards with airport comparison at $(date)"
+          
+          # Generate all dashboards with airport comparison
+          python generate_inline_charts_dashboard_with_airport_comparison_final.py
+          
+          # Verify dashboards were created
+          if [ -f "index_greece.html" ]; then
+            echo "✅ Greece dashboard generated"
           else
-            echo "⚠️ Egypt dataset not found; skipping Egypt dashboard"
+            echo "⚠️ Greece dashboard not found"
           fi
-          # Turkey dashboard (if data exists)
-          if [ -f "data/turkey_travel_prices.csv" ]; then
-            python generate_inline_charts_dashboard.py \
-              --data-file data/turkey_travel_prices.csv \
-              --output index_turkey.html \
-              --title "Мониторинг цен • Турция" \
-              --charts-dir hotel-charts/turkey \
-              --alerts-file data/turkey_travel_prices_alerts.json
+          
+          if [ -f "index_egypt.html" ]; then
+            echo "✅ Egypt dashboard generated"
           else
-            echo "⚠️ Turkey dataset not found; skipping Turkey dashboard"
+            echo "⚠️ Egypt dashboard not found"
           fi
-          # Landing page with tiles
-          python generate_landing.py
-          echo "✅ Dashboards generated (index_greece.html, index_egypt.html, index_turkey.html, index.html)"
+          
+          if [ -f "index_turkey.html" ]; then
+            echo "✅ Turkey dashboard generated"
+          else
+            echo "⚠️ Turkey dashboard not found"
+          fi
+          
+          if [ -f "index.html" ]; then
+            echo "✅ Landing page generated"
+          else
+            echo "⚠️ Landing page not found"
+          fi
+          
+          echo "✅ All dashboards with airport comparison generated"
 
       - name: Check for price alerts
         id: alerts
@@ -169,18 +162,28 @@ jobs:
           git add index.html index_greece.html index_egypt.html index_turkey.html || true
           git add -f hotel-charts/ hotel-charts/greece/ hotel-charts/egypt/ hotel-charts/turkey/ || true
           
+          # Добавляем файлы сравнения аэропортов
+          git add -f data/*_airport_comparison.json || true
+          git add -f data/*_any_airports.csv || true
+          
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then
             echo "ℹ️ No changes to commit"
           else
             # Создаем коммит с детальным сообщением
-            COMMIT_MSG="🔄 Hourly update - $(date '+%Y-%m-%d %H:%M:%S UTC')
+            COMMIT_MSG="🔄 Hourly update with airport comparison - $(date '+%Y-%m-%d %H:%M:%S UTC')
             
             📊 Data summary:
             - Total offers: $(wc -l < data/travel_prices.csv || echo '0')
             - Unique hotels: $(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l || echo '0')
             - Price range: $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1 || echo 'N/A') - $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1 || echo 'N/A') PLN
             - Alerts: ${{ steps.alerts.outputs.alert_count }}
+            
+            🛫 Airport comparison features:
+            - Warsaw vs Any Airport price comparison
+            - Missing hotels table (under 8000 PLN)
+            - Alternative flight options with savings
+            - Direct links to fly.pl offers
             
             🤖 Automated by GitHub Actions"
             
@@ -223,9 +226,17 @@ jobs:
           fi
           
           echo "" >> $GITHUB_STEP_SUMMARY
+          echo "### 🛫 Airport Comparison Features" >> $GITHUB_STEP_SUMMARY
+          echo "- **Warsaw vs Any Airport** price comparison" >> $GITHUB_STEP_SUMMARY
+          echo "- **Missing hotels table** (under 8000 PLN)" >> $GITHUB_STEP_SUMMARY
+          echo "- **Alternative flight options** with savings" >> $GITHUB_STEP_SUMMARY
+          echo "- **Direct links** to fly.pl offers" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          
           echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
           echo "- [Landing](https://andreiYank.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
           echo "- [Greece Dashboard](https://andreiYank.github.io/travel-monitoring/index_greece.html)" >> $GITHUB_STEP_SUMMARY
           echo "- [Egypt Dashboard](https://andreiYank.github.io/travel-monitoring/index_egypt.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Turkey Dashboard](https://andreiYank.github.io/travel-monitoring/index_turkey.html)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Logs](https://github.com/AndreiYank/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
