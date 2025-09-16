@@ -1,0 +1,126 @@
+name: Travel Price Monitor with Dynamic Visibility
+
+on:
+  schedule:
+    # Запускаем каждый час
+    - cron: "0 * * * *"
+  workflow_dispatch: # Позволяет запускать вручную
+  push:
+    branches: [ main, feature/dynamic-offers-visibility ]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "travel-monitor-dynamic"
+  cancel-in-progress: false
+
+jobs:
+  monitor-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_dashboard.txt
+
+      - name: Run monitoring with dynamic visibility
+        run: |
+          echo "🔄 Запуск мониторинга с динамической видимостью предложений..."
+          python run_monitoring_with_dynamic_visibility.py
+
+      - name: Generate dashboards with dynamic visibility
+        run: |
+          echo "📊 Генерация дашбордов с динамической видимостью..."
+          
+          # Генерируем дашборды для каждой страны
+          for country in greece egypt turkey; do
+            if [ -f "data/${country}_travel_prices.csv" ]; then
+              echo "Генерация дашборда для $country..."
+              python generate_dashboard_with_dynamic_visibility.py \
+                "data/${country}_travel_prices.csv" \
+                "index_${country}_dynamic.html"
+            fi
+          done
+          
+          # Генерируем общий дашборд
+          if [ -f "data/travel_prices.csv" ]; then
+            echo "Генерация общего дашборда..."
+            python generate_dashboard_with_dynamic_visibility.py \
+              "data/travel_prices.csv" \
+              "index_dynamic.html"
+          fi
+
+      - name: Generate landing page
+        run: |
+          echo "🏠 Генерация главной страницы..."
+          python generate_landing.py
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          
+          # Добавляем только необходимые файлы
+          git add -f data/*_travel_prices.csv || true
+          git add -f data/*_airport_comparison.json || true
+          git add -f data/*_any_airports.csv || true
+          git add -f data/offer_visibility_state.json || true
+          git add -f index_*_dynamic.html || true
+          git add -f index_dynamic.html || true
+          git add -f index.html || true
+          
+          # Проверяем, есть ли изменения для коммита
+          if git diff --staged --quiet; then
+            echo "Нет изменений для коммита"
+          else
+            git commit -m "🔄 Hourly update with dynamic visibility - $(date -u '+%Y-%m-%d %H:%M:%S UTC')"
+            git push
+          fi
+
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        if: github.ref == 'refs/heads/main'
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./
+          exclude_assets: |
+            .git
+            .github
+            *.py
+            *.md
+            *.txt
+            *.json
+            *.log
+            data/
+            hotel-charts/
+            .venv/
+            __pycache__/
+            *.pyc
+            .gitignore
+            .cursorignore
