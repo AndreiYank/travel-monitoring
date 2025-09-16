@@ -1,0 +1,392 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Price Monitor • Динамическая видимость</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f7;
+            color: #1d1d1f;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        .header h1 {
+            margin: 0 0 10px 0;
+            font-size: 2.5em;
+            font-weight: 700;
+        }
+        .header p {
+            margin: 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        .stat-card {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            border-left: 4px solid #667eea;
+        }
+        .stat-card h3 {
+            margin: 0 0 10px 0;
+            color: #667eea;
+            font-size: 1.1em;
+            font-weight: 600;
+        }
+        .stat-value {
+            font-size: 2em;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin: 0;
+        }
+        .visibility-info {
+            background: #e8f4fd;
+            border: 1px solid #b3d9ff;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 30px;
+        }
+        .visibility-info h3 {
+            margin: 0 0 15px 0;
+            color: #0066cc;
+        }
+        .visibility-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        .visibility-stat {
+            text-align: center;
+        }
+        .visibility-stat .label {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        .visibility-stat .value {
+            font-size: 1.5em;
+            font-weight: 600;
+            color: #0066cc;
+        }
+        .hotels-table {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        .hotels-table h3 {
+            margin: 0;
+            padding: 20px;
+            background: #f8f9fa;
+            border-bottom: 1px solid #e9ecef;
+            color: #495057;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 12px 20px;
+            text-align: left;
+            border-bottom: 1px solid #e9ecef;
+        }
+        th {
+            background: #f8f9fa;
+            font-weight: 600;
+            color: #495057;
+        }
+        tr:hover {
+            background: #f8f9fa;
+        }
+        .price {
+            font-weight: 600;
+            color: #28a745;
+        }
+        .last-seen {
+            font-size: 0.9em;
+            color: #6c757d;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Travel Price Monitor • Динамическая видимость</h1>
+            <p>Последнее обновление: 15.09.2025 11:31</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <h3>Всего отелей</h3>
+                <p class="stat-value">21</p>
+            </div>
+            <div class="stat-card">
+                <h3>Всего предложений</h3>
+                <p class="stat-value">678</p>
+            </div>
+            <div class="stat-card">
+                <h3>Средняя цена</h3>
+                <p class="stat-value">7312 zł</p>
+            </div>
+            <div class="stat-card">
+                <h3>Минимальная цена</h3>
+                <p class="stat-value">6035 zł</p>
+            </div>
+        </div>
+        
+        <div class="visibility-info">
+            <h3>🔍 Динамическая видимость предложений</h3>
+            <p>Показаны только предложения, которые есть в последнем актуальном ране. Предложения, которых нет в последнем запуске, скрыты и будут показаны снова, когда появятся в новом ране.</p>
+            <div class="visibility-stats">
+                <div class="visibility-stat">
+                    <div class="label">Видимых предложений</div>
+                    <div class="value">21</div>
+                </div>
+                <div class="visibility-stat">
+                    <div class="label">Скрытых предложений</div>
+                    <div class="value">0</div>
+                </div>
+                <div class="visibility-stat">
+                    <div class="label">Отслеживаемых предложений</div>
+                    <div class="value">15</div>
+                </div>
+                <div class="visibility-stat">
+                    <div class="label">Последний ран</div>
+                    <div class="value">2025-09-15T11:30</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="hotels-table">
+            <h3>🏨 Отели (только видимые предложения)</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Отель</th>
+                        <th>Мин. цена</th>
+                        <th>Макс. цена</th>
+                        <th>Средняя цена</th>
+                        <th>Предложений</th>
+                        <th>Последний раз</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <tr>
+                        <td><strong>Parrotel Lagoon Resort</strong></td>
+                        <td class="price">6035 zł</td>
+                        <td class="price">6035 zł</td>
+                        <td class="price">6035 zł</td>
+                        <td>4</td>
+                        <td class="last-seen">15.09 11:30</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>IL Mercato Splash Aqua Park</strong></td>
+                        <td class="price">6291 zł</td>
+                        <td class="price">6291 zł</td>
+                        <td class="price">6291 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:30</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Naama Waves</strong></td>
+                        <td class="price">6489 zł</td>
+                        <td class="price">6489 zł</td>
+                        <td class="price">6489 zł</td>
+                        <td>79</td>
+                        <td class="last-seen">15.09 11:30</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Hawaii Paradise Aqua Park Resort</strong></td>
+                        <td class="price">6636 zł</td>
+                        <td class="price">6636 zł</td>
+                        <td class="price">6636 zł</td>
+                        <td>34</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Ecotel Dahab Bay View Resort</strong></td>
+                        <td class="price">7017 zł</td>
+                        <td class="price">7017 zł</td>
+                        <td class="price">7017 zł</td>
+                        <td>38</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Jaz Neo Naama Bay</strong></td>
+                        <td class="price">7053 zł</td>
+                        <td class="price">7053 zł</td>
+                        <td class="price">7053 zł</td>
+                        <td>49</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Xperience Kiroseiz Premier</strong></td>
+                        <td class="price">7061 zł</td>
+                        <td class="price">7061 zł</td>
+                        <td class="price">7061 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Aurora Oriental Resort</strong></td>
+                        <td class="price">7133 zł</td>
+                        <td class="price">7133 zł</td>
+                        <td class="price">7133 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)</strong></td>
+                        <td class="price">7159 zł</td>
+                        <td class="price">7159 zł</td>
+                        <td class="price">7159 zł</td>
+                        <td>165</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>AMC Royal Hotel & Spa (ex. AMC Azur Resort)</strong></td>
+                        <td class="price">7250 zł</td>
+                        <td class="price">7250 zł</td>
+                        <td class="price">7250 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Xperience Kiroseiz Parkland</strong></td>
+                        <td class="price">7265 zł</td>
+                        <td class="price">7265 zł</td>
+                        <td class="price">7265 zł</td>
+                        <td>7</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Royal Regency Club</strong></td>
+                        <td class="price">7286 zł</td>
+                        <td class="price">7286 zł</td>
+                        <td class="price">7286 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Rehana Royal Beach Resort & Spa</strong></td>
+                        <td class="price">7317 zł</td>
+                        <td class="price">7317 zł</td>
+                        <td class="price">7317 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Retac Qunay Dahab Resort & Spa</strong></td>
+                        <td class="price">7353 zł</td>
+                        <td class="price">7353 zł</td>
+                        <td class="price">7353 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Rewaya Majestic Resort</strong></td>
+                        <td class="price">7526 zł</td>
+                        <td class="price">7526 zł</td>
+                        <td class="price">7526 zł</td>
+                        <td>45</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Island View Resort</strong></td>
+                        <td class="price">7599 zł</td>
+                        <td class="price">7599 zł</td>
+                        <td class="price">7599 zł</td>
+                        <td>47</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Seven Seas Jolie Bay</strong></td>
+                        <td class="price">7730 zł</td>
+                        <td class="price">7730 zł</td>
+                        <td class="price">7730 zł</td>
+                        <td>18</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Regency Plaza Aqua Park Spa</strong></td>
+                        <td class="price">7794 zł</td>
+                        <td class="price">7794 zł</td>
+                        <td class="price">7794 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)</strong></td>
+                        <td class="price">7799 zł</td>
+                        <td class="price">7799 zł</td>
+                        <td class="price">7799 zł</td>
+                        <td>45</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                    <tr>
+                        <td><strong>Calimera Blend Paradise Resort</strong></td>
+                        <td class="price">7898 zł</td>
+                        <td class="price">7898 zł</td>
+                        <td class="price">7898 zł</td>
+                        <td>2</td>
+                        <td class="last-seen">15.09 11:31</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+        
+        <div class="footer">
+            <p>Дашборд с динамической видимостью предложений • Обновляется автоматически</p>
+        </div>
+    </div>
+</body>
+</html>
