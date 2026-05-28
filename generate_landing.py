@@ -48,8 +48,7 @@ def generate_landing(tiles, output_file='index.html'):
 
 if __name__ == '__main__':
     tiles = [
-        { 'title': 'Греция', 'subtitle': 'Основной мониторинг', 'href': 'index_greece.html' },
-        { 'title': 'Египет', 'subtitle': 'Альтернативный фильтр', 'href': 'index_egypt.html' },
-        { 'title': 'Турция', 'subtitle': 'Расширенный мониторинг', 'href': 'index_turkey.html' }
+        { 'title': 'Фильтр 7–10 дней', 'subtitle': '4766–9000 PLN • WAW/WMI/RDO', 'href': 'index_filter_7_10_days.html' },
+        { 'title': 'Фильтр 13–16 дней', 'subtitle': '4766–9000 PLN • WAW/WMI/RDO', 'href': 'index_filter_13_16_days.html' }
     ]
     generate_landing(tiles, 'index.html')

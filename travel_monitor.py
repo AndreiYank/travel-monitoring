@@ -73,7 +73,12 @@ class TravelPriceMonitor:
         """Парсит предложения с сайта fly.pl с пагинацией"""
         all_offers = []
         page_number = 1
-        max_price_threshold = 8100  # Максимальная цена для остановки
+        max_price_threshold = float(
+            self.config.get('max_price_threshold')
+            or self._extract_price_limit()
+            or 8100
+        )  # Максимальная цена для остановки
+        logger.info(f"Лимит цены для остановки: {max_price_threshold:.0f} PLN")
         
         async with async_playwright() as p:
             browser = await p.chromium.launch(
@@ -508,13 +513,35 @@ class TravelPriceMonitor:
     async def extract_image_url_from_offer(self, element) -> str:
         """Пытается извлечь URL главного изображения из карточки предложения."""
         try:
-            # 1) Пробуем <img src> / data-src
+            def _pick_from_srcset(srcset: str) -> str:
+                # srcset: "url1 320w, url2 640w" -> берем первый url
+                if not srcset:
+                    return ""
+                first = srcset.split(",")[0].strip()
+                return first.split(" ")[0].strip() if first else ""
+
+            def _normalize_url(u: str) -> str:
+                if not u:
+                    return ""
+                u = u.strip()
+                if u.startswith("//"):
+                    u = "https:" + u
+                # поддержим относительные URL
+                if u.startswith("/") or u.startswith("#") or not u.startswith(("http://", "https://")):
+                    return self.make_absolute_url(u)
+                return u
+
+            # 1) Пробуем <img src> / data-src / srcset
             img_el = await element.query_selector('img')
             if img_el:
-                for attr in ['src', 'data-src', 'data-original', 'data-lazy']:
+                for attr in ['src', 'data-src', 'data-original', 'data-lazy', 'srcset', 'data-srcset']:
                     val = await img_el.get_attribute(attr)
-                    if val and val.strip() and val.startswith('http'):
-                        return val.strip()
+                    if not val or not val.strip():
+                        continue
+                    candidate = _pick_from_srcset(val) if 'srcset' in attr else val.strip()
+                    url = _normalize_url(candidate)
+                    if url.startswith(("http://", "https://")):
+                        return url
             
             # 2) Пробуем фоновые изображения из inline-style
             bg_el = await element.query_selector('[style*="background"]')
@@ -524,8 +551,8 @@ class TravelPriceMonitor:
                     import re
                     m = re.search(r'url\(("|")?(?P<u>[^\)"\']+)("|")?\)', bg)
                     if m:
-                        url = m.group('u')
-                        if url.startswith('http'):
+                        url = _normalize_url(m.group('u'))
+                        if url.startswith(("http://", "https://")):
                             return url
             
             # 3) Пробуем вычисленный стиль (менее гарантировано)
@@ -535,8 +562,8 @@ class TravelPriceMonitor:
                     import re
                     m = re.search(r'url\(("|")?(?P<u>[^\)"\']+)("|")?\)', url)
                     if m:
-                        u = m.group('u')
-                        if u.startswith('http'):
+                        u = _normalize_url(m.group('u'))
+                        if u.startswith(("http://", "https://")):
                             return u
             except:
                 pass
@@ -638,6 +665,10 @@ class TravelPriceMonitor:
         # Если уже абсолютный URL
         if url.startswith(('http://', 'https://')):
             return url
+
+        # Protocol-relative URL
+        if url.startswith('//'):
+            return f"https:{url}"
         
         # Если относительный URL, добавляем базовый домен
         if url.startswith('/'):

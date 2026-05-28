@@ -6,7 +6,7 @@ on:
     - cron: "0 * * * *"
   workflow_dispatch: # Позволяет запускать вручную
   push:
-    branches: [ main, feature/investigate-alerts-issue, feature/airport-comparison ]
+    branches: [ main ]
 
 permissions:
   contents: write
@@ -61,117 +61,61 @@ jobs:
         run: |
           playwright install chromium
 
-      - name: Run price monitoring with airport comparison (Greece, Egypt & Turkey)
+      - name: Run monitoring (only new filters)
         run: |
-          echo "🚀 Starting price monitoring with airport comparison at $(date)"
+          echo "🚀 Starting monitoring (filters) at $(date)"
           export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
           export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
-          
-          # Run monitoring with airport comparison for all countries
-          python run_all_countries_with_airport_comparison.py
-          
-          echo "✅ Price monitoring with airport comparison completed"
 
-      - name: Run data analysis
-        run: |
-          echo "📊 Starting data analysis at $(date)"
-          python analyze_data.py --charts --export
-          echo "✅ Data analysis completed"
+          python travel_monitor.py --config config_ci_filter_7_10.json
+          python travel_monitor.py --config config_ci_filter_13_16.json
 
-      - name: Generate dashboards with airport comparison (Greece, Egypt & Turkey) and landing
+          echo "✅ Monitoring completed"
+
+      - name: Generate dashboards (only new filters) + landing
         run: |
-          echo "🌐 Generating dashboards with airport comparison at $(date)"
-          
-          # Generate Greece dashboard with airport comparison
-          if [ -f "data/travel_prices_airport_comparison.json" ]; then
-            python generate_inline_charts_dashboard_with_airport_comparison_final.py \
-              --data-file data/travel_prices.csv \
-              --output index_greece.html \
-              --title "Мониторинг цен • Греция" \
-              --charts-dir hotel-charts/greece \
-              --alerts-file data/travel_prices_alerts.json \
-              --airport-comparison-file data/travel_prices_airport_comparison.json
-            echo "✅ Greece dashboard with airport comparison generated"
-          else
-            echo "⚠️ Airport comparison data not found, generating standard Greece dashboard"
-            python generate_inline_charts_dashboard.py \
-              --data-file data/travel_prices.csv \
-              --output index_greece.html \
-              --title "Мониторинг цен • Греция" \
-              --charts-dir hotel-charts/greece \
-              --alerts-file data/travel_prices_alerts.json
-          fi
-          
-          # Generate Egypt dashboard with airport comparison
-          if [ -f "data/egypt_travel_prices_airport_comparison.json" ]; then
-            python generate_inline_charts_dashboard_with_airport_comparison_final.py \
-              --data-file data/egypt_travel_prices.csv \
-              --output index_egypt.html \
-              --title "Мониторинг цен • Египет" \
-              --charts-dir hotel-charts/egypt \
-              --alerts-file data/egypt_travel_prices_alerts.json \
-              --airport-comparison-file data/egypt_travel_prices_airport_comparison.json
-            echo "✅ Egypt dashboard with airport comparison generated"
-          else
-            echo "⚠️ Airport comparison data not found, generating standard Egypt dashboard"
-            python generate_inline_charts_dashboard.py \
-              --data-file data/egypt_travel_prices.csv \
-              --output index_egypt.html \
-              --title "Мониторинг цен • Египет" \
-              --charts-dir hotel-charts/egypt \
-              --alerts-file data/egypt_travel_prices_alerts.json
-          fi
-          
-          # Generate Turkey dashboard with airport comparison
-          if [ -f "data/turkey_travel_prices_airport_comparison.json" ]; then
-            python generate_inline_charts_dashboard_with_airport_comparison_final.py \
-              --data-file data/turkey_travel_prices.csv \
-              --output index_turkey.html \
-              --title "Мониторинг цен • Турция" \
-              --charts-dir hotel-charts/turkey \
-              --alerts-file data/turkey_travel_prices_alerts.json \
-              --airport-comparison-file data/turkey_travel_prices_airport_comparison.json
-            echo "✅ Turkey dashboard with airport comparison generated"
-          else
-            echo "⚠️ Airport comparison data not found, generating standard Turkey dashboard"
-            python generate_inline_charts_dashboard.py \
-              --data-file data/turkey_travel_prices.csv \
-              --output index_turkey.html \
-              --title "Мониторинг цен • Турция" \
-              --charts-dir hotel-charts/turkey \
-              --alerts-file data/turkey_travel_prices_alerts.json
-          fi
-          
-          # Generate landing page
+          echo "🌐 Generating filter dashboards at $(date)"
+
+          python generate_inline_charts_dashboard.py \
+            --data-file data/filters/filter_7_10_days/travel_prices.csv \
+            --output index_filter_7_10_days.html \
+            --title "Мониторинг цен • Фильтр 7–10 дней" \
+            --charts-dir hotel-charts/filter_7_10_days \
+            --alerts-file data/filters/filter_7_10_days/travel_prices_alerts.json
+
+          python generate_inline_charts_dashboard.py \
+            --data-file data/filters/filter_13_16_days/travel_prices.csv \
+            --output index_filter_13_16_days.html \
+            --title "Мониторинг цен • Фильтр 13–16 дней" \
+            --charts-dir hotel-charts/filter_13_16_days \
+            --alerts-file data/filters/filter_13_16_days/travel_prices_alerts.json
+
           python generate_landing.py
-          echo "✅ Landing page generated"
-          
-          echo "✅ All dashboards generated"
-
-      - name: Check for price alerts
-        id: alerts
-        run: |
-          echo "🚨 Checking for price alerts..."
-          ALERT_COUNT="0"
-          if [ -f "data/price_alerts_report.txt" ]; then
-            ALERT_COUNT=$(grep -c "📉\\|📈" data/price_alerts_report.txt 2>/dev/null || echo "0")
-          fi
-          # Надёжная запись через многострочный file command (исключает ошибки парсинга)
-          : > "$GITHUB_OUTPUT"
-          {
-            echo "alert_count<<EOF"
-            echo "$ALERT_COUNT"
-            echo "EOF"
-          } >> "$GITHUB_OUTPUT"
-          printf "Found %s price changes\n" "$ALERT_COUNT"
+          echo "✅ Dashboards + landing generated"
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
+      - name: Prepare site directory (deploy only new filters)
+        run: |
+          rm -rf site
+          mkdir -p site
+          mkdir -p site/hotel-charts
+          mkdir -p site/data
+
+          cp -f index.html site/index.html
+          cp -f index_filter_7_10_days.html site/index_filter_7_10_days.html
+          cp -f index_filter_13_16_days.html site/index_filter_13_16_days.html
+
+          cp -R hotel-charts/filter_7_10_days site/hotel-charts/ || true
+          cp -R hotel-charts/filter_13_16_days site/hotel-charts/ || true
+
+          cp -R data/filters site/data/ || true
+
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: '.'
+          path: 'site'
 
       - name: Deploy to GitHub Pages
         id: deployment
@@ -193,34 +137,22 @@ jobs:
           git pull --rebase origin main || true
           git stash pop || true
           
-          # Добавляем все изменения (принудительно для игнорируемых путей)
-          git add -f data/ || true
-          git add index.html index_greece.html index_egypt.html index_turkey.html || true
-          git add -f hotel-charts/ hotel-charts/greece/ hotel-charts/egypt/ hotel-charts/turkey/ || true
-          
-          # Добавляем файлы сравнения аэропортов
-          git add -f data/*_airport_comparison.json || true
-          git add -f data/*_any_airports.csv || true
+          # Добавляем только данные/страницы новых фильтров
+          git add -f data/filters/ || true
+          git add index.html index_filter_7_10_days.html index_filter_13_16_days.html || true
+          git add -f hotel-charts/filter_7_10_days/ hotel-charts/filter_13_16_days/ || true
           
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then
             echo "ℹ️ No changes to commit"
           else
             # Создаем коммит с детальным сообщением
-            COMMIT_MSG="🔄 Hourly update with airport comparison - $(date '+%Y-%m-%d %H:%M:%S UTC')
-            
-            📊 Data summary:
-            - Total offers: $(wc -l < data/travel_prices.csv || echo '0')
-            - Unique hotels: $(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l || echo '0')
-            - Price range: $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1 || echo 'N/A') - $(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1 || echo 'N/A') PLN
-            - Alerts: ${{ steps.alerts.outputs.alert_count }}
-            
-            🛫 Airport comparison features:
-            - Warsaw vs Any Airport price comparison
-            - Missing hotels table (under 8000 PLN)
-            - Alternative flight options with savings
-            - Direct links to fly.pl offers
-            
+            COMMIT_MSG="🔄 Hourly update (only new filters) - $(date '+%Y-%m-%d %H:%M:%S UTC')
+
+            📌 Filters:
+            - 7–10 days (4766–9000 PLN)
+            - 13–16 days (4766–9000 PLN)
+
             🤖 Automated by GitHub Actions"
             
             git commit -m "$COMMIT_MSG"
@@ -237,42 +169,10 @@ jobs:
           echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
           echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          
-          if [ -f "data/travel_prices.csv" ]; then
-            TOTAL_OFFERS=$(wc -l < data/travel_prices.csv)
-            UNIQUE_HOTELS=$(cut -d',' -f1 data/travel_prices.csv | tail -n +2 | sort -u | wc -l)
-            MIN_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | head -1)
-            MAX_PRICE=$(cut -d',' -f2 data/travel_prices.csv | tail -n +2 | sort -n | tail -1)
-            
-            # Статистика ссылок
-            if [ -f "data/travel_prices.csv" ] && grep -q "offer_url" data/travel_prices.csv; then
-              OFFERS_WITH_LINKS=$(python3 -c "import pandas as pd; import csv; df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip'); print(len(df[df['offer_url'].notna() & (df['offer_url'] != '')]) if 'offer_url' in df.columns else 0)")
-              LINK_PERCENTAGE=$(python3 -c "import pandas as pd; import csv; df = pd.read_csv('data/travel_prices.csv', quoting=csv.QUOTE_ALL, on_bad_lines='skip'); total = len(df); links = len(df[df['offer_url'].notna() & (df['offer_url'] != '')]) if 'offer_url' in df.columns else 0; print(f'{(links / total * 100):.1f}' if total > 0 else '0.0')")
-            else
-              OFFERS_WITH_LINKS="0"
-              LINK_PERCENTAGE="0.0"
-            fi
-            
-            echo "### 📈 Data Statistics" >> $GITHUB_STEP_SUMMARY
-            echo "- **Total offers:** $TOTAL_OFFERS" >> $GITHUB_STEP_SUMMARY
-            echo "- **Unique hotels:** $UNIQUE_HOTELS" >> $GITHUB_STEP_SUMMARY
-            echo "- **Price range:** $MIN_PRICE - $MAX_PRICE PLN" >> $GITHUB_STEP_SUMMARY
-            echo "- **Price alerts:** ${{ steps.alerts.outputs.alert_count }}" >> $GITHUB_STEP_SUMMARY
-            echo "- **Offers with links:** $OFFERS_WITH_LINKS ($LINK_PERCENTAGE%)" >> $GITHUB_STEP_SUMMARY
-          fi
-          
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "### 🛫 Airport Comparison Features" >> $GITHUB_STEP_SUMMARY
-          echo "- **Warsaw vs Any Airport** price comparison" >> $GITHUB_STEP_SUMMARY
-          echo "- **Missing hotels table** (under 8000 PLN)" >> $GITHUB_STEP_SUMMARY
-          echo "- **Alternative flight options** with savings" >> $GITHUB_STEP_SUMMARY
-          echo "- **Direct links** to fly.pl offers" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
           echo "- [Landing](https://andreiYank.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Greece Dashboard](https://andreiYank.github.io/travel-monitoring/index_greece.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Egypt Dashboard](https://andreiYank.github.io/travel-monitoring/index_egypt.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Turkey Dashboard](https://andreiYank.github.io/travel-monitoring/index_turkey.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Filter 7–10 days](https://andreiYank.github.io/travel-monitoring/index_filter_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Filter 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data/filters)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Logs](https://github.com/AndreiYank/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
