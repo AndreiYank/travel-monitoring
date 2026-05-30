@@ -9,6 +9,7 @@ import csv
 from datetime import datetime, timedelta, timezone
 import os
 import re
+import html as html_lib
 from urllib.parse import urlparse, parse_qs
 
 def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None):
@@ -647,18 +648,181 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 labels.append(f"Новый максимум {days}д")
         minmax_labels_by_hotel[hotel_name] = labels
 
-    # Изменение с начала наблюдений (первое значение -> последнее)
-    since_start_delta = {}
+    # Отклонение от "типичной" цены отеля:
+    # baseline = trimmed mean (устойчивая средняя), fallback на median/mean при короткой истории.
+    avg_baseline_delta = {}
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at_display')
-        first_price = float(grp.iloc[0]['price'])
-        last_price = float(grp.iloc[-1]['price'])
-        if first_price == 0:
-            since_start_delta[hotel_name] = None
+        prices = grp['price'].astype(float).tolist()
+        if not prices:
+            avg_baseline_delta[hotel_name] = None
             continue
-        change_abs = last_price - first_price
-        change_pct = (change_abs / first_price) * 100.0
-        since_start_delta[hotel_name] = (change_abs, change_pct)
+
+        last_price = float(grp.iloc[-1]['price'])
+        series = pd.Series(prices, dtype='float64')
+        n = len(series)
+
+        if n >= 8:
+            sorted_vals = sorted(float(x) for x in prices)
+            trim_n = max(1, int(n * 0.15))
+            if n - (2 * trim_n) >= 3:
+                core = sorted_vals[trim_n:n - trim_n]
+            else:
+                core = sorted_vals
+            baseline = float(pd.Series(core, dtype='float64').mean()) if core else float(series.mean())
+        elif n >= 3:
+            baseline = float(series.median())
+        else:
+            baseline = float(series.mean())
+
+        if baseline == 0:
+            avg_baseline_delta[hotel_name] = None
+            continue
+        change_abs = last_price - baseline
+        change_pct = (change_abs / baseline) * 100.0
+        avg_baseline_delta[hotel_name] = (change_abs, change_pct)
+
+    # Deal Score: насколько предложение выгодно относительно своей исторической цены
+    def _clamp(v, lo, hi):
+        return max(lo, min(hi, v))
+
+    deal_score_by_hotel = {}
+    entry_candidates = []
+
+    for hotel_name, grp in df_sorted.groupby('hotel_name'):
+        grp = grp.sort_values('scraped_at_display')
+        prices = grp['price'].astype(float).tolist()
+        if not prices:
+            continue
+
+        latest = float(prices[-1])
+        series = pd.Series(prices, dtype='float64')
+        samples = len(series)
+        median = float(series.median()) if len(series) else latest
+        p25 = float(series.quantile(0.25)) if len(series) >= 2 else latest
+        p10 = float(series.quantile(0.10)) if len(series) >= 3 else latest
+        min_p = float(series.min()) if len(series) else latest
+
+        # Насколько цена ниже своей медианы истории
+        rel_discount = 0.0
+        if median > 0:
+            rel_discount = (median - latest) / median
+        score_discount = _clamp(50 + rel_discount * 200, 0, 100)
+
+        # Редкость: чем ближе к историческим минимумам, тем выше балл
+        if latest <= p10:
+            score_rarity = 100
+        elif latest <= p25:
+            score_rarity = 80
+        elif latest <= median:
+            score_rarity = 60
+        else:
+            score_rarity = 35
+
+        # Моментум: короткий нисходящий тренд добавляет баллы
+        recent = prices[-3:] if len(prices) >= 3 else prices
+        score_momentum = 50
+        if len(recent) >= 3 and (recent[-1] <= recent[-2] <= recent[-3]):
+            score_momentum = 85
+        elif len(recent) >= 2 and recent[-1] < recent[-2]:
+            score_momentum = 70
+        elif len(recent) >= 2 and recent[-1] > recent[-2]:
+            score_momentum = 35
+
+        # Стабильность: меньше шум -> чуть выше уверенность
+        score_stability = 50
+        if len(series) >= 4 and series.mean() > 0:
+            cv = float(series.std(ddof=0) / series.mean())
+            score_stability = _clamp(70 - cv * 120, 20, 85)
+
+        raw_deal_score = (
+            score_discount * 0.40 +
+            score_rarity * 0.30 +
+            score_momentum * 0.20 +
+            score_stability * 0.10
+        )
+        raw_deal_score = float(_clamp(raw_deal_score, 0, 100))
+
+        # Confidence-aware shrinkage: на короткой истории тянем скор к нейтральному 50
+        confidence_weight = _clamp(samples / 20.0, 0.15, 1.0)
+        adj_deal_score = 50.0 + (raw_deal_score - 50.0) * confidence_weight
+        deal_score = int(round(_clamp(adj_deal_score, 0, 100)))
+
+        if samples < 8:
+            confidence_level = "Low"
+        elif samples < 20:
+            confidence_level = "Medium"
+        else:
+            confidence_level = "High"
+
+        deal_score_by_hotel[hotel_name] = {
+            'score': deal_score,
+            'raw_score': int(round(raw_deal_score)),
+            'confidence': confidence_level,
+            'samples': samples,
+            'latest': latest,
+            'median': median,
+            'p25': p25,
+            'min': min_p
+        }
+
+        delta48 = deltas_by_hotel.get(hotel_name)
+
+        # Кандидаты для "раннего входа"
+        if delta48 is not None and delta48[1] <= -2.0 and latest <= p25 and deal_score >= 72 and confidence_level != "Low":
+            entry_candidates.append({
+                'hotel_name': hotel_name,
+                'deal_score': deal_score,
+                'latest': latest,
+                'discount_pct': ((median - latest) / median * 100.0) if median > 0 else 0.0,
+                'delta48_pct': float(delta48[1]),
+                'confidence': confidence_level,
+            })
+
+    entry_candidates = sorted(
+        entry_candidates,
+        key=lambda x: (x['deal_score'], x['discount_pct'], -x['latest']),
+        reverse=True
+    )
+    entry_top = entry_candidates[:5]
+    # Market breadth (48ч): доля отелей, которые подешевели среди отелей с валидной базовой точкой.
+    # Считаем по актуальным отелям из последнего рана, чтобы метрика отражала "сейчас".
+    current_hotels_for_breadth = set(all_hotels['hotel_name'].astype(str).tolist()) if not all_hotels.empty else set()
+    breadth_total = 0
+    breadth_down = 0
+    for hotel_name, grp in df_sorted.groupby('hotel_name'):
+        if current_hotels_for_breadth and hotel_name not in current_hotels_for_breadth:
+            continue
+        grp = grp.sort_values('scraped_at_display')
+        if len(grp) < 2:
+            continue
+        latest_row = grp.iloc[-1]
+        cutoff = (df['scraped_at_display'].max() or datetime.now()) - timedelta(hours=48)
+        win = grp[grp['scraped_at_display'] >= cutoff]
+        if len(win) >= 2:
+            baseline_row = win.iloc[0]
+        else:
+            baseline_row = grp.iloc[-2]
+        latest_price = float(latest_row['price'])
+        baseline_price = float(baseline_row['price'])
+        if baseline_price <= 0:
+            continue
+        breadth_total += 1
+        if latest_price < baseline_price:
+            breadth_down += 1
+    market_breadth = (breadth_down / breadth_total) if breadth_total > 0 else 0.0
+    if len(entry_candidates) >= 5 and market_breadth >= 0.45:
+        entry_signal_level = "high"
+        entry_signal_title = "🔥 Сильный сигнал раннего входа"
+        entry_signal_note = "Много отелей одновременно дешевеют и уже торгуются в нижнем квартиле своих цен."
+    elif len(entry_candidates) >= 2 and market_breadth >= 0.30:
+        entry_signal_level = "medium"
+        entry_signal_title = "⚡ Умеренный сигнал раннего входа"
+        entry_signal_note = "Есть несколько сильных кандидатов; рынок начинает смещаться в сторону более выгодных цен."
+    else:
+        entry_signal_level = "low"
+        entry_signal_title = "🟢 Нейтральный сигнал"
+        entry_signal_note = "Явного массового снижения пока нет, но отдельные выгодные точки могут появляться."
     
     # Загружаем историю алертов (если есть)
     alerts = []
@@ -717,6 +881,58 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         text = re.sub(r"[^a-z0-9]+", "-", text)
         text = re.sub(r"-+", "-", text).strip('-')
         return text or "hotel"
+
+    # Карточки отелей (визуальный режим по умолчанию)
+    hotel_cards = []
+    for _, hotel in all_hotels.head(200).iterrows():
+        hotel_name = hotel['hotel_name']
+        price = float(hotel['price'])
+        dates = hotel['dates'] if pd.notna(hotel['dates']) else '—'
+        duration = hotel['duration'] if pd.notna(hotel['duration']) else '—'
+        offer_url = hotel.get('offer_url', '')
+        image_url = hotel.get('image_url', '') or images_map.get(hotel_name, '')
+        hotel_slug = slugify(hotel_name)
+        if charts_subdir:
+            chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
+        else:
+            chart_href = f"hotel-charts/{hotel_slug}.html"
+
+        delta_info = deltas_by_hotel.get(hotel_name)
+        delta48 = f"{delta_info[1]:+.1f}%" if delta_info is not None else "—"
+        avg_info = avg_baseline_delta.get(hotel_name)
+        delta_avg = f"{avg_info[1]:+.1f}%" if avg_info is not None else "—"
+        deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low'})
+        deal_score = int(deal_info.get('score', 0))
+        confidence = deal_info.get('confidence', 'Low')
+        if deal_score >= 80 and confidence != "Low":
+            deal_label = "Hot"
+            deal_class = "hot"
+        elif deal_score >= 65 and confidence != "Low":
+            deal_label = "Good"
+            deal_class = "good"
+        elif confidence == "Low":
+            deal_label = "Warm-up"
+            deal_class = "warm"
+        else:
+            deal_label = "Normal"
+            deal_class = "normal"
+
+        hotel_cards.append({
+            "hotel_name": hotel_name,
+            "hotel_name_html": html_lib.escape(str(hotel_name)),
+            "price": price,
+            "dates": str(dates),
+            "duration": str(duration),
+            "offer_url": str(offer_url) if offer_url and pd.notna(offer_url) else "",
+            "image_url": str(image_url) if image_url and pd.notna(image_url) else "",
+            "chart_href": chart_href,
+            "delta48": delta48,
+            "delta_avg": delta_avg,
+            "deal_score": deal_score,
+            "deal_label": deal_label,
+            "deal_class": deal_class,
+            "confidence": confidence,
+        })
 
     # Создаём директорию для страниц графиков
     charts_dir = os.path.join(charts_subdir)
@@ -865,6 +1081,32 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         changes_html += """
         </div>"""
 
+    # Game-changer блок: сигнал раннего входа + top opportunities
+    signal_class = f"entry-signal entry-{entry_signal_level}"
+    signal_items_html = ""
+    if entry_top:
+        for item in entry_top:
+            signal_items_html += f"""
+            <div class="entry-item">
+                <div>
+                    <div class="hotel-name">{item['hotel_name']}</div>
+                    <div class="change-percent">Deal Score: {item['deal_score']} ({item.get('confidence','')}) • Δ48ч {item['delta48_pct']:+.1f}%</div>
+                </div>
+                <div class="change-price">{item['latest']:.0f} PLN</div>
+            </div>
+            """
+    else:
+        signal_items_html = "<div class='alerts-empty'>Пока нет кандидатов под строгие критерии раннего входа.</div>"
+
+    entry_signal_html = f"""
+    <div class="{signal_class}">
+        <div class="entry-title">{entry_signal_title}</div>
+        <div class="entry-note">{entry_signal_note}</div>
+        <div class="entry-stats">Кандидаты: {len(entry_candidates)} • Доля отелей со снижением (48ч): {market_breadth*100:.1f}%</div>
+        <div class="entry-list">{signal_items_html}</div>
+    </div>
+    """
+
     # Время последнего обновления для шапки
     try:
         updated_str = df['scraped_at_display'].max().strftime('%d.%m.%Y %H:%M')
@@ -883,38 +1125,46 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     <title>{title}</title>
     <style>
         :root {{
-            /* Цветовая палитра */
-            --primary-color: #2563eb;
-            --primary-dark: #1d4ed8;
-            --secondary-color: #7c3aed;
+            --primary-color: #4f46e5;
+            --primary-dark: #3730a3;
+            --secondary-color: #0891b2;
             --accent-color: #f59e0b;
             --success-color: #10b981;
             --danger-color: #ef4444;
             --warning-color: #f59e0b;
             --info-color: #3b82f6;
-            
-            /* Градиенты */
-            --gradient-primary: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            --gradient-success: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            --gradient-danger: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
-            --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
-            
-            /* Тени */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            
-            /* Радиусы */
-            --radius-sm: 0.375rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 0.75rem;
-            --radius-xl: 1rem;
-            
-            /* Переходы */
-            --transition-fast: 0.15s ease-in-out;
-            --transition-normal: 0.3s ease-in-out;
-            --transition-slow: 0.5s ease-in-out;
+
+            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+            --gradient-success: linear-gradient(135deg, #10b981 0%, #22d3ee 100%);
+            --gradient-danger: linear-gradient(135deg, #ef4444 0%, #fb7185 100%);
+            --gradient-card: linear-gradient(145deg, rgba(255,255,255,0.88) 0%, rgba(250,252,255,0.80) 100%);
+
+            --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+            --shadow-lg: 0 14px 34px rgba(15, 23, 42, 0.12);
+            --shadow-xl: 0 24px 52px rgba(15, 23, 42, 0.16);
+            --section-gap: 1.35rem;
+            --section-inner-x: 1.5rem;
+            --panel-shell-radius: 16px;
+            --table-block-max-width: 100%;
+            --content-max-width: 1880px;
+            --page-gutter: clamp(10px, 1.35vw, 24px);
+            --container-padding: clamp(1rem, 1.5vw, 2rem);
+
+            --radius-sm: 10px;
+            --radius-md: 14px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
+
+            --transition-fast: .15s ease;
+            --transition-normal: .25s ease;
+            --transition-slow: .45s ease;
+
+            --surface: rgba(255,255,255,0.78);
+            --surface-strong: rgba(255,255,255,0.92);
+            --border-soft: rgba(148, 163, 184, 0.28);
+            --text-main: #0f172a;
+            --text-muted: #64748b;
         }}
         
         * {{
@@ -925,22 +1175,49 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: #0f172a;
             min-height: 100vh;
             line-height: 1.6;
-            color: #1f2937;
+            color: var(--text-main);
+            position: relative;
+            overflow-x: hidden;
+        }}
+
+        body::before {{
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -2;
+            background:
+                linear-gradient(180deg, rgba(2,6,23,.42), rgba(2,6,23,.66)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=80') center/cover no-repeat;
+            transform: scale(1.03);
+        }}
+
+        body::after {{
+            content: "";
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background:
+                radial-gradient(1400px 700px at -10% -25%, rgba(99,102,241,.24), transparent 58%),
+                radial-gradient(1200px 800px at 120% -10%, rgba(6,182,212,.20), transparent 56%),
+                radial-gradient(900px 600px at 50% 120%, rgba(56,189,248,.16), transparent 60%);
+            animation: gradientDrift 18s ease-in-out infinite alternate;
         }}
         
         .container {{
-            max-width: 1400px;
+            width: min(var(--content-max-width), calc(100% - (var(--page-gutter) * 2)));
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            padding: 2rem;
+            background: var(--surface);
+            backdrop-filter: blur(16px);
+            padding: var(--container-padding);
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow-xl);
             margin-top: 2rem;
             margin-bottom: 2rem;
+            border: 1px solid rgba(255,255,255,0.7);
+            animation: sectionFadeIn .65s ease both;
         }}
         
         .header {{
@@ -1170,9 +1447,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             text-align: center;
             box-shadow: var(--shadow-md);
             transition: var(--transition-normal);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-soft);
             position: relative;
             overflow: hidden;
+            animation: floatSoft 6s ease-in-out infinite;
         }}
         
         .metric::before {{
@@ -1207,14 +1485,50 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             text-transform: uppercase;
             letter-spacing: 0.05em;
         }}
+
+        .metrics.metrics-compact {{
+            grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+            gap: .6rem;
+            margin-bottom: 1rem;
+        }}
+        .metrics.metrics-compact .metric {{
+            padding: .62rem .78rem;
+            border-radius: 12px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 54px;
+            animation: none;
+        }}
+        .metrics.metrics-compact .metric::before {{
+            height: 2px;
+        }}
+        .metrics.metrics-compact .metric:hover {{
+            transform: translateY(-1px);
+        }}
+        .metrics.metrics-compact .metric-value {{
+            font-size: 1.55rem;
+            margin: 0;
+            line-height: 1;
+            white-space: nowrap;
+            flex: 0 0 auto;
+            margin-right: .7rem;
+        }}
+        .metrics.metrics-compact .metric > div:last-child {{
+            font-size: .77rem;
+            font-weight: 600;
+            color: #475569;
+            line-height: 1.2;
+        }}
         
         .avg-top10-section {{
             background: var(--gradient-card);
-            padding: 2rem;
+            padding: 1.35rem;
             border-radius: var(--radius-xl);
-            margin-bottom: 3rem;
+            margin-bottom: 1.1rem;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-soft);
         }}
         
         .avg-top10-section h3 {{
@@ -1233,17 +1547,66 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-radius: var(--radius-xl);
             margin-bottom: 3rem;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-soft);
         }}
         
         .trend-index-section {{
             background: var(--gradient-card);
-            padding: 2rem;
+            padding: 1.25rem;
             border-radius: var(--radius-xl);
-            margin-bottom: 3rem;
+            margin-bottom: .75rem;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-soft);
             border-top: 3px solid #7C3AED;
+        }}
+        details.dashboard-fold {{
+            margin: 0 0 1rem 0;
+            background: var(--gradient-card);
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+            overflow: hidden;
+        }}
+        details.dashboard-fold > summary {{
+            list-style: none;
+            cursor: pointer;
+            padding: .8rem 1rem;
+            font-weight: 700;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .75rem;
+            user-select: none;
+        }}
+        details.dashboard-fold > summary::-webkit-details-marker {{
+            display: none;
+        }}
+        .fold-title-meta {{
+            font-size: .78rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }}
+        .fold-chevron {{
+            font-size: .85rem;
+            opacity: .75;
+            transition: transform .16s ease;
+        }}
+        details.dashboard-fold[open] .fold-chevron {{
+            transform: rotate(180deg);
+        }}
+        .fold-content {{
+            padding: 0 1rem .9rem;
+        }}
+        .fold-content .trend-index-section,
+        .fold-content .metrics,
+        .fold-content .changes-section,
+        .fold-content .entry-signal {{
+            margin-top: 0;
+        }}
+        .fold-content .metrics:last-child,
+        .fold-content .entry-signal:last-child {{
+            margin-bottom: 0;
         }}
         
         .trend-section h3 {{
@@ -1263,9 +1626,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             margin-bottom: 30px;
         }}
         .changes-block {{
-            background: #f8f9fa;
+            background: var(--surface-strong);
             padding: 20px;
-            border-radius: 8px;
+            border-radius: var(--radius-md);
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-sm);
         }}
         .changes-block h3 {{
             margin-top: 0;
@@ -1277,8 +1642,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             align-items: center;
             padding: 10px;
             margin: 5px 0;
-            background: white;
-            border-radius: 5px;
+            background: rgba(255,255,255,0.95);
+            border-radius: 8px;
             border-left: 4px solid;
         }}
         .change-decrease {{
@@ -1294,18 +1659,267 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-size: 0.9em;
             opacity: 0.8;
         }}
+        .entry-signal {{
+            margin: 0 0 2rem 0;
+            border-radius: var(--radius-lg);
+            padding: 1rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: var(--shadow-sm);
+        }}
+        .entry-high {{
+            background: linear-gradient(135deg, rgba(16,185,129,.12), rgba(34,197,94,.08));
+            border-color: rgba(16,185,129,.35);
+        }}
+        .entry-medium {{
+            background: linear-gradient(135deg, rgba(245,158,11,.12), rgba(234,179,8,.08));
+            border-color: rgba(245,158,11,.35);
+        }}
+        .entry-low {{
+            background: linear-gradient(135deg, rgba(59,130,246,.10), rgba(14,165,233,.08));
+            border-color: rgba(59,130,246,.28);
+        }}
+        .entry-title {{
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }}
+        .entry-note {{
+            color: var(--text-muted);
+            font-size: .9rem;
+            margin-bottom: 8px;
+        }}
+        .entry-stats {{
+            font-size: .84rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }}
+        .entry-list {{
+            display: grid;
+            gap: 8px;
+        }}
+        .entry-item {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: .65rem .75rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,.78);
+            border: 1px solid rgba(148,163,184,.20);
+            transition: transform .16s ease;
+        }}
+        .entry-item:hover {{
+            transform: translateY(-2px);
+        }}
+        .deal-legend {{
+            margin: 0 0 1rem 0;
+            padding: .85rem 1rem;
+            border-radius: 10px;
+            background: rgba(255,255,255,.82);
+            border: 1px solid var(--border-soft);
+            color: var(--text-muted);
+            font-size: .88rem;
+            line-height: 1.45;
+        }}
+        .deal-badge-hot {{ color: #b45309; font-weight: 700; }}
+        .deal-badge-good {{ color: #166534; font-weight: 700; }}
+        .deal-badge-normal {{ color: #64748b; font-weight: 600; }}
+        .deal-badge-warm {{ color: #0369a1; font-weight: 700; }}
+        .hero {{
+            margin-bottom: 1.25rem;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-soft);
+            background:
+                linear-gradient(180deg, rgba(2,6,23,.18), rgba(2,6,23,.48)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            min-height: 200px;
+            position: relative;
+            animation: sectionFadeIn .7s ease both;
+        }}
+        .hero-content {{
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 1.4rem 1.35rem;
+        }}
+        .hero-kpis {{
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0,1fr));
+            gap: 10px;
+            margin-top: .9rem;
+        }}
+        .hero-kpi {{
+            background: rgba(255,255,255,.16);
+            border: 1px solid rgba(255,255,255,.28);
+            border-radius: 12px;
+            padding: .55rem .65rem;
+            backdrop-filter: blur(8px);
+            animation: pulseGlow 3.6s ease-in-out infinite;
+        }}
+        .hero-kpi .v {{
+            font-size: 1.05rem;
+            font-weight: 800;
+            line-height: 1.1;
+        }}
+        .hero-kpi .l {{
+            font-size: .74rem;
+            opacity: .92;
+        }}
+        .hero-kpi .s {{
+            margin-top: .2rem;
+            font-size: .68rem;
+            line-height: 1.25;
+            opacity: .86;
+        }}
+        .mode-switch {{
+            display: inline-flex;
+            border: 1px solid var(--border-soft);
+            border-radius: 999px;
+            overflow: hidden;
+            margin: .35rem 0 .85rem;
+            background: rgba(255,255,255,.82);
+        }}
+        .mode-btn {{
+            border: none;
+            background: transparent;
+            padding: .48rem .86rem;
+            font-size: .86rem;
+            cursor: pointer;
+            color: #334155;
+            font-weight: 600;
+            transition: all .18s ease;
+        }}
+        .mode-btn.active {{
+            background: var(--gradient-primary);
+            color: #fff;
+            box-shadow: inset 0 -1px 0 rgba(255,255,255,.2);
+        }}
+        .cards-section {{
+            margin: 0 0 1.2rem 0;
+        }}
+        .cards-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
+            gap: 12px;
+        }}
+        .hotel-card {{
+            background: rgba(255,255,255,.88);
+            border: 1px solid var(--border-soft);
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+            animation: sectionFadeIn .45s ease both;
+        }}
+        .hotel-card:hover {{
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+            border-color: rgba(79,70,229,.28);
+        }}
+        .hotel-card-img {{
+            height: 120px;
+            background: linear-gradient(135deg, rgba(79,70,229,.16), rgba(14,165,233,.16));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #334155;
+            font-size: .9rem;
+        }}
+        .hotel-card-img img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }}
+        .hotel-card-body {{
+            padding: .72rem .8rem .82rem;
+        }}
+        .hotel-card-title {{
+            margin: 0 0 .45rem 0;
+            font-size: .96rem;
+            font-weight: 700;
+            color: #1e293b;
+            line-height: 1.25;
+        }}
+        .hotel-card-meta {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: .5rem;
+        }}
+        .hotel-card-price {{
+            font-size: 1.12rem;
+            font-weight: 800;
+            color: #111827;
+        }}
+        .deal-pill {{
+            border-radius: 999px;
+            padding: .18rem .5rem;
+            font-size: .72rem;
+            font-weight: 700;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }}
+        .deal-pill.hot {{ background: rgba(245,158,11,.18); color: #92400e; border-color: rgba(245,158,11,.32); }}
+        .deal-pill.good {{ background: rgba(16,185,129,.17); color: #065f46; border-color: rgba(16,185,129,.32); }}
+        .deal-pill.normal {{ background: rgba(148,163,184,.18); color: #334155; border-color: rgba(148,163,184,.35); }}
+        .deal-pill.warm {{ background: rgba(14,165,233,.16); color: #0c4a6e; border-color: rgba(14,165,233,.35); }}
+        .hotel-card-stats {{
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6px;
+            margin-bottom: .6rem;
+            color: #475569;
+            font-size: .79rem;
+        }}
+        .hotel-card-actions {{
+            display: flex;
+            gap: 8px;
+        }}
+        .card-btn {{
+            flex: 1;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 10px;
+            padding: .45rem .5rem;
+            font-size: .8rem;
+            font-weight: 700;
+            border: 1px solid var(--border-soft);
+            color: #1e293b;
+            background: rgba(255,255,255,.92);
+            transition: transform .14s ease, box-shadow .14s ease;
+        }}
+        .card-btn.primary {{
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+        }}
+        .card-btn:hover {{
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }}
         .alerts-section {{
-            margin-top: 30px;
+            margin-top: var(--section-gap);
+            background: var(--gradient-card);
+            border-radius: var(--radius-xl);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--border-soft);
+            overflow: hidden;
         }}
         .alert-item {{
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px;
-            margin: 5px 0;
-            background: white;
-            border-radius: 5px;
+            padding: .7rem .8rem;
+            margin: 0;
+            background: rgba(255,255,255,0.95);
+            border-radius: 0;
             border-left: 4px solid;
+            border-bottom: 1px solid rgba(148,163,184,.18);
+        }}
+        .alert-item:last-child {{
+            border-bottom: none;
         }}
         .alert-decrease {{
             border-left-color: #28a745;
@@ -1320,12 +1934,28 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: #6c757d;
             font-style: italic;
         }}
+        .alert-item > div:first-child {{
+            min-width: 0;
+            flex: 1 1 auto;
+            padding-right: 10px;
+        }}
+        .alert-item .hotel-name {{
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }}
+        .alert-item .change-price {{
+            flex: 0 0 auto;
+            text-align: right;
+            white-space: nowrap;
+        }}
         .alerts-header {{
             display: flex;
             justify-content: space-between;
             align-items: center;
             cursor: pointer;
             user-select: none;
+            padding: .95rem var(--section-inner-x);
+            border-bottom: 1px solid var(--border-soft);
         }}
         .alerts-header:hover {{
             background: #f8f9fa;
@@ -1334,10 +1964,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             max-height: 400px;
             overflow-y: auto;
             transition: max-height 0.3s ease;
+            padding: 0;
+            background: rgba(255,255,255,.86);
         }}
         .alerts-content.collapsed {{
             max-height: 0;
             overflow: hidden;
+            padding: 0;
         }}
         .expand-icon {{
             transition: transform 0.3s ease;
@@ -1350,12 +1983,39 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .delta.down {{ color: #28a745; }}
         .delta.flat {{ color: #6c757d; }}
         .hotels-section {{
-            margin-top: 3rem;
+            margin-top: var(--section-gap);
             background: var(--gradient-card);
             border-radius: var(--radius-xl);
             padding: 2rem;
             box-shadow: var(--shadow-md);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid var(--border-soft);
+            animation: sectionFadeIn .75s ease both;
+        }}
+        .hotels-section.full-width-table-section {{
+            padding: 2rem;
+            overflow: visible;
+            width: 100%;
+            max-width: 100%;
+            margin: var(--section-gap) 0 0 0;
+        }}
+        .hotels-section.full-width-table-section h3,
+        .hotels-section.full-width-table-section .deal-legend,
+        .hotels-section.full-width-table-section .table-filters,
+        .hotels-section.full-width-table-section .pagination,
+        .hotels-section.full-width-table-section .pagination-info {{
+            margin-left: 0;
+            margin-right: 0;
+            width: 100%;
+            max-width: var(--table-block-max-width);
+            margin-inline: auto;
+        }}
+        .hotels-section.full-width-table-section .table-container {{
+            border-radius: var(--panel-shell-radius);
+            margin-top: .45rem;
+            width: 100%;
+            max-width: var(--table-block-max-width);
+            margin-left: 0;
+            margin-right: 0;
         }}
         
         .hotels-section h3 {{
@@ -1370,9 +2030,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         .table-container {{
             overflow-x: auto;
-            border-radius: var(--radius-lg);
+            border-radius: var(--panel-shell-radius);
             box-shadow: var(--shadow-sm);
-            background: white;
+            background: rgba(255,255,255,0.9);
+            border: 1px solid var(--border-soft);
         }}
         
         .hotels-table {{
@@ -1384,8 +2045,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .hotels-table th {{
-            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
-            color: #374151;
+            background: linear-gradient(135deg, rgba(79,70,229,.93) 0%, rgba(14,165,233,.90) 100%);
+            color: #fff;
             font-weight: 600;
             font-size: 0.875rem;
             text-transform: uppercase;
@@ -1398,12 +2059,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             top: 0;
             z-index: 10;
             transition: var(--transition-fast);
-            border-bottom: 2px solid #d1d5db;
-            border-top: 1px solid #e5e7eb;
+            border-bottom: 2px solid rgba(255,255,255,.30);
+            border-top: 1px solid rgba(255,255,255,.18);
         }}
         
         .hotels-table th:hover {{
-            background: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%);
+            background: linear-gradient(135deg, rgba(79,70,229,1) 0%, rgba(14,165,233,1) 100%);
             transform: translateY(-1px);
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }}
@@ -1442,9 +2103,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .hotels-table tbody tr:hover {{
-            background: linear-gradient(90deg, #f0f9ff 0%, #e0f2fe 100%);
+            background: linear-gradient(90deg, rgba(79,70,229,.08) 0%, rgba(14,165,233,.08) 100%);
             transform: scale(1.01);
             box-shadow: var(--shadow-sm);
+        }}
+
+        @keyframes sectionFadeIn {{
+            from {{ opacity: 0; transform: translateY(8px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
+        @keyframes floatSoft {{
+            0%, 100% {{ transform: translateY(0); }}
+            50% {{ transform: translateY(-4px); }}
+        }}
+        @keyframes pulseGlow {{
+            0%, 100% {{ box-shadow: 0 0 0 rgba(255,255,255,0); }}
+            50% {{ box-shadow: 0 8px 22px rgba(255,255,255,.12); }}
+        }}
+        @keyframes gradientDrift {{
+            0% {{ transform: translate3d(0,0,0) scale(1); }}
+            100% {{ transform: translate3d(-10px, 8px, 0) scale(1.02); }}
         }}
         
         .hotel-name {{
@@ -1657,8 +2335,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             left: 0;
             width: 280px;
             height: 100vh;
-            background: var(--gradient-card);
-            backdrop-filter: blur(10px);
+            background: rgba(255,255,255,.84);
+            backdrop-filter: blur(18px);
             box-shadow: var(--shadow-xl);
             z-index: 1000;
             transform: translateX(-100%);
@@ -1691,15 +2369,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .nav-item {{
             display: block;
             padding: 1rem 1.5rem;
-            color: #64748b;
+            color: var(--text-muted);
             text-decoration: none;
             transition: var(--transition-fast);
             border-left: 3px solid transparent;
             position: relative;
+            border-radius: 0 12px 12px 0;
+            margin: 2px 8px 2px 0;
         }}
         
         .nav-item:hover {{
-            background: #f8fafc;
+            background: rgba(79,70,229,.08);
             color: var(--primary-color);
             border-left-color: var(--primary-color);
         }}
@@ -1738,8 +2418,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             background: var(--gradient-primary);
             border: none;
             border-radius: var(--radius-md);
-            width: 3rem;
-            height: 3rem;
+            width: 2.75rem;
+            height: 2.75rem;
             color: white;
             cursor: pointer;
             box-shadow: var(--shadow-lg);
@@ -1781,20 +2461,50 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .main-content.sidebar-open {{
             margin-left: 280px;
         }}
-        
+
         /* Responsive */
+        @media (max-width: 1024px) {{
+            :root {{
+                --container-padding: 1.25rem;
+                --page-gutter: 1rem;
+            }}
+            .header {{
+                padding: 2rem 1.25rem;
+            }}
+            .header h1 {{
+                font-size: 2.25rem;
+            }}
+            .metrics {{
+                grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            }}
+            .changes-section {{
+                grid-template-columns: 1fr;
+            }}
+            .theme-toggle {{
+                top: 1rem;
+                right: 1rem;
+            }}
+            .sidebar-toggle {{
+                top: 1rem;
+                left: 1rem;
+            }}
+        }}
+
         @media (max-width: 768px) {{
+            :root {{
+                --section-gap: 1.25rem;
+                --section-inner-x: 1rem;
+                --panel-shell-radius: 12px;
+                --table-block-max-width: 100%;
+                --container-padding: 1rem;
+                --page-gutter: .75rem;
+            }}
             .sidebar {{
                 width: 100%;
             }}
             
             .main-content.sidebar-open {{
                 margin-left: 0;
-            }}
-            
-            .container {{
-                margin: 1rem;
-                padding: 1rem;
             }}
             
             .header h1 {{
@@ -1804,6 +2514,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             .metrics {{
                 grid-template-columns: 1fr;
             }}
+            .metrics.metrics-compact {{
+                gap: .5rem;
+            }}
+            .metrics.metrics-compact .metric {{
+                min-height: 50px;
+            }}
+            .metric {{
+                padding: 1.25rem;
+            }}
+            .metric-value {{
+                font-size: 2rem;
+            }}
             
             .table-filters {{
                 flex-direction: column;
@@ -1812,6 +2534,117 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             
             .filter-input, .filter-select {{
                 min-width: auto;
+            }}
+            .hotels-section, .avg-top10-section, .trend-index-section, .alerts-section {{
+                padding: 1rem;
+                border-radius: 14px;
+            }}
+            .hotels-section.full-width-table-section {{
+                padding: 1rem;
+            }}
+            .hotels-section.full-width-table-section h3,
+            .hotels-section.full-width-table-section .deal-legend,
+            .hotels-section.full-width-table-section .table-filters,
+            .hotels-section.full-width-table-section .pagination,
+            .hotels-section.full-width-table-section .pagination-info {{
+                margin-left: 0;
+                margin-right: 0;
+            }}
+            .hotels-table th, .hotels-table td {{
+                padding: .7rem .55rem;
+                font-size: .82rem;
+            }}
+            .table-container {{
+                border-radius: var(--panel-shell-radius);
+            }}
+            .footer {{
+                font-size: .84rem;
+                padding: 14px;
+            }}
+            .alert-item {{
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 6px;
+            }}
+            .alert-item .change-price {{
+                white-space: normal;
+                text-align: left;
+                font-size: .95rem;
+                line-height: 1.3;
+            }}
+            .hero {{
+                min-height: 180px;
+            }}
+            details.dashboard-fold > summary {{
+                padding: .72rem .85rem;
+                font-size: .94rem;
+            }}
+            .fold-title-meta {{
+                display: none;
+            }}
+            .fold-content {{
+                padding: 0 .85rem .8rem;
+            }}
+            .hero-kpis {{
+                grid-template-columns: repeat(2, minmax(0,1fr));
+            }}
+            .cards-grid {{
+                grid-template-columns: 1fr;
+            }}
+            .hotel-card-img {{
+                height: 106px;
+            }}
+            .mode-switch {{
+                width: 100%;
+                justify-content: space-between;
+            }}
+            .mode-btn {{
+                flex: 1;
+            }}
+        }}
+
+        @media (max-width: 480px) {{
+            :root {{
+                --container-padding: .75rem;
+                --page-gutter: .5rem;
+            }}
+            .container {{
+                border-radius: 14px;
+            }}
+            .header {{
+                border-radius: 14px;
+                margin-bottom: 1.25rem;
+            }}
+            .header h1 {{
+                font-size: 1.45rem;
+                line-height: 1.2;
+            }}
+            .header p {{
+                font-size: .9rem;
+            }}
+            .country-flag {{
+                font-size: 1.35rem;
+                margin-right: .35rem;
+            }}
+            .sidebar-header {{
+                margin-top: 0;
+                padding-top: 1rem;
+            }}
+            .theme-toggle, .sidebar-toggle {{
+                width: 2.35rem;
+                height: 2.35rem;
+                font-size: 1rem;
+            }}
+            .hover-thumb {{
+                width: 180px;
+                height: 118px;
+            }}
+        }}
+
+        @media (prefers-reduced-motion: reduce) {{
+            * {{
+                animation: none !important;
+                transition: none !important;
             }}
         }}
         
@@ -1883,49 +2716,47 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         <button class="theme-toggle" id="themeToggle">🌙</button>
         
     <div class="container">
-        <div class="header">
-                <h1>
-                    <span class="country-flag">{'🇬🇷' if 'Греция' in title else '🇪🇬' if 'Египет' in title else '🇹🇷' if 'Турция' in title else '🌍'}</span>
-                    {title.replace('🇬🇷 ', '').replace('🇪🇬 ', '').replace('🇹🇷 ', '')}
-                </h1>
-            <p>Обновлено: {updated_str}</p>
+        <div class="hero">
+            <div class="hero-content">
+                <h2 style="margin:0; font-size:clamp(1.2rem,2.4vw,1.65rem); font-weight:800;">🌊 Sea Intelligence</h2>
+                <div style="margin-top:.35rem; font-size:.92rem; opacity:.96;">Сканируем рынок туров и показываем точки входа раньше массового спроса.</div>
+                <h1 style="margin:.55rem 0 0; font-size:clamp(1.4rem,3vw,2.1rem); font-weight:800; line-height:1.15;">{title.replace('🇬🇷 ', '').replace('🇪🇬 ', '').replace('🇹🇷 ', '')}</h1>
+                <div style="margin-top:.3rem; font-size:.9rem; opacity:.92;">Обновлено: {updated_str}</div>
+                <div class="hero-kpis">
+                    <div class="hero-kpi">
+                        <div class="v">{len(entry_candidates)}</div>
+                        <div class="l">Кандидатов входа</div>
+                        <div class="s">Отели с сильным Deal Score и ценой ниже своего обычного уровня.</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="v">{market_breadth*100:.0f}%</div>
+                        <div class="l">Рынок дешевеет</div>
+                        <div class="s">Доля отелей, где цена снизилась за последние 48 часов.</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="v">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
+                        <div class="l">Лучший Deal Score</div>
+                        <div class="s">Самая сильная найденная возможность в текущем ране.</div>
+                    </div>
+                    <div class="hero-kpi">
+                        <div class="v">{updated_str}</div>
+                        <div class="l">Обновлено</div>
+                        <div class="s">Время последнего обновления данных по этому фильтру.</div>
+                    </div>
+                </div>
+            </div>
         </div>
 
-        <div class="avg-top10-section">
-            <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
-            <div id="avgTop10" style="height:360px;"></div>
+        <div class="mode-switch" id="modeSwitch">
+            <button class="mode-btn active" data-mode="cards">Карточки</button>
+            <button class="mode-btn" data-mode="table">Таблица</button>
         </div>
-        
-        <div class="trend-index-section">
-            <h3>📊 Индекс ценовой динамики</h3>
-            <div id="trendIndexChart" style="height:360px;"></div>
-        </div>
-        
-        <div class="metrics">
-            <div class="metric">
-                <div class="metric-value">{total_offers:,}</div>
-                <div>Всего предложений</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">{unique_hotels}</div>
-                <div>Уникальных отелей</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">{avg_price:.0f} PLN</div>
-                <div>Средняя цена</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">{min_price:.0f} PLN</div>
-                <div>Минимальная цена</div>
-            </div>
-            <div class="metric">
-                <div class="metric-value">{max_price:.0f} PLN</div>
-                <div>Максимальная цена</div>
-            </div>
-        </div>
-        
-        {changes_html}
-        
+
+        <div class="cards-section" id="cardsSection">
+            <div class="cards-grid">
+"""
+
+    alerts_html = """
         <div class="alerts-section">
             <div class="alerts-header" onclick="toggleAlerts()">
                 <h3>🚨 История алертов</h3>
@@ -1940,18 +2771,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             alert_type = a.get('alert_type') or a.get('type') or ''
             old_price = a.get('old_price') or a.get('from') or a.get('previous_price')
             new_price = a.get('new_price') if 'new_price' in a else (a.get('to') or a.get('current_price'))
-            ts = a.get('timestamp') or a.get('time') or ''
+            ts_raw = a.get('timestamp') or a.get('time') or ''
+            try:
+                ts_fmt = parse_iso(ts_raw).astimezone().strftime('%d.%m.%Y %H:%M')
+            except Exception:
+                ts_fmt = str(ts_raw)
 
             if alert_type == 'missing' or new_price in (None, '', 'null'):
                 direction_class = 'alert-missing'
                 arrow = '—'
                 change_text = a.get('message') or a.get('note') or 'Отель пропал из выдачи'
                 price_text = f"{old_price if old_price is not None else '—'} → —"
-                html_template += f"""
+                alerts_html += f"""
                 <div class="alert-item {direction_class}">
                     <div>
                         <div class="hotel-name">{hotel_name}</div>
-                        <div class="change-percent">{arrow} {change_text} • {ts}</div>
+                        <div class="change-percent">{arrow} {change_text} • {ts_fmt}</div>
                     </div>
                     <div class="change-price">{price_text}</div>
                 </div>
@@ -1962,27 +2797,136 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 price_change = a.get('price_change', 0.0)
                 direction_class = 'alert-increase' if price_change > 0 else ('alert-decrease' if price_change < 0 else '')
                 arrow = '↑' if price_change > 0 else ('↓' if price_change < 0 else '→')
-                html_template += f"""
+                alerts_html += f"""
                 <div class="alert-item {direction_class}">
                     <div>
                         <div class="hotel-name">{hotel_name}</div>
-                        <div class="change-percent">{arrow} {change_pct:+.1f}% • {ts}</div>
+                        <div class="change-percent">{arrow} {change_pct:+.1f}% • {ts_fmt}</div>
                     </div>
                     <div class="change-price">{old_price} → {new_price} PLN</div>
                 </div>
 """
     else:
-        html_template += """
+        alerts_html += """
                 <div class="alerts-empty">Нет алертов</div>
+"""
+    alerts_html += """
+            </div>
+        </div>
+"""
+
+    # Карточки отелей (визуальный режим)
+    for c in hotel_cards:
+        img_html = f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" />' if c["image_url"] else '<div>Фото отеля</div>'
+        offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
+        html_template += f"""
+            <article class="hotel-card">
+                <div class="hotel-card-img">{img_html}</div>
+                <div class="hotel-card-body">
+                    <h4 class="hotel-card-title">{c["hotel_name_html"]}</h4>
+                    <div class="hotel-card-meta">
+                        <div class="hotel-card-price">{c["price"]:.0f} PLN</div>
+                        <span class="deal-pill {c["deal_class"]}">Deal {c["deal_score"]} • {c["deal_label"]}</span>
+                    </div>
+                    <div class="hotel-card-stats">
+                        <div>Δ48ч: <strong>{c["delta48"]}</strong></div>
+                        <div>Δср: <strong>{c["delta_avg"]}</strong></div>
+                        <div>{html_lib.escape(c["duration"])}</div>
+                        <div>{html_lib.escape(c["confidence"])} confidence</div>
+                    </div>
+                    <div class="hotel-card-actions">
+                        <a class="card-btn primary" href="{html_lib.escape(c["chart_href"], quote=True)}" target="_blank">График</a>
+                        {offer_btn}
+                    </div>
+                </div>
+            </article>
+"""
+
+    html_template += """
+            </div>
+        </div>
+"""
+    html_template += alerts_html
+    html_template += f"""
+
+        <div class="avg-top10-section">
+            <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
+            <div id="avgTop10" style="height:300px;"></div>
+        </div>
+
+        <details class="dashboard-fold" id="trendFold">
+            <summary>
+                <span>Индекс ценовой динамики</span>
+                <span class="fold-title-meta">Доп. аналитика</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+                <div class="trend-index-section">
+                    <h3>📊 Индекс ценовой динамики</h3>
+                    <div id="trendIndexChart" style="height:280px;"></div>
+                </div>
+            </div>
+        </details>
+
+        <details class="dashboard-fold" id="statsFold">
+            <summary>
+                <span>Статистика и сигналы</span>
+                <span class="fold-title-meta">Скрыто по умолчанию</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+                <div class="metrics metrics-compact">
+                    <div class="metric">
+                        <div class="metric-value">{total_offers:,}</div>
+                        <div>Всего предложений</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{unique_hotels}</div>
+                        <div>Уникальных отелей</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{avg_price:.0f} PLN</div>
+                        <div>Средняя цена</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{min_price:.0f} PLN</div>
+                        <div>Минимальная цена</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{max_price:.0f} PLN</div>
+                        <div>Максимальная цена</div>
+                    </div>
+                </div>
+
+                <div class="metrics metrics-compact">
+                    <div class="metric">
+                        <div class="metric-value">{int(round(sum(v['score'] for v in deal_score_by_hotel.values()) / len(deal_score_by_hotel))) if deal_score_by_hotel else 0}</div>
+                        <div>Средний Deal Score</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
+                        <div>Лучший Deal Score</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{len(entry_candidates)}</div>
+                        <div>Кандидатов раннего входа</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{market_breadth*100:.0f}%</div>
+                        <div>Рынок со снижением (48ч)</div>
+                    </div>
+                </div>
+
+                {changes_html}
+                {entry_signal_html}
+            </div>
+        </details>
 """
 
     # Вставляем блок с отелями до 8000 из общего фильтра, которых нет из Варшавы
     if missing_hotels_under_8000:
         html_template += f"""
-        </div>
-    </div>
-
-    <div class="hotels-section">
+    <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
         <h3>🛫 Отели до 8000 PLN (любой вылет), которых нет при вылете из Варшавы</h3>
         <div class="table-container">
             <table class="hotels-table" id="missingAirportsTable">
@@ -2017,20 +2961,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </tbody>
             </table>
         </div>
-    </div>
-
-    <div class="hotels-section">
 """
     else:
         html_template += f"""
-            </div>
-        </div>
-
-        <div class="hotels-section">
+        <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
 """
 
     html_template += f"""
             <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
+            <div class="deal-legend">
+                <strong>Как читать Deal Score:</strong>
+                <span class="deal-badge-hot">🔥 Hot</span> = очень сильная возможность,
+                <span class="deal-badge-good">✅ Good</span> = хороший момент,
+                <span class="deal-badge-normal">• Normal</span> = обычный уровень,
+                <span class="deal-badge-warm">⏳ Warm-up</span> = пока мало истории.
+                Confidence: Low / Medium / High — степень надежности оценки.
+            </div>
             
             <!-- Table Filters -->
             <div class="table-filters">
@@ -2057,8 +3003,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <tr>
                         <th class="sortable" data-sort="hotel">Отель</th>
                         <th class="sortable" data-sort="price">Цена</th>
+                        <th class="sortable" data-sort="deal">Deal Score</th>
                         <th class="sortable" data-sort="delta48">Δ 48ч</th>
-                        <th class="sortable" data-sort="deltastart">Δ с начала</th>
+                        <th class="sortable" data-sort="deltaavg">Δ к средней</th>
                         <th class="sortable" data-sort="dates">Даты</th>
                         <th class="sortable" data-sort="duration">Длительность</th>
                         <th>Ссылка</th>
@@ -2084,14 +3031,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             sign = '+' if delta_abs > 0 else ('' if delta_abs < 0 else '')
             delta_display = f"{arrow} {sign}{delta_pct:.1f}%"
 
-        # Δ с начала наблюдений
-        since_display = "—"
-        since_info = since_start_delta.get(hotel_name)
-        if since_info is not None:
-            since_abs, since_pct = since_info
-            arrow2 = '↑' if since_abs > 0 else ('↓' if since_abs < 0 else '→')
-            sign2 = '+' if since_abs > 0 else ('' if since_abs < 0 else '')
-            since_display = f"{arrow2} {sign2}{since_pct:.1f}%"
+        # Δ к устойчивой средней цене по истории отеля
+        avg_display = "—"
+        avg_info = avg_baseline_delta.get(hotel_name)
+        avg_sort_value = 0
+        if avg_info is not None:
+            avg_abs, avg_pct = avg_info
+            arrow2 = '↑' if avg_abs > 0 else ('↓' if avg_abs < 0 else '→')
+            sign2 = '+' if avg_abs > 0 else ('' if avg_abs < 0 else '')
+            avg_display = f"{arrow2} {sign2}{avg_pct:.1f}%"
+            avg_sort_value = avg_pct
 
         hotel_slug = slugify(hotel_name)
         # Строим ссылку на страницу графика, учитывая поддиректорию
@@ -2110,12 +3059,29 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             offer_link_html = "—"
         
+        deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low', 'samples': 0})
+        deal_score = int(deal_info.get('score', 0))
+        confidence_level = deal_info.get('confidence', 'Low')
+        if deal_score >= 80 and confidence_level != 'Low':
+            deal_badge = "🔥 Hot"
+        elif deal_score >= 65 and confidence_level != 'Low':
+            deal_badge = "✅ Good"
+        elif confidence_level == 'Low':
+            deal_badge = "⏳ Warm-up"
+        else:
+            deal_badge = "• Normal"
+        confidence_label = (
+            "Low confidence" if confidence_level == "Low"
+            else ("Medium confidence" if confidence_level == "Medium" else "High confidence")
+        )
+
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
                         <td class="price" data-sort-value="{price}">{price:.0f} PLN</td>
+                        <td data-sort-value="{deal_score}">{deal_score} <span style="opacity:.85;font-size:.85em;">{deal_badge}</span><br><span style="opacity:.65;font-size:.78em;">{confidence_label}</span></td>
                         <td class=\"{delta_class}\" data-sort-value="{delta_info[1] if delta_info else 0}">{delta_display}</td>
-                        <td data-sort-value="{since_info[1] if since_info else 0}">{since_display}</td>
+                        <td data-sort-value="{avg_sort_value}">{avg_display}</td>
                         <td data-sort-value="{dates}">{dates}</td>
                         <td data-sort-value="{duration}">{duration}</td>
                         
@@ -2374,7 +3340,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       }
       
       function getColumnIndex(column) {
-        const columnMap = { 'hotel': 0, 'price': 1, 'delta48': 2, 'deltastart': 3, 'dates': 4, 'duration': 5, 'offer': 6 };
+        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'dates': 5, 'duration': 6, 'offer': 7 };
         return columnMap[column];
       }
       
@@ -2388,6 +3354,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         });
       }
       
+      function bindFoldPersistence(foldId, key, defaultOpen = false) {
+        const el = document.getElementById(foldId);
+        if (!el) return;
+        let isOpen = defaultOpen;
+        try {
+          const saved = localStorage.getItem(key);
+          if (saved === '1') isOpen = true;
+          if (saved === '0') isOpen = false;
+        } catch (e) {}
+        el.open = isOpen;
+        el.addEventListener('toggle', () => {
+          try { localStorage.setItem(key, el.open ? '1' : '0'); } catch (e) {}
+        });
+      }
+
       // Добавляем обработчики кликов на заголовки
       document.addEventListener('DOMContentLoaded', function() {
         const headers = document.querySelectorAll('#hotelsTable th.sortable');
@@ -2409,6 +3390,25 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         sidebarToggle.addEventListener('click', toggleSidebar);
         sidebarOverlay.addEventListener('click', toggleSidebar);
+
+        // Cards/Table view mode
+        const cardsSection = document.getElementById('cardsSection');
+        const tableSection = document.getElementById('tableSection');
+        const modeSwitch = document.getElementById('modeSwitch');
+        const modeButtons = modeSwitch ? Array.from(modeSwitch.querySelectorAll('.mode-btn')) : [];
+        function setMode(mode) {
+          const cardsMode = mode !== 'table';
+          if (cardsSection) cardsSection.style.display = cardsMode ? '' : 'none';
+          if (tableSection) tableSection.style.display = cardsMode ? 'none' : '';
+          modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+          try { localStorage.setItem('dashboard_mode', mode); } catch(e) {}
+        }
+        modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
+        let initialMode = 'cards';
+        try { initialMode = localStorage.getItem('dashboard_mode') || 'cards'; } catch(e) {}
+        setMode(initialMode);
+        bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
+        bindFoldPersistence('statsFold', 'dashboard_fold_stats', false);
         
         // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
@@ -2454,7 +3454,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           filteredRows = rows.filter(row => {
             const hotelName = row.cells[0].textContent.toLowerCase();
             const price = parseFloat(row.cells[1].textContent.replace(/[^0-9.-]/g, ''));
-            const delta48 = row.cells[2].textContent.trim();
+            const delta48 = row.cells[3].textContent.trim();
             
             // Search filter
             if (searchTerm && !hotelName.includes(searchTerm)) {
