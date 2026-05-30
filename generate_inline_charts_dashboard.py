@@ -736,11 +736,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_slug = slugify(hotel_name)
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
 
-        # Определяем корректную ссылку "Назад к дашборду" в зависимости от поддиректории
-        if charts_subdir and charts_subdir.rstrip('/').endswith('greece'):
-            back_target = 'index_greece.html'
-        elif charts_subdir and charts_subdir.rstrip('/').endswith('egypt'):
-            back_target = 'index_egypt.html'
+        # Определяем корректную ссылку "Назад к дашборду" для новых фильтров
+        subdir = (charts_subdir or '').rstrip('/')
+        if subdir.endswith('filter_7_10_days'):
+            back_target = 'index_filter_7_10_days.html'
+        elif subdir.endswith('filter_13_16_days'):
+            back_target = 'index_filter_13_16_days.html'
         else:
             back_target = 'index.html'
         back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
@@ -1846,25 +1847,25 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <h2>🌍 Travel Monitor</h2>
         </div>
         <nav class="sidebar-nav">
-            <a href="index_greece.html" class="nav-item {'active' if 'Греция' in title else ''}">
-                <span class="flag">🇬🇷</span>
+            <a href="index.html" class="nav-item">
+                <span class="flag">🏠</span>
                 <div>
-                    <div class="country-name">Греция</div>
-                    <div class="country-desc">Солнечные острова</div>
+                    <div class="country-name">Главная</div>
+                    <div class="country-desc">Выбор фильтра</div>
                 </div>
             </a>
-            <a href="index_egypt.html" class="nav-item {'active' if 'Египет' in title else ''}">
-                <span class="flag">🇪🇬</span>
+            <a href="index_filter_7_10_days.html" class="nav-item {'active' if '7' in title and '10' in title else ''}">
+                <span class="flag">📅</span>
                 <div>
-                    <div class="country-name">Египет</div>
-                    <div class="country-desc">Древние пирамиды</div>
+                    <div class="country-name">Фильтр 7–10 дней</div>
+                    <div class="country-desc">Актуальные предложения</div>
                 </div>
             </a>
-            <a href="index_turkey.html" class="nav-item {'active' if 'Турция' in title else ''}">
-                <span class="flag">🇹🇷</span>
+            <a href="index_filter_13_16_days.html" class="nav-item {'active' if '13' in title and '16' in title else ''}">
+                <span class="flag">📆</span>
                 <div>
-                    <div class="country-name">Турция</div>
-                    <div class="country-desc">Восточная экзотика</div>
+                    <div class="country-name">Фильтр 13–16 дней</div>
+                    <div class="country-desc">Актуальные предложения</div>
                 </div>
             </a>
         </nav>
