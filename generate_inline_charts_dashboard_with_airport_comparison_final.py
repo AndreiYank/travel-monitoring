@@ -787,6 +787,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_ts = df[df['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
         x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
+        # Текст тултипа: время скрейпинга + даты поездки
+        text_values = []
+        for _, _row in hotel_ts.iterrows():
+            _scrape_time = pd.to_datetime(_row['scraped_at_display']).strftime('%d.%m.%Y %H:%M')
+            _trip_dates = str(_row.get('dates', '')) if pd.notna(_row.get('dates', None)) else ''
+            _label = f"Собрано: {_scrape_time}"
+            if _trip_dates:
+                _label += f" | Даты: {_trip_dates}"
+            text_values.append(_label)
 
         hotel_slug = slugify(hotel_name)
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
@@ -820,9 +829,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     <script>
       const x = {json.dumps(x_values, ensure_ascii=False)};
       const y = {json.dumps(y_values, ensure_ascii=False)};
+      const text = {json.dumps(text_values, ensure_ascii=False)};
       const trace = {{
         x: x,
         y: y,
+        text: text,
+        hovertemplate: '<b>%{{y:.0f}} PLN</b><br>%{{text}}<extra></extra>',
         type: 'scatter',
         mode: 'lines+markers',
         line: {{ color: '#2E86AB', width: 3 }},
@@ -2330,12 +2342,32 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </thead>
                 <tbody>"""
 
-    # Добавляем строки таблицы
+    # Добавляем строки таблицы (только актуальные — дата отъезда не в прошлом)
+    today = datetime.now().date()
     for i, (_, hotel) in enumerate(all_hotels.iterrows()):
         hotel_name = hotel['hotel_name']
         price = hotel['price']
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '20-09-2025 - 04-10-2025'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '6-15 дней'
+
+        # Фильтр: пропускаем предложения с датой отъезда в прошлом
+        try:
+            from datetime import datetime as _dt
+            _dates_str = str(dates).strip()
+            # Формат: "DD.MM.YYYY - DD.MM.YYYY" — разбиваем по " - "
+            if ' - ' in _dates_str:
+                _start_str = _dates_str.split(' - ')[0].strip()
+            else:
+                _start_str = _dates_str.strip()
+            # Поддерживаем форматы: DD.MM.YYYY и DD-MM-YYYY
+            if '.' in _start_str:
+                trip_start = _dt.strptime(_start_str, '%d.%m.%Y').date()
+            else:
+                trip_start = _dt.strptime(_start_str, '%d-%m-%Y').date()
+            if trip_start < today:
+                continue  # Дата в прошлом — пропускаем строку
+        except Exception:
+            pass  # Если не удалось распарсить — показываем строку
         
         # Δ 48ч
         delta_display = "—"

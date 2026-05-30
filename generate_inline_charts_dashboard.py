@@ -715,6 +715,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_ts = df[df['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
         x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
+        dates_list = hotel_ts['dates'].fillna('Неизвестно').tolist()
+        
+        text_values = []
+        for x_val, trip_dates in zip(x_values, dates_list):
+            text_values.append(f"Дата сбора: {x_val}<br>Даты поездки: {trip_dates}")
 
         hotel_slug = slugify(hotel_name)
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
@@ -729,12 +734,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
 
         chart_html = f"""<!DOCTYPE html>
-<html lang=\"ru\">
+<html lang="ru">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>График цен — {hotel_name}</title>
-    <script src=\"https://cdn.plot.ly/plotly-latest.min.js\"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <style>
         body {{ font-family: Arial, sans-serif; margin: 20px; }}
         .back {{ margin-bottom: 10px; }}
@@ -742,19 +747,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     </style>
 <head>
 <body>
-    <div class=\"back\"><a href=\"{back_href}\">← Назад к дашборду</a></div>
+    <div class="back"><a href="{back_href}">← Назад к дашборду</a></div>
     <h2>График цен: {hotel_name}</h2>
-    <div id=\"chart\"></div>
+    <div id="chart"></div>
     <script>
       const x = {json.dumps(x_values, ensure_ascii=False)};
       const y = {json.dumps(y_values, ensure_ascii=False)};
+      const text = {json.dumps(text_values, ensure_ascii=False)};
       const trace = {{
         x: x,
         y: y,
+        text: text,
         type: 'scatter',
         mode: 'lines+markers',
         line: {{ color: '#2E86AB', width: 3 }},
-        marker: {{ size: 8 }}
+        marker: {{ size: 8 }},
+        hovertemplate: '<b>Цена: %{{y}} PLN</b><br><br>%{{text}}<extra></extra>'
       }};
       const layout = {{
         title: 'История цен',
