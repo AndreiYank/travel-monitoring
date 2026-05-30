@@ -11,9 +11,12 @@ import json
 import csv
 import os
 import sys
+import re
+import html as ihtml
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
 import pandas as pd
+import requests
 import matplotlib.pyplot as plt
 from playwright.async_api import async_playwright
 import logging
@@ -80,10 +83,26 @@ class TravelPriceMonitor:
 
 
     async def scrape_offers_with_retry(self) -> List[Dict[str, Any]]:
-        """Парсит предложения с повторными попытками"""
+        """Парсит предложения.
+
+        Сначала пробуем быстрый путь: прямой HTTP-запрос + разбор server-side HTML
+        (на порядок быстрее, без запуска браузера). Если он не дал результата
+        (например, изменилась разметка или включился анти-бот) — автоматически
+        откатываемся на надёжный браузерный парсинг через Playwright.
+        """
+        if self.config.get('disable_http_fast_path') is not True:
+            try:
+                offers = self.scrape_offers_http()
+                if offers:
+                    logger.info(f"⚡ Быстрый HTTP-парсинг успешен: {len(offers)} предложений")
+                    return offers
+                logger.warning("HTTP-парсинг не дал результатов — переключаемся на Playwright")
+            except Exception as e:
+                logger.warning(f"HTTP-парсинг не удался ({e}) — переключаемся на Playwright")
+
         for attempt in range(self.config['max_retries']):
             try:
-                logger.info(f"Попытка {attempt + 1}/{self.config['max_retries']}")
+                logger.info(f"Попытка {attempt + 1}/{self.config['max_retries']} (Playwright)")
                 offers = await self.scrape_offers()
                 if offers:
                     return offers
@@ -98,6 +117,175 @@ class TravelPriceMonitor:
         logger.error("Все попытки исчерпаны")
         return []
 
+    def _build_page_url(self, page_number: int) -> str:
+        """Строит URL страницы выдачи. Пагинация fly.pl — через сегмент пути p:N.
+
+        Важно: параметр filter[fp]=1 принудительно возвращает первую страницу,
+        поэтому для N>1 его нужно убрать (так же делают «родные» ссылки сайта).
+        """
+        base = self.config['url']
+        if page_number <= 1:
+            return base
+        if '?' in base:
+            path, query = base.split('?', 1)
+        else:
+            path, query = base, ''
+        # Удаляем filter[fp]=... (в обеих формах: [ ] и %5B %5D), иначе вернётся страница 1
+        query = re.sub(r'filter(?:\[|%5B)fp(?:\]|%5D)=[^&]*&?', '', query)
+        query = query.strip('&')
+        if not path.endswith('/'):
+            path += '/'
+        query_part = f"?{query}" if query else ''
+        return f"{path}p:{page_number}/{query_part}"
+
+    def _parse_offers_from_html(self, page_html: str) -> List[Dict[str, Any]]:
+        """Извлекает все офферы со страницы за один проход по HTML.
+
+        fly.pl рендерит карточки на сервере со schema.org-разметкой (RDFa),
+        поэтому все нужные поля доступны в чистых атрибутах/мета-тегах:
+          - data-phref / meta[property=schema:url] → ссылка на оффер
+          - h2[property=schema:name] (текст)       → название отеля
+          - div[rel=schema:image] resource         → фото (надёжнее, чем <img>)
+          - data-priceperall                        → цена «за всех»
+          - текст карточки DD.MM.YYYY - DD.MM.YYYY (N dni/M nocy) → даты/длительность
+        """
+        offers: List[Dict[str, Any]] = []
+        cards = re.split(r'<div class="card-offer-search', page_html)[1:]
+        departure_airport = self.extract_departure_airport_from_url(self.config['url'])
+
+        for card in cards:
+            def find(pattern: str, flags: int = 0) -> str:
+                m = re.search(pattern, card, flags)
+                return ihtml.unescape(m.group(1)).strip() if m else ''
+
+            # Ссылка на оффер: предпочитаем декодированный schema:url, иначе data-phref
+            offer_url = find(r'property="schema:url"[^>]*content="([^"]+)"')
+            if not offer_url:
+                offer_url = find(r'data-phref="([^"]+)"')
+
+            # Название отеля — текст внутри <h2 property="schema:name"> (короткая форма,
+            # совместимая с историей; content-атрибут содержит лишнюю геолокацию)
+            name = ''
+            mh = re.search(r'<h2[^>]*property="schema:name"[^>]*>(.*?)</h2>', card, re.S)
+            if mh:
+                name = self.clean_text(re.sub(r'<[^>]+>', '', mh.group(1)))
+            if not name:
+                name = find(r'property="schema:name"[^>]*content="([^"]+)"')
+
+            # Фото из resource-атрибута schema:image
+            image_url = find(r'rel="schema:image"[^>]*resource="([^"]+)"')
+            if image_url:
+                image_url = self.make_absolute_url(image_url)
+
+            # Цена «за всех»; запасной вариант — цена за человека из schema:price
+            total = find(r'data-priceperall="([^"]+)"')
+            price_value = self.extract_price(total) if total else 0
+            if not price_value:
+                pp = find(r'property="schema:price"[^>]*content="([^"]+)"')
+                price_value = self.extract_price(pp) if pp else 0
+
+            # Даты и длительность из текста карточки
+            md = re.search(
+                r'(\d{2}\.\d{2}\.\d{4}\s*-\s*\d{2}\.\d{2}\.\d{4})\s*\(([^)]*?dni[^)]*)\)',
+                card,
+            )
+            dates = md.group(1).strip() if md else ''
+            duration = md.group(2).strip() if md else ''
+
+            offers.append({
+                'hotel_name': (name or 'Предложение')[:100],
+                'price': price_value,
+                'dates': dates[:50],
+                'duration': duration[:30],
+                'rating': '',
+                'departure_airport': departure_airport,
+                'scraped_at': datetime.now(timezone.utc).isoformat(),
+                'url': self.config['url'],
+                'image_url': image_url or '',
+                'offer_url': offer_url or '',
+            })
+
+        return offers
+
+    def scrape_offers_http(self) -> List[Dict[str, Any]]:
+        """Быстрый парсинг через прямые HTTP-запросы (без браузера).
+
+        Постранично запрашивает выдачу (пагинация p:N), разбирает HTML и применяет
+        те же фильтры (мин/макс цена, целевой scope), что и браузерный путь.
+        """
+        max_price_threshold = float(
+            self.config.get('max_price_threshold')
+            or self._extract_price_limit()
+            or 8100
+        )
+        min_price_threshold = float(self.config.get('min_price_threshold', 0))
+        max_pages = int(self.config.get('max_pages', 10))
+        max_offers = int(self.config.get('max_offers', 0))
+        timeout_s = float(self.config.get('wait_timeout', 30000)) / 1000.0
+
+        session = requests.Session()
+        session.headers.update({
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 '
+                          '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+            'Accept-Language': 'pl-PL,pl;q=0.9,en;q=0.8',
+        })
+
+        logger.info(
+            f"⚡ HTTP-режим: лимит цены {max_price_threshold:.0f} PLN, "
+            f"мин. цена {min_price_threshold:.0f} PLN, макс. страниц {max_pages}"
+        )
+
+        all_offers: List[Dict[str, Any]] = []
+        page_number = 1
+        while page_number <= max_pages:
+            url = self._build_page_url(page_number)
+            resp = session.get(url, timeout=timeout_s)
+            if resp.status_code != 200:
+                logger.warning(f"HTTP {resp.status_code} на странице {page_number}")
+                break
+
+            raw_offers = self._parse_offers_from_html(resp.text)
+            if not raw_offers:
+                logger.info(f"Страница {page_number}: карточки не найдены, завершаем")
+                break
+
+            page_offers = []
+            max_price_on_page = 0
+            filtered_out = 0
+            for off in raw_offers:
+                if off.get('price', 0) <= 0:
+                    continue
+                if min_price_threshold > 0 and off['price'] < min_price_threshold:
+                    continue
+                if not self._is_offer_in_expected_scope(off):
+                    filtered_out += 1
+                    continue
+                page_offers.append(off)
+                max_price_on_page = max(max_price_on_page, off['price'])
+
+            if page_offers:
+                all_offers.extend(page_offers)
+                logger.info(
+                    f"Страница {page_number}: собрано {len(page_offers)} "
+                    f"(отфильтровано {filtered_out}), макс. цена {max_price_on_page:.0f} PLN"
+                )
+                if max_offers > 0 and len(all_offers) >= max_offers:
+                    all_offers = all_offers[:max_offers]
+                    logger.info(f"Достигнут лимит предложений ({max_offers}), завершаем")
+                    break
+                if max_price_on_page >= max_price_threshold:
+                    logger.info(f"Достигнута максимальная цена {max_price_threshold:.0f} PLN, завершаем")
+                    break
+            else:
+                logger.info(f"Страница {page_number}: после фильтра не осталось предложений, завершаем")
+                break
+
+            page_number += 1
+
+        logger.info(f"⚡ HTTP-парсинг завершён: {len(all_offers)} предложений с {page_number} страниц")
+        return all_offers
+
     async def scrape_offers(self) -> List[Dict[str, Any]]:
         """Парсит предложения с сайта fly.pl с пагинацией"""
         all_offers = []
@@ -110,9 +298,14 @@ class TravelPriceMonitor:
         min_price_threshold = float(
             self.config.get('min_price_threshold', 0)
         )  # Минимальная цена (фильтр)
+        max_pages = int(self.config.get('max_pages', 10))
+        max_offers = int(self.config.get('max_offers', 0))  # 0 = без лимита
         logger.info(f"Лимит цены для остановки: {max_price_threshold:.0f} PLN")
         if min_price_threshold > 0:
             logger.info(f"Минимальная цена (фильтр): {min_price_threshold:.0f} PLN")
+        logger.info(f"Лимит страниц: {max_pages}")
+        if max_offers > 0:
+            logger.info(f"Лимит предложений: {max_offers}")
         
         async with async_playwright() as p:
             browser = await p.chromium.launch(
@@ -152,7 +345,7 @@ class TravelPriceMonitor:
                 await page.wait_for_timeout(5000)
                 
                 # Парсим страницы пока не достигнем максимальной цены
-                while page_number <= 10:  # Максимум 10 страниц для безопасности
+                while page_number <= max_pages:
                     logger.info(f"Парсим страницу {page_number}...")
                     
                     # Ищем предложения на текущей странице
@@ -194,6 +387,11 @@ class TravelPriceMonitor:
                         logger.info(f"Страница {page_number}: собрано {len(page_offers)} предложений, максимальная цена: {max_price_on_page:.0f} PLN")
                         if filtered_out_on_scope:
                             logger.info(f"Страница {page_number}: отфильтровано нерелевантных предложений: {filtered_out_on_scope}")
+
+                        if max_offers > 0 and len(all_offers) >= max_offers:
+                            all_offers = all_offers[:max_offers]
+                            logger.info(f"Достигнут лимит предложений ({max_offers}), завершаем парсинг")
+                            break
                         
                         # Проверяем, достигли ли максимальной цены
                         if max_price_on_page >= max_price_threshold:

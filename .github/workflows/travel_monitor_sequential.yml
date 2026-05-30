@@ -20,7 +20,7 @@ concurrency:
 jobs:
   monitor-and-deploy:
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 60
 
     steps:
       - name: Checkout code
@@ -70,6 +70,8 @@ jobs:
           python travel_monitor.py --config config_ci_filter_7_10.json
           python travel_monitor.py --config config_ci_filter_13_16.json
 
+          # Быстрый HTTP-парсинг делает все проходы дешёвыми, поэтому дорогой
+          # диапазон собираем каждый час вместе с основными фильтрами.
           echo "💎 High-band pass (expensive hotels, history only)"
           python travel_monitor.py --config config_ci_filter_7_10_high.json
           python travel_monitor.py --config config_ci_filter_13_16_high.json
@@ -156,8 +158,8 @@ jobs:
             COMMIT_MSG="🔄 Hourly update (only new filters) - $(date '+%Y-%m-%d %H:%M:%S UTC')
 
             📌 Filters:
-            - 7–10 days (4766–9000 PLN)
-            - 13–16 days (4766–9000 PLN)
+            - 7–10 days (4000–10000 PLN show, high-band 10–20k)
+            - 13–16 days (4000–10000 PLN show, high-band 10–20k)
 
             🤖 Automated by GitHub Actions"
             
