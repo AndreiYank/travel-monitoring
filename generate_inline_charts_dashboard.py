@@ -472,8 +472,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         trend_index_detailed_data = []
     
     
-    # Получаем актуальные цены по каждому отелю (последнее наблюдение)
-    df_sorted_all = df.sort_values(['hotel_name', 'scraped_at_display'])
+    # Получаем актуальный срез только из последнего рана для таблицы дашборда.
+    # Важно: графики по клику строятся ниже из полного df (вся история наблюдений).
+    latest_run_slice = pd.DataFrame()
+    try:
+        if run_starts and run_ends:
+            latest_run_slice = df_sorted.iloc[run_starts[-1]:run_ends[-1]].copy()
+    except Exception:
+        latest_run_slice = pd.DataFrame()
+    if latest_run_slice.empty:
+        latest_run_slice = df.copy()
+
+    # Для таблицы оставляем только "актуальные сейчас" записи (последний раn)
+    df_sorted_all = latest_run_slice.sort_values(['hotel_name', 'scraped_at_display'])
     latest_rows = []
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
         last = grp.iloc[-1]
@@ -489,6 +500,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'image_url': last.get('image_url', None)
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
+    print(f"🧹 Таблица отфильтрована по последнему рану: {len(all_hotels)} актуальных отелей")
 
     #
     # Откат: отключаем блок "до 8000 из любого вылета, отсутствующие из Варшавы"
