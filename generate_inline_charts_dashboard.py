@@ -13,6 +13,49 @@ import html as html_lib
 from urllib.parse import urlparse, parse_qs
 from purchase_timing_analysis import analyze_purchase_timing
 
+
+def _parse_price_ceiling(display_price_ceiling):
+    if display_price_ceiling is None:
+        return None
+    try:
+        return float(display_price_ceiling)
+    except (TypeError, ValueError):
+        return None
+
+
+def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
+    """One canonical row per hotel per scrape run.
+
+    With a display ceiling, keep the last offer at or below it in each run.
+    Hotels only seen above the ceiling in a run are omitted from analytics
+    (they stay in the full df for vanished-deal detection).
+    """
+    if df.empty:
+        return df.copy()
+
+    df_time = df.dropna(subset=['scraped_at_display']).sort_values('scraped_at_display').reset_index(drop=True)
+    tdiff = df_time['scraped_at_display'].diff()
+    boundary_positions = df_time.index[tdiff > pd.Timedelta(minutes=run_gap_minutes)].tolist()
+    run_starts = [0] + boundary_positions
+    run_ends = boundary_positions + [len(df_time)]
+
+    rows = []
+    for start_idx, end_idx in zip(run_starts, run_ends):
+        run_slice = df_time.iloc[start_idx:end_idx]
+        for _, grp in run_slice.groupby('hotel_name', sort=False):
+            pick = grp.sort_values('scraped_at_display')
+            if ceiling_val is not None:
+                in_band = pick[pick['price'].astype(float) <= ceiling_val]
+                if in_band.empty:
+                    continue
+                pick = in_band
+            rows.append(pick.iloc[-1])
+
+    if not rows:
+        return pd.DataFrame(columns=df.columns)
+    return pd.DataFrame(rows).sort_values(['hotel_name', 'scraped_at_display']).reset_index(drop=True)
+
+
 def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None):
     """Генерирует дашборд с встроенными графиками"""
     
@@ -41,6 +84,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return
     # Откат фичи сравнения аэропортов: не используем общий датасет
     df_all_airports = None
+
+    ceiling_val = _parse_price_ceiling(display_price_ceiling)
+    df_canonical = collapse_canonical_per_run(df, ceiling_val)
+    if ceiling_val is not None:
+        print(f"📊 Канонические ряды (≤{ceiling_val:.0f} PLN, 1 точка/отель/ран): {len(df_canonical)} записей")
 
     # Анализ «когда покупать»: статистика снижения цен по часу/дню недели/части месяца/месяцу
     try:
@@ -247,8 +295,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Средняя цена ТОП-10 дешёвых предложений по ранам с детальной информацией
     try:
-        # Определяем раны по большим интервалам между записями
-        df_sorted = df.sort_values('scraped_at_display')
+        # Определяем раны по большим интервалам между записями (без смешения дорогих офферов)
+        df_sorted = df_canonical.sort_values('scraped_at_display')
         run_data = []
         top10_detailed_data = []  # Детальная информация для hover
         
@@ -483,37 +531,31 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     
     # Получаем актуальный срез только из последнего рана для таблицы дашборда.
-    # Важно: графики по клику строятся ниже из полного df (вся история наблюдений).
     latest_run_slice = pd.DataFrame()
+    full_latest_run_slice = pd.DataFrame()
     try:
         if run_starts and run_ends:
             latest_run_slice = df_sorted.iloc[run_starts[-1]:run_ends[-1]].copy()
+            df_full_sorted = df.sort_values('scraped_at_display')
+            df_full_sorted['time_diff'] = df_full_sorted['scraped_at_display'].diff()
+            full_boundaries = df_full_sorted[df_full_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
+            full_starts = [0] + full_boundaries
+            full_ends = full_boundaries + [len(df_full_sorted)]
+            full_latest_run_slice = df_full_sorted.iloc[full_starts[-1]:full_ends[-1]].copy()
     except Exception:
         latest_run_slice = pd.DataFrame()
     if latest_run_slice.empty:
-        latest_run_slice = df.copy()
-
-    # Для таблицы — последний ран; при display_price_ceiling показываем только ≤ ceiling
-    # (дорогие остаются в полной истории для статистики и «выпавших»).
-    ceiling_val = None
-    if display_price_ceiling is not None:
-        try:
-            ceiling_val = float(display_price_ceiling)
-        except (TypeError, ValueError):
-            ceiling_val = None
+        latest_run_slice = df_canonical.copy()
 
     df_sorted_all = latest_run_slice.sort_values(['hotel_name', 'scraped_at_display'])
     latest_rows = []
     skipped_above_ceiling = 0
-    for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
-        pick = grp
-        if ceiling_val is not None:
-            in_band = grp[grp['price'] <= ceiling_val]
-            if in_band.empty:
+    if ceiling_val is not None and not full_latest_run_slice.empty:
+        for hotel_name, grp in full_latest_run_slice.groupby('hotel_name'):
+            if grp[grp['price'].astype(float) <= ceiling_val].empty:
                 skipped_above_ceiling += 1
-                continue
-            pick = in_band
-        last = pick.iloc[-1]
+    for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
+        last = grp.iloc[-1]
         latest_rows.append({
             'hotel_name': hotel_name,
             'price': float(last['price']),
@@ -608,11 +650,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         except Exception as e:
             print(f"Ошибка вычисления блока 'до 8000 из любого вылета, нет из Варшавы': {e}")
     
-    # Анализ изменений за разные окна времени
-    df_sorted = df.sort_values(['hotel_name', 'scraped_at_display'])
+    # Анализ изменений за разные окна времени (по каноническим рядам, без смешения офферов)
+    df_sorted = df_canonical.sort_values(['hotel_name', 'scraped_at_display'])
+    ref_time_series = df_canonical['scraped_at_display'] if not df_canonical.empty else df['scraped_at_display']
 
     def compute_changes(window_hours: int):
-        cutoff = (df['scraped_at_display'].max() or datetime.now()) - timedelta(hours=window_hours)
+        cutoff = (ref_time_series.max() or datetime.now()) - timedelta(hours=window_hours)
         changes = []
         deltas_map = {}
         for hotel_name, grp in df_sorted.groupby('hotel_name'):
@@ -656,9 +699,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     decreases_7d, increases_7d, _ = compute_changes(24 * 7)
 
     # Метки нового минимума/максимума за 7д и 30д
-    ref_time = df['scraped_at_display'].max() or datetime.now()
+    ref_time = ref_time_series.max() or datetime.now()
     minmax_labels_by_hotel = {}
-    for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
+    for hotel_name, grp in df_sorted.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at_display')
         latest_price = float(grp.iloc[-1]['price'])
         labels = []
@@ -1161,8 +1204,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     os.makedirs(charts_dir, exist_ok=True)
 
     # Генерируем страницу с графиком для каждого отеля
-    for hotel_name in sorted(df['hotel_name'].unique()):
-        hotel_ts = df[df['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+    for hotel_name in sorted(df_canonical['hotel_name'].unique()):
+        hotel_ts = df_canonical[df_canonical['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
         x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
         dates_list = hotel_ts['dates'].fillna('Неизвестно').tolist()
