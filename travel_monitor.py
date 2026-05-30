@@ -638,16 +638,32 @@ class TravelPriceMonitor:
                     return self.make_absolute_url(u)
                 return u
 
+            def _is_placeholder_image(u: str) -> bool:
+                if not u:
+                    return True
+                low = u.strip().lower()
+                if low.startswith("data:image"):
+                    return True
+                # Частый 1x1 png placeholder в выдаче fly.pl
+                if "ivborw0kggoaaaansuheugaaaaeaaaab" in low and len(low) < 260:
+                    return True
+                if low.startswith("blob:"):
+                    return True
+                return False
+
             # 1) Пробуем <img src> / data-src / srcset
             img_el = await element.query_selector('img')
             if img_el:
-                for attr in ['src', 'data-src', 'data-original', 'data-lazy', 'srcset', 'data-srcset']:
+                # В выдаче часто src = 1x1 placeholder, а реальное фото лежит в data-src
+                for attr in ['data-src', 'data-original', 'data-lazy', 'data-srcset', 'srcset', 'src']:
                     val = await img_el.get_attribute(attr)
                     if not val or not val.strip():
                         continue
                     candidate = _pick_from_srcset(val) if 'srcset' in attr else val.strip()
+                    if _is_placeholder_image(candidate):
+                        continue
                     url = _normalize_url(candidate)
-                    if url.startswith(("http://", "https://")):
+                    if url.startswith(("http://", "https://")) and not _is_placeholder_image(url):
                         return url
             
             # 2) Пробуем фоновые изображения из inline-style

@@ -882,6 +882,35 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         text = re.sub(r"-+", "-", text).strip('-')
         return text or "hotel"
 
+    def normalize_image_url(raw_url: str) -> str:
+        if raw_url is None:
+            return ""
+        url = str(raw_url).strip()
+        if not url:
+            return ""
+        url = html_lib.unescape(url)
+
+        # Приводим типичные относительные форматы.
+        if url.startswith("//"):
+            url = f"https:{url}"
+        elif url.startswith("/"):
+            url = f"https://fly.pl{url}"
+
+        u = url.lower()
+
+        # Отбрасываем заведомо нерабочие или "пиксельные" плейсхолдеры.
+        if u.startswith("blob:"):
+            return ""
+        if u.startswith("data:image"):
+            return ""
+        if u.startswith("https://fly.pl/data:image"):
+            return ""
+        if "ivborw0kggoaaaansuheugaaaaeaaaab" in u and len(u) < 220:
+            return ""
+        if not (u.startswith("http://") or u.startswith("https://")):
+            return ""
+        return url
+
     # Карточки отелей (визуальный режим по умолчанию)
     hotel_cards = []
     for _, hotel in all_hotels.head(200).iterrows():
@@ -890,7 +919,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '—'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '—'
         offer_url = hotel.get('offer_url', '')
-        image_url = hotel.get('image_url', '') or images_map.get(hotel_name, '')
+        image_url = ""
+        for candidate in (hotel.get('image_url', ''), images_map.get(hotel_name, '')):
+            normalized = normalize_image_url(candidate)
+            if normalized:
+                image_url = normalized
+                break
         hotel_slug = slugify(hotel_name)
         if charts_subdir:
             chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
@@ -1526,6 +1560,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             background: var(--gradient-card);
             padding: 1.35rem;
             border-radius: var(--radius-xl);
+            margin-top: var(--section-gap);
             margin-bottom: 1.1rem;
             box-shadow: var(--shadow-md);
             border: 1px solid var(--border-soft);
@@ -1780,6 +1815,33 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             margin: .35rem 0 .85rem;
             background: rgba(255,255,255,.82);
         }}
+        .table-toolbar {{
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            margin-left: auto;
+        }}
+        .table-toolbar-title {{
+            font-size: .76rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            white-space: nowrap;
+        }}
+        .table-mode-switch {{
+            margin: 0;
+            transform: scale(.92);
+            transform-origin: right center;
+        }}
+        .table-header-row {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .8rem;
+            margin-bottom: .65rem;
+        }}
+        .table-header-row h3 {{
+            margin: 0;
+        }}
         .mode-btn {{
             border: none;
             background: transparent;
@@ -1802,6 +1864,31 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px,1fr));
             gap: 12px;
+        }}
+        .cards-pagination {{
+            margin-top: .85rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .65rem;
+            flex-wrap: wrap;
+        }}
+        .cards-pagination-info {{
+            font-size: .84rem;
+            color: var(--text-muted);
+        }}
+        .cards-pagination button {{
+            padding: .48rem .85rem;
+            border-radius: 999px;
+            border: 1px solid var(--border-soft);
+            background: rgba(255,255,255,.9);
+            color: #1e293b;
+            cursor: pointer;
+            font-weight: 600;
+        }}
+        .cards-pagination button:disabled {{
+            opacity: .45;
+            cursor: not-allowed;
         }}
         .hotel-card {{
             background: rgba(255,255,255,.88);
@@ -1901,6 +1988,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .alerts-section {{
             margin-top: var(--section-gap);
+            margin-bottom: var(--section-gap);
             background: var(--gradient-card);
             border-radius: var(--radius-xl);
             box-shadow: var(--shadow-md);
@@ -2598,6 +2686,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 width: 100%;
                 justify-content: space-between;
             }}
+            .table-header-row {{
+                flex-direction: column;
+                align-items: stretch;
+                gap: .55rem;
+            }}
+            .table-toolbar {{
+                margin-left: 0;
+                width: 100%;
+                justify-content: space-between;
+            }}
             .mode-btn {{
                 flex: 1;
             }}
@@ -2747,17 +2845,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </div>
         </div>
 
-        <div class="mode-switch" id="modeSwitch">
-            <button class="mode-btn active" data-mode="cards">Карточки</button>
-            <button class="mode-btn" data-mode="table">Таблица</button>
-        </div>
-
-        <div class="cards-section" id="cardsSection">
-            <div class="cards-grid">
 """
 
     alerts_html = """
-        <div class="alerts-section">
+        <div class="alerts-section" id="alertsSection">
             <div class="alerts-header" onclick="toggleAlerts()">
                 <h3>🚨 История алертов</h3>
                 <span class="expand-icon" id="alertsExpandIcon">▼</span>
@@ -2816,10 +2907,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 """
 
     # Карточки отелей (визуальный режим)
+    cards_html = """
+        <div class="cards-section" id="cardsSection">
+            <div class="cards-grid">
+"""
     for c in hotel_cards:
-        img_html = f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" />' if c["image_url"] else '<div>Фото отеля</div>'
+        img_html = (
+            f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" '
+            f'onerror="this.onerror=null;this.parentElement.innerHTML=\'<div>Фото отеля</div>\';" />'
+        ) if c["image_url"] else '<div>Фото отеля</div>'
         offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
-        html_template += f"""
+        cards_html += f"""
             <article class="hotel-card">
                 <div class="hotel-card-img">{img_html}</div>
                 <div class="hotel-card-body">
@@ -2842,7 +2940,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </article>
 """
 
-    html_template += """
+    cards_html += """
+            </div>
+            <div class="cards-pagination" id="cardsPagination">
+                <button id="cardsPrevPage" disabled>← Предыдущая</button>
+                <div class="cards-pagination-info">
+                    Показано <span id="cardsShowingFrom">1</span>-<span id="cardsShowingTo">24</span> из <span id="cardsTotalItems">0</span>
+                </div>
+                <button id="cardsNextPage">Следующая →</button>
             </div>
         </div>
 """
@@ -2923,10 +3028,24 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </details>
 """
 
-    # Вставляем блок с отелями до 8000 из общего фильтра, которых нет из Варшавы
-    if missing_hotels_under_8000:
+    # Блок выбора вида списка предложений (всегда виден)
+    html_template += f"""
+        <div class="table-toolbar" id="modeSwitchRow">
+            <div class="table-toolbar-title">Вид</div>
+            <div class="mode-switch table-mode-switch" id="modeSwitch">
+                <button class="mode-btn active" data-mode="cards">Карточки</button>
+                <button class="mode-btn" data-mode="table">Таблица</button>
+            </div>
+        </div>
+        {cards_html}
+"""
+
+    # Карточки отелей (визуальный режим)
+    for c in hotel_cards:
+        img_html = f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" />' if c["image_url"] else '<div>Фото отеля</div>'
+        offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
         html_template += f"""
-    <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
+    <div class="hotels-section full-width-table-section" id="missingAirportsSection" style="display:none;">
         <h3>🛫 Отели до 8000 PLN (любой вылет), которых нет при вылете из Варшавы</h3>
         <div class="table-container">
             <table class="hotels-table" id="missingAirportsTable">
@@ -2961,14 +3080,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </tbody>
             </table>
         </div>
-"""
-    else:
-        html_template += f"""
-        <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
+    </div>
 """
 
     html_template += f"""
-            <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
+        <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
+            <div class="table-header-row">
+                <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
+            </div>
             <div class="deal-legend">
                 <strong>Как читать Deal Score:</strong>
                 <span class="deal-badge-hot">🔥 Hot</span> = очень сильная возможность,
@@ -3394,12 +3513,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         // Cards/Table view mode
         const cardsSection = document.getElementById('cardsSection');
         const tableSection = document.getElementById('tableSection');
+        const missingAirportsSection = document.getElementById('missingAirportsSection');
+        const alertsSection = document.getElementById('alertsSection');
         const modeSwitch = document.getElementById('modeSwitch');
         const modeButtons = modeSwitch ? Array.from(modeSwitch.querySelectorAll('.mode-btn')) : [];
         function setMode(mode) {
           const cardsMode = mode !== 'table';
           if (cardsSection) cardsSection.style.display = cardsMode ? '' : 'none';
           if (tableSection) tableSection.style.display = cardsMode ? 'none' : '';
+          if (missingAirportsSection) missingAirportsSection.style.display = cardsMode ? 'none' : '';
+          if (alertsSection) alertsSection.style.display = '';
           modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
           try { localStorage.setItem('dashboard_mode', mode); } catch(e) {}
         }
@@ -3445,6 +3568,50 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         let currentPage = 1;
         const itemsPerPage = 50;
         let filteredRows = [...rows];
+
+        // Cards pagination
+        const cardsGrid = document.querySelector('#cardsSection .cards-grid');
+        const cardItems = cardsGrid ? Array.from(cardsGrid.querySelectorAll('.hotel-card')) : [];
+        const cardsPrevPage = document.getElementById('cardsPrevPage');
+        const cardsNextPage = document.getElementById('cardsNextPage');
+        const cardsShowingFrom = document.getElementById('cardsShowingFrom');
+        const cardsShowingTo = document.getElementById('cardsShowingTo');
+        const cardsTotalItems = document.getElementById('cardsTotalItems');
+        let cardsPage = 1;
+        const cardsPerPage = 24;
+
+        function updateCardsPagination() {
+          const total = cardItems.length;
+          const totalPages = Math.max(1, Math.ceil(total / cardsPerPage));
+          if (cardsPage > totalPages) cardsPage = totalPages;
+          const start = (cardsPage - 1) * cardsPerPage;
+          const end = start + cardsPerPage;
+
+          cardItems.forEach((card, idx) => {
+            card.style.display = idx >= start && idx < end ? '' : 'none';
+          });
+
+          if (cardsTotalItems) cardsTotalItems.textContent = String(total);
+          if (cardsShowingFrom) cardsShowingFrom.textContent = total ? String(start + 1) : '0';
+          if (cardsShowingTo) cardsShowingTo.textContent = total ? String(Math.min(end, total)) : '0';
+          if (cardsPrevPage) cardsPrevPage.disabled = cardsPage <= 1;
+          if (cardsNextPage) cardsNextPage.disabled = cardsPage >= totalPages;
+        }
+
+        function cardsNextPageFunc() {
+          const totalPages = Math.max(1, Math.ceil(cardItems.length / cardsPerPage));
+          if (cardsPage < totalPages) {
+            cardsPage++;
+            updateCardsPagination();
+          }
+        }
+
+        function cardsPrevPageFunc() {
+          if (cardsPage > 1) {
+            cardsPage--;
+            updateCardsPagination();
+          }
+        }
         
         function filterRows() {
           const searchTerm = searchInput.value.toLowerCase();
@@ -3531,9 +3698,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         });
         nextPage.addEventListener('click', nextPageFunc);
         prevPage.addEventListener('click', prevPageFunc);
+        if (cardsNextPage) cardsNextPage.addEventListener('click', cardsNextPageFunc);
+        if (cardsPrevPage) cardsPrevPage.addEventListener('click', cardsPrevPageFunc);
         
         // Initialize
         updateTable();
+        updateCardsPagination();
       });
     </script>
   </body>
