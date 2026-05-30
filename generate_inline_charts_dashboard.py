@@ -2996,8 +2996,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         {cards_html}
 """
 
-    # Вставляем блок с отелями до 8000 из общего фильтра, которых нет из Варшавы
-    if missing_hotels_under_8000:
+    # Карточки отелей (визуальный режим)
+    for c in hotel_cards:
+        img_html = f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" />' if c["image_url"] else '<div>Фото отеля</div>'
+        offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
         html_template += f"""
     <div class="hotels-section full-width-table-section" id="missingAirportsSection" style="display:none;">
         <h3>🛫 Отели до 8000 PLN (любой вылет), которых нет при вылете из Варшавы</h3>
