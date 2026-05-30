@@ -29,37 +29,12 @@ def _lowest_price_row(grp):
     return grp.loc[prices.idxmin()]
 
 
-def _offer_key(row):
-    """Ключ одного и того же тур-пакета (offer_url или даты поездки)."""
-    if isinstance(row, pd.Series):
-        url = str(row.get('offer_url') or '').strip()
-        if url:
-            return ('url', url)
-        dates = str(row.get('dates') or '').strip()
-        if dates and dates.lower() != 'nan':
-            return ('dates', dates)
-    return None
-
-
 def _last_run_slice(df, time_col='scraped_at_display', gap_minutes=5):
     """Последний ран скрейпа как DataFrame."""
     runs = list(iter_scrape_runs(df, time_col=time_col, gap_minutes=gap_minutes))
     if not runs:
         return df.iloc[0:0].copy()
     return runs[-1][2].copy()
-
-
-def _filter_hotel_history_to_offer(hotel_df, offer_key):
-    """Оставляет только историю того же оффера, что показан в таблице."""
-    if offer_key is None or hotel_df.empty:
-        return hotel_df
-    kind, value = offer_key
-    if kind == 'url':
-        mask = hotel_df['offer_url'].astype(str).str.strip() == value
-    else:
-        mask = hotel_df['dates'].astype(str).str.strip() == value
-    filtered = hotel_df[mask]
-    return filtered if not filtered.empty else hotel_df
 
 
 def iter_scrape_runs(df, time_col='scraped_at_display', gap_minutes=5):
@@ -135,6 +110,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     if ceiling_val is not None:
         print(f"📊 Канонические ряды (≤{ceiling_val:.0f} PLN, 1 точка/отель/ран): {len(df_canonical)} записей")
 
+    # Модель данных:
+    # • df_canonical — вся история (1 min-цена / отель / ран, ≤ ceiling): графики, дельты, deal score.
+    # • таблица (all_hotels) — только последний ран: актуальная min-цена «сейчас».
+
     # Анализ «когда покупать»: статистика снижения цен по часу/дню недели/части месяца/месяцу
     try:
         timing_analysis = analyze_purchase_timing(df, tz=tz)
@@ -143,12 +122,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         timing_analysis = {"available": False, "status": "error", "recommendation": "", "dimensions": {}}
     timing_json = json.dumps(timing_analysis, ensure_ascii=False, default=str)
 
-    # Вычисляем статистику
-    total_offers = len(df)
-    unique_hotels = df['hotel_name'].nunique()
-    avg_price = df['price'].mean()
-    min_price = df['price'].min()
-    max_price = df['price'].max()
+    # Вычисляем статистику (заполним после сборки таблицы — см. history_* ниже)
+    total_offers = 0
+    unique_hotels = 0
+    avg_price = 0.0
+    min_price = 0.0
+    max_price = 0.0
+    current_table_hotels = 0
 
     # Функция для генерации hover-данных с использованием встроенных возможностей Plotly
     def generate_hover_data(detailed_data):
@@ -591,10 +571,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'offer_url': last.get('offer_url', None),
             'image_url': last.get('image_url', None)
         })
-    current_offer_by_hotel = {row['hotel_name']: _offer_key(row) for row in latest_rows}
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
-    # Актуальная цена для таблицы и всех «текущих» метрик — только последний ран.
+    # Актуальная цена для таблицы — только последний ран; дельты — vs вся df_canonical.
     table_prices = {row['hotel_name']: float(row['price']) for row in latest_rows}
+
+    total_offers = len(df_canonical)
+    unique_hotels = int(df_canonical['hotel_name'].nunique()) if not df_canonical.empty else 0
+    if not df_canonical.empty:
+        avg_price = float(df_canonical['price'].mean())
+        min_price = float(df_canonical['price'].min())
+        max_price = float(df_canonical['price'].max())
+    current_table_hotels = len(all_hotels)
     if ceiling_val is not None and skipped_above_ceiling:
         print(f"💎 Дороже потолка показа (>{ceiling_val:.0f} PLN, только в истории): {skipped_above_ceiling}")
     print(f"🧹 Таблица отфильтрована по последнему рану: {len(all_hotels)} актуальных отелей")
@@ -1233,10 +1220,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     charts_dir = os.path.join(charts_subdir)
     os.makedirs(charts_dir, exist_ok=True)
 
-    # Генерируем страницу с графиком для каждого отеля (только текущий оффер из таблицы)
+    # График отеля — вся каноническая история по всем ранам
     for hotel_name in sorted(df_canonical['hotel_name'].unique()):
         hotel_ts = df_canonical[df_canonical['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
-        hotel_ts = _filter_hotel_history_to_offer(hotel_ts, current_offer_by_hotel.get(hotel_name))
         x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
         dates_list = hotel_ts['dates'].fillna('Неизвестно').tolist()
@@ -3492,23 +3478,27 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <div class="metrics metrics-compact">
                     <div class="metric">
                         <div class="metric-value">{total_offers:,}</div>
-                        <div>Всего предложений</div>
+                        <div>Наблюдений (история)</div>
                     </div>
                     <div class="metric">
                         <div class="metric-value">{unique_hotels}</div>
-                        <div>Уникальных отелей</div>
+                        <div>Отелей в истории</div>
+                    </div>
+                    <div class="metric">
+                        <div class="metric-value">{current_table_hotels}</div>
+                        <div>Актуально в таблице</div>
                     </div>
                     <div class="metric">
                         <div class="metric-value">{avg_price:.0f} PLN</div>
-                        <div>Средняя цена</div>
+                        <div>Средняя (история)</div>
                     </div>
                     <div class="metric">
                         <div class="metric-value">{min_price:.0f} PLN</div>
-                        <div>Минимальная цена</div>
+                        <div>Минимум (история)</div>
                     </div>
                     <div class="metric">
                         <div class="metric-value">{max_price:.0f} PLN</div>
-                        <div>Максимальная цена</div>
+                        <div>Максимум (история)</div>
                     </div>
                 </div>
 
@@ -4398,7 +4388,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         f.write(html_template)
     
     print(f"✅ Дашборд с встроенными графиками сгенерирован: index.html")
-    print(f"📊 Статистика: {total_offers} предложений, {unique_hotels} отелей")
+    print(f"📊 Статистика: {total_offers} наблюдений, {unique_hotels} отелей в истории, {current_table_hotels} актуально в таблице")
     print(f"💰 Цены: {min_price:.0f} - {max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
     print(f"📈 Изменения цен: {len(decreases_48h) + len(increases_48h)} отелей за 48ч")
 
