@@ -12,19 +12,22 @@
     </style>
 <head>
 <body>
-    <div class="back"><a href="../../index.html">← Назад к дашборду</a></div>
+    <div class="back"><a href="../../index_filter_7_10_days.html">← Назад к дашборду</a></div>
     <h2>График цен: Sunrise Anjum Resort</h2>
     <div id="chart"></div>
     <script>
       const x = ["2026-05-30 08:25"];
       const y = [8051.0];
+      const text = ["Дата сбора: 2026-05-30 08:25<br>Даты поездки: 31.05.2026 - 09.06.2026"];
       const trace = {
         x: x,
         y: y,
+        text: text,
         type: 'scatter',
         mode: 'lines+markers',
         line: { color: '#2E86AB', width: 3 },
-        marker: { size: 8 }
+        marker: { size: 8 },
+        hovertemplate: '<b>Цена: %{y} PLN</b><br><br>%{text}<extra></extra>'
       };
       const layout = {
         title: 'История цен',
