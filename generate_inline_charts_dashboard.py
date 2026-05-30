@@ -493,7 +493,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     if latest_run_slice.empty:
         latest_run_slice = df.copy()
 
-    # Для таблицы оставляем только "актуальные сейчас" записи (последний раn)
+    # Для таблицы — последний ран; при display_price_ceiling показываем только ≤ ceiling
+    # (дорогие остаются в полной истории для статистики и «выпавших»).
     ceiling_val = None
     if display_price_ceiling is not None:
         try:
@@ -503,13 +504,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     df_sorted_all = latest_run_slice.sort_values(['hotel_name', 'scraped_at_display'])
     latest_rows = []
-    skipped_high_only = 0
+    skipped_above_ceiling = 0
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
         pick = grp
         if ceiling_val is not None:
             in_band = grp[grp['price'] <= ceiling_val]
             if in_band.empty:
-                skipped_high_only += 1
+                skipped_above_ceiling += 1
                 continue
             pick = in_band
         last = pick.iloc[-1]
@@ -525,8 +526,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'image_url': last.get('image_url', None)
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
-    if ceiling_val is not None and skipped_high_only:
-        print(f"💎 Только в high-band (>{ceiling_val:.0f} PLN, не в таблице): {skipped_high_only}")
+    if ceiling_val is not None and skipped_above_ceiling:
+        print(f"💎 Дороже потолка показа (>{ceiling_val:.0f} PLN, только в истории): {skipped_above_ceiling}")
     print(f"🧹 Таблица отфильтрована по последнему рану: {len(all_hotels)} актуальных отелей")
 
     #

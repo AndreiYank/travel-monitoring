@@ -70,12 +70,6 @@ jobs:
           python travel_monitor.py --config config_ci_filter_7_10.json
           python travel_monitor.py --config config_ci_filter_13_16.json
 
-          # Быстрый HTTP-парсинг делает все проходы дешёвыми, поэтому дорогой
-          # диапазон собираем каждый час вместе с основными фильтрами.
-          echo "💎 High-band pass (expensive hotels, history only)"
-          python travel_monitor.py --config config_ci_filter_7_10_high.json
-          python travel_monitor.py --config config_ci_filter_13_16_high.json
-
           echo "✅ Monitoring completed"
 
       - name: Generate dashboards (only new filters) + landing
@@ -158,8 +152,8 @@ jobs:
             COMMIT_MSG="🔄 Hourly update (only new filters) - $(date '+%Y-%m-%d %H:%M:%S UTC')
 
             📌 Filters:
-            - 7–10 days (4000–10000 PLN show, high-band 10–20k)
-            - 13–16 days (4000–10000 PLN show, high-band 10–20k)
+            - 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - 13–16 days (scrape 4000–20000 PLN, show ≤10000)
 
             🤖 Automated by GitHub Actions"
             
