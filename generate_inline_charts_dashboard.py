@@ -565,7 +565,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         trend_index_detailed_data = []
     
     
-    # Получаем актуальный срез только из последнего рана для таблицы дашборда.
+    # --- Таблица: только последний ран (актуальные цены «сейчас») ---
+    # Канонизация: 1 строка / отель / ран = min цена (≤ display_price_ceiling).
     latest_run_slice = _last_run_slice(df_canonical)
     full_latest_run_slice = _last_run_slice(df)
 
@@ -592,6 +593,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         })
     current_offer_by_hotel = {row['hotel_name']: _offer_key(row) for row in latest_rows}
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
+    # Актуальная цена для таблицы и всех «текущих» метрик — только последний ран.
+    table_prices = {row['hotel_name']: float(row['price']) for row in latest_rows}
     if ceiling_val is not None and skipped_above_ceiling:
         print(f"💎 Дороже потолка показа (>{ceiling_val:.0f} PLN, только в истории): {skipped_above_ceiling}")
     print(f"🧹 Таблица отфильтрована по последнему рану: {len(all_hotels)} актуальных отелей")
@@ -674,7 +677,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         except Exception as e:
             print(f"Ошибка вычисления блока 'до 8000 из любого вылета, нет из Варшавы': {e}")
     
-    # Анализ изменений за разные окна времени (по каноническим рядам, без смешения офферов)
+    # Дельты: «текущая» цена = таблица (последний ран), база = каноническая история (все раны).
     df_sorted = df_canonical.sort_values(['hotel_name', 'scraped_at_display'])
     ref_time_series = df_canonical['scraped_at_display'] if not df_canonical.empty else df['scraped_at_display']
 
@@ -683,9 +686,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         changes = []
         deltas_map = {}
         for hotel_name, grp in df_sorted.groupby('hotel_name'):
+            if hotel_name not in table_prices:
+                continue
             grp = grp.sort_values('scraped_at_display')
-            latest_row = grp.iloc[-1]
-            latest_time = latest_row['scraped_at_display']
+            latest_price = table_prices[hotel_name]
+            latest_time = grp.iloc[-1]['scraped_at_display']
             win = grp[grp['scraped_at_display'] >= cutoff]
             if len(win) >= 2:
                 baseline_row = win.iloc[0]
@@ -694,7 +699,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             else:
                 deltas_map[hotel_name] = None
                 continue
-            latest_price = float(latest_row['price'])
             baseline_price = float(baseline_row['price'])
             if baseline_price == 0:
                 deltas_map[hotel_name] = None
@@ -726,8 +730,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     ref_time = ref_time_series.max() or datetime.now()
     minmax_labels_by_hotel = {}
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
+        if hotel_name not in table_prices:
+            continue
         grp = grp.sort_values('scraped_at_display')
-        latest_price = float(grp.iloc[-1]['price'])
+        latest_price = table_prices[hotel_name]
         labels = []
         for days in (7, 30):
             cutoff_d = ref_time - timedelta(days=days)
@@ -752,7 +758,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             avg_baseline_delta[hotel_name] = None
             continue
 
-        last_price = float(grp.iloc[-1]['price'])
+        last_price = float(table_prices.get(hotel_name, grp.iloc[-1]['price']))
         series = pd.Series(prices, dtype='float64')
         n = len(series)
 
@@ -789,7 +795,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         if not prices:
             continue
 
-        latest = float(prices[-1])
+        latest = float(table_prices.get(hotel_name, prices[-1]))
         series = pd.Series(prices, dtype='float64')
         samples = len(series)
         median = float(series.median()) if len(series) else latest
