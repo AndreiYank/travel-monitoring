@@ -494,10 +494,25 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         latest_run_slice = df.copy()
 
     # Для таблицы оставляем только "актуальные сейчас" записи (последний раn)
+    ceiling_val = None
+    if display_price_ceiling is not None:
+        try:
+            ceiling_val = float(display_price_ceiling)
+        except (TypeError, ValueError):
+            ceiling_val = None
+
     df_sorted_all = latest_run_slice.sort_values(['hotel_name', 'scraped_at_display'])
     latest_rows = []
+    skipped_high_only = 0
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
-        last = grp.iloc[-1]
+        pick = grp
+        if ceiling_val is not None:
+            in_band = grp[grp['price'] <= ceiling_val]
+            if in_band.empty:
+                skipped_high_only += 1
+                continue
+            pick = in_band
+        last = pick.iloc[-1]
         latest_rows.append({
             'hotel_name': hotel_name,
             'price': float(last['price']),
@@ -510,19 +525,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'image_url': last.get('image_url', None)
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
-    # Потолок ПОКАЗА: в видимые списки (таблица/карточки/ТОП-10) попадают только
-    # предложения <= ceiling. Дорогой "хвост" (high-band) остаётся в полной истории df
-    # и используется в статистике/журнале "выпавших"/графиках, но на странице не показывается.
-    if display_price_ceiling is not None and not all_hotels.empty:
-        try:
-            ceiling_val = float(display_price_ceiling)
-            before_n = len(all_hotels)
-            all_hotels = all_hotels[all_hotels['price'] <= ceiling_val].reset_index(drop=True)
-            hidden_n = before_n - len(all_hotels)
-            if hidden_n > 0:
-                print(f"💎 Скрыто из показа (дороже {ceiling_val:.0f} PLN, но учитываются в статистике): {hidden_n}")
-        except (TypeError, ValueError):
-            pass
+    if ceiling_val is not None and skipped_high_only:
+        print(f"💎 Только в high-band (>{ceiling_val:.0f} PLN, не в таблице): {skipped_high_only}")
     print(f"🧹 Таблица отфильтрована по последнему рану: {len(all_hotels)} актуальных отелей")
 
     #
