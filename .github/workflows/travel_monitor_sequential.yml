@@ -70,6 +70,10 @@ jobs:
           python travel_monitor.py --config config_ci_filter_7_10.json
           python travel_monitor.py --config config_ci_filter_13_16.json
 
+          echo "💎 High-band pass (expensive hotels, history only)"
+          python travel_monitor.py --config config_ci_filter_7_10_high.json
+          python travel_monitor.py --config config_ci_filter_13_16_high.json
+
           echo "✅ Monitoring completed"
 
       - name: Generate dashboards (only new filters) + landing
@@ -81,14 +85,16 @@ jobs:
             --output index_filter_7_10_days.html \
             --title "Мониторинг цен • Фильтр 7–10 дней" \
             --charts-dir hotel-charts/filter_7_10_days \
-            --alerts-file data/filters/filter_7_10_days/travel_prices_alerts.json
+            --alerts-file data/filters/filter_7_10_days/travel_prices_alerts.json \
+            --display-price-ceiling 10000
 
           python generate_inline_charts_dashboard.py \
             --data-file data/filters/filter_13_16_days/travel_prices.csv \
             --output index_filter_13_16_days.html \
             --title "Мониторинг цен • Фильтр 13–16 дней" \
             --charts-dir hotel-charts/filter_13_16_days \
-            --alerts-file data/filters/filter_13_16_days/travel_prices_alerts.json
+            --alerts-file data/filters/filter_13_16_days/travel_prices_alerts.json \
+            --display-price-ceiling 10000
 
           python generate_landing.py
           echo "✅ Dashboards + landing generated"
