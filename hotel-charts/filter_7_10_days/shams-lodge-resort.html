@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График цен — Shams Lodge Resort</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .back { margin-bottom: 10px; }
+        #chart { height: 520px; }
+    </style>
+<head>
+<body>
+    <div class="back"><a href="../../index.html">← Назад к дашборду</a></div>
+    <h2>График цен: Shams Lodge Resort</h2>
+    <div id="chart"></div>
+    <script>
+      const x = ["2026-05-29 12:26", "2026-05-29 14:53", "2026-05-29 18:47", "2026-05-29 23:56", "2026-05-30 01:15", "2026-05-30 04:15", "2026-05-30 08:26", "2026-05-30 11:21", "2026-05-30 13:24"];
+      const y = [8460.0, 8460.0, 8460.0, 8460.0, 8460.0, 8460.0, 8451.0, 8451.0, 8451.0];
+      const trace = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#2E86AB', width: 3 },
+        marker: { size: 8 }
+      };
+      const layout = {
+        title: 'История цен',
+        xaxis: { title: 'Время' },
+        yaxis: { title: 'Цена (PLN)' }
+      };
+      Plotly.newPlot('chart', [trace], layout);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График цен — Xperience Kiroseiz Premier</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .back { margin-bottom: 10px; }
+        #chart { height: 520px; }
+    </style>
+<head>
+<body>
+    <div class="back"><a href="../../index.html">← Назад к дашборду</a></div>
+    <h2>График цен: Xperience Kiroseiz Premier</h2>
+    <div id="chart"></div>
+    <script>
+      const x = ["2026-05-28 15:54", "2026-05-28 19:45", "2026-05-28 22:19", "2026-05-29 00:40", "2026-05-29 02:16", "2026-05-29 07:19", "2026-05-29 11:43", "2026-05-29 12:30", "2026-05-29 14:57", "2026-05-29 18:51", "2026-05-29 21:39", "2026-05-29 23:59", "2026-05-30 01:18", "2026-05-30 04:18", "2026-05-30 08:30", "2026-05-30 11:24"];
+      const y = [8040.0, 8040.0, 8040.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0, 7440.0];
+      const trace = {
+        x: x,
+        y: y,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#2E86AB', width: 3 },
+        marker: { size: 8 }
+      };
+      const layout = {
+        title: 'История цен',
+        xaxis: { title: 'Время' },
+        yaxis: { title: 'Цена (PLN)' }
+      };
+      Plotly.newPlot('chart', [trace], layout);
+    </script>
+  </body>
+</html>
