@@ -5,25 +5,130 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Price Monitor • Выбор направления</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    body { font-family: Arial, sans-serif; background: #f5f5f5; margin: 0; padding: 0; }
-    .container { max-width: 1100px; margin: 0 auto; padding: 24px; }
-    .header { background: linear-gradient(135deg, #2E86AB, #A23B72); color: #fff; padding: 24px; border-radius: 10px; }
-    .subtitle { opacity: .9; margin-top: 6px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 24px; }
-    .card { background: #fff; border-radius: 10px; text-decoration: none; color: inherit; box-shadow: 0 2px 10px rgba(0,0,0,.08); transition: transform .12s ease, box-shadow .12s ease; }
-    .card:hover { transform: translateY(-2px); box-shadow: 0 6px 18px rgba(0,0,0,.12); }
-    .card-body { padding: 18px; }
-    .card-title { font-size: 18px; font-weight: 700; color: #2E86AB; }
-    .card-sub { margin-top: 6px; color: #555; font-size: 14px; }
-    .footer { text-align: center; color: #666; margin-top: 28px; }
+    :root {
+      --bg: #f3f6ff;
+      --ink: #101828;
+      --muted: #475467;
+      --line: #dce3f2;
+      --glass: rgba(255,255,255,.72);
+      --shadow: 0 16px 48px rgba(16,24,40,.12);
+      --brand: #4f46e5;
+      --brand-2: #0ea5e9;
+      --radius: 18px;
+    }
+    * { box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:
+        radial-gradient(1200px 500px at -10% -20%, rgba(79,70,229,.16), transparent 60%),
+        radial-gradient(900px 500px at 120% 0%, rgba(14,165,233,.14), transparent 55%),
+        var(--bg);
+      margin: 0;
+      color: var(--ink);
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 1120px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    .header {
+      background: linear-gradient(135deg, rgba(79,70,229,.94), rgba(14,165,233,.9));
+      color: #fff;
+      padding: 30px 28px;
+      border-radius: calc(var(--radius) + 6px);
+      box-shadow: var(--shadow);
+      position: relative;
+      overflow: hidden;
+    }
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,.18), transparent 35%);
+      pointer-events: none;
+    }
+    .header h1 { margin: 0 0 8px; font-size: clamp(1.5rem, 2.6vw, 2rem); }
+    .subtitle { opacity: .94; }
+    .meta {
+      margin-top: 14px;
+      font-size: .9rem;
+      opacity: .95;
+      padding: 8px 12px;
+      background: rgba(255,255,255,.15);
+      border: 1px solid rgba(255,255,255,.25);
+      border-radius: 999px;
+      display: inline-flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 22px;
+    }
+    .card {
+      grid-column: span 6;
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255,255,255,.6);
+      border-radius: var(--radius);
+      text-decoration: none;
+      color: inherit;
+      box-shadow: 0 8px 26px rgba(16,24,40,.08);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(79,70,229,.35);
+      box-shadow: 0 14px 34px rgba(16,24,40,.14);
+    }
+    .card-body { padding: 20px; }
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #1d4ed8;
+      letter-spacing: .01em;
+    }
+    .card-sub {
+      margin-top: 7px;
+      color: var(--muted);
+      font-size: .93rem;
+    }
+    .card-action {
+      margin-top: 14px;
+      font-size: .88rem;
+      font-weight: 600;
+      color: #3730a3;
+    }
+    .footer {
+      text-align: center;
+      color: #667085;
+      margin-top: 24px;
+      font-size: .9rem;
+    }
+    @media (max-width: 920px) {
+      .card { grid-column: span 12; }
+    }
+    @media (max-width: 640px) {
+      .container { padding: 14px; }
+      .header { padding: 20px 16px; border-radius: 16px; }
+      .meta { width: 100%; justify-content: center; border-radius: 12px; }
+      .card-body { padding: 16px; }
+    }
   </style>
 </head>
 <body>
   <div class="container">
     <div class="header">
       <h1>🏨 Travel Price Monitor</h1>
-      <div class="subtitle">Выберите направление • Обновлено: 30.05.2026 13:18</div>
+      <div class="subtitle">Выберите направление • Обновлено: 30.05.2026 15:23</div>
+      <div class="meta"><span>🎯 Активных фильтров: 2</span><span>•</span><span>⏱ Обновление каждый час</span></div>
     </div>
     <div class="grid">
       
@@ -31,6 +136,7 @@
   <div class="card-body">
     <div class="card-title">Фильтр 7–10 дней</div>
     <div class="card-sub">4766–9000 PLN • WAW/WMI/RDO</div>
+    <div class="card-action">Открыть дашборд →</div>
   </div>
 </a>
         
@@ -38,6 +144,7 @@
   <div class="card-body">
     <div class="card-title">Фильтр 13–16 дней</div>
     <div class="card-sub">4766–9000 PLN • WAW/WMI/RDO</div>
+    <div class="card-action">Открыть дашборд →</div>
   </div>
 </a>
         
