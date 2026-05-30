@@ -29,6 +29,39 @@ def _lowest_price_row(grp):
     return grp.loc[prices.idxmin()]
 
 
+def _offer_key(row):
+    """Ключ одного и того же тур-пакета (offer_url или даты поездки)."""
+    if isinstance(row, pd.Series):
+        url = str(row.get('offer_url') or '').strip()
+        if url:
+            return ('url', url)
+        dates = str(row.get('dates') or '').strip()
+        if dates and dates.lower() != 'nan':
+            return ('dates', dates)
+    return None
+
+
+def _last_run_slice(df, time_col='scraped_at_display', gap_minutes=5):
+    """Последний ран скрейпа как DataFrame."""
+    runs = list(iter_scrape_runs(df, time_col=time_col, gap_minutes=gap_minutes))
+    if not runs:
+        return df.iloc[0:0].copy()
+    return runs[-1][2].copy()
+
+
+def _filter_hotel_history_to_offer(hotel_df, offer_key):
+    """Оставляет только историю того же оффера, что показан в таблице."""
+    if offer_key is None or hotel_df.empty:
+        return hotel_df
+    kind, value = offer_key
+    if kind == 'url':
+        mask = hotel_df['offer_url'].astype(str).str.strip() == value
+    else:
+        mask = hotel_df['dates'].astype(str).str.strip() == value
+    filtered = hotel_df[mask]
+    return filtered if not filtered.empty else hotel_df
+
+
 def iter_scrape_runs(df, time_col='scraped_at_display', gap_minutes=5):
     """Итератор ранов скрейпа: (start_pos, end_pos, slice), позиции для iloc."""
     if df.empty:
@@ -306,9 +339,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return []
 
     # Средняя цена ТОП-10 дешёвых предложений по ранам с детальной информацией
-    run_slices = []
+    run_slices = list(iter_scrape_runs(df_canonical))
     try:
-        run_slices = list(iter_scrape_runs(df_canonical))
         run_data = []
         top10_detailed_data = []  # Детальная информация для hover
         
@@ -534,18 +566,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     
     # Получаем актуальный срез только из последнего рана для таблицы дашборда.
-    latest_run_slice = pd.DataFrame()
-    full_latest_run_slice = pd.DataFrame()
-    try:
-        if run_slices:
-            latest_run_slice = run_slices[-1][2].copy()
-        full_runs = list(iter_scrape_runs(df))
-        if full_runs:
-            full_latest_run_slice = full_runs[-1][2].copy()
-    except Exception:
-        latest_run_slice = pd.DataFrame()
-    if latest_run_slice.empty:
-        latest_run_slice = df_canonical.copy()
+    latest_run_slice = _last_run_slice(df_canonical)
+    full_latest_run_slice = _last_run_slice(df)
 
     df_sorted_all = latest_run_slice.sort_values(['hotel_name', 'scraped_at_display'])
     latest_rows = []
@@ -555,7 +577,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if grp[grp['price'].astype(float) <= ceiling_val].empty:
                 skipped_above_ceiling += 1
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
-        last = _lowest_price_row(grp)
+        # В каноническом ране — одна строка на отель; берём актуальную, не мин. по всей истории.
+        last = grp.sort_values('scraped_at_display').iloc[-1]
         latest_rows.append({
             'hotel_name': hotel_name,
             'price': float(last['price']),
@@ -567,6 +590,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'offer_url': last.get('offer_url', None),
             'image_url': last.get('image_url', None)
         })
+    current_offer_by_hotel = {row['hotel_name']: _offer_key(row) for row in latest_rows}
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     if ceiling_val is not None and skipped_above_ceiling:
         print(f"💎 Дороже потолка показа (>{ceiling_val:.0f} PLN, только в истории): {skipped_above_ceiling}")
@@ -1203,9 +1227,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     charts_dir = os.path.join(charts_subdir)
     os.makedirs(charts_dir, exist_ok=True)
 
-    # Генерируем страницу с графиком для каждого отеля
+    # Генерируем страницу с графиком для каждого отеля (только текущий оффер из таблицы)
     for hotel_name in sorted(df_canonical['hotel_name'].unique()):
         hotel_ts = df_canonical[df_canonical['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+        hotel_ts = _filter_hotel_history_to_offer(hotel_ts, current_offer_by_hotel.get(hotel_name))
         x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
         dates_list = hotel_ts['dates'].fillna('Неизвестно').tolist()
