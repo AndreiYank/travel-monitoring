@@ -11,6 +11,7 @@ import os
 import re
 import html as html_lib
 from urllib.parse import urlparse, parse_qs
+from purchase_timing_analysis import analyze_purchase_timing
 
 def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None):
     """Генерирует дашборд с встроенными графиками"""
@@ -40,7 +41,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return
     # Откат фичи сравнения аэропортов: не используем общий датасет
     df_all_airports = None
-    
+
+    # Анализ «когда покупать»: статистика снижения цен по часу/дню недели/части месяца/месяцу
+    try:
+        timing_analysis = analyze_purchase_timing(df, tz=tz)
+    except Exception as e:
+        print(f"⚠️ Не удалось посчитать timing-аналитику: {e}")
+        timing_analysis = {"available": False, "status": "error", "recommendation": "", "dimensions": {}}
+    timing_json = json.dumps(timing_analysis, ensure_ascii=False, default=str)
+
     # Вычисляем статистику
     total_offers = len(df)
     unique_hotels = df['hotel_name'].nunique()
@@ -1643,6 +1652,98 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .fold-content .entry-signal:last-child {{
             margin-bottom: 0;
         }}
+
+        /* --- Секция «Когда покупать» --- */
+        .timing-banner {{
+            background: rgba(255,255,255,.55);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: .7rem .9rem;
+            margin: .2rem 0 .8rem;
+        }}
+        .timing-banner-row {{
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            font-size: .85rem;
+            padding: .15rem 0;
+        }}
+        .timing-banner-label {{ color: var(--text-muted); }}
+        .timing-banner-value {{ font-weight: 700; color: #1e293b; }}
+        .timing-reco {{
+            background: linear-gradient(135deg, rgba(6,182,212,.14), rgba(99,102,241,.12));
+            border: 1px solid rgba(6,182,212,.25);
+            border-radius: 12px;
+            padding: .7rem .9rem;
+            font-size: .92rem;
+            color: #0f172a;
+            margin-bottom: .8rem;
+            line-height: 1.45;
+        }}
+        .timing-badges {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .5rem;
+            margin-bottom: 1rem;
+        }}
+        .timing-badge {{
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            background: rgba(255,255,255,.6);
+            border: 1px solid var(--border-soft);
+            border-radius: 999px;
+            padding: .3rem .6rem;
+            font-size: .76rem;
+        }}
+        .timing-badge-name {{ font-weight: 700; color: #1e293b; }}
+        .timing-badge-prog {{ color: var(--text-muted); }}
+        .timing-pill {{
+            font-weight: 700;
+            border-radius: 999px;
+            padding: .1rem .45rem;
+            font-size: .72rem;
+        }}
+        .timing-pill-collecting {{ background: rgba(148,163,184,.25); color: #475569; }}
+        .timing-pill-prelim {{ background: rgba(245,158,11,.22); color: #b45309; }}
+        .timing-pill-reliable {{ background: rgba(16,185,129,.22); color: #047857; }}
+        .timing-grid {{
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }}
+        .timing-chart-card {{
+            background: rgba(255,255,255,.5);
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: .7rem .8rem;
+        }}
+        .timing-chart-card.timing-chart-wide {{ grid-column: 1 / -1; }}
+        .timing-chart-card h4 {{
+            margin: 0 0 .5rem;
+            font-size: .92rem;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }}
+        .timing-info-tag {{
+            font-size: .68rem;
+            font-weight: 700;
+            background: rgba(148,163,184,.25);
+            color: #475569;
+            border-radius: 999px;
+            padding: .08rem .4rem;
+        }}
+        .timing-hint {{
+            margin: .5rem 0 0;
+            font-size: .76rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }}
+        @media (max-width: 768px) {{
+            .timing-grid {{ grid-template-columns: 1fr; }}
+        }}
         
         .trend-section h3 {{
             font-size: 1.5rem;
@@ -1809,11 +1910,30 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .mode-switch {{
             display: inline-flex;
-            border: 1px solid var(--border-soft);
-            border-radius: 999px;
-            overflow: hidden;
+            position: relative;
+            border: none;
+            border-radius: 9px;
             margin: .35rem 0 .85rem;
-            background: rgba(255,255,255,.82);
+            background: rgba(118,118,128,.14);
+            padding: 2px;
+            isolation: isolate;
+        }}
+        .mode-switch::before {{
+            content: "";
+            position: absolute;
+            top: 2px;
+            bottom: 2px;
+            left: 2px;
+            width: calc(50% - 2px);
+            border-radius: 7px;
+            background: #fff;
+            box-shadow: 0 1px 3px rgba(0,0,0,.14), 0 1px 1px rgba(0,0,0,.05);
+            transition: transform .24s cubic-bezier(.4,0,.2,1);
+            transform: translateX(0);
+            z-index: 0;
+        }}
+        .mode-switch[data-mode="table"]::before {{
+            transform: translateX(100%);
         }}
         .table-toolbar {{
             display: inline-flex;
@@ -1843,19 +1963,33 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             margin: 0;
         }}
         .mode-btn {{
+            position: relative;
+            z-index: 1;
+            flex: 1;
             border: none;
             background: transparent;
-            padding: .48rem .86rem;
-            font-size: .86rem;
+            padding: .42rem 1.05rem;
+            font-size: .85rem;
             cursor: pointer;
-            color: #334155;
+            color: #6b7280;
             font-weight: 600;
-            transition: all .18s ease;
+            white-space: nowrap;
+            text-align: center;
+            transition: color .18s ease;
         }}
         .mode-btn.active {{
-            background: var(--gradient-primary);
-            color: #fff;
-            box-shadow: inset 0 -1px 0 rgba(255,255,255,.2);
+            color: #111827;
+            background: transparent;
+            box-shadow: none;
+        }}
+        .dark-theme .mode-switch {{
+            background: rgba(255,255,255,.12);
+        }}
+        .dark-theme .mode-btn {{
+            color: #cbd5e1;
+        }}
+        .dark-theme .mode-btn.active {{
+            color: #0f172a;
         }}
         .cards-section {{
             margin: 0 0 1.2rem 0;
@@ -2952,6 +3086,95 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </div>
 """
     html_template += alerts_html
+
+    # --- Секция «Когда покупать»: статистика снижения цен по времени ---
+    _t = timing_analysis if isinstance(timing_analysis, dict) else {}
+    _conf_label = {"collecting": "Накопление", "preliminary": "Предварительно", "reliable": "Надёжно"}
+    _conf_class = {"collecting": "timing-pill-collecting", "preliminary": "timing-pill-prelim", "reliable": "timing-pill-reliable"}
+    _hist = _t.get("history", {}) or {}
+    _reco = html_lib.escape(str(_t.get("recommendation", "") or ""))
+    _dims = _t.get("dimensions", {}) or {}
+
+    def _dim_badge(dim_key, name):
+        dim = _dims.get(dim_key) or {}
+        conf = dim.get("reached_confidence", "collecting")
+        prog = int(round((dim.get("progress", 0) or 0) * 100))
+        unit = dim.get("unit", "")
+        return (
+            f'<div class="timing-badge">'
+            f'<span class="timing-badge-name">{html_lib.escape(name)}</span>'
+            f'<span class="timing-pill {_conf_class.get(conf, "timing-pill-collecting")}">{_conf_label.get(conf, conf)}</span>'
+            f'<span class="timing-badge-prog">{prog}% до надёжного ({unit})</span>'
+            f'</div>'
+        )
+
+    if _t.get("available"):
+        _span_txt = f'{_hist.get("first", "—")} → {_hist.get("last", "—")}'
+        _days_txt = f'{_hist.get("days", 0)} дн., {_hist.get("weeks", 0)} нед.'
+        _baseline_txt = f'{(_t.get("baseline_p_drop", 0) or 0) * 100:.1f}%'
+        timing_inner_html = f"""
+                <div class="timing-banner">
+                    <div class="timing-banner-row">
+                        <span class="timing-banner-label">История наблюдений</span>
+                        <span class="timing-banner-value">{html_lib.escape(_span_txt)} ({html_lib.escape(_days_txt)})</span>
+                    </div>
+                    <div class="timing-banner-row">
+                        <span class="timing-banner-label">Базовая вероятность снижения за интервал</span>
+                        <span class="timing-banner-value">{_baseline_txt}</span>
+                    </div>
+                </div>
+                <div class="timing-reco">💡 {_reco}</div>
+                <div class="timing-badges">
+                    {_dim_badge("hour", "Час дня")}
+                    {_dim_badge("dow", "День недели")}
+                    {_dim_badge("part", "Часть месяца")}
+                    {_dim_badge("month", "Месяц")}
+                </div>
+                <div class="timing-grid">
+                    <div class="timing-chart-card">
+                        <h4>Вероятность снижения по часам дня (время Варшавы)</h4>
+                        <div id="timingHourChart" style="height:300px;"></div>
+                        <p class="timing-hint">Столбцы — доля интервалов со снижением цены; усы — 95% интервал Уилсона; пунктир — средний уровень. Бар «зажигается», только когда нижняя граница интервала выше среднего.</p>
+                    </div>
+                    <div class="timing-chart-card">
+                        <h4>Вероятность снижения по дням недели</h4>
+                        <div id="timingDowChart" style="height:300px;"></div>
+                    </div>
+                    <div class="timing-chart-card timing-chart-wide">
+                        <h4>Интенсивность снижения: день недели × час</h4>
+                        <div id="timingHeatmap" style="height:360px;"></div>
+                        <p class="timing-hint">Ожидаемое снижение за интервал (вероятность × средний размер падения). Тёмные клетки — мало данных.</p>
+                    </div>
+                    <div class="timing-chart-card">
+                        <h4>Вероятность снижения по части месяца</h4>
+                        <div id="timingPartChart" style="height:280px;"></div>
+                    </div>
+                    <div class="timing-chart-card">
+                        <h4>По месяцам <span class="timing-info-tag">справочно</span></h4>
+                        <div id="timingMonthChart" style="height:280px;"></div>
+                        <p class="timing-hint">Один сезон не доказывает месячную сезонность — нужны данные за несколько лет. Показано для общей картины.</p>
+                    </div>
+                </div>
+"""
+    else:
+        timing_inner_html = f"""
+                <div class="timing-reco">💡 {_reco or 'Накапливаем данные для анализа лучшего времени покупки.'}</div>
+                <p class="timing-hint">Нужно минимум 2 последовательных замера одного и того же тура. По мере накопления ежечасной истории здесь появятся графики по часам дня, дням недели, частям месяца и месяцам.</p>
+"""
+
+    timing_section_html = f"""
+        <details class="dashboard-fold" id="timingFold">
+            <summary>
+                <span>Когда покупать: статистика снижения цен</span>
+                <span class="fold-title-meta">Время суток · день недели · часть месяца</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+{timing_inner_html}
+            </div>
+        </details>
+"""
+
     html_template += f"""
 
         <div class="avg-top10-section">
@@ -2972,7 +3195,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </div>
             </div>
         </details>
-
+{timing_section_html}
         <details class="dashboard-fold" id="statsFold">
             <summary>
                 <span>Статистика и сигналы</span>
@@ -3032,7 +3255,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     html_template += f"""
         <div class="table-toolbar" id="modeSwitchRow">
             <div class="table-toolbar-title">Вид</div>
-            <div class="mode-switch table-mode-switch" id="modeSwitch">
+            <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
                 <button class="mode-btn active" data-mode="cards">Карточки</button>
                 <button class="mode-btn" data-mode="table">Таблица</button>
             </div>
@@ -3040,48 +3263,40 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         {cards_html}
 """
 
-    # Карточки отелей (визуальный режим)
-    for c in hotel_cards:
-        img_html = f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" />' if c["image_url"] else '<div>Фото отеля</div>'
-        offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
-        html_template += f"""
-    <div class="hotels-section full-width-table-section" id="missingAirportsSection" style="display:none;">
-        <h3>🛫 Отели до 8000 PLN (любой вылет), которых нет при вылете из Варшавы</h3>
-        <div class="table-container">
-            <table class="hotels-table" id="missingAirportsTable">
-                <thead>
-                    <tr>
-                        <th>Отель</th>
-                        <th>Цена</th>
-                        <th>Даты</th>
-                        <th>Аэропорт</th>
-                        <th>Ссылка</th>
-                    </tr>
-                </thead>
-                <tbody>
-        """
-        for item in missing_hotels_under_8000:
-            hotel_name = item['hotel_name']
-            price = item['price']
-            dates = item.get('dates') or '—'
-            airport = item.get('airport') or '—'
-            offer_url = item.get('offer_url') or ''
-            link_html = f'<a href="{offer_url}" target="_blank" class="offer-link">🔗</a>' if offer_url else '—'
-            html_template += f"""
-                <tr>
-                    <td class="hotel-name">{hotel_name}</td>
-                    <td class="price">{price:.0f} PLN</td>
-                    <td>{dates}</td>
-                    <td class="airport">{airport}</td>
-                    <td class="offer-link-cell">{link_html}</td>
-                </tr>
-            """
-        html_template += """
-                </tbody>
-            </table>
-        </div>
-    </div>
-"""
+    # Адаптивные диапазоны фильтра по цене на основе фактических цен таблицы
+    try:
+        _pr = pd.to_numeric(all_hotels['price'], errors='coerce').dropna()
+        _pr = _pr[_pr > 0]
+    except Exception:
+        _pr = pd.Series([], dtype='float64')
+    if len(_pr) >= 2:
+        import math as _math
+        _lo = float(_pr.quantile(0.02))
+        _hi = float(_pr.quantile(0.98))
+        if _hi - _lo < 500:
+            _lo, _hi = float(_pr.min()), float(_pr.max())
+        _step_base = 500
+        _lo_r = int(_lo // _step_base) * _step_base
+        _hi_r = int(_math.ceil(_hi / _step_base)) * _step_base
+        if _hi_r <= _lo_r:
+            _hi_r = _lo_r + _step_base
+        _span = _hi_r - _lo_r
+        _step = max(_step_base, int(round((_span / 4.0) / _step_base)) * _step_base)
+        _edges = list(range(_lo_r, _hi_r + 1, _step))
+        if len(_edges) < 2:
+            _edges = [_lo_r, _hi_r]
+
+        def _fmt(v):
+            return f"{v:,}".replace(",", " ")
+
+        _opts = ['<option value="">Все цены</option>']
+        _opts.append(f'<option value="0-{_edges[1]}">До {_fmt(_edges[1])} PLN</option>')
+        for _a, _b in zip(_edges[1:-1], _edges[2:]):
+            _opts.append(f'<option value="{_a}-{_b}">{_fmt(_a)}–{_fmt(_b)} PLN</option>')
+        _opts.append(f'<option value="{_edges[-1]}+">От {_fmt(_edges[-1])} PLN</option>')
+        price_filter_options_html = "\n                    ".join(_opts)
+    else:
+        price_filter_options_html = '<option value="">Все цены</option>'
 
     html_template += f"""
         <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
@@ -3101,11 +3316,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div class="table-filters">
                 <input type="text" class="filter-input" id="searchInput" placeholder="🔍 Поиск по отелям..." />
                 <select class="filter-select" id="priceFilter">
-                    <option value="">Все цены</option>
-                    <option value="0-2000">До 2000 PLN</option>
-                    <option value="2000-3000">2000-3000 PLN</option>
-                    <option value="3000-4000">3000-4000 PLN</option>
-                    <option value="4000+">От 4000 PLN</option>
+                    {price_filter_options_html}
                 </select>
                 <select class="filter-select" id="changeFilter">
                     <option value="">Все изменения</option>
@@ -3396,6 +3607,70 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           Plotly.newPlot('trendIndexChart', [trendIndexTrace], trendIndexLayout);
         }
       })();
+
+      // Секция «Когда покупать»: статистика снижения цен по времени
+      (function(){
+        const TIMING = """ + timing_json + """;
+        if (!TIMING || !TIMING.available || !window.Plotly) { return; }
+        const baseline = (TIMING.baseline_p_drop || 0) * 100;
+        const confColor = { reliable: '#10b981', preliminary: '#f59e0b', collecting: '#94a3b8' };
+        const baseLayout = {
+          plot_bgcolor: 'rgba(0,0,0,0)', paper_bgcolor: 'rgba(0,0,0,0)',
+          font: { family: 'Inter, sans-serif', size: 11 },
+          margin: { t: 10, r: 12, b: 40, l: 48 }
+        };
+
+        function drawProbBar(elId, dim, axisTitle) {
+          if (!dim || !document.getElementById(elId)) { return; }
+          const b = dim.buckets || [];
+          const x = b.map(d => d.label);
+          const y = b.map(d => (d.p_drop || 0) * 100);
+          // Усы 95% Уилсона
+          const errPlus = b.map(d => Math.max(0, (d.wilson_hi - d.p_drop)) * 100);
+          const errMinus = b.map(d => Math.max(0, (d.p_drop - d.wilson_lo)) * 100);
+          // Значимые бакеты «зажигаются» цветом достоверности, остальные приглушены
+          const colors = b.map(d => d.significant ? confColor[d.confidence] : 'rgba(148,163,184,.45)');
+          const text = b.map(d => d.n > 0 ? (d.n + ' набл.') : 'нет данных');
+          const trace = {
+            x: x, y: y, type: 'bar', marker: { color: colors },
+            error_y: { type: 'data', symmetric: false, array: errPlus, arrayminus: errMinus, color: 'rgba(71,85,105,.55)', thickness: 1, width: 2 },
+            text: text, textposition: 'none',
+            hovertemplate: '%{x}<br>Снижение: %{y:.1f}%<br>%{text}<extra></extra>'
+          };
+          const layout = Object.assign({}, baseLayout, {
+            yaxis: { title: 'P(снижение), %', gridcolor: '#e5e7eb' },
+            xaxis: { title: axisTitle || '', tickangle: x.length > 8 ? -45 : 0 },
+            shapes: [{ type: 'line', xref: 'paper', x0: 0, x1: 1, y0: baseline, y1: baseline, line: { color: '#ef4444', width: 1, dash: 'dot' } }],
+            annotations: [{ xref: 'paper', x: 1, y: baseline, xanchor: 'right', yanchor: 'bottom', text: 'средн. ' + baseline.toFixed(1) + '%', showarrow: false, font: { size: 9, color: '#ef4444' } }]
+          });
+          Plotly.newPlot(elId, [trace], layout, { displayModeBar: false, responsive: true });
+        }
+
+        drawProbBar('timingHourChart', TIMING.dimensions.hour, 'Час (Варшава)');
+        drawProbBar('timingDowChart', TIMING.dimensions.dow, 'День недели');
+        drawProbBar('timingPartChart', TIMING.dimensions.part, 'Часть месяца');
+        drawProbBar('timingMonthChart', TIMING.dimensions.month, 'Месяц');
+
+        // Теплокарта: день недели × час
+        const hm = TIMING.heatmap;
+        if (hm && document.getElementById('timingHeatmap')) {
+          const z = (hm.intensity || []).map(row => row.map(v => v === null ? null : v * 100));
+          const customN = hm.n || [];
+          const heat = {
+            z: z, x: hm.hours.map(h => (h < 10 ? '0' + h : '' + h)), y: hm.dow_labels,
+            type: 'heatmap', colorscale: 'YlGnBu', reversescale: true,
+            customdata: customN,
+            hovertemplate: '%{y}, %{x}:00<br>Ожид. снижение: %{z:.2f}%<br>Набл.: %{customdata}<extra></extra>',
+            colorbar: { title: '%', thickness: 12 }
+          };
+          const layout = Object.assign({}, baseLayout, {
+            margin: { t: 10, r: 12, b: 40, l: 48 },
+            xaxis: { title: 'Час (Варшава)', dtick: 2 }, yaxis: { autorange: 'reversed' }
+          });
+          Plotly.newPlot('timingHeatmap', [heat], layout, { displayModeBar: false, responsive: true });
+        }
+      })();
+
       (function(){
         const map = """ + json.dumps(images_map, ensure_ascii=False) + """;
         try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}
@@ -3485,6 +3760,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         el.open = isOpen;
         el.addEventListener('toggle', () => {
           try { localStorage.setItem(key, el.open ? '1' : '0'); } catch (e) {}
+          // Перерисовываем графики Plotly внутри: при закрытом details ширина была 0
+          if (el.open && window.Plotly) {
+            el.querySelectorAll('.js-plotly-plot').forEach(p => {
+              try { window.Plotly.Plots.resize(p); } catch (e) {}
+            });
+          }
         });
       }
 
@@ -3513,7 +3794,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         // Cards/Table view mode
         const cardsSection = document.getElementById('cardsSection');
         const tableSection = document.getElementById('tableSection');
-        const missingAirportsSection = document.getElementById('missingAirportsSection');
         const alertsSection = document.getElementById('alertsSection');
         const modeSwitch = document.getElementById('modeSwitch');
         const modeButtons = modeSwitch ? Array.from(modeSwitch.querySelectorAll('.mode-btn')) : [];
@@ -3521,9 +3801,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const cardsMode = mode !== 'table';
           if (cardsSection) cardsSection.style.display = cardsMode ? '' : 'none';
           if (tableSection) tableSection.style.display = cardsMode ? 'none' : '';
-          if (missingAirportsSection) missingAirportsSection.style.display = cardsMode ? 'none' : '';
           if (alertsSection) alertsSection.style.display = '';
           modeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.mode === mode));
+          if (modeSwitch) modeSwitch.dataset.mode = mode;
           try { localStorage.setItem('dashboard_mode', mode); } catch(e) {}
         }
         modeButtons.forEach(btn => btn.addEventListener('click', () => setMode(btn.dataset.mode)));
@@ -3531,6 +3811,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         try { initialMode = localStorage.getItem('dashboard_mode') || 'cards'; } catch(e) {}
         setMode(initialMode);
         bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
+        bindFoldPersistence('timingFold', 'dashboard_fold_timing', false);
         bindFoldPersistence('statsFold', 'dashboard_fold_stats', false);
         
         // Theme toggle functionality
@@ -3628,12 +3909,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
               return false;
             }
             
-            // Price filter
+            // Price filter (диапазоны генерируются динамически под текущий фильтр)
             if (priceRange) {
-              if (priceRange === '0-2000' && price > 2000) return false;
-              if (priceRange === '2000-3000' && (price < 2000 || price > 3000)) return false;
-              if (priceRange === '3000-4000' && (price < 3000 || price > 4000)) return false;
-              if (priceRange === '4000+' && price < 4000) return false;
+              if (priceRange.endsWith('+')) {
+                if (price < parseFloat(priceRange)) return false;
+              } else {
+                const parts = priceRange.split('-');
+                const min = parseFloat(parts[0]);
+                const max = parseFloat(parts[1]);
+                if (price < min || price > max) return false;
+              }
             }
             
             // Change filter
