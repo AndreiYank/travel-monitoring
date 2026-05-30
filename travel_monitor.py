@@ -169,6 +169,7 @@ class TravelPriceMonitor:
                     # Парсим предложения с текущей страницы
                     page_offers = []
                     max_price_on_page = 0
+                    filtered_out_on_scope = 0
                     
                     for i in range(len(offers_data)):
                         try:
@@ -177,6 +178,10 @@ class TravelPriceMonitor:
                             if offer_data and offer_data.get('price', 0) > 0:
                                 # Фильтр по минимальной цене
                                 if min_price_threshold > 0 and offer_data['price'] < min_price_threshold:
+                                    continue
+                                # Защитный фильтр от нерелевантных карточек (другие страны/формат поездки)
+                                if not self._is_offer_in_expected_scope(offer_data):
+                                    filtered_out_on_scope += 1
                                     continue
                                 page_offers.append(offer_data)
                                 max_price_on_page = max(max_price_on_page, offer_data['price'])
@@ -187,6 +192,8 @@ class TravelPriceMonitor:
                     if page_offers:
                         all_offers.extend(page_offers)
                         logger.info(f"Страница {page_number}: собрано {len(page_offers)} предложений, максимальная цена: {max_price_on_page:.0f} PLN")
+                        if filtered_out_on_scope:
+                            logger.info(f"Страница {page_number}: отфильтровано нерелевантных предложений: {filtered_out_on_scope}")
                         
                         # Проверяем, достигли ли максимальной цены
                         if max_price_on_page >= max_price_threshold:
@@ -235,6 +242,69 @@ class TravelPriceMonitor:
         except Exception:
             pass
         return None
+
+    def _extract_duration_range_from_url(self) -> Optional[tuple]:
+        """Извлекает ожидаемый диапазон длительности из URL filter[duration]=X:Y."""
+        try:
+            import re
+            url = self.config.get('url', '') or ''
+            m = re.search(r'(?:duration=)(\d+):(\d+)', url)
+            if not m:
+                return None
+            lo = int(m.group(1))
+            hi = int(m.group(2))
+            return (min(lo, hi), max(lo, hi))
+        except Exception:
+            return None
+
+    def _extract_duration_days_value(self, duration_text: str) -> Optional[int]:
+        """Пытается получить количество дней из текста длительности."""
+        if not duration_text:
+            return None
+        try:
+            import re
+            m = re.search(r'(\d+)\s*(dni|days|day|d|nocleg|nights?)?', str(duration_text), re.IGNORECASE)
+            if not m:
+                return None
+            return int(m.group(1))
+        except Exception:
+            return None
+
+    def _is_offer_in_expected_scope(self, offer: Dict[str, Any]) -> bool:
+        """Проверяет, что оффер соответствует целевому фильтру (страна/тип/длительность)."""
+        offer_url = str(offer.get('offer_url') or '').strip().lower()
+        if not offer_url:
+            return False
+        if '/wycieczka/' not in offer_url:
+            return False
+
+        # Явно исключаем "только проживание" (без перелета), это источник дешевого мусора.
+        if 'transport=accommodation&' in offer_url and 'transport=accommodation_flight' not in offer_url:
+            return False
+
+        required = self.config.get('required_offer_url_contains', [])
+        if isinstance(required, str):
+            required = [required]
+        required = [str(x).lower() for x in required if str(x).strip()]
+        if required and not any(token in offer_url for token in required):
+            return False
+
+        excluded = self.config.get('excluded_offer_url_contains', [])
+        if isinstance(excluded, str):
+            excluded = [excluded]
+        excluded = [str(x).lower() for x in excluded if str(x).strip()]
+        if any(token in offer_url for token in excluded):
+            return False
+
+        duration_range = self._extract_duration_range_from_url()
+        if duration_range:
+            days = self._extract_duration_days_value(str(offer.get('duration') or ''))
+            if days is not None:
+                lo, hi = duration_range
+                if days < lo or days > hi:
+                    return False
+
+        return True
 
     def _load_previous_hotels_latest(self) -> pd.DataFrame:
         """Загружает предыдущие данные и возвращает последние цены по каждому отелю.
