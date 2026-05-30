@@ -882,6 +882,35 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         text = re.sub(r"-+", "-", text).strip('-')
         return text or "hotel"
 
+    def normalize_image_url(raw_url: str) -> str:
+        if raw_url is None:
+            return ""
+        url = str(raw_url).strip()
+        if not url:
+            return ""
+        url = html_lib.unescape(url)
+
+        # Приводим типичные относительные форматы.
+        if url.startswith("//"):
+            url = f"https:{url}"
+        elif url.startswith("/"):
+            url = f"https://fly.pl{url}"
+
+        u = url.lower()
+
+        # Отбрасываем заведомо нерабочие или "пиксельные" плейсхолдеры.
+        if u.startswith("blob:"):
+            return ""
+        if u.startswith("data:image"):
+            return ""
+        if u.startswith("https://fly.pl/data:image"):
+            return ""
+        if "ivborw0kggoaaaansuheugaaaaeaaaab" in u and len(u) < 220:
+            return ""
+        if not (u.startswith("http://") or u.startswith("https://")):
+            return ""
+        return url
+
     # Карточки отелей (визуальный режим по умолчанию)
     hotel_cards = []
     for _, hotel in all_hotels.head(200).iterrows():
@@ -890,7 +919,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '—'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '—'
         offer_url = hotel.get('offer_url', '')
-        image_url = hotel.get('image_url', '') or images_map.get(hotel_name, '')
+        image_url = ""
+        for candidate in (hotel.get('image_url', ''), images_map.get(hotel_name, '')):
+            normalized = normalize_image_url(candidate)
+            if normalized:
+                image_url = normalized
+                break
         hotel_slug = slugify(hotel_name)
         if charts_subdir:
             chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
@@ -2878,7 +2912,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div class="cards-grid">
 """
     for c in hotel_cards:
-        img_html = f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" />' if c["image_url"] else '<div>Фото отеля</div>'
+        img_html = (
+            f'<img src="{html_lib.escape(c["image_url"], quote=True)}" alt="hotel image" loading="lazy" '
+            f'onerror="this.onerror=null;this.parentElement.innerHTML=\'<div>Фото отеля</div>\';" />'
+        ) if c["image_url"] else '<div>Фото отеля</div>'
         offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
         cards_html += f"""
             <article class="hotel-card">
@@ -2993,6 +3030,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Блок выбора вида списка предложений (всегда виден)
     html_template += f"""
+        <div class="table-toolbar" id="modeSwitchRow">
+            <div class="table-toolbar-title">Вид</div>
+            <div class="mode-switch table-mode-switch" id="modeSwitch">
+                <button class="mode-btn active" data-mode="cards">Карточки</button>
+                <button class="mode-btn" data-mode="table">Таблица</button>
+            </div>
+        </div>
         {cards_html}
 """
 
@@ -3043,13 +3087,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
             <div class="table-header-row">
                 <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
-                <div class="table-toolbar">
-                    <div class="table-toolbar-title">Вид</div>
-                    <div class="mode-switch table-mode-switch" id="modeSwitch">
-                        <button class="mode-btn active" data-mode="cards">Карточки</button>
-                        <button class="mode-btn" data-mode="table">Таблица</button>
-                    </div>
-                </div>
             </div>
             <div class="deal-legend">
                 <strong>Как читать Deal Score:</strong>
