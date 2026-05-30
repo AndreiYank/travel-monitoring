@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>График цен — Jaz Royal Palmariva</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .back { margin-bottom: 10px; }
+        #chart { height: 520px; }
+    </style>
+<head>
+<body>
+    <div class="back"><a href="../../index_filter_7_10_days.html">← Назад к дашборду</a></div>
+    <h2>График цен: Jaz Royal Palmariva</h2>
+    <div id="chart"></div>
+    <script>
+      const x = ["2026-05-30 21:10"];
+      const y = [12117.0];
+      const text = ["Дата сбора: 2026-05-30 21:10<br>Даты поездки: 18.06.2026 - 25.06.2026"];
+      const trace = {
+        x: x,
+        y: y,
+        text: text,
+        type: 'scatter',
+        mode: 'lines+markers',
+        line: { color: '#2E86AB', width: 3 },
+        marker: { size: 8 },
+        hovertemplate: '<b>Цена: %{y} PLN</b><br><br>%{text}<extra></extra>'
+      };
+      const layout = {
+        title: 'История цен',
+        xaxis: { title: 'Время' },
+        yaxis: { title: 'Цена (PLN)' }
+      };
+      Plotly.newPlot('chart', [trace], layout);
+    </script>
+  </body>
+</html>
