@@ -45,10 +45,39 @@ class TravelPriceMonitor:
             with open(self.config_file, 'r', encoding='utf-8') as f:
                 config = json.load(f)
             logger.info(f"Конфигурация загружена из {self.config_file}")
+            
+            if 'url' in config and config['url']:
+                config['url'] = self._make_url_dynamic(config['url'])
+                
             return config
         except Exception as e:
             logger.error(f"Ошибка загрузки конфигурации: {e}")
             sys.exit(1)
+
+    def _make_url_dynamic(self, url: str) -> str:
+        """Динамически заменяет даты в URL на период: сегодня + 30 дней"""
+        import re
+        from datetime import datetime, timedelta
+        
+        now = datetime.now()
+        from_date_str = now.strftime('%d-%m-%Y')
+        to_date_str = (now + timedelta(days=30)).strftime('%d-%m-%Y')
+        
+        # Регулярные выражения для замены whenFrom и whenTo (с поддержкой [ ] и %5B %5D)
+        url = re.sub(
+            r'(filter(?:\[|%5B)whenFrom(?:\]|%5D)=)([^&]*)',
+            rf'\g<1>{from_date_str}',
+            url
+        )
+        url = re.sub(
+            r'(filter(?:\[|%5B)whenTo(?:\]|%5D)=)([^&]*)',
+            rf'\g<1>{to_date_str}',
+            url
+        )
+        
+        logger.info(f"🔄 URL обновлен динамически: с {from_date_str} по {to_date_str}")
+        return url
+
 
     async def scrape_offers_with_retry(self) -> List[Dict[str, Any]]:
         """Парсит предложения с повторными попытками"""
@@ -78,7 +107,12 @@ class TravelPriceMonitor:
             or self._extract_price_limit()
             or 8100
         )  # Максимальная цена для остановки
+        min_price_threshold = float(
+            self.config.get('min_price_threshold', 0)
+        )  # Минимальная цена (фильтр)
         logger.info(f"Лимит цены для остановки: {max_price_threshold:.0f} PLN")
+        if min_price_threshold > 0:
+            logger.info(f"Минимальная цена (фильтр): {min_price_threshold:.0f} PLN")
         
         async with async_playwright() as p:
             browser = await p.chromium.launch(
@@ -141,6 +175,9 @@ class TravelPriceMonitor:
                             element = offers_data[i]
                             offer_data = await self.extract_offer_data(element, i)
                             if offer_data and offer_data.get('price', 0) > 0:
+                                # Фильтр по минимальной цене
+                                if min_price_threshold > 0 and offer_data['price'] < min_price_threshold:
+                                    continue
                                 page_offers.append(offer_data)
                                 max_price_on_page = max(max_price_on_page, offer_data['price'])
                         except Exception as e:
@@ -730,11 +767,11 @@ class TravelPriceMonitor:
         """Извлекает даты из URL конфигурации"""
         try:
             url = self.config.get('url', '')
-            if 'whenFrom=' in url and 'whenTo=' in url:
+            if 'whenFrom' in url and 'whenTo' in url:
                 # Извлекаем даты из URL
                 import re
-                when_from_match = re.search(r'whenFrom=(\d{2}-\d{2}-\d{4})', url)
-                when_to_match = re.search(r'whenTo=(\d{2}-\d{2}-\d{4})', url)
+                when_from_match = re.search(r'whenFrom(?:\]|%5D)?=(\d{2}-\d{2}-\d{4})', url)
+                when_to_match = re.search(r'whenTo(?:\]|%5D)?=(\d{2}-\d{2}-\d{4})', url)
                 
                 if when_from_match and when_to_match:
                     from_date = when_from_match.group(1)
