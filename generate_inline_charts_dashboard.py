@@ -23,12 +23,18 @@ def _parse_price_ceiling(display_price_ceiling):
         return None
 
 
+def _lowest_price_row(grp):
+    """Строка с минимальной ценой среди офферов одного отеля."""
+    prices = grp['price'].astype(float)
+    return grp.loc[prices.idxmin()]
+
+
 def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
     """One canonical row per hotel per scrape run.
 
-    With a display ceiling, keep the last offer at or below it in each run.
-    Hotels only seen above the ceiling in a run are omitted from analytics
-    (they stay in the full df for vanished-deal detection).
+    With a display ceiling, consider only offers at or below it, then pick
+    the cheapest. Hotels only seen above the ceiling in a run are omitted
+    from analytics (they stay in the full df for vanished-deal detection).
     """
     if df.empty:
         return df.copy()
@@ -49,7 +55,7 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
                 if in_band.empty:
                     continue
                 pick = in_band
-            rows.append(pick.iloc[-1])
+            rows.append(_lowest_price_row(pick))
 
     if not rows:
         return pd.DataFrame(columns=df.columns)
@@ -325,7 +331,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             # Берем последние данные по каждому отелю в этом ране
             for hotel_name, hotel_grp in run_data_slice.groupby('hotel_name'):
                 if not hotel_grp.empty:
-                    latest_price = hotel_grp.iloc[-1]['price']
+                    latest_price = float(hotel_grp['price'].astype(float).min())
                     latest_prices.append(latest_price)
                     hotel_prices[hotel_name] = latest_price
             
@@ -481,7 +487,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             current_hotel_prices = {}
             for hotel_name, hotel_grp in run_data_slice.groupby('hotel_name'):
                 if not hotel_grp.empty:
-                    latest_price = hotel_grp.iloc[-1]['price']
+                    latest_price = float(hotel_grp['price'].astype(float).min())
                     current_hotel_prices[hotel_name] = latest_price
             
             # Рассчитываем индекс ценовой динамики
@@ -555,7 +561,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if grp[grp['price'].astype(float) <= ceiling_val].empty:
                 skipped_above_ceiling += 1
     for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
-        last = grp.iloc[-1]
+        last = _lowest_price_row(grp)
         latest_rows.append({
             'hotel_name': hotel_name,
             'price': float(last['price']),

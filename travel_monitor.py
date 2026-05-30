@@ -504,6 +504,25 @@ class TravelPriceMonitor:
 
         return True
 
+    @staticmethod
+    def _dedupe_lowest_per_hotel(offers: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Оставляет один оффер на отель — с минимальной ценой."""
+        best: Dict[str, Dict[str, Any]] = {}
+        for offer in offers:
+            if not offer:
+                continue
+            name = (offer.get('hotel_name') or '').strip()
+            if not name:
+                continue
+            try:
+                price = float(offer.get('price') or 0)
+            except (TypeError, ValueError):
+                continue
+            prev = best.get(name)
+            if prev is None or price < float(prev.get('price') or 0):
+                best[name] = offer
+        return list(best.values())
+
     def _load_previous_hotels_latest(self) -> pd.DataFrame:
         """Загружает предыдущие данные и возвращает последние цены по каждому отелю.
 
@@ -527,9 +546,13 @@ class TravelPriceMonitor:
                 pass
             ts = tz_series.combine_first(naive_series)
             df = df.assign(_ts=ts).dropna(subset=['_ts'])
-            # Берем по каждому отелю последнюю запись
-            idx = df.sort_values('_ts').groupby('hotel_name').tail(1).index
-            latest = df.loc[idx, ['hotel_name', 'price', '_ts']].copy()
+            max_ts = df['_ts'].max()
+            latest_run = df[df['_ts'] >= max_ts - pd.Timedelta(minutes=5)]
+            if latest_run.empty:
+                latest_run = df[df['_ts'] == max_ts]
+            priced = latest_run.assign(_p=pd.to_numeric(latest_run['price'], errors='coerce'))
+            idx = priced.groupby('hotel_name')['_p'].idxmin()
+            latest = latest_run.loc[idx, ['hotel_name', 'price', '_ts']].copy()
             return latest
         except Exception:
             return pd.DataFrame()
@@ -1574,6 +1597,13 @@ class TravelPriceMonitor:
             if not offers:
                 logger.error("❌ Не удалось собрать данные после всех попыток")
                 return False
+
+            raw_count = len(offers)
+            offers = self._dedupe_lowest_per_hotel(offers)
+            if len(offers) < raw_count:
+                logger.info(
+                    f"Дедупликация: {raw_count} офферов → {len(offers)} отелей (мин. цена на отель)"
+                )
             
             # Перед сохранением проверяем, кто исчез из выдачи, и создаём алерты
             self.detect_missing_hotels_and_alert(offers)
