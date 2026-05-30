@@ -15,14 +15,27 @@ from datetime import datetime, timezone
 from typing import List, Dict, Any, Set
 import logging
 
+from generate_inline_charts_dashboard import (
+    collapse_canonical_per_run,
+    iter_scrape_runs,
+    _parse_price_ceiling,
+)
+
 logger = logging.getLogger(__name__)
 
 class PriceAlertManagerV2:
-    def __init__(self, data_file="data/travel_prices.csv", alerts_file="data/price_alerts_history.json"):
+    def __init__(
+        self,
+        data_file="data/travel_prices.csv",
+        alerts_file="data/price_alerts_history.json",
+        display_price_ceiling=None,
+    ):
         self.data_file = data_file
         self.alerts_file = alerts_file
-        self.df = self.load_data()
-        
+        self.display_price_ceiling = display_price_ceiling
+        self.df_raw = self.load_data()
+        self.df = self._build_canonical_df()
+
     def load_data(self) -> pd.DataFrame:
         """Загружает данные из CSV файла"""
         if not os.path.exists(self.data_file):
@@ -30,13 +43,21 @@ class PriceAlertManagerV2:
         
         try:
             df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
-            # Исправляем парсинг дат - используем format='ISO8601' для правильного парсинга
             df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True, format='ISO8601')
             df = df.dropna(subset=['scraped_at'])
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")
             return pd.DataFrame()
+
+    def _build_canonical_df(self) -> pd.DataFrame:
+        """Мин. цена на отель за ран; при потолке — только офферы ≤ ceiling."""
+        if self.df_raw.empty:
+            return self.df_raw
+        work = self.df_raw.copy()
+        work['scraped_at_display'] = work['scraped_at']
+        ceiling = _parse_price_ceiling(self.display_price_ceiling)
+        return collapse_canonical_per_run(work, ceiling)
     
     def load_alerts(self) -> List[Dict[str, Any]]:
         """Загружает историю алертов"""
@@ -69,57 +90,22 @@ class PriceAlertManagerV2:
         if self.df.empty:
             return []
         
-        # Используем ту же логику, что и в дашбордах - группировка по интервалам > 5 минут
-        df_sorted = self.df.sort_values('scraped_at')
-        df_sorted['time_diff'] = df_sorted['scraped_at'].diff()
-        run_boundaries = df_sorted[df_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
-        
-        # Добавляем начало и конец данных
-        run_starts = [0] + run_boundaries
-        run_ends = run_boundaries + [len(df_sorted)]
-        
-        # Получаем времена начала каждого рана
         run_times = []
-        for start_idx, end_idx in zip(run_starts, run_ends):
-            run_data_slice = df_sorted.iloc[start_idx:end_idx]
-            if len(run_data_slice) > 0:
-                run_time = run_data_slice['scraped_at'].iloc[0]
-                run_times.append(run_time)
+        for _, _, run_slice in iter_scrape_runs(self.df, time_col='scraped_at'):
+            if len(run_slice) > 0:
+                run_times.append(run_slice['scraped_at'].iloc[0])
         
         return sorted(run_times)
     
     def get_hotel_prices_for_run(self, run_time: datetime) -> Dict[str, float]:
-        """Получает цены всех отелей для конкретного рана"""
-        # Находим данные для этого рана используя ту же логику
-        df_sorted = self.df.sort_values('scraped_at')
-        df_sorted['time_diff'] = df_sorted['scraped_at'].diff()
-        run_boundaries = df_sorted[df_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
-        
-        # Добавляем начало и конец данных
-        run_starts = [0] + run_boundaries
-        run_ends = run_boundaries + [len(df_sorted)]
-        
-        # Находим нужный ран
-        run_data_slice = None
-        for start_idx, end_idx in zip(run_starts, run_ends):
-            slice_data = df_sorted.iloc[start_idx:end_idx]
-            if len(slice_data) > 0 and slice_data['scraped_at'].iloc[0] == run_time:
-                run_data_slice = slice_data
-                break
-        
-        if run_data_slice is None:
-            return {}
-        
-        # Берем последнюю цену для каждого отеля в этом ране
-        hotel_prices = {}
-        for hotel_name in run_data_slice['hotel_name'].unique():
-            hotel_data = run_data_slice[run_data_slice['hotel_name'] == hotel_name]
-            if not hotel_data.empty:
-                # Берем последнюю запись для этого отеля в этом ране
-                latest_price = hotel_data.sort_values('scraped_at').iloc[-1]['price']
-                hotel_prices[hotel_name] = latest_price
-        
-        return hotel_prices
+        """Получает цены всех отелей для конкретного рана (канонический ряд)."""
+        for _, _, run_slice in iter_scrape_runs(self.df, time_col='scraped_at'):
+            if len(run_slice) > 0 and run_slice['scraped_at'].iloc[0] == run_time:
+                return {
+                    str(name): float(price)
+                    for name, price in zip(run_slice['hotel_name'], run_slice['price'])
+                }
+        return {}
     
     def find_price_changes_between_runs(self, prev_run: datetime, curr_run: datetime, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
         """Находит изменения цен между двумя ранами"""
@@ -195,32 +181,22 @@ class PriceAlertManagerV2:
         return new_alerts
     
     def process_all_changes(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
-        """Основной метод: обрабатывает все изменения и возвращает только новые"""
+        """Пересобирает алерты из канонического ряда и возвращает только новые."""
         if self.df.empty:
             logger.warning("Нет данных для обработки")
             return []
         
-        # Сканируем все раны на изменения
         all_changes = self.scan_all_runs_for_changes(threshold_percent)
-        
-        if not all_changes:
-            logger.info("Изменений не найдено")
-            return []
-        
-        # Получаем только новые алерты
-        new_alerts = self.get_new_alerts(all_changes)
-        
-        if new_alerts:
-            # Загружаем существующие алерты
-            existing_alerts = self.load_alerts()
-            
-            # Добавляем новые к существующим
-            updated_alerts = existing_alerts + new_alerts
-            
-            # Сохраняем обновленный список
-            self.save_alerts(updated_alerts)
-            
-            logger.info(f"💾 Сохранено {len(new_alerts)} новых алертов")
+        old_keys = self.get_existing_alert_keys()
+        new_alerts = [a for a in all_changes if a.get('unique_key') not in old_keys]
+
+        # Полная пересборка истории — убирает ложные алерты от смешанных офферов.
+        self.save_alerts(all_changes)
+        if all_changes:
+            logger.info(
+                f"💾 Алертов пересобрано: {len(all_changes)} "
+                f"(новых с прошлого запуска: {len(new_alerts)})"
+            )
         
         return new_alerts
     
@@ -274,7 +250,7 @@ def main():
     print(f"📁 Алерты: {alerts_file}")
     print("=" * 60)
     
-    alert_manager = PriceAlertManagerV2(data_file, alerts_file)
+    alert_manager = PriceAlertManagerV2(data_file, alerts_file, display_price_ceiling=10000)
     
     if alert_manager.df.empty:
         print("❌ Нет данных для анализа")

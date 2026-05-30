@@ -1518,7 +1518,8 @@ class TravelPriceMonitor:
             alerts_file = self.data_file.replace('.csv', '_alerts.json')
             alert_manager = PriceAlertManagerV2(
                 data_file=os.path.join(self.config['data_dir'], self.data_file), 
-                alerts_file=os.path.join(self.config['data_dir'], alerts_file)
+                alerts_file=os.path.join(self.config['data_dir'], alerts_file),
+                display_price_ceiling=self.config.get('display_price_ceiling', 10000),
             )
             
             if alert_manager.df.empty:

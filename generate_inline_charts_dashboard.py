@@ -29,6 +29,19 @@ def _lowest_price_row(grp):
     return grp.loc[prices.idxmin()]
 
 
+def iter_scrape_runs(df, time_col='scraped_at_display', gap_minutes=5):
+    """Итератор ранов скрейпа: (start_pos, end_pos, slice), позиции для iloc."""
+    if df.empty:
+        return
+    df_time = df.dropna(subset=[time_col]).sort_values(time_col).reset_index(drop=True)
+    tdiff = df_time[time_col].diff()
+    boundaries = df_time.index[tdiff > pd.Timedelta(minutes=gap_minutes)].tolist()
+    starts = [0] + boundaries
+    ends = boundaries + [len(df_time)]
+    for start_idx, end_idx in zip(starts, ends):
+        yield start_idx, end_idx, df_time.iloc[start_idx:end_idx]
+
+
 def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
     """One canonical row per hotel per scrape run.
 
@@ -39,15 +52,8 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
     if df.empty:
         return df.copy()
 
-    df_time = df.dropna(subset=['scraped_at_display']).sort_values('scraped_at_display').reset_index(drop=True)
-    tdiff = df_time['scraped_at_display'].diff()
-    boundary_positions = df_time.index[tdiff > pd.Timedelta(minutes=run_gap_minutes)].tolist()
-    run_starts = [0] + boundary_positions
-    run_ends = boundary_positions + [len(df_time)]
-
     rows = []
-    for start_idx, end_idx in zip(run_starts, run_ends):
-        run_slice = df_time.iloc[start_idx:end_idx]
+    for _, _, run_slice in iter_scrape_runs(df, gap_minutes=run_gap_minutes):
         for _, grp in run_slice.groupby('hotel_name', sort=False):
             pick = grp.sort_values('scraped_at_display')
             if ceiling_val is not None:
@@ -300,25 +306,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return []
 
     # Средняя цена ТОП-10 дешёвых предложений по ранам с детальной информацией
+    run_slices = []
     try:
-        # Определяем раны по большим интервалам между записями (без смешения дорогих офферов)
-        df_sorted = df_canonical.sort_values('scraped_at_display')
+        run_slices = list(iter_scrape_runs(df_canonical))
         run_data = []
         top10_detailed_data = []  # Детальная информация для hover
         
-        # Находим границы ранов (интервалы > 5 минут)
-        df_sorted['time_diff'] = df_sorted['scraped_at_display'].diff()
-        run_boundaries = df_sorted[df_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
-        
-        # Добавляем начало и конец данных
-        run_starts = [0] + run_boundaries
-        run_ends = run_boundaries + [len(df_sorted)]
-        
-        print(f"🔍 Найдено {len(run_starts)} ранов")
+        print(f"🔍 Найдено {len(run_slices)} ранов")
         
         # Обрабатываем каждый ран
-        for i, (start_idx, end_idx) in enumerate(zip(run_starts, run_ends)):
-            run_data_slice = df_sorted.iloc[start_idx:end_idx]
+        for i, (_, _, run_data_slice) in enumerate(run_slices):
             if len(run_data_slice) == 0:
                 continue
                 
@@ -384,7 +381,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 })
         
         if run_data:
-            top10_x_values = [ts.strftime('%Y-%m-%d %H:%M') for ts, _ in run_data]
+            top10_x_values = [pd.Timestamp(ts).isoformat() for ts, _ in run_data]
             top10_y_values = [float(price) for _, price in run_data]
             
             # Добавляем информацию об изменениях цен для каждого рана
@@ -465,6 +462,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         print(f"Ошибка расчета ТОП-10: {e}")
         top10_x_values, top10_y_values = [], []
         top10_detailed_data = []
+        run_slices = []
     
     # Индекс ценовой динамики (Price Trend Index)
     try:
@@ -476,8 +474,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         prev_hotel_prices = {}
         
         # Обрабатываем каждый ран
-        for i, (start_idx, end_idx) in enumerate(zip(run_starts, run_ends)):
-            run_data_slice = df_sorted.iloc[start_idx:end_idx]
+        for i, (_, _, run_data_slice) in enumerate(run_slices):
             if len(run_data_slice) == 0:
                 continue
                 
@@ -514,7 +511,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 avg_price_change = total_price_change / hotels_with_changes
                 
                 # Добавляем точку для каждого рана
-                trend_index_x_values.append(run_time.strftime('%Y-%m-%d %H:%M'))
+                trend_index_x_values.append(pd.Timestamp(run_time).isoformat())
                 trend_index_y_values.append(avg_price_change)
                 trend_index_detailed_data.append({
                     'run_time': run_time.strftime('%Y-%m-%d %H:%M'),
@@ -540,14 +537,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     latest_run_slice = pd.DataFrame()
     full_latest_run_slice = pd.DataFrame()
     try:
-        if run_starts and run_ends:
-            latest_run_slice = df_sorted.iloc[run_starts[-1]:run_ends[-1]].copy()
-            df_full_sorted = df.sort_values('scraped_at_display')
-            df_full_sorted['time_diff'] = df_full_sorted['scraped_at_display'].diff()
-            full_boundaries = df_full_sorted[df_full_sorted['time_diff'] > pd.Timedelta(minutes=5)].index.tolist()
-            full_starts = [0] + full_boundaries
-            full_ends = full_boundaries + [len(df_full_sorted)]
-            full_latest_run_slice = df_full_sorted.iloc[full_starts[-1]:full_ends[-1]].copy()
+        if run_slices:
+            latest_run_slice = run_slices[-1][2].copy()
+        full_runs = list(iter_scrape_runs(df))
+        if full_runs:
+            full_latest_run_slice = full_runs[-1][2].copy()
     except Exception:
         latest_run_slice = pd.DataFrame()
     if latest_run_slice.empty:
@@ -3894,7 +3888,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           
           const layout = { 
             margin: { t: 10, r: 10, b: 40, l: 50 }, 
-            xaxis: { title: 'Время' }, 
+            xaxis: { title: 'Время', type: 'date' }, 
             yaxis: { title: 'Цена (PLN)' },
             hovermode: 'closest'
           };
@@ -3959,6 +3953,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             },
             xaxis: {
               title: 'Время',
+              type: 'date',
               gridcolor: '#e5e7eb',
               showgrid: true
             },
