@@ -13,7 +13,7 @@ import html as html_lib
 from urllib.parse import urlparse, parse_qs
 from purchase_timing_analysis import analyze_purchase_timing
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -510,6 +510,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'image_url': last.get('image_url', None)
         })
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
+    # Потолок ПОКАЗА: в видимые списки (таблица/карточки/ТОП-10) попадают только
+    # предложения <= ceiling. Дорогой "хвост" (high-band) остаётся в полной истории df
+    # и используется в статистике/журнале "выпавших"/графиках, но на странице не показывается.
+    if display_price_ceiling is not None and not all_hotels.empty:
+        try:
+            ceiling_val = float(display_price_ceiling)
+            before_n = len(all_hotels)
+            all_hotels = all_hotels[all_hotels['price'] <= ceiling_val].reset_index(drop=True)
+            hidden_n = before_n - len(all_hotels)
+            if hidden_n > 0:
+                print(f"💎 Скрыто из показа (дороже {ceiling_val:.0f} PLN, но учитываются в статистике): {hidden_n}")
+        except (TypeError, ValueError):
+            pass
     print(f"🧹 Таблица отфильтрована по последнему рану: {len(all_hotels)} актуальных отелей")
 
     #
@@ -820,6 +833,167 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         if latest_price < baseline_price:
             breadth_down += 1
     market_breadth = (breadth_down / breadth_total) if breadth_total > 0 else 0.0
+
+    # --- Журнал "выпавших" отелей: были в фильтре и пропали из последних N ранов ---
+    # Считаем ретроспективно из полной истории CSV (отдельное хранилище не нужно).
+    def _dest_token_from_offer_url(url: str) -> str:
+        # fly.pl: .../wycieczka/<страна>,<регион>,.../...  -> возвращаем токен страны
+        try:
+            s = str(url or '').lower()
+            marker = '/wycieczka/'
+            i = s.find(marker)
+            if i < 0:
+                return ''
+            tail = s[i + len(marker):]
+            seg = tail.split('/', 1)[0]
+            return seg.split(',', 1)[0].strip()
+        except Exception:
+            return ''
+
+    disappeared_events = []
+    try:
+        n_gone = max(1, int(disappeared_after_runs or 1))
+        # Независимо пересчитываем границы ранов на КОРРЕКТНО отсортированном по времени
+        # кадре (df_sorted в этой точке уже пересортирован по hotel_name, использовать его нельзя).
+        df_time = df.dropna(subset=['scraped_at_display']).sort_values('scraped_at_display').reset_index(drop=True)
+        tdiff = df_time['scraped_at_display'].diff()
+        boundary_positions = df_time.index[tdiff > pd.Timedelta(minutes=5)].tolist()
+        run_start_pos = [0] + boundary_positions
+        run_end_pos = boundary_positions + [len(df_time)]
+        total_runs = len(run_start_pos)
+        # Guard: при слишком короткой истории не можем достоверно говорить о "пропаже".
+        if total_runs > n_gone:
+            # Множество отелей, присутствующих хотя бы в одном из последних N ранов.
+            recent_hotels = set()
+            recent_rows_list = []
+            for s_idx, e_idx in zip(run_start_pos[-n_gone:], run_end_pos[-n_gone:]):
+                sub = df_time.iloc[s_idx:e_idx]
+                recent_hotels.update(sub['hotel_name'].astype(str).tolist())
+                recent_rows_list.append(sub)
+            all_seen_hotels = set(df['hotel_name'].astype(str).tolist())
+            gone_hotels = all_seen_hotels - recent_hotels
+
+            # Допустимые направления берём из СВЕЖИХ (чистых) ранов — это generic-фильтр
+            # против мусора из старых багнутых ранов (напр. польские отели в египетском фильтре).
+            valid_dests = set()
+            if recent_rows_list and 'offer_url' in df_time.columns:
+                recent_rows = pd.concat(recent_rows_list)
+                for u in recent_rows['offer_url'].astype(str).tolist():
+                    tok = _dest_token_from_offer_url(u)
+                    if tok:
+                        valid_dests.add(tok)
+
+            # Ценовой тир: что считать "дорогим" отелем (верхний квантиль типичных цен).
+            typical_prices = [
+                float(v['median']) for v in deal_score_by_hotel.values()
+                if v.get('median') is not None and float(v.get('median') or 0) > 0
+            ]
+            expensive_threshold = (
+                float(pd.Series(typical_prices, dtype='float64').quantile(0.70))
+                if len(typical_prices) >= 4 else (max(typical_prices) if typical_prices else 0.0)
+            )
+
+            for name in gone_hotels:
+                hist = df[df['hotel_name'].astype(str) == name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+                if hist.empty:
+                    continue
+                prices = hist['price'].astype(float)
+                if len(prices) == 0:
+                    continue
+                last_row = hist.iloc[-1]
+                # Отбрасываем не относящиеся к фильтру предложения (мусор из старых ранов):
+                # направление в offer_url должно совпадать с актуальными чистыми ранами.
+                if valid_dests:
+                    hotel_dest = ''
+                    for u in hist['offer_url'].astype(str).tolist():
+                        hotel_dest = _dest_token_from_offer_url(u)
+                        if hotel_dest:
+                            break
+                    if hotel_dest and hotel_dest not in valid_dests:
+                        continue
+                first_seen = hist['scraped_at_display'].iloc[0]
+                last_seen = hist['scraped_at_display'].iloc[-1]
+                try:
+                    visible_hours = max(0.0, (last_seen - first_seen).total_seconds() / 3600.0)
+                except Exception:
+                    visible_hours = 0.0
+                last_price = float(prices.iloc[-1])
+                min_price = float(prices.min())
+                max_price = float(prices.max())
+
+                deal_info = deal_score_by_hotel.get(name, {})
+                typical_price = float(deal_info.get('median') or 0.0) or float(prices.median())
+
+                avg_info = avg_baseline_delta.get(name)
+                baseline_pct = float(avg_info[1]) if avg_info else None
+                # Глубина падения к своей норме (положительное число = насколько ниже базы).
+                drop_depth = max(0.0, -baseline_pct) if baseline_pct is not None else 0.0
+                # Насколько дешевле своей нормы он опускался в минимуме.
+                min_below_pct = ((min_price - typical_price) / typical_price * 100.0) if typical_price > 0 else 0.0
+
+                # Последнее движение цены перед исчезновением.
+                last_move_pct = 0.0
+                if len(prices) >= 2:
+                    prev_price = float(prices.iloc[-2])
+                    if prev_price > 0:
+                        last_move_pct = (last_price - prev_price) / prev_price * 100.0
+
+                is_expensive = typical_price >= expensive_threshold and expensive_threshold > 0
+
+                # Классификация причины исчезновения.
+                if last_move_pct > 0.5:
+                    reason_code = 'up'
+                    reason_text = 'Вышел вверх из диапазона (цена росла)'
+                elif baseline_pct is not None and baseline_pct <= -3.0 and last_move_pct <= 0.5:
+                    reason_code = 'sold'
+                    reason_text = 'Похоже на распроданный дил (был заметно ниже своей нормы)'
+                elif last_move_pct < -0.5:
+                    reason_code = 'sold'
+                    reason_text = 'Цена падала перед исчезновением (возможно, раскупили)'
+                else:
+                    reason_code = 'flat'
+                    reason_text = 'Пропал без явного движения цены'
+
+                # Значимость: глубина падения + бонус за дорогой сегмент.
+                significance = drop_depth + (drop_depth * 0.5 if is_expensive else 0.0)
+                # "Заметный дил": дорогой отель, который заметно подешевел и пропал.
+                notable = bool(is_expensive and drop_depth >= 5.0 and reason_code == 'sold')
+
+                disappeared_events.append({
+                    'hotel_name': name,
+                    'dates': last_row.get('dates') if pd.notna(last_row.get('dates')) else '—',
+                    'duration': last_row.get('duration') if pd.notna(last_row.get('duration')) else '—',
+                    'airport': last_row.get('departure_airport') if pd.notna(last_row.get('departure_airport')) else '',
+                    'offer_url': last_row.get('offer_url') if pd.notna(last_row.get('offer_url')) else '',
+                    'first_seen': first_seen,
+                    'last_seen': last_seen,
+                    'visible_hours': visible_hours,
+                    'observations': int(len(prices)),
+                    'last_price': last_price,
+                    'min_price': min_price,
+                    'max_price': max_price,
+                    'typical_price': typical_price,
+                    'baseline_pct': baseline_pct,
+                    'min_below_pct': min_below_pct,
+                    'deal_score': int(deal_info.get('score', 0)) if deal_info else 0,
+                    'confidence': deal_info.get('confidence', 'Low') if deal_info else 'Low',
+                    'is_expensive': is_expensive,
+                    'reason_code': reason_code,
+                    'reason_text': reason_text,
+                    'significance': significance,
+                    'notable': notable,
+                })
+
+            disappeared_events.sort(
+                key=lambda x: (x['notable'], x['significance'], x['typical_price']),
+                reverse=True
+            )
+    except Exception as e:
+        print(f"⚠️ Не удалось посчитать журнал выпавших отелей: {e}")
+        disappeared_events = []
+    vanished_notable_count = sum(1 for e in disappeared_events if e['notable'])
+    print(f"🫥 Выпавших отелей: {len(disappeared_events)} (заметных: {vanished_notable_count})")
+
     if len(entry_candidates) >= 5 and market_breadth >= 0.45:
         entry_signal_level = "high"
         entry_signal_title = "🔥 Сильный сигнал раннего входа"
@@ -1744,7 +1918,40 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         @media (max-width: 768px) {{
             .timing-grid {{ grid-template-columns: 1fr; }}
         }}
-        
+
+        /* --- Секция "Выпавшие отели" --- */
+        .vanished-hint {{
+            margin: .2rem 0 .8rem;
+            font-size: .82rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }}
+        .vanished-table th, .vanished-table td {{
+            vertical-align: top;
+        }}
+        .vanished-badge {{
+            display: inline-block;
+            margin-left: .4rem;
+            font-size: .7rem;
+            font-weight: 700;
+            color: #b45309;
+            background: rgba(245,158,11,.18);
+            border-radius: 999px;
+            padding: .08rem .45rem;
+            white-space: nowrap;
+        }}
+        .vanished-reason {{
+            display: inline-block;
+            font-size: .76rem;
+            font-weight: 600;
+            border-radius: 8px;
+            padding: .2rem .5rem;
+            line-height: 1.3;
+        }}
+        .vanished-reason-sold {{ background: rgba(16,185,129,.16); color: #047857; }}
+        .vanished-reason-up {{ background: rgba(239,68,68,.14); color: #b91c1c; }}
+        .vanished-reason-flat {{ background: rgba(148,163,184,.2); color: #475569; }}
+
         .trend-section h3 {{
             font-size: 1.5rem;
             font-weight: 700;
@@ -3418,6 +3625,117 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <td class="offer-link-cell">{offer_link_html}</td>
                     </tr>"""
 
+    # --- HTML секции "Выпавшие отели" ---
+    def _fmt_dt(ts):
+        try:
+            return pd.to_datetime(ts).strftime('%d.%m.%Y %H:%M')
+        except Exception:
+            return '—'
+
+    def _fmt_duration(hours):
+        try:
+            h = float(hours)
+        except Exception:
+            return '—'
+        if h < 1:
+            return '<1ч'
+        if h < 48:
+            return f'{int(round(h))}ч'
+        return f'{h / 24:.1f}д'
+
+    _reason_class = {'sold': 'vanished-reason-sold', 'up': 'vanished-reason-up', 'flat': 'vanished-reason-flat'}
+    vanished_rows_html = ""
+    for ev in disappeared_events[:150]:
+        ev_name = ev['hotel_name']
+        ev_slug = slugify(ev_name)
+        if charts_subdir:
+            ev_chart_href = f"{charts_subdir.rstrip('/')}/{ev_slug}.html"
+        else:
+            ev_chart_href = f"hotel-charts/{ev_slug}.html"
+        notable_badge = '<span class="vanished-badge">🔥 заметный дил</span>' if ev['notable'] else ''
+        # Δ к своей средней
+        if ev['baseline_pct'] is not None:
+            bp = ev['baseline_pct']
+            arrow = '↓' if bp < 0 else ('↑' if bp > 0 else '→')
+            delta_cls = 'delta down' if bp < 0 else ('delta up' if bp > 0 else 'delta flat')
+            avg_cell = f'<span class="{delta_cls}">{arrow} {bp:+.1f}%</span>'
+        else:
+            avg_cell = '<span class="delta flat">—</span>'
+        min_note = ''
+        if ev['min_below_pct'] < -0.5:
+            min_note = f'<br><span style="opacity:.6;font-size:.78em;">мин: {ev["min_price"]:.0f} ({ev["min_below_pct"]:+.0f}%)</span>'
+        airport_disp = html_lib.escape(str(ev['airport']).replace('%20', ' ')) if ev['airport'] else ''
+        airport_html = f' <span style="opacity:.6;font-size:.78em;">{airport_disp}</span>' if airport_disp else ''
+        first_seen_str = _fmt_dt(ev["first_seen"])
+        last_seen_str = _fmt_dt(ev["last_seen"])
+        visible_str = _fmt_duration(ev["visible_hours"])
+        hotel_name_esc = html_lib.escape(str(ev_name))
+        confidence_esc = html_lib.escape(str(ev['confidence']))
+        reason_esc = html_lib.escape(str(ev['reason_text']))
+        reason_cls = _reason_class.get(ev['reason_code'], 'vanished-reason-flat')
+        ev_offer_url = str(ev.get('offer_url') or '').strip()
+        if ev_offer_url:
+            offer_url_esc = html_lib.escape(ev_offer_url, quote=True)
+            offer_cell = f'<a href="{offer_url_esc}" target="_blank" rel="noopener" class="offer-link" title="Открыть оффер (может быть уже недоступен)">🔗</a>'
+        else:
+            offer_cell = '—'
+        seen_cell = (
+            f'{first_seen_str} → {last_seen_str}'
+            f'<br><span style="opacity:.6;font-size:.78em;">в фильтре ~{visible_str} · {ev["observations"]} набл.</span>'
+        )
+        vanished_rows_html += f"""
+                    <tr>
+                        <td class="hotel-name"><a class="open-chart-link" href="{ev_chart_href}" target="_blank">{hotel_name_esc}</a>{notable_badge}{airport_html}</td>
+                        <td>{seen_cell}</td>
+                        <td class="price">{ev['last_price']:.0f} PLN{min_note}</td>
+                        <td>{avg_cell}</td>
+                        <td>{ev['deal_score']} <span style="opacity:.65;font-size:.78em;">{confidence_esc}</span></td>
+                        <td><span class="vanished-reason {reason_cls}">{reason_esc}</span></td>
+                        <td class="offer-link-cell">{offer_cell}</td>
+                    </tr>"""
+
+    if disappeared_events:
+        _notable_meta = f"заметных: {vanished_notable_count}" if vanished_notable_count else "по значимости"
+        vanished_inner_html = f"""
+                <p class="vanished-hint">Отели, которые были в фильтре и пропали из выдачи за последние {max(1, int(disappeared_after_runs or 1))} ранов подряд. История и график по каждому сохраняются — клик по названию открывает динамику цены, ссылка «Оффер» ведёт на исходное предложение (может быть уже недоступно). Сортировка по значимости (дорогой отель + сильное падение к своей норме = вероятно раскупленный дил).</p>
+                <div class="table-container">
+                    <table class="hotels-table vanished-table">
+                        <thead>
+                            <tr>
+                                <th>Отель</th>
+                                <th>Был виден</th>
+                                <th>Последняя цена</th>
+                                <th>Δ к своей средней</th>
+                                <th>Deal Score</th>
+                                <th>Что произошло</th>
+                                <th>Оффер</th>
+                            </tr>
+                        </thead>
+                        <tbody>{vanished_rows_html}
+                        </tbody>
+                    </table>
+                </div>
+"""
+        vanished_summary_meta = _notable_meta
+    else:
+        vanished_inner_html = f"""
+                <p class="vanished-hint">Пока нет отелей, выпавших из фильтра за последние {max(1, int(disappeared_after_runs or 1))} ранов подряд. Как только хороший отель появится в диапазоне и затем пропадёт, он окажется здесь вместе с историей цены и условиями исчезновения.</p>
+"""
+        vanished_summary_meta = "пусто"
+
+    vanished_section_html = f"""
+        <details class="dashboard-fold" id="vanishedFold">
+            <summary>
+                <span>Выпавшие отели — были в фильтре, сейчас нет ({len(disappeared_events)})</span>
+                <span class="fold-title-meta">{vanished_summary_meta}</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+{vanished_inner_html}
+            </div>
+        </details>
+"""
+
     # Завершаем таблицу и добавляем секцию для графика
     html_template += f"""
                 </tbody>
@@ -3433,7 +3751,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <button id="nextPage">Следующая →</button>
             </div>
         </div>
-        
+{vanished_section_html}
         <div class="footer">
             <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
         </div>
@@ -3813,6 +4131,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
         bindFoldPersistence('timingFold', 'dashboard_fold_timing', false);
         bindFoldPersistence('statsFold', 'dashboard_fold_stats', false);
+        bindFoldPersistence('vanishedFold', 'dashboard_fold_vanished', false);
         
         // Theme toggle functionality
         const themeToggle = document.getElementById('themeToggle');
@@ -4013,5 +4332,7 @@ if __name__ == "__main__":
     parser.add_argument('--tz', default='Europe/Warsaw')
     parser.add_argument('--alerts-file', default=None)
     parser.add_argument('--all-airports-data-file', default=None, help='CSV с общим фильтром (любой аэропорт) для сравнения')
+    parser.add_argument('--disappeared-after-runs', type=int, default=2, help='Сколько последних ранов подряд должен отсутствовать отель, чтобы считаться выпавшим')
+    parser.add_argument('--display-price-ceiling', type=float, default=None, help='Потолок цены для ПОКАЗА в таблице/карточках (дороже — только в истории/статистике)')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file, all_airports_data_file=args.all_airports_data_file)
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file, all_airports_data_file=args.all_airports_data_file, disappeared_after_runs=args.disappeared_after_runs, display_price_ceiling=args.display_price_ceiling)
