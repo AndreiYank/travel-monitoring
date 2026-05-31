@@ -260,7 +260,7 @@
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
-            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от 8% и больше. Оранжевые точки — расширенная история (10000–20000 PLN). Разрыв линии — между проверками не было данных. По горизонтали — даты проверки цены.</p>
+            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от 8% и больше. Оранжевые точки — расширенная история (10000–20000 PLN). Серая пунктирная линия — скачок цены через паузу в данных. Разрыв основной линии — между проверками не было замеров. По горизонтали — время проверки.</p>
             <div id="chart"></div>
         </section>
         <section class="chart-recent">
@@ -277,6 +277,14 @@
       const text = ["Проверка: 29.05.2026 11:41<br>Даты поездки: 26.12.2026 - 27.12.2026"];
       const markerSizes = [10];
       const markerColors = ["#6366f1"];
+      const jumpX = [];
+      const jumpY = [];
+      const jumpTrace = (jumpX.length && jumpY.length) ? {
+        x: jumpX, y: jumpY,
+        type: 'scatter', mode: 'lines', name: 'Скачок через паузу',
+        line: { color: '#94a3b8', width: 1.5, dash: 'dot' },
+        hoverinfo: 'skip', showlegend: false
+      } : null;
       const medianY = 271.00;
       const minY = 271.00;
       const ceilingY = 10000.00;
@@ -304,10 +312,18 @@
         showlegend: false
       };
       const tripDatesLabel = "26.12.2026 - 27.12.2026";
-      const yDataMin = y.length ? Math.min(...y) : 0;
-      const yDataMax = y.length ? Math.max(...y) : 0;
-      const refMin = Math.min(yDataMin, minY, medianY);
-      const refMax = Math.max(yDataMax, minY, medianY);
+      const yDataMin = Math.min(
+        ...(y.length ? y.filter(v => v != null) : [Infinity]),
+        minY,
+        medianY
+      );
+      const yDataMax = Math.max(
+        ...(y.length ? y.filter(v => v != null) : [0]),
+        minY,
+        medianY
+      );
+      const refMin = Number.isFinite(yDataMin) ? yDataMin : 0;
+      const refMax = Number.isFinite(yDataMax) ? yDataMax : 0;
       const ySpan = Math.max(refMax - refMin, 1);
       const yPad = Math.max(ySpan * 0.1, 80);
       const layout = {
@@ -360,7 +376,7 @@
           font: { size: 12, color: '#0f172a' }
         }] : []
       };
-      Plotly.newPlot('chart', [bandTrace, mainTrace], layout, { responsive: true, displayModeBar: true });
+      Plotly.newPlot('chart', [bandTrace, jumpTrace, mainTrace].filter(Boolean), layout, { responsive: true, displayModeBar: true });
     </script>
 </body>
 </html>

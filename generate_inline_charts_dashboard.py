@@ -538,6 +538,25 @@ def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
     return sizes, colors, step_pcts
 
 
+def _build_gap_jump_series(chart_x, chart_y, alert_threshold):
+    """Пунктир через паузу в данных, если цена заметно изменилась."""
+    jump_x, jump_y = [], []
+    last_idx = None
+    for i, y in enumerate(chart_y):
+        if y is None:
+            continue
+        if last_idx is not None:
+            gap_between = any(v is None for v in chart_y[last_idx + 1:i])
+            if gap_between and last_idx + 1 < i:
+                prev_y = float(chart_y[last_idx])
+                pct = ((float(y) - prev_y) / prev_y * 100.0) if prev_y else 0.0
+                if abs(pct) >= max(3.0, float(alert_threshold) * 0.5):
+                    jump_x.extend([chart_x[last_idx], chart_x[i], None])
+                    jump_y.extend([prev_y, float(y), None])
+        last_idx = i
+    return jump_x, jump_y
+
+
 def _render_hotel_chart_page(
     hotel_name,
     hotel_name_html,
