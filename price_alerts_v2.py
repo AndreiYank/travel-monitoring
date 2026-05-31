@@ -2,7 +2,7 @@
 """
 Модуль для отслеживания изменений цен и отправки алертов (версия 2)
 Согласно новым требованиям:
-- Документировать все одномоментные изменения цен больше 4%
+- Документировать все одномоментные изменения цен больше 8%
 - Каждый ран обрабатывать весь файл с данными
 - На дашборд добавлять только новые алерты
 """
@@ -22,6 +22,8 @@ from generate_inline_charts_dashboard import (
 )
 
 logger = logging.getLogger(__name__)
+
+ALERT_THRESHOLD_PERCENT = 8.0
 
 class PriceAlertManagerV2:
     def __init__(
@@ -107,7 +109,7 @@ class PriceAlertManagerV2:
                 }
         return {}
     
-    def find_price_changes_between_runs(self, prev_run: datetime, curr_run: datetime, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
+    def find_price_changes_between_runs(self, prev_run: datetime, curr_run: datetime, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
         """Находит изменения цен между двумя ранами"""
         prev_prices = self.get_hotel_prices_for_run(prev_run)
         curr_prices = self.get_hotel_prices_for_run(curr_run)
@@ -138,7 +140,7 @@ class PriceAlertManagerV2:
         
         return changes
     
-    def scan_all_runs_for_changes(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
+    def scan_all_runs_for_changes(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
         """Сканирует все раны и находит все изменения цен >= порога"""
         if self.df.empty:
             return []
@@ -180,7 +182,7 @@ class PriceAlertManagerV2:
         
         return new_alerts
     
-    def process_all_changes(self, threshold_percent: float = 4.0) -> List[Dict[str, Any]]:
+    def process_all_changes(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
         """Пересобирает алерты из канонического ряда и возвращает только новые."""
         if self.df.empty:
             logger.warning("Нет данных для обработки")
@@ -200,7 +202,7 @@ class PriceAlertManagerV2:
         
         return new_alerts
     
-    def create_alert_report(self, threshold_percent: float = 4.0) -> str:
+    def create_alert_report(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> str:
         """Создает отчет об изменениях цен"""
         if self.df.empty:
             return "❌ Нет данных для анализа"
@@ -261,7 +263,7 @@ def main():
     print(f"📅 Период данных: {alert_manager.df['scraped_at'].min()} - {alert_manager.df['scraped_at'].max()}")
     
     # Обрабатываем все изменения
-    new_alerts = alert_manager.process_all_changes(threshold_percent=4.0)
+    new_alerts = alert_manager.process_all_changes()
     
     print(f"\\n🆕 Новых алертов: {len(new_alerts)}")
     
@@ -272,7 +274,7 @@ def main():
             print(f"  {arrow} {alert['hotel_name']}: {alert['old_price']} → {alert['new_price']} PLN ({alert['price_change_pct']:+.1f}%) - {alert['timestamp']}")
     
     # Создаем отчет
-    report = alert_manager.create_alert_report(threshold_percent=4.0)
+    report = alert_manager.create_alert_report()
     print(f"\\n📊 Отчет:")
     print(report)
 

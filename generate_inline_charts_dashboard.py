@@ -76,6 +76,653 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
     return pd.DataFrame(rows).sort_values(['hotel_name', 'scraped_at_display']).reset_index(drop=True)
 
 
+def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None):
+    """Returns (label, css_class, display_badge)."""
+    is_bad = (
+        delta48_pct is not None and delta48_pct > 0
+        and avg_pct is not None and avg_pct > 0
+    )
+    if confidence == "Low":
+        return "Warm-up", "warm", "⏳ Warm-up"
+    if is_bad:
+        return "Bad", "bad", "📈 Bad"
+    if deal_score >= 80:
+        return "Hot", "hot", "🔥 Hot"
+    if deal_score >= 65:
+        return "Good", "good", "✅ Good"
+    return "Normal", "normal", "↔️ Normal"
+
+
+def _metric_card(value_html, label, tip=""):
+    tip_attr = f' title="{html_lib.escape(tip)}"' if tip else ""
+    tip_cls = " metric-tip" if tip else ""
+    return (
+        f'<div class="metric{tip_cls}"{tip_attr}>'
+        f'<div class="metric-value">{value_html}</div>'
+        f'<div class="metric-label">{html_lib.escape(label)}</div>'
+        f'</div>'
+    )
+
+
+def _alert_is_current(alert, table_prices, tolerance=2.0):
+    """Alert is current if the hotel is in the last run at the alert's new price."""
+    hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
+    alert_type = alert.get('alert_type') or alert.get('type') or ''
+    new_price = alert.get('new_price') if 'new_price' in alert else (alert.get('to') or alert.get('current_price'))
+    if not hotel_name or alert_type == 'missing' or new_price in (None, '', 'null'):
+        return False
+    if hotel_name not in table_prices:
+        return False
+    try:
+        current = float(table_prices[hotel_name])
+        target = float(new_price)
+    except (TypeError, ValueError):
+        return False
+    return abs(current - target) <= tolerance
+
+
+def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
+    hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or 'Unknown')
+    hotel_name_html = meta.get('hotel_name_html') or html_lib.escape(hotel_name)
+    chart_href = html_lib.escape(meta.get('chart_href') or f"hotel-charts/{slugify_fn(hotel_name)}.html", quote=True)
+    offer_url = meta.get('offer_url') or ''
+    dates = meta.get('dates') or '—'
+    duration = meta.get('duration') or '—'
+
+    alert_type = alert.get('alert_type') or alert.get('type') or ''
+    old_price = alert.get('old_price') or alert.get('from') or alert.get('previous_price')
+    new_price = alert.get('new_price') if 'new_price' in alert else (alert.get('to') or alert.get('current_price'))
+    ts_raw = alert.get('created_at') or alert.get('timestamp') or alert.get('time') or ''
+    try:
+        ts_fmt = parse_iso_fn(ts_raw).astimezone().strftime('%d.%m.%Y %H:%M')
+    except Exception:
+        ts_fmt = str(ts_raw)
+
+    if alert_type == 'missing' or new_price in (None, '', 'null'):
+        kind = 'missing'
+        badge = '—'
+        pct_text = ''
+        try:
+            old_fmt = f"{float(old_price):.0f}" if old_price is not None else '—'
+        except (TypeError, ValueError):
+            old_fmt = str(old_price or '—')
+        new_fmt = '—'
+        new_cls = ''
+        note = html_lib.escape(alert.get('message') or alert.get('note') or 'Исчез из выдачи')
+    else:
+        change_pct = float(alert.get('price_change_pct') or 0.0)
+        price_change = float(alert.get('price_change') or 0.0)
+        pct_text = f'{change_pct:+.1f}%'
+        if price_change > 0:
+            kind = 'up'
+            badge = '↑'
+            new_cls = 'up'
+        elif price_change < 0:
+            kind = 'drop'
+            badge = '↓'
+            new_cls = 'drop'
+        else:
+            kind = 'missing'
+            badge = '→'
+            new_cls = ''
+        try:
+            old_fmt = f"{float(old_price):.0f}"
+            new_fmt = f"{float(new_price):.0f}"
+        except (TypeError, ValueError):
+            old_fmt = str(old_price)
+            new_fmt = str(new_price)
+        note = ''
+
+    meta_line = f'{html_lib.escape(str(dates))} · {html_lib.escape(str(duration))}'
+    return {
+        'kind': kind,
+        'badge': badge,
+        'hotel_name_html': hotel_name_html,
+        'chart_href': chart_href,
+        'offer_url': offer_url,
+        'old_fmt': old_fmt,
+        'new_fmt': new_fmt,
+        'new_cls': new_cls,
+        'pct_text': pct_text,
+        'ts_fmt': ts_fmt,
+        'meta_line': meta_line,
+        'note': note,
+    }
+
+
+def _render_alert_card(alert, meta, slugify_fn, parse_iso_fn):
+    d = _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn)
+    image_url = meta.get('image_url') or ''
+    if image_url:
+        img_block = (
+            f'<img src="{html_lib.escape(image_url, quote=True)}" alt="" loading="lazy" '
+            f'onerror="this.onerror=null;this.parentElement.innerHTML=\'<div>🏨</div>\';" />'
+        )
+    else:
+        img_block = '<div>🏨</div>'
+
+    offer_btn = (
+        f'<a class="card-btn" href="{html_lib.escape(d["offer_url"], quote=True)}" target="_blank" rel="noopener">Оффер</a>'
+        if d['offer_url'] else
+        '<span class="card-btn" style="opacity:.55;">—</span>'
+    )
+
+    if d['note']:
+        price_block = f'<div class="alert-price-row"><span class="alert-price-new">{d["old_fmt"]} PLN</span></div>'
+        sub_line = f'{d["note"]} · {d["meta_line"]}'
+    else:
+        pct_block = f'<span class="alert-change-pct {d["new_cls"]}">{d["pct_text"]}</span>' if d['pct_text'] else ''
+        price_block = (
+            f'<div class="alert-price-row">'
+            f'<span class="alert-price-old">{d["old_fmt"]}</span>'
+            f'<span aria-hidden="true">→</span>'
+            f'<span class="alert-price-new {d["new_cls"]}">{d["new_fmt"]}</span>'
+            f'{pct_block}'
+            f'</div>'
+        )
+        sub_line = f'{d["ts_fmt"]} · {d["meta_line"]}'
+
+    return f"""
+                    <article class="alert-card {d["kind"]}">
+                        <div class="alert-card-img">{img_block}</div>
+                        <div class="alert-card-body">
+                            <div class="alert-card-top">
+                                <h4 class="alert-card-title"><a href="{d["chart_href"]}" target="_blank" rel="noopener">{d["hotel_name_html"]}</a></h4>
+                                <span class="alert-badge {d["kind"]}">{d["badge"]}</span>
+                            </div>
+                            {price_block}
+                            <div class="alert-card-meta">{sub_line}</div>
+                            <div class="alert-card-actions">
+                                <a class="card-btn primary" href="{d["chart_href"]}" target="_blank" rel="noopener">График</a>
+                                {offer_btn}
+                            </div>
+                        </div>
+                    </article>
+"""
+
+
+def _render_alert_history_row(alert, meta, slugify_fn, parse_iso_fn):
+    d = _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn)
+    if d['note']:
+        price_html = f'<span class="alert-history-new">{d["old_fmt"]} PLN</span>'
+        pct_html = f'<span class="alert-history-pct">{html_lib.escape(d["note"])}</span>'
+    else:
+        price_html = (
+            f'<span class="alert-history-old">{d["old_fmt"]}</span>'
+            f'<span class="alert-history-arrow">→</span>'
+            f'<span class="alert-history-new {d["new_cls"]}">{d["new_fmt"]}</span>'
+        )
+        pct_html = f'<span class="alert-history-pct {d["new_cls"]}">{d["pct_text"]}</span>' if d['pct_text'] else ''
+
+    offer_link = (
+        f'<a class="alert-history-offer" href="{html_lib.escape(d["offer_url"], quote=True)}" target="_blank" rel="noopener" title="Оффер">🔗</a>'
+        if d['offer_url'] else ''
+    )
+    return f"""
+                        <div class="alert-history-row {d["kind"]}">
+                            <span class="alert-history-badge {d["kind"]}" aria-hidden="true">{d["badge"]}</span>
+                            <div class="alert-history-info">
+                                <a class="alert-history-name" href="{d["chart_href"]}" target="_blank" rel="noopener">{d["hotel_name_html"]}</a>
+                                <span class="alert-history-sub">{d["ts_fmt"]} · {d["meta_line"]}</span>
+                            </div>
+                            <div class="alert-history-price">{price_html}{pct_html}</div>
+                            <div class="alert-history-links">
+                                <a class="alert-history-chart" href="{d["chart_href"]}" target="_blank" rel="noopener">График</a>
+                                {offer_link}
+                            </div>
+                        </div>
+"""
+
+
+def _compute_chart_point_meta(y_values, alert_threshold):
+    """Marker sizes/colors and step % for each canonical price point."""
+    sizes = []
+    colors = []
+    step_pcts = []
+    for i, price in enumerate(y_values):
+        if i == 0:
+            pct = 0.0
+        else:
+            prev = y_values[i - 1]
+            pct = ((price - prev) / prev * 100.0) if prev else 0.0
+        step_pcts.append(round(pct, 1))
+        if i > 0 and abs(pct) >= alert_threshold:
+            sizes.append(14)
+            colors.append('#ef4444' if pct > 0 else '#10b981')
+        else:
+            sizes.append(8 if i == len(y_values) - 1 else 7)
+            colors.append('#6366f1' if i == len(y_values) - 1 else '#4f46e5')
+    if sizes:
+        sizes[-1] = max(sizes[-1], 10)
+    return sizes, colors, step_pcts
+
+
+def _render_hotel_chart_page(
+    hotel_name,
+    hotel_name_html,
+    x_values,
+    y_values,
+    hover_lines,
+    meta,
+    back_href,
+    deal_score,
+    deal_label,
+    deal_class,
+    delta48_str,
+    delta_avg_str,
+    confidence,
+    median_p,
+    min_p,
+    max_p,
+    samples,
+    alert_threshold,
+    trip_dates_label,
+):
+    current_p = float(y_values[-1]) if y_values else 0.0
+    is_at_min = bool(y_values) and current_p <= min_p + 2.0
+    marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(y_values, alert_threshold)
+
+    enriched_hover = []
+    for i, (base, pct) in enumerate(zip(hover_lines, step_pcts)):
+        extra = f'<br>Δ к прошлому замеру: {pct:+.1f}%' if i > 0 else ''
+        if i > 0 and abs(pct) >= alert_threshold:
+            extra += '<br><b>Заметное изменение</b>'
+        enriched_hover.append(base + extra)
+
+    image_url = meta.get('image_url') or ''
+    offer_url = meta.get('offer_url') or ''
+    dates = html_lib.escape(str(meta.get('dates') or '—'))
+    duration = html_lib.escape(str(meta.get('duration') or '—'))
+
+    if image_url:
+        img_html = (
+            f'<img src="{html_lib.escape(image_url, quote=True)}" alt="" loading="lazy" '
+            f'onerror="this.onerror=null;this.parentElement.innerHTML=\'<div class=\\\'chart-hero-placeholder\\\'>🏨</div>\';" />'
+        )
+    else:
+        img_html = '<div class="chart-hero-placeholder">🏨</div>'
+
+    offer_btn = (
+        f'<a class="chart-btn primary" href="{html_lib.escape(offer_url, quote=True)}" target="_blank" rel="noopener">Открыть оффер</a>'
+        if offer_url else
+        '<span class="chart-btn disabled">Оффер недоступен</span>'
+    )
+    min_badge = '<span class="chart-min-badge">🔥 Исторический минимум</span>' if is_at_min else ''
+
+    recent_rows = ''
+    for i in range(max(0, len(x_values) - 5), len(x_values)):
+        step = step_pcts[i]
+        step_cls = 'up' if step > 0 else ('drop' if step < 0 else 'flat')
+        step_txt = f'{step:+.1f}%' if i > 0 else '—'
+        try:
+            x_label = pd.to_datetime(x_values[i]).strftime('%d.%m.%Y %H:%M')
+        except Exception:
+            x_label = str(x_values[i])
+        recent_rows += (
+            f'<tr><td>{html_lib.escape(x_label)}</td>'
+            f'<td><strong>{float(y_values[i]):.0f}</strong> PLN</td>'
+            f'<td class="{step_cls}">{step_txt}</td></tr>'
+        )
+
+    title_esc = html_lib.escape(str(hotel_name))
+    back_href_esc = html_lib.escape(back_href, quote=True)
+    meta_desc = html_lib.escape(
+        f'{hotel_name}: {current_p:.0f} PLN. Deal Score {deal_score} {deal_label}.'
+    )
+
+    return f"""<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="{meta_desc}">
+    <title>{title_esc} — {current_p:.0f} PLN</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        :root {{
+            --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+            --border-soft: rgba(148, 163, 184, 0.28);
+            --text-muted: #64748b;
+            --radius-lg: 14px;
+            --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+        }}
+        * {{ box-sizing: border-box; }}
+        body {{
+            margin: 0;
+            font-family: 'Inter', sans-serif;
+            background: #f3f6ff;
+            color: #0f172a;
+            line-height: 1.45;
+        }}
+        .page {{
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 1rem 1rem 2rem;
+        }}
+        .chart-topbar {{
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: .75rem;
+            margin-bottom: .85rem;
+        }}
+        .chart-back {{
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: .88rem;
+        }}
+        .chart-back:hover {{ text-decoration: underline; }}
+        .chart-btn {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .45rem .85rem;
+            border-radius: 10px;
+            font-size: .82rem;
+            font-weight: 700;
+            text-decoration: none;
+            border: 1px solid var(--border-soft);
+            background: #fff;
+            color: #1e293b;
+        }}
+        .chart-btn.primary {{
+            background: var(--gradient-primary);
+            color: #fff;
+            border-color: transparent;
+        }}
+        .chart-btn.disabled {{
+            opacity: .55;
+            cursor: default;
+        }}
+        .chart-hero {{
+            display: grid;
+            grid-template-columns: 140px minmax(0, 1fr);
+            gap: 1rem;
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            overflow: hidden;
+            margin-bottom: .85rem;
+        }}
+        .chart-hero-img {{
+            min-height: 120px;
+            background: linear-gradient(135deg, rgba(79,70,229,.12), rgba(14,165,233,.12));
+        }}
+        .chart-hero-img img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            min-height: 120px;
+        }}
+        .chart-hero-placeholder {{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 120px;
+            font-size: 2rem;
+            opacity: .55;
+        }}
+        .chart-hero-body {{
+            padding: .85rem .95rem .9rem 0;
+        }}
+        .chart-hero-body h1 {{
+            margin: 0 0 .35rem;
+            font-size: 1.15rem;
+            line-height: 1.25;
+        }}
+        .chart-hero-meta {{
+            margin: 0 0 .55rem;
+            font-size: .82rem;
+            color: var(--text-muted);
+        }}
+        .chart-hero-price-row {{
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: .45rem;
+        }}
+        .chart-current-price {{
+            font-size: 1.65rem;
+            font-weight: 800;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }}
+        .deal-pill {{
+            border-radius: 999px;
+            padding: .18rem .55rem;
+            font-size: .72rem;
+            font-weight: 700;
+            border: 1px solid transparent;
+        }}
+        .deal-pill.hot {{ background: rgba(245,158,11,.18); color: #92400e; border-color: rgba(245,158,11,.32); }}
+        .deal-pill.good {{ background: rgba(16,185,129,.17); color: #065f46; border-color: rgba(16,185,129,.32); }}
+        .deal-pill.normal {{ background: rgba(148,163,184,.18); color: #334155; border-color: rgba(148,163,184,.35); }}
+        .deal-pill.bad {{ background: rgba(239,68,68,.15); color: #991b1b; border-color: rgba(239,68,68,.32); }}
+        .deal-pill.warm {{ background: rgba(14,165,233,.16); color: #0c4a6e; border-color: rgba(14,165,233,.35); }}
+        .chart-min-badge {{
+            font-size: .72rem;
+            font-weight: 700;
+            color: #b45309;
+            background: rgba(245,158,11,.14);
+            border: 1px solid rgba(245,158,11,.28);
+            border-radius: 999px;
+            padding: .15rem .5rem;
+        }}
+        .chart-kpis {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: .55rem;
+            margin-bottom: .85rem;
+        }}
+        .chart-kpi {{
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: 12px;
+            padding: .55rem .65rem;
+            box-shadow: var(--shadow-md);
+        }}
+        .chart-kpi .v {{
+            font-size: 1.02rem;
+            font-weight: 800;
+            color: #111827;
+        }}
+        .chart-kpi .l {{
+            font-size: .72rem;
+            color: var(--text-muted);
+            font-weight: 600;
+            margin-top: .12rem;
+        }}
+        .chart-kpi .v.drop {{ color: #047857; }}
+        .chart-kpi .v.up {{ color: #b91c1c; }}
+        .chart-panel {{
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: .65rem .45rem .25rem;
+            margin-bottom: .85rem;
+        }}
+        .chart-panel h2 {{
+            margin: 0 0 .35rem .55rem;
+            font-size: .95rem;
+            color: #334155;
+        }}
+        #chart {{ height: 420px; }}
+        .chart-recent {{
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-md);
+            padding: .65rem .75rem .75rem;
+        }}
+        .chart-recent h3 {{
+            margin: 0 0 .45rem;
+            font-size: .88rem;
+            color: #334155;
+        }}
+        .chart-recent table {{
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .78rem;
+        }}
+        .chart-recent th, .chart-recent td {{
+            padding: .35rem .25rem;
+            border-bottom: 1px solid rgba(148,163,184,.18);
+            text-align: left;
+        }}
+        .chart-recent td.drop {{ color: #047857; font-weight: 700; }}
+        .chart-recent td.up {{ color: #b91c1c; font-weight: 700; }}
+        .chart-recent td.flat {{ color: #64748b; }}
+        .chart-legend-note {{
+            margin: .35rem .55rem .5rem;
+            font-size: .72rem;
+            color: var(--text-muted);
+        }}
+        @media (max-width: 640px) {{
+            .chart-hero {{ grid-template-columns: 1fr; }}
+            .chart-hero-body {{ padding: .75rem; }}
+            .chart-hero-img {{ max-height: 140px; }}
+            #chart {{ height: 320px; }}
+        }}
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="chart-topbar">
+            <a class="chart-back" href="{back_href_esc}">← Назад к дашборду</a>
+            {offer_btn}
+        </div>
+        <section class="chart-hero">
+            <div class="chart-hero-img">{img_html}</div>
+            <div class="chart-hero-body">
+                <h1>{hotel_name_html}</h1>
+                <p class="chart-hero-meta">{dates} · {duration}</p>
+                <div class="chart-hero-price-row">
+                    <span class="chart-current-price">{current_p:.0f} PLN</span>
+                    <span class="deal-pill {deal_class}">Deal {deal_score} · {html_lib.escape(deal_label)}</span>
+                    {min_badge}
+                </div>
+            </div>
+        </section>
+        <section class="chart-kpis">
+            <div class="chart-kpi"><div class="v {'drop' if delta48_str.startswith('-') else ('up' if delta48_str.startswith('+') else '')}">{html_lib.escape(delta48_str)}</div><div class="l">Δ за 48ч</div></div>
+            <div class="chart-kpi"><div class="v {'drop' if delta_avg_str.startswith('-') else ('up' if delta_avg_str.startswith('+') else '')}">{html_lib.escape(delta_avg_str)}</div><div class="l">Δ к своей средней</div></div>
+            <div class="chart-kpi"><div class="v">{min_p:.0f}</div><div class="l">Минимум истории</div></div>
+            <div class="chart-kpi"><div class="v">{median_p:.0f}</div><div class="l">Медиана</div></div>
+            <div class="chart-kpi"><div class="v">{max_p:.0f}</div><div class="l">Максимум</div></div>
+            <div class="chart-kpi"><div class="v">{samples}</div><div class="l">Замеров · {html_lib.escape(confidence)}</div></div>
+        </section>
+        <section class="chart-panel">
+            <h2>История цен</h2>
+            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше. По горизонтали — даты проверки цены.</p>
+            <div id="chart"></div>
+        </section>
+        <section class="chart-recent">
+            <h3>Последние замеры</h3>
+            <table>
+                <thead><tr><th>Время</th><th>Цена</th><th>Δ к прошлому</th></tr></thead>
+                <tbody>{recent_rows}</tbody>
+            </table>
+        </section>
+    </div>
+    <script>
+      const x = {json.dumps(x_values, ensure_ascii=False)};
+      const y = {json.dumps(y_values, ensure_ascii=False)};
+      const text = {json.dumps(enriched_hover, ensure_ascii=False)};
+      const markerSizes = {json.dumps(marker_sizes)};
+      const markerColors = {json.dumps(marker_colors)};
+      const medianY = {median_p:.2f};
+      const minY = {min_p:.2f};
+      const mainTrace = {{
+        x, y, text,
+        type: 'scatter',
+        mode: 'lines+markers',
+        name: 'Цена',
+        line: {{ color: '#4f46e5', width: 2.5, shape: 'hv' }},
+        marker: {{
+          size: markerSizes,
+          color: markerColors,
+          line: {{ width: 1.5, color: '#fff' }}
+        }},
+        hovertemplate: '<b>%{{y:.0f}} PLN</b><br>%{{text}}<extra></extra>'
+      }};
+      const bandTrace = {{
+        x: [x[0], x[x.length - 1], x[x.length - 1], x[0]],
+        y: [minY, minY, medianY, medianY],
+        type: 'scatter',
+        fill: 'toself',
+        fillcolor: 'rgba(16,185,129,0.07)',
+        line: {{ width: 0 }},
+        hoverinfo: 'skip',
+        showlegend: false
+      }};
+      const tripDatesLabel = {json.dumps(str(trip_dates_label or '—'), ensure_ascii=False)};
+      const yDataMin = y.length ? Math.min(...y) : 0;
+      const yDataMax = y.length ? Math.max(...y) : 0;
+      const refMin = Math.min(yDataMin, minY, medianY);
+      const refMax = Math.max(yDataMax, minY, medianY);
+      const ySpan = Math.max(refMax - refMin, 1);
+      const yPad = Math.max(ySpan * 0.1, 80);
+      const layout = {{
+        margin: {{ t: 10, r: 20, b: 65, l: 60 }},
+        paper_bgcolor: 'rgba(0,0,0,0)',
+        plot_bgcolor: 'rgba(0,0,0,0)',
+        xaxis: {{
+          title: {{ text: 'Даты поездки: ' + tripDatesLabel, standoff: 14 }},
+          type: 'date',
+          tickformat: '%d.%m.%Y',
+          hoverformat: '%d.%m.%Y %H:%M',
+          gridcolor: 'rgba(148,163,184,0.2)',
+          tickangle: -20
+        }},
+        yaxis: {{
+          title: 'Цена (PLN)',
+          gridcolor: 'rgba(148,163,184,0.2)',
+          range: [refMin - yPad, refMax + yPad],
+          fixedrange: false
+        }},
+        showlegend: false,
+        hovermode: 'closest',
+        shapes: [
+          {{
+            type: 'line', xref: 'paper', x0: 0, x1: 1,
+            yref: 'y', y0: medianY, y1: medianY,
+            line: {{ color: '#94a3b8', width: 1.5, dash: 'dot' }}
+          }},
+          {{
+            type: 'line', xref: 'paper', x0: 0, x1: 1,
+            yref: 'y', y0: minY, y1: minY,
+            line: {{ color: '#10b981', width: 1.5, dash: 'dot' }}
+          }}
+        ],
+        annotations: x.length ? [{{
+          x: x[x.length - 1],
+          y: y[y.length - 1],
+          text: 'Сейчас: ' + y[y.length - 1].toFixed(0) + ' PLN',
+          showarrow: true,
+          arrowhead: 2,
+          ax: 0,
+          ay: -48,
+          bgcolor: 'rgba(255,255,255,0.95)',
+          bordercolor: '#cbd5e1',
+          borderwidth: 1,
+          font: {{ size: 12, color: '#0f172a' }}
+        }}] : []
+      }};
+      Plotly.newPlot('chart', [bandTrace, mainTrace], layout, {{ responsive: true, displayModeBar: true }});
+    </script>
+</body>
+</html>"""
+
+
 def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None):
     """Генерирует дашборд с встроенными графиками"""
     
@@ -126,8 +773,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     total_offers = 0
     unique_hotels = 0
     avg_price = 0.0
-    min_price = 0.0
-    max_price = 0.0
+    history_min_price = 0.0
+    history_max_price = 0.0
     current_table_hotels = 0
 
     # Функция для генерации hover-данных с использованием встроенных возможностей Plotly
@@ -579,8 +1226,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     unique_hotels = int(df_canonical['hotel_name'].nunique()) if not df_canonical.empty else 0
     if not df_canonical.empty:
         avg_price = float(df_canonical['price'].mean())
-        min_price = float(df_canonical['price'].min())
-        max_price = float(df_canonical['price'].max())
+        history_min_price = float(df_canonical['price'].min())
+        history_max_price = float(df_canonical['price'].max())
     current_table_hotels = len(all_hotels)
     if ceiling_val is not None and skipped_above_ceiling:
         print(f"💎 Дороже потолка показа (>{ceiling_val:.0f} PLN, только в истории): {skipped_above_ceiling}")
@@ -802,7 +1449,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         elif latest <= p25:
             score_rarity = 80
         elif latest <= median:
-            score_rarity = 60
+            score_rarity = 50
         else:
             score_rarity = 35
 
@@ -816,11 +1463,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         elif len(recent) >= 2 and recent[-1] > recent[-2]:
             score_momentum = 35
 
-        # Стабильность: меньше шум -> чуть выше уверенность
+        # Стабильность: низкий шум без тренда = нейтральный балл
         score_stability = 50
         if len(series) >= 4 and series.mean() > 0:
             cv = float(series.std(ddof=0) / series.mean())
-            score_stability = _clamp(70 - cv * 120, 20, 85)
+            if cv < 0.01:
+                score_stability = 50
+            else:
+                score_stability = _clamp(70 - cv * 120, 20, 85)
 
         raw_deal_score = (
             score_discount * 0.40 +
@@ -842,6 +1492,27 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             confidence_level = "High"
 
+        delta48_info = deltas_by_hotel.get(hotel_name)
+        avg_info = avg_baseline_delta.get(hotel_name)
+        d48_pct = float(delta48_info[1]) if delta48_info is not None else None
+        d_avg_pct = float(avg_info[1]) if avg_info is not None else None
+
+        is_flat = (
+            (d48_pct is None or abs(d48_pct) < 0.5)
+            and (d_avg_pct is None or abs(d_avg_pct) < 0.5)
+            and abs(rel_discount) < 0.02
+        )
+        if is_flat:
+            deal_score = int(round(50 + (deal_score - 50) * 0.2))
+
+        is_bad = (
+            d48_pct is not None and d48_pct > 0
+            and d_avg_pct is not None and d_avg_pct > 0
+        )
+        if is_bad:
+            penalty = (d48_pct + d_avg_pct) / 2.0
+            deal_score = int(_clamp(50 - penalty * 1.2, 5, 42))
+
         deal_score_by_hotel[hotel_name] = {
             'score': deal_score,
             'raw_score': int(round(raw_deal_score)),
@@ -850,10 +1521,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'latest': latest,
             'median': median,
             'p25': p25,
-            'min': min_p
+            'min': min_p,
+            'is_bad': is_bad,
         }
 
-        delta48 = deltas_by_hotel.get(hotel_name)
+        delta48 = delta48_info
 
         # Кандидаты для "раннего входа"
         if delta48 is not None and delta48[1] <= -2.0 and latest <= p25 and deal_score >= 72 and confidence_level != "Low":
@@ -970,8 +1642,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 except Exception:
                     visible_hours = 0.0
                 last_price = float(prices.iloc[-1])
-                min_price = float(prices.min())
-                max_price = float(prices.max())
+                hotel_min_price = float(prices.min())
+                hotel_max_price = float(prices.max())
 
                 deal_info = deal_score_by_hotel.get(name, {})
                 typical_price = float(deal_info.get('median') or 0.0) or float(prices.median())
@@ -981,7 +1653,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 # Глубина падения к своей норме (положительное число = насколько ниже базы).
                 drop_depth = max(0.0, -baseline_pct) if baseline_pct is not None else 0.0
                 # Насколько дешевле своей нормы он опускался в минимуме.
-                min_below_pct = ((min_price - typical_price) / typical_price * 100.0) if typical_price > 0 else 0.0
+                min_below_pct = ((hotel_min_price - typical_price) / typical_price * 100.0) if typical_price > 0 else 0.0
 
                 # Последнее движение цены перед исчезновением.
                 last_move_pct = 0.0
@@ -1022,8 +1694,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     'visible_hours': visible_hours,
                     'observations': int(len(prices)),
                     'last_price': last_price,
-                    'min_price': min_price,
-                    'max_price': max_price,
+                    'min_price': hotel_min_price,
+                    'max_price': hotel_max_price,
                     'typical_price': typical_price,
                     'baseline_pct': baseline_pct,
                     'min_below_pct': min_below_pct,
@@ -1173,18 +1845,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low'})
         deal_score = int(deal_info.get('score', 0))
         confidence = deal_info.get('confidence', 'Low')
-        if deal_score >= 80 and confidence != "Low":
-            deal_label = "Hot"
-            deal_class = "hot"
-        elif deal_score >= 65 and confidence != "Low":
-            deal_label = "Good"
-            deal_class = "good"
-        elif confidence == "Low":
-            deal_label = "Warm-up"
-            deal_class = "warm"
-        else:
-            deal_label = "Normal"
-            deal_class = "normal"
+        d48_for_badge = float(delta_info[1]) if delta_info is not None else None
+        d_avg_for_badge = float(avg_info[1]) if avg_info is not None else None
+        deal_label, deal_class, _ = classify_deal_badge(
+            deal_score, confidence, d48_for_badge, d_avg_for_badge
+        )
 
         hotel_cards.append({
             "hotel_name": hotel_name,
@@ -1203,25 +1868,55 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "confidence": confidence,
         })
 
+    hotel_meta_by_name = {c["hotel_name"]: c for c in hotel_cards}
+    for hotel_name, grp in df.sort_values('scraped_at_display').groupby('hotel_name', sort=False):
+        name = str(hotel_name)
+        if name in hotel_meta_by_name:
+            continue
+        pick = grp.sort_values('scraped_at_display').iloc[-1]
+        image_url = ""
+        for candidate in (pick.get('image_url', ''), images_map.get(name, '')):
+            normalized = normalize_image_url(candidate)
+            if normalized:
+                image_url = normalized
+                break
+        hotel_slug = slugify(name)
+        if charts_subdir:
+            chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
+        else:
+            chart_href = f"hotel-charts/{hotel_slug}.html"
+        offer_url = pick.get('offer_url', '')
+        hotel_meta_by_name[name] = {
+            "hotel_name": name,
+            "hotel_name_html": html_lib.escape(name),
+            "dates": str(pick['dates']) if pd.notna(pick.get('dates')) else '—',
+            "duration": str(pick['duration']) if pd.notna(pick.get('duration')) else '—',
+            "offer_url": str(offer_url) if offer_url and pd.notna(offer_url) else "",
+            "image_url": image_url,
+            "chart_href": chart_href,
+        }
+
     # Создаём директорию для страниц графиков
     charts_dir = os.path.join(charts_subdir)
     os.makedirs(charts_dir, exist_ok=True)
 
+    from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
+
     # График отеля — вся каноническая история по всем ранам
     for hotel_name in sorted(df_canonical['hotel_name'].unique()):
         hotel_ts = df_canonical[df_canonical['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
-        x_values = [pd.to_datetime(t).strftime('%Y-%m-%d %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
+        x_values = [pd.to_datetime(t).isoformat() for t in hotel_ts['scraped_at_display'].tolist()]
+        x_display = [pd.to_datetime(t).strftime('%d.%m.%Y %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
         dates_list = hotel_ts['dates'].fillna('Неизвестно').tolist()
-        
+
         text_values = []
-        for x_val, trip_dates in zip(x_values, dates_list):
-            text_values.append(f"Дата сбора: {x_val}<br>Даты поездки: {trip_dates}")
+        for x_val, trip_dates in zip(x_display, dates_list):
+            text_values.append(f"Проверка: {x_val}<br>Даты поездки: {trip_dates}")
 
         hotel_slug = slugify(hotel_name)
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
 
-        # Определяем корректную ссылку "Назад к дашборду" для новых фильтров
         subdir = (charts_subdir or '').rstrip('/')
         if subdir.endswith('filter_7_10_days'):
             back_target = 'index_filter_7_10_days.html'
@@ -1231,46 +1926,60 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             back_target = 'index.html'
         back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
 
-        chart_html = f"""<!DOCTYPE html>
-<html lang="ru">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>График цен — {hotel_name}</title>
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-    <style>
-        body {{ font-family: Arial, sans-serif; margin: 20px; }}
-        .back {{ margin-bottom: 10px; }}
-        #chart {{ height: 520px; }}
-    </style>
-<head>
-<body>
-    <div class="back"><a href="{back_href}">← Назад к дашборду</a></div>
-    <h2>График цен: {hotel_name}</h2>
-    <div id="chart"></div>
-    <script>
-      const x = {json.dumps(x_values, ensure_ascii=False)};
-      const y = {json.dumps(y_values, ensure_ascii=False)};
-      const text = {json.dumps(text_values, ensure_ascii=False)};
-      const trace = {{
-        x: x,
-        y: y,
-        text: text,
-        type: 'scatter',
-        mode: 'lines+markers',
-        line: {{ color: '#2E86AB', width: 3 }},
-        marker: {{ size: 8 }},
-        hovertemplate: '<b>Цена: %{{y}} PLN</b><br><br>%{{text}}<extra></extra>'
-      }};
-      const layout = {{
-        title: 'История цен',
-        xaxis: {{ title: 'Время' }},
-        yaxis: {{ title: 'Цена (PLN)' }}
-      }};
-      Plotly.newPlot('chart', [trace], layout);
-    </script>
-  </body>
-</html>"""
+        meta = hotel_meta_by_name.get(hotel_name, {})
+        if not meta.get('hotel_name_html'):
+            meta = {
+                'hotel_name_html': html_lib.escape(str(hotel_name)),
+                'dates': '—',
+                'duration': '—',
+                'offer_url': '',
+                'image_url': '',
+            }
+
+        delta_info = deltas_by_hotel.get(hotel_name)
+        delta48_str = f"{delta_info[1]:+.1f}%" if delta_info is not None else "—"
+        avg_info = avg_baseline_delta.get(hotel_name)
+        delta_avg_str = f"{avg_info[1]:+.1f}%" if avg_info is not None else "—"
+        deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low'})
+        deal_score = int(deal_info.get('score', 0))
+        confidence = deal_info.get('confidence', 'Low')
+        d48_for_badge = float(delta_info[1]) if delta_info is not None else None
+        d_avg_for_badge = float(avg_info[1]) if avg_info is not None else None
+        deal_label, deal_class, _ = classify_deal_badge(
+            deal_score, confidence, d48_for_badge, d_avg_for_badge
+        )
+
+        if y_values:
+            price_series = pd.Series(y_values, dtype='float64')
+            median_p = float(price_series.median())
+            min_p = float(price_series.min())
+            max_p = float(price_series.max())
+        else:
+            median_p = min_p = max_p = 0.0
+
+        trip_dates_label = str(meta.get('dates') or (dates_list[-1] if dates_list else '—'))
+
+        chart_html = _render_hotel_chart_page(
+            hotel_name=str(hotel_name),
+            hotel_name_html=meta.get('hotel_name_html') or html_lib.escape(str(hotel_name)),
+            x_values=x_values,
+            y_values=y_values,
+            hover_lines=text_values,
+            meta=meta,
+            back_href=back_href,
+            deal_score=deal_score,
+            deal_label=deal_label,
+            deal_class=deal_class,
+            delta48_str=delta48_str,
+            delta_avg_str=delta_avg_str,
+            confidence=confidence,
+            median_p=median_p,
+            min_p=min_p,
+            max_p=max_p,
+            samples=len(y_values),
+            alert_threshold=ALERT_THRESHOLD_PERCENT,
+            trip_dates_label=trip_dates_label,
+        )
 
         with open(hotel_html_path, 'w', encoding='utf-8') as f:
             f.write(chart_html)
@@ -1784,11 +2493,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             flex: 0 0 auto;
             margin-right: .7rem;
         }}
-        .metrics.metrics-compact .metric > div:last-child {{
+        .metrics.metrics-compact .metric > div:last-child,
+        .metrics.metrics-compact .metric-label {{
             font-size: .77rem;
             font-weight: 600;
             color: #475569;
             line-height: 1.2;
+        }}
+        .metric.metric-tip {{
+            cursor: help;
+        }}
+        .metric.metric-tip:hover {{
+            border-color: rgba(79, 70, 229, 0.28);
+            box-shadow: var(--shadow-md);
         }}
         
         .avg-top10-section {{
@@ -1843,21 +2560,29 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             padding: .8rem 1rem;
             font-weight: 700;
             color: #1e293b;
-            display: flex;
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
             align-items: center;
-            justify-content: space-between;
             gap: .75rem;
             user-select: none;
         }}
         details.dashboard-fold > summary::-webkit-details-marker {{
             display: none;
         }}
+        details.dashboard-fold > summary > span:first-child {{
+            justify-self: start;
+            min-width: 0;
+        }}
         .fold-title-meta {{
+            justify-self: center;
+            text-align: center;
             font-size: .78rem;
             color: var(--text-muted);
             font-weight: 500;
+            white-space: nowrap;
         }}
         .fold-chevron {{
+            justify-self: end;
             font-size: .85rem;
             opacity: .75;
             transition: transform .16s ease;
@@ -2118,6 +2843,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .deal-badge-hot {{ color: #b45309; font-weight: 700; }}
         .deal-badge-good {{ color: #166534; font-weight: 700; }}
         .deal-badge-normal {{ color: #64748b; font-weight: 600; }}
+        .deal-badge-bad {{ color: #b91c1c; font-weight: 700; }}
         .deal-badge-warm {{ color: #0369a1; font-weight: 700; }}
         .hero {{
             margin-bottom: 1.25rem;
@@ -2291,6 +3017,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             box-shadow: var(--shadow-sm);
             transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
             animation: sectionFadeIn .45s ease both;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }}
         .hotel-card:hover {{
             transform: translateY(-2px);
@@ -2314,6 +3043,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .hotel-card-body {{
             padding: .72rem .8rem .82rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }}
         .hotel-card-title {{
             margin: 0 0 .45rem 0;
@@ -2321,6 +3053,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: 700;
             color: #1e293b;
             line-height: 1.25;
+            min-height: 2.5em;
         }}
         .hotel-card-meta {{
             display: flex;
@@ -2344,6 +3077,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .deal-pill.hot {{ background: rgba(245,158,11,.18); color: #92400e; border-color: rgba(245,158,11,.32); }}
         .deal-pill.good {{ background: rgba(16,185,129,.17); color: #065f46; border-color: rgba(16,185,129,.32); }}
         .deal-pill.normal {{ background: rgba(148,163,184,.18); color: #334155; border-color: rgba(148,163,184,.35); }}
+        .deal-pill.bad {{ background: rgba(239,68,68,.15); color: #991b1b; border-color: rgba(239,68,68,.32); }}
         .deal-pill.warm {{ background: rgba(14,165,233,.16); color: #0c4a6e; border-color: rgba(14,165,233,.35); }}
         .hotel-card-stats {{
             display: grid;
@@ -2356,6 +3090,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .hotel-card-actions {{
             display: flex;
             gap: 8px;
+            margin-top: auto;
+            padding-top: .6rem;
         }}
         .card-btn {{
             flex: 1;
@@ -2388,73 +3124,356 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border: 1px solid var(--border-soft);
             overflow: hidden;
         }}
-        .alert-item {{
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: .7rem .8rem;
-            margin: 0;
-            background: rgba(255,255,255,0.95);
-            border-radius: 0;
-            border-left: 4px solid;
-            border-bottom: 1px solid rgba(148,163,184,.18);
-        }}
-        .alert-item:last-child {{
-            border-bottom: none;
-        }}
-        .alert-decrease {{
-            border-left-color: #28a745;
-        }}
-        .alert-increase {{
-            border-left-color: #dc3545;
-        }}
-        .alert-missing {{
-            border-left-color: #6c757d;
-        }}
-        .alerts-empty {{
-            color: #6c757d;
-            font-style: italic;
-        }}
-        .alert-item > div:first-child {{
-            min-width: 0;
-            flex: 1 1 auto;
-            padding-right: 10px;
-        }}
-        .alert-item .hotel-name {{
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }}
-        .alert-item .change-price {{
-            flex: 0 0 auto;
-            text-align: right;
-            white-space: nowrap;
-        }}
         .alerts-header {{
             display: flex;
             justify-content: space-between;
-            align-items: center;
+            align-items: flex-start;
+            gap: 1rem;
             cursor: pointer;
             user-select: none;
-            padding: .95rem var(--section-inner-x);
+            padding: 1rem var(--section-inner-x);
             border-bottom: 1px solid var(--border-soft);
         }}
         .alerts-header:hover {{
-            background: #f8f9fa;
+            background: rgba(248,250,252,.85);
+        }}
+        .alerts-header-main {{
+            flex: 1;
+            min-width: 0;
+        }}
+        .alerts-header h3 {{
+            margin: 0 0 .35rem 0;
+            font-size: 1.12rem;
+            color: #1e293b;
+        }}
+        .alerts-lead {{
+            margin: 0 0 .55rem 0;
+            font-size: .84rem;
+            line-height: 1.45;
+            color: var(--text-muted);
+            max-width: 62rem;
+        }}
+        .alerts-summary-chips {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+        }}
+        .alert-chip {{
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: .18rem .55rem;
+            font-size: .74rem;
+            font-weight: 700;
+            border: 1px solid transparent;
+        }}
+        .alert-chip.drop {{
+            background: rgba(16,185,129,.14);
+            color: #065f46;
+            border-color: rgba(16,185,129,.28);
+        }}
+        .alert-chip.up {{
+            background: rgba(239,68,68,.12);
+            color: #991b1b;
+            border-color: rgba(239,68,68,.26);
+        }}
+        .alert-chip.missing {{
+            background: rgba(100,116,139,.14);
+            color: #334155;
+            border-color: rgba(100,116,139,.28);
         }}
         .alerts-content {{
-            max-height: 400px;
+            max-height: 680px;
             overflow-y: auto;
             transition: max-height 0.3s ease;
-            padding: 0;
-            background: rgba(255,255,255,.86);
+            background: rgba(248,250,252,.55);
         }}
         .alerts-content.collapsed {{
             max-height: 0;
             overflow: hidden;
             padding: 0;
         }}
+        .alerts-section-label {{
+            margin: 0;
+            padding: .85rem var(--section-inner-x) .35rem;
+            font-size: .78rem;
+            font-weight: 700;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: .04em;
+        }}
+        .alerts-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 8px;
+            padding: 0 var(--section-inner-x) .85rem;
+        }}
+        .alert-card {{
+            display: flex;
+            flex-direction: row;
+            align-items: stretch;
+            height: 100%;
+            background: rgba(255,255,255,.95);
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
+        }}
+        .alert-card:hover {{
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-md);
+        }}
+        .alert-card.drop {{
+            border-left: 3px solid #10b981;
+        }}
+        .alert-card.up {{
+            border-left: 3px solid #ef4444;
+        }}
+        .alert-card.missing {{
+            border-left: 3px solid #64748b;
+        }}
+        .alert-card-img {{
+            width: 62px;
+            flex-shrink: 0;
+            background: linear-gradient(135deg, rgba(79,70,229,.12), rgba(14,165,233,.12));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: .75rem;
+        }}
+        .alert-card-img img {{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }}
+        .alert-card-body {{
+            padding: .45rem .5rem .5rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+            min-width: 0;
+        }}
+        .alert-card-top {{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: .3rem;
+            margin-bottom: .25rem;
+        }}
+        .alert-badge {{
+            border-radius: 999px;
+            padding: .1rem .38rem;
+            font-size: .62rem;
+            font-weight: 800;
+            white-space: nowrap;
+            flex: 0 0 auto;
+            line-height: 1.2;
+        }}
+        .alert-badge.drop {{ background: rgba(16,185,129,.16); color: #065f46; }}
+        .alert-badge.up {{ background: rgba(239,68,68,.14); color: #991b1b; }}
+        .alert-badge.missing {{ background: rgba(100,116,139,.16); color: #334155; }}
+        .alert-card-title {{
+            margin: 0;
+            font-size: .78rem;
+            font-weight: 700;
+            line-height: 1.2;
+            min-height: 2.4em;
+        }}
+        .alert-card-title a {{
+            color: #1e293b;
+            text-decoration: none;
+        }}
+        .alert-card-title a:hover {{
+            color: #4f46e5;
+            text-decoration: underline;
+        }}
+        .alert-price-row {{
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: .25rem;
+            margin-bottom: .2rem;
+        }}
+        .alert-price-old {{
+            font-size: .72rem;
+            color: #64748b;
+            text-decoration: line-through;
+        }}
+        .alert-price-new {{
+            font-size: .88rem;
+            font-weight: 800;
+            color: #111827;
+        }}
+        .alert-price-new.up {{
+            color: #b91c1c;
+        }}
+        .alert-price-new.drop {{
+            color: #047857;
+        }}
+        .alert-change-pct {{
+            font-size: .72rem;
+            font-weight: 800;
+        }}
+        .alert-change-pct.drop {{ color: #047857; }}
+        .alert-change-pct.up {{ color: #b91c1c; }}
+        .alert-card-meta {{
+            font-size: .68rem;
+            color: #64748b;
+            line-height: 1.25;
+            margin-bottom: .35rem;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }}
+        .alert-card-actions {{
+            display: flex;
+            gap: 5px;
+            margin-top: auto;
+        }}
+        .alert-card-actions .card-btn {{
+            flex: 1;
+            font-size: .68rem;
+            padding: .28rem .35rem;
+            border-radius: 8px;
+        }}
+        .alerts-empty {{
+            color: #64748b;
+            font-style: italic;
+            padding: 1rem var(--section-inner-x) .5rem;
+            font-size: .84rem;
+        }}
+        .alerts-history-fold {{
+            margin: 0 var(--section-inner-x) .85rem;
+            border: 1px solid var(--border-soft);
+            border-radius: 10px;
+            background: rgba(255,255,255,.72);
+            overflow: hidden;
+        }}
+        .alerts-history-fold > summary {{
+            list-style: none;
+            cursor: pointer;
+            padding: .55rem .75rem;
+            font-size: .82rem;
+            font-weight: 700;
+            color: #475569;
+            user-select: none;
+        }}
+        .alerts-history-fold > summary::-webkit-details-marker {{
+            display: none;
+        }}
+        .alerts-history-fold > summary:hover {{
+            background: rgba(248,250,252,.9);
+        }}
+        .alert-history-list {{
+            border-top: 1px solid var(--border-soft);
+            max-height: 320px;
+            overflow-y: auto;
+        }}
+        .alert-history-row {{
+            display: grid;
+            grid-template-columns: auto minmax(0, 1fr) auto auto;
+            align-items: center;
+            gap: .55rem .65rem;
+            padding: .45rem .75rem;
+            border-bottom: 1px solid rgba(148,163,184,.16);
+            font-size: .78rem;
+            background: rgba(255,255,255,.82);
+        }}
+        .alert-history-row:last-child {{
+            border-bottom: none;
+        }}
+        .alert-history-row.drop {{ border-left: 3px solid #10b981; }}
+        .alert-history-row.up {{ border-left: 3px solid #ef4444; }}
+        .alert-history-row.missing {{ border-left: 3px solid #64748b; }}
+        .alert-history-badge {{
+            width: 1.35rem;
+            text-align: center;
+            font-weight: 800;
+            font-size: .82rem;
+            flex-shrink: 0;
+        }}
+        .alert-history-badge.drop {{ color: #047857; }}
+        .alert-history-badge.up {{ color: #b91c1c; }}
+        .alert-history-badge.missing {{ color: #64748b; }}
+        .alert-history-info {{
+            min-width: 0;
+        }}
+        .alert-history-name {{
+            display: block;
+            font-weight: 700;
+            color: #1e293b;
+            text-decoration: none;
+            line-height: 1.25;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }}
+        .alert-history-name:hover {{
+            color: #4f46e5;
+            text-decoration: underline;
+        }}
+        .alert-history-sub {{
+            display: block;
+            margin-top: .12rem;
+            font-size: .68rem;
+            color: #64748b;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }}
+        .alert-history-price {{
+            white-space: nowrap;
+            text-align: right;
+            font-size: .76rem;
+        }}
+        .alert-history-old {{
+            color: #94a3b8;
+            text-decoration: line-through;
+        }}
+        .alert-history-arrow {{
+            opacity: .55;
+            margin: 0 .12rem;
+        }}
+        .alert-history-new {{
+            font-weight: 800;
+            color: #111827;
+        }}
+        .alert-history-new.drop {{ color: #047857; }}
+        .alert-history-new.up {{ color: #b91c1c; }}
+        .alert-history-pct {{
+            margin-left: .35rem;
+            font-weight: 800;
+            font-size: .72rem;
+        }}
+        .alert-history-pct.drop {{ color: #047857; }}
+        .alert-history-pct.up {{ color: #b91c1c; }}
+        .alert-history-chart,
+        .alert-history-offer {{
+            font-size: .72rem;
+            font-weight: 700;
+            color: #4f46e5;
+            text-decoration: none;
+            white-space: nowrap;
+        }}
+        .alert-history-links {{
+            display: flex;
+            align-items: center;
+            gap: .45rem;
+            justify-content: flex-end;
+        }}
+        .alert-history-chart:hover,
+        .alert-history-offer:hover {{
+            text-decoration: underline;
+        }}
         .expand-icon {{
-            transition: transform 0.3s ease;
+            flex: 0 0 auto;
+            margin-top: .15rem;
+            font-size: .85rem;
+            opacity: .75;
+            transition: transform .16s ease;
         }}
         .expand-icon.collapsed {{
             transform: rotate(-90deg);
@@ -3042,16 +4061,28 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 font-size: .84rem;
                 padding: 14px;
             }}
-            .alert-item {{
+            .alert-card-actions {{
                 flex-direction: column;
-                align-items: flex-start;
-                gap: 6px;
             }}
-            .alert-item .change-price {{
-                white-space: normal;
+            .alert-history-row {{
+                grid-template-columns: auto minmax(0, 1fr);
+                grid-template-rows: auto auto;
+                gap: .25rem .45rem;
+            }}
+            .alert-history-price {{
+                grid-column: 2;
                 text-align: left;
-                font-size: .95rem;
-                line-height: 1.3;
+            }}
+            .alert-history-links {{
+                grid-column: 2;
+                justify-content: flex-start;
+            }}
+            .alerts-header {{
+                flex-direction: column;
+                align-items: stretch;
+            }}
+            .alerts-grid {{
+                grid-template-columns: 1fr;
             }}
             .hero {{
                 min-height: 180px;
@@ -3240,59 +4271,88 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
 """
 
-    alerts_html = """
+    from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
+
+    current_alerts = []
+    current_hotels = set()
+    for a in alerts:
+        if not _alert_is_current(a, table_prices):
+            continue
+        hotel_name = str(a.get('hotel_name') or a.get('hotel') or '')
+        if hotel_name in current_hotels:
+            continue
+        current_hotels.add(hotel_name)
+        current_alerts.append(a)
+
+    current_alert_keys = {a.get('unique_key') for a in current_alerts if a.get('unique_key')}
+    history_alerts = [
+        a for a in alerts
+        if not a.get('unique_key') or a.get('unique_key') not in current_alert_keys
+    ]
+
+    def _count_alert_kinds(items):
+        drops = sum(1 for a in items if float(a.get('price_change') or 0) < 0)
+        ups = sum(1 for a in items if float(a.get('price_change') or 0) > 0)
+        return drops, ups
+
+    cur_drops, cur_ups = _count_alert_kinds(current_alerts)
+    alert_chips_html = ""
+    if current_alerts:
+        if cur_drops:
+            alert_chips_html += f'<span class="alert-chip drop">↓ {cur_drops} подешевело сейчас</span>'
+        if cur_ups:
+            alert_chips_html += f'<span class="alert-chip up">↑ {cur_ups} подорожало сейчас</span>'
+    if history_alerts:
+        alert_chips_html += f'<span class="alert-chip missing">🕘 {len(history_alerts)} в истории</span>'
+
+    alerts_html = f"""
         <div class="alerts-section" id="alertsSection">
             <div class="alerts-header" onclick="toggleAlerts()">
-                <h3>🚨 История алертов</h3>
+                <div class="alerts-header-main">
+                    <h3>📊 Заметные изменения цен</h3>
+                    <p class="alerts-lead">Отели, у которых <strong>заметно изменилась цена</strong> (от {ALERT_THRESHOLD_PERCENT:.0f}% между проверками) и <strong>эта цена всё ещё актуальна</strong> — в последнем обновлении она не менялась. Прошлые события — в «Истории».</p>
+                    <div class="alerts-summary-chips">{alert_chips_html}</div>
+                </div>
                 <span class="expand-icon" id="alertsExpandIcon">▼</span>
             </div>
             <div class="alerts-content" id="alertsContent">
 """
 
     if alerts:
-        for a in alerts:
-            hotel_name = a.get('hotel_name') or a.get('hotel') or 'Unknown'
-            alert_type = a.get('alert_type') or a.get('type') or ''
-            old_price = a.get('old_price') or a.get('from') or a.get('previous_price')
-            new_price = a.get('new_price') if 'new_price' in a else (a.get('to') or a.get('current_price'))
-            ts_raw = a.get('timestamp') or a.get('time') or ''
-            try:
-                ts_fmt = parse_iso(ts_raw).astimezone().strftime('%d.%m.%Y %H:%M')
-            except Exception:
-                ts_fmt = str(ts_raw)
-
-            if alert_type == 'missing' or new_price in (None, '', 'null'):
-                direction_class = 'alert-missing'
-                arrow = '—'
-                change_text = a.get('message') or a.get('note') or 'Отель пропал из выдачи'
-                price_text = f"{old_price if old_price is not None else '—'} → —"
-                alerts_html += f"""
-                <div class="alert-item {direction_class}">
-                    <div>
-                        <div class="hotel-name">{hotel_name}</div>
-                        <div class="change-percent">{arrow} {change_text} • {ts_fmt}</div>
-                    </div>
-                    <div class="change-price">{price_text}</div>
+        if current_alerts:
+            alerts_html += f"""
+                <p class="alerts-section-label">Действует сейчас · {len(current_alerts)}</p>
+                <div class="alerts-grid">
+"""
+            for a in current_alerts:
+                hotel_name = str(a.get('hotel_name') or a.get('hotel') or 'Unknown')
+                meta = hotel_meta_by_name.get(hotel_name, {})
+                alerts_html += _render_alert_card(a, meta, slugify, parse_iso)
+            alerts_html += """
                 </div>
 """
-            else:
-                # Обычный ценовой алерт (новая структура)
-                change_pct = a.get('price_change_pct', 0.0)
-                price_change = a.get('price_change', 0.0)
-                direction_class = 'alert-increase' if price_change > 0 else ('alert-decrease' if price_change < 0 else '')
-                arrow = '↑' if price_change > 0 else ('↓' if price_change < 0 else '→')
-                alerts_html += f"""
-                <div class="alert-item {direction_class}">
-                    <div>
-                        <div class="hotel-name">{hotel_name}</div>
-                        <div class="change-percent">{arrow} {change_pct:+.1f}% • {ts_fmt}</div>
+        else:
+            alerts_html += """
+                <div class="alerts-empty">Сейчас нет отелей с актуальным изменением цены — зафиксированные сдвиги уже устарели. Смотрите «Историю» ниже.</div>
+"""
+
+        if history_alerts:
+            alerts_html += f"""
+                <details class="alerts-history-fold" onclick="event.stopPropagation()">
+                    <summary>🕘 Показать историю ({len(history_alerts)} прошлых изменений)</summary>
+                    <div class="alert-history-list">
+"""
+            for a in history_alerts:
+                hotel_name = str(a.get('hotel_name') or a.get('hotel') or 'Unknown')
+                meta = hotel_meta_by_name.get(hotel_name, {})
+                alerts_html += _render_alert_history_row(a, meta, slugify, parse_iso)
+            alerts_html += """
                     </div>
-                    <div class="change-price">{old_price} → {new_price} PLN</div>
-                </div>
+                </details>
 """
     else:
         alerts_html += """
-                <div class="alerts-empty">Нет алертов</div>
+                <div class="alerts-empty">Пока нет изменений от {ALERT_THRESHOLD_PERCENT:.0f}% — они появятся здесь после следующих проверок.</div>
 """
     alerts_html += """
             </div>
@@ -3434,6 +4494,71 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </details>
 """
 
+    _price_scope_tip = (
+        f"Учитываются только цены до {ceiling_val:.0f} PLN — по одной самой дешёвой оферте отеля за каждый запуск проверки."
+        if ceiling_val is not None
+        else "По одной самой дешёвой оферте каждого отеля за каждый запуск проверки."
+    )
+    avg_deal_score = (
+        int(round(sum(v['score'] for v in deal_score_by_hotel.values()) / len(deal_score_by_hotel)))
+        if deal_score_by_hotel else 0
+    )
+    best_deal_score = max((v['score'] for v in deal_score_by_hotel.values()), default=0)
+    stats_metrics_row1 = "".join([
+        _metric_card(
+            f"{total_offers:,}",
+            "Проверок цен",
+            "Сколько раз мы замерили цены: одна запись = самая дешёвая оферта отеля за один автоматический опрос.",
+        ),
+        _metric_card(
+            str(unique_hotels),
+            "Отелей отслеживали",
+            "Сколько разных отелей хотя бы раз попадали в этот фильтр (даты, цена, направление).",
+        ),
+        _metric_card(
+            str(current_table_hotels),
+            "Сейчас в списке",
+            "Сколько отелей видно в таблице и карточках — только последний замер, актуальные предложения.",
+        ),
+        _metric_card(
+            f"{avg_price:.0f} PLN",
+            "Средняя цена",
+            f"Средняя цена по всей накопленной истории. {_price_scope_tip}",
+        ),
+        _metric_card(
+            f"{history_min_price:.0f} PLN",
+            "Самая низкая",
+            f"Минимальная цена за всю историю наблюдений. {_price_scope_tip}",
+        ),
+        _metric_card(
+            f"{history_max_price:.0f} PLN",
+            "Самая высокая",
+            f"Максимальная цена за всю историю наблюдений. {_price_scope_tip}",
+        ),
+    ])
+    stats_metrics_row2 = "".join([
+        _metric_card(
+            str(avg_deal_score),
+            "Средняя выгодность",
+            "Deal Score 0–100: насколько цены выгодны относительно истории каждого отеля. ~50 — обычный уровень, выше — лучше.",
+        ),
+        _metric_card(
+            str(best_deal_score),
+            "Лучший шанс",
+            "Максимальный Deal Score среди отелей — самая сильная возможность купить выгодно прямо сейчас.",
+        ),
+        _metric_card(
+            str(len(entry_candidates)),
+            "Горячие точки",
+            "Отели, которые заметно подешевели за ~48 часов и сейчас в нижней четверти своей исторической цены.",
+        ),
+        _metric_card(
+            f"{market_breadth * 100:.0f}%",
+            "Подешевело за 2 дня",
+            "Доля отелей, у которых цена упала за последние ~48 часов. Высокий процент — рынок в целом дешевеет.",
+        ),
+    ])
+
     html_template += f"""
 
         <div class="avg-top10-section">
@@ -3463,49 +4588,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </summary>
             <div class="fold-content">
                 <div class="metrics metrics-compact">
-                    <div class="metric">
-                        <div class="metric-value">{total_offers:,}</div>
-                        <div>Наблюдений (история)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{unique_hotels}</div>
-                        <div>Отелей в истории</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{current_table_hotels}</div>
-                        <div>Актуально в таблице</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{avg_price:.0f} PLN</div>
-                        <div>Средняя (история)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{min_price:.0f} PLN</div>
-                        <div>Минимум (история)</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{max_price:.0f} PLN</div>
-                        <div>Максимум (история)</div>
-                    </div>
+                    {stats_metrics_row1}
                 </div>
 
                 <div class="metrics metrics-compact">
-                    <div class="metric">
-                        <div class="metric-value">{int(round(sum(v['score'] for v in deal_score_by_hotel.values()) / len(deal_score_by_hotel))) if deal_score_by_hotel else 0}</div>
-                        <div>Средний Deal Score</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
-                        <div>Лучший Deal Score</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{len(entry_candidates)}</div>
-                        <div>Кандидатов раннего входа</div>
-                    </div>
-                    <div class="metric">
-                        <div class="metric-value">{market_breadth*100:.0f}%</div>
-                        <div>Рынок со снижением (48ч)</div>
-                    </div>
+                    {stats_metrics_row2}
                 </div>
 
                 {changes_html}
@@ -3570,7 +4657,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <strong>Как читать Deal Score:</strong>
                 <span class="deal-badge-hot">🔥 Hot</span> = очень сильная возможность,
                 <span class="deal-badge-good">✅ Good</span> = хороший момент,
-                <span class="deal-badge-normal">• Normal</span> = обычный уровень,
+                <span class="deal-badge-normal">↔️ Normal</span> = обычный уровень (~50),
+                <span class="deal-badge-bad">📈 Bad</span> = подорожало за 48ч и vs средней,
                 <span class="deal-badge-warm">⏳ Warm-up</span> = пока мало истории.
                 Confidence: Low / Medium / High — степень надежности оценки.
             </div>
@@ -3655,14 +4743,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low', 'samples': 0})
         deal_score = int(deal_info.get('score', 0))
         confidence_level = deal_info.get('confidence', 'Low')
-        if deal_score >= 80 and confidence_level != 'Low':
-            deal_badge = "🔥 Hot"
-        elif deal_score >= 65 and confidence_level != 'Low':
-            deal_badge = "✅ Good"
-        elif confidence_level == 'Low':
-            deal_badge = "⏳ Warm-up"
-        else:
-            deal_badge = "• Normal"
+        d48_tbl = float(delta_info[1]) if delta_info is not None else None
+        d_avg_tbl = float(avg_info[1]) if avg_info is not None else None
+        _, _, deal_badge = classify_deal_badge(
+            deal_score, confidence_level, d48_tbl, d_avg_tbl
+        )
         confidence_label = (
             "Low confidence" if confidence_level == "Low"
             else ("Medium confidence" if confidence_level == "Medium" else "High confidence")
@@ -3751,7 +4836,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     </tr>"""
 
     if disappeared_events:
-        _notable_meta = f"заметных: {vanished_notable_count}" if vanished_notable_count else "по значимости"
+        if vanished_notable_count:
+            vanished_summary_meta = f"заметных: {vanished_notable_count}"
+        else:
+            vanished_summary_meta = ""
         vanished_inner_html = f"""
                 <p class="vanished-hint">Отели, которые были в фильтре и пропали из выдачи за последние {max(1, int(disappeared_after_runs or 1))} ранов подряд. История и график по каждому сохраняются — клик по названию открывает динамику цены, ссылка «Оффер» ведёт на исходное предложение (может быть уже недоступно). Сортировка по значимости (дорогой отель + сильное падение к своей норме = вероятно раскупленный дил).</p>
                 <div class="table-container">
@@ -3772,18 +4860,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     </table>
                 </div>
 """
-        vanished_summary_meta = _notable_meta
     else:
         vanished_inner_html = f"""
                 <p class="vanished-hint">Пока нет отелей, выпавших из фильтра за последние {max(1, int(disappeared_after_runs or 1))} ранов подряд. Как только хороший отель появится в диапазоне и затем пропадёт, он окажется здесь вместе с историей цены и условиями исчезновения.</p>
 """
         vanished_summary_meta = "пусто"
 
+    vanished_meta_html = f'<span class="fold-title-meta">{vanished_summary_meta}</span>'
     vanished_section_html = f"""
         <details class="dashboard-fold" id="vanishedFold">
             <summary>
                 <span>Выпавшие отели — были в фильтре, сейчас нет ({len(disappeared_events)})</span>
-                <span class="fold-title-meta">{vanished_summary_meta}</span>
+                {vanished_meta_html}
                 <span class="fold-chevron">⌄</span>
             </summary>
             <div class="fold-content">
@@ -4376,7 +5464,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     print(f"✅ Дашборд с встроенными графиками сгенерирован: index.html")
     print(f"📊 Статистика: {total_offers} наблюдений, {unique_hotels} отелей в истории, {current_table_hotels} актуально в таблице")
-    print(f"💰 Цены: {min_price:.0f} - {max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
+    print(f"💰 Цены: {history_min_price:.0f} - {history_max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
     print(f"📈 Изменения цен: {len(decreases_48h) + len(increases_48h)} отелей за 48ч")
 
 if __name__ == "__main__":

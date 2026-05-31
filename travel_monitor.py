@@ -21,7 +21,7 @@ import matplotlib.pyplot as plt
 from playwright.async_api import async_playwright
 import logging
 from price_alerts import PriceAlertManager
-from price_alerts_v2 import PriceAlertManagerV2
+from price_alerts_v2 import PriceAlertManagerV2, ALERT_THRESHOLD_PERCENT
 from airport_comparison import AirportComparison
 
 # Настройка логирования
@@ -1527,10 +1527,10 @@ class TravelPriceMonitor:
                 return
             
             # Обрабатываем все изменения и получаем только новые алерты
-            new_alerts = alert_manager.process_all_changes(threshold_percent=4.0)
+            new_alerts = alert_manager.process_all_changes()
             
             # Создаем отчет об алертах
-            report = alert_manager.create_alert_report(threshold_percent=4.0)
+            report = alert_manager.create_alert_report()
             
             # Логируем новые алерты
             if new_alerts:
@@ -1538,12 +1538,12 @@ class TravelPriceMonitor:
                 price_increases = [a for a in new_alerts if a['price_change'] > 0]
                 
                 if price_drops:
-                    logger.info(f"🚨 Обнаружено {len(price_drops)} новых снижений цен >= 4%!")
+                    logger.info(f"🚨 Обнаружено {len(price_drops)} новых снижений цен >= {ALERT_THRESHOLD_PERCENT:.0f}%!")
                     for alert in price_drops[:5]:  # Показываем первые 5
                         logger.info(f"  📉 {alert['hotel_name']}: {alert['old_price']} → {alert['new_price']} PLN ({alert['price_change_pct']:+.1f}%)")
                 
                 if price_increases:
-                    logger.info(f"🚨 Обнаружено {len(price_increases)} новых повышений цен >= 4%!")
+                    logger.info(f"🚨 Обнаружено {len(price_increases)} новых повышений цен >= {ALERT_THRESHOLD_PERCENT:.0f}%!")
                     for alert in price_increases[:5]:  # Показываем первые 5
                         logger.info(f"  📈 {alert['hotel_name']}: {alert['old_price']} → {alert['new_price']} PLN ({alert['price_change_pct']:+.1f}%)")
             else:
