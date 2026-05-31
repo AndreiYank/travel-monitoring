@@ -23,6 +23,65 @@ def _parse_price_ceiling(display_price_ceiling):
         return None
 
 
+def _resolve_history_ceiling(display_ceiling, history_ceiling):
+    """History band for charts/vanished: defaults to 20k when display ceiling is set."""
+    parsed = _parse_price_ceiling(history_ceiling)
+    if parsed is not None:
+        return parsed
+    if display_ceiling is not None:
+        return 20000.0
+    return None
+
+
+def _build_premium_history_by_hotel(df_history, display_ceiling):
+    """Peak prices per hotel in the full history band (up to history ceiling)."""
+    out = {}
+    if df_history.empty:
+        return out
+    disp = float(display_ceiling) if display_ceiling is not None else None
+    for name, grp in df_history.groupby('hotel_name', sort=False):
+        prices = grp['price'].astype(float)
+        if prices.empty:
+            continue
+        history_max = float(prices.max())
+        premium_peak = None
+        if disp is not None:
+            above = prices[prices > disp]
+            if not above.empty:
+                premium_peak = float(above.max())
+        out[str(name)] = {
+            'history_max': history_max,
+            'premium_peak': premium_peak,
+        }
+    return out
+
+
+def _comeback_from_premium(current_price, premium_info, display_ceiling, min_drop_pct=8.0):
+    """Hotel re-entered display band after being much more expensive in history."""
+    if not premium_info or display_ceiling is None:
+        return None
+    try:
+        current = float(current_price)
+    except (TypeError, ValueError):
+        return None
+    if current > float(display_ceiling):
+        return None
+    peak = premium_info.get('premium_peak')
+    if peak is None or peak <= float(display_ceiling):
+        return None
+    drop = (float(peak) - current) / float(peak) * 100.0
+    if drop < min_drop_pct:
+        return None
+    return {
+        'peak_price': float(peak),
+        'drop_from_peak_pct': drop,
+        'badge_html': (
+            f'↩ Было до {peak:.0f} PLN'
+            f' <span style="opacity:.85">(−{drop:.0f}%)</span>'
+        ),
+    }
+
+
 def _lowest_price_row(grp):
     """Строка с минимальной ценой среди офферов одного отеля."""
     prices = grp['price'].astype(float)
@@ -55,7 +114,7 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
 
     With a display ceiling, consider only offers at or below it, then pick
     the cheapest. Hotels only seen above the ceiling in a run are omitted
-    from analytics (they stay in the full df for vanished-deal detection).
+    from that band (they remain in the wider history band up to history ceiling).
     """
     if df.empty:
         return df.copy()
@@ -274,8 +333,8 @@ def _render_alert_history_row(alert, meta, slugify_fn, parse_iso_fn):
 """
 
 
-def _compute_chart_point_meta(y_values, alert_threshold):
-    """Marker sizes/colors and step % for each canonical price point."""
+def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
+    """Marker sizes/colors and step % for each price point."""
     sizes = []
     colors = []
     step_pcts = []
@@ -286,9 +345,13 @@ def _compute_chart_point_meta(y_values, alert_threshold):
             prev = y_values[i - 1]
             pct = ((price - prev) / prev * 100.0) if prev else 0.0
         step_pcts.append(round(pct, 1))
+        above_ceiling = ceiling_val is not None and float(price) > float(ceiling_val)
         if i > 0 and abs(pct) >= alert_threshold:
             sizes.append(14)
             colors.append('#ef4444' if pct > 0 else '#10b981')
+        elif above_ceiling:
+            sizes.append(9 if i == len(y_values) - 1 else 8)
+            colors.append('#f59e0b')
         else:
             sizes.append(8 if i == len(y_values) - 1 else 7)
             colors.append('#6366f1' if i == len(y_values) - 1 else '#4f46e5')
@@ -317,10 +380,19 @@ def _render_hotel_chart_page(
     samples,
     alert_threshold,
     trip_dates_label,
+    display_price_ceiling=None,
+    history_price_ceiling=None,
 ):
     current_p = float(y_values[-1]) if y_values else 0.0
     is_at_min = bool(y_values) and current_p <= min_p + 2.0
-    marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(y_values, alert_threshold)
+    above_ceiling_now = (
+        display_price_ceiling is not None
+        and y_values
+        and current_p > float(display_price_ceiling)
+    )
+    marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(
+        y_values, alert_threshold, display_price_ceiling
+    )
 
     enriched_hover = []
     for i, (base, pct) in enumerate(zip(hover_lines, step_pcts)):
@@ -348,6 +420,17 @@ def _render_hotel_chart_page(
         '<span class="chart-btn disabled">Оффер недоступен</span>'
     )
     min_badge = '<span class="chart-min-badge">🔥 Исторический минимум</span>' if is_at_min else ''
+    ceiling_badge = (
+        f'<span class="chart-ceiling-badge">Выше потолка показа (&gt;{display_price_ceiling:.0f})</span>'
+        if above_ceiling_now else ''
+    )
+    history_note = ''
+    if display_price_ceiling and history_price_ceiling and history_price_ceiling > display_price_ceiling:
+        history_note = (
+            f' Оранжевые точки — расширенная история ({display_price_ceiling:.0f}–{history_price_ceiling:.0f} PLN).'
+        )
+    elif display_price_ceiling:
+        history_note = f' Оранжевые точки — выше {display_price_ceiling:.0f} PLN.'
 
     recent_rows = ''
     for i in range(max(0, len(x_values) - 5), len(x_values)):
@@ -516,6 +599,15 @@ def _render_hotel_chart_page(
             border-radius: 999px;
             padding: .15rem .5rem;
         }}
+        .chart-ceiling-badge {{
+            font-size: .72rem;
+            font-weight: 700;
+            color: #b45309;
+            background: rgba(245,158,11,.14);
+            border: 1px solid rgba(245,158,11,.28);
+            border-radius: 999px;
+            padding: .15rem .5rem;
+        }}
         .chart-kpis {{
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -609,6 +701,7 @@ def _render_hotel_chart_page(
                     <span class="chart-current-price">{current_p:.0f} PLN</span>
                     <span class="deal-pill {deal_class}">Deal {deal_score} · {html_lib.escape(deal_label)}</span>
                     {min_badge}
+                    {ceiling_badge}
                 </div>
             </div>
         </section>
@@ -622,7 +715,7 @@ def _render_hotel_chart_page(
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
-            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше. По горизонтали — даты проверки цены.</p>
+            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше.{history_note} По горизонтали — даты проверки цены.</p>
             <div id="chart"></div>
         </section>
         <section class="chart-recent">
@@ -641,6 +734,7 @@ def _render_hotel_chart_page(
       const markerColors = {json.dumps(marker_colors)};
       const medianY = {median_p:.2f};
       const minY = {min_p:.2f};
+      const ceilingY = {f'{float(display_price_ceiling):.2f}' if display_price_ceiling else 'null'};
       const mainTrace = {{
         x, y, text,
         type: 'scatter',
@@ -702,7 +796,11 @@ def _render_hotel_chart_page(
             yref: 'y', y0: minY, y1: minY,
             line: {{ color: '#10b981', width: 1.5, dash: 'dot' }}
           }}
-        ],
+        ] + (ceilingY ? [{{
+            type: 'line', xref: 'paper', x0: 0, x1: 1,
+            yref: 'y', y0: ceilingY, y1: ceilingY,
+            line: {{ color: '#f59e0b', width: 1.5, dash: 'dash' }}
+          }}] : []),
         annotations: x.length ? [{{
           x: x[x.length - 1],
           y: y[y.length - 1],
@@ -723,7 +821,7 @@ def _render_hotel_chart_page(
 </html>"""
 
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None, history_price_ceiling: float = None):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -753,13 +851,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     df_all_airports = None
 
     ceiling_val = _parse_price_ceiling(display_price_ceiling)
+    history_val = _resolve_history_ceiling(ceiling_val, history_price_ceiling)
     df_canonical = collapse_canonical_per_run(df, ceiling_val)
+    df_history = collapse_canonical_per_run(df, history_val)
     if ceiling_val is not None:
-        print(f"📊 Канонические ряды (≤{ceiling_val:.0f} PLN, 1 точка/отель/ран): {len(df_canonical)} записей")
+        print(f"📊 Показ ≤{ceiling_val:.0f} PLN (таблица, алерты): {len(df_canonical)} записей")
+    if history_val is not None:
+        print(f"📈 История ≤{history_val:.0f} PLN (графики, выпавшие): {len(df_history)} записей")
+    elif len(df_history) > len(df_canonical):
+        print(f"📈 Расширенная история: {len(df_history)} записей")
 
     # Модель данных:
-    # • df_canonical — вся история (1 min-цена / отель / ран, ≤ ceiling): графики, дельты, deal score.
-    # • таблица (all_hotels) — только последний ран: актуальная min-цена «сейчас».
+    # • df_canonical — ≤ display (10k): таблица, карточки, алерты, deal score.
+    # • df_history — ≤ history (20k): графики, выпавшие, контекст «было дороже».
 
     # Анализ «когда покупать»: статистика снижения цен по часу/дню недели/части месяца/месяцу
     try:
@@ -1592,6 +1696,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         n_gone = max(1, int(disappeared_after_runs or 1))
         # Только отели, которые хотя бы раз были в исследуемом диапазоне (df_canonical, ≤ ceiling).
         canonical_runs = list(iter_scrape_runs(df_canonical))
+        full_runs = list(iter_scrape_runs(df_history))
         total_runs = len(canonical_runs)
         if total_runs > n_gone:
             recent_hotels = set()
@@ -1599,6 +1704,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             for _, _, sub in canonical_runs[-n_gone:]:
                 recent_hotels.update(sub['hotel_name'].astype(str).tolist())
                 recent_rows_list.append(sub)
+            recent_full_hotels = set()
+            if full_runs:
+                for _, _, sub in full_runs[-n_gone:]:
+                    recent_full_hotels.update(sub['hotel_name'].astype(str).tolist())
             all_seen_hotels = set(df_canonical['hotel_name'].astype(str).tolist())
             gone_hotels = all_seen_hotels - recent_hotels
 
@@ -1623,10 +1732,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 hist = df_canonical[df_canonical['hotel_name'].astype(str) == name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
                 if hist.empty:
                     continue
+                full_hist = df_history[df_history['hotel_name'].astype(str) == name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
                 prices = hist['price'].astype(float)
                 if len(prices) == 0:
                     continue
                 last_row = hist.iloc[-1]
+                still_in_scrape = name in recent_full_hotels
+                current_raw_price = None
+                current_raw_dates = None
+                current_raw_seen = None
+                if not full_hist.empty:
+                    raw_last = full_hist.iloc[-1]
+                    current_raw_price = float(raw_last['price'])
+                    current_raw_seen = raw_last['scraped_at_display']
+                    current_raw_dates = raw_last.get('dates') if pd.notna(raw_last.get('dates')) else None
                 if valid_dests:
                     hotel_dest = ''
                     for u in hist['offer_url'].astype(str).tolist():
@@ -1647,9 +1766,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
                 deal_info = deal_score_by_hotel.get(name, {})
                 typical_price = float(deal_info.get('median') or 0.0) or float(prices.median())
+                if len(prices) < 3 and not full_hist.empty:
+                    typical_price = float(full_hist['price'].astype(float).median())
 
                 avg_info = avg_baseline_delta.get(name)
                 baseline_pct = float(avg_info[1]) if avg_info else None
+                if len(prices) < 3 and not full_hist.empty:
+                    if current_raw_price and typical_price > 0:
+                        baseline_pct = (current_raw_price - typical_price) / typical_price * 100.0
+                elif baseline_pct is None and not full_hist.empty and typical_price > 0 and current_raw_price:
+                    baseline_pct = (current_raw_price - typical_price) / typical_price * 100.0
                 # Глубина падения к своей норме (положительное число = насколько ниже базы).
                 drop_depth = max(0.0, -baseline_pct) if baseline_pct is not None else 0.0
                 # Насколько дешевле своей нормы он опускался в минимуме.
@@ -1665,7 +1791,30 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 is_expensive = typical_price >= expensive_threshold and expensive_threshold > 0
 
                 # Классификация причины исчезновения.
-                if last_move_pct > 0.5:
+                if still_in_scrape and current_raw_price is not None:
+                    delta_from_last = (
+                        (current_raw_price - last_price) / last_price * 100.0
+                        if last_price > 0 else 0.0
+                    )
+                    if ceiling_val is not None and current_raw_price > ceiling_val:
+                        reason_code = 'above_ceiling'
+                        band_hi = history_val if history_val else current_raw_price
+                        reason_text = (
+                            f'Сейчас {current_raw_price:.0f} PLN — выше потолка показа'
+                            f' ({ceiling_val:.0f}–{band_hi:.0f})'
+                            f' ({delta_from_last:+.0f}% к последней цене в фильтре)'
+                        )
+                        last_dates = str(last_row.get('dates') or '')
+                        raw_dates = str(current_raw_dates or '')
+                        if raw_dates and raw_dates != last_dates:
+                            reason_text += '; другие даты поездки'
+                    elif delta_from_last > 2.0 or last_move_pct > 0.5:
+                        reason_code = 'up'
+                        reason_text = f'Подорожал до {current_raw_price:.0f} PLN и вышел из фильтра'
+                    else:
+                        reason_code = 'flat'
+                        reason_text = f'Сейчас {current_raw_price:.0f} PLN — в выдаче, но вне фильтра по цене'
+                elif last_move_pct > 0.5:
                     reason_code = 'up'
                     reason_text = 'Вышел вверх из диапазона (цена росла)'
                 elif baseline_pct is not None and baseline_pct <= -3.0 and last_move_pct <= 0.5:
@@ -1693,7 +1842,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     'last_seen': last_seen,
                     'visible_hours': visible_hours,
                     'observations': int(len(prices)),
+                    'observations_full': int(len(full_hist)) if not full_hist.empty else int(len(prices)),
                     'last_price': last_price,
+                    'current_raw_price': current_raw_price,
+                    'current_raw_dates': current_raw_dates,
+                    'current_raw_seen': current_raw_seen,
+                    'still_in_scrape': still_in_scrape,
                     'min_price': hotel_min_price,
                     'max_price': hotel_max_price,
                     'typical_price': typical_price,
@@ -1819,6 +1973,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return url
 
     # Карточки отелей (визуальный режим по умолчанию)
+    premium_history_by_hotel = _build_premium_history_by_hotel(df_history, ceiling_val)
     hotel_cards = []
     for _, hotel in all_hotels.head(200).iterrows():
         hotel_name = hotel['hotel_name']
@@ -1850,6 +2005,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         deal_label, deal_class, _ = classify_deal_badge(
             deal_score, confidence, d48_for_badge, d_avg_for_badge
         )
+        comeback = _comeback_from_premium(
+            price, premium_history_by_hotel.get(hotel_name), ceiling_val
+        )
+        comeback_html = (
+            f'<span class="comeback-badge">{comeback["badge_html"]}</span>'
+            if comeback else ''
+        )
 
         hotel_cards.append({
             "hotel_name": hotel_name,
@@ -1866,6 +2028,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "deal_label": deal_label,
             "deal_class": deal_class,
             "confidence": confidence,
+            "comeback_html": comeback_html,
         })
 
     hotel_meta_by_name = {c["hotel_name"]: c for c in hotel_cards}
@@ -1902,9 +2065,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
 
-    # График отеля — вся каноническая история по всем ранам
+    # График отеля — история до history ceiling (10–20k видны на графике)
     for hotel_name in sorted(df_canonical['hotel_name'].unique()):
-        hotel_ts = df_canonical[df_canonical['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+        hotel_ts = df_history[df_history['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
         x_values = [pd.to_datetime(t).isoformat() for t in hotel_ts['scraped_at_display'].tolist()]
         x_display = [pd.to_datetime(t).strftime('%d.%m.%Y %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
@@ -1927,7 +2090,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
 
         meta = hotel_meta_by_name.get(hotel_name, {})
-        if not meta.get('hotel_name_html'):
+        if not hotel_ts.empty:
+            pick_meta = hotel_ts.iloc[-1]
+            if not meta.get('hotel_name_html'):
+                meta = {
+                    'hotel_name_html': html_lib.escape(str(hotel_name)),
+                    'dates': '—',
+                    'duration': '—',
+                    'offer_url': '',
+                    'image_url': '',
+                }
+            meta = dict(meta)
+            meta['dates'] = str(pick_meta['dates']) if pd.notna(pick_meta.get('dates')) else meta.get('dates', '—')
+            meta['duration'] = str(pick_meta['duration']) if pd.notna(pick_meta.get('duration')) else meta.get('duration', '—')
+            offer_from_full = pick_meta.get('offer_url', '')
+            if offer_from_full and pd.notna(offer_from_full):
+                meta['offer_url'] = str(offer_from_full)
+        elif not meta.get('hotel_name_html'):
             meta = {
                 'hotel_name_html': html_lib.escape(str(hotel_name)),
                 'dates': '—',
@@ -1979,6 +2158,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             samples=len(y_values),
             alert_threshold=ALERT_THRESHOLD_PERCENT,
             trip_dates_label=trip_dates_label,
+            display_price_ceiling=ceiling_val,
+            history_price_ceiling=history_val,
         )
 
         with open(hotel_html_path, 'w', encoding='utf-8') as f:
@@ -3079,6 +3260,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .deal-pill.normal {{ background: rgba(148,163,184,.18); color: #334155; border-color: rgba(148,163,184,.35); }}
         .deal-pill.bad {{ background: rgba(239,68,68,.15); color: #991b1b; border-color: rgba(239,68,68,.32); }}
         .deal-pill.warm {{ background: rgba(14,165,233,.16); color: #0c4a6e; border-color: rgba(14,165,233,.35); }}
+        .comeback-badge {{
+            display: inline-block;
+            margin-top: .25rem;
+            font-size: .72rem;
+            font-weight: 700;
+            color: #065f46;
+            background: rgba(16,185,129,.14);
+            border: 1px solid rgba(16,185,129,.28);
+            border-radius: 999px;
+            padding: .12rem .45rem;
+        }}
         .hotel-card-stats {{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -4379,6 +4571,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <div class="hotel-card-price">{c["price"]:.0f} PLN</div>
                         <span class="deal-pill {c["deal_class"]}">Deal {c["deal_score"]} • {c["deal_label"]}</span>
                     </div>
+                    {c["comeback_html"]}
                     <div class="hotel-card-stats">
                         <div>Δ48ч: <strong>{c["delta48"]}</strong></div>
                         <div>Δср: <strong>{c["delta_avg"]}</strong></div>
@@ -4495,9 +4688,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 """
 
     _price_scope_tip = (
-        f"Учитываются только цены до {ceiling_val:.0f} PLN — по одной самой дешёвой оферте отеля за каждый запуск проверки."
-        if ceiling_val is not None
-        else "По одной самой дешёвой оферте каждого отеля за каждый запуск проверки."
+        f"Таблица и алерты — только ≤{ceiling_val:.0f} PLN. "
+        f"История и графики — до {history_val:.0f} PLN "
+        f"(расширенная история {ceiling_val:.0f}–{history_val:.0f} PLN — на графиках и в выпавших)."
+        if ceiling_val is not None and history_val is not None and history_val > ceiling_val
+        else (
+            f"Учитываются только цены до {ceiling_val:.0f} PLN — по одной самой дешёвой оферте отеля за каждый запуск проверки."
+            if ceiling_val is not None
+            else "По одной самой дешёвой оферте каждого отеля за каждый запуск проверки."
+        )
     )
     avg_deal_score = (
         int(round(sum(v['score'] for v in deal_score_by_hotel.values()) / len(deal_score_by_hotel)))
@@ -4752,11 +4951,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "Low confidence" if confidence_level == "Low"
             else ("Medium confidence" if confidence_level == "Medium" else "High confidence")
         )
+        comeback = _comeback_from_premium(price, premium_history_by_hotel.get(hotel_name), ceiling_val)
+        comeback_cell = (
+            f'<br><span class="comeback-badge">{comeback["badge_html"]}</span>'
+            if comeback else ''
+        )
 
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
-                        <td class="price" data-sort-value="{price}">{price:.0f} PLN</td>
+                        <td class="price" data-sort-value="{price}">{price:.0f} PLN{comeback_cell}</td>
                         <td data-sort-value="{deal_score}">{deal_score} <span style="opacity:.85;font-size:.85em;">{deal_badge}</span><br><span style="opacity:.65;font-size:.78em;">{confidence_label}</span></td>
                         <td class=\"{delta_class}\" data-sort-value="{delta_info[1] if delta_info else 0}">{delta_display}</td>
                         <td data-sort-value="{avg_sort_value}">{avg_display}</td>
@@ -4784,7 +4988,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return f'{int(round(h))}ч'
         return f'{h / 24:.1f}д'
 
-    _reason_class = {'sold': 'vanished-reason-sold', 'up': 'vanished-reason-up', 'flat': 'vanished-reason-flat'}
+    _reason_class = {
+        'sold': 'vanished-reason-sold',
+        'up': 'vanished-reason-up',
+        'flat': 'vanished-reason-flat',
+        'above_ceiling': 'vanished-reason-up',
+    }
     vanished_rows_html = ""
     for ev in disappeared_events[:150]:
         ev_name = ev['hotel_name']
@@ -4794,8 +5003,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             ev_chart_href = f"hotel-charts/{ev_slug}.html"
         notable_badge = '<span class="vanished-badge">🔥 заметный дил</span>' if ev['notable'] else ''
-        # Δ к своей средней
-        if ev['baseline_pct'] is not None:
+        # Δ к своей средней (или к последней цене в фильтре, если отель сейчас дороже потолка)
+        raw_price = ev.get('current_raw_price')
+        if raw_price is not None and abs(float(raw_price) - ev['last_price']) > 1:
+            raw_vs_filter = (float(raw_price) - ev['last_price']) / ev['last_price'] * 100.0 if ev['last_price'] else 0.0
+            arrow = '↑' if raw_vs_filter > 0 else ('↓' if raw_vs_filter < 0 else '→')
+            delta_cls = 'delta up' if raw_vs_filter > 0 else ('delta down' if raw_vs_filter < 0 else 'delta flat')
+            avg_cell = f'<span class="{delta_cls}">{arrow} {raw_vs_filter:+.1f}%</span>'
+            avg_cell += '<br><span style="opacity:.6;font-size:.78em;">vs последняя в фильтре</span>'
+        elif ev['baseline_pct'] is not None:
             bp = ev['baseline_pct']
             arrow = '↓' if bp < 0 else ('↑' if bp > 0 else '→')
             delta_cls = 'delta down' if bp < 0 else ('delta up' if bp > 0 else 'delta flat')
@@ -4804,7 +5020,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             avg_cell = '<span class="delta flat">—</span>'
         min_note = ''
         if ev['min_below_pct'] < -0.5:
-            min_note = f'<br><span style="opacity:.6;font-size:.78em;">мин: {ev["min_price"]:.0f} ({ev["min_below_pct"]:+.0f}%)</span>'
+            min_note = f'<br><span style="opacity:.6;font-size:.78em;">мин в фильтре: {ev["min_price"]:.0f} ({ev["min_below_pct"]:+.0f}%)</span>'
+        if raw_price is not None and abs(float(raw_price) - ev['last_price']) > 1:
+            raw_pct = (float(raw_price) - ev['last_price']) / ev['last_price'] * 100.0 if ev['last_price'] else 0.0
+            raw_cls = 'up' if raw_pct > 0 else 'drop'
+            price_cell = (
+                f'<span style="opacity:.75">{ev["last_price"]:.0f}</span>'
+                f' → <strong class="{raw_cls}">{float(raw_price):.0f}</strong> PLN'
+                f'<br><span style="opacity:.6;font-size:.78em;">сейчас в выдаче ({raw_pct:+.0f}%)</span>'
+                f'{min_note}'
+            )
+        else:
+            price_cell = f'{ev["last_price"]:.0f} PLN{min_note}'
         airport_disp = html_lib.escape(str(ev['airport']).replace('%20', ' ')) if ev['airport'] else ''
         airport_html = f' <span style="opacity:.6;font-size:.78em;">{airport_disp}</span>' if airport_disp else ''
         first_seen_str = _fmt_dt(ev["first_seen"])
@@ -4820,15 +5047,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             offer_cell = f'<a href="{offer_url_esc}" target="_blank" rel="noopener" class="offer-link" title="Открыть оффер (может быть уже недоступен)">🔗</a>'
         else:
             offer_cell = '—'
+        full_obs = ev.get('observations_full', ev['observations'])
+        full_obs_suffix = f' · {full_obs} всего' if full_obs > ev['observations'] else ''
         seen_cell = (
             f'{first_seen_str} → {last_seen_str}'
-            f'<br><span style="opacity:.6;font-size:.78em;">в фильтре ~{visible_str} · {ev["observations"]} набл.</span>'
+            f'<br><span style="opacity:.6;font-size:.78em;">в фильтре ~{visible_str} · {ev["observations"]} набл.{full_obs_suffix}</span>'
         )
         vanished_rows_html += f"""
                     <tr>
                         <td class="hotel-name"><a class="open-chart-link" href="{ev_chart_href}" target="_blank">{hotel_name_esc}</a>{notable_badge}{airport_html}</td>
                         <td>{seen_cell}</td>
-                        <td class="price">{ev['last_price']:.0f} PLN{min_note}</td>
+                        <td class="price">{price_cell}</td>
                         <td>{avg_cell}</td>
                         <td>{ev['deal_score']} <span style="opacity:.65;font-size:.78em;">{confidence_esc}</span></td>
                         <td><span class="vanished-reason {reason_cls}">{reason_esc}</span></td>
@@ -4841,14 +5070,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             vanished_summary_meta = ""
         vanished_inner_html = f"""
-                <p class="vanished-hint">Отели, которые были в фильтре и пропали из выдачи за последние {max(1, int(disappeared_after_runs or 1))} ранов подряд. История и график по каждому сохраняются — клик по названию открывает динамику цены, ссылка «Оффер» ведёт на исходное предложение (может быть уже недоступно). Сортировка по значимости (дорогой отель + сильное падение к своей норме = вероятно раскупленный дил).</p>
+                <p class="vanished-hint">Отели, пропавшие из показа ≤{ceiling_val:.0f} PLN за последние {max(1, int(disappeared_after_runs or 1))} ранов. Если отель всё ещё в выдаче выше потолка показа ({ceiling_val:.0f}–{history_val:.0f} PLN) — показываем актуальную цену. Графики хранят всю историю до {history_val:.0f} PLN.</p>
                 <div class="table-container">
                     <table class="hotels-table vanished-table">
                         <thead>
                             <tr>
                                 <th>Отель</th>
                                 <th>Был виден</th>
-                                <th>Последняя цена</th>
+                                <th>Цена в фильтре → сейчас</th>
                                 <th>Δ к своей средней</th>
                                 <th>Deal Score</th>
                                 <th>Что произошло</th>
@@ -5479,5 +5708,6 @@ if __name__ == "__main__":
     parser.add_argument('--all-airports-data-file', default=None, help='CSV с общим фильтром (любой аэропорт) для сравнения')
     parser.add_argument('--disappeared-after-runs', type=int, default=2, help='Сколько последних ранов подряд должен отсутствовать отель, чтобы считаться выпавшим')
     parser.add_argument('--display-price-ceiling', type=float, default=None, help='Потолок цены для ПОКАЗА в таблице/карточках (дороже — только в истории/статистике)')
+    parser.add_argument('--history-price-ceiling', type=float, default=None, help='Потолок для истории/графиков/выпавших (по умолчанию 20000 при заданном display ceiling)')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file, all_airports_data_file=args.all_airports_data_file, disappeared_after_runs=args.disappeared_after_runs, display_price_ceiling=args.display_price_ceiling)
+    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file, all_airports_data_file=args.all_airports_data_file, disappeared_after_runs=args.disappeared_after_runs, display_price_ceiling=args.display_price_ceiling, history_price_ceiling=args.history_price_ceiling)
