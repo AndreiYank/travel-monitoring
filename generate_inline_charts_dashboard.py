@@ -918,37 +918,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     disappeared_events = []
     try:
         n_gone = max(1, int(disappeared_after_runs or 1))
-        # Независимо пересчитываем границы ранов на КОРРЕКТНО отсортированном по времени
-        # кадре (df_sorted в этой точке уже пересортирован по hotel_name, использовать его нельзя).
-        df_time = df.dropna(subset=['scraped_at_display']).sort_values('scraped_at_display').reset_index(drop=True)
-        tdiff = df_time['scraped_at_display'].diff()
-        boundary_positions = df_time.index[tdiff > pd.Timedelta(minutes=5)].tolist()
-        run_start_pos = [0] + boundary_positions
-        run_end_pos = boundary_positions + [len(df_time)]
-        total_runs = len(run_start_pos)
-        # Guard: при слишком короткой истории не можем достоверно говорить о "пропаже".
+        # Только отели, которые хотя бы раз были в исследуемом диапазоне (df_canonical, ≤ ceiling).
+        canonical_runs = list(iter_scrape_runs(df_canonical))
+        total_runs = len(canonical_runs)
         if total_runs > n_gone:
-            # Множество отелей, присутствующих хотя бы в одном из последних N ранов.
             recent_hotels = set()
             recent_rows_list = []
-            for s_idx, e_idx in zip(run_start_pos[-n_gone:], run_end_pos[-n_gone:]):
-                sub = df_time.iloc[s_idx:e_idx]
+            for _, _, sub in canonical_runs[-n_gone:]:
                 recent_hotels.update(sub['hotel_name'].astype(str).tolist())
                 recent_rows_list.append(sub)
-            all_seen_hotels = set(df['hotel_name'].astype(str).tolist())
+            all_seen_hotels = set(df_canonical['hotel_name'].astype(str).tolist())
             gone_hotels = all_seen_hotels - recent_hotels
 
-            # Допустимые направления берём из СВЕЖИХ (чистых) ранов — это generic-фильтр
-            # против мусора из старых багнутых ранов (напр. польские отели в египетском фильтре).
             valid_dests = set()
-            if recent_rows_list and 'offer_url' in df_time.columns:
+            if recent_rows_list and 'offer_url' in df_canonical.columns:
                 recent_rows = pd.concat(recent_rows_list)
                 for u in recent_rows['offer_url'].astype(str).tolist():
                     tok = _dest_token_from_offer_url(u)
                     if tok:
                         valid_dests.add(tok)
 
-            # Ценовой тир: что считать "дорогим" отелем (верхний квантиль типичных цен).
             typical_prices = [
                 float(v['median']) for v in deal_score_by_hotel.values()
                 if v.get('median') is not None and float(v.get('median') or 0) > 0
@@ -959,15 +948,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             )
 
             for name in gone_hotels:
-                hist = df[df['hotel_name'].astype(str) == name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+                hist = df_canonical[df_canonical['hotel_name'].astype(str) == name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
                 if hist.empty:
                     continue
                 prices = hist['price'].astype(float)
                 if len(prices) == 0:
                     continue
                 last_row = hist.iloc[-1]
-                # Отбрасываем не относящиеся к фильтру предложения (мусор из старых ранов):
-                # направление в offer_url должно совпадать с актуальными чистыми ранами.
                 if valid_dests:
                     hotel_dest = ''
                     for u in hist['offer_url'].astype(str).tolist():
