@@ -89,6 +89,93 @@ def _lowest_price_row(grp):
     return grp.loc[prices.idxmin()]
 
 
+def _iter_price_plateaus(times, prices):
+    """Yield (price, duration_hours) for each constant-price plateau."""
+    if not times or not prices:
+        return
+    if len(times) != len(prices):
+        return
+
+    gaps = []
+    for i in range(1, len(times)):
+        gaps.append((times[i] - times[i - 1]).total_seconds() / 3600.0)
+    typical_gap = sorted(gaps)[len(gaps) // 2] if gaps else 1.0
+    typical_gap = max(typical_gap, 0.5)
+
+    idx = 0
+    while idx < len(prices):
+        price = float(prices[idx])
+        end = idx
+        while end + 1 < len(prices) and float(prices[end + 1]) == price:
+            end += 1
+        if end + 1 < len(times):
+            hours = (times[end + 1] - times[idx]).total_seconds() / 3600.0
+        elif end > idx:
+            hours = (times[end] - times[idx]).total_seconds() / 3600.0 + typical_gap
+        elif idx > 0:
+            hours = (times[idx] - times[idx - 1]).total_seconds() / 3600.0
+        else:
+            hours = typical_gap
+        yield price, max(hours, 0.5)
+        idx = end + 1
+
+
+def _time_weighted_price_baseline(grp, time_col='scraped_at_display', price_col='price'):
+    """Typical price: weighted mean by how long each plateau was held (hours/days)."""
+    segments = _price_plateau_segments(grp, time_col=time_col, price_col=price_col)
+    if not segments:
+        return None
+    total_hours = sum(h for _, h in segments)
+    if total_hours <= 0:
+        return float(segments[-1][0])
+    return sum(p * h for p, h in segments) / total_hours
+
+
+def _price_plateau_segments(grp, time_col='scraped_at_display', price_col='price'):
+    if grp is None or grp.empty:
+        return []
+    work = grp.sort_values(time_col).dropna(subset=[time_col, price_col])
+    if work.empty:
+        return []
+    times = pd.to_datetime(work[time_col], utc=True).tolist()
+    prices = work[price_col].astype(float).tolist()
+    return list(_iter_price_plateaus(times, prices))
+
+
+def _time_weighted_price_quantile(grp, quantile, time_col='scraped_at_display', price_col='price'):
+    """Quantile weighted by plateau duration (not by scrape count)."""
+    segments = _price_plateau_segments(grp, time_col=time_col, price_col=price_col)
+    if not segments:
+        return None
+    q = max(0.0, min(1.0, float(quantile)))
+    ordered = sorted(segments, key=lambda x: x[0])
+    total_hours = sum(h for _, h in ordered)
+    if total_hours <= 0:
+        return float(ordered[-1][0])
+    target = total_hours * q
+    seen = 0.0
+    for price, hours in ordered:
+        seen += hours
+        if seen >= target:
+            return float(price)
+    return float(ordered[-1][0])
+
+
+def _time_weighted_price_volatility(grp, time_col='scraped_at_display', price_col='price'):
+    """Coefficient of variation using duration-weighted mean/std."""
+    segments = _price_plateau_segments(grp, time_col=time_col, price_col=price_col)
+    if len(segments) < 2:
+        return None
+    total_hours = sum(h for _, h in segments)
+    if total_hours <= 0:
+        return None
+    mean = sum(p * h for p, h in segments) / total_hours
+    if mean <= 0:
+        return None
+    var = sum(h * (p - mean) ** 2 for p, h in segments) / total_hours
+    return float(var ** 0.5 / mean)
+
+
 def _last_run_slice(df, time_col='scraped_at_display', gap_minutes=5):
     """Последний ран скрейпа как DataFrame."""
     runs = list(iter_scrape_runs(df, time_col=time_col, gap_minutes=gap_minutes))
@@ -145,7 +232,7 @@ def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None, 
     strong_comeback = comeback_drop_pct is not None and comeback_drop_pct >= 8.0
     if confidence == "Low" and not strong_comeback:
         return "Warm-up", "warm", "⏳ Warm-up"
-    if is_bad:
+    if is_bad and not strong_comeback:
         return "Bad", "bad", "📈 Bad"
     if deal_score >= 80:
         return "Hot", "hot", "🔥 Hot"
@@ -713,7 +800,7 @@ def _render_hotel_chart_page(
             <div class="chart-kpi"><div class="v {'drop' if delta48_str.startswith('-') else ('up' if delta48_str.startswith('+') else '')}">{html_lib.escape(delta48_str)}</div><div class="l">Δ за 48ч</div></div>
             <div class="chart-kpi"><div class="v {'drop' if delta_avg_str.startswith('-') else ('up' if delta_avg_str.startswith('+') else '')}">{html_lib.escape(delta_avg_str)}</div><div class="l">Δ к своей средней</div></div>
             <div class="chart-kpi"><div class="v">{min_p:.0f}</div><div class="l">Минимум истории</div></div>
-            <div class="chart-kpi"><div class="v">{median_p:.0f}</div><div class="l">Медиана</div></div>
+            <div class="chart-kpi"><div class="v">{median_p:.0f}</div><div class="l">Ср. по времени</div></div>
             <div class="chart-kpi"><div class="v">{max_p:.0f}</div><div class="l">Максимум</div></div>
             <div class="chart-kpi"><div class="v">{samples}</div><div class="l">Замеров · {html_lib.escape(confidence)}</div></div>
         </section>
@@ -858,16 +945,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     history_val = _resolve_history_ceiling(ceiling_val, history_price_ceiling)
     df_canonical = collapse_canonical_per_run(df, ceiling_val)
     df_history = collapse_canonical_per_run(df, history_val)
+    df_full = collapse_canonical_per_run(df, None)
     if ceiling_val is not None:
         print(f"📊 Показ ≤{ceiling_val:.0f} PLN (таблица, алерты): {len(df_canonical)} записей")
     if history_val is not None:
         print(f"📈 История ≤{history_val:.0f} PLN (графики, выпавшие): {len(df_history)} записей")
     elif len(df_history) > len(df_canonical):
         print(f"📈 Расширенная история: {len(df_history)} записей")
+    if len(df_full) > len(df_history):
+        print(f"📉 Полная история (без потолка): {len(df_full)} записей")
 
     # Модель данных:
-    # • df_canonical — ≤ display (10k): таблица, карточки, алерты, deal score.
+    # • df_canonical — ≤ display (10k): таблица, карточки, алерты.
     # • df_history — ≤ history (20k): графики, выпавшие, контекст «было дороже».
+    # • df_full — вся история: типичная средняя (Δ к средней, Deal Score).
 
     # Анализ «когда покупать»: статистика снижения цен по часу/дню недели/части месяца/месяцу
     try:
@@ -1421,6 +1512,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     # Дельты: «текущая» цена = таблица (последний ран), база = каноническая история (все раны).
     df_sorted = df_canonical.sort_values(['hotel_name', 'scraped_at_display'])
+    df_sorted_full = df_full.sort_values(['hotel_name', 'scraped_at_display'])
     ref_time_series = df_canonical['scraped_at_display'] if not df_canonical.empty else df['scraped_at_display']
 
     def compute_changes(window_hours: int):
@@ -1491,36 +1583,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         minmax_labels_by_hotel[hotel_name] = labels
 
     # Отклонение от "типичной" цены отеля:
-    # baseline = trimmed mean (устойчивая средняя), fallback на median/mean при короткой истории.
+    # baseline = time-weighted mean по всей истории (без потолка показа).
     avg_baseline_delta = {}
-    for hotel_name, grp in df_sorted.groupby('hotel_name'):
+    for hotel_name, last_price in table_prices.items():
+        grp = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name]
+        if grp.empty:
+            avg_baseline_delta[hotel_name] = None
+            continue
         grp = grp.sort_values('scraped_at_display')
-        prices = grp['price'].astype(float).tolist()
-        if not prices:
+        baseline = _time_weighted_price_baseline(grp)
+        if baseline is None or baseline == 0:
             avg_baseline_delta[hotel_name] = None
             continue
-
-        last_price = float(table_prices.get(hotel_name, grp.iloc[-1]['price']))
-        series = pd.Series(prices, dtype='float64')
-        n = len(series)
-
-        if n >= 8:
-            sorted_vals = sorted(float(x) for x in prices)
-            trim_n = max(1, int(n * 0.15))
-            if n - (2 * trim_n) >= 3:
-                core = sorted_vals[trim_n:n - trim_n]
-            else:
-                core = sorted_vals
-            baseline = float(pd.Series(core, dtype='float64').mean()) if core else float(series.mean())
-        elif n >= 3:
-            baseline = float(series.median())
-        else:
-            baseline = float(series.mean())
-
-        if baseline == 0:
-            avg_baseline_delta[hotel_name] = None
-            continue
-        change_abs = last_price - baseline
+        change_abs = float(last_price) - baseline
         change_pct = (change_abs / baseline) * 100.0
         avg_baseline_delta[hotel_name] = (change_abs, change_pct)
 
@@ -1535,19 +1610,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at_display')
-        prices = grp['price'].astype(float).tolist()
+        grp_full = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name].sort_values('scraped_at_display')
+        hist_grp = grp_full if not grp_full.empty else grp
+        prices = hist_grp['price'].astype(float).tolist()
         if not prices:
             continue
 
         latest = float(table_prices.get(hotel_name, prices[-1]))
         series = pd.Series(prices, dtype='float64')
         samples = len(series)
-        median = float(series.median()) if len(series) else latest
-        p25 = float(series.quantile(0.25)) if len(series) >= 2 else latest
-        p10 = float(series.quantile(0.10)) if len(series) >= 3 else latest
-        min_p = float(series.min()) if len(series) else latest
+        typical = _time_weighted_price_baseline(hist_grp) or latest
+        median = float(typical)
+        p25 = _time_weighted_price_quantile(hist_grp, 0.25) or latest
+        p10 = _time_weighted_price_quantile(hist_grp, 0.10) or latest
+        plateau_segments = _price_plateau_segments(hist_grp)
+        min_p = float(min(p for p, _ in plateau_segments)) if plateau_segments else latest
 
-        # Насколько цена ниже своей медианы истории
+        # Насколько цена ниже своей типичной (взвешенной по времени) истории
         rel_discount = 0.0
         if median > 0:
             rel_discount = (median - latest) / median
@@ -1573,10 +1652,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         elif len(recent) >= 2 and recent[-1] > recent[-2]:
             score_momentum = 35
 
-        # Стабильность: низкий шум без тренда = нейтральный балл
+        # Стабильность: низкий шум без тренда = нейтральный балл (CV по времени, не по точкам)
         score_stability = 50
-        if len(series) >= 4 and series.mean() > 0:
-            cv = float(series.std(ddof=0) / series.mean())
+        cv = _time_weighted_price_volatility(hist_grp)
+        if cv is not None:
             if cv < 0.01:
                 score_stability = 50
             else:
@@ -1643,6 +1722,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'min': min_p,
             'is_bad': is_bad,
             'comeback_drop_pct': comeback_drop_pct,
+            'typical_price': median,
         }
 
         delta48 = delta48_info
@@ -1781,9 +1861,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 hotel_max_price = float(prices.max())
 
                 deal_info = deal_score_by_hotel.get(name, {})
-                typical_price = float(deal_info.get('median') or 0.0) or float(prices.median())
-                if len(prices) < 3 and not full_hist.empty:
-                    typical_price = float(full_hist['price'].astype(float).median())
+                typical_price = float(
+                    deal_info.get('typical_price')
+                    or deal_info.get('median')
+                    or 0.0
+                )
+                if typical_price <= 0 and not full_hist.empty:
+                    typical_price = _time_weighted_price_baseline(full_hist) or 0.0
+                if typical_price <= 0:
+                    typical_price = float(prices.median())
 
                 avg_info = avg_baseline_delta.get(name)
                 baseline_pct = float(avg_info[1]) if avg_info else None
@@ -2142,11 +2228,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         if y_values:
             price_series = pd.Series(y_values, dtype='float64')
-            median_p = float(price_series.median())
             min_p = float(price_series.min())
             max_p = float(price_series.max())
         else:
-            median_p = min_p = max_p = 0.0
+            min_p = max_p = 0.0
+        median_p = float(deal_info.get('typical_price') or deal_info.get('median') or 0.0)
+        hist_grp_chart = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name]
+        if median_p <= 0 and not hist_grp_chart.empty:
+            median_p = _time_weighted_price_baseline(hist_grp_chart) or 0.0
 
         trip_dates_label = str(meta.get('dates') or (dates_list[-1] if dates_list else '—'))
 
@@ -4948,7 +5037,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <th class="sortable" data-sort="price">Цена</th>
                         <th class="sortable" data-sort="deal">Deal Score</th>
                         <th class="sortable" data-sort="delta48">Δ 48ч</th>
-                        <th class="sortable" data-sort="deltaavg">Δ к средней</th>
+                        <th class="sortable" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней</th>
                         <th class="sortable" data-sort="dates">Даты</th>
                         <th class="sortable" data-sort="duration">Длительность</th>
                         <th>Ссылка</th>
@@ -4974,7 +5063,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             sign = '+' if delta_abs > 0 else ('' if delta_abs < 0 else '')
             delta_display = f"{arrow} {sign}{delta_pct:.1f}%"
 
-        # Δ к устойчивой средней цене по истории отеля
+        # Δ к time-weighted средней по полной истории отеля (без потолка показа)
         avg_display = "—"
         avg_info = avg_baseline_delta.get(hotel_name)
         avg_sort_value = 0
