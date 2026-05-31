@@ -42,6 +42,7 @@ class PriceAlertManagerV2:
         self.history_price_ceiling = history_price_ceiling
         self.df_raw = self.load_data()
         self.df = self._build_canonical_df()
+        self.df_history = self._build_history_df()
 
     def load_data(self) -> pd.DataFrame:
         """Загружает данные из CSV файла"""
@@ -65,6 +66,16 @@ class PriceAlertManagerV2:
         work['scraped_at_display'] = work['scraped_at']
         ceiling = _parse_price_ceiling(self.display_price_ceiling)
         return collapse_canonical_per_run(work, ceiling)
+
+    def _build_history_df(self) -> pd.DataFrame:
+        """Мин. цена на отель за ран в полной зоне сбора (до history ceiling)."""
+        if self.df_raw.empty:
+            return self.df_raw
+        work = self.df_raw.copy()
+        work['scraped_at_display'] = work['scraped_at']
+        display = _parse_price_ceiling(self.display_price_ceiling)
+        history = _resolve_history_ceiling(display, self.history_price_ceiling)
+        return collapse_canonical_per_run(work, history)
     
     def load_alerts(self) -> List[Dict[str, Any]]:
         """Загружает историю алертов"""
@@ -93,56 +104,139 @@ class PriceAlertManagerV2:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
     def get_run_times(self) -> List[datetime]:
-        """Получает все времена ранов (по интервалам > 5 минут)"""
-        if self.df.empty:
+        """Времена всех ранов — по расширенному ряду (включая раны без офферов ≤ ceiling)."""
+        frame = self.df_history if not self.df_history.empty else self.df
+        if frame.empty:
             return []
-        
+
         run_times = []
-        for _, _, run_slice in iter_scrape_runs(self.df, time_col='scraped_at'):
+        for _, _, run_slice in iter_scrape_runs(frame, time_col='scraped_at'):
             if len(run_slice) > 0:
                 run_times.append(run_slice['scraped_at'].iloc[0])
-        
+
         return sorted(run_times)
     
     def get_hotel_prices_for_run(self, run_time: datetime) -> Dict[str, float]:
         """Получает цены всех отелей для конкретного рана (канонический ряд)."""
-        for _, _, run_slice in iter_scrape_runs(self.df, time_col='scraped_at'):
+        return self._hotel_prices_for_run(self.df, run_time)
+
+    def get_hotel_history_prices_for_run(self, run_time: datetime) -> Dict[str, float]:
+        """Цены отелей за ран в расширенной зоне сбора (≤ history ceiling)."""
+        return self._hotel_prices_for_run(self.df_history, run_time)
+
+    def _hotel_prices_for_run(self, frame: pd.DataFrame, run_time: datetime) -> Dict[str, float]:
+        for _, _, run_slice in iter_scrape_runs(frame, time_col='scraped_at'):
             if len(run_slice) > 0 and run_slice['scraped_at'].iloc[0] == run_time:
                 return {
                     str(name): float(price)
                     for name, price in zip(run_slice['hotel_name'], run_slice['price'])
                 }
         return {}
-    
-    def find_price_changes_between_runs(self, prev_run: datetime, curr_run: datetime, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
-        """Находит изменения цен между двумя ранами"""
-        prev_prices = self.get_hotel_prices_for_run(prev_run)
-        curr_prices = self.get_hotel_prices_for_run(curr_run)
-        
-        changes = []
-        
-        # Проверяем изменения для отелей, которые есть в обоих ранах
-        for hotel_name in set(prev_prices.keys()) & set(curr_prices.keys()):
-            prev_price = prev_prices[hotel_name]
-            curr_price = curr_prices[hotel_name]
-            
-            price_change = curr_price - prev_price
-            price_change_pct = (price_change / prev_price) * 100 if prev_price > 0 else 0
-            
-            if abs(price_change_pct) >= threshold_percent:
-                changes.append({
-                    'hotel_name': hotel_name,
-                    'old_price': prev_price,
-                    'new_price': curr_price,
-                    'price_change': price_change,
-                    'price_change_pct': price_change_pct,
-                    'timestamp': curr_run,
-                    'alert_type': 'price_drop' if price_change < 0 else 'price_increase',
-                    'created_at': datetime.now(timezone.utc).isoformat(),
-                    'threshold_percent': threshold_percent,
-                    'unique_key': f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}_{price_change_pct:+.1f}"
-                })
-        
+
+    def _append_alert(
+        self,
+        changes: List[Dict[str, Any]],
+        *,
+        hotel_name: str,
+        old_price,
+        new_price,
+        alert_type: str,
+        curr_run: datetime,
+        threshold_percent: float,
+        unique_suffix: str,
+    ) -> None:
+        try:
+            old_val = float(old_price) if old_price is not None else None
+        except (TypeError, ValueError):
+            old_val = None
+        try:
+            new_val = float(new_price) if new_price is not None else None
+        except (TypeError, ValueError):
+            new_val = None
+        if new_val is None:
+            return
+        if old_val is not None:
+            price_change = new_val - old_val
+            price_change_pct = (price_change / old_val * 100.0) if old_val else 0.0
+        else:
+            price_change = 0.0
+            price_change_pct = 0.0
+        changes.append({
+            'hotel_name': hotel_name,
+            'old_price': old_val if old_val is not None else new_val,
+            'new_price': new_val,
+            'price_change': price_change,
+            'price_change_pct': price_change_pct,
+            'timestamp': curr_run,
+            'alert_type': alert_type,
+            'created_at': datetime.now(timezone.utc).isoformat(),
+            'threshold_percent': threshold_percent,
+            'unique_key': f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}_{unique_suffix}",
+        })
+
+    def find_zone_transitions_between_runs(
+        self,
+        prev_run: datetime,
+        curr_run: datetime,
+        threshold_percent: float = ALERT_THRESHOLD_PERCENT,
+    ) -> List[Dict[str, Any]]:
+        """Вход / выход / изменение в зоне отслеживания (≤ display ceiling)."""
+        prev_zone = self.get_hotel_prices_for_run(prev_run)
+        curr_zone = self.get_hotel_prices_for_run(curr_run)
+        curr_history = self.get_hotel_history_prices_for_run(curr_run)
+
+        changes: List[Dict[str, Any]] = []
+
+        for hotel_name in set(prev_zone.keys()) & set(curr_zone.keys()):
+            prev_price = prev_zone[hotel_name]
+            curr_price = curr_zone[hotel_name]
+            price_change_pct = (
+                (curr_price - prev_price) / prev_price * 100.0 if prev_price > 0 else 0.0
+            )
+            if abs(price_change_pct) < threshold_percent:
+                continue
+            alert_type = 'price_drop' if curr_price < prev_price else 'price_increase'
+            self._append_alert(
+                changes,
+                hotel_name=hotel_name,
+                old_price=prev_price,
+                new_price=curr_price,
+                alert_type=alert_type,
+                curr_run=curr_run,
+                threshold_percent=threshold_percent,
+                unique_suffix=f"{price_change_pct:+.1f}",
+            )
+
+        for hotel_name in sorted(set(curr_zone.keys()) - set(prev_zone.keys())):
+            self._append_alert(
+                changes,
+                hotel_name=hotel_name,
+                old_price=curr_history.get(hotel_name),
+                new_price=curr_zone[hotel_name],
+                alert_type='zone_entry',
+                curr_run=curr_run,
+                threshold_percent=threshold_percent,
+                unique_suffix='zone_in',
+            )
+
+        for hotel_name in sorted(set(prev_zone.keys()) - set(curr_zone.keys())):
+            last_zone_price = prev_zone[hotel_name]
+            raw_price = curr_history.get(hotel_name)
+            suffix = 'zone_out_gone'
+            if raw_price is not None and last_zone_price > 0:
+                pct = (raw_price - last_zone_price) / last_zone_price * 100.0
+                suffix = f"zone_out_{pct:+.1f}"
+            self._append_alert(
+                changes,
+                hotel_name=hotel_name,
+                old_price=last_zone_price,
+                new_price=raw_price if raw_price is not None else last_zone_price,
+                alert_type='zone_exit',
+                curr_run=curr_run,
+                threshold_percent=threshold_percent,
+                unique_suffix=suffix,
+            )
+
         return changes
     
     def find_premium_comeback_between_runs(
@@ -199,9 +293,6 @@ class PriceAlertManagerV2:
     
     def scan_all_runs_for_changes(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
         """Сканирует все раны и находит все изменения цен >= порога"""
-        if self.df.empty:
-            return []
-        
         run_times = self.get_run_times()
         if len(run_times) < 2:
             return []
@@ -215,16 +306,23 @@ class PriceAlertManagerV2:
             prev_run = run_times[i-1]
             curr_run = run_times[i]
             
-            changes = self.find_price_changes_between_runs(prev_run, curr_run, threshold_percent)
-            all_changes.extend(changes)
+            changes = self.find_zone_transitions_between_runs(
+                prev_run, curr_run, threshold_percent
+            )
             comebacks = self.find_premium_comeback_between_runs(
                 prev_run, curr_run, threshold_percent
             )
+            comeback_hotels = {c['hotel_name'] for c in comebacks}
+            changes = [
+                c for c in changes
+                if not (c['alert_type'] == 'zone_entry' and c['hotel_name'] in comeback_hotels)
+            ]
+            all_changes.extend(changes)
             all_changes.extend(comebacks)
-            
+
             if changes or comebacks:
                 logger.info(
-                    f"  📊 Ран {curr_run}: найдено {len(changes)} изменений"
+                    f"  📊 Ран {curr_run}: найдено {len(changes)} событий зоны"
                     f"{f', {len(comebacks)} comeback' if comebacks else ''}"
                 )
         

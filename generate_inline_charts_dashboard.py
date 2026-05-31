@@ -343,7 +343,42 @@ def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
     except Exception:
         ts_fmt = str(ts_raw)
 
-    if alert_type == 'missing' or new_price in (None, '', 'null'):
+    if alert_type == 'zone_entry':
+        kind = 'drop'
+        badge = '+'
+        new_cls = 'drop'
+        change_pct = float(alert.get('price_change_pct') or 0.0)
+        try:
+            new_fmt = f"{float(new_price):.0f}"
+        except (TypeError, ValueError):
+            new_fmt = str(new_price)
+        try:
+            old_f = float(old_price) if old_price is not None else None
+            new_f = float(new_price)
+            if old_f is not None and abs(old_f - new_f) > 1:
+                old_fmt = f"{old_f:.0f}"
+                pct_text = f'{change_pct:+.1f}%'
+            else:
+                old_fmt = '—'
+                pct_text = ''
+        except (TypeError, ValueError):
+            old_fmt = '—'
+            pct_text = ''
+        note = 'Вошёл в зону отслеживания'
+    elif alert_type == 'zone_exit':
+        kind = 'up'
+        badge = '↑'
+        new_cls = 'up'
+        change_pct = float(alert.get('price_change_pct') or 0.0)
+        pct_text = f'{change_pct:+.1f}%' if change_pct else ''
+        try:
+            old_fmt = f"{float(old_price):.0f}"
+            new_fmt = f"{float(new_price):.0f}"
+        except (TypeError, ValueError):
+            old_fmt = str(old_price)
+            new_fmt = str(new_price)
+        note = 'Вышел из зоны отслеживания'
+    elif alert_type == 'missing' or new_price in (None, '', 'null'):
         kind = 'missing'
         badge = '—'
         pct_text = ''
@@ -1831,8 +1866,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             breadth_down += 1
     market_breadth = (breadth_down / breadth_total) if breadth_total > 0 else 0.0
 
-    # --- Журнал "выпавших" отелей: были в фильтре и пропали из последних N ранов ---
-    # Считаем ретроспективно из полной истории CSV (отдельное хранилище не нужно).
+    # --- Журнал «выпавших»: когда-либо в зоне отслеживания, сейчас не в основной таблице ---
     def _dest_token_from_offer_url(url: str) -> str:
         # fly.pl: .../wycieczka/<страна>,<регион>,.../...  -> возвращаем токен страны
         try:
@@ -1849,28 +1883,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     disappeared_events = []
     try:
-        n_gone = max(1, int(disappeared_after_runs or 1))
-        # Только отели, которые хотя бы раз были в исследуемом диапазоне (df_canonical, ≤ ceiling).
         canonical_runs = list(iter_scrape_runs(df_canonical))
         full_runs = list(iter_scrape_runs(df_history))
-        total_runs = len(canonical_runs)
-        if total_runs > n_gone:
-            recent_hotels = set()
-            recent_rows_list = []
-            for _, _, sub in canonical_runs[-n_gone:]:
-                recent_hotels.update(sub['hotel_name'].astype(str).tolist())
-                recent_rows_list.append(sub)
-            recent_full_hotels = set()
-            if full_runs:
-                for _, _, sub in full_runs[-n_gone:]:
-                    recent_full_hotels.update(sub['hotel_name'].astype(str).tolist())
+        if canonical_runs and table_prices is not None:
             all_seen_hotels = set(df_canonical['hotel_name'].astype(str).tolist())
-            gone_hotels = all_seen_hotels - recent_hotels
+            current_table_hotels = set(table_prices.keys())
+            gone_hotels = all_seen_hotels - current_table_hotels
+
+            latest_full_hotels = set()
+            if full_runs:
+                _, _, latest_full_slice = full_runs[-1]
+                latest_full_hotels = set(latest_full_slice['hotel_name'].astype(str).tolist())
 
             valid_dests = set()
-            if recent_rows_list and 'offer_url' in df_canonical.columns:
-                recent_rows = pd.concat(recent_rows_list)
-                for u in recent_rows['offer_url'].astype(str).tolist():
+            if 'offer_url' in df_canonical.columns:
+                _, _, latest_canonical = canonical_runs[-1]
+                for u in latest_canonical['offer_url'].astype(str).tolist():
                     tok = _dest_token_from_offer_url(u)
                     if tok:
                         valid_dests.add(tok)
@@ -1893,7 +1921,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 if len(prices) == 0:
                     continue
                 last_row = hist.iloc[-1]
-                still_in_scrape = name in recent_full_hotels
+                still_in_scrape = name in latest_full_hotels
                 current_raw_price = None
                 current_raw_dates = None
                 current_raw_seen = None
@@ -5208,7 +5236,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         'above_ceiling': 'vanished-reason-up',
     }
     vanished_rows_html = ""
-    for ev in disappeared_events[:150]:
+    for ev in disappeared_events:
         ev_name = ev['hotel_name']
         ev_slug = slugify(ev_name)
         if charts_subdir:
@@ -5283,7 +5311,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             vanished_summary_meta = ""
         vanished_inner_html = f"""
-                <p class="vanished-hint">Отели, пропавшие из показа ≤{ceiling_val:.0f} PLN за последние {max(1, int(disappeared_after_runs or 1))} ранов. Если отель всё ещё в выдаче выше потолка показа ({ceiling_val:.0f}–{history_val:.0f} PLN) — показываем актуальную цену. Графики хранят всю историю до {history_val:.0f} PLN.</p>
+                <p class="vanished-hint">Все отели, которые хотя бы раз были в зоне отслеживания (≤{ceiling_val:.0f} PLN), но сейчас не в основной таблице. Графики показывают полную историю до {history_val:.0f} PLN; если отель всё ещё в выдаче выше потолка — показываем актуальную цену.</p>
                 <div class="table-container">
                     <table class="hotels-table vanished-table">
                         <thead>
@@ -5304,7 +5332,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 """
     else:
         vanished_inner_html = f"""
-                <p class="vanished-hint">Пока нет отелей, выпавших из фильтра за последние {max(1, int(disappeared_after_runs or 1))} ранов подряд. Как только хороший отель появится в диапазоне и затем пропадёт, он окажется здесь вместе с историей цены и условиями исчезновения.</p>
+                <p class="vanished-hint">Пока нет отелей вне основной таблицы: все, кто когда-либо был в зоне ≤{ceiling_val:.0f} PLN, сейчас в ней же.</p>
 """
         vanished_summary_meta = "пусто"
 
@@ -5312,7 +5340,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     vanished_section_html = f"""
         <details class="dashboard-fold" id="vanishedFold">
             <summary>
-                <span>Выпавшие отели — были в фильтре, сейчас нет ({len(disappeared_events)})</span>
+                <span>Выпавшие отели — были в зоне, сейчас не в таблице ({len(disappeared_events)})</span>
                 {vanished_meta_html}
                 <span class="fold-chevron">⌄</span>
             </summary>
