@@ -82,7 +82,8 @@ jobs:
             --title "Мониторинг цен • Фильтр 7–10 дней" \
             --charts-dir hotel-charts/filter_7_10_days \
             --alerts-file data/filters/filter_7_10_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000
+            --display-price-ceiling 10000 \
+            --history-price-ceiling 20000
 
           python generate_inline_charts_dashboard.py \
             --data-file data/filters/filter_13_16_days/travel_prices.csv \
@@ -90,7 +91,8 @@ jobs:
             --title "Мониторинг цен • Фильтр 13–16 дней" \
             --charts-dir hotel-charts/filter_13_16_days \
             --alerts-file data/filters/filter_13_16_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000
+            --display-price-ceiling 10000 \
+            --history-price-ceiling 20000
 
           python generate_landing.py
           echo "✅ Dashboards + landing generated"
