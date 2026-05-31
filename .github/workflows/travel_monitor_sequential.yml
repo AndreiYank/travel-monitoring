@@ -69,6 +69,8 @@ jobs:
 
           python travel_monitor.py --config config_ci_filter_7_10.json
           python travel_monitor.py --config config_ci_filter_13_16.json
+          python travel_monitor.py --config config_ci_filter_turkey_7_10.json
+          python travel_monitor.py --config config_ci_filter_turkey_13_16.json
 
           echo "✅ Monitoring completed"
 
@@ -79,7 +81,7 @@ jobs:
           python generate_inline_charts_dashboard.py \
             --data-file data/filters/filter_7_10_days/travel_prices.csv \
             --output index_filter_7_10_days.html \
-            --title "Мониторинг цен • Фильтр 7–10 дней" \
+            --title "Мониторинг цен • Египет • 7–10 дней" \
             --charts-dir hotel-charts/filter_7_10_days \
             --alerts-file data/filters/filter_7_10_days/travel_prices_alerts.json \
             --display-price-ceiling 10000 \
@@ -88,9 +90,27 @@ jobs:
           python generate_inline_charts_dashboard.py \
             --data-file data/filters/filter_13_16_days/travel_prices.csv \
             --output index_filter_13_16_days.html \
-            --title "Мониторинг цен • Фильтр 13–16 дней" \
+            --title "Мониторинг цен • Египет • 13–16 дней" \
             --charts-dir hotel-charts/filter_13_16_days \
             --alerts-file data/filters/filter_13_16_days/travel_prices_alerts.json \
+            --display-price-ceiling 10000 \
+            --history-price-ceiling 20000
+
+          python generate_inline_charts_dashboard.py \
+            --data-file data/filters/filter_turkey_7_10_days/travel_prices.csv \
+            --output index_filter_turkey_7_10_days.html \
+            --title "Мониторинг цен • Турция • 7–10 дней" \
+            --charts-dir hotel-charts/filter_turkey_7_10_days \
+            --alerts-file data/filters/filter_turkey_7_10_days/travel_prices_alerts.json \
+            --display-price-ceiling 10000 \
+            --history-price-ceiling 20000
+
+          python generate_inline_charts_dashboard.py \
+            --data-file data/filters/filter_turkey_13_16_days/travel_prices.csv \
+            --output index_filter_turkey_13_16_days.html \
+            --title "Мониторинг цен • Турция • 13–16 дней" \
+            --charts-dir hotel-charts/filter_turkey_13_16_days \
+            --alerts-file data/filters/filter_turkey_13_16_days/travel_prices_alerts.json \
             --display-price-ceiling 10000 \
             --history-price-ceiling 20000
 
@@ -110,9 +130,13 @@ jobs:
           cp -f index.html site/index.html
           cp -f index_filter_7_10_days.html site/index_filter_7_10_days.html
           cp -f index_filter_13_16_days.html site/index_filter_13_16_days.html
+          cp -f index_filter_turkey_7_10_days.html site/index_filter_turkey_7_10_days.html
+          cp -f index_filter_turkey_13_16_days.html site/index_filter_turkey_13_16_days.html
 
           cp -R hotel-charts/filter_7_10_days site/hotel-charts/ || true
           cp -R hotel-charts/filter_13_16_days site/hotel-charts/ || true
+          cp -R hotel-charts/filter_turkey_7_10_days site/hotel-charts/ || true
+          cp -R hotel-charts/filter_turkey_13_16_days site/hotel-charts/ || true
 
           cp -R data/filters site/data/ || true
 
@@ -143,8 +167,8 @@ jobs:
           
           # Добавляем только данные/страницы новых фильтров
           git add -f data/filters/ || true
-          git add index.html index_filter_7_10_days.html index_filter_13_16_days.html || true
-          git add -f hotel-charts/filter_7_10_days/ hotel-charts/filter_13_16_days/ || true
+          git add index.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_13_16_days.html || true
+          git add -f hotel-charts/filter_7_10_days/ hotel-charts/filter_13_16_days/ hotel-charts/filter_turkey_7_10_days/ hotel-charts/filter_turkey_13_16_days/ || true
           
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then
@@ -154,8 +178,10 @@ jobs:
             COMMIT_MSG="🔄 Hourly update (only new filters) - $(date '+%Y-%m-%d %H:%M:%S UTC')
 
             📌 Filters:
-            - 7–10 days (scrape 4000–20000 PLN, show ≤10000)
-            - 13–16 days (scrape 4000–20000 PLN, show ≤10000)
+            - Egypt 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - Egypt 13–16 days (scrape 4000–20000 PLN, show ≤10000)
+            - Turkey 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - Turkey 13–16 days (scrape 4000–20000 PLN, show ≤10000)
 
             🤖 Automated by GitHub Actions"
             
@@ -176,7 +202,9 @@ jobs:
 
           echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
           echo "- [Landing](https://andreiYank.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Filter 7–10 days](https://andreiYank.github.io/travel-monitoring/index_filter_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
-          echo "- [Filter 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt 7–10 days](https://andreiYank.github.io/travel-monitoring/index_filter_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Turkey 7–10 days](https://andreiYank.github.io/travel-monitoring/index_filter_turkey_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Turkey 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_turkey_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data/filters)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Logs](https://github.com/AndreiYank/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY

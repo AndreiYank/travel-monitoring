@@ -1,0 +1,23 @@
+{
+  "url": "https://fly.pl/oferta/turcja-wczasy/?filter[dest]=39:&filter[hotelids]=&filter[cityids]=&filter[cregids]=&filter[ofrType]=&filter[addObjType]=H&filter[whenFrom]=31-05-2026&filter[whenTo]=30-06-2026&filter[duration]=7:10&filter[from]=Warszawa,Warszawa%20-%20Radom&filter[person]=2&filter[child]=1&filter[price]=4000:20000&filter[PriceFrom]=4000&filter[PriceTo]=20000&filter[addCategory]=50&filter[addCatering]=0&filter[addMisc]=0&filter[addTransport]=F&filter[fp]=1&order_by=ofr_price&filter[tourOperator]=0&filter[childAge][1]=20201210",
+  "max_price_threshold": 20000,
+  "min_price_threshold": 4000,
+  "required_offer_url_contains": [
+    "/wycieczka/turcja",
+    "transport=accommodation_flight"
+  ],
+  "excluded_offer_url_contains": [
+    "/wycieczka/polska",
+    "/wycieczka/czechy",
+    "transport=accommodation&"
+  ],
+  "wait_timeout": 30000,
+  "max_retries": 3,
+  "max_offers": 0,
+  "max_pages": 10,
+  "display_price_ceiling": 10000,
+  "retry_delay": 5,
+  "data_dir": "data/filters/filter_turkey_7_10_days",
+  "output_data_file": "travel_prices.csv",
+  "description": "CI filter • Турция • 7-10 дней • сбор 4000-20000 PLN, показ ≤10000"
+}
