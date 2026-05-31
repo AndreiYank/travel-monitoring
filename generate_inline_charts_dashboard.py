@@ -492,25 +492,43 @@ def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
             sizes.append(0)
             colors.append('rgba(0,0,0,0)')
             step_pcts.append(0.0)
-            prev_price = None
             continue
         price = float(price)
+        # После разрыва (None) сравниваем с последней реальной ценой до паузы.
+        if prev_price is None and i > 0:
+            for j in range(i - 1, -1, -1):
+                if y_values[j] is not None:
+                    prev_price = float(y_values[j])
+                    break
         if prev_price is None:
             pct = 0.0
         else:
             pct = ((price - prev_price) / prev_price * 100.0) if prev_price else 0.0
-        prev_price = price
         step_pcts.append(round(pct, 1))
         above_ceiling = ceiling_val is not None and price > float(ceiling_val)
+        crossed_gap = i > 0 and y_values[i - 1] is None
         if prev_price is not None and abs(pct) >= alert_threshold:
-            sizes.append(14)
+            sizes.append(15 if crossed_gap else 14)
             colors.append('#ef4444' if pct > 0 else '#10b981')
+        elif crossed_gap:
+            sizes.append(12)
+            colors.append('#6366f1')
         elif above_ceiling:
             sizes.append(9 if i == len(y_values) - 1 else 8)
             colors.append('#f59e0b')
         else:
             sizes.append(8 if i == len(y_values) - 1 else 7)
             colors.append('#6366f1' if i == len(y_values) - 1 else '#4f46e5')
+        # Подсветить точку перед паузой, если после паузы цена заметно изменилась.
+        if i < len(y_values) - 1:
+            for j in range(i + 1, len(y_values)):
+                if y_values[j] is None:
+                    continue
+                jump_pct = ((float(y_values[j]) - price) / price * 100.0) if price else 0.0
+                if abs(jump_pct) >= alert_threshold:
+                    sizes[-1] = max(sizes[-1], 13)
+                    colors[-1] = '#ef4444' if jump_pct > 0 else '#10b981'
+                break
         prev_price = price
     if sizes:
         for j in range(len(sizes) - 1, -1, -1):
@@ -518,6 +536,25 @@ def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
                 sizes[j] = max(sizes[j], 10)
                 break
     return sizes, colors, step_pcts
+
+
+def _build_gap_jump_series(chart_x, chart_y, alert_threshold):
+    """Пунктир через паузу в данных, если цена заметно изменилась."""
+    jump_x, jump_y = [], []
+    last_idx = None
+    for i, y in enumerate(chart_y):
+        if y is None:
+            continue
+        if last_idx is not None:
+            gap_between = any(v is None for v in chart_y[last_idx + 1:i])
+            if gap_between and last_idx + 1 < i:
+                prev_y = float(chart_y[last_idx])
+                pct = ((float(y) - prev_y) / prev_y * 100.0) if prev_y else 0.0
+                if abs(pct) >= max(3.0, float(alert_threshold) * 0.5):
+                    jump_x.extend([chart_x[last_idx], chart_x[i], None])
+                    jump_y.extend([prev_y, float(y), None])
+        last_idx = i
+    return jump_x, jump_y
 
 
 def _render_hotel_chart_page(
@@ -555,6 +592,7 @@ def _render_hotel_chart_page(
     )
     chart_x, chart_y, broken = _break_series_at_data_gaps(x_values, y_values, [hover_lines])
     chart_hover = broken[0] if broken else hover_lines
+    jump_x, jump_y = _build_gap_jump_series(chart_x, chart_y, alert_threshold)
     marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(
         chart_y, alert_threshold, display_price_ceiling
     )
@@ -883,7 +921,7 @@ def _render_hotel_chart_page(
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
-            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше.{history_note} Разрыв линии — между проверками не было данных. По горизонтали — даты проверки цены.</p>
+            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше.{history_note} Серая пунктирная линия — скачок цены через паузу в данных. Разрыв основной линии — между проверками не было замеров. По горизонтали — время проверки.</p>
             <div id="chart"></div>
         </section>
         <section class="chart-recent">
@@ -900,6 +938,14 @@ def _render_hotel_chart_page(
       const text = {json.dumps(enriched_hover, ensure_ascii=False)};
       const markerSizes = {json.dumps(marker_sizes)};
       const markerColors = {json.dumps(marker_colors)};
+      const jumpX = {json.dumps(jump_x, ensure_ascii=False)};
+      const jumpY = {json.dumps(jump_y, ensure_ascii=False)};
+      const jumpTrace = (jumpX.length && jumpY.length) ? {{
+        x: jumpX, y: jumpY,
+        type: 'scatter', mode: 'lines', name: 'Скачок через паузу',
+        line: {{ color: '#94a3b8', width: 1.5, dash: 'dot' }},
+        hoverinfo: 'skip', showlegend: false
+      }} : null;
       const medianY = {median_p:.2f};
       const minY = {min_p:.2f};
       const ceilingY = {f'{float(display_price_ceiling):.2f}' if display_price_ceiling else 'null'};
@@ -927,10 +973,18 @@ def _render_hotel_chart_page(
         showlegend: false
       }};
       const tripDatesLabel = {json.dumps(str(trip_dates_label or '—'), ensure_ascii=False)};
-      const yDataMin = y.length ? Math.min(...y) : 0;
-      const yDataMax = y.length ? Math.max(...y) : 0;
-      const refMin = Math.min(yDataMin, minY, medianY);
-      const refMax = Math.max(yDataMax, minY, medianY);
+      const yDataMin = Math.min(
+        ...(y.length ? y.filter(v => v != null) : [Infinity]),
+        minY,
+        medianY
+      );
+      const yDataMax = Math.max(
+        ...(y.length ? y.filter(v => v != null) : [0]),
+        minY,
+        medianY
+      );
+      const refMin = Number.isFinite(yDataMin) ? yDataMin : 0;
+      const refMax = Number.isFinite(yDataMax) ? yDataMax : 0;
       const ySpan = Math.max(refMax - refMin, 1);
       const yPad = Math.max(ySpan * 0.1, 80);
       const layout = {{
@@ -983,7 +1037,7 @@ def _render_hotel_chart_page(
           font: {{ size: 12, color: '#0f172a' }}
         }}] : []
       }};
-      Plotly.newPlot('chart', [bandTrace, mainTrace], layout, {{ responsive: true, displayModeBar: true }});
+      Plotly.newPlot('chart', [bandTrace, jumpTrace, mainTrace].filter(Boolean), layout, {{ responsive: true, displayModeBar: true }});
     </script>
 </body>
 </html>"""
