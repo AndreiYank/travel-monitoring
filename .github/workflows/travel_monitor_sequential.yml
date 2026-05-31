@@ -174,7 +174,6 @@ jobs:
         uses: actions/deploy-pages@v4
 
       - name: Commit and push data updates
-        if: github.event_name == 'schedule' || github.event_name == 'workflow_dispatch'
         run: |
           echo "📝 Committing data changes..."
           git config --local user.email "action@github.com"

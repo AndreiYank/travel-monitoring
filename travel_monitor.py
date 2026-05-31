@@ -82,6 +82,13 @@ class TravelPriceMonitor:
         return url
 
 
+    def _scrape_timestamp(self) -> str:
+        """One UTC timestamp for the whole scrape run (all offers in a batch)."""
+        ts = getattr(self, '_current_scrape_at', None)
+        if ts:
+            return ts
+        return datetime.now(timezone.utc).isoformat()
+
     async def scrape_offers_with_retry(self) -> List[Dict[str, Any]]:
         """Парсит предложения.
 
@@ -90,6 +97,7 @@ class TravelPriceMonitor:
         (например, изменилась разметка или включился анти-бот) — автоматически
         откатываемся на надёжный браузерный парсинг через Playwright.
         """
+        self._current_scrape_at = datetime.now(timezone.utc).isoformat()
         if self.config.get('disable_http_fast_path') is not True:
             try:
                 offers = self.scrape_offers_http()
@@ -199,7 +207,7 @@ class TravelPriceMonitor:
                 'duration': duration[:30],
                 'rating': '',
                 'departure_airport': departure_airport,
-                'scraped_at': datetime.now(timezone.utc).isoformat(),
+                'scraped_at': self._scrape_timestamp(),
                 'url': self.config['url'],
                 'image_url': image_url or '',
                 'offer_url': offer_url or '',
@@ -827,8 +835,7 @@ class TravelPriceMonitor:
                 'duration': duration[:30],
                 'rating': rating[:20],
                 'departure_airport': departure_airport,
-                # Записываем временную метку в UTC с таймзоной, чтобы унифицировать время между локальными и CI-запусками
-                'scraped_at': datetime.now(timezone.utc).isoformat(),
+                'scraped_at': self._scrape_timestamp(),
                 'url': self.config['url'],
                 'image_url': image_url or "",
                 'offer_url': offer_url or ""
