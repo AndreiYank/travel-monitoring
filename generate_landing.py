@@ -1,20 +1,46 @@
 #!/usr/bin/env python3
 import datetime
 
-def generate_landing(tiles, output_file='index.html'):
+from filter_registry import FILTER_GROUPS
+
+
+def generate_landing(tiles=None, output_file='index.html'):
     now = datetime.datetime.now().strftime('%d.%m.%Y %H:%M')
-    cards_count = len(tiles)
-    cards_html = "".join([
-        f"""
-        <a class=\"card\" href=\"{t['href']}\">\n  <div class=\"card-body\">\n    <div class=\"card-title\">{t['title']}</div>\n    <div class=\"card-sub\">{t.get('subtitle','')}</div>\n    <div class=\"card-action\">Открыть дашборд →</div>\n  </div>\n</a>
-        """ for t in tiles
-    ])
+    if tiles is None:
+        tiles = FILTER_GROUPS
+
+    cards_count = sum(len(g['filters']) for g in tiles)
+    sections_html = []
+    for group in tiles:
+        cards_html = "".join([
+            f"""
+        <a class="card" href="{flt['href']}">
+          <div class="card-body">
+            <div class="card-title">{flt['title']}</div>
+            <div class="card-sub">{flt.get('subtitle', '')}</div>
+            <div class="card-action">Открыть дашборд →</div>
+          </div>
+        </a>
+            """ for flt in group['filters']
+        ])
+        sections_html.append(f"""
+    <section class="filter-section">
+      <div class="section-head">
+        <span class="section-icon">{group.get('icon', '')}</span>
+        <h2 class="section-title">{group['label']}</h2>
+      </div>
+      <div class="grid">
+        {cards_html}
+      </div>
+    </section>
+        """)
+
     html = f"""
 <!DOCTYPE html>
-<html lang=\"ru\">
+<html lang="ru">
 <head>
-  <meta charset=\"UTF-8\" />
-  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Travel Price Monitor • Выбор направления</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -76,12 +102,33 @@ def generate_landing(tiles, output_file='index.html'):
       display: inline-flex;
       gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
+    }}
+    .filter-section {{
+      margin-top: 24px;
+    }}
+    .section-head {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 0 2px;
+    }}
+    .section-icon {{
+      font-size: 1.35rem;
+      line-height: 1;
+    }}
+    .section-title {{
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+      color: #1e293b;
     }}
     .grid {{
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 16px;
-      margin-top: 22px;
     }}
     .card {{
       grid-column: span 6;
@@ -135,16 +182,14 @@ def generate_landing(tiles, output_file='index.html'):
   </style>
 </head>
 <body>
-  <div class=\"container\">
-    <div class=\"header\">
+  <div class="container">
+    <div class="header">
       <h1>🏨 Travel Price Monitor</h1>
-      <div class=\"subtitle\">Выберите направление • Обновлено: {now}</div>
+      <div class="subtitle">Выберите направление и длительность • Обновлено: {now}</div>
       <div class="meta"><span>🎯 Активных фильтров: {cards_count}</span><span>•</span><span>⏱ Обновление каждый час</span></div>
     </div>
-    <div class=\"grid\">
-      {cards_html}
-    </div>
-    <div class=\"footer\">🤖 Обновляется каждый час • GitHub Pages</div>
+    {''.join(sections_html)}
+    <div class="footer">🤖 Обновляется каждый час • GitHub Pages</div>
   </div>
 </body>
 </html>
@@ -152,9 +197,6 @@ def generate_landing(tiles, output_file='index.html'):
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html)
 
+
 if __name__ == '__main__':
-    tiles = [
-        { 'title': 'Фильтр 7–10 дней', 'subtitle': '4766–9000 PLN • WAW/WMI/RDO', 'href': 'index_filter_7_10_days.html' },
-        { 'title': 'Фильтр 13–16 дней', 'subtitle': '4766–9000 PLN • WAW/WMI/RDO', 'href': 'index_filter_13_16_days.html' }
-    ]
-    generate_landing(tiles, 'index.html')
+    generate_landing(FILTER_GROUPS, 'index.html')

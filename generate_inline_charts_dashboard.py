@@ -12,6 +12,7 @@ import re
 import html as html_lib
 from urllib.parse import urlparse, parse_qs
 from purchase_timing_analysis import analyze_purchase_timing
+from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
 
 
 def _parse_price_ceiling(display_price_ceiling):
@@ -2081,12 +2082,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
 
         subdir = (charts_subdir or '').rstrip('/')
-        if subdir.endswith('filter_7_10_days'):
-            back_target = 'index_filter_7_10_days.html'
-        elif subdir.endswith('filter_13_16_days'):
-            back_target = 'index_filter_13_16_days.html'
-        else:
-            back_target = 'index.html'
+        back_target = filter_href_by_charts_subdir(subdir)
         back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
 
         meta = hotel_meta_by_name.get(hotel_name, {})
@@ -2271,6 +2267,28 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         updated_str = df['scraped_at_display'].max().strftime('%d.%m.%Y %H:%M')
     except Exception:
         updated_str = datetime.now().strftime('%d.%m.%Y %H:%M')
+
+    _current_filter = active_filter_id(charts_subdir)
+    _sidebar_nav_parts = [
+        '<a href="index.html" class="nav-item">'
+        '<span class="flag">🏠</span>'
+        '<div><div class="country-name">Главная</div>'
+        '<div class="country-desc">Выбор направления</div></div></a>'
+    ]
+    for group in FILTER_GROUPS:
+        _sidebar_nav_parts.append(
+            f'<div class="nav-group-label"><span>{group["icon"]}</span>{group["label"]}</div>'
+        )
+        for flt in group['filters']:
+            active = ' active' if flt['id'] == _current_filter else ''
+            icon = '📅' if flt['title'].startswith('7') else '📆'
+            _sidebar_nav_parts.append(
+                f'<a href="{flt["href"]}" class="nav-item{active}">'
+                f'<span class="flag">{icon}</span>'
+                f'<div><div class="country-name">{flt["title"]}</div>'
+                f'<div class="country-desc">{group["label"]}</div></div></a>'
+            )
+    sidebar_nav_html = ''.join(_sidebar_nav_parts)
 
     html_template = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -4069,6 +4087,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-radius: 0 12px 12px 0;
             margin: 2px 8px 2px 0;
         }}
+
+        .nav-group-label {{
+            padding: .85rem 1.5rem .35rem;
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }}
         
         .nav-item:hover {{
             background: rgba(79,70,229,.08);
@@ -4394,27 +4424,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <h2>🌍 Travel Monitor</h2>
         </div>
         <nav class="sidebar-nav">
-            <a href="index.html" class="nav-item">
-                <span class="flag">🏠</span>
-                <div>
-                    <div class="country-name">Главная</div>
-                    <div class="country-desc">Выбор фильтра</div>
-                </div>
-            </a>
-            <a href="index_filter_7_10_days.html" class="nav-item {'active' if '7' in title and '10' in title else ''}">
-                <span class="flag">📅</span>
-                <div>
-                    <div class="country-name">Фильтр 7–10 дней</div>
-                    <div class="country-desc">Актуальные предложения</div>
-                </div>
-            </a>
-            <a href="index_filter_13_16_days.html" class="nav-item {'active' if '13' in title and '16' in title else ''}">
-                <span class="flag">📆</span>
-                <div>
-                    <div class="country-name">Фильтр 13–16 дней</div>
-                    <div class="country-desc">Актуальные предложения</div>
-                </div>
-            </a>
+            {sidebar_nav_html}
         </nav>
     </div>
     

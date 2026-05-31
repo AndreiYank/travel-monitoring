@@ -60,3 +60,8 @@ index_*.html
 
 # Legacy one-off observation runs (egypt_8/turkey_8 configs → data_runs/)
 /data_runs/
+
+# Local scrape / dashboard regen for Turkey filters (CI force-adds after deploy)
+data/filters/filter_turkey_7_10_days/
+data/filters/filter_turkey_13_16_days/
+
