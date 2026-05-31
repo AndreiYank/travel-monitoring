@@ -65,12 +65,33 @@
       display: inline-flex;
       gap: 10px;
       align-items: center;
+      flex-wrap: wrap;
+    }
+    .filter-section {
+      margin-top: 24px;
+    }
+    .section-head {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 12px;
+      padding: 0 2px;
+    }
+    .section-icon {
+      font-size: 1.35rem;
+      line-height: 1;
+    }
+    .section-title {
+      margin: 0;
+      font-size: 1.15rem;
+      font-weight: 800;
+      letter-spacing: .01em;
+      color: #1e293b;
     }
     .grid {
       display: grid;
       grid-template-columns: repeat(12, minmax(0, 1fr));
       gap: 16px;
-      margin-top: 22px;
     }
     .card {
       grid-column: span 6;
@@ -127,28 +148,62 @@
   <div class="container">
     <div class="header">
       <h1>🏨 Travel Price Monitor</h1>
-      <div class="subtitle">Выберите направление • Обновлено: 31.05.2026 09:57</div>
-      <div class="meta"><span>🎯 Активных фильтров: 2</span><span>•</span><span>⏱ Обновление каждый час</span></div>
+      <div class="subtitle">Выберите направление и длительность • Обновлено: 31.05.2026 09:47</div>
+      <div class="meta"><span>🎯 Активных фильтров: 4</span><span>•</span><span>⏱ Обновление каждый час</span></div>
     </div>
-    <div class="grid">
-      
+    
+    <section class="filter-section">
+      <div class="section-head">
+        <span class="section-icon">🇪🇬</span>
+        <h2 class="section-title">Египет</h2>
+      </div>
+      <div class="grid">
+        
         <a class="card" href="index_filter_7_10_days.html">
-  <div class="card-body">
-    <div class="card-title">Фильтр 7–10 дней</div>
-    <div class="card-sub">4766–9000 PLN • WAW/WMI/RDO</div>
-    <div class="card-action">Открыть дашборд →</div>
-  </div>
-</a>
-        
+          <div class="card-body">
+            <div class="card-title">7–10 дней</div>
+            <div class="card-sub">сбор 4–20k PLN • показ ≤10k • WAW/WMI/RDO</div>
+            <div class="card-action">Открыть дашборд →</div>
+          </div>
+        </a>
+            
         <a class="card" href="index_filter_13_16_days.html">
-  <div class="card-body">
-    <div class="card-title">Фильтр 13–16 дней</div>
-    <div class="card-sub">4766–9000 PLN • WAW/WMI/RDO</div>
-    <div class="card-action">Открыть дашборд →</div>
-  </div>
-</a>
+          <div class="card-body">
+            <div class="card-title">13–16 дней</div>
+            <div class="card-sub">сбор 4–20k PLN • показ ≤10k • WAW/WMI/RDO</div>
+            <div class="card-action">Открыть дашборд →</div>
+          </div>
+        </a>
+            
+      </div>
+    </section>
         
-    </div>
+    <section class="filter-section">
+      <div class="section-head">
+        <span class="section-icon">🇹🇷</span>
+        <h2 class="section-title">Турция</h2>
+      </div>
+      <div class="grid">
+        
+        <a class="card" href="index_filter_turkey_7_10_days.html">
+          <div class="card-body">
+            <div class="card-title">7–10 дней</div>
+            <div class="card-sub">сбор 4–20k PLN • показ ≤10k • WAW/RDO</div>
+            <div class="card-action">Открыть дашборд →</div>
+          </div>
+        </a>
+            
+        <a class="card" href="index_filter_turkey_13_16_days.html">
+          <div class="card-body">
+            <div class="card-title">13–16 дней</div>
+            <div class="card-sub">сбор 4–20k PLN • показ ≤10k • WAW/RDO</div>
+            <div class="card-action">Открыть дашборд →</div>
+          </div>
+        </a>
+            
+      </div>
+    </section>
+        
     <div class="footer">🤖 Обновляется каждый час • GitHub Pages</div>
   </div>
 </body>

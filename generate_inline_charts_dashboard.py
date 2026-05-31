@@ -4123,6 +4123,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .dark-theme .nav-group-label {{
             color: #cbd5e1;
         }}
+
+        .nav-group-label {{
+            padding: .85rem 1.5rem .35rem;
+            font-size: .68rem;
+            font-weight: 800;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+        }}
         
         .nav-item:hover {{
             background: rgba(79,70,229,.08);
