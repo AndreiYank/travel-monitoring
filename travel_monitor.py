@@ -99,14 +99,30 @@ class TravelPriceMonitor:
         """
         self._current_scrape_at = datetime.now(timezone.utc).isoformat()
         if self.config.get('disable_http_fast_path') is not True:
-            try:
-                offers = self.scrape_offers_http()
-                if offers:
-                    logger.info(f"⚡ Быстрый HTTP-парсинг успешен: {len(offers)} предложений")
-                    return offers
-                logger.warning("HTTP-парсинг не дал результатов — переключаемся на Playwright")
-            except Exception as e:
-                logger.warning(f"HTTP-парсинг не удался ({e}) — переключаемся на Playwright")
+            http_max_retries = int(
+                self.config.get('http_max_retries', self.config.get('max_retries', 3))
+            )
+            retry_delay = float(self.config.get('retry_delay', 5))
+            for http_attempt in range(http_max_retries):
+                try:
+                    if http_attempt > 0:
+                        logger.info(
+                            f"Повтор HTTP {http_attempt + 1}/{http_max_retries} "
+                            f"(пауза {retry_delay:.0f} с)..."
+                        )
+                        await asyncio.sleep(retry_delay)
+                    offers = self.scrape_offers_http()
+                    if offers:
+                        logger.info(f"⚡ Быстрый HTTP-парсинг успешен: {len(offers)} предложений")
+                        return offers
+                    logger.warning(
+                        f"HTTP-попытка {http_attempt + 1}/{http_max_retries}: результатов нет"
+                    )
+                except Exception as e:
+                    logger.warning(
+                        f"HTTP-попытка {http_attempt + 1}/{http_max_retries} не удалась ({e})"
+                    )
+            logger.warning("HTTP-парсинг не дал результатов — переключаемся на Playwright")
 
         for attempt in range(self.config['max_retries']):
             try:
