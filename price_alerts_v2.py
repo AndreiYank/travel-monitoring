@@ -19,6 +19,9 @@ from generate_inline_charts_dashboard import (
     collapse_canonical_per_run,
     iter_scrape_runs,
     _parse_price_ceiling,
+    _resolve_history_ceiling,
+    _build_premium_history_by_hotel,
+    _comeback_from_premium,
 )
 
 logger = logging.getLogger(__name__)
@@ -31,10 +34,12 @@ class PriceAlertManagerV2:
         data_file="data/travel_prices.csv",
         alerts_file="data/price_alerts_history.json",
         display_price_ceiling=None,
+        history_price_ceiling=None,
     ):
         self.data_file = data_file
         self.alerts_file = alerts_file
         self.display_price_ceiling = display_price_ceiling
+        self.history_price_ceiling = history_price_ceiling
         self.df_raw = self.load_data()
         self.df = self._build_canonical_df()
 
@@ -140,6 +145,58 @@ class PriceAlertManagerV2:
         
         return changes
     
+    def find_premium_comeback_between_runs(
+        self,
+        prev_run: datetime,
+        curr_run: datetime,
+        threshold_percent: float = ALERT_THRESHOLD_PERCENT,
+    ) -> List[Dict[str, Any]]:
+        """Отель снова в диапазоне показа после истории выше потолка."""
+        display = _parse_price_ceiling(self.display_price_ceiling)
+        if display is None or self.df_raw.empty:
+            return []
+
+        history = _resolve_history_ceiling(display, self.history_price_ceiling)
+        prev_prices = self.get_hotel_prices_for_run(prev_run)
+        curr_prices = self.get_hotel_prices_for_run(curr_run)
+
+        work = self.df_raw.copy()
+        work['scraped_at_display'] = work['scraped_at']
+        hist_slice = work[work['scraped_at'] <= prev_run]
+        df_hist = collapse_canonical_per_run(hist_slice, history)
+        premium = _build_premium_history_by_hotel(df_hist, display)
+
+        changes = []
+        for hotel_name, curr_price in curr_prices.items():
+            if hotel_name in prev_prices:
+                continue
+            comeback = _comeback_from_premium(
+                curr_price,
+                premium.get(str(hotel_name)),
+                display,
+                min_drop_pct=threshold_percent,
+            )
+            if not comeback:
+                continue
+            peak = float(comeback['peak_price'])
+            drop_pct = float(comeback['drop_from_peak_pct'])
+            changes.append({
+                'hotel_name': hotel_name,
+                'old_price': peak,
+                'new_price': curr_price,
+                'price_change': curr_price - peak,
+                'price_change_pct': (curr_price - peak) / peak * 100.0 if peak else 0.0,
+                'timestamp': curr_run,
+                'alert_type': 'premium_comeback',
+                'created_at': datetime.now(timezone.utc).isoformat(),
+                'threshold_percent': threshold_percent,
+                'unique_key': (
+                    f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}"
+                    f"_comeback_{drop_pct:.1f}"
+                ),
+            })
+        return changes
+    
     def scan_all_runs_for_changes(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
         """Сканирует все раны и находит все изменения цен >= порога"""
         if self.df.empty:
@@ -160,9 +217,16 @@ class PriceAlertManagerV2:
             
             changes = self.find_price_changes_between_runs(prev_run, curr_run, threshold_percent)
             all_changes.extend(changes)
+            comebacks = self.find_premium_comeback_between_runs(
+                prev_run, curr_run, threshold_percent
+            )
+            all_changes.extend(comebacks)
             
-            if changes:
-                logger.info(f"  📊 Ран {curr_run}: найдено {len(changes)} изменений")
+            if changes or comebacks:
+                logger.info(
+                    f"  📊 Ран {curr_run}: найдено {len(changes)} изменений"
+                    f"{f', {len(comebacks)} comeback' if comebacks else ''}"
+                )
         
         logger.info(f"✅ Всего найдено изменений: {len(all_changes)}")
         return all_changes

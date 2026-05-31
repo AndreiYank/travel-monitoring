@@ -136,13 +136,14 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
     return pd.DataFrame(rows).sort_values(['hotel_name', 'scraped_at_display']).reset_index(drop=True)
 
 
-def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None):
+def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None, comeback_drop_pct=None):
     """Returns (label, css_class, display_badge)."""
     is_bad = (
         delta48_pct is not None and delta48_pct > 0
         and avg_pct is not None and avg_pct > 0
     )
-    if confidence == "Low":
+    strong_comeback = comeback_drop_pct is not None and comeback_drop_pct >= 8.0
+    if confidence == "Low" and not strong_comeback:
         return "Warm-up", "warm", "⏳ Warm-up"
     if is_bad:
         return "Bad", "bad", "📈 Bad"
@@ -213,6 +214,8 @@ def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
         change_pct = float(alert.get('price_change_pct') or 0.0)
         price_change = float(alert.get('price_change') or 0.0)
         pct_text = f'{change_pct:+.1f}%'
+        if alert_type == 'premium_comeback':
+            pct_text = f'↩ {pct_text}'
         if price_change > 0:
             kind = 'up'
             badge = '↑'
@@ -1522,6 +1525,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         avg_baseline_delta[hotel_name] = (change_abs, change_pct)
 
     # Deal Score: насколько предложение выгодно относительно своей исторической цены
+    premium_history_by_hotel = _build_premium_history_by_hotel(df_history, ceiling_val)
+
     def _clamp(v, lo, hi):
         return max(lo, min(hi, v))
 
@@ -1602,8 +1607,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         d48_pct = float(delta48_info[1]) if delta48_info is not None else None
         d_avg_pct = float(avg_info[1]) if avg_info is not None else None
 
+        comeback = _comeback_from_premium(
+            latest, premium_history_by_hotel.get(hotel_name), ceiling_val
+        )
+        comeback_drop_pct = float(comeback['drop_from_peak_pct']) if comeback else None
+        if comeback_drop_pct is not None:
+            comeback_floor = _clamp(55 + comeback_drop_pct * 1.1, 55, 92)
+            deal_score = int(max(deal_score, round(comeback_floor)))
+
         is_flat = (
-            (d48_pct is None or abs(d48_pct) < 0.5)
+            comeback_drop_pct is None
+            and (d48_pct is None or abs(d48_pct) < 0.5)
             and (d_avg_pct is None or abs(d_avg_pct) < 0.5)
             and abs(rel_discount) < 0.02
         )
@@ -1614,7 +1628,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             d48_pct is not None and d48_pct > 0
             and d_avg_pct is not None and d_avg_pct > 0
         )
-        if is_bad:
+        if is_bad and comeback_drop_pct is None:
             penalty = (d48_pct + d_avg_pct) / 2.0
             deal_score = int(_clamp(50 - penalty * 1.2, 5, 42))
 
@@ -1628,6 +1642,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'p25': p25,
             'min': min_p,
             'is_bad': is_bad,
+            'comeback_drop_pct': comeback_drop_pct,
         }
 
         delta48 = delta48_info
@@ -1974,7 +1989,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return url
 
     # Карточки отелей (визуальный режим по умолчанию)
-    premium_history_by_hotel = _build_premium_history_by_hotel(df_history, ceiling_val)
     hotel_cards = []
     for _, hotel in all_hotels.head(200).iterrows():
         hotel_name = hotel['hotel_name']
@@ -2003,8 +2017,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         confidence = deal_info.get('confidence', 'Low')
         d48_for_badge = float(delta_info[1]) if delta_info is not None else None
         d_avg_for_badge = float(avg_info[1]) if avg_info is not None else None
+        comeback_drop = deal_info.get('comeback_drop_pct')
         deal_label, deal_class, _ = classify_deal_badge(
-            deal_score, confidence, d48_for_badge, d_avg_for_badge
+            deal_score, confidence, d48_for_badge, d_avg_for_badge, comeback_drop
         )
         comeback = _comeback_from_premium(
             price, premium_history_by_hotel.get(hotel_name), ceiling_val
@@ -2120,8 +2135,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         confidence = deal_info.get('confidence', 'Low')
         d48_for_badge = float(delta_info[1]) if delta_info is not None else None
         d_avg_for_badge = float(avg_info[1]) if avg_info is not None else None
+        comeback_drop_chart = deal_info.get('comeback_drop_pct')
         deal_label, deal_class, _ = classify_deal_badge(
-            deal_score, confidence, d48_for_badge, d_avg_for_badge
+            deal_score, confidence, d48_for_badge, d_avg_for_badge, comeback_drop_chart
         )
 
         if y_values:
@@ -4496,6 +4512,33 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         current_hotels.add(hotel_name)
         current_alerts.append(a)
 
+    latest_run_ts = None
+    if not df_canonical.empty:
+        latest_run_ts = df_canonical['scraped_at_display'].max()
+    for hotel_name, price in table_prices.items():
+        if hotel_name in current_hotels:
+            continue
+        comeback = _comeback_from_premium(
+            price, premium_history_by_hotel.get(hotel_name), ceiling_val
+        )
+        if not comeback or comeback['drop_from_peak_pct'] < ALERT_THRESHOLD_PERCENT:
+            continue
+        peak = float(comeback['peak_price'])
+        curr = float(price)
+        current_alerts.append({
+            'hotel_name': hotel_name,
+            'old_price': peak,
+            'new_price': curr,
+            'price_change': curr - peak,
+            'price_change_pct': (curr - peak) / peak * 100.0 if peak else 0.0,
+            'timestamp': latest_run_ts,
+            'alert_type': 'premium_comeback',
+            'created_at': latest_run_ts.isoformat() if latest_run_ts is not None else '',
+            'threshold_percent': ALERT_THRESHOLD_PERCENT,
+            'unique_key': f"{hotel_name}_comeback_{peak:.0f}_to_{curr:.0f}",
+        })
+        current_hotels.add(hotel_name)
+
     current_alert_keys = {a.get('unique_key') for a in current_alerts if a.get('unique_key')}
     history_alerts = [
         a for a in alerts
@@ -4522,7 +4565,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div class="alerts-header" onclick="toggleAlerts()">
                 <div class="alerts-header-main">
                     <h3>📊 Заметные изменения цен</h3>
-                    <p class="alerts-lead">Отели, у которых <strong>заметно изменилась цена</strong> (от {ALERT_THRESHOLD_PERCENT:.0f}% между проверками) и <strong>эта цена всё ещё актуальна</strong> — в последнем обновлении она не менялась. Прошлые события — в «Истории».</p>
+                    <p class="alerts-lead">Отели, у которых <strong>заметно изменилась цена</strong> (от {ALERT_THRESHOLD_PERCENT:.0f}% между проверками или возврат из дорогого сегмента) и <strong>эта цена всё ещё актуальна</strong> — в последнем обновлении она не менялась. Прошлые события — в «Истории».</p>
                     <div class="alerts-summary-chips">{alert_chips_html}</div>
                 </div>
                 <span class="expand-icon" id="alertsExpandIcon">▼</span>
@@ -4964,8 +5007,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         confidence_level = deal_info.get('confidence', 'Low')
         d48_tbl = float(delta_info[1]) if delta_info is not None else None
         d_avg_tbl = float(avg_info[1]) if avg_info is not None else None
+        comeback_drop_tbl = deal_info.get('comeback_drop_pct')
         _, _, deal_badge = classify_deal_badge(
-            deal_score, confidence_level, d48_tbl, d_avg_tbl
+            deal_score, confidence_level, d48_tbl, d_avg_tbl, comeback_drop_tbl
         )
         confidence_label = (
             "Low confidence" if confidence_level == "Low"
