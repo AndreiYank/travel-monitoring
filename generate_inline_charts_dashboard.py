@@ -89,6 +89,29 @@ def _lowest_price_row(grp):
     return grp.loc[prices.idxmin()]
 
 
+def _typical_observation_gap_hours(times, default=1.0):
+    """Median interval between consecutive observations (hours), ignoring long data gaps."""
+    gaps = []
+    for i in range(1, len(times)):
+        gaps.append((times[i] - times[i - 1]).total_seconds() / 3600.0)
+    if not gaps:
+        return max(default, 0.5)
+    sorted_gaps = sorted(gaps)
+    if len(sorted_gaps) >= 3:
+        core = sorted_gaps[: max(1, (len(sorted_gaps) * 2) // 3)]
+        typical = core[len(core) // 2]
+    elif len(sorted_gaps) == 2:
+        typical = sorted_gaps[0]
+    else:
+        typical = sorted_gaps[0]
+    return max(typical, 0.5)
+
+
+def _data_gap_threshold_hours(typical_gap):
+    """Gap longer than this is treated as missing data, not price continuity."""
+    return max(6.0, float(typical_gap) * 3.0)
+
+
 def _iter_price_plateaus(times, prices):
     """Yield (price, duration_hours) for each constant-price plateau."""
     if not times or not prices:
@@ -96,11 +119,8 @@ def _iter_price_plateaus(times, prices):
     if len(times) != len(prices):
         return
 
-    gaps = []
-    for i in range(1, len(times)):
-        gaps.append((times[i] - times[i - 1]).total_seconds() / 3600.0)
-    typical_gap = sorted(gaps)[len(gaps) // 2] if gaps else 1.0
-    typical_gap = max(typical_gap, 0.5)
+    typical_gap = _typical_observation_gap_hours(times)
+    gap_threshold = _data_gap_threshold_hours(typical_gap)
 
     idx = 0
     while idx < len(prices):
@@ -109,7 +129,15 @@ def _iter_price_plateaus(times, prices):
         while end + 1 < len(prices) and float(prices[end + 1]) == price:
             end += 1
         if end + 1 < len(times):
-            hours = (times[end + 1] - times[idx]).total_seconds() / 3600.0
+            gap_after = (times[end + 1] - times[end]).total_seconds() / 3600.0
+            if gap_after > gap_threshold:
+                # No data after this plateau — do not count silence as this price.
+                if end > idx:
+                    hours = (times[end] - times[idx]).total_seconds() / 3600.0 + typical_gap
+                else:
+                    hours = typical_gap
+            else:
+                hours = (times[end + 1] - times[idx]).total_seconds() / 3600.0
         elif end > idx:
             hours = (times[end] - times[idx]).total_seconds() / 3600.0 + typical_gap
         elif idx > 0:
@@ -118,6 +146,35 @@ def _iter_price_plateaus(times, prices):
             hours = typical_gap
         yield price, max(hours, 0.5)
         idx = end + 1
+
+
+def _break_series_at_data_gaps(x_values, y_values, extra_series=None):
+    """Insert None between points when the interval implies missing observations."""
+    if not x_values or not y_values:
+        return x_values, y_values, extra_series or []
+    times = pd.to_datetime(pd.Series(x_values), utc=True).tolist()
+    typical_gap = _typical_observation_gap_hours(times)
+    gap_threshold = _data_gap_threshold_hours(typical_gap)
+    extras = extra_series if extra_series is not None else []
+    out_x, out_y = [], []
+    out_extras = [[] for _ in extras] if extras else None
+    for i in range(len(y_values)):
+        if i > 0:
+            gap_h = (times[i] - times[i - 1]).total_seconds() / 3600.0
+            if gap_h > gap_threshold:
+                out_x.append(None)
+                out_y.append(None)
+                if out_extras is not None:
+                    for bucket in out_extras:
+                        bucket.append(None)
+        out_x.append(x_values[i])
+        out_y.append(y_values[i])
+        if out_extras is not None:
+            for j, bucket in enumerate(out_extras):
+                bucket.append(extras[j][i])
+    if out_extras is None:
+        return out_x, out_y, None
+    return out_x, out_y, out_extras
 
 
 def _time_weighted_price_baseline(grp, time_col='scraped_at_display', price_col='price'):
@@ -429,15 +486,23 @@ def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
     sizes = []
     colors = []
     step_pcts = []
+    prev_price = None
     for i, price in enumerate(y_values):
-        if i == 0:
+        if price is None:
+            sizes.append(0)
+            colors.append('rgba(0,0,0,0)')
+            step_pcts.append(0.0)
+            prev_price = None
+            continue
+        price = float(price)
+        if prev_price is None:
             pct = 0.0
         else:
-            prev = y_values[i - 1]
-            pct = ((price - prev) / prev * 100.0) if prev else 0.0
+            pct = ((price - prev_price) / prev_price * 100.0) if prev_price else 0.0
+        prev_price = price
         step_pcts.append(round(pct, 1))
-        above_ceiling = ceiling_val is not None and float(price) > float(ceiling_val)
-        if i > 0 and abs(pct) >= alert_threshold:
+        above_ceiling = ceiling_val is not None and price > float(ceiling_val)
+        if prev_price is not None and abs(pct) >= alert_threshold:
             sizes.append(14)
             colors.append('#ef4444' if pct > 0 else '#10b981')
         elif above_ceiling:
@@ -446,8 +511,12 @@ def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
         else:
             sizes.append(8 if i == len(y_values) - 1 else 7)
             colors.append('#6366f1' if i == len(y_values) - 1 else '#4f46e5')
+        prev_price = price
     if sizes:
-        sizes[-1] = max(sizes[-1], 10)
+        for j in range(len(sizes) - 1, -1, -1):
+            if y_values[j] is not None:
+                sizes[j] = max(sizes[j], 10)
+                break
     return sizes, colors, step_pcts
 
 
@@ -481,16 +550,24 @@ def _render_hotel_chart_page(
         and y_values
         and current_p > float(display_price_ceiling)
     )
-    marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(
+    _, _, step_pcts_raw = _compute_chart_point_meta(
         y_values, alert_threshold, display_price_ceiling
+    )
+    chart_x, chart_y, broken = _break_series_at_data_gaps(x_values, y_values, [hover_lines])
+    chart_hover = broken[0] if broken else hover_lines
+    marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(
+        chart_y, alert_threshold, display_price_ceiling
     )
 
     enriched_hover = []
-    for i, (base, pct) in enumerate(zip(hover_lines, step_pcts)):
-        extra = f'<br>Δ к прошлому замеру: {pct:+.1f}%' if i > 0 else ''
-        if i > 0 and abs(pct) >= alert_threshold:
+    for i, (base, pct) in enumerate(zip(chart_hover, step_pcts)):
+        if base is None:
+            enriched_hover.append('')
+            continue
+        extra = f'<br>Δ к прошлому замеру: {pct:+.1f}%' if i > 0 and pct else ''
+        if i > 0 and pct and abs(pct) >= alert_threshold:
             extra += '<br><b>Заметное изменение</b>'
-        enriched_hover.append(base + extra)
+        enriched_hover.append((base or '') + extra)
 
     image_url = meta.get('image_url') or ''
     offer_url = meta.get('offer_url') or ''
@@ -525,7 +602,7 @@ def _render_hotel_chart_page(
 
     recent_rows = ''
     for i in range(max(0, len(x_values) - 5), len(x_values)):
-        step = step_pcts[i]
+        step = step_pcts_raw[i] if i < len(step_pcts_raw) else 0.0
         step_cls = 'up' if step > 0 else ('drop' if step < 0 else 'flat')
         step_txt = f'{step:+.1f}%' if i > 0 else '—'
         try:
@@ -806,7 +883,7 @@ def _render_hotel_chart_page(
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
-            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше.{history_note} По горизонтали — даты проверки цены.</p>
+            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше.{history_note} Разрыв линии — между проверками не было данных. По горизонтали — даты проверки цены.</p>
             <div id="chart"></div>
         </section>
         <section class="chart-recent">
@@ -818,8 +895,8 @@ def _render_hotel_chart_page(
         </section>
     </div>
     <script>
-      const x = {json.dumps(x_values, ensure_ascii=False)};
-      const y = {json.dumps(y_values, ensure_ascii=False)};
+      const x = {json.dumps(chart_x, ensure_ascii=False)};
+      const y = {json.dumps(chart_y, ensure_ascii=False)};
       const text = {json.dumps(enriched_hover, ensure_ascii=False)};
       const markerSizes = {json.dumps(marker_sizes)};
       const markerColors = {json.dumps(marker_colors)};
