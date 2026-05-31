@@ -590,22 +590,23 @@ def _render_hotel_chart_page(
     _, _, step_pcts_raw = _compute_chart_point_meta(
         y_values, alert_threshold, display_price_ceiling
     )
-    chart_x, chart_y, broken = _break_series_at_data_gaps(x_values, y_values, [hover_lines])
-    chart_hover = broken[0] if broken else hover_lines
-    jump_x, jump_y = _build_gap_jump_series(chart_x, chart_y, alert_threshold)
-    marker_sizes, marker_colors, step_pcts = _compute_chart_point_meta(
-        chart_y, alert_threshold, display_price_ceiling
-    )
+    chart_x = x_values
+    chart_y = y_values
+    chart_hover = hover_lines
 
     enriched_hover = []
-    for i, (base, pct) in enumerate(zip(chart_hover, step_pcts)):
-        if base is None:
-            enriched_hover.append('')
-            continue
-        extra = f'<br>Δ к прошлому замеру: {pct:+.1f}%' if i > 0 and pct else ''
-        if i > 0 and pct and abs(pct) >= alert_threshold:
+    prev_price = None
+    for i, base in enumerate(chart_hover):
+        price = float(chart_y[i]) if i < len(chart_y) else 0.0
+        if prev_price is not None and prev_price > 0:
+            pct = (price - prev_price) / prev_price * 100.0
+        else:
+            pct = 0.0
+        extra = f'<br>Δ к прошлому замеру: {pct:+.1f}%' if i > 0 else ''
+        if i > 0 and abs(pct) >= alert_threshold:
             extra += '<br><b>Заметное изменение</b>'
         enriched_hover.append((base or '') + extra)
+        prev_price = price
 
     image_url = meta.get('image_url') or ''
     offer_url = meta.get('offer_url') or ''
@@ -630,13 +631,6 @@ def _render_hotel_chart_page(
         f'<span class="chart-ceiling-badge">Выше потолка показа (&gt;{display_price_ceiling:.0f})</span>'
         if above_ceiling_now else ''
     )
-    history_note = ''
-    if display_price_ceiling and history_price_ceiling and history_price_ceiling > display_price_ceiling:
-        history_note = (
-            f' Оранжевые точки — расширенная история ({display_price_ceiling:.0f}–{history_price_ceiling:.0f} PLN).'
-        )
-    elif display_price_ceiling:
-        history_note = f' Оранжевые точки — выше {display_price_ceiling:.0f} PLN.'
 
     recent_rows = ''
     for i in range(max(0, len(x_values) - 5), len(x_values)):
@@ -921,7 +915,7 @@ def _render_hotel_chart_page(
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
-            <p class="chart-legend-note">Пунктир — медиана и минимум. Крупные точки — изменения от {alert_threshold:.0f}% и больше.{history_note} Серая пунктирная линия — скачок цены через паузу в данных. Разрыв основной линии — между проверками не было замеров. По горизонтали — время проверки.</p>
+            <p class="chart-legend-note">Сплошная линия — история цены отеля в этом фильтре. По горизонтали — время проверки, в подсказке — даты поездки оффера.</p>
             <div id="chart"></div>
         </section>
         <section class="chart-recent">
@@ -936,57 +930,21 @@ def _render_hotel_chart_page(
       const x = {json.dumps(chart_x, ensure_ascii=False)};
       const y = {json.dumps(chart_y, ensure_ascii=False)};
       const text = {json.dumps(enriched_hover, ensure_ascii=False)};
-      const markerSizes = {json.dumps(marker_sizes)};
-      const markerColors = {json.dumps(marker_colors)};
-      const jumpX = {json.dumps(jump_x, ensure_ascii=False)};
-      const jumpY = {json.dumps(jump_y, ensure_ascii=False)};
-      const jumpTrace = (jumpX.length && jumpY.length) ? {{
-        x: jumpX, y: jumpY,
-        type: 'scatter', mode: 'lines', name: 'Скачок через паузу',
-        line: {{ color: '#94a3b8', width: 1.5, dash: 'dot' }},
-        hoverinfo: 'skip', showlegend: false
-      }} : null;
-      const medianY = {median_p:.2f};
-      const minY = {min_p:.2f};
-      const ceilingY = {f'{float(display_price_ceiling):.2f}' if display_price_ceiling else 'null'};
       const mainTrace = {{
         x, y, text,
         type: 'scatter',
         mode: 'lines+markers',
         name: 'Цена',
-        line: {{ color: '#4f46e5', width: 2.5, shape: 'hv' }},
-        marker: {{
-          size: markerSizes,
-          color: markerColors,
-          line: {{ width: 1.5, color: '#fff' }}
-        }},
+        line: {{ color: '#4f46e5', width: 2.5 }},
+        marker: {{ size: 6, color: '#4f46e5', line: {{ width: 1, color: '#fff' }} }},
+        connectgaps: true,
         hovertemplate: '<b>%{{y:.0f}} PLN</b><br>%{{text}}<extra></extra>'
       }};
-      const bandTrace = {{
-        x: [x[0], x[x.length - 1], x[x.length - 1], x[0]],
-        y: [minY, minY, medianY, medianY],
-        type: 'scatter',
-        fill: 'toself',
-        fillcolor: 'rgba(16,185,129,0.07)',
-        line: {{ width: 0 }},
-        hoverinfo: 'skip',
-        showlegend: false
-      }};
       const tripDatesLabel = {json.dumps(str(trip_dates_label or '—'), ensure_ascii=False)};
-      const yDataMin = Math.min(
-        ...(y.length ? y.filter(v => v != null) : [Infinity]),
-        minY,
-        medianY
-      );
-      const yDataMax = Math.max(
-        ...(y.length ? y.filter(v => v != null) : [0]),
-        minY,
-        medianY
-      );
-      const refMin = Number.isFinite(yDataMin) ? yDataMin : 0;
-      const refMax = Number.isFinite(yDataMax) ? yDataMax : 0;
-      const ySpan = Math.max(refMax - refMin, 1);
-      const yPad = Math.max(ySpan * 0.1, 80);
+      const yDataMin = y.length ? Math.min(...y) : 0;
+      const yDataMax = y.length ? Math.max(...y) : 0;
+      const ySpan = Math.max(yDataMax - yDataMin, 1);
+      const yPad = Math.max(ySpan * 0.08, 80);
       const layout = {{
         margin: {{ t: 10, r: 20, b: 65, l: 60 }},
         paper_bgcolor: 'rgba(0,0,0,0)',
@@ -1002,42 +960,13 @@ def _render_hotel_chart_page(
         yaxis: {{
           title: 'Цена (PLN)',
           gridcolor: 'rgba(148,163,184,0.2)',
-          range: [refMin - yPad, refMax + yPad],
+          range: [yDataMin - yPad, yDataMax + yPad],
           fixedrange: false
         }},
         showlegend: false,
-        hovermode: 'closest',
-        shapes: [
-          {{
-            type: 'line', xref: 'paper', x0: 0, x1: 1,
-            yref: 'y', y0: medianY, y1: medianY,
-            line: {{ color: '#94a3b8', width: 1.5, dash: 'dot' }}
-          }},
-          {{
-            type: 'line', xref: 'paper', x0: 0, x1: 1,
-            yref: 'y', y0: minY, y1: minY,
-            line: {{ color: '#10b981', width: 1.5, dash: 'dot' }}
-          }}
-        ] + (ceilingY ? [{{
-            type: 'line', xref: 'paper', x0: 0, x1: 1,
-            yref: 'y', y0: ceilingY, y1: ceilingY,
-            line: {{ color: '#f59e0b', width: 1.5, dash: 'dash' }}
-          }}] : []),
-        annotations: x.length ? [{{
-          x: x[x.length - 1],
-          y: y[y.length - 1],
-          text: 'Сейчас: ' + y[y.length - 1].toFixed(0) + ' PLN',
-          showarrow: true,
-          arrowhead: 2,
-          ax: 0,
-          ay: -48,
-          bgcolor: 'rgba(255,255,255,0.95)',
-          bordercolor: '#cbd5e1',
-          borderwidth: 1,
-          font: {{ size: 12, color: '#0f172a' }}
-        }}] : []
+        hovermode: 'closest'
       }};
-      Plotly.newPlot('chart', [bandTrace, jumpTrace, mainTrace].filter(Boolean), layout, {{ responsive: true, displayModeBar: true }});
+      Plotly.newPlot('chart', [mainTrace], layout, {{ responsive: true, displayModeBar: true }});
     </script>
 </body>
 </html>"""
