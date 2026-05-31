@@ -2272,8 +2272,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     _sidebar_nav_parts = [
         '<a href="index.html" class="nav-item">'
         '<span class="flag">🏠</span>'
-        '<div><div class="country-name">Главная</div>'
-        '<div class="country-desc">Выбор направления</div></div></a>'
+        '<span class="country-name">Главная</span></a>'
     ]
     for group in FILTER_GROUPS:
         _sidebar_nav_parts.append(
@@ -2281,12 +2280,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         )
         for flt in group['filters']:
             active = ' active' if flt['id'] == _current_filter else ''
-            icon = '📅' if flt['title'].startswith('7') else '📆'
             _sidebar_nav_parts.append(
                 f'<a href="{flt["href"]}" class="nav-item{active}">'
-                f'<span class="flag">{icon}</span>'
-                f'<div><div class="country-name">{flt["title"]}</div>'
-                f'<div class="country-desc">{group["label"]}</div></div></a>'
+                f'<span class="country-name">{flt["title"]}</span></a>'
             )
     sidebar_nav_html = ''.join(_sidebar_nav_parts)
 
@@ -2587,23 +2583,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .theme-toggle {{
-            position: fixed;
-            top: 2rem;
-            right: 2rem;
-            z-index: 1000;
+            position: static;
             background: var(--gradient-primary);
             border: none;
             border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
+            width: 2.25rem;
+            height: 2.25rem;
             color: white;
             cursor: pointer;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition-normal);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1rem;
+            flex-shrink: 0;
         }}
         
         .theme-toggle:hover {{
@@ -4039,13 +4033,34 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         /* Sidebar Navigation */
-        .sidebar {{
+        .app-topbar {{
             position: fixed;
             top: 0;
             left: 0;
-            width: 280px;
-            height: 100vh;
-            background: rgba(255,255,255,.84);
+            right: 0;
+            height: 52px;
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 0.75rem;
+            background: rgba(255,255,255,0.94);
+            backdrop-filter: blur(14px);
+            border-bottom: 1px solid var(--border-soft);
+        }}
+
+        .dark-theme .app-topbar {{
+            background: rgba(15, 23, 42, 0.94);
+            border-bottom-color: #334155;
+        }}
+
+        .sidebar {{
+            position: fixed;
+            top: 52px;
+            left: 0;
+            width: 220px;
+            height: calc(100vh - 52px);
+            background: rgba(255,255,255,.92);
             backdrop-filter: blur(18px);
             box-shadow: var(--shadow-xl);
             z-index: 1000;
@@ -4059,33 +4074,54 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .sidebar-header {{
-            padding: 4rem 1.5rem 1rem;
+            padding: 0.65rem 0.85rem;
             border-bottom: 1px solid #e2e8f0;
             background: var(--gradient-primary);
             color: white;
-            margin-top: 2rem;
         }}
         
         .sidebar-header h2 {{
             margin: 0;
-            font-size: 1.25rem;
+            font-size: 0.92rem;
             font-weight: 800;
+            letter-spacing: .01em;
         }}
         
         .sidebar-nav {{
-            padding: 1rem 0;
+            padding: 0.35rem 0 0.5rem;
         }}
         
         .nav-item {{
-            display: block;
-            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            padding: 0.42rem 0.85rem;
             color: var(--text-muted);
             text-decoration: none;
             transition: var(--transition-fast);
             border-left: 3px solid transparent;
-            position: relative;
-            border-radius: 0 12px 12px 0;
-            margin: 2px 8px 2px 0;
+            margin: 1px 6px 1px 0;
+            border-radius: 0 8px 8px 0;
+        }}
+
+        .nav-group-label {{
+            padding: 0.55rem 0.85rem 0.18rem;
+            font-size: 0.92rem;
+            font-weight: 700;
+            letter-spacing: .01em;
+            color: #334155;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }}
+
+        .nav-group-label span:first-child {{
+            font-size: 1.35rem;
+            line-height: 1;
+        }}
+        
+        .dark-theme .nav-group-label {{
+            color: #cbd5e1;
         }}
 
         .nav-group-label {{
@@ -4114,42 +4150,34 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .nav-item .flag {{
-            font-size: 1.5rem;
-            margin-right: 0.75rem;
-            display: inline-block;
-            width: 2rem;
+            font-size: 0.95rem;
+            width: 1.1rem;
             text-align: center;
+            flex-shrink: 0;
         }}
         
         .nav-item .country-name {{
             font-weight: 600;
-            font-size: 0.95rem;
-        }}
-        
-        .nav-item .country-desc {{
-            font-size: 0.75rem;
-            opacity: 0.7;
-            margin-top: 0.25rem;
+            font-size: 0.82rem;
+            line-height: 1.25;
         }}
         
         .sidebar-toggle {{
-            position: fixed;
-            top: 2rem;
-            left: 2rem;
-            z-index: 1001;
+            position: static;
             background: var(--gradient-primary);
             border: none;
-            border-radius: var(--radius-md);
-            width: 2.75rem;
-            height: 2.75rem;
+            border-radius: 10px;
+            width: 2.25rem;
+            height: 2.25rem;
             color: white;
             cursor: pointer;
-            box-shadow: var(--shadow-lg);
+            box-shadow: var(--shadow-sm);
             transition: var(--transition-normal);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.25rem;
+            font-size: 1rem;
+            flex-shrink: 0;
         }}
         
         .sidebar-toggle:hover {{
@@ -4178,10 +4206,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .main-content {{
             transition: var(--transition-normal);
             margin-left: 0;
+            padding-top: 52px;
         }}
         
         .main-content.sidebar-open {{
-            margin-left: 280px;
+            margin-left: 220px;
         }}
 
         /* Responsive */
@@ -4201,14 +4230,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             }}
             .changes-section {{
                 grid-template-columns: 1fr;
-            }}
-            .theme-toggle {{
-                top: 1rem;
-                right: 1rem;
-            }}
-            .sidebar-toggle {{
-                top: 1rem;
-                left: 1rem;
             }}
         }}
 
@@ -4370,15 +4391,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 font-size: 1.35rem;
                 margin-right: .35rem;
             }}
-            .sidebar-header {{
-                margin-top: 0;
-                padding-top: 1rem;
-            }}
-            .theme-toggle, .sidebar-toggle {{
-                width: 2.35rem;
-                height: 2.35rem;
-                font-size: 1rem;
-            }}
             .hover-thumb {{
                 width: 180px;
                 height: 118px;
@@ -4418,6 +4430,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     </style>
 </head>
 <body>
+    <div class="app-topbar">
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Меню">☰</button>
+        <button class="theme-toggle" id="themeToggle" aria-label="Тема">🌙</button>
+    </div>
     <!-- Sidebar Navigation -->
     <div class="sidebar" id="sidebar">
         <div class="sidebar-header">
@@ -4433,12 +4449,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
-        <!-- Sidebar Toggle -->
-        <button class="sidebar-toggle" id="sidebarToggle">☰</button>
-        
-        <!-- Theme Toggle -->
-        <button class="theme-toggle" id="themeToggle">🌙</button>
-        
     <div class="container">
         <div class="hero">
             <div class="hero-content">
