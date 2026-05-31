@@ -43,6 +43,27 @@ FILTER_GROUPS = [
             },
         ],
     },
+    {
+        'id': 'greece',
+        'label': 'Греция',
+        'icon': '🇬🇷',
+        'filters': [
+            {
+                'id': 'greece_7_10',
+                'title': '7–10 дней',
+                'subtitle': 'сбор 4–20k PLN • показ ≤10k • любой аэропорт',
+                'href': 'index_filter_greece_7_10_days.html',
+                'charts_subdir': 'hotel-charts/filter_greece_7_10_days',
+            },
+            {
+                'id': 'greece_13_16',
+                'title': '13–16 дней',
+                'subtitle': 'сбор 4–20k PLN • показ ≤10k • любой аэропорт',
+                'href': 'index_filter_greece_13_16_days.html',
+                'charts_subdir': 'hotel-charts/filter_greece_13_16_days',
+            },
+        ],
+    },
 ]
 
 

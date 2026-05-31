@@ -71,6 +71,8 @@ jobs:
           python travel_monitor.py --config config_ci_filter_13_16.json
           python travel_monitor.py --config config_ci_filter_turkey_7_10.json
           python travel_monitor.py --config config_ci_filter_turkey_13_16.json
+          python travel_monitor.py --config config_ci_filter_greece_7_10.json
+          python travel_monitor.py --config config_ci_filter_greece_13_16.json
 
           echo "✅ Monitoring completed"
 
@@ -114,6 +116,24 @@ jobs:
             --display-price-ceiling 10000 \
             --history-price-ceiling 20000
 
+          python generate_inline_charts_dashboard.py \
+            --data-file data/filters/filter_greece_7_10_days/travel_prices.csv \
+            --output index_filter_greece_7_10_days.html \
+            --title "Мониторинг цен • Греция • 7–10 дней" \
+            --charts-dir hotel-charts/filter_greece_7_10_days \
+            --alerts-file data/filters/filter_greece_7_10_days/travel_prices_alerts.json \
+            --display-price-ceiling 10000 \
+            --history-price-ceiling 20000
+
+          python generate_inline_charts_dashboard.py \
+            --data-file data/filters/filter_greece_13_16_days/travel_prices.csv \
+            --output index_filter_greece_13_16_days.html \
+            --title "Мониторинг цен • Греция • 13–16 дней" \
+            --charts-dir hotel-charts/filter_greece_13_16_days \
+            --alerts-file data/filters/filter_greece_13_16_days/travel_prices_alerts.json \
+            --display-price-ceiling 10000 \
+            --history-price-ceiling 20000
+
           python generate_landing.py
           echo "✅ Dashboards + landing generated"
 
@@ -132,11 +152,15 @@ jobs:
           cp -f index_filter_13_16_days.html site/index_filter_13_16_days.html
           cp -f index_filter_turkey_7_10_days.html site/index_filter_turkey_7_10_days.html
           cp -f index_filter_turkey_13_16_days.html site/index_filter_turkey_13_16_days.html
+          cp -f index_filter_greece_7_10_days.html site/index_filter_greece_7_10_days.html
+          cp -f index_filter_greece_13_16_days.html site/index_filter_greece_13_16_days.html
 
           cp -R hotel-charts/filter_7_10_days site/hotel-charts/ || true
           cp -R hotel-charts/filter_13_16_days site/hotel-charts/ || true
           cp -R hotel-charts/filter_turkey_7_10_days site/hotel-charts/ || true
           cp -R hotel-charts/filter_turkey_13_16_days site/hotel-charts/ || true
+          cp -R hotel-charts/filter_greece_7_10_days site/hotel-charts/ || true
+          cp -R hotel-charts/filter_greece_13_16_days site/hotel-charts/ || true
 
           cp -R data/filters site/data/ || true
 
@@ -167,8 +191,8 @@ jobs:
           
           # Добавляем только данные/страницы новых фильтров
           git add -f data/filters/ || true
-          git add index.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_13_16_days.html || true
-          git add -f hotel-charts/filter_7_10_days/ hotel-charts/filter_13_16_days/ hotel-charts/filter_turkey_7_10_days/ hotel-charts/filter_turkey_13_16_days/ || true
+          git add index.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_13_16_days.html index_filter_greece_7_10_days.html index_filter_greece_13_16_days.html || true
+          git add -f hotel-charts/filter_7_10_days/ hotel-charts/filter_13_16_days/ hotel-charts/filter_turkey_7_10_days/ hotel-charts/filter_turkey_13_16_days/ hotel-charts/filter_greece_7_10_days/ hotel-charts/filter_greece_13_16_days/ || true
           
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then
@@ -182,6 +206,8 @@ jobs:
             - Egypt 13–16 days (scrape 4000–20000 PLN, show ≤10000)
             - Turkey 7–10 days (scrape 4000–20000 PLN, show ≤10000)
             - Turkey 13–16 days (scrape 4000–20000 PLN, show ≤10000)
+            - Greece 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - Greece 13–16 days (scrape 4000–20000 PLN, show ≤10000)
 
             🤖 Automated by GitHub Actions"
             
@@ -206,5 +232,7 @@ jobs:
           echo "- [Egypt 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
           echo "- [Turkey 7–10 days](https://andreiYank.github.io/travel-monitoring/index_filter_turkey_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
           echo "- [Turkey 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_turkey_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Greece 7–10 days](https://andreiYank.github.io/travel-monitoring/index_filter_greece_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Greece 13–16 days](https://andreiYank.github.io/travel-monitoring/index_filter_greece_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Data](https://github.com/AndreiYank/travel-monitoring/tree/main/data/filters)" >> $GITHUB_STEP_SUMMARY
           echo "- [View Logs](https://github.com/AndreiYank/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY
