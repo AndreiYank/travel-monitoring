@@ -12,7 +12,7 @@ import json
 import os
 import csv
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Set
+from typing import List, Dict, Any, Set, Optional
 import logging
 
 from generate_inline_charts_dashboard import (
@@ -20,7 +20,6 @@ from generate_inline_charts_dashboard import (
     iter_scrape_runs,
     _parse_price_ceiling,
     _resolve_history_ceiling,
-    _build_premium_history_by_hotel,
     _comeback_from_premium,
 )
 
@@ -43,6 +42,12 @@ class PriceAlertManagerV2:
         self.df_raw = self.load_data()
         self.df = self._build_canonical_df()
         self.df_history = self._build_history_df()
+        self._scan_caches_ready = False
+        self._run_times: List[datetime] = []
+        self._zone_prices_by_run: Dict[datetime, Dict[str, float]] = {}
+        self._history_prices_by_run: Dict[datetime, Dict[str, float]] = {}
+        self._premium_by_run: Dict[datetime, Dict[str, Dict[str, Any]]] = {}
+        self._last_all_changes: Optional[List[Dict[str, Any]]] = None
 
     def load_data(self) -> pd.DataFrame:
         """Загружает данные из CSV файла"""
@@ -103,35 +108,75 @@ class PriceAlertManagerV2:
         except Exception as e:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
-    def get_run_times(self) -> List[datetime]:
-        """Времена всех ранов — по расширенному ряду (включая раны без офферов ≤ ceiling)."""
+    def _build_prices_by_run(self, frame: pd.DataFrame) -> Dict[datetime, Dict[str, float]]:
+        prices_by_run: Dict[datetime, Dict[str, float]] = {}
+        if frame.empty:
+            return prices_by_run
+        for _, _, run_slice in iter_scrape_runs(frame, time_col='scraped_at'):
+            if len(run_slice) == 0:
+                continue
+            run_time = run_slice['scraped_at'].iloc[0]
+            prices_by_run[run_time] = {
+                str(name): float(price)
+                for name, price in zip(run_slice['hotel_name'], run_slice['price'])
+            }
+        return prices_by_run
+
+    def _ensure_scan_caches(self) -> None:
+        if self._scan_caches_ready:
+            return
+        self._zone_prices_by_run = self._build_prices_by_run(self.df)
+        self._history_prices_by_run = self._build_prices_by_run(self.df_history)
         frame = self.df_history if not self.df_history.empty else self.df
         if frame.empty:
-            return []
+            self._run_times = []
+            self._premium_by_run = {}
+        else:
+            self._run_times = sorted(self._history_prices_by_run.keys())
+            self._premium_by_run = self._build_premium_snapshots_by_run()
+        self._scan_caches_ready = True
 
-        run_times = []
-        for _, _, run_slice in iter_scrape_runs(frame, time_col='scraped_at'):
-            if len(run_slice) > 0:
-                run_times.append(run_slice['scraped_at'].iloc[0])
+    def _build_premium_snapshots_by_run(self) -> Dict[datetime, Dict[str, Dict[str, Any]]]:
+        """Premium peaks after each run — incremental, без пересборки CSV на каждую пару."""
+        display = _parse_price_ceiling(self.display_price_ceiling)
+        if display is None:
+            return {}
 
-        return sorted(run_times)
-    
+        snapshots: Dict[datetime, Dict[str, Dict[str, Any]]] = {}
+        running: Dict[str, Dict[str, Any]] = {}
+        disp = float(display)
+
+        for run_time in self._run_times:
+            for hotel_name, price in self._history_prices_by_run.get(run_time, {}).items():
+                info = running.get(hotel_name)
+                if info is None:
+                    info = {'history_max': price, 'premium_peak': None}
+                    running[hotel_name] = info
+                else:
+                    info['history_max'] = max(float(info['history_max']), price)
+                if price > disp:
+                    peak = info.get('premium_peak')
+                    info['premium_peak'] = price if peak is None else max(float(peak), price)
+            snapshots[run_time] = {
+                name: {'history_max': data['history_max'], 'premium_peak': data['premium_peak']}
+                for name, data in running.items()
+            }
+        return snapshots
+
+    def get_run_times(self) -> List[datetime]:
+        """Времена всех ранов — по расширенному ряду (включая раны без офферов ≤ ceiling)."""
+        self._ensure_scan_caches()
+        return list(self._run_times)
+
     def get_hotel_prices_for_run(self, run_time: datetime) -> Dict[str, float]:
         """Получает цены всех отелей для конкретного рана (канонический ряд)."""
-        return self._hotel_prices_for_run(self.df, run_time)
+        self._ensure_scan_caches()
+        return dict(self._zone_prices_by_run.get(run_time, {}))
 
     def get_hotel_history_prices_for_run(self, run_time: datetime) -> Dict[str, float]:
         """Цены отелей за ран в расширенной зоне сбора (≤ history ceiling)."""
-        return self._hotel_prices_for_run(self.df_history, run_time)
-
-    def _hotel_prices_for_run(self, frame: pd.DataFrame, run_time: datetime) -> Dict[str, float]:
-        for _, _, run_slice in iter_scrape_runs(frame, time_col='scraped_at'):
-            if len(run_slice) > 0 and run_slice['scraped_at'].iloc[0] == run_time:
-                return {
-                    str(name): float(price)
-                    for name, price in zip(run_slice['hotel_name'], run_slice['price'])
-                }
-        return {}
+        self._ensure_scan_caches()
+        return dict(self._history_prices_by_run.get(run_time, {}))
 
     def _append_alert(
         self,
@@ -238,15 +283,10 @@ class PriceAlertManagerV2:
         if display is None or self.df_raw.empty:
             return []
 
-        history = _resolve_history_ceiling(display, self.history_price_ceiling)
-        prev_prices = self.get_hotel_prices_for_run(prev_run)
-        curr_prices = self.get_hotel_prices_for_run(curr_run)
-
-        work = self.df_raw.copy()
-        work['scraped_at_display'] = work['scraped_at']
-        hist_slice = work[work['scraped_at'] <= prev_run]
-        df_hist = collapse_canonical_per_run(hist_slice, history)
-        premium = _build_premium_history_by_hotel(df_hist, display)
+        self._ensure_scan_caches()
+        prev_prices = self._zone_prices_by_run.get(prev_run, {})
+        curr_prices = self._zone_prices_by_run.get(curr_run, {})
+        premium = self._premium_by_run.get(prev_run, {})
 
         changes = []
         for hotel_name, curr_price in curr_prices.items():
@@ -281,7 +321,8 @@ class PriceAlertManagerV2:
     
     def scan_all_runs_for_changes(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
         """Сканирует все раны и находит все изменения цен >= порога"""
-        run_times = self.get_run_times()
+        self._ensure_scan_caches()
+        run_times = self._run_times
         if len(run_times) < 2:
             return []
         
@@ -334,6 +375,7 @@ class PriceAlertManagerV2:
             return []
         
         all_changes = self.scan_all_runs_for_changes(threshold_percent)
+        self._last_all_changes = all_changes
         old_keys = self.get_existing_alert_keys()
         new_alerts = [a for a in all_changes if a.get('unique_key') not in old_keys]
 
@@ -347,12 +389,19 @@ class PriceAlertManagerV2:
         
         return new_alerts
     
-    def create_alert_report(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> str:
+    def create_alert_report(
+        self,
+        threshold_percent: float = ALERT_THRESHOLD_PERCENT,
+        all_changes: Optional[List[Dict[str, Any]]] = None,
+    ) -> str:
         """Создает отчет об изменениях цен"""
         if self.df.empty:
             return "❌ Нет данных для анализа"
-        
-        all_changes = self.scan_all_runs_for_changes(threshold_percent)
+
+        if all_changes is None:
+            all_changes = self._last_all_changes
+        if all_changes is None:
+            all_changes = self.scan_all_runs_for_changes(threshold_percent)
         
         if not all_changes:
             return "✅ Изменений цен не найдено"
