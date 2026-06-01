@@ -12,6 +12,7 @@ import re
 import html as html_lib
 from urllib.parse import urlparse, parse_qs
 from purchase_timing_analysis import analyze_purchase_timing
+from departure_analytics import build_cohort_snapshots, build_hot_departure_history, load_departure_offers
 from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
 
 
@@ -417,6 +418,7 @@ def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
 
     meta_line = f'{html_lib.escape(str(dates))} · {html_lib.escape(str(duration))}'
     return {
+        'alert_type': alert_type,
         'kind': kind,
         'badge': badge,
         'hotel_name_html': hotel_name_html,
@@ -430,6 +432,34 @@ def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
         'meta_line': meta_line,
         'note': note,
     }
+
+
+def _render_note_price_block(d, *, as_history=False):
+    """Price row for zone_entry / zone_exit alerts (with note, not plain price change)."""
+    if d['alert_type'] == 'zone_entry':
+        if d['old_fmt'] != '—' and d['pct_text']:
+            if as_history:
+                return (
+                    f'<span class="alert-history-old">{d["old_fmt"]}</span>'
+                    f'<span class="alert-history-arrow">→</span>'
+                    f'<span class="alert-history-new {d["new_cls"]}">{d["new_fmt"]}</span>'
+                ), f'<span class="alert-history-pct {d["new_cls"]}">{d["pct_text"]}</span>'
+            pct_block = f'<span class="alert-change-pct {d["new_cls"]}">{d["pct_text"]}</span>'
+            return (
+                f'<div class="alert-price-row">'
+                f'<span class="alert-price-old">{d["old_fmt"]}</span>'
+                f'<span aria-hidden="true">→</span>'
+                f'<span class="alert-price-new {d["new_cls"]}">{d["new_fmt"]}</span>'
+                f'{pct_block}'
+                f'</div>'
+            ), None
+        if as_history:
+            return f'<span class="alert-history-new {d["new_cls"]}">{d["new_fmt"]} PLN</span>', None
+        return f'<div class="alert-price-row"><span class="alert-price-new {d["new_cls"]}">{d["new_fmt"]} PLN</span></div>', None
+
+    if as_history:
+        return f'<span class="alert-history-new">{d["old_fmt"]} PLN</span>', None
+    return f'<div class="alert-price-row"><span class="alert-price-new">{d["old_fmt"]} PLN</span></div>', None
 
 
 def _render_alert_card(alert, meta, slugify_fn, parse_iso_fn):
@@ -450,7 +480,7 @@ def _render_alert_card(alert, meta, slugify_fn, parse_iso_fn):
     )
 
     if d['note']:
-        price_block = f'<div class="alert-price-row"><span class="alert-price-new">{d["old_fmt"]} PLN</span></div>'
+        price_block, _ = _render_note_price_block(d)
         sub_line = f'{d["note"]} · {d["meta_line"]}'
     else:
         pct_block = f'<span class="alert-change-pct {d["new_cls"]}">{d["pct_text"]}</span>' if d['pct_text'] else ''
@@ -486,8 +516,9 @@ def _render_alert_card(alert, meta, slugify_fn, parse_iso_fn):
 def _render_alert_history_row(alert, meta, slugify_fn, parse_iso_fn):
     d = _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn)
     if d['note']:
-        price_html = f'<span class="alert-history-new">{d["old_fmt"]} PLN</span>'
-        pct_html = f'<span class="alert-history-pct">{html_lib.escape(d["note"])}</span>'
+        price_html, pct_html = _render_note_price_block(d, as_history=True)
+        note_html = f'<span class="alert-history-pct">{html_lib.escape(d["note"])}</span>'
+        pct_html = pct_html or note_html
     else:
         price_html = (
             f'<span class="alert-history-old">{d["old_fmt"]}</span>'
@@ -2455,6 +2486,252 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     </div>
     """
 
+    # Компактный блок региональных вылетов: "самолёт" выводим через регион + даты,
+    # потому что курорты одного региона прилетают в один аэропорт.
+    departure_block_html = ""
+    departure_history_html = ""
+    try:
+        data_dir = os.path.dirname(data_file) or "."
+        cohorts_path = os.path.join(data_dir, "departure_cohorts.csv")
+        offers_path = os.path.join(data_dir, "departure_offers.csv")
+        if os.path.exists(cohorts_path):
+            departure_cohorts = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+        else:
+            source_path = offers_path if os.path.exists(offers_path) else data_file
+            departure_cohorts = build_cohort_snapshots(load_departure_offers(source_path))
+
+        if not departure_cohorts.empty:
+            work = departure_cohorts.copy()
+            work['_run_ts'] = pd.to_datetime(work['run_started_at'], errors='coerce', utc=True)
+            work = work.dropna(subset=['_run_ts'])
+            for col in ['hot_score', 'hotel_count', 'below_10000_count', 'days_to_departure', 'min_price', 'p10_price', 'median_price', 'p10_change_pct', 'median_change_pct', 'min_change_pct', 'hotel_count_delta']:
+                if col in work.columns:
+                    work[col] = pd.to_numeric(work[col], errors='coerce')
+            work = work[work['days_to_departure'].fillna(9999) >= 0]
+
+            def _region_label(value):
+                return str(value or 'region').replace('-', ' ').title()
+
+            def _score_class(score):
+                score = float(score or 0)
+                if score >= 70:
+                    return 'hot'
+                if score >= 45:
+                    return 'warm'
+                return 'calm'
+
+            def _days_until_label(value):
+                try:
+                    days = int(value)
+                except (TypeError, ValueError):
+                    return "вылет ?"
+                if days <= 0:
+                    return "вылет сегодня"
+                if days == 1:
+                    return "вылет завтра"
+                return f"вылет через {days} дн."
+
+            latest_dep_ts = work['_run_ts'].max() if not work.empty else None
+            hot_history = build_hot_departure_history(work)
+            history_rows_html = ""
+            for item in hot_history[:8]:
+                region = html_lib.escape(_region_label(item.get('region')))
+                dep_date = html_lib.escape(str(item.get('departure_date') or '—'))
+                nights = item.get('nights')
+                nights_label = f"{int(nights)}н" if str(nights) != '' else "?н"
+                best_days = item.get('days_to_departure_at_best')
+                best_days_label = _days_until_label(best_days)
+                p10_drop = float(item.get('best_p10_change_pct') or item.get('max_p10_drop_pct') or 0)
+                med_drop = float(item.get('best_median_change_pct') or item.get('max_median_drop_pct') or 0)
+                prev_median = float(item.get('best_prev_median_price') or 0)
+                curr_median = float(item.get('best_median_price') or 0)
+                prev_p10 = float(item.get('best_prev_p10_price') or 0)
+                curr_p10 = float(item.get('best_p10_price') or 0)
+                median_drop_pln = curr_median - prev_median if prev_median > 0 else 0.0
+                p10_drop_pln = curr_p10 - prev_p10 if prev_p10 > 0 else 0.0
+                if prev_median > 0 and med_drop <= -0.5:
+                    drop_text = (
+                        f"Типичная цена: {prev_median:.0f} → {curr_median:.0f} PLN "
+                        f"({median_drop_pln:.0f} PLN, {med_drop:+.1f}%)"
+                    )
+                    drop_subtext = (
+                        f"Дешёвые 10%: {prev_p10:.0f} → {curr_p10:.0f} PLN "
+                        f"({p10_drop_pln:.0f} PLN, {p10_drop:+.1f}%)"
+                        if prev_p10 > 0 and p10_drop <= -0.5 else ''
+                    )
+                elif prev_p10 > 0 and p10_drop <= -0.5:
+                    drop_text = (
+                        f"Дешёвые 10%: {prev_p10:.0f} → {curr_p10:.0f} PLN "
+                        f"({p10_drop_pln:.0f} PLN, {p10_drop:+.1f}%)"
+                    )
+                    drop_subtext = ''
+                else:
+                    drop_text = "Падение цены"
+                    drop_subtext = ''
+                drop_sub_html = f'<br><span>{html_lib.escape(drop_subtext)}</span>' if drop_subtext else ''
+                score_cls = _score_class(item.get('max_hot_score') or 0)
+                score = int(item.get('max_hot_score') or 0)
+                hotels = int(item.get('max_hotel_count') or 0)
+                history_rows_html += f"""
+                    <tr>
+                        <td><strong>{region}</strong><br><span>{dep_date} · {nights_label}</span></td>
+                        <td><strong>{best_days_label}</strong></td>
+                        <td><strong>{html_lib.escape(drop_text)}</strong>{drop_sub_html}<br><span>{html_lib.escape(str(item.get('best_seen_at') or ''))[:16]}</span></td>
+                        <td><span class="departure-score mini {score_cls}">{score}</span> деш.10% <strong>{float(item.get('best_p10_price') or 0):.0f}</strong> PLN<br><span>мин. {float(item.get('best_min_price') or 0):.0f} · середина {float(item.get('best_median_price') or 0):.0f} · {hotels} отелей</span></td>
+                    </tr>
+                """
+            if history_rows_html:
+                departure_history_html = f"""
+        <details class="dashboard-fold departure-history-fold" id="departureHistoryFold">
+            <summary>
+                <span>История горячих вылетов ({len(hot_history)})</span>
+                <span class="fold-title-meta">Только прошедшие hot/late-buy кейсы</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+                <p class="departure-history-hint">Архив уже наступивших вылетов, где за последнюю неделю до старта заметно падали цены. «Дешёвые 10%» — уровень нижних 10% предложений, «середина» — типичная цена по вылету.</p>
+                <div class="table-container">
+                    <table class="hotels-table departure-history-table">
+                        <thead>
+                            <tr>
+                                <th>Вылет</th>
+                                <th>За сколько</th>
+                                <th>Падение</th>
+                                <th>Цена/сигнал</th>
+                            </tr>
+                        </thead>
+                        <tbody>{history_rows_html}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </details>
+                """
+            latest_departures = work[work['_run_ts'] == latest_dep_ts].copy() if latest_dep_ts is not None else pd.DataFrame()
+            latest_departures = latest_departures[latest_departures['hotel_count'].fillna(0) >= 2]
+            latest_departures = latest_departures[latest_departures['days_to_departure'].fillna(9999) <= 8]
+            nearby_departures_count = int(latest_departures['departure_key'].nunique()) if not latest_departures.empty else 0
+
+            if not latest_departures.empty:
+                top_departures = latest_departures.sort_values(
+                    ['days_to_departure', 'hot_score', 'p10_change_pct', 'median_change_pct', 'p10_price'],
+                    ascending=[True, False, True, True, True]
+                )
+                active_departures = int(latest_departures['departure_key'].nunique())
+                hot_departures = int((latest_departures['hot_score'].fillna(0) >= 70).sum())
+                active_regions = int(latest_departures['region'].fillna('').astype(str).nunique())
+                best_p10 = float(latest_departures['p10_price'].min())
+
+                def _region_label(value):
+                    return str(value or 'region').replace('-', ' ').title()
+
+                def _score_class(score):
+                    score = float(score or 0)
+                    if score >= 70:
+                        return 'hot'
+                    if score >= 45:
+                        return 'warm'
+                    return 'calm'
+
+                def _change_label(value, label):
+                    try:
+                        pct = float(value or 0)
+                    except (TypeError, ValueError):
+                        pct = 0.0
+                    if abs(pct) < 0.5:
+                        return ''
+                    cls = 'drop' if pct < 0 else 'up'
+                    arrow = '↓' if pct < 0 else '↑'
+                    return f'<span class="departure-change {cls}">{label} {arrow} {pct:+.1f}%</span>'
+
+                def _days_until_label(value):
+                    try:
+                        days = int(value)
+                    except (TypeError, ValueError):
+                        return "вылет ?"
+                    if days <= 0:
+                        return "вылет сегодня"
+                    if days == 1:
+                        return "вылет завтра"
+                    return f"вылет через {days} дн."
+
+                rows_html = ""
+                for _, dep in top_departures.iterrows():
+                    score = int(dep.get('hot_score') or 0)
+                    score_cls = _score_class(score)
+                    card_hot_cls = ' is-hot' if score >= 70 else (' is-warm' if score >= 45 else '')
+                    hot_icon = '🔥 ' if score >= 70 else ''
+                    status_label = (
+                        f'🔥 Горит · {score}' if score >= 70
+                        else (f'Снижается · {score}' if score >= 45 else 'Не горит')
+                    )
+                    days_left = dep.get('days_to_departure')
+                    days_label = _days_until_label(days_left)
+                    nights = dep.get('nights')
+                    nights_label = f"{int(nights)}н" if pd.notna(nights) and str(nights) != '' else "?н"
+                    region = html_lib.escape(_region_label(dep.get('region')))
+                    departure_date = html_lib.escape(str(dep.get('departure_date') or '—'))
+                    delta_bits = [
+                        _change_label(dep.get('p10_change_pct'), 'дешёвые 10%'),
+                        _change_label(dep.get('median_change_pct'), 'середина'),
+                    ]
+                    delta_html = ''.join(bit for bit in delta_bits if bit) or '<span class="departure-change muted">без сильного движения</span>'
+                    rows_html += f"""
+                    <div class="departure-card{card_hot_cls}">
+                        <div class="departure-card-head">
+                            <div class="departure-title">{hot_icon}{region}</div>
+                            <span class="departure-status {score_cls}">{status_label}</span>
+                        </div>
+                        <div class="departure-facts">
+                            <span>{departure_date}</span>
+                            <span>{nights_label}</span>
+                            <span>{days_label}</span>
+                        </div>
+                        <div class="departure-delta">{delta_html}</div>
+                        <div class="departure-price-line">
+                            <span>типичная <strong>{float(dep.get('median_price') or 0):.0f}</strong> PLN</span>
+                            <span>дешёвые 10% <strong>{float(dep.get('p10_price') or 0):.0f}</strong> PLN</span>
+                        </div>
+                    </div>
+                    """
+
+                departure_block_html = f"""
+        <div class="departures-strip">
+            <div class="departures-head">
+                <div>
+                    <h3>🛫 Ближайшие вылеты</h3>
+                    <p>Все вылеты на ближайшие 8 дней. Горячие, где цены реально падают, подсвечены огоньком и ярким фоном.</p>
+                </div>
+                <div class="departure-mini-stats">
+                    <span>{active_departures} активных</span>
+                    <span>{hot_departures} горячих</span>
+                    <span>{active_regions} регионов</span>
+                    <span>лучшие 10% от {best_p10:.0f} PLN</span>
+                </div>
+            </div>
+            <div class="departure-legend">Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом.</div>
+            <div class="departure-grid">{rows_html}</div>
+        </div>
+                """
+            elif nearby_departures_count:
+                departure_block_html = f"""
+        <div class="departures-strip">
+            <div class="departures-head">
+                <div>
+                    <h3>🛫 Ближайшие вылеты</h3>
+                    <p>Смотрим все ближайшие вылеты до 8 дней и ждём заметного падения цен.</p>
+                </div>
+                <div class="departure-mini-stats">
+                    <span>{nearby_departures_count} ближайших</span>
+                    <span>0 горящих</span>
+                </div>
+            </div>
+            <div class="departure-legend">Ближайших вылетов в данных сейчас нет.</div>
+        </div>
+                """
+    except Exception as e:
+        print(f"⚠️ Не удалось построить блок вылетов: {e}")
+
     # Время последнего обновления для шапки
     try:
         updated_str = df['scraped_at_display'].max().strftime('%d.%m.%Y %H:%M')
@@ -3215,6 +3492,204 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .entry-item:hover {{
             transform: translateY(-2px);
+        }}
+        .departures-strip {{
+            margin: 0 0 1rem 0;
+            padding: .9rem 1rem;
+            border-radius: var(--radius-lg);
+            background: linear-gradient(135deg, rgba(59,130,246,.11), rgba(14,165,233,.08));
+            border: 1px solid rgba(59,130,246,.24);
+            box-shadow: var(--shadow-sm);
+        }}
+        .departures-head {{
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            align-items: flex-start;
+            margin-bottom: .65rem;
+        }}
+        .departures-head h3 {{
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #0f172a;
+        }}
+        .departures-head p {{
+            margin: .18rem 0 0;
+            font-size: .82rem;
+            color: var(--text-muted);
+        }}
+        .departure-mini-stats {{
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            gap: .35rem;
+            max-width: 48%;
+        }}
+        .departure-mini-stats span {{
+            font-size: .72rem;
+            font-weight: 700;
+            color: #1d4ed8;
+            background: rgba(255,255,255,.7);
+            border: 1px solid rgba(59,130,246,.18);
+            border-radius: 999px;
+            padding: .16rem .48rem;
+            white-space: nowrap;
+        }}
+        .departure-legend {{
+            margin: -.15rem 0 .65rem;
+            color: var(--text-muted);
+            font-size: .76rem;
+            line-height: 1.35;
+        }}
+        .departure-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: .55rem;
+        }}
+        .departure-card {{
+            display: flex;
+            flex-direction: column;
+            gap: .42rem;
+            padding: .68rem .72rem;
+            border-radius: 13px;
+            background: rgba(255,255,255,.86);
+            border: 1px solid rgba(148,163,184,.20);
+            min-width: 0;
+            box-shadow: 0 8px 20px rgba(15,23,42,.04);
+        }}
+        .departure-card.is-warm {{
+            background: linear-gradient(135deg, rgba(255,247,237,.95), rgba(255,255,255,.82));
+            border-color: rgba(245,158,11,.34);
+        }}
+        .departure-card.is-hot {{
+            background: linear-gradient(135deg, rgba(254,226,226,.98), rgba(255,247,237,.88));
+            border-color: rgba(239,68,68,.42);
+            box-shadow: 0 10px 24px rgba(239,68,68,.12);
+        }}
+        .departure-card-head {{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: .5rem;
+        }}
+        .departure-title {{
+            font-size: .98rem;
+            font-weight: 800;
+            color: #0f172a;
+            white-space: normal;
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            line-height: 1.12;
+        }}
+        .departure-facts {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .24rem;
+        }}
+        .departure-facts span {{
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: .12rem .38rem;
+            background: rgba(59,130,246,.08);
+            color: #1e3a8a;
+            font-size: .68rem;
+            font-weight: 800;
+            line-height: 1.25;
+        }}
+        .departure-delta {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .25rem;
+        }}
+        .departure-change {{
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: .14rem .4rem;
+            font-size: .68rem;
+            font-weight: 800;
+            white-space: normal;
+        }}
+        .departure-change.drop {{
+            color: #047857;
+            background: rgba(16,185,129,.16);
+        }}
+        .departure-change.up {{
+            color: #b91c1c;
+            background: rgba(239,68,68,.14);
+        }}
+        .departure-change.muted {{
+            color: var(--text-muted);
+            background: rgba(148,163,184,.15);
+            font-weight: 700;
+        }}
+        .departure-price-line {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .38rem .65rem;
+            border-radius: 10px;
+            padding: .42rem .5rem;
+            background: rgba(248,250,252,.9);
+            border: 1px solid rgba(226,232,240,.8);
+            color: var(--text-muted);
+            font-size: .72rem;
+            font-weight: 800;
+        }}
+        .departure-price-line strong {{
+            color: #0f172a;
+            font-weight: 900;
+            font-size: .9rem;
+        }}
+        .departure-status {{
+            flex: 0 0 auto;
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: .22rem .5rem;
+            font-size: .72rem;
+            font-weight: 900;
+            white-space: nowrap;
+        }}
+        .departure-status.hot {{ background: rgba(239,68,68,.16); color: #b91c1c; }}
+        .departure-status.warm {{ background: rgba(245,158,11,.18); color: #b45309; }}
+        .departure-status.calm {{ background: rgba(59,130,246,.14); color: #1d4ed8; }}
+        .departure-score.hot {{ background: rgba(239,68,68,.16); color: #b91c1c; }}
+        .departure-score.warm {{ background: rgba(245,158,11,.18); color: #b45309; }}
+        .departure-score.calm {{ background: rgba(59,130,246,.14); color: #1d4ed8; }}
+        .departure-score.mini {{
+            width: 30px;
+            height: 30px;
+            font-size: .78rem;
+        }}
+        .departure-foot {{
+            display: flex;
+            justify-content: flex-end;
+            font-size: .66rem;
+            font-weight: 700;
+            color: var(--text-muted);
+        }}
+        .departure-history-hint {{
+            margin: .2rem 0 .8rem;
+            font-size: .82rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+        }}
+        .departure-history-table th,
+        .departure-history-table td {{
+            vertical-align: top;
+        }}
+        .departure-history-table td span {{
+            color: var(--text-muted);
+            font-size: .78rem;
+        }}
+        @media (max-width: 760px) {{
+            .departures-head {{ display: block; }}
+            .departure-mini-stats {{ max-width: none; justify-content: flex-start; margin-top: .55rem; }}
+            .departure-grid {{ grid-template-columns: 1fr; }}
         }}
         .deal-legend {{
             margin: 0 0 1rem 0;
@@ -4838,6 +5313,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </div>
 """
     html_template += alerts_html
+    html_template += departure_block_html
+    html_template += departure_history_html
 
     # --- Секция «Когда покупать»: статистика снижения цен по времени ---
     _t = timing_analysis if isinstance(timing_analysis, dict) else {}
@@ -5630,12 +6107,44 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       
       // Таблица сортировки
       let currentSort = { column: null, direction: 'asc' };
+
+      function getColumnIndex(column) {
+        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'dates': 5, 'duration': 6, 'offer': 7 };
+        return columnMap[column];
+      }
+
+      function normalizeSortValue(row, column) {
+        const idx = getColumnIndex(column);
+        const cell = row.cells[idx];
+        const raw = (cell && (cell.dataset.sortValue || cell.textContent) || '').trim();
+        if (column === 'hotel') {
+          return (row.cells[0].textContent || '').trim().toLowerCase();
+        }
+        if (column === 'dates') {
+          const m = raw.match(/(\d{2})\.(\d{2})\.(\d{4})/);
+          return m ? `${m[3]}-${m[2]}-${m[1]}` : raw.toLowerCase();
+        }
+        if (column === 'duration') {
+          const m = raw.match(/(\d+)/);
+          return m ? parseFloat(m[1]) : 0;
+        }
+        return parseFloat(raw) || 0;
+      }
+
+      function compareHotelRows(a, b) {
+        const column = currentSort.column;
+        const aVal = normalizeSortValue(a, column);
+        const bVal = normalizeSortValue(b, column);
+        let cmp;
+        if (typeof aVal === 'string' || typeof bVal === 'string') {
+          cmp = String(aVal).localeCompare(String(bVal));
+        } else {
+          cmp = aVal - bVal;
+        }
+        return currentSort.direction === 'asc' ? cmp : -cmp;
+      }
       
       function sortTable(column) {
-        const table = document.getElementById('hotelsTable');
-        const tbody = table.querySelector('tbody');
-        const rows = Array.from(tbody.querySelectorAll('tr'));
-        
         // Определяем направление сортировки
         if (currentSort.column === column) {
           currentSort.direction = currentSort.direction === 'asc' ? 'desc' : 'asc';
@@ -5643,32 +6152,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           currentSort.direction = 'asc';
         }
         currentSort.column = column;
-        
-        // Сортируем строки
-        rows.sort((a, b) => {
-          let aVal, bVal;
-          
-          if (column === 'hotel') {
-            aVal = a.cells[0].textContent.trim();
-            bVal = b.cells[0].textContent.trim();
-            return currentSort.direction === 'asc' ? aVal.localeCompare(bVal) : bVal.localeCompare(aVal);
-          } else {
-            aVal = parseFloat(a.cells[getColumnIndex(column)].dataset.sortValue) || 0;
-            bVal = parseFloat(b.cells[getColumnIndex(column)].dataset.sortValue) || 0;
-            return currentSort.direction === 'asc' ? aVal - bVal : bVal - aVal;
-          }
-        });
-        
-        // Обновляем таблицу
-        rows.forEach(row => tbody.appendChild(row));
-        
+
+        if (window._hotelTableSortAll) {
+          window._hotelTableSortAll();
+        } else {
+          const table = document.getElementById('hotelsTable');
+          const tbody = table.querySelector('tbody');
+          const rows = Array.from(tbody.querySelectorAll('tr'));
+          rows.sort(compareHotelRows);
+          rows.forEach(row => tbody.appendChild(row));
+        }
+
         // Обновляем индикаторы сортировки
         updateSortIndicators();
-      }
-      
-      function getColumnIndex(column) {
-        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'dates': 5, 'duration': 6, 'offer': 7 };
-        return columnMap[column];
       }
       
       function updateSortIndicators() {
@@ -5746,6 +6242,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
         bindFoldPersistence('timingFold', 'dashboard_fold_timing', false);
         bindFoldPersistence('statsFold', 'dashboard_fold_stats', false);
+        bindFoldPersistence('departureHistoryFold', 'dashboard_fold_departure_history', false);
         bindFoldPersistence('vanishedFold', 'dashboard_fold_vanished', false);
         
         // Theme toggle functionality
@@ -5864,6 +6361,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             
             return true;
           });
+
+          if (currentSort.column) {
+            filteredRows.sort(compareHotelRows);
+          }
           
           currentPage = 1;
           updateTable();
@@ -5904,6 +6405,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             updateTable();
           }
         }
+
+        window._hotelTableSortAll = function() {
+          filteredRows.sort(compareHotelRows);
+          currentPage = 1;
+          updateTable();
+        };
         
         // Event listeners
         searchInput.addEventListener('input', filterRows);

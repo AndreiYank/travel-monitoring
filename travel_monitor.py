@@ -23,6 +23,8 @@ import logging
 from price_alerts import PriceAlertManager
 from price_alerts_v2 import PriceAlertManagerV2, ALERT_THRESHOLD_PERCENT
 from airport_comparison import AirportComparison
+from departure_analytics import BASE_OFFER_FIELDS, write_departure_analytics
+from departure_identity import DEPARTURE_FIELDS, enrich_offers
 
 # Настройка логирования
 logging.basicConfig(
@@ -1399,6 +1401,47 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.warning(f"Не удалось обновить карту изображений: {e}")
 
+    def save_departure_offers_append(self, offers: List[Dict[str, Any]]):
+        """Сохраняет все raw-офферы до дедупликации для аналитики вылетов."""
+        if not offers:
+            logger.warning("Нет raw-офферов для аналитики вылетов")
+            return
+
+        os.makedirs(self.config['data_dir'], exist_ok=True)
+        filepath = os.path.join(self.config['data_dir'], 'departure_offers.csv')
+        fieldnames = BASE_OFFER_FIELDS + DEPARTURE_FIELDS
+        enriched = enrich_offers(offers, self.config, self.config_file)
+
+        existing_data = []
+        if os.path.exists(filepath):
+            try:
+                with open(filepath, 'r', encoding='utf-8') as f:
+                    reader = csv.DictReader(f)
+                    for row in reader:
+                        existing_data.append({k: row.get(k, '') for k in fieldnames})
+            except Exception as e:
+                logger.warning(f"Ошибка чтения departure_offers.csv: {e}, создаем новый файл")
+                existing_data = []
+
+        with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
+            writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+            writer.writeheader()
+            for row in existing_data:
+                writer.writerow({k: row.get(k, '') for k in fieldnames})
+            for offer in enriched:
+                writer.writerow({k: offer.get(k, '') for k in fieldnames})
+
+        logger.info(f"Добавлено {len(enriched)} raw-офферов для аналитики вылетов в {filepath}")
+
+        try:
+            result = write_departure_analytics(filepath, self.config['data_dir'])
+            logger.info(
+                "Обновлена аналитика вылетов: "
+                f"{result['cohorts']} снимков, {result['events']} событий"
+            )
+        except Exception as e:
+            logger.warning(f"Не удалось обновить аналитику вылетов: {e}")
+
     def create_charts(self):
         """Создает графики"""
         try:
@@ -1624,6 +1667,8 @@ class TravelPriceMonitor:
                 return False
 
             raw_count = len(offers)
+            self.save_departure_offers_append(offers)
+
             offers = self._dedupe_lowest_per_hotel(offers)
             if len(offers) < raw_count:
                 logger.info(
