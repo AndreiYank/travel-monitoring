@@ -16,7 +16,9 @@ from departure_analytics import (
     build_cohort_snapshots,
     build_departure_offers_index,
     build_hot_departure_history,
+    cheap_tier_label,
     load_departure_offers,
+    MIN_COMMON_HOTELS,
 )
 from departure_airports import (
     aggregate_cohorts_by_arrival_airport,
@@ -46,7 +48,7 @@ def _prepare_departure_cohorts(df: pd.DataFrame) -> pd.DataFrame:
     for col in [
         "hot_score", "hotel_count", "below_10000_count", "days_to_departure",
         "min_price", "p10_price", "median_price", "p10_change_pct",
-        "median_change_pct", "min_change_pct", "hotel_count_delta",
+        "median_change_pct", "min_change_pct", "hotel_count_delta", "common_hotel_count",
     ]:
         if col in work.columns:
             work[col] = pd.to_numeric(work[col], errors="coerce")
@@ -64,10 +66,10 @@ def _load_departure_cohort_frames(data_dir: str, data_file: str):
         travel_cohorts = build_cohort_snapshots(load_departure_offers(data_file))
 
     fresh_cohorts = pd.DataFrame()
-    if os.path.exists(cohorts_path):
-        fresh_cohorts = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
-    elif os.path.exists(offers_path):
+    if os.path.exists(offers_path):
         fresh_cohorts = build_cohort_snapshots(load_departure_offers(offers_path))
+    elif os.path.exists(cohorts_path):
+        fresh_cohorts = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
 
     current_cohorts = fresh_cohorts if not fresh_cohorts.empty else travel_cohorts
     history_cohorts = _merge_departure_cohorts(travel_cohorts, fresh_cohorts)
@@ -703,6 +705,7 @@ def _render_hotel_chart_page(
     trip_dates_label,
     display_price_ceiling=None,
     history_price_ceiling=None,
+    favicon_href="favicon.svg",
 ):
     current_p = float(y_values[-1]) if y_values else 0.0
     is_at_min = bool(y_values) and current_p <= min_p + 2.0
@@ -784,6 +787,8 @@ def _render_hotel_chart_page(
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{meta_desc}">
     <title>{title_esc} — {current_p:.0f} PLN</title>
+    <link rel="icon" href="{html_lib.escape(favicon_href)}" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="{html_lib.escape(favicon_href)}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -2362,6 +2367,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         subdir = (charts_subdir or '').rstrip('/')
         back_target = filter_href_by_charts_subdir(subdir)
         back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
+        favicon_href = os.path.relpath("favicon.svg", start=os.path.dirname(hotel_html_path))
 
         meta = hotel_meta_by_name.get(hotel_name, {})
         if not hotel_ts.empty:
@@ -2438,6 +2444,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             trip_dates_label=trip_dates_label,
             display_price_ceiling=ceiling_val,
             history_price_ceiling=history_val,
+            favicon_href=favicon_href,
         )
 
         with open(hotel_html_path, 'w', encoding='utf-8') as f:
@@ -2743,10 +2750,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         f"→ {html_lib.escape(return_date)}"
                         if return_date else ''
                     )
-                    delta_bits = [
-                        _change_label(dep.get('p10_change_pct'), 'дешёвые 10%'),
-                        _change_label(dep.get('median_change_pct'), 'середина'),
-                    ]
+                    delta_bits = []
+                    common_n = int(dep.get("common_hotel_count") or 0)
+                    if common_n >= MIN_COMMON_HOTELS:
+                        delta_bits.extend([
+                            _change_label(dep.get("p10_change_pct"), cheap_tier_label(common_n)),
+                            _change_label(dep.get("median_change_pct"), "середина (общие)"),
+                        ])
                     delta_html = ''.join(bit for bit in delta_bits if bit) or '<span class="departure-change muted">без сильного движения</span>'
                     rows_html += f"""
                     <div class="departure-card departure-card-clickable{card_hot_cls}" data-departure-key="{html_lib.escape(str(dep.get('departure_key') or ''))}" role="button" tabindex="0" title="Показать отели по этому вылету">
@@ -2783,7 +2793,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <span>лучшие 10% от {best_p10:.0f} PLN</span>
                 </div>
             </div>
-            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом. Нажмите на карточку — список отелей.</div>
+            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}Главное: «Горит» — только при падении цен у ≥{MIN_COMMON_HOTELS} общих отелей между прогонами; нижний сегмент = средняя нижних ~25% (мин. 3 отеля). Нажмите на карточку — список отелей.</div>
             <div class="departure-grid">{rows_html}</div>
         </div>
                 """
@@ -2886,6 +2896,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>{title}</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="favicon.svg">
     <style>
         :root {{
             --primary-color: #4f46e5;
