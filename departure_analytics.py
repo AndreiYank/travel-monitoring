@@ -227,6 +227,75 @@ def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
     return _add_change_columns(pd.DataFrame(rows, columns=COHORT_FIELDS))
 
 
+def _offer_payload(row: pd.Series) -> Dict[str, Any]:
+    return {
+        "hotel_name": str(row.get("hotel_name") or ""),
+        "price": round(float(row.get("price") or 0), 2),
+        "dates": str(row.get("dates") or ""),
+        "duration": str(row.get("duration") or ""),
+        "offer_url": str(row.get("offer_url") or ""),
+        "image_url": str(row.get("image_url") or ""),
+    }
+
+
+def build_departure_offers_index(
+    df: pd.DataFrame,
+    departure_keys: List[str],
+    preferred_runs: Dict[str, str] | None = None,
+) -> Dict[str, Dict[str, Any]]:
+    """Map departure_key -> hotel offers for a chosen scrape run."""
+    preferred_runs = preferred_runs or {}
+    keys = [str(key) for key in departure_keys if str(key)]
+    if not keys or df.empty:
+        return {}
+
+    work = assign_scrape_runs(df)
+    work["price"] = pd.to_numeric(work["price"], errors="coerce")
+    work = work.dropna(subset=["price"])
+    work = work[work["departure_key"].fillna("").astype(str).isin(keys)].copy()
+    if work.empty:
+        return {}
+
+    work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
+    index: Dict[str, Dict[str, Any]] = {}
+
+    for departure_key, grp in work.groupby("departure_key", sort=False):
+        preferred = preferred_runs.get(departure_key)
+        if preferred:
+            run_grp = grp[grp["run_started_at"].astype(str) == str(preferred)]
+            if run_grp.empty:
+                pref_ts = pd.to_datetime(preferred, errors="coerce", utc=True)
+                if pd.notna(pref_ts):
+                    delta = (grp["_run_ts"] - pref_ts).abs()
+                    closest_run = grp.loc[delta.idxmin(), "run_started_at"]
+                    run_grp = grp[grp["run_started_at"] == closest_run]
+                else:
+                    run_grp = grp[grp["_run_ts"] == grp["_run_ts"].max()]
+        else:
+            latest_ts = grp["_run_ts"].max()
+            run_grp = grp[grp["_run_ts"] == latest_ts]
+
+        if run_grp.empty:
+            continue
+
+        deduped = (
+            run_grp.sort_values("price")
+            .drop_duplicates(subset=["hotel_name"], keep="first")
+            .sort_values("price")
+        )
+        first = run_grp.iloc[0]
+        index[departure_key] = {
+            "departure_key": departure_key,
+            "region": str(first.get("region") or ""),
+            "departure_date": str(first.get("departure_date") or ""),
+            "return_date": str(first.get("return_date") or ""),
+            "nights": int(first["nights"]) if pd.notna(first.get("nights")) else "",
+            "run_started_at": str(first.get("run_started_at") or ""),
+            "offers": [_offer_payload(row) for _, row in deduped.iterrows()],
+        }
+    return index
+
+
 def build_departure_events(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
     if cohorts.empty:
         return []
