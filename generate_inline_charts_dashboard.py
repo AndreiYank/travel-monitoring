@@ -375,6 +375,41 @@ def _should_show_alert(alert) -> bool:
     return alert_type != 'zone_entry'
 
 
+def _hotel_base_name(name: str) -> str:
+    text = str(name or "").strip()
+    for marker in (" Grecja,", " Turcja,", " Grecja ", " Turcja "):
+        if marker in text:
+            return text.split(marker, 1)[0].strip()
+    return text
+
+
+def _register_chart_href(lookup: dict, hotel_name: str, href: str) -> None:
+    name = str(hotel_name or "").strip()
+    if not name or not href:
+        return
+    lookup[name] = href
+    lookup[_hotel_base_name(name).lower()] = href
+    slug = href.rsplit("/", 1)[-1]
+    if slug.endswith(".html"):
+        lookup[f"__slug__:{slug[:-5]}"] = href
+
+
+def _resolve_chart_href(hotel_name: str, lookup: dict, charts_subdir: str, slugify_fn) -> str:
+    name = str(hotel_name or "").strip()
+    if not name:
+        return ""
+    if name in lookup:
+        return lookup[name]
+    base = _hotel_base_name(name).lower()
+    if base in lookup:
+        return lookup[base]
+    slug = slugify_fn(name)
+    slug_key = f"__slug__:{slug}"
+    if slug_key in lookup:
+        return lookup[slug_key]
+    return ""
+
+
 def _alert_is_current(alert, table_prices, tolerance=2.0):
     """Alert is current if the hotel is in the last run at the alert's new price."""
     hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
@@ -2356,7 +2391,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
 
     # График отеля — история до history ceiling (10–20k видны на графике)
-    for hotel_name in sorted(df_canonical['hotel_name'].unique()):
+    chart_href_lookup: dict[str, str] = {}
+    chart_hotel_names = sorted(set(df_history["hotel_name"].astype(str).unique()))
+    for hotel_name in chart_hotel_names:
         hotel_ts = df_history[df_history['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
         x_values = [pd.to_datetime(t).isoformat() for t in hotel_ts['scraped_at_display'].tolist()]
         x_display = [pd.to_datetime(t).strftime('%d.%m.%Y %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
@@ -2455,6 +2492,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         with open(hotel_html_path, 'w', encoding='utf-8') as f:
             f.write(chart_html)
+        if charts_subdir:
+            _register_chart_href(
+                chart_href_lookup,
+                hotel_name,
+                f"{charts_subdir.rstrip('/')}/{hotel_slug}.html",
+            )
+
+    for name, meta in hotel_meta_by_name.items():
+        href = meta.get("chart_href")
+        if href:
+            _register_chart_href(chart_href_lookup, str(name), str(href))
 
     # HTML шаблон
     # Готовим HTML блок изменений, выводим только если есть хотя бы один список
@@ -2844,11 +2892,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 departure_offers_payload = build_departure_offers_index(
                     offers_df, departure_keys, preferred_runs
                 )
-                charts_prefix = charts_subdir.rstrip("/") if charts_subdir else "hotel-charts"
                 for payload in departure_offers_payload.values():
                     for offer in payload.get("offers", []):
                         hotel_name = str(offer.get("hotel_name") or "")
-                        offer["chart_href"] = f"{charts_prefix}/{slugify(hotel_name)}.html"
+                        offer["chart_href"] = _resolve_chart_href(
+                            hotel_name, chart_href_lookup, charts_subdir, slugify
+                        )
                         deal_info = deal_score_by_hotel.get(hotel_name, {})
                         delta_info = deltas_by_hotel.get(hotel_name)
                         avg_info = avg_baseline_delta.get(hotel_name)
