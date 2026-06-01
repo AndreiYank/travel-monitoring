@@ -81,6 +81,26 @@
       "hot_score": 0
     },
     {
+      "event_time": "2026-06-01T14:41:49+0000",
+      "departure_key": "grecja|kreta-zachodnia|2026-06-08|2026-06-15|7|Gdańsk|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "grecja",
+      "region": "kreta-zachodnia",
+      "departure_date": "2026-06-08",
+      "return_date": "2026-06-15",
+      "nights": 7,
+      "days_to_departure": 7,
+      "old_min_price": 9125.0,
+      "new_min_price": 7795.0,
+      "min_drop_pct": -14.58,
+      "p10_drop_pct": -11.66,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 2,
+      "hot_score": 60
+    },
+    {
       "event_time": "2026-06-01T11:24:24+0000",
       "departure_key": "grecja|kreta-zachodnia|2026-06-16|2026-06-23|7|Poznań|2+1",
       "event_type": "mass_price_drop",
@@ -177,6 +197,26 @@
       "p10_drop_pct": -36.83,
       "median_drop_pct": -12.86,
       "hotel_count": 3,
+      "hotel_delta": 1,
+      "hot_score": 0
+    },
+    {
+      "event_time": "2026-06-01T14:41:49+0000",
+      "departure_key": "grecja|rodos|2026-06-11|2026-06-18|7|Kraków|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "grecja",
+      "region": "rodos",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7,
+      "days_to_departure": 10,
+      "old_min_price": 8717.0,
+      "new_min_price": 6840.0,
+      "min_drop_pct": -21.53,
+      "p10_drop_pct": -25.98,
+      "median_drop_pct": -21.74,
+      "hotel_count": 4,
       "hotel_delta": 1,
       "hot_score": 0
     }
