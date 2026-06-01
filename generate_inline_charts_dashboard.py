@@ -2799,6 +2799,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 departure_offers_payload = build_departure_offers_index(
                     offers_df, departure_keys, preferred_runs
                 )
+                charts_prefix = charts_subdir.rstrip("/") if charts_subdir else "hotel-charts"
+                for payload in departure_offers_payload.values():
+                    for offer in payload.get("offers", []):
+                        hotel_name = str(offer.get("hotel_name") or "")
+                        offer["chart_href"] = f"{charts_prefix}/{slugify(hotel_name)}.html"
+                        deal_info = deal_score_by_hotel.get(hotel_name, {})
+                        delta_info = deltas_by_hotel.get(hotel_name)
+                        avg_info = avg_baseline_delta.get(hotel_name)
+                        deal_score = int(deal_info.get("score", 0)) if deal_info else 0
+                        confidence = deal_info.get("confidence", "Low") if deal_info else "Low"
+                        d48_for_badge = float(delta_info[1]) if delta_info is not None else None
+                        d_avg_for_badge = float(avg_info[1]) if avg_info is not None else None
+                        comeback_drop = deal_info.get("comeback_drop_pct") if deal_info else None
+                        deal_label, deal_class, _ = classify_deal_badge(
+                            deal_score, confidence, d48_for_badge, d_avg_for_badge, comeback_drop
+                        )
+                        offer["deal_score"] = deal_score
+                        offer["deal_label"] = deal_label
+                        offer["deal_class"] = deal_class
+                        offer["delta_avg"] = f"{avg_info[1]:+.1f}%" if avg_info is not None else "—"
                 departure_offers_json = json.dumps(departure_offers_payload, ensure_ascii=False)
     except Exception as e:
         print(f"⚠️ Не удалось построить блок вылетов: {e}")
@@ -3867,6 +3887,35 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: 800;
             white-space: nowrap;
         }}
+        .departure-offers-table td.delta-drop {{
+            color: #047857;
+            font-weight: 800;
+            white-space: nowrap;
+        }}
+        .departure-offers-table td.delta-up {{
+            color: #b91c1c;
+            font-weight: 800;
+            white-space: nowrap;
+        }}
+        .departure-offers-table td.delta-flat {{
+            color: var(--text-muted);
+            white-space: nowrap;
+        }}
+        .departure-offers-table .deal-pill {{
+            display: inline-flex;
+            align-items: center;
+            border-radius: 999px;
+            padding: .18rem .48rem;
+            font-size: .72rem;
+            font-weight: 800;
+            border: 1px solid transparent;
+            white-space: nowrap;
+        }}
+        .departure-offers-table .deal-pill.hot {{ background: rgba(245,158,11,.18); color: #92400e; border-color: rgba(245,158,11,.32); }}
+        .departure-offers-table .deal-pill.good {{ background: rgba(16,185,129,.17); color: #065f46; border-color: rgba(16,185,129,.32); }}
+        .departure-offers-table .deal-pill.normal {{ background: rgba(148,163,184,.18); color: #334155; border-color: rgba(148,163,184,.35); }}
+        .departure-offers-table .deal-pill.bad {{ background: rgba(239,68,68,.15); color: #991b1b; border-color: rgba(239,68,68,.32); }}
+        .departure-offers-table .deal-pill.warm {{ background: rgba(14,165,233,.16); color: #0c4a6e; border-color: rgba(14,165,233,.35); }}
         .departure-offers-link {{
             display: inline-flex;
             align-items: center;
@@ -3879,6 +3928,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-size: .76rem;
             font-weight: 700;
             white-space: nowrap;
+        }}
+        .departure-offers-actions {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .35rem;
+        }}
+        .departure-offers-link.secondary {{
+            background: #fff;
+            color: #4f46e5;
+            border: 1px solid rgba(79,70,229,.28);
         }}
         .departure-modal-empty {{
             padding: 1rem 0;
@@ -6690,18 +6749,32 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             bodyEl.innerHTML = '<div class="departure-modal-empty">Нет предложений для этого вылета в выбранном снимке.</div>';
           } else {
             const rows = payload.offers.map(function(offer) {
-              const link = offer.offer_url
-                ? '<a class="departure-offers-link" href="' + escapeHtml(offer.offer_url) + '" target="_blank" rel="noopener">Открыть</a>'
+              const dealHtml = offer.deal_score
+                ? '<span class="deal-pill ' + escapeHtml(offer.deal_class || 'normal') + '">' + offer.deal_score + ' · ' + escapeHtml(offer.deal_label || 'Normal') + '</span>'
+                : '<span class="departure-modal-empty">—</span>';
+              const deltaAvg = offer.delta_avg || '—';
+              const deltaCls = deltaAvg.startsWith('-') ? 'delta-drop' : (deltaAvg.startsWith('+') ? 'delta-up' : 'delta-flat');
+              const actions = [];
+              if (offer.chart_href) {
+                actions.push('<a class="departure-offers-link secondary" href="' + escapeHtml(offer.chart_href) + '" target="_blank" rel="noopener">График</a>');
+              }
+              if (offer.offer_url) {
+                actions.push('<a class="departure-offers-link" href="' + escapeHtml(offer.offer_url) + '" target="_blank" rel="noopener">Оффер</a>');
+              }
+              const actionsHtml = actions.length
+                ? '<div class="departure-offers-actions">' + actions.join('') + '</div>'
                 : '<span class="departure-modal-empty">—</span>';
               return '<tr>'
                 + '<td><strong>' + escapeHtml(offer.hotel_name) + '</strong>'
                 + (offer.dates ? '<br><span style="color:#64748b;font-size:.78rem;">' + escapeHtml(offer.dates) + '</span>' : '')
                 + '</td>'
                 + '<td class="price">' + Math.round(Number(offer.price || 0)) + ' PLN</td>'
-                + '<td>' + link + '</td>'
+                + '<td>' + dealHtml + '</td>'
+                + '<td class="' + deltaCls + '">' + escapeHtml(deltaAvg) + '</td>'
+                + '<td>' + actionsHtml + '</td>'
                 + '</tr>';
             }).join('');
-            bodyEl.innerHTML = '<table class="departure-offers-table"><thead><tr><th>Отель</th><th>Цена</th><th></th></tr></thead><tbody>' + rows + '</tbody></table>';
+            bodyEl.innerHTML = '<table class="departure-offers-table"><thead><tr><th>Отель</th><th>Цена</th><th>Deal</th><th>Δ ср.</th><th>Ссылки</th></tr></thead><tbody>' + rows + '</tbody></table>';
           }
 
           modal.classList.add('open');
