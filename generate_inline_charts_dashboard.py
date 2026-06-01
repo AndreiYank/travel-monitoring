@@ -16,6 +16,54 @@ from departure_analytics import build_cohort_snapshots, build_hot_departure_hist
 from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
 
 
+def _merge_departure_cohorts(*frames: pd.DataFrame) -> pd.DataFrame:
+    parts = [frame for frame in frames if frame is not None and not frame.empty]
+    if not parts:
+        return pd.DataFrame()
+    merged = pd.concat(parts, ignore_index=True, sort=False)
+    key_cols = ["run_started_at", "departure_key"]
+    if all(col in merged.columns for col in key_cols):
+        merged = merged.drop_duplicates(subset=key_cols, keep="last")
+    return merged
+
+
+def _prepare_departure_cohorts(df: pd.DataFrame) -> pd.DataFrame:
+    if df.empty:
+        return df
+    work = df.copy()
+    work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
+    work = work.dropna(subset=["_run_ts"])
+    for col in [
+        "hot_score", "hotel_count", "below_10000_count", "days_to_departure",
+        "min_price", "p10_price", "median_price", "p10_change_pct",
+        "median_change_pct", "min_change_pct", "hotel_count_delta",
+    ]:
+        if col in work.columns:
+            work[col] = pd.to_numeric(work[col], errors="coerce")
+    work = work[work["days_to_departure"].fillna(9999) >= 0]
+    return work
+
+
+def _load_departure_cohort_frames(data_dir: str, data_file: str):
+    """Fresh cohorts for nearest cards; merged cohorts for hot history."""
+    cohorts_path = os.path.join(data_dir, "departure_cohorts.csv")
+    offers_path = os.path.join(data_dir, "departure_offers.csv")
+
+    travel_cohorts = pd.DataFrame()
+    if os.path.exists(data_file):
+        travel_cohorts = build_cohort_snapshots(load_departure_offers(data_file))
+
+    fresh_cohorts = pd.DataFrame()
+    if os.path.exists(cohorts_path):
+        fresh_cohorts = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
+    elif os.path.exists(offers_path):
+        fresh_cohorts = build_cohort_snapshots(load_departure_offers(offers_path))
+
+    current_cohorts = fresh_cohorts if not fresh_cohorts.empty else travel_cohorts
+    history_cohorts = _merge_departure_cohorts(travel_cohorts, fresh_cohorts)
+    return current_cohorts, history_cohorts
+
+
 def _parse_price_ceiling(display_price_ceiling):
     if display_price_ceiling is None:
         return None
@@ -2492,22 +2540,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     departure_history_html = ""
     try:
         data_dir = os.path.dirname(data_file) or "."
-        cohorts_path = os.path.join(data_dir, "departure_cohorts.csv")
-        offers_path = os.path.join(data_dir, "departure_offers.csv")
-        if os.path.exists(cohorts_path):
-            departure_cohorts = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
-        else:
-            source_path = offers_path if os.path.exists(offers_path) else data_file
-            departure_cohorts = build_cohort_snapshots(load_departure_offers(source_path))
+        current_cohorts, history_cohorts = _load_departure_cohort_frames(data_dir, data_file)
 
-        if not departure_cohorts.empty:
-            work = departure_cohorts.copy()
-            work['_run_ts'] = pd.to_datetime(work['run_started_at'], errors='coerce', utc=True)
-            work = work.dropna(subset=['_run_ts'])
-            for col in ['hot_score', 'hotel_count', 'below_10000_count', 'days_to_departure', 'min_price', 'p10_price', 'median_price', 'p10_change_pct', 'median_change_pct', 'min_change_pct', 'hotel_count_delta']:
-                if col in work.columns:
-                    work[col] = pd.to_numeric(work[col], errors='coerce')
-            work = work[work['days_to_departure'].fillna(9999) >= 0]
+        if not current_cohorts.empty or not history_cohorts.empty:
+            history_source = history_cohorts if not history_cohorts.empty else current_cohorts
+            current_source = current_cohorts if not current_cohorts.empty else history_cohorts
+            work = _prepare_departure_cohorts(history_source)
+            current_work = _prepare_departure_cohorts(current_source)
 
             def _region_label(value):
                 return str(value or 'region').replace('-', ' ').title()
@@ -2531,7 +2570,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     return "вылет завтра"
                 return f"вылет через {days} дн."
 
-            latest_dep_ts = work['_run_ts'].max() if not work.empty else None
+            latest_dep_ts = current_work['_run_ts'].max() if not current_work.empty else None
             hot_history = build_hot_departure_history(work)
             history_rows_html = ""
             for item in hot_history[:8]:
@@ -2607,7 +2646,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </div>
         </details>
                 """
-            latest_departures = work[work['_run_ts'] == latest_dep_ts].copy() if latest_dep_ts is not None else pd.DataFrame()
+            latest_departures = current_work[current_work['_run_ts'] == latest_dep_ts].copy() if latest_dep_ts is not None else pd.DataFrame()
             latest_departures = latest_departures[latest_departures['hotel_count'].fillna(0) >= 2]
             latest_departures = latest_departures[latest_departures['days_to_departure'].fillna(9999) <= 8]
             nearby_departures_count = int(latest_departures['departure_key'].nunique()) if not latest_departures.empty else 0
@@ -6439,7 +6478,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(html_template)
     
-    print(f"✅ Дашборд с встроенными графиками сгенерирован: index.html")
+    print(f"✅ Дашборд с встроенными графиками сгенерирован: {output_file}")
     print(f"📊 Статистика: {total_offers} наблюдений, {unique_hotels} отелей в истории, {current_table_hotels} актуально в таблице")
     print(f"💰 Цены: {history_min_price:.0f} - {history_max_price:.0f} PLN (средняя: {avg_price:.0f} PLN)")
     print(f"📈 Изменения цен: {len(decreases_48h) + len(increases_48h)} отелей за 48ч")
