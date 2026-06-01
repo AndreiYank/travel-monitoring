@@ -207,18 +207,6 @@ class PriceAlertManagerV2:
                 unique_suffix=f"{price_change_pct:+.1f}",
             )
 
-        for hotel_name in sorted(set(curr_zone.keys()) - set(prev_zone.keys())):
-            self._append_alert(
-                changes,
-                hotel_name=hotel_name,
-                old_price=curr_history.get(hotel_name),
-                new_price=curr_zone[hotel_name],
-                alert_type='zone_entry',
-                curr_run=curr_run,
-                threshold_percent=threshold_percent,
-                unique_suffix='zone_in',
-            )
-
         for hotel_name in sorted(set(prev_zone.keys()) - set(curr_zone.keys())):
             last_zone_price = prev_zone[hotel_name]
             raw_price = curr_history.get(hotel_name)
@@ -312,11 +300,6 @@ class PriceAlertManagerV2:
             comebacks = self.find_premium_comeback_between_runs(
                 prev_run, curr_run, threshold_percent
             )
-            comeback_hotels = {c['hotel_name'] for c in comebacks}
-            changes = [
-                c for c in changes
-                if not (c['alert_type'] == 'zone_entry' and c['hotel_name'] in comeback_hotels)
-            ]
             all_changes.extend(changes)
             all_changes.extend(comebacks)
 
