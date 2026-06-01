@@ -1595,9 +1595,11 @@ class TravelPriceMonitor:
             
             # Обрабатываем все изменения и получаем только новые алерты
             new_alerts = alert_manager.process_all_changes()
-            
-            # Создаем отчет об алертах
-            report = alert_manager.create_alert_report()
+
+            # Отчёт из уже посчитанных изменений — без повторного scan
+            report = alert_manager.create_alert_report(
+                all_changes=alert_manager._last_all_changes,
+            )
             
             # Логируем новые алерты
             if new_alerts:
