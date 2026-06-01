@@ -12,6 +12,7 @@ from typing import Any, Dict, List
 import pandas as pd
 
 from departure_identity import DEPARTURE_FIELDS, build_departure_identity
+from departure_airports import hub_regions_subtitle, parse_hub_departure_key, turkey_hub_label, turkey_hub_regions
 
 
 BASE_OFFER_FIELDS = [
@@ -238,6 +239,23 @@ def _offer_payload(row: pd.Series) -> Dict[str, Any]:
     }
 
 
+def _offers_for_departure_key(work: pd.DataFrame, departure_key: str) -> pd.DataFrame:
+    hub = parse_hub_departure_key(departure_key)
+    if hub:
+        regions = turkey_hub_regions(hub["hub_id"])
+        mask = (
+            work["country"].fillna("").astype(str).str.lower().eq(hub["country"])
+            & work["region"].fillna("").astype(str).str.lower().isin(regions)
+            & work["departure_date"].fillna("").astype(str).eq(hub["departure_date"])
+            & work["return_date"].fillna("").astype(str).eq(hub["return_date"])
+            & work["nights"].fillna("").astype(str).eq(str(hub["nights"]))
+            & work["origin_scope"].fillna("").astype(str).eq(hub["origin_scope"])
+            & work["pax_profile"].fillna("").astype(str).eq(hub["pax_profile"])
+        )
+        return work[mask].copy()
+    return work[work["departure_key"].fillna("").astype(str).eq(departure_key)].copy()
+
+
 def build_departure_offers_index(
     df: pd.DataFrame,
     departure_keys: List[str],
@@ -252,14 +270,17 @@ def build_departure_offers_index(
     work = assign_scrape_runs(df)
     work["price"] = pd.to_numeric(work["price"], errors="coerce")
     work = work.dropna(subset=["price"])
-    work = work[work["departure_key"].fillna("").astype(str).isin(keys)].copy()
     if work.empty:
         return {}
 
     work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
     index: Dict[str, Dict[str, Any]] = {}
 
-    for departure_key, grp in work.groupby("departure_key", sort=False):
+    for departure_key in keys:
+        grp = _offers_for_departure_key(work, departure_key)
+        if grp.empty:
+            continue
+
         preferred = preferred_runs.get(departure_key)
         if preferred:
             run_grp = grp[grp["run_started_at"].astype(str) == str(preferred)]
@@ -284,9 +305,18 @@ def build_departure_offers_index(
             .sort_values("price")
         )
         first = run_grp.iloc[0]
+        hub = parse_hub_departure_key(departure_key)
+        region_label = str(first.get("region") or "")
+        if hub:
+            regions = sorted(run_grp["region"].fillna("").astype(str).unique())
+            region_label = turkey_hub_label(hub["hub_id"])
+            subtitle = hub_regions_subtitle(regions)
+        else:
+            subtitle = ""
         index[departure_key] = {
             "departure_key": departure_key,
-            "region": str(first.get("region") or ""),
+            "region": region_label,
+            "hub_subtitle": subtitle,
             "departure_date": str(first.get("departure_date") or ""),
             "return_date": str(first.get("return_date") or ""),
             "nights": int(first["nights"]) if pd.notna(first.get("nights")) else "",

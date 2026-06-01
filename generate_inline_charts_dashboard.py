@@ -18,6 +18,11 @@ from departure_analytics import (
     build_hot_departure_history,
     load_departure_offers,
 )
+from departure_airports import (
+    aggregate_cohorts_by_arrival_airport,
+    hub_regions_subtitle,
+    should_group_by_arrival_airport,
+)
 from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
 
 
@@ -2551,6 +2556,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         if not current_cohorts.empty or not history_cohorts.empty:
             history_source = history_cohorts if not history_cohorts.empty else current_cohorts
             current_source = current_cohorts if not current_cohorts.empty else history_cohorts
+            group_by_airport = should_group_by_arrival_airport(
+                current_source["country"].iloc[0] if not current_source.empty else "",
+                active_filter_id(charts_subdir),
+            )
+            if group_by_airport:
+                current_source = aggregate_cohorts_by_arrival_airport(current_source)
             work = _prepare_departure_cohorts(history_source)
             current_work = _prepare_departure_cohorts(current_source)
 
@@ -2664,8 +2675,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 )
                 active_departures = int(latest_departures['departure_key'].nunique())
                 hot_departures = int((latest_departures['hot_score'].fillna(0) >= 70).sum())
+                active_hubs = active_departures
                 active_regions = int(latest_departures['region'].fillna('').astype(str).nunique())
                 best_p10 = float(latest_departures['p10_price'].min())
+                hub_stats_label = "аэропортов" if group_by_airport else "регионов"
+                hub_stats_value = active_hubs if group_by_airport else active_regions
 
                 def _region_label(value):
                     return str(value or 'region').replace('-', ' ').title()
@@ -2714,8 +2728,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     days_label = _days_until_label(days_left)
                     nights = dep.get('nights')
                     nights_label = f"{int(nights)}н" if pd.notna(nights) and str(nights) != '' else "?н"
-                    region = html_lib.escape(_region_label(dep.get('region')))
+                    region = html_lib.escape(str(dep.get("hub_label") or _region_label(dep.get("region"))))
+                    hub_regions_raw = str(dep.get("hub_regions") or "")
+                    hub_regions_html = ""
+                    if hub_regions_raw:
+                        hub_regions_html = (
+                            f'<div class="departure-hub-resorts">'
+                            f'{html_lib.escape(hub_regions_subtitle(hub_regions_raw.split(",")))}'
+                            f'</div>'
+                        )
                     departure_date = html_lib.escape(str(dep.get('departure_date') or '—'))
+                    return_date = str(dep.get('return_date') or '').strip()
+                    return_label = (
+                        f"→ {html_lib.escape(return_date)}"
+                        if return_date else ''
+                    )
                     delta_bits = [
                         _change_label(dep.get('p10_change_pct'), 'дешёвые 10%'),
                         _change_label(dep.get('median_change_pct'), 'середина'),
@@ -2727,8 +2754,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                             <div class="departure-title">{hot_icon}{region}</div>
                             <span class="departure-status {score_cls}">{status_label}</span>
                         </div>
+                        {hub_regions_html}
                         <div class="departure-facts">
                             <span>{departure_date}</span>
+                            {f'<span>{return_label}</span>' if return_label else ''}
                             <span>{nights_label}</span>
                             <span>{days_label}</span>
                         </div>
@@ -2745,16 +2774,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div class="departures-head">
                 <div>
                     <h3>🛫 Ближайшие вылеты</h3>
-                    <p>Все вылеты на ближайшие 8 дней. Горячие, где цены реально падают, подсвечены огоньком и ярким фоном.</p>
+                    <p>Все вылеты на ближайшие 8 дней.{' В Турции карточка = аэропорт прилёта (не отдельный курорт).' if group_by_airport else ''} Горячие, где цены реально падают, подсвечены огоньком и ярким фоном.</p>
                 </div>
                 <div class="departure-mini-stats">
                     <span>{active_departures} активных</span>
                     <span>{hot_departures} горячих</span>
-                    <span>{active_regions} регионов</span>
+                    <span>{hub_stats_value} {hub_stats_label}</span>
                     <span>лучшие 10% от {best_p10:.0f} PLN</span>
                 </div>
             </div>
+<<<<<<< feature/departure-hotel-offers
+            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом. Нажмите на карточку — список отелей.</div>
+=======
             <div class="departure-legend">Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом. Нажмите на карточку — список отелей.</div>
+>>>>>>> main
             <div class="departure-grid">{rows_html}</div>
         </div>
                 """
@@ -3674,6 +3707,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             -webkit-line-clamp: 2;
             -webkit-box-orient: vertical;
             line-height: 1.12;
+        }}
+        .departure-hub-resorts {{
+            font-size: .68rem;
+            color: var(--text-muted);
+            line-height: 1.35;
+            font-weight: 700;
         }}
         .departure-facts {{
             display: flex;
@@ -6740,6 +6779,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const nights = payload.nights ? payload.nights + ' ночей' : '';
           titleEl.textContent = region + ' · ' + (payload.departure_date || '—');
           metaEl.textContent = [
+<<<<<<< feature/departure-hotel-offers
+            payload.hub_subtitle || '',
+=======
+>>>>>>> main
             nights,
             payload.offers.length + ' отелей',
             payload.run_started_at ? ('снимок ' + String(payload.run_started_at).slice(0, 16)) : ''
