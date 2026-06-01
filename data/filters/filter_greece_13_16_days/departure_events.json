@@ -1,3 +1,64 @@
 {
-  "events": []
+  "events": [
+    {
+      "event_time": "2026-06-01T08:51:23+0000",
+      "departure_key": "grecja|kreta-wschodnia|2026-06-14|2026-06-28|14|Warszawa - Okęcie|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "grecja",
+      "region": "kreta-wschodnia",
+      "departure_date": "2026-06-14",
+      "return_date": "2026-06-28",
+      "nights": 14,
+      "days_to_departure": 13,
+      "old_min_price": 18157.0,
+      "new_min_price": 12357.0,
+      "min_drop_pct": -31.94,
+      "p10_drop_pct": -28.42,
+      "median_drop_pct": -14.32,
+      "hotel_count": 3,
+      "hotel_delta": 2,
+      "hot_score": 0
+    },
+    {
+      "event_time": "2026-06-01T08:51:23+0000",
+      "departure_key": "grecja|rodos|2026-06-12|2026-06-26|14|Rzeszów|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "grecja",
+      "region": "rodos",
+      "departure_date": "2026-06-12",
+      "return_date": "2026-06-26",
+      "nights": 14,
+      "days_to_departure": 11,
+      "old_min_price": 12814.0,
+      "new_min_price": 11654.0,
+      "min_drop_pct": -9.05,
+      "p10_drop_pct": -6.54,
+      "median_drop_pct": -0.53,
+      "hotel_count": 4,
+      "hotel_delta": 1,
+      "hot_score": 0
+    },
+    {
+      "event_time": "2026-06-01T08:51:23+0000",
+      "departure_key": "grecja|zakynthos|2026-06-12|2026-06-26|14|Katowice|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "grecja",
+      "region": "zakynthos",
+      "departure_date": "2026-06-12",
+      "return_date": "2026-06-26",
+      "nights": 14,
+      "days_to_departure": 11,
+      "old_min_price": 15657.0,
+      "new_min_price": 15657.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": -1.38,
+      "median_drop_pct": -6.34,
+      "hotel_count": 3,
+      "hotel_delta": 1,
+      "hot_score": 0
+    }
+  ]
 }

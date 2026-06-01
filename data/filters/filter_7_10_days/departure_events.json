@@ -1,3 +1,44 @@
 {
-  "events": []
+  "events": [
+    {
+      "event_time": "2026-06-01T08:42:03+0000",
+      "departure_key": "egipt|marsa-alam|2026-06-05|2026-06-12|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-06-05",
+      "return_date": "2026-06-12",
+      "nights": 7,
+      "days_to_departure": 4,
+      "old_min_price": 7257.0,
+      "new_min_price": 5997.0,
+      "min_drop_pct": -17.36,
+      "p10_drop_pct": -14.16,
+      "median_drop_pct": -2.7,
+      "hotel_count": 4,
+      "hotel_delta": 2,
+      "hot_score": 76
+    },
+    {
+      "event_time": "2026-06-01T08:42:03+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-06-21|2026-06-28|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-06-21",
+      "return_date": "2026-06-28",
+      "nights": 7,
+      "days_to_departure": 20,
+      "old_min_price": 9017.0,
+      "new_min_price": 6046.0,
+      "min_drop_pct": -32.95,
+      "p10_drop_pct": -26.03,
+      "median_drop_pct": -6.42,
+      "hotel_count": 6,
+      "hotel_delta": 2,
+      "hot_score": 0
+    }
+  ]
 }
