@@ -2783,11 +2783,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <span>лучшие 10% от {best_p10:.0f} PLN</span>
                 </div>
             </div>
-<<<<<<< feature/departure-hotel-offers
             <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом. Нажмите на карточку — список отелей.</div>
-=======
-            <div class="departure-legend">Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом. Нажмите на карточку — список отелей.</div>
->>>>>>> main
             <div class="departure-grid">{rows_html}</div>
         </div>
                 """
@@ -6779,10 +6775,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const nights = payload.nights ? payload.nights + ' ночей' : '';
           titleEl.textContent = region + ' · ' + (payload.departure_date || '—');
           metaEl.textContent = [
-<<<<<<< feature/departure-hotel-offers
             payload.hub_subtitle || '',
-=======
->>>>>>> main
             nights,
             payload.offers.length + ' отелей',
             payload.run_started_at ? ('снимок ' + String(payload.run_started_at).slice(0, 16)) : ''
