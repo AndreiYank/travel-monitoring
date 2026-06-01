@@ -370,6 +370,11 @@ def _metric_card(value_html, label, tip=""):
     )
 
 
+def _should_show_alert(alert) -> bool:
+    alert_type = alert.get('alert_type') or alert.get('type') or ''
+    return alert_type != 'zone_entry'
+
+
 def _alert_is_current(alert, table_prices, tolerance=2.0):
     """Alert is current if the hotel is in the last run at the alert's new price."""
     hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
@@ -2208,6 +2213,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     # Сортируем по времени создания (created_at) если есть, иначе по timestamp
     alerts.sort(key=lambda a: parse_iso(a.get('created_at') or a.get('timestamp') or a.get('time') or ''), reverse=True)
+    alerts = [a for a in alerts if _should_show_alert(a)]
 
     # Загружаем карту изображений (если есть)
     images_map = {}
