@@ -7,9 +7,15 @@ import argparse
 import csv
 import json
 import os
-from typing import Any, Dict, List
+from typing import Any, Dict, List, Tuple
 
 import pandas as pd
+
+# Minimum shared hotels between consecutive runs to trust a move signal.
+MIN_COMMON_HOTELS = 8
+# Cheap tier = mean of the bottom bucket (min 3 hotels, ~25% of the common set).
+CHEAP_TIER_MIN_HOTELS = 3
+CHEAP_TIER_SHARE = 0.25
 
 from departure_identity import DEPARTURE_FIELDS, build_departure_identity
 from departure_airports import hub_regions_subtitle, parse_hub_departure_key, turkey_hub_label, turkey_hub_regions
@@ -57,8 +63,27 @@ COHORT_FIELDS = [
     "p10_change_pct",
     "median_change_pct",
     "hotel_count_delta",
+    "common_hotel_count",
     "hot_score",
 ]
+
+
+def cheap_tier_bucket_size(hotel_count: Any) -> int:
+    try:
+        n = int(hotel_count or 0)
+    except (TypeError, ValueError):
+        return 0
+    if n < MIN_COMMON_HOTELS:
+        return 0
+    return max(CHEAP_TIER_MIN_HOTELS, min(n, int(round(n * CHEAP_TIER_SHARE))))
+
+
+def cheap_tier_label(common_hotel_count: Any) -> str:
+    """UI label for the low-price tier used in run-to-run change."""
+    bucket = cheap_tier_bucket_size(common_hotel_count)
+    if bucket <= 0:
+        return "нижний сегмент"
+    return f"нижние {bucket}"
 
 
 def load_departure_offers(path: str) -> pd.DataFrame:
@@ -106,6 +131,13 @@ def _hot_score(row: Dict[str, Any]) -> int:
         return 0
 
     try:
+        common_n = int(row.get("common_hotel_count") or 0)
+    except (TypeError, ValueError):
+        common_n = 0
+    if common_n < MIN_COMMON_HOTELS:
+        return 0
+
+    try:
         p10_change = float(row.get("p10_change_pct") or 0)
     except (TypeError, ValueError):
         p10_change = 0
@@ -118,9 +150,12 @@ def _hot_score(row: Dict[str, Any]) -> int:
     except (TypeError, ValueError):
         min_change = 0
 
+    cheap_tier_drop = (
+        abs(p10_change) * 4.5 if p10_change <= -5.0 else 0
+    )
     best_drop = max(
         abs(median_change) * 6.0 if median_change <= -3.0 else 0,
-        abs(p10_change) * 4.5 if p10_change <= -5.0 else 0,
+        cheap_tier_drop,
         abs(min_change) * 2.0 if min_change <= -8.0 else 0,
     )
     if best_drop <= 0:
@@ -145,7 +180,70 @@ def _hot_score(row: Dict[str, Any]) -> int:
     return min(100, score)
 
 
-def _add_change_columns(cohorts: pd.DataFrame) -> pd.DataFrame:
+def _cheap_tier_price(prices: pd.Series) -> float:
+    bucket = cheap_tier_bucket_size(len(prices))
+    if bucket <= 0:
+        return float(prices.median())
+    return float(prices.nsmallest(bucket).mean())
+
+
+def _price_change_pct(prev: float, curr: float) -> float:
+    if prev <= 0:
+        return 0.0
+    return round((curr - prev) / prev * 100.0, 2)
+
+
+def _build_run_hotel_prices(work: pd.DataFrame) -> Dict[Tuple[str, str], pd.Series]:
+    prices_by_run: Dict[Tuple[str, str], pd.Series] = {}
+    if work.empty:
+        return prices_by_run
+    grouped = work.groupby(["departure_key", "run_started_at"], sort=False)
+    for (departure_key, run_started_at), grp in grouped:
+        hotel_prices = (
+            grp.groupby("hotel_name")["price"]
+            .min()
+            .astype(float)
+            .sort_index()
+        )
+        prices_by_run[(str(departure_key), str(run_started_at))] = hotel_prices
+    return prices_by_run
+
+
+def _intersection_changes(prev_prices: pd.Series, curr_prices: pd.Series) -> Dict[str, Any]:
+    common = prev_prices.index.intersection(curr_prices.index)
+    n = len(common)
+    if n < MIN_COMMON_HOTELS:
+        return {
+            "common_hotel_count": n,
+            "prev_min_price": 0.0,
+            "prev_p10_price": 0.0,
+            "prev_median_price": 0.0,
+            "min_change_pct": 0.0,
+            "p10_change_pct": 0.0,
+            "median_change_pct": 0.0,
+        }
+
+    prev = prev_prices.loc[common]
+    curr = curr_prices.loc[common]
+    prev_min = float(prev.min())
+    curr_min = float(curr.min())
+    prev_median = float(prev.median())
+    curr_median = float(curr.median())
+    prev_cheap = _cheap_tier_price(prev)
+    curr_cheap = _cheap_tier_price(curr)
+
+    return {
+        "common_hotel_count": n,
+        "prev_min_price": round(prev_min, 2),
+        "prev_p10_price": round(prev_cheap, 2),
+        "prev_median_price": round(prev_median, 2),
+        "min_change_pct": _price_change_pct(prev_min, curr_min),
+        "p10_change_pct": _price_change_pct(prev_cheap, curr_cheap),
+        "median_change_pct": _price_change_pct(prev_median, curr_median),
+    }
+
+
+def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = None) -> pd.DataFrame:
     if cohorts.empty:
         return cohorts
     work = cohorts.copy()
@@ -153,17 +251,38 @@ def _add_change_columns(cohorts: pd.DataFrame) -> pd.DataFrame:
     work = work.sort_values(["departure_key", "_run_ts"]).reset_index(drop=True)
     grp = work.groupby("departure_key", sort=False)
 
-    def pct_change(col: str) -> pd.Series:
-        prev = grp[col].shift(1)
-        return ((work[col] - prev) / prev * 100.0).where(prev > 0).fillna(0.0)
-
-    work["min_change_pct"] = pct_change("min_price").round(2)
-    work["p10_change_pct"] = pct_change("p10_price").round(2)
-    work["median_change_pct"] = pct_change("median_price").round(2)
-    work["prev_min_price"] = grp["min_price"].shift(1).fillna(0).round(2)
-    work["prev_p10_price"] = grp["p10_price"].shift(1).fillna(0).round(2)
-    work["prev_median_price"] = grp["median_price"].shift(1).fillna(0).round(2)
     work["hotel_count_delta"] = (work["hotel_count"] - grp["hotel_count"].shift(1)).fillna(0).astype(int)
+    work["common_hotel_count"] = 0
+
+    prices_by_run = _build_run_hotel_prices(offers) if offers is not None and not offers.empty else {}
+
+    prev_run_by_key: Dict[str, str] = {}
+    for idx, row in work.iterrows():
+        departure_key = str(row["departure_key"])
+        run_started_at = str(row["run_started_at"])
+        prev_run = prev_run_by_key.get(departure_key)
+        if prev_run:
+            prev_prices = prices_by_run.get((departure_key, prev_run))
+            curr_prices = prices_by_run.get((departure_key, run_started_at))
+            if prev_prices is not None and curr_prices is not None:
+                changes = _intersection_changes(prev_prices, curr_prices)
+                for key, value in changes.items():
+                    work.at[idx, key] = value
+            else:
+                work.at[idx, "common_hotel_count"] = 0
+                for col in [
+                    "prev_min_price", "prev_p10_price", "prev_median_price",
+                    "min_change_pct", "p10_change_pct", "median_change_pct",
+                ]:
+                    work.at[idx, col] = 0.0
+        else:
+            for col in [
+                "prev_min_price", "prev_p10_price", "prev_median_price",
+                "min_change_pct", "p10_change_pct", "median_change_pct",
+            ]:
+                work.at[idx, col] = 0.0
+        prev_run_by_key[departure_key] = run_started_at
+
     work["hot_score"] = work.apply(lambda row: _hot_score(row.to_dict()), axis=1)
     return work.drop(columns=["_run_ts"])
 
@@ -223,9 +342,10 @@ def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
         row["prev_p10_price"] = 0.0
         row["prev_median_price"] = 0.0
         row["hotel_count_delta"] = 0
+        row["common_hotel_count"] = 0
         row["hot_score"] = 0
         rows.append(row)
-    return _add_change_columns(pd.DataFrame(rows, columns=COHORT_FIELDS))
+    return _add_change_columns(pd.DataFrame(rows, columns=COHORT_FIELDS), work)
 
 
 def _offer_payload(row: pd.Series) -> Dict[str, Any]:
@@ -376,15 +496,18 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
 
         late_window = grp["days_to_departure"].fillna(9999) <= 7
         cheap_enough = grp["p10_price"].fillna(float("inf")) <= 10000
+        stable_common = grp["common_hotel_count"].fillna(0) >= MIN_COMMON_HOTELS
         moderate_drop = (
-            (grp["hotel_count"].fillna(0) >= 3)
+            stable_common
+            & (grp["hotel_count"].fillna(0) >= 3)
             & (
                 (grp["p10_change_pct"].fillna(0) <= -10)
                 | (grp["median_change_pct"].fillna(0) <= -8)
             )
         )
         strong_drop = (
-            (grp["hotel_count"].fillna(0) >= 2)
+            stable_common
+            & (grp["hotel_count"].fillna(0) >= 2)
             & (
                 (grp["p10_change_pct"].fillna(0) <= -15)
                 | (grp["median_change_pct"].fillna(0) <= -12)
@@ -472,7 +595,8 @@ def _event_from_pair(departure_key: str, prev: Dict[str, Any], curr: Dict[str, A
 
     is_drop = min_pct <= -8.0 or p10_pct <= -8.0 or median_pct <= -5.0
     is_broad = int(curr.get("hotel_count") or 0) >= 3
-    if not (is_drop and is_broad):
+    is_stable = int(curr.get("common_hotel_count") or 0) >= MIN_COMMON_HOTELS
+    if not (is_drop and is_broad and is_stable):
         return None
 
     days = curr.get("days_to_departure")

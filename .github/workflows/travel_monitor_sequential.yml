@@ -147,6 +147,7 @@ jobs:
           mkdir -p site/hotel-charts
           mkdir -p site/data
 
+          cp -f favicon.svg site/favicon.svg
           cp -f index.html site/index.html
           cp -f index_filter_7_10_days.html site/index_filter_7_10_days.html
           cp -f index_filter_13_16_days.html site/index_filter_13_16_days.html
