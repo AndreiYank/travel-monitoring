@@ -275,14 +275,26 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
             # История — только уже наступившие вылеты; будущие остаются в текущем блоке.
             continue
 
-        hot_mask = (
-            (grp["days_to_departure"].fillna(9999) <= 7)
-            & (grp["hotel_count"].fillna(0) >= 3)
-            & (grp["p10_price"].fillna(float("inf")) <= 10000)
+        late_window = grp["days_to_departure"].fillna(9999) <= 7
+        cheap_enough = grp["p10_price"].fillna(float("inf")) <= 10000
+        moderate_drop = (
+            (grp["hotel_count"].fillna(0) >= 3)
             & (
                 (grp["p10_change_pct"].fillna(0) <= -10)
                 | (grp["median_change_pct"].fillna(0) <= -8)
             )
+        )
+        strong_drop = (
+            (grp["hotel_count"].fillna(0) >= 2)
+            & (
+                (grp["p10_change_pct"].fillna(0) <= -15)
+                | (grp["median_change_pct"].fillna(0) <= -12)
+            )
+        )
+        hot_mask = (
+            late_window
+            & cheap_enough
+            & (moderate_drop | strong_drop)
         )
         if not hot_mask.any():
             continue
