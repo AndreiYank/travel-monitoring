@@ -161,6 +161,26 @@
       "hot_score": 0
     },
     {
+      "event_time": "2026-06-01T15:00:19+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "nights": 7,
+      "days_to_departure": 6,
+      "old_min_price": 7989.0,
+      "new_min_price": 6533.0,
+      "min_drop_pct": -18.23,
+      "p10_drop_pct": -16.68,
+      "median_drop_pct": -13.63,
+      "hotel_count": 25,
+      "hotel_delta": 20,
+      "hot_score": 90
+    },
+    {
       "event_time": "2026-06-01T11:14:21+0000",
       "departure_key": "egipt|sharm-el-sheikh|2026-06-14|2026-06-21|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "mass_price_drop",
