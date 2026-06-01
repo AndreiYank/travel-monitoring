@@ -12,7 +12,12 @@ import re
 import html as html_lib
 from urllib.parse import urlparse, parse_qs
 from purchase_timing_analysis import analyze_purchase_timing
-from departure_analytics import build_cohort_snapshots, build_hot_departure_history, load_departure_offers
+from departure_analytics import (
+    build_cohort_snapshots,
+    build_departure_offers_index,
+    build_hot_departure_history,
+    load_departure_offers,
+)
 from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
 
 
@@ -2538,6 +2543,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # потому что курорты одного региона прилетают в один аэропорт.
     departure_block_html = ""
     departure_history_html = ""
+    departure_offers_json = "{}"
     try:
         data_dir = os.path.dirname(data_file) or "."
         current_cohorts, history_cohorts = _load_departure_cohort_frames(data_dir, data_file)
@@ -2612,7 +2618,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 score = int(item.get('max_hot_score') or 0)
                 hotels = int(item.get('max_hotel_count') or 0)
                 history_rows_html += f"""
-                    <tr>
+                    <tr class="departure-history-row" data-departure-key="{html_lib.escape(str(item.get('departure_key') or ''))}" role="button" tabindex="0" title="Показать отели по этому вылету">
                         <td><strong>{region}</strong><br><span>{dep_date} · {nights_label}</span></td>
                         <td><strong>{best_days_label}</strong></td>
                         <td><strong>{html_lib.escape(drop_text)}</strong>{drop_sub_html}<br><span>{html_lib.escape(str(item.get('best_seen_at') or ''))[:16]}</span></td>
@@ -2628,7 +2634,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <span class="fold-chevron">⌄</span>
             </summary>
             <div class="fold-content">
-                <p class="departure-history-hint">Архив уже наступивших вылетов, где за последнюю неделю до старта заметно падали цены. «Дешёвые 10%» — уровень нижних 10% предложений, «середина» — типичная цена по вылету.</p>
+                <p class="departure-history-hint">Архив уже наступивших вылетов, где за последнюю неделю до старта заметно падали цены. Нажмите на строку — список отелей. «Дешёвые 10%» — уровень нижних 10% предложений, «середина» — типичная цена по вылету.</p>
                 <div class="table-container">
                     <table class="hotels-table departure-history-table">
                         <thead>
@@ -2716,7 +2722,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     ]
                     delta_html = ''.join(bit for bit in delta_bits if bit) or '<span class="departure-change muted">без сильного движения</span>'
                     rows_html += f"""
-                    <div class="departure-card{card_hot_cls}">
+                    <div class="departure-card departure-card-clickable{card_hot_cls}" data-departure-key="{html_lib.escape(str(dep.get('departure_key') or ''))}" role="button" tabindex="0" title="Показать отели по этому вылету">
                         <div class="departure-card-head">
                             <div class="departure-title">{hot_icon}{region}</div>
                             <span class="departure-status {score_cls}">{status_label}</span>
@@ -2748,7 +2754,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <span>лучшие 10% от {best_p10:.0f} PLN</span>
                 </div>
             </div>
-            <div class="departure-legend">Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом.</div>
+            <div class="departure-legend">Главное: статус «Горит» появляется только при заметном свежем падении цены перед вылетом. Нажмите на карточку — список отелей.</div>
             <div class="departure-grid">{rows_html}</div>
         </div>
                 """
@@ -2768,6 +2774,32 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div class="departure-legend">Ближайших вылетов в данных сейчас нет.</div>
         </div>
                 """
+
+            departure_keys: list[str] = []
+            preferred_runs: dict[str, str] = {}
+            if latest_dep_ts is not None and not current_work.empty:
+                latest_rows = current_work[current_work["_run_ts"] == latest_dep_ts]
+                if not latest_rows.empty:
+                    latest_run = str(latest_rows.iloc[0].get("run_started_at") or "")
+                    for _, dep in latest_rows.iterrows():
+                        key = str(dep.get("departure_key") or "")
+                        if key:
+                            departure_keys.append(key)
+                            preferred_runs[key] = latest_run
+            for item in hot_history:
+                key = str(item.get("departure_key") or "")
+                if key and key not in preferred_runs:
+                    departure_keys.append(key)
+                    preferred_runs[key] = str(item.get("best_seen_at") or "")
+            if departure_keys:
+                offers_source = os.path.join(data_dir, "departure_offers.csv")
+                if not os.path.exists(offers_source):
+                    offers_source = data_file
+                offers_df = load_departure_offers(offers_source)
+                departure_offers_payload = build_departure_offers_index(
+                    offers_df, departure_keys, preferred_runs
+                )
+                departure_offers_json = json.dumps(departure_offers_payload, ensure_ascii=False)
     except Exception as e:
         print(f"⚠️ Не удалось построить блок вылетов: {e}")
 
@@ -3724,6 +3756,134 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .departure-history-table td span {{
             color: var(--text-muted);
             font-size: .78rem;
+        }}
+        .departure-card-clickable,
+        .departure-history-row {{
+            cursor: pointer;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
+        }}
+        .departure-card-clickable:hover,
+        .departure-card-clickable:focus-visible,
+        .departure-history-row:hover,
+        .departure-history-row:focus-visible {{
+            transform: translateY(-1px);
+            box-shadow: 0 12px 28px rgba(15,23,42,.10);
+            outline: none;
+        }}
+        .departure-card-clickable:focus-visible,
+        .departure-history-row:focus-visible {{
+            border-color: rgba(79,70,229,.45);
+            box-shadow: 0 0 0 3px rgba(79,70,229,.18);
+        }}
+        .departure-history-row:hover td {{
+            background: rgba(79,70,229,.04);
+        }}
+        .departure-modal {{
+            position: fixed;
+            inset: 0;
+            z-index: 1200;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }}
+        .departure-modal.open {{
+            display: flex;
+        }}
+        .departure-modal-backdrop {{
+            position: absolute;
+            inset: 0;
+            background: rgba(15,23,42,.58);
+            backdrop-filter: blur(2px);
+        }}
+        .departure-modal-dialog {{
+            position: relative;
+            width: min(920px, 100%);
+            max-height: min(82vh, 860px);
+            display: flex;
+            flex-direction: column;
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+        }}
+        .departure-modal-header {{
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: .75rem;
+            padding: 1rem 1.1rem .55rem;
+            border-bottom: 1px solid var(--border-soft);
+        }}
+        .departure-modal-header h3 {{
+            margin: 0;
+            font-size: 1.05rem;
+            line-height: 1.25;
+        }}
+        .departure-modal-close {{
+            border: 0;
+            background: rgba(148,163,184,.16);
+            color: #334155;
+            width: 34px;
+            height: 34px;
+            border-radius: 10px;
+            font-size: 1.35rem;
+            line-height: 1;
+            cursor: pointer;
+        }}
+        .departure-modal-meta {{
+            margin: 0;
+            padding: 0 1.1rem .75rem;
+            color: var(--text-muted);
+            font-size: .82rem;
+        }}
+        .departure-modal-body {{
+            overflow: auto;
+            padding: 0 1.1rem 1rem;
+        }}
+        .departure-offers-table {{
+            width: 100%;
+            border-collapse: collapse;
+        }}
+        .departure-offers-table th,
+        .departure-offers-table td {{
+            padding: .55rem .45rem;
+            border-bottom: 1px solid rgba(226,232,240,.9);
+            text-align: left;
+            vertical-align: middle;
+            font-size: .86rem;
+        }}
+        .departure-offers-table th {{
+            position: sticky;
+            top: 0;
+            background: #fff;
+            z-index: 1;
+            font-size: .74rem;
+            text-transform: uppercase;
+            letter-spacing: .03em;
+            color: var(--text-muted);
+        }}
+        .departure-offers-table td.price {{
+            font-weight: 800;
+            white-space: nowrap;
+        }}
+        .departure-offers-link {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: .32rem .62rem;
+            border-radius: 999px;
+            background: var(--gradient-primary);
+            color: #fff;
+            text-decoration: none;
+            font-size: .76rem;
+            font-weight: 700;
+            white-space: nowrap;
+        }}
+        .departure-modal-empty {{
+            padding: 1rem 0;
+            color: var(--text-muted);
+            font-size: .88rem;
         }}
         @media (max-width: 760px) {{
             .departures-head {{ display: block; }}
@@ -5887,6 +6047,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </div>
     </div>
     <div id="hoverThumb" class="hover-thumb"><img id="hoverImg" src="" alt="preview"/></div>
+    <div id="departureOffersModal" class="departure-modal" aria-hidden="true">
+        <div class="departure-modal-backdrop" id="departureModalBackdrop"></div>
+        <div class="departure-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="departureModalTitle">
+            <div class="departure-modal-header">
+                <h3 id="departureModalTitle">Отели по вылету</h3>
+                <button type="button" class="departure-modal-close" id="departureModalClose" aria-label="Закрыть">×</button>
+            </div>
+            <p class="departure-modal-meta" id="departureModalMeta"></p>
+            <div class="departure-modal-body" id="departureModalBody"></div>
+        </div>
+    </div>
 """
 
     # Вставляем скрипт превью слиянием JSON вне f-строки, чтобы избежать конфликтов с фигурными скобками
@@ -6470,6 +6641,106 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         updateTable();
         updateCardsPagination();
       });
+    </script>
+"""
+    html_template += """
+    <script>
+      (function(){
+        const departureOffers = """ + departure_offers_json + """;
+
+        function regionLabel(value) {
+          return String(value || 'region').replace(/-/g, ' ').replace(/\\b\\w/g, function(c) { return c.toUpperCase(); });
+        }
+
+        function escapeHtml(value) {
+          return String(value || '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
+        }
+
+        function openDepartureOffers(key) {
+          const modal = document.getElementById('departureOffersModal');
+          const titleEl = document.getElementById('departureModalTitle');
+          const metaEl = document.getElementById('departureModalMeta');
+          const bodyEl = document.getElementById('departureModalBody');
+          if (!modal || !titleEl || !metaEl || !bodyEl) return;
+
+          const payload = departureOffers[key];
+          if (!payload) {
+            titleEl.textContent = 'Отели по вылету';
+            metaEl.textContent = 'Для этого вылета пока нет сохранённых предложений.';
+            bodyEl.innerHTML = '<div class="departure-modal-empty">Попробуйте позже — данные появятся после следующих проверок.</div>';
+            modal.classList.add('open');
+            modal.setAttribute('aria-hidden', 'false');
+            return;
+          }
+
+          const region = regionLabel(payload.region);
+          const nights = payload.nights ? payload.nights + ' ночей' : '';
+          titleEl.textContent = region + ' · ' + (payload.departure_date || '—');
+          metaEl.textContent = [
+            nights,
+            payload.offers.length + ' отелей',
+            payload.run_started_at ? ('снимок ' + String(payload.run_started_at).slice(0, 16)) : ''
+          ].filter(Boolean).join(' · ');
+
+          if (!payload.offers.length) {
+            bodyEl.innerHTML = '<div class="departure-modal-empty">Нет предложений для этого вылета в выбранном снимке.</div>';
+          } else {
+            const rows = payload.offers.map(function(offer) {
+              const link = offer.offer_url
+                ? '<a class="departure-offers-link" href="' + escapeHtml(offer.offer_url) + '" target="_blank" rel="noopener">Открыть</a>'
+                : '<span class="departure-modal-empty">—</span>';
+              return '<tr>'
+                + '<td><strong>' + escapeHtml(offer.hotel_name) + '</strong>'
+                + (offer.dates ? '<br><span style="color:#64748b;font-size:.78rem;">' + escapeHtml(offer.dates) + '</span>' : '')
+                + '</td>'
+                + '<td class="price">' + Math.round(Number(offer.price || 0)) + ' PLN</td>'
+                + '<td>' + link + '</td>'
+                + '</tr>';
+            }).join('');
+            bodyEl.innerHTML = '<table class="departure-offers-table"><thead><tr><th>Отель</th><th>Цена</th><th></th></tr></thead><tbody>' + rows + '</tbody></table>';
+          }
+
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
+        }
+
+        function closeDepartureOffers() {
+          const modal = document.getElementById('departureOffersModal');
+          if (!modal) return;
+          modal.classList.remove('open');
+          modal.setAttribute('aria-hidden', 'true');
+        }
+
+        function bindDepartureOfferClicks() {
+          document.querySelectorAll('.departure-card-clickable, .departure-history-row').forEach(function(el) {
+            el.addEventListener('click', function() {
+              const key = el.getAttribute('data-departure-key');
+              if (key) openDepartureOffers(key);
+            });
+            el.addEventListener('keydown', function(event) {
+              if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                const key = el.getAttribute('data-departure-key');
+                if (key) openDepartureOffers(key);
+              }
+            });
+          });
+
+          const closeBtn = document.getElementById('departureModalClose');
+          const backdrop = document.getElementById('departureModalBackdrop');
+          if (closeBtn) closeBtn.addEventListener('click', closeDepartureOffers);
+          if (backdrop) backdrop.addEventListener('click', closeDepartureOffers);
+          document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape') closeDepartureOffers();
+          });
+        }
+
+        document.addEventListener('DOMContentLoaded', bindDepartureOfferClicks);
+      })();
     </script>
   </body>
 </html>
