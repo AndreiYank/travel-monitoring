@@ -19,6 +19,26 @@
       "hotel_count": 23,
       "hotel_delta": 3,
       "hot_score": 0
+    },
+    {
+      "event_time": "2026-06-02T00:10:33+0000",
+      "departure_key": "egipt|hurghada|2026-06-18|2026-06-25|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-18",
+      "return_date": "2026-06-25",
+      "nights": 7,
+      "days_to_departure": 16,
+      "old_min_price": 6755.0,
+      "new_min_price": 6755.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": -0.13,
+      "median_drop_pct": -12.15,
+      "hotel_count": 10,
+      "hotel_delta": -2,
+      "hot_score": 0
     }
   ]
 }
