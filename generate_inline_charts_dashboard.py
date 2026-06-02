@@ -2915,7 +2915,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 key = str(item.get("departure_key") or "")
                 if key and key not in preferred_runs:
                     departure_keys.append(key)
-                    preferred_runs[key] = str(item.get("best_seen_at") or "")
+                    # Archived departures: hotel table = last prices on departure day (D-0).
+                    preferred_runs[key] = str(
+                        item.get("departure_day_at")
+                        or item.get("last_seen_at")
+                        or item.get("best_seen_at")
+                        or ""
+                    )
                 if key:
                     curve_keys.append(key)
             for _, dep in (latest_departures.iterrows() if not latest_departures.empty else []):

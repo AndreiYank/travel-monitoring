@@ -603,6 +603,24 @@ def _offers_for_departure_key(work: pd.DataFrame, departure_key: str) -> pd.Data
     return work[work["departure_key"].fillna("").astype(str).eq(departure_key)].copy()
 
 
+def _departure_day_run_started_at(grp: pd.DataFrame) -> str:
+    """Last scrape on departure day (D-0), else closest pre-departure snapshot."""
+    if grp.empty:
+        return ""
+    work = grp.copy()
+    work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
+    work["days_to_departure"] = pd.to_numeric(work["days_to_departure"], errors="coerce")
+    d0 = work[work["days_to_departure"].fillna(-1) == 0]
+    if not d0.empty:
+        return str(d0.sort_values("_run_ts").iloc[-1]["run_started_at"])
+    before = work[work["days_to_departure"].fillna(9999) >= 0]
+    if not before.empty:
+        min_days = before["days_to_departure"].min()
+        subset = before[before["days_to_departure"] == min_days]
+        return str(subset.sort_values("_run_ts").iloc[-1]["run_started_at"])
+    return str(work.sort_values("_run_ts").iloc[-1]["run_started_at"])
+
+
 def build_departure_offers_index(
     df: pd.DataFrame,
     departure_keys: List[str],
@@ -646,9 +664,21 @@ def build_departure_offers_index(
         if run_grp.empty:
             continue
 
+        # One row per hotel: latest observation in this scrape (not historical min).
+        sort_cols = ["hotel_name"]
+        dedupe_work = run_grp.copy()
+        if "scraped_at" in dedupe_work.columns:
+            dedupe_work["_obs_ts"] = pd.to_datetime(
+                dedupe_work["scraped_at"], errors="coerce", utc=True
+            )
+            sort_cols.append("_obs_ts")
+        elif "_run_ts" in dedupe_work.columns:
+            sort_cols.append("_run_ts")
+        else:
+            sort_cols.append("price")
         deduped = (
-            run_grp.sort_values("price")
-            .drop_duplicates(subset=["hotel_name"], keep="first")
+            dedupe_work.sort_values(sort_cols)
+            .drop_duplicates(subset=["hotel_name"], keep="last")
             .sort_values("price")
         )
         first = run_grp.iloc[0]
@@ -839,6 +869,7 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
         best = ranked.sort_values(["_rank_score", "p10_price"], ascending=[False, True]).iloc[0]
         first = grp.iloc[0]
         last = grp.iloc[-1]
+        departure_day_at = _departure_day_run_started_at(grp)
         max_p10_drop = float(grp["p10_change_pct"].min()) if "p10_change_pct" in grp else 0.0
         max_median_drop = float(grp["median_change_pct"].min()) if "median_change_pct" in grp else 0.0
 
@@ -852,6 +883,7 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
             "first_seen_at": first.get("run_started_at", ""),
             "last_seen_at": last.get("run_started_at", ""),
             "best_seen_at": best.get("run_started_at", ""),
+            "departure_day_at": departure_day_at,
             "days_to_departure_at_best": int(best["days_to_departure"]) if pd.notna(best.get("days_to_departure")) else "",
             "best_min_price": round(float(best.get("min_price") or 0), 2),
             "best_p10_price": round(float(best.get("p10_price") or 0), 2),
