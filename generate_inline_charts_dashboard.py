@@ -16,7 +16,10 @@ from departure_analytics import (
     build_cohort_snapshots,
     build_departure_offers_index,
     build_hot_departure_history,
+    build_departure_price_curves,
     cheap_tier_label,
+    HOT_DEPARTURE_CHART_DAYS_MAX,
+    load_combined_departure_offers,
     load_departure_offers,
     MIN_COMMON_HOTELS,
     MIN_DEAL_HOTELS,
@@ -2613,6 +2616,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     departure_block_html = ""
     departure_history_html = ""
     departure_offers_json = "{}"
+    departure_price_curves_json = "{}"
     try:
         data_dir = os.path.dirname(data_file) or "."
         current_cohorts, history_cohorts = _load_departure_cohort_frames(data_dir, data_file)
@@ -2709,7 +2713,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <span class="fold-chevron">⌄</span>
             </summary>
             <div class="fold-content">
-                <p class="departure-history-hint">Архив уже наступивших вылетов, где за последнюю неделю до старта заметно падали цены. Нажмите на строку — список отелей. «Дешёвые 10%» — уровень нижних 10% предложений, «середина» — типичная цена по вылету.</p>
+                <p class="departure-history-hint">Архив уже наступивших вылетов, где за последнюю неделю до старта заметно падали цены. Нажмите на строку — график цен D-{HOT_DEPARTURE_CHART_DAYS_MAX}…D-0 и список отелей.</p>
                 <div class="table-container">
                     <table class="hotels-table departure-history-table">
                         <thead>
@@ -2896,6 +2900,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 """
 
             departure_keys: list[str] = []
+            curve_keys: list[str] = []
             preferred_runs: dict[str, str] = {}
             if latest_dep_ts is not None and not current_work.empty:
                 latest_rows = current_work[current_work["_run_ts"] == latest_dep_ts]
@@ -2911,11 +2916,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 if key and key not in preferred_runs:
                     departure_keys.append(key)
                     preferred_runs[key] = str(item.get("best_seen_at") or "")
+                if key:
+                    curve_keys.append(key)
+            for _, dep in (latest_departures.iterrows() if not latest_departures.empty else []):
+                key = str(dep.get("departure_key") or "")
+                if key:
+                    curve_keys.append(key)
+            if curve_keys:
+                departure_price_curves_json = json.dumps(
+                    build_departure_price_curves(work, list(dict.fromkeys(curve_keys))),
+                    ensure_ascii=False,
+                )
             if departure_keys:
-                offers_source = os.path.join(data_dir, "departure_offers.csv")
-                if not os.path.exists(offers_source):
-                    offers_source = data_file
-                offers_df = load_departure_offers(offers_source)
+                offers_df = load_combined_departure_offers(data_dir, data_file)
                 departure_offers_payload = build_departure_offers_index(
                     offers_df, departure_keys, preferred_runs
                 )
@@ -3985,6 +3998,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             padding: 0 1.1rem .75rem;
             color: var(--text-muted);
             font-size: .82rem;
+        }}
+        .departure-modal-chart-title {{
+            margin: 0;
+            padding: 0 1.1rem .35rem;
+            color: var(--text-muted);
+            font-size: .82rem;
+            font-weight: 600;
+        }}
+        .departure-modal-chart {{
+            display: none;
+            width: calc(100% - 2.2rem);
+            min-height: 240px;
+            margin: 0 1.1rem 12px;
+            border: 1px solid rgba(226,232,240,.95);
+            border-radius: 12px;
+            background: #f8fafc;
+            overflow: hidden;
         }}
         .departure-modal-body {{
             overflow: auto;
@@ -6243,6 +6273,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <button type="button" class="departure-modal-close" id="departureModalClose" aria-label="Закрыть">×</button>
             </div>
             <p class="departure-modal-meta" id="departureModalMeta"></p>
+            <p class="departure-modal-chart-title" id="departureModalChartTitle" style="display:none;">Динамика цен по вылету (D-14 → день вылета)</p>
+            <div id="departureModalChart" class="departure-modal-chart" aria-hidden="true"></div>
             <div class="departure-modal-body" id="departureModalBody"></div>
         </div>
     </div>
@@ -6835,6 +6867,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     <script>
       (function(){
         const departureOffers = """ + departure_offers_json + """;
+        const departurePriceCurves = """ + departure_price_curves_json + """;
 
         function regionLabel(value) {
           return String(value || 'region').replace(/-/g, ' ').replace(/\\b\\w/g, function(c) { return c.toUpperCase(); });
@@ -6848,6 +6881,60 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             .replace(/"/g, '&quot;');
         }
 
+        function renderDeparturePriceChart(key) {
+          const chartEl = document.getElementById('departureModalChart');
+          const chartTitleEl = document.getElementById('departureModalChartTitle');
+          if (!chartEl) return;
+          if (window.Plotly) {
+            try { Plotly.purge(chartEl); } catch (e) {}
+          }
+          chartEl.innerHTML = '';
+          const curve = departurePriceCurves[key];
+          if (!curve || !curve.days || !curve.days.length || !window.Plotly) {
+            chartEl.style.display = 'none';
+            if (chartTitleEl) chartTitleEl.style.display = 'none';
+            return;
+          }
+          if (chartTitleEl) chartTitleEl.style.display = 'block';
+          chartEl.style.display = 'block';
+          const x = curve.days.map(function(d) { return 'D-' + d; });
+          const traces = [
+            {
+              x: x,
+              y: curve.median_price,
+              name: 'Типичная (медиана)',
+              mode: 'lines+markers',
+              line: { color: '#2563eb', width: 2.5 },
+              marker: { size: 6 },
+            },
+            {
+              x: x,
+              y: curve.p10_price,
+              name: 'Дешёвый сегмент (~10%)',
+              mode: 'lines+markers',
+              line: { color: '#16a34a', width: 2, dash: 'dot' },
+              marker: { size: 5 },
+            },
+          ];
+          const layout = {
+            margin: { l: 48, r: 16, t: 12, b: 40 },
+            paper_bgcolor: '#f8fafc',
+            plot_bgcolor: '#ffffff',
+            xaxis: {
+              title: 'Дней до вылета',
+              tickangle: -35,
+              gridcolor: '#e2e8f0',
+            },
+            yaxis: {
+              title: 'PLN',
+              gridcolor: '#e2e8f0',
+            },
+            legend: { orientation: 'h', y: 1.12, x: 0 },
+            hovermode: 'x unified',
+          };
+          Plotly.newPlot(chartEl, traces, layout, { responsive: true, displayModeBar: false });
+        }
+
         function openDepartureOffers(key) {
           const modal = document.getElementById('departureOffersModal');
           const titleEl = document.getElementById('departureModalTitle');
@@ -6855,11 +6942,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const bodyEl = document.getElementById('departureModalBody');
           if (!modal || !titleEl || !metaEl || !bodyEl) return;
 
+          renderDeparturePriceChart(key);
+
           const payload = departureOffers[key];
           if (!payload) {
             titleEl.textContent = 'Отели по вылету';
-            metaEl.textContent = 'Для этого вылета пока нет сохранённых предложений.';
-            bodyEl.innerHTML = '<div class="departure-modal-empty">Попробуйте позже — данные появятся после следующих проверок.</div>';
+            metaEl.textContent = 'Для этого вылета нет сохранённых предложений в истории scrape.';
+            bodyEl.innerHTML = '<div class="departure-modal-empty">Архивный вылет: офферы показываются только если они есть в travel_prices / departure_offers. Для будущих вылетов список появится после ближайших проверок.</div>';
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
             return;
@@ -6913,6 +7002,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         function closeDepartureOffers() {
           const modal = document.getElementById('departureOffersModal');
+          const chartEl = document.getElementById('departureModalChart');
+          const chartTitleEl = document.getElementById('departureModalChartTitle');
+          if (chartEl && window.Plotly) {
+            try { Plotly.purge(chartEl); } catch (e) {}
+            chartEl.innerHTML = '';
+            chartEl.style.display = 'none';
+          }
+          if (chartTitleEl) chartTitleEl.style.display = 'none';
           if (!modal) return;
           modal.classList.remove('open');
           modal.setAttribute('aria-hidden', 'true');
