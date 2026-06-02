@@ -19,6 +19,8 @@ from departure_analytics import (
     cheap_tier_label,
     load_departure_offers,
     MIN_COMMON_HOTELS,
+    MIN_DEAL_HOTELS,
+    COHORT_LOOKBACK_TARGET_HOURS,
 )
 from departure_airports import (
     aggregate_cohorts_by_arrival_airport,
@@ -49,6 +51,7 @@ def _prepare_departure_cohorts(df: pd.DataFrame) -> pd.DataFrame:
         "hot_score", "hotel_count", "below_10000_count", "days_to_departure",
         "min_price", "p10_price", "median_price", "p10_change_pct",
         "median_change_pct", "min_change_pct", "hotel_count_delta", "common_hotel_count",
+        "avg_deal_score", "mean_avg_delta_pct", "hot_deal_count", "good_deal_count",
     ]:
         if col in work.columns:
             work[col] = pd.to_numeric(work[col], errors="coerce")
@@ -2807,10 +2810,34 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     delta_bits = []
                     common_n = int(dep.get("common_hotel_count") or 0)
                     if common_n >= MIN_COMMON_HOTELS:
+                        lookback_lbl = f"за {COHORT_LOOKBACK_TARGET_HOURS}ч"
                         delta_bits.extend([
-                            _change_label(dep.get("p10_change_pct"), cheap_tier_label(common_n)),
-                            _change_label(dep.get("median_change_pct"), "середина (общие)"),
+                            _change_label(
+                                dep.get("p10_change_pct"),
+                                f"{cheap_tier_label(common_n)} ({lookback_lbl})",
+                            ),
+                            _change_label(
+                                dep.get("median_change_pct"),
+                                f"середина ({lookback_lbl})",
+                            ),
                         ])
+                    try:
+                        mean_avg_delta = float(dep.get("mean_avg_delta_pct") or 0)
+                    except (TypeError, ValueError):
+                        mean_avg_delta = 0.0
+                    avg_deal = int(dep.get("avg_deal_score") or 0)
+                    hot_deals = int(dep.get("hot_deal_count") or 0)
+                    hotel_n = int(dep.get("hotel_count") or 0)
+                    if hotel_n >= MIN_DEAL_HOTELS and abs(mean_avg_delta) >= 0.5:
+                        delta_bits.append(
+                            _change_label(mean_avg_delta, "ср. по отелям")
+                        )
+                    if hotel_n >= MIN_DEAL_HOTELS and avg_deal >= 65:
+                        deal_cls = "drop" if avg_deal >= 75 else "warm"
+                        delta_bits.append(
+                            f'<span class="departure-change {deal_cls}">Deal {avg_deal}'
+                            f'{f" · {hot_deals} Hot" if hot_deals else ""}</span>'
+                        )
                     delta_html = ''.join(bit for bit in delta_bits if bit) or '<span class="departure-change muted">без сильного движения</span>'
                     rows_html += f"""
                     <div class="departure-card departure-card-clickable{card_hot_cls}" data-departure-key="{html_lib.escape(str(dep.get('departure_key') or ''))}" role="button" tabindex="0" title="Показать отели по этому вылету">
@@ -2847,7 +2874,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <span>лучшие 10% от {best_p10:.0f} PLN</span>
                 </div>
             </div>
-            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}Главное: «Горит» — только при падении цен у ≥{MIN_COMMON_HOTELS} общих отелей между прогонами; нижний сегмент = средняя нижних ~25% (мин. 3 отеля). Нажмите на карточку — список отелей.</div>
+            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}«Горит» — падение когорты за ~{COHORT_LOOKBACK_TARGET_HOURS}ч (≥{MIN_COMMON_HOTELS} общих отелей) или сильные Deal/Δ ср. (≥{MIN_DEAL_HOTELS} отелей). Нажмите на карточку — список отелей.</div>
             <div class="departure-grid">{rows_html}</div>
         </div>
                 """

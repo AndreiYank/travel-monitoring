@@ -7,18 +7,26 @@ import argparse
 import csv
 import json
 import os
-from typing import Any, Dict, List, Tuple
+from datetime import timedelta
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 
 # Minimum shared hotels between consecutive runs to trust a move signal.
 MIN_COMMON_HOTELS = 8
+# Minimum hotels in a departure to score deal-based heat.
+MIN_DEAL_HOTELS = 3
+# Cohort price move: compare to scrape run closest to this many hours ago.
+COHORT_LOOKBACK_TARGET_HOURS = 24
+COHORT_LOOKBACK_MIN_HOURS = 12
+COHORT_LOOKBACK_MAX_HOURS = 36
 # Cheap tier = mean of the bottom bucket (min 3 hotels, ~25% of the common set).
 CHEAP_TIER_MIN_HOTELS = 3
 CHEAP_TIER_SHARE = 0.25
 
 from departure_identity import DEPARTURE_FIELDS, build_departure_identity
 from departure_airports import hub_regions_subtitle, parse_hub_departure_key, turkey_hub_label, turkey_hub_regions
+from hotel_deal_score import compute_hotel_deal_metrics
 
 
 BASE_OFFER_FIELDS = [
@@ -64,6 +72,10 @@ COHORT_FIELDS = [
     "median_change_pct",
     "hotel_count_delta",
     "common_hotel_count",
+    "avg_deal_score",
+    "mean_avg_delta_pct",
+    "hot_deal_count",
+    "good_deal_count",
     "hot_score",
 ]
 
@@ -119,14 +131,29 @@ def assign_scrape_runs(df: pd.DataFrame, gap_minutes: int = 5) -> pd.DataFrame:
     return work
 
 
-def _hot_score(row: Dict[str, Any]) -> int:
-    """Score only the late price-drop signal, not absolute cheapness or breadth."""
+def _proximity_bonus(days_f: float | None) -> int:
+    if days_f is None:
+        return 0
+    if days_f <= 2:
+        return 18
+    if days_f <= 5:
+        return 12
+    if days_f <= 8:
+        return 8
+    return 0
+
+
+def _days_to_departure_float(row: Dict[str, Any]) -> float | None:
     days = row.get("days_to_departure")
     try:
-        days_f = float(days)
+        return float(days)
     except (TypeError, ValueError):
-        days_f = None
+        return None
 
+
+def _hot_score_run_delta(row: Dict[str, Any]) -> int:
+    """Heat from cohort move vs scrape run ~24h ago (stable intersection)."""
+    days_f = _days_to_departure_float(row)
     if days_f is None or days_f < 0 or days_f > 8:
         return 0
 
@@ -150,9 +177,7 @@ def _hot_score(row: Dict[str, Any]) -> int:
     except (TypeError, ValueError):
         min_change = 0
 
-    cheap_tier_drop = (
-        abs(p10_change) * 4.5 if p10_change <= -5.0 else 0
-    )
+    cheap_tier_drop = abs(p10_change) * 4.5 if p10_change <= -5.0 else 0
     best_drop = max(
         abs(median_change) * 6.0 if median_change <= -3.0 else 0,
         cheap_tier_drop,
@@ -161,23 +186,62 @@ def _hot_score(row: Dict[str, Any]) -> int:
     if best_drop <= 0:
         return 0
 
-    proximity_bonus = 0
-    if days_f <= 2:
-        proximity_bonus = 18
-    elif days_f <= 5:
-        proximity_bonus = 12
-    elif days_f <= 8:
-        proximity_bonus = 8
-
-    score = int(round(best_drop + proximity_bonus))
-
-    # If the departure is getting more expensive right now, it may still be
-    # close/cheap, but it should not look like a strong "burning" signal.
+    score = int(round(best_drop + _proximity_bonus(days_f)))
     if p10_change > 1.0 or median_change > 1.0:
         score = min(score, 60)
     if p10_change > 5.0 or median_change > 5.0:
         score = min(score, 45)
     return min(100, score)
+
+
+def _hot_score_deal_aggregate(row: Dict[str, Any]) -> int:
+    """Heat when many hotels on this departure are below their typical price (Deal / Δ ср.)."""
+    days_f = _days_to_departure_float(row)
+    if days_f is None or days_f < 0 or days_f > 8:
+        return 0
+
+    try:
+        hotel_count = int(row.get("hotel_count") or 0)
+    except (TypeError, ValueError):
+        hotel_count = 0
+    if hotel_count < MIN_DEAL_HOTELS:
+        return 0
+
+    avg_deal = float(row.get("avg_deal_score") or 0)
+    mean_delta = float(row.get("mean_avg_delta_pct") or 0)
+    hot_deals = int(row.get("hot_deal_count") or 0)
+    good_deals = int(row.get("good_deal_count") or 0)
+
+    if mean_delta > 3.0 and avg_deal < 55:
+        return 0
+
+    delta_part = 0.0
+    if mean_delta <= -10:
+        delta_part = min(42, abs(mean_delta) * 3.2)
+    elif mean_delta <= -6:
+        delta_part = min(28, abs(mean_delta) * 2.8)
+    elif mean_delta <= -3:
+        delta_part = min(12, abs(mean_delta) * 2.0)
+
+    deal_part = 0.0
+    if avg_deal >= 80:
+        deal_part = min(32, (avg_deal - 55) * 0.9)
+    elif avg_deal >= 70:
+        deal_part = min(22, (avg_deal - 55) * 0.7)
+    elif avg_deal >= 65:
+        deal_part = min(14, (avg_deal - 55) * 0.5)
+
+    share_hot = hot_deals / hotel_count if hotel_count else 0.0
+    share_good = (hot_deals + good_deals) / hotel_count if hotel_count else 0.0
+    breadth_part = min(22, share_hot * 55 + share_good * 12)
+
+    score = int(round(delta_part + deal_part + breadth_part + _proximity_bonus(days_f)))
+    return min(100, score)
+
+
+def _hot_score(row: Dict[str, Any]) -> int:
+    """Run-to-run cohort drop and/or aggregate deal quality on this departure."""
+    return min(100, max(_hot_score_run_delta(row), _hot_score_deal_aggregate(row)))
 
 
 def _cheap_tier_price(prices: pd.Series) -> float:
@@ -191,6 +255,40 @@ def _price_change_pct(prev: float, curr: float) -> float:
     if prev <= 0:
         return 0.0
     return round((curr - prev) / prev * 100.0, 2)
+
+
+def _pick_lookback_run(
+    runs: List[Tuple[pd.Timestamp, str]],
+    curr_ts: pd.Timestamp,
+) -> Optional[str]:
+    """Baseline run closest to ~24h before curr_ts (window 12–36h)."""
+    if not runs or pd.isna(curr_ts):
+        return None
+
+    target = curr_ts - timedelta(hours=COHORT_LOOKBACK_TARGET_HOURS)
+    min_age = timedelta(hours=COHORT_LOOKBACK_MIN_HOURS)
+    max_age = timedelta(hours=COHORT_LOOKBACK_MAX_HOURS)
+
+    candidates: List[Tuple[float, str]] = []
+    for ts, run_id in runs:
+        if pd.isna(ts) or ts >= curr_ts:
+            continue
+        age = curr_ts - ts
+        if age < min_age or age > max_age:
+            continue
+        candidates.append((abs((ts - target).total_seconds()), run_id))
+
+    if candidates:
+        return min(candidates, key=lambda x: x[0])[1]
+
+    older = [
+        (curr_ts - ts, run_id)
+        for ts, run_id in runs
+        if not pd.isna(ts) and ts < curr_ts and curr_ts - ts >= min_age
+    ]
+    if older:
+        return min(older, key=lambda x: x[0])[1]
+    return None
 
 
 def _build_run_hotel_prices(work: pd.DataFrame) -> Dict[Tuple[str, str], pd.Series]:
@@ -243,24 +341,91 @@ def _intersection_changes(prev_prices: pd.Series, curr_prices: pd.Series) -> Dic
     }
 
 
+def _enrich_deal_metrics(cohorts: pd.DataFrame, offers: pd.DataFrame) -> pd.DataFrame:
+    """Per-run deal aggregates for hotels on each departure (same logic as modal Deal Score)."""
+    work = cohorts.copy()
+    for col, default in (
+        ("avg_deal_score", 0),
+        ("mean_avg_delta_pct", 0.0),
+        ("hot_deal_count", 0),
+        ("good_deal_count", 0),
+    ):
+        work[col] = default
+
+    if work.empty or offers.empty:
+        return work
+
+    offer_work = assign_scrape_runs(offers)
+    offer_work["price"] = pd.to_numeric(offer_work["price"], errors="coerce")
+    offer_work = offer_work.dropna(subset=["price"])
+    if offer_work.empty:
+        return work
+
+    hotel_histories = {
+        str(name): grp for name, grp in offer_work.groupby("hotel_name", sort=False)
+    }
+    prices_by_run = _build_run_hotel_prices(offer_work)
+
+    for idx, row in work.iterrows():
+        departure_key = str(row["departure_key"])
+        run_started_at = str(row["run_started_at"])
+        curr_prices = prices_by_run.get((departure_key, run_started_at), {})
+        if len(curr_prices) < MIN_DEAL_HOTELS:
+            continue
+
+        deal_scores: List[int] = []
+        avg_deltas: List[float] = []
+        hot_n = 0
+        good_n = 0
+        for hotel_name, price in curr_prices.items():
+            hist = hotel_histories.get(hotel_name)
+            if hist is None or len(hist) < 2:
+                continue
+            metrics = compute_hotel_deal_metrics(hist, price)
+            deal_scores.append(int(metrics["deal_score"]))
+            avg_deltas.append(float(metrics["avg_delta_pct"]))
+            if metrics["deal_score"] >= 80:
+                hot_n += 1
+            elif metrics["deal_score"] >= 65:
+                good_n += 1
+
+        if not deal_scores:
+            continue
+
+        work.at[idx, "avg_deal_score"] = int(round(sum(deal_scores) / len(deal_scores)))
+        work.at[idx, "mean_avg_delta_pct"] = round(sum(avg_deltas) / len(avg_deltas), 2)
+        work.at[idx, "hot_deal_count"] = hot_n
+        work.at[idx, "good_deal_count"] = good_n
+
+    return work
+
+
 def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = None) -> pd.DataFrame:
     if cohorts.empty:
         return cohorts
     work = cohorts.copy()
     work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
     work = work.sort_values(["departure_key", "_run_ts"]).reset_index(drop=True)
-    grp = work.groupby("departure_key", sort=False)
-
-    work["hotel_count_delta"] = (work["hotel_count"] - grp["hotel_count"].shift(1)).fillna(0).astype(int)
+    work["hotel_count_delta"] = 0
     work["common_hotel_count"] = 0
 
     prices_by_run = _build_run_hotel_prices(offers) if offers is not None and not offers.empty else {}
 
-    prev_run_by_key: Dict[str, str] = {}
+    runs_by_key: Dict[str, List[Tuple[pd.Timestamp, str]]] = {}
+    hotel_count_by_run: Dict[Tuple[str, str], int] = {}
+    for _, row in work.iterrows():
+        departure_key = str(row["departure_key"])
+        run_started_at = str(row["run_started_at"])
+        runs_by_key.setdefault(departure_key, []).append((row["_run_ts"], run_started_at))
+        try:
+            hotel_count_by_run[(departure_key, run_started_at)] = int(row["hotel_count"])
+        except (TypeError, ValueError):
+            hotel_count_by_run[(departure_key, run_started_at)] = 0
+
     for idx, row in work.iterrows():
         departure_key = str(row["departure_key"])
         run_started_at = str(row["run_started_at"])
-        prev_run = prev_run_by_key.get(departure_key)
+        prev_run = _pick_lookback_run(runs_by_key.get(departure_key, []), row["_run_ts"])
         if prev_run:
             prev_prices = prices_by_run.get((departure_key, prev_run))
             curr_prices = prices_by_run.get((departure_key, run_started_at))
@@ -275,14 +440,22 @@ def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = Non
                     "min_change_pct", "p10_change_pct", "median_change_pct",
                 ]:
                     work.at[idx, col] = 0.0
+            prev_hc = hotel_count_by_run.get((departure_key, prev_run))
+            if prev_hc is not None:
+                try:
+                    curr_hc = int(row["hotel_count"])
+                except (TypeError, ValueError):
+                    curr_hc = 0
+                work.at[idx, "hotel_count_delta"] = curr_hc - prev_hc
         else:
             for col in [
                 "prev_min_price", "prev_p10_price", "prev_median_price",
                 "min_change_pct", "p10_change_pct", "median_change_pct",
             ]:
                 work.at[idx, col] = 0.0
-        prev_run_by_key[departure_key] = run_started_at
 
+    if offers is not None and not offers.empty:
+        work = _enrich_deal_metrics(work, offers)
     work["hot_score"] = work.apply(lambda row: _hot_score(row.to_dict()), axis=1)
     return work.drop(columns=["_run_ts"])
 
@@ -343,6 +516,10 @@ def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
         row["prev_median_price"] = 0.0
         row["hotel_count_delta"] = 0
         row["common_hotel_count"] = 0
+        row["avg_deal_score"] = 0
+        row["mean_avg_delta_pct"] = 0.0
+        row["hot_deal_count"] = 0
+        row["good_deal_count"] = 0
         row["hot_score"] = 0
         rows.append(row)
     return _add_change_columns(pd.DataFrame(rows, columns=COHORT_FIELDS), work)
@@ -454,16 +631,10 @@ def build_departure_events(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
     work = work.sort_values(["departure_key", "_run_ts"])
     events: List[Dict[str, Any]] = []
     for departure_key, grp in work.groupby("departure_key", sort=False):
-        prev = None
         for _, row in grp.iterrows():
-            current = row.to_dict()
-            if prev is None:
-                prev = current
-                continue
-            event = _event_from_pair(departure_key, prev, current)
+            event = _event_from_pair(departure_key, {}, row.to_dict())
             if event:
                 events.append(event)
-            prev = current
     return events
 
 
@@ -479,6 +650,7 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
     for col in [
         "hot_score", "days_to_departure", "min_price", "p10_price", "median_price",
         "hotel_count", "below_10000_count", "p10_change_pct", "median_change_pct",
+        "avg_deal_score", "mean_avg_delta_pct", "hot_deal_count", "good_deal_count",
     ]:
         if col in work.columns:
             work[col] = pd.to_numeric(work[col], errors="coerce")
@@ -513,10 +685,15 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
                 | (grp["median_change_pct"].fillna(0) <= -12)
             )
         )
+        deal_signal = (
+            (grp["hotel_count"].fillna(0) >= MIN_DEAL_HOTELS)
+            & (grp["avg_deal_score"].fillna(0) >= 68)
+            & (grp["mean_avg_delta_pct"].fillna(0) <= -5)
+        )
         hot_mask = (
             late_window
             & cheap_enough
-            & (moderate_drop | strong_drop)
+            & (moderate_drop | strong_drop | deal_signal)
         )
         if not hot_mask.any():
             continue
@@ -588,15 +765,28 @@ def _pct(old: Any, new: Any) -> float:
 
 
 def _event_from_pair(departure_key: str, prev: Dict[str, Any], curr: Dict[str, Any]):
-    min_pct = _pct(prev.get("min_price"), curr.get("min_price"))
-    p10_pct = _pct(prev.get("p10_price"), curr.get("p10_price"))
-    median_pct = _pct(prev.get("median_price"), curr.get("median_price"))
-    hotel_delta = int(curr.get("hotel_count") or 0) - int(prev.get("hotel_count") or 0)
+    try:
+        min_pct = float(curr.get("min_change_pct") or 0)
+        p10_pct = float(curr.get("p10_change_pct") or 0)
+        median_pct = float(curr.get("median_change_pct") or 0)
+    except (TypeError, ValueError):
+        min_pct = p10_pct = median_pct = 0.0
+    if min_pct == 0 and p10_pct == 0 and median_pct == 0:
+        min_pct = _pct(prev.get("min_price"), curr.get("min_price"))
+        p10_pct = _pct(prev.get("p10_price"), curr.get("p10_price"))
+        median_pct = _pct(prev.get("median_price"), curr.get("median_price"))
+    hotel_delta = int(curr.get("hotel_count_delta") or 0)
 
     is_drop = min_pct <= -8.0 or p10_pct <= -8.0 or median_pct <= -5.0
     is_broad = int(curr.get("hotel_count") or 0) >= 3
     is_stable = int(curr.get("common_hotel_count") or 0) >= MIN_COMMON_HOTELS
-    if not (is_drop and is_broad and is_stable):
+    cohort_drop = is_drop and is_broad and is_stable
+    deal_drop = (
+        is_broad
+        and float(curr.get("avg_deal_score") or 0) >= 70
+        and float(curr.get("mean_avg_delta_pct") or 0) <= -6
+    )
+    if not (cohort_drop or deal_drop):
         return None
 
     days = curr.get("days_to_departure")
@@ -605,10 +795,10 @@ def _event_from_pair(departure_key: str, prev: Dict[str, Any], curr: Dict[str, A
     except (TypeError, ValueError):
         days_f = None
 
-    event_type = "mass_price_drop"
+    event_type = "deal_quality_surge" if deal_drop and not cohort_drop else "mass_price_drop"
     severity = "medium"
     if days_f is not None and days_f <= 7:
-        event_type = "late_price_dump"
+        event_type = "late_price_dump" if cohort_drop else "late_deal_window"
         severity = "high"
     if int(curr.get("hot_score") or 0) >= 70:
         severity = "high"
