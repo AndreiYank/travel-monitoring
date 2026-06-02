@@ -98,6 +98,26 @@ def cheap_tier_label(common_hotel_count: Any) -> str:
     return f"нижние {bucket}"
 
 
+def load_combined_departure_offers(
+    data_dir: str,
+    travel_prices_file: str | None = None,
+) -> pd.DataFrame:
+    """Raw offers for modals: prefer departure_offers.csv, backfill from travel_prices."""
+    frames: List[pd.DataFrame] = []
+    offers_path = os.path.join(data_dir, "departure_offers.csv")
+    if os.path.exists(offers_path):
+        frames.append(load_departure_offers(offers_path))
+    if travel_prices_file and os.path.exists(travel_prices_file):
+        frames.append(load_departure_offers(travel_prices_file))
+    if not frames:
+        return pd.DataFrame()
+    combined = pd.concat(frames, ignore_index=True, sort=False)
+    dedupe_cols = [c for c in ["hotel_name", "scraped_at", "departure_key", "price"] if c in combined.columns]
+    if dedupe_cols:
+        combined = combined.drop_duplicates(subset=dedupe_cols, keep="first")
+    return combined
+
+
 def load_departure_offers(path: str) -> pd.DataFrame:
     if not os.path.exists(path):
         return pd.DataFrame(columns=BASE_OFFER_FIELDS + DEPARTURE_FIELDS)

@@ -17,6 +17,7 @@ from departure_analytics import (
     build_departure_offers_index,
     build_hot_departure_history,
     cheap_tier_label,
+    load_combined_departure_offers,
     load_departure_offers,
     MIN_COMMON_HOTELS,
     MIN_DEAL_HOTELS,
@@ -2912,10 +2913,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     departure_keys.append(key)
                     preferred_runs[key] = str(item.get("best_seen_at") or "")
             if departure_keys:
-                offers_source = os.path.join(data_dir, "departure_offers.csv")
-                if not os.path.exists(offers_source):
-                    offers_source = data_file
-                offers_df = load_departure_offers(offers_source)
+                offers_df = load_combined_departure_offers(data_dir, data_file)
                 departure_offers_payload = build_departure_offers_index(
                     offers_df, departure_keys, preferred_runs
                 )
@@ -6858,8 +6856,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const payload = departureOffers[key];
           if (!payload) {
             titleEl.textContent = 'Отели по вылету';
-            metaEl.textContent = 'Для этого вылета пока нет сохранённых предложений.';
-            bodyEl.innerHTML = '<div class="departure-modal-empty">Попробуйте позже — данные появятся после следующих проверок.</div>';
+            metaEl.textContent = 'Для этого вылета нет сохранённых предложений в истории scrape.';
+            bodyEl.innerHTML = '<div class="departure-modal-empty">Архивный вылет: офферы показываются только если они есть в travel_prices / departure_offers. Для будущих вылетов список появится после ближайших проверок.</div>';
             modal.classList.add('open');
             modal.setAttribute('aria-hidden', 'false');
             return;
