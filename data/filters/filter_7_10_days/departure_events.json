@@ -21,6 +21,26 @@
       "hot_score": 0
     },
     {
+      "event_time": "2026-06-02T04:48:28+0000",
+      "departure_key": "egipt|hurghada|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "nights": 7,
+      "days_to_departure": 5,
+      "old_min_price": 6267.0,
+      "new_min_price": 5864.0,
+      "min_drop_pct": -6.43,
+      "p10_drop_pct": 0.47,
+      "median_drop_pct": -6.4,
+      "hotel_count": 28,
+      "hotel_delta": -1,
+      "hot_score": 32
+    },
+    {
       "event_time": "2026-06-02T00:10:33+0000",
       "departure_key": "egipt|hurghada|2026-06-18|2026-06-25|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "mass_price_drop",
@@ -38,6 +58,26 @@
       "median_drop_pct": -12.15,
       "hotel_count": 10,
       "hotel_delta": -2,
+      "hot_score": 0
+    },
+    {
+      "event_time": "2026-06-02T04:48:28+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "nights": 7,
+      "days_to_departure": 5,
+      "old_min_price": 6533.0,
+      "new_min_price": 5923.0,
+      "min_drop_pct": -9.34,
+      "p10_drop_pct": 1.0,
+      "median_drop_pct": -0.08,
+      "hotel_count": 19,
+      "hotel_delta": -6,
       "hot_score": 0
     }
   ]
