@@ -1,6 +1,26 @@
 {
   "events": [
     {
+      "event_time": "2026-06-02T18:35:19+0000",
+      "departure_key": "egipt|hurghada|2026-06-04|2026-06-11|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-04",
+      "return_date": "2026-06-11",
+      "nights": 7,
+      "days_to_departure": 2,
+      "old_min_price": "",
+      "new_min_price": 5746.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 17,
+      "hotel_delta": 15,
+      "hot_score": 80
+    },
+    {
       "event_time": "2026-06-02T07:23:13+0000",
       "departure_key": "egipt|hurghada|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_price_dump",
@@ -158,7 +178,7 @@
       "median_drop_pct": -6.91,
       "hotel_count": 9,
       "hotel_delta": -2,
-      "hot_score": 54
+      "hot_score": 53
     },
     {
       "event_time": "2026-06-02T14:46:28+0000",
@@ -182,6 +202,26 @@
     },
     {
       "event_time": "2026-06-02T15:34:30+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-06-21|2026-06-28|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-06-21",
+      "return_date": "2026-06-28",
+      "nights": 7,
+      "days_to_departure": 19,
+      "old_min_price": "",
+      "new_min_price": 4986.0,
+      "min_drop_pct": -8.36,
+      "p10_drop_pct": -7.23,
+      "median_drop_pct": -5.86,
+      "hotel_count": 56,
+      "hotel_delta": 26,
+      "hot_score": 0
+    },
+    {
+      "event_time": "2026-06-02T18:35:19+0000",
       "departure_key": "egipt|sharm-el-sheikh|2026-06-21|2026-06-28|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "mass_price_drop",
       "severity": "medium",
