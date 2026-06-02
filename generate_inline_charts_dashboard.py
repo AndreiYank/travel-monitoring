@@ -15,9 +15,11 @@ from purchase_timing_analysis import analyze_purchase_timing
 from departure_analytics import (
     build_cohort_snapshots,
     build_departure_offers_index,
+    build_departure_hotel_histories,
     build_hot_departure_history,
     build_departure_price_curves,
     cheap_tier_label,
+    departure_status_label,
     HOT_DEPARTURE_CHART_DAYS_MAX,
     load_combined_departure_offers,
     load_departure_offers,
@@ -25,6 +27,7 @@ from departure_analytics import (
     MIN_DEAL_HOTELS,
     COHORT_LOOKBACK_TARGET_HOURS,
 )
+from hotel_deal_score import compute_hotel_deal_metrics
 from departure_airports import (
     aggregate_cohorts_by_arrival_airport,
     hub_regions_subtitle,
@@ -2788,10 +2791,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     score_cls = _score_class(score)
                     card_hot_cls = ' is-hot' if score >= 70 else (' is-warm' if score >= 45 else '')
                     hot_icon = '🔥 ' if score >= 70 else ''
-                    status_label = (
-                        f'🔥 Горит · {score}' if score >= 70
-                        else (f'Снижается · {score}' if score >= 45 else 'Не горит')
-                    )
+                    status_label = departure_status_label(dep)
                     days_left = dep.get('days_to_departure')
                     days_label = _days_until_label(days_left)
                     nights = dep.get('nights')
@@ -2834,7 +2834,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     hotel_n = int(dep.get("hotel_count") or 0)
                     if hotel_n >= MIN_DEAL_HOTELS and abs(mean_avg_delta) >= 0.5:
                         delta_bits.append(
-                            _change_label(mean_avg_delta, "ср. по отелям")
+                            _change_label(mean_avg_delta, "ниже типичной")
                         )
                     if hotel_n >= MIN_DEAL_HOTELS and avg_deal >= 65:
                         deal_cls = "drop" if avg_deal >= 75 else "warm"
@@ -2878,7 +2878,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <span>лучшие 10% от {best_p10:.0f} PLN</span>
                 </div>
             </div>
-            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}«Горит» — падение когорты за ~{COHORT_LOOKBACK_TARGET_HOURS}ч (≥{MIN_COMMON_HOTELS} общих отелей) или сильные Deal/Δ ср. (≥{MIN_DEAL_HOTELS} отелей). Нажмите на карточку — список отелей.</div>
+            <div class="departure-legend">{'Курорты одного аэропорта объединены: Side/Kemer/Alanya/Belek → Анталия (AYT). ' if group_by_airport else ''}«Горит» / «Снижается» — падение когорты за ~{COHORT_LOOKBACK_TARGET_HOURS}ч (≥{MIN_COMMON_HOTELS} отелей). «Выгодно» — отели ниже типичной цены (≥{MIN_DEAL_HOTELS}). В модалке те же Deal и Δ типичной.</div>
             <div class="departure-grid">{rows_html}</div>
         </div>
                 """
@@ -2932,27 +2932,42 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 departure_offers_payload = build_departure_offers_index(
                     offers_df, departure_keys, preferred_runs
                 )
+                departure_hotel_histories = build_departure_hotel_histories(offers_df)
                 for payload in departure_offers_payload.values():
                     for offer in payload.get("offers", []):
                         hotel_name = str(offer.get("hotel_name") or "")
                         offer["chart_href"] = _resolve_chart_href(
                             hotel_name, chart_href_lookup, charts_subdir, slugify
                         )
-                        deal_info = deal_score_by_hotel.get(hotel_name, {})
-                        delta_info = deltas_by_hotel.get(hotel_name)
-                        avg_info = avg_baseline_delta.get(hotel_name)
-                        deal_score = int(deal_info.get("score", 0)) if deal_info else 0
-                        confidence = deal_info.get("confidence", "Low") if deal_info else "Low"
-                        d48_for_badge = float(delta_info[1]) if delta_info is not None else None
-                        d_avg_for_badge = float(avg_info[1]) if avg_info is not None else None
-                        comeback_drop = deal_info.get("comeback_drop_pct") if deal_info else None
+                        hist = departure_hotel_histories.get(hotel_name)
+                        try:
+                            offer_price = float(offer.get("price"))
+                        except (TypeError, ValueError):
+                            offer["deal_has_data"] = False
+                            offer["deal_score"] = None
+                            offer["deal_label"] = ""
+                            offer["deal_class"] = ""
+                            offer["delta_avg"] = "—"
+                            continue
+                        if hist is None or len(hist) < 2:
+                            offer["deal_has_data"] = False
+                            offer["deal_score"] = None
+                            offer["deal_label"] = ""
+                            offer["deal_class"] = ""
+                            offer["delta_avg"] = "—"
+                            continue
+                        metrics = compute_hotel_deal_metrics(hist, offer_price)
+                        deal_score = int(metrics["deal_score"])
+                        confidence = metrics["confidence"]
+                        d_avg = float(metrics["avg_delta_pct"])
                         deal_label, deal_class, _ = classify_deal_badge(
-                            deal_score, confidence, d48_for_badge, d_avg_for_badge, comeback_drop
+                            deal_score, confidence, None, d_avg, None
                         )
+                        offer["deal_has_data"] = True
                         offer["deal_score"] = deal_score
                         offer["deal_label"] = deal_label
                         offer["deal_class"] = deal_class
-                        offer["delta_avg"] = f"{avg_info[1]:+.1f}%" if avg_info is not None else "—"
+                        offer["delta_avg"] = f"{d_avg:+.1f}%"
                 departure_offers_json = json.dumps(departure_offers_payload, ensure_ascii=False)
     except Exception as e:
         print(f"⚠️ Не удалось построить блок вылетов: {e}")
@@ -4008,15 +4023,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .departure-modal-chart {{
             display: none;
+            flex-shrink: 0;
             width: calc(100% - 2.2rem);
-            min-height: 240px;
+            height: 300px;
+            min-height: 300px;
             margin: 0 1.1rem 12px;
             border: 1px solid rgba(226,232,240,.95);
             border-radius: 12px;
             background: #f8fafc;
-            overflow: hidden;
+            overflow: visible;
         }}
         .departure-modal-body {{
+            flex: 1 1 auto;
+            min-height: 0;
             overflow: auto;
             padding: 0 1.1rem 1rem;
         }}
@@ -6898,6 +6917,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           if (chartTitleEl) chartTitleEl.style.display = 'block';
           chartEl.style.display = 'block';
           const x = curve.days.map(function(d) { return 'D-' + d; });
+          const yVals = (curve.median_price || []).concat(curve.p10_price || []).filter(function(v) {
+            return v != null && !isNaN(v) && v > 0;
+          });
+          let yRange = null;
+          if (yVals.length) {
+            const yMin = Math.min.apply(null, yVals);
+            const yMax = Math.max.apply(null, yVals);
+            const span = Math.max(yMax - yMin, yMax * 0.05, 500);
+            const pad = span * 0.1;
+            yRange = [Math.max(0, yMin - pad), yMax + pad];
+          }
           const traces = [
             {
               x: x,
@@ -6916,23 +6946,32 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
               marker: { size: 5 },
             },
           ];
+          const chartHeight = 300;
           const layout = {
-            margin: { l: 48, r: 16, t: 12, b: 40 },
+            height: chartHeight,
+            autosize: false,
+            margin: { l: 52, r: 16, t: 44, b: 52 },
             paper_bgcolor: '#f8fafc',
             plot_bgcolor: '#ffffff',
             xaxis: {
               title: 'Дней до вылета',
               tickangle: -35,
               gridcolor: '#e2e8f0',
+              automargin: true,
             },
             yaxis: {
               title: 'PLN',
               gridcolor: '#e2e8f0',
+              automargin: true,
+              range: yRange,
             },
-            legend: { orientation: 'h', y: 1.12, x: 0 },
+            legend: { orientation: 'h', y: 1.18, x: 0 },
             hovermode: 'x unified',
           };
-          Plotly.newPlot(chartEl, traces, layout, { responsive: true, displayModeBar: false });
+          Plotly.newPlot(chartEl, traces, layout, { responsive: false, displayModeBar: false });
+          if (window.Plotly && window.Plotly.Plots) {
+            window.Plotly.Plots.resize(chartEl);
+          }
         }
 
         function openDepartureOffers(key) {
@@ -6968,7 +7007,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             bodyEl.innerHTML = '<div class="departure-modal-empty">Нет предложений для этого вылета в выбранном снимке.</div>';
           } else {
             const rows = payload.offers.map(function(offer) {
-              const dealHtml = offer.deal_score
+              const dealHtml = offer.deal_has_data
                 ? '<span class="deal-pill ' + escapeHtml(offer.deal_class || 'normal') + '">' + offer.deal_score + ' · ' + escapeHtml(offer.deal_label || 'Normal') + '</span>'
                 : '<span class="departure-modal-empty">—</span>';
               const deltaAvg = offer.delta_avg || '—';
@@ -6993,7 +7032,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 + '<td>' + actionsHtml + '</td>'
                 + '</tr>';
             }).join('');
-            bodyEl.innerHTML = '<table class="departure-offers-table"><thead><tr><th>Отель</th><th>Цена</th><th>Deal</th><th>Δ ср.</th><th>Ссылки</th></tr></thead><tbody>' + rows + '</tbody></table>';
+            bodyEl.innerHTML = '<table class="departure-offers-table"><thead><tr><th>Отель</th><th>Цена</th><th>Deal</th><th title="Отклонение от типичной цены отеля по истории вылетов">Δ типич.</th><th>Ссылки</th></tr></thead><tbody>' + rows + '</tbody></table>';
           }
 
           modal.classList.add('open');
