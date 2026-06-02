@@ -20,6 +20,8 @@ MIN_DEAL_HOTELS = 3
 COHORT_LOOKBACK_TARGET_HOURS = 24
 COHORT_LOOKBACK_MIN_HOURS = 12
 COHORT_LOOKBACK_MAX_HOURS = 36
+# Price timeline on hot-departure modal: D-N … D-0 (day of departure).
+HOT_DEPARTURE_CHART_DAYS_MAX = 14
 # Cheap tier = mean of the bottom bucket (min 3 hotels, ~25% of the common set).
 CHEAP_TIER_MIN_HOTELS = 3
 CHEAP_TIER_SHARE = 0.25
@@ -656,6 +658,84 @@ def build_departure_events(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
             if event:
                 events.append(event)
     return events
+
+
+def _cohorts_for_departure_key(cohorts: pd.DataFrame, departure_key: str) -> pd.DataFrame:
+    hub = parse_hub_departure_key(departure_key)
+    if hub:
+        regions = turkey_hub_regions(hub["hub_id"])
+        mask = (
+            cohorts["country"].fillna("").astype(str).str.lower().eq(hub["country"])
+            & cohorts["region"].fillna("").astype(str).str.lower().isin(regions)
+            & cohorts["departure_date"].fillna("").astype(str).eq(hub["departure_date"])
+            & cohorts["return_date"].fillna("").astype(str).eq(hub["return_date"])
+            & cohorts["nights"].fillna("").astype(str).eq(str(hub["nights"]))
+            & cohorts["origin_scope"].fillna("").astype(str).eq(hub["origin_scope"])
+            & cohorts["pax_profile"].fillna("").astype(str).eq(hub["pax_profile"])
+        )
+        return cohorts[mask].copy()
+    return cohorts[cohorts["departure_key"].fillna("").astype(str).eq(str(departure_key))].copy()
+
+
+def build_departure_price_curve(
+    cohorts: pd.DataFrame,
+    departure_key: str,
+    days_min: int = 0,
+    days_max: int = HOT_DEPARTURE_CHART_DAYS_MAX,
+) -> Dict[str, Any]:
+    """Median / cheap-tier price by days_to_departure (latest scrape each day)."""
+    empty: Dict[str, Any] = {
+        "days": [],
+        "median_price": [],
+        "p10_price": [],
+        "min_price": [],
+        "hotel_count": [],
+    }
+    work = _cohorts_for_departure_key(cohorts, departure_key)
+    if work.empty:
+        return empty
+
+    work = work.copy()
+    work["days_to_departure"] = pd.to_numeric(work["days_to_departure"], errors="coerce")
+    work = work[work["days_to_departure"].between(days_min, days_max, inclusive="both")]
+    if work.empty:
+        return empty
+
+    work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
+    points: List[Dict[str, Any]] = []
+    for days, dgrp in work.groupby("days_to_departure", sort=True):
+        latest = dgrp.sort_values("_run_ts").iloc[-1]
+        points.append({
+            "days": int(days),
+            "median_price": round(float(latest.get("median_price") or 0), 2),
+            "p10_price": round(float(latest.get("p10_price") or 0), 2),
+            "min_price": round(float(latest.get("min_price") or 0), 2),
+            "hotel_count": int(latest.get("hotel_count") or 0),
+        })
+    points.sort(key=lambda row: row["days"], reverse=True)
+    return {
+        "days": [row["days"] for row in points],
+        "median_price": [row["median_price"] for row in points],
+        "p10_price": [row["p10_price"] for row in points],
+        "min_price": [row["min_price"] for row in points],
+        "hotel_count": [row["hotel_count"] for row in points],
+    }
+
+
+def build_departure_price_curves(
+    cohorts: pd.DataFrame,
+    departure_keys: List[str],
+    days_max: int = HOT_DEPARTURE_CHART_DAYS_MAX,
+) -> Dict[str, Dict[str, Any]]:
+    curves: Dict[str, Dict[str, Any]] = {}
+    for departure_key in departure_keys:
+        key = str(departure_key or "")
+        if not key:
+            continue
+        curve = build_departure_price_curve(cohorts, key, days_max=days_max)
+        if curve.get("days"):
+            curves[key] = curve
+    return curves
 
 
 def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
