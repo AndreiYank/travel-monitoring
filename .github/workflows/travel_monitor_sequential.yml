@@ -144,10 +144,10 @@ jobs:
         run: |
           rm -rf site
           mkdir -p site
-          mkdir -p site/hotel-charts
           mkdir -p site/data
 
           cp -f favicon.svg site/favicon.svg
+          cp -f hotel-chart.html site/hotel-chart.html
           cp -f index.html site/index.html
           cp -f index_filter_7_10_days.html site/index_filter_7_10_days.html
           cp -f index_filter_13_16_days.html site/index_filter_13_16_days.html
@@ -155,13 +155,6 @@ jobs:
           cp -f index_filter_turkey_13_16_days.html site/index_filter_turkey_13_16_days.html
           cp -f index_filter_greece_7_10_days.html site/index_filter_greece_7_10_days.html
           cp -f index_filter_greece_13_16_days.html site/index_filter_greece_13_16_days.html
-
-          cp -R hotel-charts/filter_7_10_days site/hotel-charts/ || true
-          cp -R hotel-charts/filter_13_16_days site/hotel-charts/ || true
-          cp -R hotel-charts/filter_turkey_7_10_days site/hotel-charts/ || true
-          cp -R hotel-charts/filter_turkey_13_16_days site/hotel-charts/ || true
-          cp -R hotel-charts/filter_greece_7_10_days site/hotel-charts/ || true
-          cp -R hotel-charts/filter_greece_13_16_days site/hotel-charts/ || true
 
           cp -R data/filters site/data/ || true
 
@@ -191,8 +184,7 @@ jobs:
           
           # Добавляем только данные/страницы новых фильтров
           git add -f data/filters/ || true
-          git add index.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_13_16_days.html index_filter_greece_7_10_days.html index_filter_greece_13_16_days.html || true
-          git add -f hotel-charts/filter_7_10_days/ hotel-charts/filter_13_16_days/ hotel-charts/filter_turkey_7_10_days/ hotel-charts/filter_turkey_13_16_days/ hotel-charts/filter_greece_7_10_days/ hotel-charts/filter_greece_13_16_days/ || true
+          git add index.html hotel-chart.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_13_16_days.html index_filter_greece_7_10_days.html index_filter_greece_13_16_days.html || true
           
           # Проверяем, есть ли изменения для коммита
           if git diff --staged --quiet; then
