@@ -1,6 +1,26 @@
 {
   "events": [
     {
+      "event_time": "2026-06-02T07:23:13+0000",
+      "departure_key": "egipt|hurghada|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "nights": 7,
+      "days_to_departure": 5,
+      "old_min_price": "",
+      "new_min_price": 5864.0,
+      "min_drop_pct": -9.58,
+      "p10_drop_pct": -3.23,
+      "median_drop_pct": -8.08,
+      "hotel_count": 26,
+      "hotel_delta": -2,
+      "hot_score": 60
+    },
+    {
       "event_time": "2026-06-02T04:48:28+0000",
       "departure_key": "egipt|marsa-alam|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_price_dump",
@@ -79,6 +99,26 @@
       "hotel_count": 10,
       "hotel_delta": -2,
       "hot_score": 76
+    },
+    {
+      "event_time": "2026-06-02T07:23:13+0000",
+      "departure_key": "egipt|marsa-alam|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-06-06",
+      "return_date": "2026-06-13",
+      "nights": 7,
+      "days_to_departure": 4,
+      "old_min_price": "",
+      "new_min_price": 5911.0,
+      "min_drop_pct": -7.12,
+      "p10_drop_pct": -7.0,
+      "median_drop_pct": -7.0,
+      "hotel_count": 10,
+      "hotel_delta": -3,
+      "hot_score": 54
     }
   ]
 }
