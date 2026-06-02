@@ -266,6 +266,34 @@ def _hot_score(row: Dict[str, Any]) -> int:
     return min(100, max(_hot_score_run_delta(row), _hot_score_deal_aggregate(row)))
 
 
+def departure_status_label(row: Dict[str, Any] | pd.Series) -> str:
+    """Card badge: cohort drop vs below-typical deal heat."""
+    if isinstance(row, pd.Series):
+        row = row.to_dict()
+    run_s = _hot_score_run_delta(row)
+    deal_s = _hot_score_deal_aggregate(row)
+    total = min(100, max(run_s, deal_s))
+    if total >= 70:
+        return f"🔥 Горит · {total}"
+    if total >= 45:
+        if run_s >= deal_s and run_s >= 45:
+            return f"Снижается · {total}"
+        return f"Выгодно · {total}"
+    return "Не горит"
+
+
+def build_departure_hotel_histories(offers: pd.DataFrame) -> Dict[str, pd.DataFrame]:
+    """Per-hotel offer history for Deal / Δ типичной (same source as cohort deal metrics)."""
+    if offers is None or offers.empty:
+        return {}
+    work = assign_scrape_runs(offers)
+    work["price"] = pd.to_numeric(work["price"], errors="coerce")
+    work = work.dropna(subset=["price"])
+    if work.empty:
+        return {}
+    return {str(name): grp for name, grp in work.groupby("hotel_name", sort=False)}
+
+
 def _cheap_tier_price(prices: pd.Series) -> float:
     bucket = cheap_tier_bucket_size(len(prices))
     if bucket <= 0:
