@@ -6,14 +6,14 @@
 import pandas as pd
 import json
 import csv
+import hashlib
 from datetime import datetime, timedelta, timezone
 import os
 import re
 import html as html_lib
-from urllib.parse import urlparse, parse_qs
+from urllib.parse import urlparse, parse_qs, quote
 from purchase_timing_analysis import analyze_purchase_timing
 from departure_analytics import (
-    build_cohort_snapshots,
     build_departure_offers_index,
     build_departure_hotel_histories,
     build_hot_departure_history,
@@ -22,7 +22,7 @@ from departure_analytics import (
     departure_status_label,
     HOT_DEPARTURE_CHART_DAYS_MAX,
     load_combined_departure_offers,
-    load_departure_offers,
+    load_stored_departure_cohorts,
     MIN_COMMON_HOTELS,
     MIN_DEAL_HOTELS,
     COHORT_LOOKBACK_TARGET_HOURS,
@@ -66,23 +66,35 @@ def _prepare_departure_cohorts(df: pd.DataFrame) -> pd.DataFrame:
 
 
 def _load_departure_cohort_frames(data_dir: str, data_file: str):
-    """Fresh cohorts for nearest cards; merged cohorts for hot history."""
-    cohorts_path = os.path.join(data_dir, "departure_cohorts.csv")
-    offers_path = os.path.join(data_dir, "departure_offers.csv")
+    """Load cohorts + hot history from monitor cache (no full rebuild in CI)."""
+    return load_stored_departure_cohorts(data_dir, travel_prices_file=data_file)
 
-    travel_cohorts = pd.DataFrame()
-    if os.path.exists(data_file):
-        travel_cohorts = build_cohort_snapshots(load_departure_offers(data_file))
 
-    fresh_cohorts = pd.DataFrame()
-    if os.path.exists(offers_path):
-        fresh_cohorts = build_cohort_snapshots(load_departure_offers(offers_path))
-    elif os.path.exists(cohorts_path):
-        fresh_cohorts = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
+def _hotel_chart_viewer_href(filter_id: str, hotel_slug: str) -> str:
+    return f"hotel-chart.html?filter={quote(str(filter_id))}&hotel={quote(str(hotel_slug))}"
 
-    current_cohorts = fresh_cohorts if not fresh_cohorts.empty else travel_cohorts
-    history_cohorts = _merge_departure_cohorts(travel_cohorts, fresh_cohorts)
-    return current_cohorts, history_cohorts
+
+def _hotel_series_payload_hash(payload: dict) -> str:
+    blob = json.dumps(payload, ensure_ascii=False, sort_keys=True, separators=(",", ":"))
+    return hashlib.sha256(blob.encode("utf-8")).hexdigest()
+
+
+def _load_hotel_series_manifest(series_dir: str) -> dict:
+    path = os.path.join(series_dir, "manifest.json")
+    if not os.path.exists(path):
+        return {}
+    try:
+        with open(path, encoding="utf-8") as f:
+            data = json.load(f)
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _save_hotel_series_manifest(series_dir: str, manifest: dict) -> None:
+    os.makedirs(series_dir, exist_ok=True)
+    with open(os.path.join(series_dir, "manifest.json"), "w", encoding="utf-8") as f:
+        json.dump(manifest, f, ensure_ascii=False, indent=2, sort_keys=True)
 
 
 def _parse_price_ceiling(display_price_ceiling):
@@ -401,6 +413,14 @@ def _register_chart_href(lookup: dict, hotel_name: str, href: str) -> None:
     slug = href.rsplit("/", 1)[-1]
     if slug.endswith(".html"):
         lookup[f"__slug__:{slug[:-5]}"] = href
+    if "hotel=" in href:
+        try:
+            qs = parse_qs(urlparse(href).query)
+            hotel_slug = (qs.get("hotel") or [""])[0]
+            if hotel_slug:
+                lookup[f"__slug__:{hotel_slug}"] = href
+        except Exception:
+            pass
 
 
 def _resolve_chart_href(hotel_name: str, lookup: dict, charts_subdir: str, slugify_fn) -> str:
@@ -416,7 +436,11 @@ def _resolve_chart_href(hotel_name: str, lookup: dict, charts_subdir: str, slugi
     slug_key = f"__slug__:{slug}"
     if slug_key in lookup:
         return lookup[slug_key]
-    return ""
+    sub = (charts_subdir or "").rstrip("/")
+    data_id = sub.split("/")[-1] if sub else ""
+    if data_id.startswith("filter_"):
+        return _hotel_chart_viewer_href(data_id, slug)
+    return _hotel_chart_viewer_href(active_filter_id(charts_subdir), slug)
 
 
 def _alert_is_current(alert, table_prices, tolerance=2.0):
@@ -439,7 +463,11 @@ def _alert_is_current(alert, table_prices, tolerance=2.0):
 def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
     hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or 'Unknown')
     hotel_name_html = meta.get('hotel_name_html') or html_lib.escape(hotel_name)
-    chart_href = html_lib.escape(meta.get('chart_href') or f"hotel-charts/{slugify_fn(hotel_name)}.html", quote=True)
+    default_href = _hotel_chart_viewer_href(
+        meta.get("filter_id") or "filter",
+        slugify_fn(hotel_name),
+    )
+    chart_href = html_lib.escape(meta.get('chart_href') or default_href, quote=True)
     offer_url = meta.get('offer_url') or ''
     dates = meta.get('dates') or '—'
     duration = meta.get('duration') or '—'
@@ -1150,7 +1178,7 @@ def _render_hotel_chart_page(
 </html>"""
 
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None, history_price_ceiling: float = None):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None, history_price_ceiling: float = None, write_legacy_hotel_html: bool = False):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -1178,7 +1206,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return
     # Откат фичи сравнения аэропортов: не используем общий датасет
     df_all_airports = None
-
+    
     ceiling_val = _parse_price_ceiling(display_price_ceiling)
     history_val = _resolve_history_ceiling(ceiling_val, history_price_ceiling)
     df_canonical = collapse_canonical_per_run(df, ceiling_val)
@@ -2306,6 +2334,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return ""
         return url
 
+    _data_dir = os.path.dirname(data_file) or "data"
+    # Имя каталога данных (filter_greece_7_10_days) — путь к JSON на Pages.
+    _filter_data_id = os.path.basename(os.path.normpath(_data_dir))
+    _hotel_series_dir = os.path.join(_data_dir, "hotel_series")
+    _back_dashboard_href = filter_href_by_charts_subdir((charts_subdir or "").rstrip("/"))
+
     # Карточки отелей (визуальный режим по умолчанию)
     hotel_cards = []
     for _, hotel in all_hotels.head(200).iterrows():
@@ -2321,10 +2355,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 image_url = normalized
                 break
         hotel_slug = slugify(hotel_name)
-        if charts_subdir:
-            chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
-        else:
-            chart_href = f"hotel-charts/{hotel_slug}.html"
+        chart_href = _hotel_chart_viewer_href(_filter_data_id, hotel_slug)
 
         delta_info = deltas_by_hotel.get(hotel_name)
         delta48 = f"{delta_info[1]:+.1f}%" if delta_info is not None else "—"
@@ -2378,10 +2409,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 image_url = normalized
                 break
         hotel_slug = slugify(name)
-        if charts_subdir:
-            chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
-        else:
-            chart_href = f"hotel-charts/{hotel_slug}.html"
+        chart_href = _hotel_chart_viewer_href(_filter_data_id, hotel_slug)
         offer_url = pick.get('offer_url', '')
         hotel_meta_by_name[name] = {
             "hotel_name": name,
@@ -2393,33 +2421,37 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "chart_href": chart_href,
         }
 
-    # Создаём директорию для страниц графиков
-    charts_dir = os.path.join(charts_subdir)
-    os.makedirs(charts_dir, exist_ok=True)
+    os.makedirs(_hotel_series_dir, exist_ok=True)
+    if write_legacy_hotel_html and charts_subdir:
+        os.makedirs(charts_subdir, exist_ok=True)
 
     from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
 
-    # График отеля — история до history ceiling (10–20k видны на графике)
+    # График отеля — JSON-серии + опционально legacy HTML
     chart_href_lookup: dict[str, str] = {}
+    series_manifest = _load_hotel_series_manifest(_hotel_series_dir)
+    series_written = 0
+    series_skipped = 0
     chart_hotel_names = sorted(set(df_history["hotel_name"].astype(str).unique()))
+    history_by_hotel = {
+        str(name): grp
+        for name, grp in df_history.groupby("hotel_name", sort=False)
+    }
     for hotel_name in chart_hotel_names:
-        hotel_ts = df_history[df_history['hotel_name'] == hotel_name].dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
+        hotel_ts = history_by_hotel.get(str(hotel_name), pd.DataFrame())
+        if not hotel_ts.empty:
+            hotel_ts = hotel_ts.dropna(subset=['scraped_at_display']).sort_values('scraped_at_display')
         x_values = [pd.to_datetime(t).isoformat() for t in hotel_ts['scraped_at_display'].tolist()]
         x_display = [pd.to_datetime(t).strftime('%d.%m.%Y %H:%M') for t in hotel_ts['scraped_at_display'].tolist()]
         y_values = [float(p) for p in hotel_ts['price'].tolist()]
         dates_list = hotel_ts['dates'].fillna('Неизвестно').tolist()
-
+        
         text_values = []
         for x_val, trip_dates in zip(x_display, dates_list):
             text_values.append(f"Проверка: {x_val}<br>Даты поездки: {trip_dates}")
 
         hotel_slug = slugify(hotel_name)
-        hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
-
-        subdir = (charts_subdir or '').rstrip('/')
-        back_target = filter_href_by_charts_subdir(subdir)
-        back_href = os.path.relpath(back_target, start=os.path.dirname(hotel_html_path))
-        favicon_href = os.path.relpath("favicon.svg", start=os.path.dirname(hotel_html_path))
+        viewer_href = _hotel_chart_viewer_href(_filter_data_id, hotel_slug)
 
         meta = hotel_meta_by_name.get(hotel_name, {})
         if not hotel_ts.empty:
@@ -2474,39 +2506,82 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         trip_dates_label = str(meta.get('dates') or (dates_list[-1] if dates_list else '—'))
 
-        chart_html = _render_hotel_chart_page(
-            hotel_name=str(hotel_name),
-            hotel_name_html=meta.get('hotel_name_html') or html_lib.escape(str(hotel_name)),
-            x_values=x_values,
-            y_values=y_values,
-            hover_lines=text_values,
-            meta=meta,
-            back_href=back_href,
-            deal_score=deal_score,
-            deal_label=deal_label,
-            deal_class=deal_class,
-            delta48_str=delta48_str,
-            delta_avg_str=delta_avg_str,
-            confidence=confidence,
-            median_p=median_p,
-            min_p=min_p,
-            max_p=max_p,
-            samples=len(y_values),
-            alert_threshold=ALERT_THRESHOLD_PERCENT,
-            trip_dates_label=trip_dates_label,
-            display_price_ceiling=ceiling_val,
-            history_price_ceiling=history_val,
-            favicon_href=favicon_href,
-        )
+        series_payload = {
+            "version": 1,
+            "filter_id": _filter_data_id,
+            "slug": hotel_slug,
+            "hotel_name": str(hotel_name),
+            "x": x_values,
+            "y": y_values,
+            "hover": text_values,
+            "meta": {
+                "dates": str(meta.get("dates") or "—"),
+                "duration": str(meta.get("duration") or "—"),
+                "offer_url": str(meta.get("offer_url") or ""),
+                "image_url": str(meta.get("image_url") or ""),
+            },
+            "deal_score": deal_score,
+            "deal_label": deal_label,
+            "deal_class": deal_class,
+            "delta48": delta48_str,
+            "delta_avg": delta_avg_str,
+            "confidence": confidence,
+            "median_p": median_p,
+            "min_p": min_p,
+            "max_p": max_p,
+            "samples": len(y_values),
+            "alert_threshold": ALERT_THRESHOLD_PERCENT,
+            "trip_dates_label": trip_dates_label,
+            "display_price_ceiling": ceiling_val,
+            "history_price_ceiling": history_val,
+            "back_href": _back_dashboard_href,
+        }
+        content_hash = _hotel_series_payload_hash(series_payload)
+        if series_manifest.get(hotel_slug) != content_hash:
+            series_path = os.path.join(_hotel_series_dir, f"{hotel_slug}.json")
+            with open(series_path, "w", encoding="utf-8") as f:
+                json.dump(series_payload, f, ensure_ascii=False, indent=2)
+            series_manifest[hotel_slug] = content_hash
+            series_written += 1
+        else:
+            series_skipped += 1
 
-        with open(hotel_html_path, 'w', encoding='utf-8') as f:
-            f.write(chart_html)
-        if charts_subdir:
-            _register_chart_href(
-                chart_href_lookup,
-                hotel_name,
-                f"{charts_subdir.rstrip('/')}/{hotel_slug}.html",
+        if write_legacy_hotel_html and charts_subdir:
+            charts_dir = charts_subdir
+            hotel_html_path = os.path.join(charts_dir, f"{hotel_slug}.html")
+            back_href = os.path.relpath(_back_dashboard_href, start=os.path.dirname(hotel_html_path))
+            favicon_href = os.path.relpath("favicon.svg", start=os.path.dirname(hotel_html_path))
+            chart_html = _render_hotel_chart_page(
+                hotel_name=str(hotel_name),
+                hotel_name_html=meta.get('hotel_name_html') or html_lib.escape(str(hotel_name)),
+                x_values=x_values,
+                y_values=y_values,
+                hover_lines=text_values,
+                meta=meta,
+                back_href=back_href,
+                deal_score=deal_score,
+                deal_label=deal_label,
+                deal_class=deal_class,
+                delta48_str=delta48_str,
+                delta_avg_str=delta_avg_str,
+                confidence=confidence,
+                median_p=median_p,
+                min_p=min_p,
+                max_p=max_p,
+                samples=len(y_values),
+                alert_threshold=ALERT_THRESHOLD_PERCENT,
+                trip_dates_label=trip_dates_label,
+                display_price_ceiling=ceiling_val,
+                history_price_ceiling=history_val,
+                favicon_href=favicon_href,
             )
+            with open(hotel_html_path, 'w', encoding='utf-8') as f:
+                f.write(chart_html)
+
+        _register_chart_href(chart_href_lookup, hotel_name, viewer_href)
+
+    _save_hotel_series_manifest(_hotel_series_dir, series_manifest)
+    print(f"📈 Hotel series: записано {series_written}, без изменений {series_skipped} → {_hotel_series_dir}")
 
     for name, meta in hotel_meta_by_name.items():
         href = meta.get("chart_href")
@@ -2622,7 +2697,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     departure_price_curves_json = "{}"
     try:
         data_dir = os.path.dirname(data_file) or "."
-        current_cohorts, history_cohorts = _load_departure_cohort_frames(data_dir, data_file)
+        current_cohorts, history_cohorts, stored_hot_history = _load_departure_cohort_frames(
+            data_dir, data_file
+        )
 
         if not current_cohorts.empty or not history_cohorts.empty:
             history_source = history_cohorts if not history_cohorts.empty else current_cohorts
@@ -2659,7 +2736,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 return f"вылет через {days} дн."
 
             latest_dep_ts = current_work['_run_ts'].max() if not current_work.empty else None
-            hot_history = build_hot_departure_history(work)
+            hot_history = (
+                stored_hot_history
+                if stored_hot_history is not None
+                else build_hot_departure_history(work)
+            )
             history_rows_html = ""
             for item in hot_history[:8]:
                 region = html_lib.escape(_region_label(item.get('region')))
@@ -3024,7 +3105,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             --danger-color: #ef4444;
             --warning-color: #f59e0b;
             --info-color: #3b82f6;
-
+            
             --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
             --gradient-success: linear-gradient(135deg, #10b981 0%, #22d3ee 100%);
             --gradient-danger: linear-gradient(135deg, #ef4444 0%, #fb7185 100%);
@@ -3639,7 +3720,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .vanished-reason-sold {{ background: rgba(16,185,129,.16); color: #047857; }}
         .vanished-reason-up {{ background: rgba(239,68,68,.14); color: #b91c1c; }}
         .vanished-reason-flat {{ background: rgba(148,163,184,.2); color: #475569; }}
-
+        
         .trend-section h3 {{
             font-size: 1.5rem;
             font-weight: 700;
@@ -5322,7 +5403,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .main-content.sidebar-open {{
             margin-left: 220px;
         }}
-
+        
         /* Responsive */
         @media (max-width: 1024px) {{
             :root {{
@@ -5571,26 +5652,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <div class="v">{len(entry_candidates)}</div>
                         <div class="l">Кандидатов входа</div>
                         <div class="s">Отели с сильным Deal Score и ценой ниже своего обычного уровня.</div>
-                    </div>
+        </div>
                     <div class="hero-kpi">
                         <div class="v">{market_breadth*100:.0f}%</div>
                         <div class="l">Рынок дешевеет</div>
                         <div class="s">Доля отелей, где цена снизилась за последние 48 часов.</div>
-                    </div>
+        </div>
                     <div class="hero-kpi">
                         <div class="v">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
                         <div class="l">Лучший Deal Score</div>
                         <div class="s">Самая сильная найденная возможность в текущем ране.</div>
-                    </div>
+        </div>
                     <div class="hero-kpi">
                         <div class="v">{updated_str}</div>
                         <div class="l">Обновлено</div>
                         <div class="s">Время последнего обновления данных по этому фильтру.</div>
-                    </div>
-                </div>
+            </div>
+            </div>
             </div>
         </div>
-
+        
 """
 
     from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
@@ -5704,8 +5785,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <div class="alerts-empty">Пока нет изменений от {ALERT_THRESHOLD_PERCENT:.0f}% — они появятся здесь после следующих проверок.</div>
 """
     alerts_html += """
-            </div>
         </div>
+    </div>
 """
 
     # Карточки отелей (визуальный режим)
@@ -5744,12 +5825,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 """
 
     cards_html += """
-            </div>
+        </div>
             <div class="cards-pagination" id="cardsPagination">
                 <button id="cardsPrevPage" disabled>← Предыдущая</button>
                 <div class="cards-pagination-info">
                     Показано <span id="cardsShowingFrom">1</span>-<span id="cardsShowingTo">24</span> из <span id="cardsTotalItems">0</span>
-                </div>
+    </div>
                 <button id="cardsNextPage">Следующая →</button>
             </div>
         </div>
@@ -6009,7 +6090,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     html_template += f"""
         <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
             <div class="table-header-row">
-                <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
+            <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
             </div>
             <div class="deal-legend">
                 <strong>Как читать Deal Score:</strong>
@@ -6082,12 +6163,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             avg_sort_value = avg_pct
 
         hotel_slug = slugify(hotel_name)
-        # Строим ссылку на страницу графика, учитывая поддиректорию
-        if charts_subdir:
-            chart_href = f"{charts_subdir.rstrip('/')}/{hotel_slug}.html"
-        else:
-            chart_href = f"hotel-charts/{hotel_slug}.html"
-        
+        chart_href = _hotel_chart_viewer_href(_filter_data_id, hotel_slug)
+
         # Откат: не вычисляем аэропорт и альтернативы
         
         # Ссылка на предложение
@@ -6116,7 +6193,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             f'<br><span class="comeback-badge">{comeback["badge_html"]}</span>'
             if comeback else ''
         )
-
+        
         html_template += f"""
                     <tr>
                         <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
@@ -6158,10 +6235,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     for ev in disappeared_events:
         ev_name = ev['hotel_name']
         ev_slug = slugify(ev_name)
-        if charts_subdir:
-            ev_chart_href = f"{charts_subdir.rstrip('/')}/{ev_slug}.html"
-        else:
-            ev_chart_href = f"hotel-charts/{ev_slug}.html"
+        ev_chart_href = _hotel_chart_viewer_href(_filter_data_id, ev_slug)
         notable_badge = '<span class="vanished-badge">🔥 заметный дил</span>' if ev['notable'] else ''
         # Δ к своей средней (или к последней цене в фильтре, если отель сейчас дороже потолка)
         raw_price = ev.get('current_raw_price')
@@ -6562,7 +6636,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       
       // Таблица сортировки
       let currentSort = { column: null, direction: 'asc' };
-
+      
       function getColumnIndex(column) {
         const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'dates': 5, 'duration': 6, 'offer': 7 };
         return columnMap[column];
@@ -6607,17 +6681,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           currentSort.direction = 'asc';
         }
         currentSort.column = column;
-
+        
         if (window._hotelTableSortAll) {
           window._hotelTableSortAll();
-        } else {
+          } else {
           const table = document.getElementById('hotelsTable');
           const tbody = table.querySelector('tbody');
           const rows = Array.from(tbody.querySelectorAll('tr'));
           rows.sort(compareHotelRows);
           rows.forEach(row => tbody.appendChild(row));
         }
-
+        
         // Обновляем индикаторы сортировки
         updateSortIndicators();
       }
@@ -6652,7 +6726,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           }
         });
       }
-
+      
       // Добавляем обработчики кликов на заголовки
       document.addEventListener('DOMContentLoaded', function() {
         const headers = document.querySelectorAll('#hotelsTable th.sortable');
@@ -7112,5 +7186,18 @@ if __name__ == "__main__":
     parser.add_argument('--disappeared-after-runs', type=int, default=2, help='Сколько последних ранов подряд должен отсутствовать отель, чтобы считаться выпавшим')
     parser.add_argument('--display-price-ceiling', type=float, default=None, help='Потолок цены для ПОКАЗА в таблице/карточках (дороже — только в истории/статистике)')
     parser.add_argument('--history-price-ceiling', type=float, default=None, help='Потолок для истории/графиков/выпавших (по умолчанию 20000 при заданном display ceiling)')
+    parser.add_argument('--write-legacy-hotel-html', action='store_true', help='Дополнительно писать hotel-charts/*.html (для старых ссылок)')
     args = parser.parse_args()
-    generate_inline_charts_dashboard(data_file=args.data_file, output_file=args.output, title=args.title, charts_subdir=args.charts_dir, tz=args.tz, alerts_file=args.alerts_file, all_airports_data_file=args.all_airports_data_file, disappeared_after_runs=args.disappeared_after_runs, display_price_ceiling=args.display_price_ceiling, history_price_ceiling=args.history_price_ceiling)
+    generate_inline_charts_dashboard(
+        data_file=args.data_file,
+        output_file=args.output,
+        title=args.title,
+        charts_subdir=args.charts_dir,
+        tz=args.tz,
+        alerts_file=args.alerts_file,
+        all_airports_data_file=args.all_airports_data_file,
+        disappeared_after_runs=args.disappeared_after_runs,
+        display_price_ceiling=args.display_price_ceiling,
+        history_price_ceiling=args.history_price_ceiling,
+        write_legacy_hotel_html=args.write_legacy_hotel_html,
+    )

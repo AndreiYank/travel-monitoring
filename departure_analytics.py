@@ -510,9 +510,9 @@ def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = Non
     return work.drop(columns=["_run_ts"])
 
 
-def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
+def _prepare_cohort_offer_work(df: pd.DataFrame) -> pd.DataFrame:
     if df.empty:
-        return pd.DataFrame(columns=COHORT_FIELDS)
+        return df.copy()
     work = assign_scrape_runs(df)
     work["price"] = pd.to_numeric(work["price"], errors="coerce")
     work["nights"] = pd.to_numeric(work["nights"], errors="coerce")
@@ -522,12 +522,19 @@ def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
         & work["region"].fillna("").astype(str).ne("")
         & work["departure_date"].fillna("").astype(str).ne("")
     ].copy()
-    if work.empty:
-        return pd.DataFrame(columns=COHORT_FIELDS)
+    return work
 
+
+def _cohort_snapshot_rows(
+    work: pd.DataFrame,
+    only_run_started_at: Optional[set] = None,
+) -> List[Dict[str, Any]]:
     rows: List[Dict[str, Any]] = []
     group_cols = ["run_started_at", "departure_key"]
     for (run_started_at, departure_key), grp in work.groupby(group_cols, sort=True):
+        run_key = str(run_started_at)
+        if only_run_started_at is not None and run_key not in only_run_started_at:
+            continue
         prices = grp["price"].astype(float)
         first = grp.iloc[0]
         try:
@@ -572,7 +579,100 @@ def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
         row["good_deal_count"] = 0
         row["hot_score"] = 0
         rows.append(row)
-    return _add_change_columns(pd.DataFrame(rows, columns=COHORT_FIELDS), work)
+    return rows
+
+
+def build_cohort_snapshot_frame(
+    df: pd.DataFrame,
+    only_run_started_at: Optional[set] = None,
+    *,
+    work: Optional[pd.DataFrame] = None,
+) -> pd.DataFrame:
+    offer_work = work if work is not None else _prepare_cohort_offer_work(df)
+    if offer_work.empty:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+    rows = _cohort_snapshot_rows(offer_work, only_run_started_at)
+    if not rows:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+    return pd.DataFrame(rows, columns=COHORT_FIELDS)
+
+
+def build_cohort_snapshots(df: pd.DataFrame) -> pd.DataFrame:
+    work = _prepare_cohort_offer_work(df)
+    if work.empty:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+    frame = build_cohort_snapshot_frame(df, work=work)
+    return _add_change_columns(frame, work)
+
+
+def _offers_input_fingerprint(path: str) -> str:
+    if not os.path.exists(path):
+        return ""
+    stat = os.stat(path)
+    return f"{stat.st_size}:{int(stat.st_mtime)}"
+
+
+def _merge_cohort_history_frames(*frames: pd.DataFrame) -> pd.DataFrame:
+    """Union cohort snapshots; enriched rows from monitor override travel backfill."""
+    parts = [frame for frame in frames if frame is not None and not frame.empty]
+    if not parts:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+    merged = pd.concat(parts, ignore_index=True, sort=False)
+    key_cols = ["run_started_at", "departure_key"]
+    if all(col in merged.columns for col in key_cols):
+        merged = merged.drop_duplicates(subset=key_cols, keep="last")
+    return merged
+
+
+def load_stored_departure_cohorts(
+    data_dir: str,
+    travel_prices_file: str | None = None,
+) -> Tuple[pd.DataFrame, pd.DataFrame, Optional[List[Dict[str, Any]]]]:
+    """Load monitor cohort cache + travel_prices backfill for D-14…D-0 curves.
+
+    ``current`` — enriched cohorts from departure_offers (алерты, hot_score).
+    ``history`` — travel snapshot layer merged in (графики вылета в модалке).
+    """
+    cohorts_path = os.path.join(data_dir, "departure_cohorts.csv")
+    hot_history_path = os.path.join(data_dir, "departure_hot_history.json")
+
+    current = pd.DataFrame(columns=COHORT_FIELDS)
+    if os.path.exists(cohorts_path):
+        current = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
+        print(f"📂 Cohorts: загружено {len(current)} снимков из {cohorts_path}")
+
+    if current.empty:
+        offers_path = os.path.join(data_dir, "departure_offers.csv")
+        source = offers_path if os.path.exists(offers_path) else (travel_prices_file or "")
+        if source and os.path.exists(source):
+            print(f"⚠️ Cohorts cache отсутствует — полный пересчёт из {source}")
+            current = build_cohort_snapshots(load_departure_offers(source))
+
+    travel_snapshots = pd.DataFrame(columns=COHORT_FIELDS)
+    if travel_prices_file and os.path.exists(travel_prices_file):
+        tp = load_departure_offers(travel_prices_file)
+        if not tp.empty:
+            travel_snapshots = build_cohort_snapshot_frame(tp)
+            print(
+                f"📈 Cohorts history: +{len(travel_snapshots)} снимков из travel_prices "
+                f"(для кривых D-{HOT_DEPARTURE_CHART_DAYS_MAX}…D-0)"
+            )
+
+    history = _merge_cohort_history_frames(travel_snapshots, current)
+    if history.empty:
+        history = current
+
+    hot_history: Optional[List[Dict[str, Any]]] = None
+    if os.path.exists(hot_history_path):
+        try:
+            with open(hot_history_path, encoding="utf-8") as f:
+                payload = json.load(f)
+            hot_history = payload.get("departures") or []
+            print(f"📂 Hot departure history: {len(hot_history)} записей из кэша")
+        except Exception as e:
+            print(f"⚠️ Не удалось прочитать {hot_history_path}: {e}")
+
+    return current, history, hot_history
 
 
 def _offer_payload(row: pd.Series) -> Dict[str, Any]:
@@ -985,22 +1085,89 @@ def _event_from_pair(departure_key: str, prev: Dict[str, Any], curr: Dict[str, A
     }
 
 
-def write_departure_analytics(input_csv: str, output_dir: str) -> dict:
+def write_departure_analytics(
+    input_csv: str,
+    output_dir: str,
+    force_full: bool = False,
+) -> dict:
     df = load_departure_offers(input_csv)
-    cohorts = build_cohort_snapshots(df)
-    events = build_departure_events(cohorts)
-    hot_history = build_hot_departure_history(cohorts)
-
     os.makedirs(output_dir, exist_ok=True)
     cohorts_path = os.path.join(output_dir, "departure_cohorts.csv")
     events_path = os.path.join(output_dir, "departure_events.json")
     history_path = os.path.join(output_dir, "departure_hot_history.json")
+    fingerprint_path = os.path.join(output_dir, ".departure_analytics_fingerprint")
+
+    current_fp = _offers_input_fingerprint(input_csv)
+    if (
+        not force_full
+        and current_fp
+        and os.path.exists(cohorts_path)
+        and os.path.exists(fingerprint_path)
+    ):
+        try:
+            if open(fingerprint_path, encoding="utf-8").read().strip() == current_fp:
+                cohorts_cached = pd.read_csv(
+                    cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip"
+                )
+                events_n = 0
+                hot_n = 0
+                if os.path.exists(events_path):
+                    with open(events_path, encoding="utf-8") as f:
+                        events_n = len(json.load(f).get("events") or [])
+                if os.path.exists(history_path):
+                    with open(history_path, encoding="utf-8") as f:
+                        hot_n = len(json.load(f).get("departures") or [])
+                return {
+                    "skipped": True,
+                    "offers": int(len(df)),
+                    "cohorts": int(len(cohorts_cached)),
+                    "events": events_n,
+                    "hot_history": hot_n,
+                    "cohorts_path": cohorts_path,
+                    "events_path": events_path,
+                    "history_path": history_path,
+                }
+        except Exception:
+            pass
+
+    work = _prepare_cohort_offer_work(df)
+    runs_to_rebuild: Optional[set] = None
+    existing = pd.DataFrame(columns=COHORT_FIELDS)
+    if not force_full and os.path.exists(cohorts_path):
+        try:
+            existing = pd.read_csv(cohorts_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
+        except Exception:
+            existing = pd.DataFrame(columns=COHORT_FIELDS)
+
+    if force_full or existing.empty or work.empty:
+        cohorts = build_cohort_snapshots(df) if not work.empty else pd.DataFrame(columns=COHORT_FIELDS)
+    else:
+        all_runs = set(work["run_started_at"].astype(str).unique())
+        known_runs = set(existing["run_started_at"].astype(str).unique())
+        new_runs = all_runs - known_runs
+        latest_run = max(all_runs) if all_runs else None
+        runs_to_rebuild = set(new_runs)
+        if latest_run:
+            runs_to_rebuild.add(latest_run)
+        keep = existing[~existing["run_started_at"].astype(str).isin(runs_to_rebuild)]
+        new_frame = build_cohort_snapshot_frame(df, runs_to_rebuild, work=work)
+        combined = pd.concat([keep, new_frame], ignore_index=True, sort=False)
+        cohorts = _add_change_columns(combined, work)
+
+    events = build_departure_events(cohorts)
+    hot_history = build_hot_departure_history(cohorts)
+
     cohorts.to_csv(cohorts_path, index=False, quoting=csv.QUOTE_ALL)
     with open(events_path, "w", encoding="utf-8") as f:
         json.dump({"events": events}, f, ensure_ascii=False, indent=2)
     with open(history_path, "w", encoding="utf-8") as f:
         json.dump({"departures": hot_history}, f, ensure_ascii=False, indent=2)
+    if current_fp:
+        with open(fingerprint_path, "w", encoding="utf-8") as f:
+            f.write(current_fp)
+
     return {
+        "skipped": False,
         "offers": int(len(df)),
         "cohorts": int(len(cohorts)),
         "events": int(len(events)),
@@ -1008,6 +1175,7 @@ def write_departure_analytics(input_csv: str, output_dir: str) -> dict:
         "cohorts_path": cohorts_path,
         "events_path": events_path,
         "history_path": history_path,
+        "rebuilt_runs": int(len(runs_to_rebuild)) if runs_to_rebuild is not None else None,
     }
 
 

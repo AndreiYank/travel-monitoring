@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>График отеля</title>
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <style>
+    :root {
+      --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
+      --border-soft: rgba(148, 163, 184, 0.28);
+      --text-muted: #64748b;
+      --radius-lg: 14px;
+      --shadow-md: 0 8px 24px rgba(15, 23, 42, 0.08);
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #f3f6ff;
+      color: #0f172a;
+      line-height: 1.45;
+    }
+    .page { max-width: 980px; margin: 0 auto; padding: 1rem 1rem 2rem; }
+    .chart-topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: .75rem;
+      margin-bottom: .85rem;
+    }
+    .chart-back {
+      color: #4f46e5;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: .88rem;
+    }
+    .chart-back:hover { text-decoration: underline; }
+    .chart-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: .45rem .85rem;
+      border-radius: 10px;
+      font-size: .82rem;
+      font-weight: 700;
+      text-decoration: none;
+      border: 1px solid var(--border-soft);
+      background: #fff;
+      color: #1e293b;
+    }
+    .chart-btn.primary {
+      background: var(--gradient-primary);
+      color: #fff;
+      border-color: transparent;
+    }
+    .chart-btn.disabled { opacity: .55; cursor: default; }
+    .chart-hero {
+      display: grid;
+      grid-template-columns: 140px minmax(0, 1fr);
+      gap: 1rem;
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      overflow: hidden;
+      margin-bottom: .85rem;
+    }
+    .chart-hero-img {
+      min-height: 120px;
+      background: linear-gradient(135deg, rgba(79,70,229,.12), rgba(14,165,233,.12));
+    }
+    .chart-hero-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      min-height: 120px;
+    }
+    .chart-hero-placeholder {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 120px;
+      font-size: 2rem;
+      opacity: .55;
+    }
+    .chart-hero-body { padding: .85rem .95rem .9rem 0; }
+    .chart-hero-body h1 { margin: 0 0 .35rem; font-size: 1.15rem; }
+    .chart-hero-meta { margin: 0; color: var(--text-muted); font-size: .82rem; }
+    .chart-hero-price-row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .5rem;
+      margin-top: .5rem;
+    }
+    .chart-current-price { font-size: 1.45rem; font-weight: 800; }
+    .deal-pill {
+      font-size: .72rem;
+      font-weight: 700;
+      padding: .2rem .55rem;
+      border-radius: 999px;
+      background: #e2e8f0;
+    }
+    .chart-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+      gap: .55rem;
+      margin-bottom: .85rem;
+    }
+    .chart-kpi {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-radius: 12px;
+      padding: .55rem .65rem;
+      box-shadow: var(--shadow-md);
+    }
+    .chart-kpi .v { font-size: 1.02rem; font-weight: 800; }
+    .chart-kpi .l { font-size: .72rem; color: var(--text-muted); font-weight: 600; margin-top: .12rem; }
+    .chart-kpi .v.drop { color: #047857; }
+    .chart-kpi .v.up { color: #b91c1c; }
+    .chart-panel, .chart-recent {
+      background: #fff;
+      border: 1px solid var(--border-soft);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-md);
+      padding: .65rem .75rem .75rem;
+      margin-bottom: .85rem;
+    }
+    #chart { height: 420px; }
+    .chart-recent table { width: 100%; border-collapse: collapse; font-size: .78rem; }
+    .chart-recent th, .chart-recent td {
+      padding: .35rem .25rem;
+      border-bottom: 1px solid rgba(148,163,184,.18);
+      text-align: left;
+    }
+    .chart-recent td.drop { color: #047857; font-weight: 700; }
+    .chart-recent td.up { color: #b91c1c; font-weight: 700; }
+    .chart-status {
+      padding: 2rem 1rem;
+      text-align: center;
+      color: var(--text-muted);
+    }
+    .chart-status.error { color: #b91c1c; }
+    @media (max-width: 640px) {
+      .chart-hero { grid-template-columns: 1fr; }
+      .chart-hero-body { padding: .75rem; }
+      #chart { height: 320px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page" id="app">
+    <div class="chart-status" id="loading">Загрузка графика…</div>
+  </div>
+  <script>
+    (function () {
+      const params = new URLSearchParams(window.location.search);
+      const filterId = (params.get('filter') || '').trim();
+      const hotelSlug = (params.get('hotel') || '').trim();
+      const app = document.getElementById('app');
+      const loading = document.getElementById('loading');
+
+      function esc(s) {
+        return String(s || '')
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;');
+      }
+
+      function deltaClass(str) {
+        if (!str || str === '—') return '';
+        if (String(str).startsWith('-')) return 'drop';
+        if (String(str).startsWith('+')) return 'up';
+        return '';
+      }
+
+      function stepPct(y, i, threshold) {
+        if (i <= 0) return { txt: '—', cls: 'flat' };
+        const prev = Number(y[i - 1]);
+        const cur = Number(y[i]);
+        if (!prev) return { txt: '—', cls: 'flat' };
+        const pct = (cur - prev) / prev * 100;
+        const cls = pct > 0 ? 'up' : (pct < 0 ? 'drop' : 'flat');
+        return { txt: (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%', cls };
+      }
+
+      function formatTs(iso) {
+        try {
+          return new Date(iso).toLocaleString('ru-RU', {
+            day: '2-digit', month: '2-digit', year: 'numeric',
+            hour: '2-digit', minute: '2-digit'
+          });
+        } catch (e) {
+          return iso;
+        }
+      }
+
+      function showError(msg) {
+        loading.className = 'chart-status error';
+        loading.textContent = msg;
+      }
+
+      if (!filterId || !hotelSlug) {
+        showError('Нужны параметры ?filter=…&hotel=…');
+        return;
+      }
+
+      const seriesUrl = 'data/filters/' + encodeURIComponent(filterId) + '/hotel_series/' + encodeURIComponent(hotelSlug) + '.json';
+
+      fetch(seriesUrl)
+        .then(function (r) {
+          if (!r.ok) throw new Error('Серия не найдена (' + r.status + ')');
+          return r.json();
+        })
+        .then(function (d) {
+          const x = d.x || [];
+          const y = d.y || [];
+          const hover = d.hover || [];
+          const meta = d.meta || {};
+          const currentP = y.length ? Number(y[y.length - 1]) : 0;
+          const minP = d.min_p != null ? d.min_p : (y.length ? Math.min.apply(null, y) : 0);
+          const isAtMin = y.length && currentP <= minP + 2;
+          const ceiling = d.display_price_ceiling;
+          const aboveCeiling = ceiling != null && y.length && currentP > Number(ceiling);
+
+          const enrichedHover = hover.map(function (base, i) {
+            let extra = '';
+            if (i > 0 && y[i - 1] > 0) {
+              const pct = (Number(y[i]) - Number(y[i - 1])) / Number(y[i - 1]) * 100;
+              extra = '<br>Δ к прошлому замеру: ' + (pct >= 0 ? '+' : '') + pct.toFixed(1) + '%';
+              if (Math.abs(pct) >= (d.alert_threshold || 5)) {
+                extra += '<br><b>Заметное изменение</b>';
+              }
+            }
+            return (base || '') + extra;
+          });
+
+          let recentRows = '';
+          for (let i = Math.max(0, x.length - 5); i < x.length; i++) {
+            const st = stepPct(y, i, d.alert_threshold);
+            recentRows += '<tr><td>' + esc(formatTs(x[i])) + '</td><td><strong>' + Number(y[i]).toFixed(0) + '</strong> PLN</td><td class="' + st.cls + '">' + st.txt + '</td></tr>';
+          }
+
+          const imgHtml = meta.image_url
+            ? '<img src="' + esc(meta.image_url) + '" alt="" loading="lazy" onerror="this.onerror=null;this.parentElement.innerHTML=\'<div class=chart-hero-placeholder>🏨</div>\';" />'
+            : '<div class="chart-hero-placeholder">🏨</div>';
+
+          const offerBtn = meta.offer_url
+            ? '<a class="chart-btn primary" href="' + esc(meta.offer_url) + '" target="_blank" rel="noopener">Открыть оффер</a>'
+            : '<span class="chart-btn disabled">Оффер недоступен</span>';
+
+          const backHref = d.back_href || ('index_filter_' + filterId.replace(/^filter_/, '') + '.html');
+
+          app.innerHTML =
+            '<div class="chart-topbar">' +
+              '<a class="chart-back" href="' + esc(backHref) + '">← Назад к дашборду</a>' +
+              offerBtn +
+            '</div>' +
+            '<section class="chart-hero">' +
+              '<div class="chart-hero-img">' + imgHtml + '</div>' +
+              '<div class="chart-hero-body">' +
+                '<h1>' + esc(d.hotel_name) + '</h1>' +
+                '<p class="chart-hero-meta">' + esc(meta.dates || '—') + ' · ' + esc(meta.duration || '—') + '</p>' +
+                '<div class="chart-hero-price-row">' +
+                  '<span class="chart-current-price">' + currentP.toFixed(0) + ' PLN</span>' +
+                  '<span class="deal-pill ' + esc(d.deal_class || '') + '">Deal ' + esc(String(d.deal_score || 0)) + ' · ' + esc(d.deal_label || '') + '</span>' +
+                  (isAtMin ? '<span>🔥 Исторический минимум</span>' : '') +
+                  (aboveCeiling ? '<span>Выше потолка показа (&gt;' + ceiling + ')</span>' : '') +
+                '</div>' +
+              '</div>' +
+            '</section>' +
+            '<section class="chart-kpis">' +
+              '<div class="chart-kpi"><div class="v ' + deltaClass(d.delta48) + '">' + esc(d.delta48 || '—') + '</div><div class="l">Δ за 48ч</div></div>' +
+              '<div class="chart-kpi"><div class="v ' + deltaClass(d.delta_avg) + '">' + esc(d.delta_avg || '—') + '</div><div class="l">Δ к своей средней</div></div>' +
+              '<div class="chart-kpi"><div class="v">' + Number(minP).toFixed(0) + '</div><div class="l">Минимум истории</div></div>' +
+              '<div class="chart-kpi"><div class="v">' + Number(d.median_p || 0).toFixed(0) + '</div><div class="l">Ср. по времени</div></div>' +
+              '<div class="chart-kpi"><div class="v">' + Number(d.max_p || 0).toFixed(0) + '</div><div class="l">Максимум</div></div>' +
+              '<div class="chart-kpi"><div class="v">' + esc(String(d.samples || 0)) + '</div><div class="l">Замеров · ' + esc(d.confidence || '') + '</div></div>' +
+            '</section>' +
+            '<section class="chart-panel">' +
+              '<h2>История цен</h2>' +
+              '<div id="chart"></div>' +
+            '</section>' +
+            '<section class="chart-recent">' +
+              '<h3>Последние замеры</h3>' +
+              '<table><thead><tr><th>Время</th><th>Цена</th><th>Δ к прошлому</th></tr></thead><tbody>' + recentRows + '</tbody></table>' +
+            '</section>';
+
+          document.title = (d.hotel_name || 'Отель') + ' — ' + currentP.toFixed(0) + ' PLN';
+
+          const yMin = y.length ? Math.min.apply(null, y) : 0;
+          const yMax = y.length ? Math.max.apply(null, y) : 0;
+          const yPad = Math.max((yMax - yMin) * 0.08, 80);
+
+          Plotly.newPlot('chart', [{
+            x: x,
+            y: y,
+            text: enrichedHover,
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: { color: '#4f46e5', width: 2.5 },
+            marker: { size: 6, color: '#4f46e5', line: { width: 1, color: '#fff' } },
+            connectgaps: true,
+            hovertemplate: '<b>%{y:.0f} PLN</b><br>%{text}<extra></extra>'
+          }], {
+            margin: { t: 10, r: 20, b: 65, l: 60 },
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
+            xaxis: {
+              title: { text: 'Даты поездки: ' + (d.trip_dates_label || '—'), standoff: 14 },
+              type: 'date',
+              tickformat: '%d.%m.%Y',
+              hoverformat: '%d.%m.%Y %H:%M',
+              gridcolor: 'rgba(148,163,184,0.2)',
+              tickangle: -20
+            },
+            yaxis: {
+              title: 'Цена (PLN)',
+              gridcolor: 'rgba(148,163,184,0.2)',
+              range: [yMin - yPad, yMax + yPad]
+            },
+            showlegend: false,
+            hovermode: 'closest'
+          }, { responsive: true, displayModeBar: true });
+        })
+        .catch(function (err) {
+          showError('Не удалось загрузить график: ' + (err && err.message ? err.message : err));
+        });
+    })();
+  </script>
+</body>
+</html>
