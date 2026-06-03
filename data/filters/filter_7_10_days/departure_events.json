@@ -1,6 +1,26 @@
 {
   "events": [
     {
+      "event_time": "2026-06-03T18:19:45+0000",
+      "departure_key": "egipt|dolny-egipt|2026-06-05|2026-06-12|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "dolny-egipt",
+      "departure_date": "2026-06-05",
+      "return_date": "2026-06-12",
+      "nights": 7,
+      "days_to_departure": 2,
+      "old_min_price": "",
+      "new_min_price": 9750.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 0,
+      "hot_score": 85
+    },
+    {
       "event_time": "2026-06-02T18:35:19+0000",
       "departure_key": "egipt|hurghada|2026-06-04|2026-06-11|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_deal_window",
@@ -18,7 +38,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 17,
       "hotel_delta": 15,
-      "hot_score": 65
+      "hot_score": 74
     },
     {
       "event_time": "2026-06-02T20:34:12+0000",
@@ -38,7 +58,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 17,
       "hotel_delta": 15,
-      "hot_score": 65
+      "hot_score": 74
     },
     {
       "event_time": "2026-06-02T21:44:44+0000",
@@ -58,7 +78,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 17,
       "hotel_delta": 10,
-      "hot_score": 67
+      "hot_score": 75
     },
     {
       "event_time": "2026-06-02T23:30:28+0000",
@@ -78,7 +98,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 18,
       "hotel_delta": 11,
-      "hot_score": 63
+      "hot_score": 73
     },
     {
       "event_time": "2026-06-03T02:49:11+0000",
@@ -99,6 +119,26 @@
       "hotel_count": 21,
       "hotel_delta": 13,
       "hot_score": 84
+    },
+    {
+      "event_time": "2026-06-03T18:19:45+0000",
+      "departure_key": "egipt|hurghada|2026-06-04|2026-06-11|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-04",
+      "return_date": "2026-06-11",
+      "nights": 7,
+      "days_to_departure": 1,
+      "old_min_price": "",
+      "new_min_price": 7817.0,
+      "min_drop_pct": 10.23,
+      "p10_drop_pct": 3.95,
+      "median_drop_pct": -6.03,
+      "hotel_count": 11,
+      "hotel_delta": -6,
+      "hot_score": 62
     },
     {
       "event_time": "2026-06-02T07:23:13+0000",
@@ -139,6 +179,26 @@
       "hotel_count": 16,
       "hotel_delta": -6,
       "hot_score": 43
+    },
+    {
+      "event_time": "2026-06-03T18:19:45+0000",
+      "departure_key": "egipt|hurghada|2026-06-09|2026-06-16|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "nights": 7,
+      "days_to_departure": 6,
+      "old_min_price": "",
+      "new_min_price": 5450.0,
+      "min_drop_pct": -6.33,
+      "p10_drop_pct": -6.09,
+      "median_drop_pct": -5.84,
+      "hotel_count": 30,
+      "hotel_delta": 0,
+      "hot_score": 53
     },
     {
       "event_time": "2026-06-02T04:48:28+0000",
@@ -259,6 +319,26 @@
       "hotel_count": 9,
       "hotel_delta": -2,
       "hot_score": 53
+    },
+    {
+      "event_time": "2026-06-03T18:19:45+0000",
+      "departure_key": "egipt|marsa-alam|2026-06-06|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-06-06",
+      "return_date": "2026-06-14",
+      "nights": 7,
+      "days_to_departure": 3,
+      "old_min_price": "",
+      "new_min_price": 4953.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 7,
+      "hotel_delta": 2,
+      "hot_score": 74
     },
     {
       "event_time": "2026-06-02T14:46:28+0000",
