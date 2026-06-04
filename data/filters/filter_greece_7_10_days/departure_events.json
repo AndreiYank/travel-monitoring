@@ -1,6 +1,26 @@
 {
   "events": [
     {
+      "event_time": "2026-06-02T10:11:59+0000",
+      "departure_key": "grecja|korfu|2026-06-03|2026-06-10|7|Rzeszów|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "grecja",
+      "region": "korfu",
+      "departure_date": "2026-06-03",
+      "return_date": "2026-06-10",
+      "nights": 7,
+      "days_to_departure": 1,
+      "old_min_price": "",
+      "new_min_price": 7581.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 0,
+      "hot_score": 72
+    },
+    {
       "event_time": "2026-06-03T13:17:18+0000",
       "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-14|7|Katowice|2+1",
       "event_type": "late_deal_window",
