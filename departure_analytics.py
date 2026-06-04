@@ -621,6 +621,81 @@ def _offers_input_fingerprint(path: str) -> str:
     return f"{stat.st_size}:{int(stat.st_mtime)}"
 
 
+TRAVEL_COHORTS_CACHE_FILE = "travel_prices_cohorts.csv"
+TRAVEL_COHORTS_FP_FILE = ".travel_prices_cohorts_fingerprint"
+
+
+def _load_travel_prices_cohort_snapshots(
+    travel_prices_file: str,
+    data_dir: str,
+) -> pd.DataFrame:
+    """Incremental cache for travel_prices cohort layer (D-14…D-0 curves)."""
+    cache_path = os.path.join(data_dir, TRAVEL_COHORTS_CACHE_FILE)
+    fp_path = os.path.join(data_dir, TRAVEL_COHORTS_FP_FILE)
+    current_fp = _offers_input_fingerprint(travel_prices_file)
+
+    if not current_fp:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+
+    if os.path.exists(cache_path) and os.path.exists(fp_path):
+        try:
+            if open(fp_path, encoding="utf-8").read().strip() == current_fp:
+                cached = pd.read_csv(cache_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
+                print(
+                    f"📂 Cohorts history: {len(cached)} снимков из кэша {TRAVEL_COHORTS_CACHE_FILE}"
+                )
+                return cached
+        except Exception:
+            pass
+
+    tp = load_departure_offers(travel_prices_file)
+    if tp.empty:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+
+    work = _prepare_cohort_offer_work(tp)
+    if work.empty:
+        return pd.DataFrame(columns=COHORT_FIELDS)
+
+    existing = pd.DataFrame(columns=COHORT_FIELDS)
+    if os.path.exists(cache_path):
+        try:
+            existing = pd.read_csv(cache_path, quoting=csv.QUOTE_ALL, on_bad_lines="skip")
+        except Exception:
+            existing = pd.DataFrame(columns=COHORT_FIELDS)
+
+    all_runs = set(work["run_started_at"].astype(str).unique())
+    if existing.empty:
+        travel_snapshots = build_cohort_snapshot_frame(tp, work=work)
+        rebuilt = len(all_runs)
+    else:
+        known_runs = set(existing["run_started_at"].astype(str).unique())
+        new_runs = all_runs - known_runs
+        latest_run = max(all_runs) if all_runs else None
+        runs_to_rebuild = set(new_runs)
+        if latest_run:
+            runs_to_rebuild.add(latest_run)
+        keep = existing[~existing["run_started_at"].astype(str).isin(runs_to_rebuild)]
+        new_frame = build_cohort_snapshot_frame(tp, runs_to_rebuild, work=work)
+        travel_snapshots = pd.concat([keep, new_frame], ignore_index=True, sort=False)
+        rebuilt = len(runs_to_rebuild)
+
+    travel_snapshots.to_csv(cache_path, index=False, quoting=csv.QUOTE_ALL)
+    with open(fp_path, "w", encoding="utf-8") as f:
+        f.write(current_fp)
+
+    if rebuilt < len(all_runs):
+        print(
+            f"📈 Cohorts history: обновлено {rebuilt} ранов → {len(travel_snapshots)} снимков "
+            f"(кэш {TRAVEL_COHORTS_CACHE_FILE}, кривые D-{HOT_DEPARTURE_CHART_DAYS_MAX}…D-0)"
+        )
+    else:
+        print(
+            f"📈 Cohorts history: +{len(travel_snapshots)} снимков из travel_prices "
+            f"(для кривых D-{HOT_DEPARTURE_CHART_DAYS_MAX}…D-0)"
+        )
+    return travel_snapshots
+
+
 def _merge_cohort_history_frames(*frames: pd.DataFrame) -> pd.DataFrame:
     """Union cohort snapshots; enriched rows from monitor override travel backfill."""
     parts = [frame for frame in frames if frame is not None and not frame.empty]
@@ -659,13 +734,7 @@ def load_stored_departure_cohorts(
 
     travel_snapshots = pd.DataFrame(columns=COHORT_FIELDS)
     if travel_prices_file and os.path.exists(travel_prices_file):
-        tp = load_departure_offers(travel_prices_file)
-        if not tp.empty:
-            travel_snapshots = build_cohort_snapshot_frame(tp)
-            print(
-                f"📈 Cohorts history: +{len(travel_snapshots)} снимков из travel_prices "
-                f"(для кривых D-{HOT_DEPARTURE_CHART_DAYS_MAX}…D-0)"
-            )
+        travel_snapshots = _load_travel_prices_cohort_snapshots(travel_prices_file, data_dir)
 
     history = _merge_cohort_history_frames(travel_snapshots, current)
     if history.empty:

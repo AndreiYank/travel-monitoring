@@ -61,19 +61,28 @@ jobs:
         run: |
           playwright install chromium
 
-      - name: Run monitoring (only new filters)
+      - name: Run monitoring (filters)
+        env:
+          # Откат без revert: MONITOR_PARALLEL_ENABLED: "false"
+          MONITOR_PARALLEL_ENABLED: "true"
+          # 3 — баланс скорости и fly.pl / RAM; для максимума: "6"
+          MONITOR_PARALLEL_JOBS: "3"
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+          PLAYWRIGHT_BROWSERS_PATH: /home/runner/.cache/ms-playwright
         run: |
-          echo "🚀 Starting monitoring (filters) at $(date)"
-          export PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1
-          export PLAYWRIGHT_BROWSERS_PATH=/home/runner/.cache/ms-playwright
-
-          python travel_monitor.py --config config_ci_filter_7_10.json
-          python travel_monitor.py --config config_ci_filter_13_16.json
-          python travel_monitor.py --config config_ci_filter_turkey_7_10.json
-          python travel_monitor.py --config config_ci_filter_turkey_13_16.json
-          python travel_monitor.py --config config_ci_filter_greece_7_10.json
-          python travel_monitor.py --config config_ci_filter_greece_13_16.json
-
+          echo "🚀 Starting monitoring at $(date)"
+          if [ "${MONITOR_PARALLEL_ENABLED}" = "true" ]; then
+            echo "Mode: parallel (jobs=${MONITOR_PARALLEL_JOBS})"
+            python scripts/run_monitors_parallel.py -j "${MONITOR_PARALLEL_JOBS}"
+          else
+            echo "Mode: sequential (rollback)"
+            python travel_monitor.py --config config_ci_filter_7_10.json
+            python travel_monitor.py --config config_ci_filter_13_16.json
+            python travel_monitor.py --config config_ci_filter_turkey_7_10.json
+            python travel_monitor.py --config config_ci_filter_turkey_13_16.json
+            python travel_monitor.py --config config_ci_filter_greece_7_10.json
+            python travel_monitor.py --config config_ci_filter_greece_13_16.json
+          fi
           echo "✅ Monitoring completed"
 
       - name: Generate dashboards (only new filters) + landing
