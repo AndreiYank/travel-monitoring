@@ -204,7 +204,23 @@ def aggregate_cohorts_by_arrival_airport(cohorts: pd.DataFrame) -> pd.DataFrame:
             "below_8000_count": int(grp["below_8000_count"].fillna(0).sum())
             if "below_8000_count" in grp
             else 0,
-            "hot_score": int(pd.to_numeric(grp["hot_score"], errors="coerce").fillna(0).max()),
+            "common_hotel_count": int(
+                pd.to_numeric(grp["common_hotel_count"], errors="coerce").fillna(0).max()
+            )
+            if "common_hotel_count" in grp
+            else 0,
+            "avg_deal_score": int(round(_wavg("avg_deal_score")))
+            if "avg_deal_score" in grp
+            else 0,
+            "mean_avg_delta_pct": round(_wavg("mean_avg_delta_pct"), 2)
+            if "mean_avg_delta_pct" in grp
+            else 0.0,
+            "hot_deal_count": int(grp["hot_deal_count"].fillna(0).sum())
+            if "hot_deal_count" in grp
+            else 0,
+            "good_deal_count": int(grp["good_deal_count"].fillna(0).sum())
+            if "good_deal_count" in grp
+            else 0,
             "min_change_pct": float(pd.to_numeric(grp["min_change_pct"], errors="coerce").min())
             if "min_change_pct" in grp
             else 0.0,
@@ -225,6 +241,9 @@ def aggregate_cohorts_by_arrival_airport(cohorts: pd.DataFrame) -> pd.DataFrame:
             if "hotel_count_delta" in grp
             else 0,
         }
+        from departure_analytics import _hot_score
+
+        row["hot_score"] = _hot_score(row)
         grouped_rows.append(row)
 
     if not grouped_rows:

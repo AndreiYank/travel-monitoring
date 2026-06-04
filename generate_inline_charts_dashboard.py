@@ -20,6 +20,7 @@ from departure_analytics import (
     build_departure_price_curves,
     cheap_tier_label,
     departure_status_label,
+    _hot_score,
     HOT_DEPARTURE_CHART_DAYS_MAX,
     load_combined_departure_offers,
     load_stored_departure_cohorts,
@@ -2868,7 +2869,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
                 rows_html = ""
                 for _, dep in top_departures.iterrows():
-                    score = int(dep.get('hot_score') or 0)
+                    score = _hot_score(dep)
                     score_cls = _score_class(score)
                     card_hot_cls = ' is-hot' if score >= 70 else (' is-warm' if score >= 45 else '')
                     hot_icon = '🔥 ' if score >= 70 else ''
