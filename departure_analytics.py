@@ -100,6 +100,15 @@ def cheap_tier_label(common_hotel_count: Any) -> str:
     return f"нижние {bucket}"
 
 
+def _nights_series_eq(series: pd.Series, expected: Any) -> pd.Series:
+    """Match nights across int/float/str (7, 7.0, \"7\")."""
+    vals = pd.to_numeric(series, errors="coerce")
+    exp = pd.to_numeric(expected, errors="coerce")
+    if pd.notna(exp):
+        return vals.eq(exp)
+    return series.fillna("").astype(str).str.strip().eq(str(expected or "").strip())
+
+
 def load_combined_departure_offers(
     data_dir: str,
     travel_prices_file: str | None = None,
@@ -695,7 +704,7 @@ def _offers_for_departure_key(work: pd.DataFrame, departure_key: str) -> pd.Data
             & work["region"].fillna("").astype(str).str.lower().isin(regions)
             & work["departure_date"].fillna("").astype(str).eq(hub["departure_date"])
             & work["return_date"].fillna("").astype(str).eq(hub["return_date"])
-            & work["nights"].fillna("").astype(str).eq(str(hub["nights"]))
+            & _nights_series_eq(work["nights"], hub["nights"])
             & work["origin_scope"].fillna("").astype(str).eq(hub["origin_scope"])
             & work["pax_profile"].fillna("").astype(str).eq(hub["pax_profile"])
         )
@@ -827,7 +836,7 @@ def _cohorts_for_departure_key(cohorts: pd.DataFrame, departure_key: str) -> pd.
             & cohorts["region"].fillna("").astype(str).str.lower().isin(regions)
             & cohorts["departure_date"].fillna("").astype(str).eq(hub["departure_date"])
             & cohorts["return_date"].fillna("").astype(str).eq(hub["return_date"])
-            & cohorts["nights"].fillna("").astype(str).eq(str(hub["nights"]))
+            & _nights_series_eq(cohorts["nights"], hub["nights"])
             & cohorts["origin_scope"].fillna("").astype(str).eq(hub["origin_scope"])
             & cohorts["pax_profile"].fillna("").astype(str).eq(hub["pax_profile"])
         )

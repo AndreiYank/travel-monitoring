@@ -35,6 +35,7 @@ from departure_airports import (
     should_group_by_arrival_airport,
 )
 from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
+from filter_params import load_filter_config, render_filter_params_html, resolve_config_path
 
 
 def _merge_departure_cohorts(*frames: pd.DataFrame) -> pd.DataFrame:
@@ -1179,7 +1180,7 @@ def _render_hotel_chart_page(
 </html>"""
 
 
-def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None, history_price_ceiling: float = None, write_legacy_hotel_html: bool = False):
+def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None, history_price_ceiling: float = None, write_legacy_hotel_html: bool = False, config_file: str = None):
     """Генерирует дашборд с встроенными графиками"""
     
     # Загружаем данные
@@ -3066,6 +3067,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     except Exception:
         updated_str = datetime.now().strftime('%d.%m.%Y %H:%M')
 
+    filter_config = load_filter_config(data_file, config_file)
+    filter_params_html = render_filter_params_html(
+        filter_config,
+        display_price_ceiling=ceiling_val,
+        history_price_ceiling=history_val,
+        escape=html_lib.escape,
+    )
+    cfg_path = resolve_config_path(data_file, config_file)
+    if filter_config and cfg_path:
+        print(f"📋 Параметры фильтра из {cfg_path}")
+
     _current_filter = active_filter_id(charts_subdir)
     _sidebar_nav_parts = [
         '<a href="index.html" class="nav-item">'
@@ -4239,7 +4251,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             background:
                 linear-gradient(180deg, rgba(2,6,23,.18), rgba(2,6,23,.48)),
                 url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
-            min-height: 200px;
+            min-height: 180px;
             position: relative;
             animation: sectionFadeIn .7s ease both;
         }}
@@ -4251,32 +4263,202 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .hero-kpis {{
             display: grid;
-            grid-template-columns: repeat(4, minmax(0,1fr));
-            gap: 10px;
-            margin-top: .9rem;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 12px;
+            margin-top: 1rem;
         }}
         .hero-kpi {{
-            background: rgba(255,255,255,.16);
-            border: 1px solid rgba(255,255,255,.28);
-            border-radius: 12px;
-            padding: .55rem .65rem;
-            backdrop-filter: blur(8px);
-            animation: pulseGlow 3.6s ease-in-out infinite;
+            display: flex;
+            align-items: flex-start;
+            gap: .65rem;
+            background: rgba(255,255,255,.14);
+            border: 1px solid rgba(255,255,255,.26);
+            border-radius: 14px;
+            padding: .7rem .75rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 4px 18px rgba(2,6,23,.12);
         }}
-        .hero-kpi .v {{
-            font-size: 1.05rem;
+        .hero-kpi__badge {{
+            flex-shrink: 0;
+            width: 2.35rem;
+            height: 2.35rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+        }}
+        .hero-kpi__badge--blue {{ background: linear-gradient(145deg, #3b82f6, #2563eb); }}
+        .hero-kpi__badge--green {{ background: linear-gradient(145deg, #22c55e, #16a34a); }}
+        .hero-kpi__badge--purple {{ background: linear-gradient(145deg, #a855f7, #7c3aed); }}
+        .hero-kpi__badge--gold {{ background: linear-gradient(145deg, #fbbf24, #d97706); }}
+        .hero-kpi__svg {{
+            width: 1.15rem;
+            height: 1.15rem;
+        }}
+        .hero-kpi__body {{
+            min-width: 0;
+            flex: 1;
+        }}
+        .hero-kpi__v {{
+            font-size: 1.35rem;
             font-weight: 800;
             line-height: 1.1;
+            letter-spacing: -.02em;
         }}
-        .hero-kpi .l {{
+        .hero-kpi__l {{
+            margin-top: .12rem;
             font-size: .74rem;
-            opacity: .92;
+            font-weight: 700;
+            opacity: .95;
         }}
-        .hero-kpi .s {{
-            margin-top: .2rem;
-            font-size: .68rem;
-            line-height: 1.25;
-            opacity: .86;
+        .hero-kpi__s {{
+            margin-top: .18rem;
+            font-size: .66rem;
+            line-height: 1.3;
+            opacity: .82;
+        }}
+        /* —— Premium filter bar (mockup layout) —— */
+        .filter-bar--premium {{
+            margin-top: .55rem;
+            padding: .7rem .85rem .75rem;
+            background: rgba(15,23,42,.42);
+            border: 1px solid rgba(255,255,255,.22);
+            border-radius: 16px;
+            backdrop-filter: blur(14px);
+            box-shadow: 0 8px 28px rgba(2,6,23,.18);
+            animation: filterBarIn .45s ease both;
+        }}
+        @keyframes filterBarIn {{
+            from {{ opacity: 0; transform: translateY(6px); }}
+            to {{ opacity: 1; transform: translateY(0); }}
+        }}
+        .filter-bar__track {{
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            gap: .35rem;
+            width: 100%;
+            overflow-x: auto;
+            scrollbar-width: thin;
+        }}
+        .fb-route-group {{
+            display: flex;
+            align-items: flex-end;
+            gap: .45rem;
+            flex-shrink: 0;
+        }}
+        .fb-route-arrow {{
+            font-size: 1.1rem;
+            opacity: .55;
+            padding-bottom: 1.1rem;
+            flex-shrink: 0;
+        }}
+        .fb-slot {{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: .35rem;
+            min-width: 4.5rem;
+            max-width: 7.5rem;
+            flex-shrink: 0;
+            text-align: center;
+        }}
+        .fb-badge {{
+            width: 2.5rem;
+            height: 2.5rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            box-shadow: 0 4px 14px rgba(0,0,0,.2);
+        }}
+        .fb-badge--blue {{
+            background: linear-gradient(145deg, #3b82f6, #1d4ed8);
+            color: #fff;
+        }}
+        .fb-badge--gold {{
+            background: linear-gradient(145deg, #fbbf24, #d97706);
+            color: #fff;
+        }}
+        .fb-badge--neutral {{
+            background: rgba(255,255,255,.16);
+            border: 1px solid rgba(255,255,255,.22);
+            color: #fff;
+        }}
+        .fb-badge--flag {{
+            background: rgba(255,255,255,.12);
+            border: 1px solid rgba(255,255,255,.2);
+        }}
+        .fb-flag-emoji {{
+            font-size: 1.35rem;
+            line-height: 1;
+        }}
+        .fb-svg {{
+            width: 1.15rem;
+            height: 1.15rem;
+        }}
+        .fb-slot-body {{
+            display: flex;
+            flex-direction: column;
+            gap: .1rem;
+            width: 100%;
+        }}
+        .fb-kicker {{
+            font-size: .58rem;
+            font-weight: 700;
+            letter-spacing: .09em;
+            text-transform: uppercase;
+            opacity: .72;
+            line-height: 1.1;
+        }}
+        .fb-value {{
+            font-size: .78rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #fff;
+        }}
+        .fb-value--gold {{
+            color: #fde68a;
+        }}
+        .fb-chev {{
+            display: inline-block;
+            margin-left: .15rem;
+            font-size: .62rem;
+            opacity: .75;
+            vertical-align: middle;
+        }}
+        .fb-sub {{
+            font-size: .6rem;
+            opacity: .78;
+            line-height: 1.15;
+            font-weight: 500;
+        }}
+        .fb-vdiv {{
+            width: 1px;
+            align-self: stretch;
+            min-height: 3.2rem;
+            margin: 0 .15rem;
+            background: linear-gradient(180deg, transparent, rgba(255,255,255,.32), transparent);
+            flex-shrink: 0;
+        }}
+        @media (max-width: 1100px) {{
+            .filter-bar__track {{
+                justify-content: flex-start;
+            }}
+        }}
+        @media (max-width: 720px) {{
+            .hero-kpis {{
+                grid-template-columns: 1fr 1fr;
+            }}
+            .fb-vdiv {{
+                display: none;
+            }}
+            .filter-bar__track {{
+                flex-wrap: wrap;
+                row-gap: .65rem;
+            }}
         }}
         .mode-switch {{
             display: inline-flex;
@@ -5647,29 +5829,49 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <h2 style="margin:0; font-size:clamp(1.2rem,2.4vw,1.65rem); font-weight:800;">🌊 Sea Intelligence</h2>
                 <div style="margin-top:.35rem; font-size:.92rem; opacity:.96;">Сканируем рынок туров и показываем точки входа раньше массового спроса.</div>
                 <h1 style="margin:.55rem 0 0; font-size:clamp(1.4rem,3vw,2.1rem); font-weight:800; line-height:1.15;">{title.replace('🇬🇷 ', '').replace('🇪🇬 ', '').replace('🇹🇷 ', '')}</h1>
-                <div style="margin-top:.3rem; font-size:.9rem; opacity:.92;">Обновлено: {updated_str}</div>
+                {filter_params_html}
                 <div class="hero-kpis">
                     <div class="hero-kpi">
-                        <div class="v">{len(entry_candidates)}</div>
-                        <div class="l">Кандидатов входа</div>
-                        <div class="s">Отели с сильным Deal Score и ценой ниже своего обычного уровня.</div>
-        </div>
+                        <div class="hero-kpi__badge hero-kpi__badge--blue">
+                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="hero-kpi__body">
+                            <div class="hero-kpi__v">{len(entry_candidates)}</div>
+                            <div class="hero-kpi__l">Кандидаты входа</div>
+                            <div class="hero-kpi__s">Отели с сильным Deal Score и ценой ниже обычного уровня.</div>
+                        </div>
+                    </div>
                     <div class="hero-kpi">
-                        <div class="v">{market_breadth*100:.0f}%</div>
-                        <div class="l">Рынок дешевеет</div>
-                        <div class="s">Доля отелей, где цена снизилась за последние 48 часов.</div>
-        </div>
+                        <div class="hero-kpi__badge hero-kpi__badge--green">
+                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 18l-9.5-9.5-5 5L1 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </div>
+                        <div class="hero-kpi__body">
+                            <div class="hero-kpi__v">{market_breadth*100:.0f}%</div>
+                            <div class="hero-kpi__l">Рынок дешевеет</div>
+                            <div class="hero-kpi__s">Доля отелей, где цена снизилась за последние 48 часов.</div>
+                        </div>
+                    </div>
                     <div class="hero-kpi">
-                        <div class="v">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
-                        <div class="l">Лучший Deal Score</div>
-                        <div class="s">Самая сильная найденная возможность в текущем ране.</div>
-        </div>
+                        <div class="hero-kpi__badge hero-kpi__badge--purple">
+                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
+                        </div>
+                        <div class="hero-kpi__body">
+                            <div class="hero-kpi__v">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
+                            <div class="hero-kpi__l">Лучший Deal Score</div>
+                            <div class="hero-kpi__s">Самая сильная найденная возможность в текущем ране.</div>
+                        </div>
+                    </div>
                     <div class="hero-kpi">
-                        <div class="v">{updated_str}</div>
-                        <div class="l">Обновлено</div>
-                        <div class="s">Время последнего обновления данных по этому фильтру.</div>
-            </div>
-            </div>
+                        <div class="hero-kpi__badge hero-kpi__badge--gold">
+                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                        </div>
+                        <div class="hero-kpi__body">
+                            <div class="hero-kpi__v">{updated_str}</div>
+                            <div class="hero-kpi__l">Обновлено</div>
+                            <div class="hero-kpi__s">Время последнего обновления данных по этому фильтру.</div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
         
@@ -7188,6 +7390,7 @@ if __name__ == "__main__":
     parser.add_argument('--display-price-ceiling', type=float, default=None, help='Потолок цены для ПОКАЗА в таблице/карточках (дороже — только в истории/статистике)')
     parser.add_argument('--history-price-ceiling', type=float, default=None, help='Потолок для истории/графиков/выпавших (по умолчанию 20000 при заданном display ceiling)')
     parser.add_argument('--write-legacy-hotel-html', action='store_true', help='Дополнительно писать hotel-charts/*.html (для старых ссылок)')
+    parser.add_argument('--config-file', default=None, help='JSON конфиг фильтра (иначе — по data_dir из --data-file)')
     args = parser.parse_args()
     generate_inline_charts_dashboard(
         data_file=args.data_file,
@@ -7201,4 +7404,5 @@ if __name__ == "__main__":
         display_price_ceiling=args.display_price_ceiling,
         history_price_ceiling=args.history_price_ceiling,
         write_legacy_hotel_html=args.write_legacy_hotel_html,
+        config_file=args.config_file,
     )
