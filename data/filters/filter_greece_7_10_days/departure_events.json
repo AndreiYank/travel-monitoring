@@ -1,26 +1,6 @@
 {
   "events": [
     {
-      "event_time": "2026-06-02T10:11:59+0000",
-      "departure_key": "grecja|korfu|2026-06-03|2026-06-10|7|Rzeszów|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "korfu",
-      "departure_date": "2026-06-03",
-      "return_date": "2026-06-10",
-      "nights": 7,
-      "days_to_departure": 1,
-      "old_min_price": "",
-      "new_min_price": 7581.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 0,
-      "hot_score": 71
-    },
-    {
       "event_time": "2026-06-03T13:17:18+0000",
       "departure_key": "grecja|kos|2026-06-09|2026-06-17|7|Katowice|2+1",
       "event_type": "late_deal_window",
@@ -39,46 +19,6 @@
       "hotel_count": 3,
       "hotel_delta": 1,
       "hot_score": 62
-    },
-    {
-      "event_time": "2026-06-05T13:54:02+0000",
-      "departure_key": "grecja|kreta-wschodnia|2026-06-10|2026-06-17|7|Warszawa - Okęcie|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "kreta-wschodnia",
-      "departure_date": "2026-06-10",
-      "return_date": "2026-06-17",
-      "nights": 7,
-      "days_to_departure": 5,
-      "old_min_price": "",
-      "new_min_price": 6687.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 2,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-03T13:17:18+0000",
-      "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-14|7|Katowice|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "kreta-zachodnia",
-      "departure_date": "2026-06-07",
-      "return_date": "2026-06-14",
-      "nights": 7,
-      "days_to_departure": 4,
-      "old_min_price": "",
-      "new_min_price": 7231.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 2,
-      "hot_score": 67
     }
   ]
 }
