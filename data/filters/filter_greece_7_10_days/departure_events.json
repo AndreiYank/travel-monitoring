@@ -1,6 +1,46 @@
 {
   "events": [
     {
+      "event_time": "2026-06-02T04:51:17+0000",
+      "departure_key": "grecja|chalkidiki|2026-06-06|2026-06-13|7|Poznań|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "grecja",
+      "region": "chalkidiki",
+      "departure_date": "2026-06-06",
+      "return_date": "2026-06-13",
+      "nights": 7,
+      "days_to_departure": 4,
+      "old_min_price": "",
+      "new_min_price": 10047.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 0,
+      "hot_score": 67
+    },
+    {
+      "event_time": "2026-06-05T19:00:47+0000",
+      "departure_key": "grecja|kos|2026-06-09|2026-06-16|7|Katowice|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "grecja",
+      "region": "kos",
+      "departure_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "nights": 7,
+      "days_to_departure": 4,
+      "old_min_price": "",
+      "new_min_price": 7945.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 2,
+      "hot_score": 65
+    },
+    {
       "event_time": "2026-06-03T13:17:18+0000",
       "departure_key": "grecja|kos|2026-06-09|2026-06-17|7|Katowice|2+1",
       "event_type": "late_deal_window",
@@ -19,6 +59,26 @@
       "hotel_count": 3,
       "hotel_delta": 1,
       "hot_score": 62
+    },
+    {
+      "event_time": "2026-06-03T13:17:18+0000",
+      "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-14|7|Katowice|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "grecja",
+      "region": "kreta-zachodnia",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-14",
+      "nights": 7,
+      "days_to_departure": 4,
+      "old_min_price": "",
+      "new_min_price": 7231.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 2,
+      "hot_score": 65
     }
   ]
 }
