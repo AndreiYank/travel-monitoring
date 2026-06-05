@@ -1,6 +1,46 @@
 {
   "events": [
     {
+      "event_time": "2026-06-05T10:48:45+0000",
+      "departure_key": "egipt|dahab|2026-06-06|2026-06-20|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "dahab",
+      "departure_date": "2026-06-06",
+      "return_date": "2026-06-20",
+      "nights": 14,
+      "days_to_departure": 1,
+      "old_min_price": "",
+      "new_min_price": 7944.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3,
+      "hotel_delta": 0,
+      "hot_score": 100
+    },
+    {
+      "event_time": "2026-06-05T10:48:45+0000",
+      "departure_key": "egipt|hurghada|2026-06-07|2026-06-21|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-21",
+      "nights": 14,
+      "days_to_departure": 2,
+      "old_min_price": "",
+      "new_min_price": 7802.0,
+      "min_drop_pct": -6.13,
+      "p10_drop_pct": -8.67,
+      "median_drop_pct": -4.36,
+      "hotel_count": 40,
+      "hotel_delta": -9,
+      "hot_score": 74
+    },
+    {
       "event_time": "2026-06-02T04:49:17+0000",
       "departure_key": "egipt|marsa-alam|2026-06-02|2026-06-16|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_deal_window",
@@ -118,6 +158,26 @@
       "median_drop_pct": 0.0,
       "hotel_count": 15,
       "hotel_delta": 9,
+      "hot_score": 100
+    },
+    {
+      "event_time": "2026-06-05T10:48:45+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-06-06|2026-06-20|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-06-06",
+      "return_date": "2026-06-20",
+      "nights": 14,
+      "days_to_departure": 1,
+      "old_min_price": "",
+      "new_min_price": 7053.0,
+      "min_drop_pct": -23.07,
+      "p10_drop_pct": -21.36,
+      "median_drop_pct": -16.62,
+      "hotel_count": 45,
+      "hotel_delta": 3,
       "hot_score": 100
     }
   ]
