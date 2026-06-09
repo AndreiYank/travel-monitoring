@@ -1,34 +1,6 @@
 {
   "departures": [
     {
-      "departure_key": "egipt|marsa-alam|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
-      "country": "egipt",
-      "region": "marsa-alam",
-      "departure_date": "2026-06-06",
-      "return_date": "2026-06-13",
-      "nights": 7,
-      "first_seen_at": "2026-06-01T05:38:51+0000",
-      "last_seen_at": "2026-06-06T11:21:42+0000",
-      "best_seen_at": "2026-06-05T16:28:48+0000",
-      "departure_day_at": "2026-06-06T11:21:42+0000",
-      "days_to_departure_at_best": 1,
-      "best_min_price": 4516.0,
-      "best_p10_price": 4705.9,
-      "best_median_price": 5452.0,
-      "best_prev_min_price": 0.0,
-      "best_prev_p10_price": 0.0,
-      "best_prev_median_price": 0.0,
-      "max_hot_score": 100,
-      "best_p10_change_pct": 0.0,
-      "best_median_change_pct": 0.0,
-      "max_p10_drop_pct": -11.1,
-      "max_median_drop_pct": -10.75,
-      "max_hotel_count": 18,
-      "max_below_10000_count": 18,
-      "hot_runs_count": 10,
-      "observations": 58
-    },
-    {
       "departure_key": "egipt|marsa-alam|2026-06-06|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "country": "egipt",
       "region": "marsa-alam",
@@ -53,8 +25,8 @@
       "max_median_drop_pct": -19.18,
       "max_hotel_count": 20,
       "max_below_10000_count": 16,
-      "hot_runs_count": 7,
-      "observations": 60
+      "hot_runs_count": 6,
+      "observations": 109
     },
     {
       "departure_key": "egipt|hurghada|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -81,8 +53,8 @@
       "max_median_drop_pct": -12.06,
       "max_hotel_count": 47,
       "max_below_10000_count": 43,
-      "hot_runs_count": 24,
-      "observations": 72
+      "hot_runs_count": 30,
+      "observations": 104
     },
     {
       "departure_key": "egipt|marsa-alam|2026-06-09|2026-06-16|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -92,15 +64,9 @@
       "return_date": "2026-06-16",
       "nights": 7,
       "first_seen_at": "2026-06-01T05:38:51+0000",
-<<<<<<< Updated upstream
-      "last_seen_at": "2026-06-09T10:31:26+0000",
-      "best_seen_at": "2026-06-08T03:55:02+0000",
-      "departure_day_at": "2026-06-09T10:31:26+0000",
-=======
       "last_seen_at": "2026-06-09T10:55:01+0000",
       "best_seen_at": "2026-06-08T03:55:02+0000",
       "departure_day_at": "2026-06-09T10:55:01+0000",
->>>>>>> Stashed changes
       "days_to_departure_at_best": 1,
       "best_min_price": 5257.0,
       "best_p10_price": 5457.0,
@@ -115,8 +81,8 @@
       "max_median_drop_pct": -13.96,
       "max_hotel_count": 24,
       "max_below_10000_count": 21,
-      "hot_runs_count": 15,
-      "observations": 88
+      "hot_runs_count": 26,
+      "observations": 176
     },
     {
       "departure_key": "egipt|dolny-egipt|2026-06-05|2026-06-12|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -143,8 +109,8 @@
       "max_median_drop_pct": 0.0,
       "max_hotel_count": 7,
       "max_below_10000_count": 5,
-      "hot_runs_count": 15,
-      "observations": 45
+      "hot_runs_count": 23,
+      "observations": 64
     },
     {
       "departure_key": "egipt|sharm-el-sheikh|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -171,8 +137,36 @@
       "max_median_drop_pct": -20.38,
       "max_hotel_count": 45,
       "max_below_10000_count": 43,
-      "hot_runs_count": 22,
-      "observations": 57
+      "hot_runs_count": 38,
+      "observations": 99
+    },
+    {
+      "departure_key": "egipt|hurghada|2026-06-09|2026-06-16|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-06-09",
+      "return_date": "2026-06-16",
+      "nights": 7,
+      "first_seen_at": "2026-06-01T05:38:51+0000",
+      "last_seen_at": "2026-06-08T16:50:47+0000",
+      "best_seen_at": "2026-06-06T11:21:42+0000",
+      "departure_day_at": "2026-06-08T16:50:47+0000",
+      "days_to_departure_at_best": 3,
+      "best_min_price": 4645.0,
+      "best_p10_price": 4723.9,
+      "best_median_price": 5079.5,
+      "best_prev_min_price": 0.0,
+      "best_prev_p10_price": 0.0,
+      "best_prev_median_price": 0.0,
+      "max_hot_score": 100,
+      "best_p10_change_pct": 0.0,
+      "best_median_change_pct": 0.0,
+      "max_p10_drop_pct": -11.88,
+      "max_median_drop_pct": -10.06,
+      "max_hotel_count": 40,
+      "max_below_10000_count": 35,
+      "hot_runs_count": 74,
+      "observations": 158
     },
     {
       "departure_key": "egipt|marsa-alam|2026-06-07|2026-06-14|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -199,8 +193,8 @@
       "max_median_drop_pct": -29.41,
       "max_hotel_count": 20,
       "max_below_10000_count": 19,
-      "hot_runs_count": 15,
-      "observations": 71
+      "hot_runs_count": 30,
+      "observations": 142
     },
     {
       "departure_key": "egipt|sharm-el-sheikh|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -227,8 +221,8 @@
       "max_median_drop_pct": -23.78,
       "max_hotel_count": 47,
       "max_below_10000_count": 47,
-      "hot_runs_count": 21,
-      "observations": 59
+      "hot_runs_count": 44,
+      "observations": 113
     },
     {
       "departure_key": "egipt|dahab|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -256,7 +250,7 @@
       "max_hotel_count": 3,
       "max_below_10000_count": 3,
       "hot_runs_count": 5,
-      "observations": 57
+      "observations": 67
     },
     {
       "departure_key": "egipt|hurghada|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -283,36 +277,36 @@
       "max_median_drop_pct": -24.7,
       "max_hotel_count": 39,
       "max_below_10000_count": 36,
-      "hot_runs_count": 9,
-      "observations": 21
+      "hot_runs_count": 13,
+      "observations": 28
     },
     {
-      "departure_key": "egipt|hurghada|2026-06-09|2026-06-16|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "departure_key": "egipt|marsa-alam|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "country": "egipt",
-      "region": "hurghada",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
+      "region": "marsa-alam",
+      "departure_date": "2026-06-06",
+      "return_date": "2026-06-13",
       "nights": 7,
       "first_seen_at": "2026-06-01T05:38:51+0000",
-      "last_seen_at": "2026-06-08T16:50:47+0000",
-      "best_seen_at": "2026-06-06T11:21:42+0000",
-      "departure_day_at": "2026-06-08T16:50:47+0000",
-      "days_to_departure_at_best": 3,
-      "best_min_price": 4645.0,
-      "best_p10_price": 4723.9,
-      "best_median_price": 5079.5,
+      "last_seen_at": "2026-06-06T11:21:42+0000",
+      "best_seen_at": "2026-06-05T16:28:48+0000",
+      "departure_day_at": "2026-06-06T11:21:42+0000",
+      "days_to_departure_at_best": 1,
+      "best_min_price": 4516.0,
+      "best_p10_price": 4705.9,
+      "best_median_price": 5452.0,
       "best_prev_min_price": 0.0,
       "best_prev_p10_price": 0.0,
       "best_prev_median_price": 0.0,
-      "max_hot_score": 98,
+      "max_hot_score": 97,
       "best_p10_change_pct": 0.0,
       "best_median_change_pct": 0.0,
-      "max_p10_drop_pct": -11.88,
-      "max_median_drop_pct": -10.06,
-      "max_hotel_count": 40,
-      "max_below_10000_count": 35,
-      "hot_runs_count": 38,
-      "observations": 82
+      "max_p10_drop_pct": -11.1,
+      "max_median_drop_pct": -10.75,
+      "max_hotel_count": 18,
+      "max_below_10000_count": 18,
+      "hot_runs_count": 18,
+      "observations": 111
     },
     {
       "departure_key": "egipt|hurghada|2026-06-07|2026-06-15|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -332,19 +326,15 @@
       "best_prev_min_price": 0.0,
       "best_prev_p10_price": 0.0,
       "best_prev_median_price": 0.0,
-<<<<<<< Updated upstream
-      "max_hot_score": 96,
-=======
-      "max_hot_score": 95,
->>>>>>> Stashed changes
+      "max_hot_score": 97,
       "best_p10_change_pct": 0.0,
       "best_median_change_pct": 0.0,
       "max_p10_drop_pct": 0.0,
       "max_median_drop_pct": 0.0,
       "max_hotel_count": 5,
       "max_below_10000_count": 5,
-      "hot_runs_count": 18,
-      "observations": 18
+      "hot_runs_count": 36,
+      "observations": 36
     },
     {
       "departure_key": "egipt|hurghada|2026-06-04|2026-06-11|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
@@ -372,7 +362,7 @@
       "max_hotel_count": 21,
       "max_below_10000_count": 17,
       "hot_runs_count": 1,
-      "observations": 38
+      "observations": 56
     }
   ]
 }
