@@ -538,7 +538,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": -20,
-      "hot_score": 82
+      "hot_score": 81
     },
     {
       "event_time": "2026-06-04T07:21:37+0000",
@@ -558,7 +558,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": -20,
-      "hot_score": 82
+      "hot_score": 81
     },
     {
       "event_time": "2026-06-04T10:01:21+0000",
@@ -618,7 +618,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": -27,
-      "hot_score": 82
+      "hot_score": 81
     },
     {
       "event_time": "2026-06-04T11:01:21+0000",
@@ -638,7 +638,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": -27,
-      "hot_score": 82
+      "hot_score": 81
     },
     {
       "event_time": "2026-06-04T14:00:10+0000",
@@ -658,7 +658,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": -25,
-      "hot_score": 71
+      "hot_score": 69
     },
     {
       "event_time": "2026-06-04T14:00:10+0000",
@@ -678,7 +678,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": -25,
-      "hot_score": 71
+      "hot_score": 69
     },
     {
       "event_time": "2026-06-04T14:19:24+0000",
@@ -698,7 +698,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": -25,
-      "hot_score": 71
+      "hot_score": 69
     },
     {
       "event_time": "2026-06-04T14:19:24+0000",
@@ -718,7 +718,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": -25,
-      "hot_score": 71
+      "hot_score": 69
     },
     {
       "event_time": "2026-06-04T16:48:01+0000",
@@ -738,7 +738,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": -9,
-      "hot_score": 99
+      "hot_score": 98
     },
     {
       "event_time": "2026-06-04T16:48:01+0000",
@@ -758,7 +758,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": -9,
-      "hot_score": 99
+      "hot_score": 98
     },
     {
       "event_time": "2026-06-04T19:16:15+0000",
@@ -1318,7 +1318,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 13.0,
       "hotel_delta": 10,
-      "hot_score": 65
+      "hot_score": 66
     },
     {
       "event_time": "2026-06-07T10:25:07+0000",
@@ -1378,7 +1378,7 @@
       "median_drop_pct": 4.14,
       "hotel_count": 49.0,
       "hotel_delta": 34,
-      "hot_score": 30
+      "hot_score": 31
     },
     {
       "event_time": "2026-06-06T11:21:43+0000",
@@ -1398,7 +1398,7 @@
       "median_drop_pct": 4.14,
       "hotel_count": 49.0,
       "hotel_delta": 34,
-      "hot_score": 30
+      "hot_score": 31
     },
     {
       "event_time": "2026-06-06T22:59:49+0000",
@@ -2118,7 +2118,7 @@
       "median_drop_pct": -8.26,
       "hotel_count": 53.0,
       "hotel_delta": 17,
-      "hot_score": 97
+      "hot_score": 96
     },
     {
       "event_time": "2026-06-09T17:31:26+0000",
@@ -2138,7 +2138,7 @@
       "median_drop_pct": -8.46,
       "hotel_count": 52.0,
       "hotel_delta": 16,
-      "hot_score": 97
+      "hot_score": 100
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
@@ -2161,6 +2161,26 @@
       "hot_score": 97
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|alanya|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 4025.0,
+      "min_drop_pct": -10.51,
+      "p10_drop_pct": -9.51,
+      "median_drop_pct": -11.1,
+      "hotel_count": 53.0,
+      "hotel_delta": 14,
+      "hot_score": 96
+    },
+    {
       "event_time": "2026-06-06T11:21:43+0000",
       "departure_key": "turcja|alanya|2026-06-10|2026-06-18|8|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -2258,7 +2278,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 2,
-      "hot_score": 65
+      "hot_score": 66
     },
     {
       "event_time": "2026-06-07T12:19:19+0000",
@@ -2278,7 +2298,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 2,
-      "hot_score": 65
+      "hot_score": 66
     },
     {
       "event_time": "2026-06-08T13:01:50+0000",
@@ -2338,7 +2358,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
       "hotel_delta": -4,
-      "hot_score": 83
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-08T16:50:47+0000",
@@ -2358,7 +2378,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
       "hotel_delta": -4,
-      "hot_score": 83
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-08T19:19:02+0000",
@@ -2378,7 +2398,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
       "hotel_delta": -4,
-      "hot_score": 83
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-08T19:19:02+0000",
@@ -2398,7 +2418,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
       "hotel_delta": -4,
-      "hot_score": 83
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-08T21:51:41+0000",
@@ -2418,7 +2438,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
       "hotel_delta": -5,
-      "hot_score": 83
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-08T21:51:41+0000",
@@ -2438,7 +2458,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
       "hotel_delta": -5,
-      "hot_score": 83
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-08T23:11:43+0000",
@@ -2621,6 +2641,66 @@
       "hot_score": 79
     },
     {
+      "event_time": "2026-06-09T17:31:26+0000",
+      "departure_key": "turcja|alanya|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 4997.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 10.0,
+      "hotel_delta": 2,
+      "hot_score": 71
+    },
+    {
+      "event_time": "2026-06-09T18:34:21+0000",
+      "departure_key": "turcja|alanya|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 4997.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 10.0,
+      "hotel_delta": 2,
+      "hot_score": 71
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|alanya|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 4997.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 10.0,
+      "hotel_delta": 2,
+      "hot_score": 71
+    },
+    {
       "event_time": "2026-06-09T16:58:15+0000",
       "departure_key": "turcja|alanya|2026-06-13|2026-06-20|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -2641,6 +2721,26 @@
       "hot_score": 63
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|alanya|2026-06-13|2026-06-20|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-13",
+      "return_date": "2026-06-20",
+      "nights": 7.0,
+      "days_to_departure": 4.0,
+      "old_min_price": "",
+      "new_min_price": 4090.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 7.0,
+      "hotel_delta": 5,
+      "hot_score": 67
+    },
+    {
       "event_time": "2026-06-07T07:50:30+0000",
       "departure_key": "turcja|antalya|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -3281,44 +3381,24 @@
       "hot_score": 75
     },
     {
-      "event_time": "2026-06-05T10:48:45+0000",
-      "departure_key": "turcja|belek|2026-06-08|2026-06-15|7|Warszawa,Warszawa - Radom|2+1",
+      "event_time": "2026-06-06T09:21:21+0000",
+      "departure_key": "turcja|belek|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
       "country": "turcja",
       "region": "belek",
-      "departure_date": "2026-06-08",
-      "return_date": "2026-06-15",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
       "nights": 7.0,
-      "days_to_departure": 3.0,
+      "days_to_departure": 4.0,
       "old_min_price": "",
-      "new_min_price": 6602.0,
+      "new_min_price": 5360.0,
       "min_drop_pct": 0.0,
       "p10_drop_pct": 0.0,
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
-      "hotel_delta": 2,
-      "hot_score": 49
-    },
-    {
-      "event_time": "2026-06-05T10:48:45+0000",
-      "departure_key": "turcja|belek|2026-06-08|2026-06-15|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-08",
-      "return_date": "2026-06-15",
-      "nights": 7.0,
-      "days_to_departure": 3.0,
-      "old_min_price": "",
-      "new_min_price": 6602.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 4.0,
-      "hotel_delta": 2,
-      "hot_score": 49
+      "hotel_delta": 1,
+      "hot_score": 72
     },
     {
       "event_time": "2026-06-06T09:21:21+0000",
@@ -3338,27 +3418,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 1,
-      "hot_score": 71
-    },
-    {
-      "event_time": "2026-06-06T09:21:21+0000",
-      "departure_key": "turcja|belek|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-10",
-      "return_date": "2026-06-17",
-      "nights": 7.0,
-      "days_to_departure": 4.0,
-      "old_min_price": "",
-      "new_min_price": 5360.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 4.0,
-      "hotel_delta": 1,
-      "hot_score": 71
+      "hot_score": 72
     },
     {
       "event_time": "2026-06-06T11:21:43+0000",
@@ -3461,124 +3521,24 @@
       "hot_score": 72
     },
     {
-      "event_time": "2026-06-08T19:19:02+0000",
-      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|belek|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
       "country": "turcja",
       "region": "belek",
-      "departure_date": "2026-06-11",
-      "return_date": "2026-06-18",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
       "nights": 7.0,
-      "days_to_departure": 3.0,
+      "days_to_departure": 1.0,
       "old_min_price": "",
-      "new_min_price": 6397.0,
+      "new_min_price": 7003.0,
       "min_drop_pct": 0.0,
       "p10_drop_pct": 0.0,
       "median_drop_pct": 0.0,
-      "hotel_count": 3.0,
-      "hotel_delta": 2,
-      "hot_score": 65
-    },
-    {
-      "event_time": "2026-06-08T19:19:02+0000",
-      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-11",
-      "return_date": "2026-06-18",
-      "nights": 7.0,
-      "days_to_departure": 3.0,
-      "old_min_price": "",
-      "new_min_price": 6397.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3.0,
-      "hotel_delta": 2,
-      "hot_score": 65
-    },
-    {
-      "event_time": "2026-06-08T21:51:41+0000",
-      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-11",
-      "return_date": "2026-06-18",
-      "nights": 7.0,
-      "days_to_departure": 3.0,
-      "old_min_price": "",
-      "new_min_price": 6397.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3.0,
-      "hotel_delta": 2,
-      "hot_score": 65
-    },
-    {
-      "event_time": "2026-06-08T21:51:41+0000",
-      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-11",
-      "return_date": "2026-06-18",
-      "nights": 7.0,
-      "days_to_departure": 3.0,
-      "old_min_price": "",
-      "new_min_price": 6397.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3.0,
-      "hotel_delta": 2,
-      "hot_score": 65
-    },
-    {
-      "event_time": "2026-06-08T23:11:43+0000",
-      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-11",
-      "return_date": "2026-06-18",
-      "nights": 7.0,
-      "days_to_departure": 3.0,
-      "old_min_price": "",
-      "new_min_price": 6397.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3.0,
-      "hotel_delta": 2,
-      "hot_score": 65
-    },
-    {
-      "event_time": "2026-06-08T23:11:43+0000",
-      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "belek",
-      "departure_date": "2026-06-11",
-      "return_date": "2026-06-18",
-      "nights": 7.0,
-      "days_to_departure": 3.0,
-      "old_min_price": "",
-      "new_min_price": 6397.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3.0,
-      "hotel_delta": 2,
-      "hot_score": 65
+      "hotel_count": 7.0,
+      "hotel_delta": 3,
+      "hot_score": 72
     },
     {
       "event_time": "2026-06-09T16:58:15+0000",
@@ -3622,6 +3582,26 @@
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
+      "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "belek",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 5814.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 4.0,
+      "hotel_delta": 1,
+      "hot_score": 86
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
       "departure_key": "turcja|belek|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -3698,7 +3678,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 6.0,
       "hotel_delta": 5,
-      "hot_score": 75
+      "hot_score": 74
     },
     {
       "event_time": "2026-06-06T11:21:43+0000",
@@ -3718,7 +3698,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 6.0,
       "hotel_delta": 5,
-      "hot_score": 75
+      "hot_score": 74
     },
     {
       "event_time": "2026-06-06T13:09:57+0000",
@@ -5298,7 +5278,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 6.0,
       "hotel_delta": 0,
-      "hot_score": 100
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-09T10:55:01+0000",
@@ -5338,7 +5318,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 0,
-      "hot_score": 100
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-09T16:58:15+0000",
@@ -5358,7 +5338,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 2,
-      "hot_score": 100
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-09T17:31:26+0000",
@@ -5378,7 +5358,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 2,
-      "hot_score": 100
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
@@ -5398,7 +5378,27 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 2,
-      "hot_score": 100
+      "hot_score": 99
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|bodrum|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "bodrum",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 6152.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 2,
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-09T10:31:26+0000",
@@ -5498,7 +5498,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 96
+      "hot_score": 95
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
@@ -5519,6 +5519,26 @@
       "hotel_count": 5.0,
       "hotel_delta": 1,
       "hot_score": 79
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|bodrum|2026-06-11|2026-06-19|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "bodrum",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-19",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 6057.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 4.0,
+      "hotel_delta": 0,
+      "hot_score": 82
     },
     {
       "event_time": "2026-06-09T13:41:15+0000",
@@ -5558,7 +5578,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": 2,
-      "hot_score": 93
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-09T10:55:01+0000",
@@ -5578,7 +5598,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3.0,
       "hotel_delta": 2,
-      "hot_score": 93
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-09T16:58:15+0000",
@@ -5622,6 +5642,26 @@
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
+      "departure_key": "turcja|bodrum|2026-06-14|2026-06-22|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "bodrum",
+      "departure_date": "2026-06-14",
+      "return_date": "2026-06-22",
+      "nights": 7.0,
+      "days_to_departure": 5.0,
+      "old_min_price": "",
+      "new_min_price": 5983.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 0,
+      "hot_score": 71
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
       "departure_key": "turcja|bodrum|2026-06-14|2026-06-22|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -6401,6 +6441,26 @@
       "hot_score": 94
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|kemer|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "turcja",
+      "region": "kemer",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 5337.0,
+      "min_drop_pct": -7.95,
+      "p10_drop_pct": -8.35,
+      "median_drop_pct": -6.47,
+      "hotel_count": 15.0,
+      "hotel_delta": 2,
+      "hot_score": 100
+    },
+    {
       "event_time": "2026-06-09T16:58:15+0000",
       "departure_key": "turcja|kemer|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -6438,7 +6498,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 7.0,
       "hotel_delta": 2,
-      "hot_score": 82
+      "hot_score": 81
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
@@ -6458,7 +6518,27 @@
       "median_drop_pct": 0.0,
       "hotel_count": 7.0,
       "hotel_delta": 2,
-      "hot_score": 82
+      "hot_score": 81
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|kemer|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "kemer",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 4197.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 7.0,
+      "hotel_delta": 2,
+      "hot_score": 81
     },
     {
       "event_time": "2026-06-04T16:48:01+0000",
@@ -7021,47 +7101,7 @@
       "hot_score": 100
     },
     {
-      "event_time": "2026-06-07T14:50:17+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 9.0,
-      "hotel_delta": 2,
-      "hot_score": 56
-    },
-    {
-      "event_time": "2026-06-07T14:50:17+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 9.0,
-      "hotel_delta": 2,
-      "hot_score": 56
-    },
-    {
-      "event_time": "2026-06-07T16:10:10+0000",
+      "event_time": "2026-06-07T22:11:12+0000",
       "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -7078,147 +7118,7 @@
       "median_drop_pct": -2.31,
       "hotel_count": 9.0,
       "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T16:10:10+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T18:02:13+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T18:02:13+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T19:24:24+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T19:24:24+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T21:04:22+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
-    },
-    {
-      "event_time": "2026-06-07T21:04:22+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 2.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 64
+      "hot_score": 62
     },
     {
       "event_time": "2026-06-07T22:11:12+0000",
@@ -7238,10 +7138,10 @@
       "median_drop_pct": -2.31,
       "hotel_count": 9.0,
       "hotel_delta": 1,
-      "hot_score": 64
+      "hot_score": 62
     },
     {
-      "event_time": "2026-06-07T22:11:12+0000",
+      "event_time": "2026-06-08T00:02:16+0000",
       "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -7250,7 +7150,7 @@
       "departure_date": "2026-06-09",
       "return_date": "2026-06-16",
       "nights": 7.0,
-      "days_to_departure": 2.0,
+      "days_to_departure": 1.0,
       "old_min_price": "",
       "new_min_price": 5917.0,
       "min_drop_pct": -2.07,
@@ -7278,27 +7178,7 @@
       "median_drop_pct": -2.31,
       "hotel_count": 9.0,
       "hotel_delta": 1,
-      "hot_score": 65
-    },
-    {
-      "event_time": "2026-06-08T00:02:16+0000",
-      "departure_key": "turcja|kusadasi|2026-06-09|2026-06-16|7|Warszawa,Warszawa - Radom|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "turcja",
-      "region": "kusadasi",
-      "departure_date": "2026-06-09",
-      "return_date": "2026-06-16",
-      "nights": 7.0,
-      "days_to_departure": 1.0,
-      "old_min_price": "",
-      "new_min_price": 5917.0,
-      "min_drop_pct": -2.07,
-      "p10_drop_pct": -2.23,
-      "median_drop_pct": -2.31,
-      "hotel_count": 9.0,
-      "hotel_delta": 1,
-      "hot_score": 65
+      "hot_score": 64
     },
     {
       "event_time": "2026-06-08T08:07:12+0000",
@@ -7718,7 +7598,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 80
+      "hot_score": 79
     },
     {
       "event_time": "2026-06-08T08:07:12+0000",
@@ -7738,7 +7618,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 80
+      "hot_score": 79
     },
     {
       "event_time": "2026-06-08T08:48:45+0000",
@@ -7758,7 +7638,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 80
+      "hot_score": 79
     },
     {
       "event_time": "2026-06-08T08:48:45+0000",
@@ -7778,7 +7658,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 80
+      "hot_score": 79
     },
     {
       "event_time": "2026-06-09T10:31:26+0000",
@@ -7901,6 +7781,26 @@
       "hot_score": 100
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|kusadasi|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "kusadasi",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 4631.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 6.0,
+      "hotel_delta": 4,
+      "hot_score": 100
+    },
+    {
       "event_time": "2026-06-09T10:31:26+0000",
       "departure_key": "turcja|kusadasi|2026-06-14|2026-06-22|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -8318,7 +8218,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 93
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-07T19:24:24+0000",
@@ -8338,7 +8238,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": 0,
-      "hot_score": 93
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-07T21:04:22+0000",
@@ -9958,7 +9858,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 0,
-      "hot_score": 98
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-08T13:01:50+0000",
@@ -9978,7 +9878,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5.0,
       "hotel_delta": 0,
-      "hot_score": 98
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-08T16:50:47+0000",
@@ -10341,6 +10241,26 @@
       "hot_score": 100
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|marmaris|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "marmaris",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 4262.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 0,
+      "hot_score": 100
+    },
+    {
       "event_time": "2026-06-03T21:48:19+0000",
       "departure_key": "turcja|side|2026-06-06|2026-06-13|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_price_dump",
@@ -10638,7 +10558,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": -8,
-      "hot_score": 71
+      "hot_score": 70
     },
     {
       "event_time": "2026-06-06T17:03:24+0000",
@@ -10658,7 +10578,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": -8,
-      "hot_score": 71
+      "hot_score": 70
     },
     {
       "event_time": "2026-06-07T03:40:48+0000",
@@ -11941,6 +11861,26 @@
       "hot_score": 89
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|side|2026-06-10|2026-06-17|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-17",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 4171.0,
+      "min_drop_pct": -11.42,
+      "p10_drop_pct": -9.23,
+      "median_drop_pct": -7.51,
+      "hotel_count": 37.0,
+      "hotel_delta": 5,
+      "hot_score": 90
+    },
+    {
       "event_time": "2026-06-08T16:50:47+0000",
       "departure_key": "turcja|side|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -12222,6 +12162,26 @@
     },
     {
       "event_time": "2026-06-09T18:34:21+0000",
+      "departure_key": "turcja|side|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-11",
+      "return_date": "2026-06-18",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 5197.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 11.0,
+      "hotel_delta": 3,
+      "hot_score": 75
+    },
+    {
+      "event_time": "2026-06-09T19:19:51+0000",
       "departure_key": "turcja|side|2026-06-11|2026-06-18|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -12341,6 +12301,26 @@
       "hot_score": 71
     },
     {
+      "event_time": "2026-06-09T19:19:51+0000",
+      "departure_key": "turcja|side|2026-06-13|2026-06-20|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-13",
+      "return_date": "2026-06-20",
+      "nights": 7.0,
+      "days_to_departure": 4.0,
+      "old_min_price": "",
+      "new_min_price": 6719.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 0,
+      "hot_score": 71
+    },
+    {
       "event_time": "2026-06-09T10:31:26+0000",
       "departure_key": "turcja|side|2026-06-15|2026-06-22|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
@@ -12358,7 +12338,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 11,
-      "hot_score": 62
+      "hot_score": 61
     },
     {
       "event_time": "2026-06-09T13:41:15+0000",
