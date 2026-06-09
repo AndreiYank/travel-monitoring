@@ -20,8 +20,8 @@ from generate_inline_charts_dashboard import (
     iter_scrape_runs,
     _parse_price_ceiling,
     _resolve_history_ceiling,
-    _comeback_from_premium,
 )
+from hotel_deal_score import comeback_from_premium
 
 logger = logging.getLogger(__name__)
 
@@ -292,7 +292,7 @@ class PriceAlertManagerV2:
         for hotel_name, curr_price in curr_prices.items():
             if hotel_name in prev_prices:
                 continue
-            comeback = _comeback_from_premium(
+            comeback = comeback_from_premium(
                 curr_price,
                 premium.get(str(hotel_name)),
                 display,
