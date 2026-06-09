@@ -28,9 +28,15 @@ from departure_analytics import (
     MIN_DEAL_HOTELS,
     COHORT_LOOKBACK_TARGET_HOURS,
 )
-from hotel_deal_score import compute_hotel_deal_metrics
+from hotel_deal_score import (
+    build_premium_history_by_hotel,
+    comeback_from_premium,
+    compute_hotel_deal_metrics,
+)
+from departure_identity import parse_offer_path
 from departure_airports import (
     aggregate_cohorts_by_arrival_airport,
+    arrival_hub_label,
     hub_regions_subtitle,
     should_group_by_arrival_airport,
 )
@@ -116,55 +122,6 @@ def _resolve_history_ceiling(display_ceiling, history_ceiling):
     if display_ceiling is not None:
         return 20000.0
     return None
-
-
-def _build_premium_history_by_hotel(df_history, display_ceiling):
-    """Peak prices per hotel in the full history band (up to history ceiling)."""
-    out = {}
-    if df_history.empty:
-        return out
-    disp = float(display_ceiling) if display_ceiling is not None else None
-    for name, grp in df_history.groupby('hotel_name', sort=False):
-        prices = grp['price'].astype(float)
-        if prices.empty:
-            continue
-        history_max = float(prices.max())
-        premium_peak = None
-        if disp is not None:
-            above = prices[prices > disp]
-            if not above.empty:
-                premium_peak = float(above.max())
-        out[str(name)] = {
-            'history_max': history_max,
-            'premium_peak': premium_peak,
-        }
-    return out
-
-
-def _comeback_from_premium(current_price, premium_info, display_ceiling, min_drop_pct=8.0):
-    """Hotel re-entered display band after being much more expensive in history."""
-    if not premium_info or display_ceiling is None:
-        return None
-    try:
-        current = float(current_price)
-    except (TypeError, ValueError):
-        return None
-    if current > float(display_ceiling):
-        return None
-    peak = premium_info.get('premium_peak')
-    if peak is None or peak <= float(display_ceiling):
-        return None
-    drop = (float(peak) - current) / float(peak) * 100.0
-    if drop < min_drop_pct:
-        return None
-    return {
-        'peak_price': float(peak),
-        'drop_from_peak_pct': drop,
-        'badge_html': (
-            f'↩ Было до {peak:.0f} PLN'
-            f' <span style="opacity:.85">(−{drop:.0f}%)</span>'
-        ),
-    }
 
 
 def _lowest_price_row(grp):
@@ -380,6 +337,18 @@ def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None, 
     if deal_score >= 65:
         return "Good", "good", "✅ Good"
     return "Normal", "normal", "↔️ Normal"
+
+
+def _table_deal_badge_compact(display_badge: str) -> str:
+    text = str(display_badge or "").strip()
+    return text.split()[0] if text else ""
+
+
+def _table_duration_compact(duration: str) -> str:
+    match = re.search(r"(\d+)\s*dni/(\d+)\s*noc", str(duration), re.I)
+    if match:
+        return f"{match.group(1)}d/{match.group(2)}n"
+    return str(duration)
 
 
 def _metric_card(value_html, label, tip=""):
@@ -1868,7 +1837,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         avg_baseline_delta[hotel_name] = (change_abs, change_pct)
 
     # Deal Score: насколько предложение выгодно относительно своей исторической цены
-    premium_history_by_hotel = _build_premium_history_by_hotel(df_history, ceiling_val)
+    premium_history_by_hotel = build_premium_history_by_hotel(
+        df_history, ceiling_val, time_col='scraped_at_display', price_col='price'
+    )
 
     def _clamp(v, lo, hi):
         return max(lo, min(hi, v))
@@ -1954,7 +1925,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         d48_pct = float(delta48_info[1]) if delta48_info is not None else None
         d_avg_pct = float(avg_info[1]) if avg_info is not None else None
 
-        comeback = _comeback_from_premium(
+        comeback = comeback_from_premium(
             latest, premium_history_by_hotel.get(hotel_name), ceiling_val
         )
         comeback_drop_pct = float(comeback['drop_from_peak_pct']) if comeback else None
@@ -2289,15 +2260,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     alerts.sort(key=lambda a: parse_iso(a.get('created_at') or a.get('timestamp') or a.get('time') or ''), reverse=True)
     alerts = [a for a in alerts if _should_show_alert(a)]
 
-    # Загружаем карту изображений (если есть)
-    images_map = {}
-    images_path = os.path.join('data', 'hotel_images.json')
-    if os.path.exists(images_path):
+    _data_dir = os.path.dirname(data_file) or "data"
+
+    def _ingest_images_source(target: dict, path: str) -> None:
+        if not os.path.exists(path):
+            return
         try:
-            with open(images_path, 'r', encoding='utf-8') as f:
-                images_map = json.load(f) or {}
+            with open(path, 'r', encoding='utf-8') as f:
+                data = json.load(f) or {}
+            if isinstance(data, dict):
+                target.update(data)
         except Exception:
-            images_map = {}
+            pass
+
+    # Карта изображений: сначала общий fallback, затем региональный файл фильтра.
+    images_map: dict = {}
+    _ingest_images_source(images_map, os.path.join('data', 'hotel_images.json'))
+    _ingest_images_source(images_map, os.path.join(_data_dir, 'hotel_images.json'))
 
     # Функция для слуг-имени файла по названию отеля
     def slugify(text: str) -> str:
@@ -2336,7 +2315,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return ""
         return url
 
-    _data_dir = os.path.dirname(data_file) or "data"
     # Имя каталога данных (filter_greece_7_10_days) — путь к JSON на Pages.
     _filter_data_id = os.path.basename(os.path.normpath(_data_dir))
     _hotel_series_dir = os.path.join(_data_dir, "hotel_series")
@@ -2372,7 +2350,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         deal_label, deal_class, _ = classify_deal_badge(
             deal_score, confidence, d48_for_badge, d_avg_for_badge, comeback_drop
         )
-        comeback = _comeback_from_premium(
+        comeback = comeback_from_premium(
             price, premium_history_by_hotel.get(hotel_name), ceiling_val
         )
         comeback_html = (
@@ -2422,6 +2400,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "image_url": image_url,
             "chart_href": chart_href,
         }
+
+    for name, meta in hotel_meta_by_name.items():
+        normalized = normalize_image_url(meta.get("image_url") or images_map.get(name, ""))
+        if normalized:
+            images_map[str(name)] = normalized
+    for name, url in list(images_map.items()):
+        normalized = normalize_image_url(url)
+        if normalized:
+            images_map[name] = normalized
+        else:
+            images_map.pop(name, None)
 
     os.makedirs(_hotel_series_dir, exist_ok=True)
     if write_legacy_hotel_html and charts_subdir:
@@ -5116,10 +5105,39 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         .hotels-table {{
             width: 100%;
-            border-collapse: separate;
+            table-layout: fixed;
+            border-collapse: collapse;
             border-spacing: 0;
             margin: 0;
             font-size: 0.875rem;
+        }}
+
+        .hotels-table col.col-w-hotel {{ width: 29%; }}
+        .hotels-table col.col-w-price {{ width: 7%; }}
+        .hotels-table col.col-w-deal {{ width: 9.5%; }}
+        .hotels-table col.col-w-d48 {{ width: 5.9%; }}
+        .hotels-table col.col-w-davg {{ width: 7%; }}
+        .hotels-table col.col-w-region {{ width: 10%; }}
+        .hotels-table col.col-w-dates {{ width: 15%; }}
+        .hotels-table col.col-w-dur {{ width: 7.8%; }}
+        .hotels-table col.col-w-link {{ width: 8.6%; }}
+
+        .hotels-table td.col-w-deal-td,
+        .hotels-table td.col-w-davg-td {{
+            width: 1%;
+            max-width: max-content;
+        }}
+
+        .hotels-table td.col-tight,
+        .hotels-table th.col-tight {{
+            white-space: nowrap;
+            vertical-align: middle;
+            padding: 0.7rem 0.55rem;
+        }}
+
+        .hotels-table th.col-tight {{
+            font-size: 0.78rem;
+            letter-spacing: 0.03em;
         }}
         
         .hotels-table th {{
@@ -5168,8 +5186,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         .hotels-table td {{
             padding: 1rem 1.25rem;
-            border-bottom: 1px solid #f1f5f9;
-            transition: var(--transition-fast);
+            border-bottom: none;
+            transition: background-color var(--transition-fast);
+        }}
+
+        .hotels-table tbody tr {{
+            border-bottom: 1px solid #eef2f7;
         }}
         
         .hotels-table tbody tr:nth-child(even) {{
@@ -5182,8 +5204,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         .hotels-table tbody tr:hover {{
             background: linear-gradient(90deg, rgba(79,70,229,.08) 0%, rgba(14,165,233,.08) 100%);
-            transform: scale(1.01);
-            box-shadow: var(--shadow-sm);
         }}
 
         @keyframes sectionFadeIn {{
@@ -5203,10 +5223,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             100% {{ transform: translate3d(-10px, 8px, 0) scale(1.02); }}
         }}
         
+        .hotels-table .col-hotel {{
+            width: auto;
+            max-width: 100%;
+            padding: 0.7rem 0.75rem;
+            overflow: hidden;
+        }}
+
         .hotel-name {{
             color: var(--primary-color);
             font-weight: 700;
-            font-size: 0.95rem;
+            font-size: 0.88rem;
+            line-height: 1.32;
+            max-width: 100%;
+            white-space: normal;
+            overflow-wrap: break-word;
+            word-break: break-word;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
         }}
         
         .hotel-name a {{
@@ -5219,11 +5255,50 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: var(--primary-dark);
             text-decoration: underline;
         }}
+
+        .arrival-hub {{
+            font-weight: 700;
+            font-size: 0.88rem;
+            color: var(--text-color);
+            white-space: nowrap;
+        }}
+
+        .deal-cell-inline {{
+            display: inline-block;
+            white-space: nowrap;
+            line-height: 1.25;
+            font-size: 0.82rem;
+        }}
+
+        .deal-cell-inline .deal-conf-short {{
+            opacity: 0.6;
+            font-size: 0.7rem;
+            font-weight: 500;
+            margin-left: 0.1rem;
+        }}
+
+        .hotels-table .col-w-deal-td {{
+            font-size: 0.78rem;
+        }}
+
+        .hotels-table .col-w-dur-td {{
+            font-size: 0.78rem;
+        }}
+
+        .col-dates {{
+            font-size: 0.82rem;
+            font-variant-numeric: tabular-nums;
+        }}
+
+        .col-duration {{
+            font-size: 0.82rem;
+        }}
         
         .price {{
             font-weight: 800;
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--success-color);
+            white-space: nowrap;
         }}
         
         .airport {{
@@ -5268,6 +5343,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: 600;
         }}
         
+        .hotels-table .delta {{
+            font-weight: 700;
+            font-size: 0.8rem;
+            padding: 0.18rem 0.4rem;
+            border-radius: var(--radius-sm);
+            display: inline-block;
+            white-space: nowrap;
+            line-height: 1.15;
+            text-align: center;
+            box-sizing: border-box;
+        }}
+
+        .hotels-table .col-w-davg-td,
+        .hotels-table .col-w-d48-td {{
+            font-size: 0.78rem;
+        }}
+
         .delta {{
             font-weight: 700;
             font-size: 0.9rem;
@@ -5896,7 +5988,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     for hotel_name, price in table_prices.items():
         if hotel_name in current_hotels:
             continue
-        comeback = _comeback_from_premium(
+        comeback = comeback_from_premium(
             price, premium_history_by_hotel.get(hotel_name), ceiling_val
         )
         if not comeback or comeback['drop_from_peak_pct'] < ALERT_THRESHOLD_PERCENT:
@@ -6261,6 +6353,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         _pr = _pr[_pr > 0]
     except Exception:
         _pr = pd.Series([], dtype='float64')
+    arrival_hub_by_hotel = {}
+    arrival_hub_labels = set()
+    for _, _hotel_row in all_hotels.iterrows():
+        _path = parse_offer_path(str(_hotel_row.get("offer_url") or ""))
+        _hub_label = arrival_hub_label(_path.get("country"), _path.get("region"))
+        _hotel_key = str(_hotel_row.get("hotel_name") or "")
+        arrival_hub_by_hotel[_hotel_key] = _hub_label
+        if _hub_label and _hub_label != "—":
+            arrival_hub_labels.add(_hub_label)
+    region_filter_options_html = "".join(
+        f'<option value="{html_lib.escape(label)}">{html_lib.escape(label)}</option>'
+        for label in sorted(arrival_hub_labels)
+    )
+
     if len(_pr) >= 2:
         import math as _math
         _lo = float(_pr.quantile(0.02))
@@ -6317,21 +6423,37 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <option value="increase">Рост цен</option>
                     <option value="stable">Стабильные</option>
                 </select>
+                <select class="filter-select" id="regionFilter">
+                    <option value="">Все регионы</option>
+                    {region_filter_options_html}
+                </select>
                 <button class="filter-button" id="clearFilters" style="padding: 0.75rem 1rem; background: var(--gradient-primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600;">Очистить</button>
             </div>
             
             <div class="table-container">
             <table class="hotels-table" id="hotelsTable">
+                <colgroup>
+                    <col class="col-w-hotel">
+                    <col class="col-w-price">
+                    <col class="col-w-deal">
+                    <col class="col-w-d48">
+                    <col class="col-w-davg">
+                    <col class="col-w-region">
+                    <col class="col-w-dates">
+                    <col class="col-w-dur">
+                    <col class="col-w-link">
+                </colgroup>
                 <thead>
                     <tr>
-                        <th class="sortable" data-sort="hotel">Отель</th>
-                        <th class="sortable" data-sort="price">Цена</th>
-                        <th class="sortable" data-sort="deal">Deal Score</th>
-                        <th class="sortable" data-sort="delta48">Δ 48ч</th>
-                        <th class="sortable" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней</th>
-                        <th class="sortable" data-sort="dates">Даты</th>
-                        <th class="sortable" data-sort="duration">Длительность</th>
-                        <th>Ссылка</th>
+                        <th class="sortable col-hotel" data-sort="hotel">Отель</th>
+                        <th class="sortable col-tight" data-sort="price">Цена</th>
+                        <th class="sortable col-tight" data-sort="deal">Deal Score</th>
+                        <th class="sortable col-tight" data-sort="delta48">Δ 48ч</th>
+                        <th class="sortable col-tight" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней</th>
+                        <th class="sortable col-tight" data-sort="region">Регион</th>
+                        <th class="sortable col-tight col-dates" data-sort="dates">Даты</th>
+                        <th class="sortable col-tight col-duration" data-sort="duration">Длительность</th>
+                        <th class="col-tight">Ссылка</th>
                     </tr>
                 </thead>
                 <tbody>"""
@@ -6387,27 +6509,34 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         _, _, deal_badge = classify_deal_badge(
             deal_score, confidence_level, d48_tbl, d_avg_tbl, comeback_drop_tbl
         )
-        confidence_label = (
-            "Low confidence" if confidence_level == "Low"
-            else ("Medium confidence" if confidence_level == "Medium" else "High confidence")
+        confidence_short = (
+            "Low" if confidence_level == "Low"
+            else ("Med" if confidence_level == "Medium" else "High")
         )
-        comeback = _comeback_from_premium(price, premium_history_by_hotel.get(hotel_name), ceiling_val)
+        deal_title = html_lib.escape(f"{deal_score} {deal_badge} · {confidence_level}")
+        duration_display = _table_duration_compact(duration)
+        duration_title = html_lib.escape(str(duration))
+        comeback = comeback_from_premium(price, premium_history_by_hotel.get(hotel_name), ceiling_val)
         comeback_cell = (
             f'<br><span class="comeback-badge">{comeback["badge_html"]}</span>'
             if comeback else ''
         )
+        arrival_hub = arrival_hub_by_hotel.get(hotel_name, "—")
+        hotel_name_html = html_lib.escape(str(hotel_name))
+        arrival_hub_html = html_lib.escape(str(arrival_hub))
+        hotel_name_js = json.dumps(str(hotel_name), ensure_ascii=False)
         
         html_template += f"""
-                    <tr>
-                        <td class="hotel-name"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,'{hotel_name}')\" onmouseout=\"_hoverPreview.hide()\">{hotel_name}</a></td>
-                        <td class="price" data-sort-value="{price}">{price:.0f} PLN{comeback_cell}</td>
-                        <td data-sort-value="{deal_score}">{deal_score} <span style="opacity:.85;font-size:.85em;">{deal_badge}</span><br><span style="opacity:.65;font-size:.78em;">{confidence_label}</span></td>
-                        <td class=\"{delta_class}\" data-sort-value="{delta_info[1] if delta_info else 0}">{delta_display}</td>
-                        <td data-sort-value="{avg_sort_value}">{avg_display}</td>
-                        <td data-sort-value="{dates}">{dates}</td>
-                        <td data-sort-value="{duration}">{duration}</td>
-                        
-                        <td class="offer-link-cell">{offer_link_html}</td>
+                    <tr data-region="{arrival_hub_html}">
+                        <td class="hotel-name col-hotel"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,{hotel_name_js})\" onmouseout=\"_hoverPreview.hide()\">{hotel_name_html}</a></td>
+                        <td class="price col-tight" data-sort-value="{price}">{price:.0f} PLN{comeback_cell}</td>
+                        <td class="col-tight col-w-deal-td" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
+                        <td class="col-tight col-w-d48-td" data-sort-value="{delta_info[1] if delta_info else 0}"><span class=\"{delta_class}\">{delta_display}</span></td>
+                        <td class="col-tight col-w-davg-td" data-sort-value="{avg_sort_value}">{avg_display}</td>
+                        <td class="arrival-hub col-tight" data-sort-value="{arrival_hub_html}">{arrival_hub_html}</td>
+                        <td class="col-tight col-dates" data-sort-value="{dates}">{dates}</td>
+                        <td class="col-tight col-w-dur-td col-duration" data-sort-value="{duration}" title="{duration_title}">{duration_display}</td>
+                        <td class="offer-link-cell col-tight">{offer_link_html}</td>
                     </tr>"""
 
     # --- HTML секции "Выпавшие отели" ---
@@ -6818,7 +6947,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}
         const hover = document.getElementById('hoverThumb');
         const img = document.getElementById('hoverImg');
-        function show(e, name){ const url = map[name]; if(!url){ return; } img.src = url; hover.style.display = 'block'; hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; }
+        function show(e, name){
+          const url = map[name];
+          if(!url || String(url).indexOf('data:image') === 0){ return; }
+          img.src = url;
+          hover.style.display = 'block';
+          hover.style.left = ((e.pageX||0)+12) + 'px';
+          hover.style.top = ((e.pageY||0)+12) + 'px';
+        }
         function move(e){ if(hover.style.display === 'block'){ hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; } }
         function hide(){ hover.style.display = 'none'; img.src = ''; }
         document.addEventListener('mousemove', move);
@@ -6841,7 +6977,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       let currentSort = { column: null, direction: 'asc' };
       
       function getColumnIndex(column) {
-        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'dates': 5, 'duration': 6, 'offer': 7 };
+        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'region': 5, 'dates': 6, 'duration': 7, 'offer': 8 };
         return columnMap[column];
       }
 
@@ -6849,8 +6985,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         const idx = getColumnIndex(column);
         const cell = row.cells[idx];
         const raw = (cell && (cell.dataset.sortValue || cell.textContent) || '').trim();
-        if (column === 'hotel') {
-          return (row.cells[0].textContent || '').trim().toLowerCase();
+        if (column === 'hotel' || column === 'region') {
+          return (row.cells[getColumnIndex(column)].textContent || '').trim().toLowerCase();
         }
         if (column === 'dates') {
           const m = raw.match(/(\d{2})\.(\d{2})\.(\d{4})/);
@@ -6999,6 +7135,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         const searchInput = document.getElementById('searchInput');
         const priceFilter = document.getElementById('priceFilter');
         const changeFilter = document.getElementById('changeFilter');
+        const regionFilter = document.getElementById('regionFilter');
         const clearFilters = document.getElementById('clearFilters');
         const table = document.getElementById('hotelsTable');
         const tbody = table.querySelector('tbody');
@@ -7061,11 +7198,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const searchTerm = searchInput.value.toLowerCase();
           const priceRange = priceFilter.value;
           const changeType = changeFilter.value;
+          const regionValue = regionFilter ? regionFilter.value : '';
           
           filteredRows = rows.filter(row => {
             const hotelName = row.cells[0].textContent.toLowerCase();
             const price = parseFloat(row.cells[1].textContent.replace(/[^0-9.-]/g, ''));
             const delta48 = row.cells[3].textContent.trim();
+            const rowRegion = row.dataset.region || row.cells[5].textContent.trim();
             
             // Search filter
             if (searchTerm && !hotelName.includes(searchTerm)) {
@@ -7089,6 +7228,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
               if (changeType === 'decrease' && !delta48.includes('-')) return false;
               if (changeType === 'increase' && !delta48.includes('+')) return false;
               if (changeType === 'stable' && delta48 !== '—') return false;
+            }
+
+            if (regionValue && rowRegion !== regionValue) {
+              return false;
             }
             
             return true;
@@ -7148,10 +7291,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         searchInput.addEventListener('input', filterRows);
         priceFilter.addEventListener('change', filterRows);
         changeFilter.addEventListener('change', filterRows);
+        if (regionFilter) regionFilter.addEventListener('change', filterRows);
         clearFilters.addEventListener('click', function() {
           searchInput.value = '';
           priceFilter.value = '';
           changeFilter.value = '';
+          if (regionFilter) regionFilter.value = '';
           filterRows();
         });
         nextPage.addEventListener('click', nextPageFunc);

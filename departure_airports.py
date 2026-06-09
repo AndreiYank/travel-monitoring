@@ -43,6 +43,35 @@ for _hub_id, _hub in TURKEY_ARRIVAL_HUBS.items():
     for _region in _hub["regions"]:
         _REGION_TO_TURKEY_HUB[_region] = _hub_id
 
+# Egypt: coarse resort / arrival areas (charter hubs), not every fly.pl sub-region.
+EGYPT_ARRIVAL_HUBS: Dict[str, Dict[str, Any]] = {
+    "hurghada": {
+        "label": "Хургада",
+        "regions": {"hurghada", "el-gouna", "soma-bay", "safaga", "makadi-bay"},
+    },
+    "sharm": {
+        "label": "Шарм-эль-Шейх",
+        "regions": {"sharm-el-sheikh", "dahab", "taba", "nuweiba", "saint-catherine"},
+    },
+    "marsa-alam": {
+        "label": "Марса-Алам",
+        "regions": {"marsa-alam", "port-ghalib", "hamata"},
+    },
+    "alexandria": {
+        "label": "Александрия",
+        "regions": {"aleksandria", "marsa-matruh"},
+    },
+    "cairo": {
+        "label": "Каир / Нижний Египет",
+        "regions": {"dolny-egipt", "kair", "luxor", "asuan"},
+    },
+}
+
+_REGION_TO_EGYPT_HUB: Dict[str, str] = {}
+for _hub_id, _hub in EGYPT_ARRIVAL_HUBS.items():
+    for _region in _hub["regions"]:
+        _REGION_TO_EGYPT_HUB[_region] = _hub_id
+
 
 def _norm(value: Any) -> str:
     return str(value or "").strip().lower().replace("_", "-")
@@ -60,6 +89,32 @@ def turkey_hub_label(hub_id: str) -> str:
 def turkey_hub_regions(hub_id: str) -> Set[str]:
     hub = TURKEY_ARRIVAL_HUBS.get(_norm(hub_id), {})
     return set(hub.get("regions") or [])
+
+
+def egypt_hub_id_for_region(region: Any) -> Optional[str]:
+    return _REGION_TO_EGYPT_HUB.get(_norm(region))
+
+
+def egypt_hub_label(hub_id: str) -> str:
+    hub = EGYPT_ARRIVAL_HUBS.get(_norm(hub_id), {})
+    return str(hub.get("label") or hub_id.replace("-", " ").title())
+
+
+def arrival_hub_label(country: Any, region: Any) -> str:
+    """Coarse arrival region / airport hub for hotel table (not fine-grained resort)."""
+    country_norm = _norm(country)
+    region_norm = _norm(region)
+    if not region_norm:
+        return "—"
+    if should_group_by_arrival_airport(country_norm):
+        hub_id = turkey_hub_id_for_region(region_norm)
+        if hub_id:
+            return turkey_hub_label(hub_id)
+    if country_norm in {"egipt", "egypt"}:
+        hub_id = egypt_hub_id_for_region(region_norm)
+        if hub_id:
+            return egypt_hub_label(hub_id)
+    return region_norm.replace("-", " ").title()
 
 
 def should_group_by_arrival_airport(country: Any, filter_id: str = "") -> bool:

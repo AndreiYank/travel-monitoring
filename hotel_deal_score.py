@@ -3,9 +3,13 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, Optional
+from typing import Any, Dict, List, Optional
 
 import pandas as pd
+
+MIN_PREMIUM_PLATEAU_HOURS = 6.0
+MIN_PREMIUM_OBSERVATIONS = 2
+ISOLATED_SPIKE_NEIGHBOR_RATIO = 0.55
 
 
 def _clamp(v: float, lo: float, hi: float) -> float:
@@ -94,6 +98,102 @@ def time_weighted_price_quantile(
         if seen >= target:
             return float(price)
     return float(ordered[-1][0])
+
+
+def robust_premium_peak(
+    grp: pd.DataFrame,
+    display_ceiling: float,
+    time_col: str = "scraped_at",
+    price_col: str = "price",
+) -> Optional[float]:
+    """Peak above display ceiling, ignoring short-lived isolated spikes (scraping glitches)."""
+    if grp is None or grp.empty or display_ceiling is None:
+        return None
+    ceiling = float(display_ceiling)
+    work = grp.dropna(subset=[time_col, price_col]).copy()
+    if work.empty:
+        return None
+    work[price_col] = pd.to_numeric(work[price_col], errors="coerce")
+    work = work.dropna(subset=[price_col]).sort_values(time_col)
+    segments = _price_plateau_segments(work, time_col, price_col)
+    if not segments:
+        return None
+
+    obs_above = work[work[price_col] > ceiling]
+    obs_count_by_price: Dict[float, int] = {}
+    for price, count in obs_above[price_col].astype(float).value_counts().items():
+        obs_count_by_price[float(price)] = int(count)
+
+    candidates: List[float] = []
+    for i, (price, hours) in enumerate(segments):
+        price = float(price)
+        if price <= ceiling:
+            continue
+        obs_n = obs_count_by_price.get(price, 0)
+        sustained = hours >= MIN_PREMIUM_PLATEAU_HOURS or obs_n >= MIN_PREMIUM_OBSERVATIONS
+        if not sustained:
+            continue
+        if 0 < i < len(segments) - 1:
+            prev_p = float(segments[i - 1][0])
+            next_p = float(segments[i + 1][0])
+            threshold = price * ISOLATED_SPIKE_NEIGHBOR_RATIO
+            if prev_p < threshold and next_p < threshold:
+                continue
+        candidates.append(price)
+    return max(candidates) if candidates else None
+
+
+def build_premium_history_by_hotel(
+    df_history: pd.DataFrame,
+    display_ceiling: Optional[float],
+    time_col: str = "scraped_at",
+    price_col: str = "price",
+) -> Dict[str, Dict[str, Any]]:
+    """Peak prices per hotel in the full history band (up to history ceiling)."""
+    out: Dict[str, Dict[str, Any]] = {}
+    if df_history is None or df_history.empty:
+        return out
+    for name, grp in df_history.groupby("hotel_name", sort=False):
+        prices = grp[price_col].astype(float)
+        if prices.empty:
+            continue
+        premium_peak = robust_premium_peak(grp, display_ceiling, time_col, price_col)
+        out[str(name)] = {
+            "history_max": float(prices.max()),
+            "premium_peak": premium_peak,
+        }
+    return out
+
+
+def comeback_from_premium(
+    current_price,
+    premium_info: Optional[Dict[str, Any]],
+    display_ceiling,
+    min_drop_pct: float = 8.0,
+) -> Optional[Dict[str, Any]]:
+    """Hotel re-entered display band after being much more expensive in history."""
+    if not premium_info or display_ceiling is None:
+        return None
+    try:
+        current = float(current_price)
+    except (TypeError, ValueError):
+        return None
+    if current > float(display_ceiling):
+        return None
+    peak = premium_info.get("premium_peak")
+    if peak is None or peak <= float(display_ceiling):
+        return None
+    drop = (float(peak) - current) / float(peak) * 100.0
+    if drop < min_drop_pct:
+        return None
+    return {
+        "peak_price": float(peak),
+        "drop_from_peak_pct": drop,
+        "badge_html": (
+            f"↩ Было до {peak:.0f} PLN"
+            f' <span style="opacity:.85">(−{drop:.0f}%)</span>'
+        ),
+    }
 
 
 def time_weighted_price_volatility(grp: pd.DataFrame, time_col: str = "scraped_at", price_col: str = "price"):
