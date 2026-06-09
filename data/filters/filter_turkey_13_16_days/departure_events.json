@@ -18,7 +18,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 0,
+<<<<<<< Updated upstream
       "hot_score": 90
+=======
+      "hot_score": 91
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-01T14:39:28+0000",
@@ -378,7 +382,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4,
       "hotel_delta": 0,
+<<<<<<< Updated upstream
       "hot_score": 65
+=======
+      "hot_score": 66
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-01T12:33:10+0000",
@@ -398,7 +406,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 5,
       "hotel_delta": 0,
+<<<<<<< Updated upstream
       "hot_score": 65
+=======
+      "hot_score": 67
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-09T06:49:18+0000",
@@ -561,7 +573,11 @@
       "hot_score": 0
     },
     {
+<<<<<<< Updated upstream
       "event_time": "2026-06-09T10:35:48+0000",
+=======
+      "event_time": "2026-06-09T10:58:55+0000",
+>>>>>>> Stashed changes
       "departure_key": "turcja|alanya|2026-06-13|2026-06-27|14|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -578,7 +594,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": -4,
+<<<<<<< Updated upstream
       "hot_score": 65
+=======
+      "hot_score": 64
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-04T16:49:52+0000",
@@ -981,7 +1001,11 @@
       "hot_score": 74
     },
     {
+<<<<<<< Updated upstream
       "event_time": "2026-06-09T10:35:48+0000",
+=======
+      "event_time": "2026-06-09T10:58:55+0000",
+>>>>>>> Stashed changes
       "departure_key": "turcja|belek|2026-06-12|2026-06-27|14|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -1261,7 +1285,11 @@
       "hot_score": 44
     },
     {
+<<<<<<< Updated upstream
       "event_time": "2026-06-09T10:35:48+0000",
+=======
+      "event_time": "2026-06-09T10:58:55+0000",
+>>>>>>> Stashed changes
       "departure_key": "turcja|kemer|2026-06-12|2026-06-25|13|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_price_dump",
       "severity": "high",
@@ -2341,7 +2369,11 @@
       "hot_score": 89
     },
     {
+<<<<<<< Updated upstream
       "event_time": "2026-06-09T10:35:48+0000",
+=======
+      "event_time": "2026-06-09T10:58:55+0000",
+>>>>>>> Stashed changes
       "departure_key": "turcja|side|2026-06-12|2026-06-25|13|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_price_dump",
       "severity": "high",
@@ -2359,6 +2391,29 @@
       "hotel_count": 34,
       "hotel_delta": 13,
       "hot_score": 75
+<<<<<<< Updated upstream
+=======
+    },
+    {
+      "event_time": "2026-06-09T10:58:55+0000",
+      "departure_key": "turcja|side|2026-06-12|2026-06-27|14|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-12",
+      "return_date": "2026-06-27",
+      "nights": 14,
+      "days_to_departure": 3,
+      "old_min_price": "",
+      "new_min_price": 9457.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 8,
+      "hotel_delta": 7,
+      "hot_score": 63
+>>>>>>> Stashed changes
     }
   ]
 }

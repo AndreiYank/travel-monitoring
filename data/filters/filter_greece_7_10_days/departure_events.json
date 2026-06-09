@@ -18,7 +18,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 0,
-      "hot_score": 68
+      "hot_score": 65
     },
     {
       "event_time": "2026-06-02T14:52:12+0000",
@@ -61,7 +61,11 @@
       "hot_score": 64
     },
     {
+<<<<<<< Updated upstream
       "event_time": "2026-06-09T10:36:33+0000",
+=======
+      "event_time": "2026-06-09T11:01:29+0000",
+>>>>>>> Stashed changes
       "departure_key": "grecja|kos|2026-06-09|2026-06-16|7|Katowice|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -119,6 +123,7 @@
       "hotel_count": 3,
       "hotel_delta": 2,
       "hot_score": 56
+<<<<<<< Updated upstream
     },
     {
       "event_time": "2026-06-03T21:52:05+0000",
@@ -199,10 +204,12 @@
       "hotel_count": 3,
       "hotel_delta": 2,
       "hot_score": 66
+=======
+>>>>>>> Stashed changes
     },
     {
-      "event_time": "2026-06-05T07:04:00+0000",
-      "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-14|7|Poznań|2+1",
+      "event_time": "2026-06-03T21:52:05+0000",
+      "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-14|7|Katowice|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
       "country": "grecja",
@@ -210,155 +217,40 @@
       "departure_date": "2026-06-07",
       "return_date": "2026-06-14",
       "nights": 7,
-      "days_to_departure": 2,
+      "days_to_departure": 4,
       "old_min_price": "",
-      "new_min_price": 7605.0,
+      "new_min_price": 7231.0,
       "min_drop_pct": 0.0,
       "p10_drop_pct": 0.0,
       "median_drop_pct": 0.0,
       "hotel_count": 3,
+<<<<<<< Updated upstream
       "hotel_delta": 1,
       "hot_score": 72
+=======
+      "hotel_delta": 2,
+      "hot_score": 52
+>>>>>>> Stashed changes
     },
     {
-      "event_time": "2026-06-06T11:24:50+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
+      "event_time": "2026-06-03T23:36:56+0000",
+      "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-14|7|Katowice|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
       "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
+      "region": "kreta-zachodnia",
+      "departure_date": "2026-06-07",
+      "return_date": "2026-06-14",
       "nights": 7,
-      "days_to_departure": 6,
+      "days_to_departure": 4,
       "old_min_price": "",
-      "new_min_price": 10786.0,
+      "new_min_price": 7231.0,
       "min_drop_pct": 0.0,
       "p10_drop_pct": 0.0,
       "median_drop_pct": 0.0,
       "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
-    },
-    {
-      "event_time": "2026-06-06T13:12:23+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
-      "nights": 7,
-      "days_to_departure": 6,
-      "old_min_price": "",
-      "new_min_price": 10786.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
-    },
-    {
-      "event_time": "2026-06-06T15:12:56+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
-      "nights": 7,
-      "days_to_departure": 6,
-      "old_min_price": "",
-      "new_min_price": 10786.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
-    },
-    {
-      "event_time": "2026-06-06T17:07:14+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
-      "nights": 7,
-      "days_to_departure": 6,
-      "old_min_price": "",
-      "new_min_price": 10786.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
-    },
-    {
-      "event_time": "2026-06-06T18:14:08+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
-      "nights": 7,
-      "days_to_departure": 6,
-      "old_min_price": "",
-      "new_min_price": 10786.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
-    },
-    {
-      "event_time": "2026-06-06T20:10:56+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
-      "nights": 7,
-      "days_to_departure": 6,
-      "old_min_price": "",
-      "new_min_price": 10786.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
-    },
-    {
-      "event_time": "2026-06-06T22:03:32+0000",
-      "departure_key": "grecja|rodos|2026-06-12|2026-06-19|7|Poznań|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "grecja",
-      "region": "rodos",
-      "departure_date": "2026-06-12",
-      "return_date": "2026-06-19",
-      "nights": 7,
-      "days_to_departure": 6,
-      "old_min_price": "",
-      "new_min_price": 10786.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 3,
-      "hotel_delta": 1,
-      "hot_score": 48
+      "hotel_delta": 2,
+      "hot_score": 52
     },
     {
       "event_time": "2026-06-06T23:04:05+0000",
@@ -378,7 +270,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 1,
+<<<<<<< Updated upstream
       "hot_score": 67
+=======
+      "hot_score": 64
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-07T00:05:42+0000",
@@ -398,7 +294,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 1,
+<<<<<<< Updated upstream
       "hot_score": 71
+=======
+      "hot_score": 68
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-07T14:54:05+0000",
@@ -418,7 +318,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 0,
+<<<<<<< Updated upstream
       "hot_score": 71
+=======
+      "hot_score": 68
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-07T16:14:09+0000",
@@ -438,7 +342,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 0,
+<<<<<<< Updated upstream
       "hot_score": 71
+=======
+      "hot_score": 68
+>>>>>>> Stashed changes
     },
     {
       "event_time": "2026-06-07T19:29:16+0000",
@@ -458,7 +366,11 @@
       "median_drop_pct": 0.0,
       "hotel_count": 3,
       "hotel_delta": 0,
+<<<<<<< Updated upstream
       "hot_score": 71
+=======
+      "hot_score": 68
+>>>>>>> Stashed changes
     }
   ]
 }
