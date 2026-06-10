@@ -12,6 +12,7 @@ import csv
 import os
 import sys
 import re
+import time
 import html as ihtml
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
@@ -91,6 +92,17 @@ class TravelPriceMonitor:
             return ts
         return datetime.now(timezone.utc).isoformat()
 
+    def _resolve_http_max_retries(self) -> int:
+        env_val = os.environ.get("HTTP_MAX_RETRIES", "").strip()
+        if env_val.isdigit():
+            return max(1, int(env_val))
+        return max(1, int(self.config.get("http_max_retries", 6)))
+
+    def _http_retry_pause_seconds(self, attempt_index: int) -> float:
+        base = float(self.config.get("http_retry_delay", self.config.get("retry_delay", 5)))
+        cap = float(self.config.get("http_retry_delay_max", 45))
+        return min(base * (2 ** attempt_index), cap)
+
     async def scrape_offers_with_retry(self) -> List[Dict[str, Any]]:
         """Парсит предложения.
 
@@ -101,30 +113,34 @@ class TravelPriceMonitor:
         """
         self._current_scrape_at = datetime.now(timezone.utc).isoformat()
         if self.config.get('disable_http_fast_path') is not True:
-            http_max_retries = int(
-                self.config.get('http_max_retries', self.config.get('max_retries', 3))
-            )
-            retry_delay = float(self.config.get('retry_delay', 5))
+            http_max_retries = self._resolve_http_max_retries()
+            last_http_note = "неизвестно"
             for http_attempt in range(http_max_retries):
                 try:
                     if http_attempt > 0:
+                        pause = self._http_retry_pause_seconds(http_attempt - 1)
                         logger.info(
                             f"Повтор HTTP {http_attempt + 1}/{http_max_retries} "
-                            f"(пауза {retry_delay:.0f} с)..."
+                            f"(пауза {pause:.0f} с)..."
                         )
-                        await asyncio.sleep(retry_delay)
-                    offers = self.scrape_offers_http()
+                        await asyncio.sleep(pause)
+                    offers, last_http_note = self.scrape_offers_http()
                     if offers:
                         logger.info(f"⚡ Быстрый HTTP-парсинг успешен: {len(offers)} предложений")
                         return offers
                     logger.warning(
-                        f"HTTP-попытка {http_attempt + 1}/{http_max_retries}: результатов нет"
+                        f"HTTP-попытка {http_attempt + 1}/{http_max_retries}: "
+                        f"результатов нет ({last_http_note})"
                     )
                 except Exception as e:
+                    last_http_note = str(e)
                     logger.warning(
                         f"HTTP-попытка {http_attempt + 1}/{http_max_retries} не удалась ({e})"
                     )
-            logger.warning("HTTP-парсинг не дал результатов — переключаемся на Playwright")
+            logger.warning(
+                f"HTTP-парсинг не дал результатов после {http_max_retries} попыток "
+                f"({last_http_note}) — переключаемся на Playwright"
+            )
 
         for attempt in range(self.config['max_retries']):
             try:
@@ -233,11 +249,57 @@ class TravelPriceMonitor:
 
         return offers
 
-    def scrape_offers_http(self) -> List[Dict[str, Any]]:
+    def _fetch_search_page_html(
+        self,
+        session: requests.Session,
+        url: str,
+        page_number: int,
+        timeout_s: float,
+    ) -> tuple[Optional[str], str]:
+        """Загружает HTML страницы выдачи с короткими ретраями на уровне страницы."""
+        page_retries = max(1, int(self.config.get("http_page_retries", 3)))
+        page_retry_delay = float(self.config.get("http_page_retry_delay", 3))
+        last_note = "неизвестно"
+
+        for page_attempt in range(page_retries):
+            if page_attempt > 0:
+                pause = page_retry_delay * page_attempt
+                logger.info(
+                    f"Страница {page_number}: повтор {page_attempt + 1}/{page_retries} "
+                    f"(пауза {pause:.0f} с)..."
+                )
+                time.sleep(pause)
+            try:
+                resp = session.get(url, timeout=timeout_s)
+            except requests.RequestException as exc:
+                last_note = f"сеть: {exc}"
+                continue
+
+            if resp.status_code != 200:
+                last_note = f"HTTP {resp.status_code}"
+                continue
+
+            html = resp.text or ""
+            if "card-offer-search" not in html:
+                if len(html) < 5000:
+                    last_note = "короткий HTML (возможно анти-бот/ошибка fly.pl)"
+                else:
+                    last_note = "в HTML нет card-offer-search (разметка или пустая выдача)"
+                continue
+
+            return html, ""
+
+        logger.warning(
+            f"Страница {page_number}: не удалось загрузить после {page_retries} попыток ({last_note})"
+        )
+        return None, last_note
+
+    def scrape_offers_http(self) -> tuple[List[Dict[str, Any]], str]:
         """Быстрый парсинг через прямые HTTP-запросы (без браузера).
 
         Постранично запрашивает выдачу (пагинация p:N), разбирает HTML и применяет
         те же фильтры (мин/макс цена, целевой scope), что и браузерный путь.
+        Возвращает (офферы, причина_пустого_результата).
         """
         max_price_threshold = float(
             self.config.get('max_price_threshold')
@@ -248,6 +310,7 @@ class TravelPriceMonitor:
         max_pages = int(self.config.get('max_pages', 10))
         max_offers = int(self.config.get('max_offers', 0))
         timeout_s = float(self.config.get('wait_timeout', 30000)) / 1000.0
+        empty_note = "нет офферов"
 
         session = requests.Session()
         session.headers.update({
@@ -266,13 +329,16 @@ class TravelPriceMonitor:
         page_number = 1
         while page_number <= max_pages:
             url = self._build_page_url(page_number)
-            resp = session.get(url, timeout=timeout_s)
-            if resp.status_code != 200:
-                logger.warning(f"HTTP {resp.status_code} на странице {page_number}")
+            page_html, fetch_note = self._fetch_search_page_html(
+                session, url, page_number, timeout_s
+            )
+            if not page_html:
+                empty_note = fetch_note or empty_note
                 break
 
-            raw_offers = self._parse_offers_from_html(resp.text)
+            raw_offers = self._parse_offers_from_html(page_html)
             if not raw_offers:
+                empty_note = "парсер не извлёк карточки из HTML"
                 logger.info(f"Страница {page_number}: карточки не найдены, завершаем")
                 break
 
@@ -304,13 +370,18 @@ class TravelPriceMonitor:
                     logger.info(f"Достигнута максимальная цена {max_price_threshold:.0f} PLN, завершаем")
                     break
             else:
+                empty_note = (
+                    f"после фильтра 0 офферов (сырых {len(raw_offers)}, отфильтровано {filtered_out})"
+                )
                 logger.info(f"Страница {page_number}: после фильтра не осталось предложений, завершаем")
                 break
 
             page_number += 1
 
         logger.info(f"⚡ HTTP-парсинг завершён: {len(all_offers)} предложений с {page_number} страниц")
-        return all_offers
+        if not all_offers:
+            return [], empty_note
+        return all_offers, ""
 
     async def scrape_offers(self) -> List[Dict[str, Any]]:
         """Парсит предложения с сайта fly.pl с пагинацией"""
