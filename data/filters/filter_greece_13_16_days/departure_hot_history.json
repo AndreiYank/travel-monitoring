@@ -1,34 +1,6 @@
 {
   "departures": [
     {
-      "departure_key": "grecja|riwiera-olimpijska|2026-06-10|2026-06-24|14|Wrocław|2+1",
-      "country": "grecja",
-      "region": "riwiera-olimpijska",
-      "departure_date": "2026-06-10",
-      "return_date": "2026-06-24",
-      "nights": 14,
-      "first_seen_at": "2026-06-01T05:49:25+0000",
-      "last_seen_at": "2026-06-10T02:43:18+0000",
-      "best_seen_at": "2026-06-09T02:13:37+0000",
-      "departure_day_at": "2026-06-10T02:43:18+0000",
-      "days_to_departure_at_best": 1,
-      "best_min_price": 6706.0,
-      "best_p10_price": 6754.2,
-      "best_median_price": 6947.0,
-      "best_prev_min_price": 0.0,
-      "best_prev_p10_price": 0.0,
-      "best_prev_median_price": 0.0,
-      "max_hot_score": 96,
-      "best_p10_change_pct": 0.0,
-      "best_median_change_pct": 0.0,
-      "max_p10_drop_pct": 0.0,
-      "max_median_drop_pct": 0.0,
-      "max_hotel_count": 3,
-      "max_below_10000_count": 2,
-      "hot_runs_count": 12,
-      "observations": 115
-    },
-    {
       "departure_key": "grecja|rodos|2026-06-08|2026-06-22|14|Poznań|2+1",
       "country": "grecja",
       "region": "rodos",
@@ -46,15 +18,43 @@
       "best_prev_min_price": 0.0,
       "best_prev_p10_price": 0.0,
       "best_prev_median_price": 0.0,
-      "max_hot_score": 94,
+      "max_hot_score": 100,
       "best_p10_change_pct": 0.0,
       "best_median_change_pct": 0.0,
       "max_p10_drop_pct": 0.0,
       "max_median_drop_pct": 0.0,
       "max_hotel_count": 8,
       "max_below_10000_count": 2,
-      "hot_runs_count": 46,
-      "observations": 158
+      "hot_runs_count": 144,
+      "observations": 430
+    },
+    {
+      "departure_key": "grecja|riwiera-olimpijska|2026-06-10|2026-06-24|14|Wrocław|2+1",
+      "country": "grecja",
+      "region": "riwiera-olimpijska",
+      "departure_date": "2026-06-10",
+      "return_date": "2026-06-24",
+      "nights": 14,
+      "first_seen_at": "2026-06-01T05:49:25+0000",
+      "last_seen_at": "2026-06-10T02:43:18+0000",
+      "best_seen_at": "2026-06-09T02:13:37+0000",
+      "departure_day_at": "2026-06-10T02:43:18+0000",
+      "days_to_departure_at_best": 1,
+      "best_min_price": 6706.0,
+      "best_p10_price": 6754.2,
+      "best_median_price": 6947.0,
+      "best_prev_min_price": 0.0,
+      "best_prev_p10_price": 0.0,
+      "best_prev_median_price": 0.0,
+      "max_hot_score": 94,
+      "best_p10_change_pct": 0.0,
+      "best_median_change_pct": 0.0,
+      "max_p10_drop_pct": 0.0,
+      "max_median_drop_pct": 0.0,
+      "max_hotel_count": 3,
+      "max_below_10000_count": 2,
+      "hot_runs_count": 36,
+      "observations": 207
     },
     {
       "departure_key": "grecja|kreta-zachodnia|2026-06-07|2026-06-21|14|Katowice|2+1",
@@ -81,8 +81,8 @@
       "max_median_drop_pct": 0.0,
       "max_hotel_count": 4,
       "max_below_10000_count": 2,
-      "hot_runs_count": 12,
-      "observations": 80
+      "hot_runs_count": 36,
+      "observations": 116
     },
     {
       "departure_key": "grecja|zakynthos|2026-06-02|2026-06-17|14|Katowice|2+1",
@@ -102,15 +102,15 @@
       "best_prev_min_price": 0.0,
       "best_prev_p10_price": 0.0,
       "best_prev_median_price": 0.0,
-      "max_hot_score": 68,
+      "max_hot_score": 67,
       "best_p10_change_pct": 0.0,
       "best_median_change_pct": 0.0,
       "max_p10_drop_pct": 0.0,
       "max_median_drop_pct": 0.0,
       "max_hotel_count": 5,
       "max_below_10000_count": 1,
-      "hot_runs_count": 28,
-      "observations": 28
+      "hot_runs_count": 60,
+      "observations": 60
     },
     {
       "departure_key": "grecja|zakynthos|2026-06-07|2026-06-21|14|Poznań|2+1",
@@ -130,15 +130,15 @@
       "best_prev_min_price": 0.0,
       "best_prev_p10_price": 0.0,
       "best_prev_median_price": 0.0,
-      "max_hot_score": 54,
+      "max_hot_score": 49,
       "best_p10_change_pct": 0.0,
       "best_median_change_pct": 0.0,
       "max_p10_drop_pct": 0.0,
       "max_median_drop_pct": 0.0,
       "max_hotel_count": 4,
       "max_below_10000_count": 2,
-      "hot_runs_count": 4,
-      "observations": 22
+      "hot_runs_count": 12,
+      "observations": 53
     }
   ]
 }
