@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 """
 Модуль для отслеживания изменений цен и отправки алертов (версия 2)
-Согласно новым требованиям:
-- Документировать все одномоментные изменения цен больше 8%
-- Каждый ран обрабатывать весь файл с данными
+- Документировать изменения цен >= порога между соседними ранами
+- Инкрементально: только новые пары ранов (полный rescan — по ALERTS_FORCE_FULL_RESCAN)
 - На дашборд добавлять только новые алерты
 """
 
@@ -12,7 +11,7 @@ import json
 import os
 import csv
 from datetime import datetime, timezone
-from typing import List, Dict, Any, Set, Optional
+from typing import List, Dict, Any, Set, Optional, Tuple
 import logging
 
 from generate_inline_charts_dashboard import (
@@ -26,6 +25,23 @@ from hotel_deal_score import comeback_from_premium
 logger = logging.getLogger(__name__)
 
 ALERT_THRESHOLD_PERCENT = 8.0
+ALERTS_DOC_VERSION = 2
+
+
+def _force_full_rescan() -> bool:
+    return os.environ.get("ALERTS_FORCE_FULL_RESCAN", "").strip().lower() in (
+        "1",
+        "true",
+        "yes",
+    )
+
+
+def _normalize_run_key(run_time: Any) -> str:
+    ts = pd.to_datetime(run_time, errors="coerce", utc=True)
+    if pd.isna(ts):
+        return str(run_time)
+    return ts.isoformat()
+
 
 class PriceAlertManagerV2:
     def __init__(
@@ -43,6 +59,7 @@ class PriceAlertManagerV2:
         self.df = self._build_canonical_df()
         self.df_history = self._build_history_df()
         self._scan_caches_ready = False
+        self._premium_by_run_ready = False
         self._run_times: List[datetime] = []
         self._zone_prices_by_run: Dict[datetime, Dict[str, float]] = {}
         self._history_prices_by_run: Dict[datetime, Dict[str, float]] = {}
@@ -82,29 +99,44 @@ class PriceAlertManagerV2:
         history = _resolve_history_ceiling(display, self.history_price_ceiling)
         return collapse_canonical_per_run(work, history)
     
-    def load_alerts(self) -> List[Dict[str, Any]]:
-        """Загружает историю алертов"""
+    def _load_alerts_doc(self) -> Dict[str, Any]:
+        """Загружает документ алертов (список или {alerts, meta})."""
         if not os.path.exists(self.alerts_file):
-            return []
-        
+            return {"version": ALERTS_DOC_VERSION, "alerts": [], "meta": {}}
         try:
-            with open(self.alerts_file, 'r', encoding='utf-8') as f:
+            with open(self.alerts_file, encoding="utf-8") as f:
                 data = json.load(f)
-                if isinstance(data, dict) and 'alerts' in data:
-                    return data['alerts']
-                elif isinstance(data, list):
-                    return data
-                else:
-                    return []
+            if isinstance(data, list):
+                return {"version": 1, "alerts": data, "meta": {}}
+            if isinstance(data, dict):
+                return {
+                    "version": int(data.get("version") or ALERTS_DOC_VERSION),
+                    "alerts": list(data.get("alerts") or []),
+                    "meta": dict(data.get("meta") or {}),
+                }
+            return {"version": ALERTS_DOC_VERSION, "alerts": [], "meta": {}}
         except Exception as e:
             logger.error(f"Ошибка загрузки алертов: {e}")
-            return []
-    
-    def save_alerts(self, alerts: List[Dict[str, Any]]):
-        """Сохраняет алерты в файл"""
+            return {"version": ALERTS_DOC_VERSION, "alerts": [], "meta": {}}
+
+    def load_alerts(self) -> List[Dict[str, Any]]:
+        """Загружает историю алертов"""
+        return self._load_alerts_doc()["alerts"]
+
+    def save_alerts(
+        self,
+        alerts: List[Dict[str, Any]],
+        meta: Optional[Dict[str, Any]] = None,
+    ) -> None:
+        """Сохраняет алерты и метаданные инкрементального скана."""
+        doc = {
+            "version": ALERTS_DOC_VERSION,
+            "alerts": alerts,
+            "meta": meta or {},
+        }
         try:
-            with open(self.alerts_file, 'w', encoding='utf-8') as f:
-                json.dump(alerts, f, indent=2, ensure_ascii=False, default=str)
+            with open(self.alerts_file, "w", encoding="utf-8") as f:
+                json.dump(doc, f, indent=2, ensure_ascii=False, default=str)
         except Exception as e:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
@@ -127,14 +159,18 @@ class PriceAlertManagerV2:
             return
         self._zone_prices_by_run = self._build_prices_by_run(self.df)
         self._history_prices_by_run = self._build_prices_by_run(self.df_history)
-        frame = self.df_history if not self.df_history.empty else self.df
-        if frame.empty:
-            self._run_times = []
-            self._premium_by_run = {}
-        else:
+        if self._history_prices_by_run:
             self._run_times = sorted(self._history_prices_by_run.keys())
-            self._premium_by_run = self._build_premium_snapshots_by_run()
+        else:
+            self._run_times = []
         self._scan_caches_ready = True
+
+    def _ensure_premium_by_run(self) -> Dict[datetime, Dict[str, Dict[str, Any]]]:
+        if not self._premium_by_run_ready:
+            self._ensure_scan_caches()
+            self._premium_by_run = self._build_premium_snapshots_by_run()
+            self._premium_by_run_ready = True
+        return self._premium_by_run
 
     def _build_premium_snapshots_by_run(self) -> Dict[datetime, Dict[str, Dict[str, Any]]]:
         """Premium peaks after each run — incremental, без пересборки CSV на каждую пару."""
@@ -162,6 +198,149 @@ class PriceAlertManagerV2:
                 for name, data in running.items()
             }
         return snapshots
+
+    def _premium_state_after_run(
+        self,
+        state: Dict[str, Dict[str, Any]],
+        run_time: datetime,
+    ) -> Dict[str, Dict[str, Any]]:
+        """Обновляет накопленное premium-состояние после одного рана."""
+        display = _parse_price_ceiling(self.display_price_ceiling)
+        if display is None:
+            return state
+        disp = float(display)
+        next_state = {name: dict(info) for name, info in state.items()}
+        for hotel_name, price in self._history_prices_by_run.get(run_time, {}).items():
+            key = str(hotel_name)
+            info = next_state.get(key)
+            if info is None:
+                info = {"history_max": price, "premium_peak": None}
+                next_state[key] = info
+            else:
+                info["history_max"] = max(float(info["history_max"]), float(price))
+            if float(price) > disp:
+                peak = info.get("premium_peak")
+                info["premium_peak"] = (
+                    float(price) if peak is None else max(float(peak), float(price))
+                )
+        return next_state
+
+    def _build_premium_state_through_index(self, end_index: int) -> Dict[str, Dict[str, Any]]:
+        """Premium-состояние после run_times[end_index] включительно."""
+        self._ensure_scan_caches()
+        state: Dict[str, Dict[str, Any]] = {}
+        for i in range(end_index + 1):
+            if i < 0 or i >= len(self._run_times):
+                continue
+            state = self._premium_state_after_run(state, self._run_times[i])
+        return state
+
+    def _find_processed_run_index(self, last_processed_run: str) -> int:
+        self._ensure_scan_caches()
+        if not last_processed_run or not self._run_times:
+            return -1
+        keys = [_normalize_run_key(rt) for rt in self._run_times]
+        try:
+            return keys.index(last_processed_run)
+        except ValueError:
+            return -1
+
+    @staticmethod
+    def _merge_alerts(
+        existing: List[Dict[str, Any]],
+        new_items: List[Dict[str, Any]],
+    ) -> List[Dict[str, Any]]:
+        seen: Set[str] = set()
+        merged: List[Dict[str, Any]] = []
+        for alert in existing + new_items:
+            key = alert.get("unique_key")
+            if key:
+                if key in seen:
+                    continue
+                seen.add(key)
+            merged.append(alert)
+        return merged
+
+    def _scan_run_pairs(
+        self,
+        start_index: int,
+        threshold_percent: float,
+        premium_state: Dict[str, Dict[str, Any]],
+    ) -> Tuple[List[Dict[str, Any]], Dict[str, Dict[str, Any]]]:
+        """Сканирует пары ранов [start_index .. end] и обновляет premium_state."""
+        self._ensure_scan_caches()
+        run_times = self._run_times
+        if start_index < 1 or start_index >= len(run_times):
+            return [], premium_state
+
+        all_changes: List[Dict[str, Any]] = []
+        state = {name: dict(info) for name, info in premium_state.items()}
+
+        for i in range(start_index, len(run_times)):
+            prev_run = run_times[i - 1]
+            curr_run = run_times[i]
+            changes = self.find_zone_transitions_between_runs(
+                prev_run, curr_run, threshold_percent
+            )
+            comebacks = self.find_premium_comeback_with_snapshot(
+                state, prev_run, curr_run, threshold_percent
+            )
+            all_changes.extend(changes)
+            all_changes.extend(comebacks)
+            state = self._premium_state_after_run(state, curr_run)
+            if changes or comebacks:
+                logger.info(
+                    f"  📊 Ран {curr_run}: {len(changes)} зона"
+                    f"{f', {len(comebacks)} comeback' if comebacks else ''}"
+                )
+        return all_changes, state
+
+    def find_premium_comeback_with_snapshot(
+        self,
+        premium_snapshot: Dict[str, Dict[str, Any]],
+        prev_run: datetime,
+        curr_run: datetime,
+        threshold_percent: float = ALERT_THRESHOLD_PERCENT,
+    ) -> List[Dict[str, Any]]:
+        """Comeback с уже накопленным premium-снимком (без пересчёта всех ранов)."""
+        display = _parse_price_ceiling(self.display_price_ceiling)
+        if display is None:
+            return []
+
+        self._ensure_scan_caches()
+        prev_prices = self._zone_prices_by_run.get(prev_run, {})
+        curr_prices = self._zone_prices_by_run.get(curr_run, {})
+
+        changes: List[Dict[str, Any]] = []
+        for hotel_name, curr_price in curr_prices.items():
+            if hotel_name in prev_prices:
+                continue
+            comeback = comeback_from_premium(
+                curr_price,
+                premium_snapshot.get(str(hotel_name)),
+                display,
+                min_drop_pct=threshold_percent,
+            )
+            if not comeback:
+                continue
+            peak = float(comeback["peak_price"])
+            drop_pct = float(comeback["drop_from_peak_pct"])
+            changes.append({
+                "hotel_name": hotel_name,
+                "old_price": peak,
+                "new_price": curr_price,
+                "price_change": curr_price - peak,
+                "price_change_pct": (curr_price - peak) / peak * 100.0 if peak else 0.0,
+                "timestamp": curr_run,
+                "alert_type": "premium_comeback",
+                "created_at": datetime.now(timezone.utc).isoformat(),
+                "threshold_percent": threshold_percent,
+                "unique_key": (
+                    f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}"
+                    f"_comeback_{drop_pct:.1f}"
+                ),
+            })
+        return changes
 
     def get_run_times(self) -> List[datetime]:
         """Времена всех ранов — по расширенному ряду (включая раны без офферов ≤ ceiling)."""
@@ -286,7 +465,7 @@ class PriceAlertManagerV2:
         self._ensure_scan_caches()
         prev_prices = self._zone_prices_by_run.get(prev_run, {})
         curr_prices = self._zone_prices_by_run.get(curr_run, {})
-        premium = self._premium_by_run.get(prev_run, {})
+        premium = self._ensure_premium_by_run().get(prev_run, {})
 
         changes = []
         for hotel_name, curr_price in curr_prices.items():
@@ -352,6 +531,60 @@ class PriceAlertManagerV2:
         
         logger.info(f"✅ Всего найдено изменений: {len(all_changes)}")
         return all_changes
+
+    def scan_incremental_changes(
+        self,
+        threshold_percent: float = ALERT_THRESHOLD_PERCENT,
+    ) -> Optional[Tuple[List[Dict[str, Any]], Dict[str, Any]]]:
+        """Только новые пары ранов с последнего обработанного. None → нужен полный rescan."""
+        self._ensure_scan_caches()
+        run_times = self._run_times
+        if len(run_times) < 2:
+            return [], {}
+
+        doc = self._load_alerts_doc()
+        existing = doc["alerts"]
+        meta = doc["meta"]
+        last_key = str(meta.get("last_processed_run") or "")
+        idx = self._find_processed_run_index(last_key)
+
+        if idx < 0 and not existing:
+            return None
+
+        if idx >= len(run_times) - 1:
+            logger.info("ℹ️ Алерты актуальны — новых ранов нет")
+            return existing, meta
+
+        if idx >= 0:
+            premium_state = dict(meta.get("premium_state") or {})
+            start_index = idx + 1
+            logger.info(
+                f"🔍 Инкрементальный скан: пары ранов {start_index}..{len(run_times) - 1} "
+                f"(всего ранов {len(run_times)})"
+            )
+            new_changes, premium_state = self._scan_run_pairs(
+                start_index, threshold_percent, premium_state
+            )
+            all_changes = self._merge_alerts(existing, new_changes)
+        else:
+            # Миграция со старого формата (список без meta): не пересканируем всю историю.
+            logger.info(
+                "🔁 Миграция алертов: без meta — сканируем только последнюю пару ранов"
+            )
+            premium_state = self._build_premium_state_through_index(len(run_times) - 2)
+            new_changes, premium_state = self._scan_run_pairs(
+                len(run_times) - 1, threshold_percent, premium_state
+            )
+            all_changes = self._merge_alerts(existing, new_changes)
+
+        new_meta = {
+            "last_processed_run": _normalize_run_key(run_times[-1]),
+            "premium_state": premium_state,
+        }
+        logger.info(
+            f"✅ Алертов: {len(all_changes)} (+{len(all_changes) - len(existing)} новых событий)"
+        )
+        return all_changes, new_meta
     
     def get_existing_alert_keys(self) -> Set[str]:
         """Получает ключи существующих алертов"""
@@ -369,24 +602,51 @@ class PriceAlertManagerV2:
         return new_alerts
     
     def process_all_changes(self, threshold_percent: float = ALERT_THRESHOLD_PERCENT) -> List[Dict[str, Any]]:
-        """Пересобирает алерты из канонического ряда и возвращает только новые."""
+        """Обновляет алерты и возвращает только новые с прошлого запуска."""
         if self.df.empty:
             logger.warning("Нет данных для обработки")
             return []
-        
-        all_changes = self.scan_all_runs_for_changes(threshold_percent)
-        self._last_all_changes = all_changes
-        old_keys = self.get_existing_alert_keys()
-        new_alerts = [a for a in all_changes if a.get('unique_key') not in old_keys]
 
-        # Полная пересборка истории — убирает ложные алерты от смешанных офферов.
-        self.save_alerts(all_changes)
+        old_keys = self.get_existing_alert_keys()
+        alerts_meta: Dict[str, Any] = {}
+
+        if _force_full_rescan():
+            logger.info("⚠️ ALERTS_FORCE_FULL_RESCAN — полный перескан всех ранов")
+            all_changes = self.scan_all_runs_for_changes(threshold_percent)
+            self._ensure_scan_caches()
+            if self._run_times:
+                alerts_meta = {
+                    "last_processed_run": _normalize_run_key(self._run_times[-1]),
+                    "premium_state": self._build_premium_state_through_index(
+                        len(self._run_times) - 1
+                    ),
+                }
+        else:
+            incremental = self.scan_incremental_changes(threshold_percent)
+            if incremental is None:
+                logger.info("🔍 Первый запуск — полный перескан всех ранов")
+                all_changes = self.scan_all_runs_for_changes(threshold_percent)
+                self._ensure_scan_caches()
+                if self._run_times:
+                    alerts_meta = {
+                        "last_processed_run": _normalize_run_key(self._run_times[-1]),
+                        "premium_state": self._build_premium_state_through_index(
+                            len(self._run_times) - 1
+                        ),
+                    }
+            else:
+                all_changes, alerts_meta = incremental
+
+        self._last_all_changes = all_changes
+        new_alerts = [a for a in all_changes if a.get("unique_key") not in old_keys]
+
+        self.save_alerts(all_changes, meta=alerts_meta)
         if all_changes:
             logger.info(
-                f"💾 Алертов пересобрано: {len(all_changes)} "
+                f"💾 Алертов сохранено: {len(all_changes)} "
                 f"(новых с прошлого запуска: {len(new_alerts)})"
             )
-        
+
         return new_alerts
     
     def create_alert_report(

@@ -86,86 +86,19 @@ jobs:
           echo "✅ Monitoring completed"
 
       - name: Generate dashboards (only new filters) + landing
+        env:
+          DASHBOARD_PARALLEL_JOBS: "3"
         run: |
           echo "🌐 Generating filter dashboards at $(date)"
-
-          python generate_inline_charts_dashboard.py \
-            --data-file data/filters/filter_7_10_days/travel_prices.csv \
-            --output index_filter_7_10_days.html \
-            --title "Мониторинг цен • Египет • 7–10 дней" \
-            --charts-dir hotel-charts/filter_7_10_days \
-            --alerts-file data/filters/filter_7_10_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000 \
-            --history-price-ceiling 20000
-
-          python generate_inline_charts_dashboard.py \
-            --data-file data/filters/filter_13_16_days/travel_prices.csv \
-            --output index_filter_13_16_days.html \
-            --title "Мониторинг цен • Египет • 13–16 дней" \
-            --charts-dir hotel-charts/filter_13_16_days \
-            --alerts-file data/filters/filter_13_16_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000 \
-            --history-price-ceiling 20000
-
-          python generate_inline_charts_dashboard.py \
-            --data-file data/filters/filter_turkey_7_10_days/travel_prices.csv \
-            --output index_filter_turkey_7_10_days.html \
-            --title "Мониторинг цен • Турция • 7–10 дней" \
-            --charts-dir hotel-charts/filter_turkey_7_10_days \
-            --alerts-file data/filters/filter_turkey_7_10_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000 \
-            --history-price-ceiling 20000
-
-          python generate_inline_charts_dashboard.py \
-            --data-file data/filters/filter_turkey_13_16_days/travel_prices.csv \
-            --output index_filter_turkey_13_16_days.html \
-            --title "Мониторинг цен • Турция • 13–16 дней" \
-            --charts-dir hotel-charts/filter_turkey_13_16_days \
-            --alerts-file data/filters/filter_turkey_13_16_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000 \
-            --history-price-ceiling 20000
-
-          python generate_inline_charts_dashboard.py \
-            --data-file data/filters/filter_greece_7_10_days/travel_prices.csv \
-            --output index_filter_greece_7_10_days.html \
-            --title "Мониторинг цен • Греция • 7–10 дней" \
-            --charts-dir hotel-charts/filter_greece_7_10_days \
-            --alerts-file data/filters/filter_greece_7_10_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000 \
-            --history-price-ceiling 20000
-
-          python generate_inline_charts_dashboard.py \
-            --data-file data/filters/filter_greece_13_16_days/travel_prices.csv \
-            --output index_filter_greece_13_16_days.html \
-            --title "Мониторинг цен • Греция • 13–16 дней" \
-            --charts-dir hotel-charts/filter_greece_13_16_days \
-            --alerts-file data/filters/filter_greece_13_16_days/travel_prices_alerts.json \
-            --display-price-ceiling 10000 \
-            --history-price-ceiling 20000
-
-          python generate_landing.py
+          python scripts/run_dashboards_parallel.py -j "${DASHBOARD_PARALLEL_JOBS}"
           echo "✅ Dashboards + landing generated"
 
       - name: Setup GitHub Pages
         uses: actions/configure-pages@v4
 
-      - name: Prepare site directory (deploy only new filters)
+      - name: Prepare site directory (HTML + hotel_series only)
         run: |
-          rm -rf site
-          mkdir -p site
-          mkdir -p site/data
-
-          cp -f favicon.svg site/favicon.svg
-          cp -f hotel-chart.html site/hotel-chart.html
-          cp -f index.html site/index.html
-          cp -f index_filter_7_10_days.html site/index_filter_7_10_days.html
-          cp -f index_filter_13_16_days.html site/index_filter_13_16_days.html
-          cp -f index_filter_turkey_7_10_days.html site/index_filter_turkey_7_10_days.html
-          cp -f index_filter_turkey_13_16_days.html site/index_filter_turkey_13_16_days.html
-          cp -f index_filter_greece_7_10_days.html site/index_filter_greece_7_10_days.html
-          cp -f index_filter_greece_13_16_days.html site/index_filter_greece_13_16_days.html
-
-          cp -R data/filters site/data/ || true
+          bash scripts/prepare_pages_site.sh
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
