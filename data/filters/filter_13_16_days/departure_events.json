@@ -278,7 +278,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 98
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-02T04:49:17+0000",
@@ -298,7 +298,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 98
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-02T05:26:24+0000",
@@ -318,7 +318,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 98
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-02T05:26:24+0000",
@@ -338,7 +338,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 98
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-02T05:38:30+0000",
@@ -358,30 +358,10 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 98
+      "hot_score": 99
     },
     {
       "event_time": "2026-06-02T05:38:30+0000",
-      "departure_key": "egipt|marsa-alam|2026-06-02|2026-06-16|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
-      "event_type": "late_deal_window",
-      "severity": "high",
-      "country": "egipt",
-      "region": "marsa-alam",
-      "departure_date": "2026-06-02",
-      "return_date": "2026-06-16",
-      "nights": 14.0,
-      "days_to_departure": 0.0,
-      "old_min_price": "",
-      "new_min_price": 7663.0,
-      "min_drop_pct": 0.0,
-      "p10_drop_pct": 0.0,
-      "median_drop_pct": 0.0,
-      "hotel_count": 14.0,
-      "hotel_delta": 8,
-      "hot_score": 98
-    },
-    {
-      "event_time": "2026-06-02T06:50:50+0000",
       "departure_key": "egipt|marsa-alam|2026-06-02|2026-06-16|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -418,7 +398,27 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 99
+      "hot_score": 100
+    },
+    {
+      "event_time": "2026-06-02T06:50:50+0000",
+      "departure_key": "egipt|marsa-alam|2026-06-02|2026-06-16|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-06-02",
+      "return_date": "2026-06-16",
+      "nights": 14.0,
+      "days_to_departure": 0.0,
+      "old_min_price": "",
+      "new_min_price": 7663.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 14.0,
+      "hotel_delta": 8,
+      "hot_score": 100
     },
     {
       "event_time": "2026-06-02T07:24:26+0000",
@@ -438,7 +438,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 99
+      "hot_score": 100
     },
     {
       "event_time": "2026-06-02T07:24:26+0000",
@@ -458,7 +458,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 14.0,
       "hotel_delta": 8,
-      "hot_score": 99
+      "hot_score": 100
     },
     {
       "event_time": "2026-06-02T10:07:34+0000",
@@ -1398,7 +1398,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": -6,
-      "hot_score": 91
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-07T07:50:30+0000",
@@ -1418,7 +1418,7 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": -6,
-      "hot_score": 91
+      "hot_score": 92
     },
     {
       "event_time": "2026-06-07T10:25:07+0000",
@@ -1459,8 +1459,34 @@
       "hotel_count": 4.0,
       "hotel_delta": 2,
       "hot_score": 75
+<<<<<<< Updated upstream
     },
     {
+<<<<<<< Updated upstream
+      "event_time": "2026-06-10T02:32:48+0000",
+      "departure_key": "egipt|marsa-alam|2026-06-13|2026-06-27|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-06-13",
+      "return_date": "2026-06-27",
+      "nights": 14.0,
+      "days_to_departure": 3.0,
+      "old_min_price": "",
+      "new_min_price": 7713.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 11.0,
+      "hotel_delta": 7,
+      "hot_score": 80
+=======
+>>>>>>> Stashed changes
+    },
+    {
+=======
+>>>>>>> Stashed changes
       "event_time": "2026-06-05T10:48:45+0000",
       "departure_key": "egipt|sharm-el-sheikh|2026-06-06|2026-06-20|14|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_price_dump",
@@ -1918,7 +1944,7 @@
       "median_drop_pct": -8.15,
       "hotel_count": 12.0,
       "hotel_delta": 0,
-      "hot_score": 67
+      "hot_score": 69
     },
     {
       "event_time": "2026-06-06T11:21:43+0000",
@@ -2118,7 +2144,7 @@
       "median_drop_pct": -2.1,
       "hotel_count": 11.0,
       "hotel_delta": -1,
-      "hot_score": 88
+      "hot_score": 89
     },
     {
       "event_time": "2026-06-07T07:50:30+0000",
@@ -2138,7 +2164,7 @@
       "median_drop_pct": -1.21,
       "hotel_count": 10.0,
       "hotel_delta": -2,
-      "hot_score": 89
+      "hot_score": 91
     },
     {
       "event_time": "2026-06-07T10:25:07+0000",
@@ -2158,7 +2184,7 @@
       "median_drop_pct": -0.91,
       "hotel_count": 11.0,
       "hotel_delta": 0,
-      "hot_score": 89
+      "hot_score": 90
     },
     {
       "event_time": "2026-06-07T10:25:07+0000",
@@ -2178,7 +2204,7 @@
       "median_drop_pct": -0.91,
       "hotel_count": 11.0,
       "hotel_delta": 0,
-      "hot_score": 89
+      "hot_score": 90
     },
     {
       "event_time": "2026-06-07T12:19:19+0000",
@@ -2198,7 +2224,7 @@
       "median_drop_pct": -0.91,
       "hotel_count": 11.0,
       "hotel_delta": 0,
-      "hot_score": 89
+      "hot_score": 90
     },
     {
       "event_time": "2026-06-07T12:19:19+0000",
@@ -2218,7 +2244,7 @@
       "median_drop_pct": -0.91,
       "hotel_count": 11.0,
       "hotel_delta": 0,
-      "hot_score": 89
+      "hot_score": 90
     }
   ]
 }
