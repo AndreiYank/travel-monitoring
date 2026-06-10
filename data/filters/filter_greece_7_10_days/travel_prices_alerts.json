@@ -4140,10 +4140,94 @@
       "created_at": "2026-06-10T10:16:02.284458+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Blue Sea Beach (Stalida)_2026-06-10_10-09_comeback_20.8"
+    },
+    {
+      "hotel_name": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos",
+      "old_price": 6708.0,
+      "new_price": 9067.0,
+      "price_change": 2359.0,
+      "price_change_pct": 35.16696481812761,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-10T11:19:15.471632+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-06-10_11-14_+35.2"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "old_price": 9026.0,
+      "new_price": 6333.0,
+      "price_change": -2693.0,
+      "price_change_pct": -29.83602924883669,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-10T11:19:15.471663+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-06-10_11-14_-29.8"
+    },
+    {
+      "hotel_name": "Sentido Asterias Beach Resort Grecja, Rodos, Afandou",
+      "old_price": 9766.0,
+      "new_price": 9766.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-10T11:19:15.471687+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Asterias Beach Resort Grecja, Rodos, Afandou_2026-06-10_11-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou",
+      "old_price": 9757.0,
+      "new_price": 9757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-10T11:19:15.471697+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou_2026-06-10_11-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Solimar Aquamarine",
+      "old_price": 10757.0,
+      "new_price": 9757.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.296272194849866,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-10T11:19:15.471721+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solimar Aquamarine_2026-06-10_11-14_comeback_9.3"
+    },
+    {
+      "hotel_name": "Asterias Beach Resort",
+      "old_price": 12020.0,
+      "new_price": 9766.0,
+      "price_change": -2254.0,
+      "price_change_pct": -18.75207986688852,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-10T11:19:15.471738+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asterias Beach Resort_2026-06-10_11-14_comeback_18.8"
+    },
+    {
+      "hotel_name": "Sandy Villas Resort (ex. Kairaba Sandy Villas)",
+      "old_price": 11318.0,
+      "new_price": 9839.0,
+      "price_change": -1479.0,
+      "price_change_pct": -13.067679802085175,
+      "timestamp": "2026-06-10 11:14:46.194611+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-10T11:19:15.471770+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sandy Villas Resort (ex. Kairaba Sandy Villas)_2026-06-10_11-14_comeback_13.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-10T10:09:58.327997+00:00",
+    "last_processed_run": "2026-06-10T11:14:46.194611+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -4162,7 +4246,7 @@
         "premium_peak": 17057.0
       },
       "Natura Park Village Grecja, Kos, Psalidi": {
-        "history_max": 9158.0,
+        "history_max": 9646.0,
         "premium_peak": null
       },
       "Amus": {
@@ -4258,8 +4342,8 @@
         "premium_peak": null
       },
       "Lindos Imperial Resort & Spa": {
-        "history_max": 13217.0,
-        "premium_peak": 13217.0
+        "history_max": 13277.0,
+        "premium_peak": 13277.0
       },
       "Mitsis Rodos Maris": {
         "history_max": 12090.0,
@@ -4282,7 +4366,7 @@
         "premium_peak": null
       },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
-        "history_max": 9500.0,
+        "history_max": 9704.0,
         "premium_peak": null
       },
       "Village Heights Resort": {
@@ -4298,7 +4382,7 @@
         "premium_peak": null
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 7549.0,
+        "history_max": 7700.0,
         "premium_peak": null
       },
       "Thassos Grand Resort": {
@@ -4510,8 +4594,8 @@
         "premium_peak": 14635.0
       },
       "Atrium Palace Thalasso Spa & Villas": {
-        "history_max": 19381.0,
-        "premium_peak": 19381.0
+        "history_max": 19993.0,
+        "premium_peak": 19993.0
       },
       "Aulus Chania Resort, Curio Collection by Hilton (ex. Isla Brown Chania)": {
         "history_max": 19086.0,
