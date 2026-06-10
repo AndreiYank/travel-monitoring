@@ -4646,6 +4646,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-radius: 999px;
             padding: .12rem .45rem;
         }}
+        .hotels-table .comeback-badge {{
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+            margin-top: .28rem;
+            font-size: .64rem;
+            line-height: 1.2;
+            padding: .14rem .38rem;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }}
         .hotel-card-stats {{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -5113,8 +5125,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
 
         .hotels-table col.col-w-hotel {{ width: 29%; }}
-        .hotels-table col.col-w-price {{ width: 7%; }}
-        .hotels-table col.col-w-deal {{ width: 9.5%; }}
+        .hotels-table col.col-w-price {{ width: 8.2%; }}
+        .hotels-table col.col-w-deal {{ width: 9%; }}
         .hotels-table col.col-w-d48 {{ width: 5.9%; }}
         .hotels-table col.col-w-davg {{ width: 7%; }}
         .hotels-table col.col-w-region {{ width: 10%; }}
@@ -5298,6 +5310,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: 800;
             font-size: 1.05rem;
             color: var(--success-color);
+            white-space: nowrap;
+        }}
+
+        .hotels-table td.price {{
+            white-space: normal;
+            overflow: hidden;
+            vertical-align: top;
+            line-height: 1.28;
+        }}
+
+        .hotels-table td.price .price-main {{
+            display: block;
             white-space: nowrap;
         }}
         
@@ -6517,19 +6541,27 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         duration_display = _table_duration_compact(duration)
         duration_title = html_lib.escape(str(duration))
         comeback = comeback_from_premium(price, premium_history_by_hotel.get(hotel_name), ceiling_val)
-        comeback_cell = (
-            f'<br><span class="comeback-badge">{comeback["badge_html"]}</span>'
-            if comeback else ''
-        )
+        if comeback:
+            peak = float(comeback["peak_price"])
+            drop = float(comeback["drop_from_peak_pct"])
+            comeback_title = html_lib.escape(
+                f"Было до {peak:.0f} PLN (−{drop:.0f}%)", quote=True
+            )
+            comeback_cell = (
+                f'<span class="comeback-badge" title="{comeback_title}">'
+                f"↩ −{drop:.0f}%</span>"
+            )
+        else:
+            comeback_cell = ""
         arrival_hub = arrival_hub_by_hotel.get(hotel_name, "—")
         hotel_name_html = html_lib.escape(str(hotel_name))
+        hotel_name_attr = html_lib.escape(str(hotel_name), quote=True)
         arrival_hub_html = html_lib.escape(str(arrival_hub))
-        hotel_name_js = json.dumps(str(hotel_name), ensure_ascii=False)
         
         html_template += f"""
                     <tr data-region="{arrival_hub_html}">
-                        <td class="hotel-name col-hotel"><a class=\"open-chart-link\" href=\"{chart_href}\" target=\"_blank\" onmouseover=\"_hoverPreview.show(event,{hotel_name_js})\" onmouseout=\"_hoverPreview.hide()\">{hotel_name_html}</a></td>
-                        <td class="price col-tight" data-sort-value="{price}">{price:.0f} PLN{comeback_cell}</td>
+                        <td class="hotel-name col-hotel"><a class=\"open-chart-link hotel-hover-link\" href=\"{chart_href}\" target=\"_blank\" data-hotel-name=\"{hotel_name_attr}\">{hotel_name_html}</a></td>
+                        <td class="price col-tight" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}</td>
                         <td class="col-tight col-w-deal-td" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
                         <td class="col-tight col-w-d48-td" data-sort-value="{delta_info[1] if delta_info else 0}"><span class=\"{delta_class}\">{delta_display}</span></td>
                         <td class="col-tight col-w-davg-td" data-sort-value="{avg_sort_value}">{avg_display}</td>
@@ -6947,6 +6979,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         try { Object.assign(map, JSON.parse(localStorage.getItem('hotel_images')||'{}')); } catch(e) {}
         const hover = document.getElementById('hoverThumb');
         const img = document.getElementById('hoverImg');
+        let activeLink = null;
         function show(e, name){
           const url = map[name];
           if(!url || String(url).indexOf('data:image') === 0){ return; }
@@ -6955,8 +6988,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           hover.style.left = ((e.pageX||0)+12) + 'px';
           hover.style.top = ((e.pageY||0)+12) + 'px';
         }
-        function move(e){ if(hover.style.display === 'block'){ hover.style.left = ((e.pageX||0)+12) + 'px'; hover.style.top = ((e.pageY||0)+12) + 'px'; } }
-        function hide(){ hover.style.display = 'none'; img.src = ''; }
+        function move(e){
+          if(hover.style.display !== 'block'){ return; }
+          hover.style.left = ((e.pageX||0)+12) + 'px';
+          hover.style.top = ((e.pageY||0)+12) + 'px';
+        }
+        function hide(){ hover.style.display = 'none'; img.src = ''; activeLink = null; }
+        document.addEventListener('mouseover', (e) => {
+          const link = e.target.closest('.hotel-hover-link');
+          if(!link || link === activeLink){ return; }
+          activeLink = link;
+          const name = link.getAttribute('data-hotel-name');
+          if(name){ show(e, name); }
+        });
+        document.addEventListener('mouseout', (e) => {
+          const link = e.target.closest('.hotel-hover-link');
+          if(!link){ return; }
+          const to = e.relatedTarget;
+          if(to && link.contains(to)){ return; }
+          hide();
+        });
         document.addEventListener('mousemove', move);
         window._hoverPreview = { show, hide };
       })();
