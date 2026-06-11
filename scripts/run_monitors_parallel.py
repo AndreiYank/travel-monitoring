@@ -32,7 +32,12 @@ def _run_one(config_name: str, log_dir: Path) -> tuple[str, int, float]:
     log_path = log_dir / f"{config_path.stem}.log"
     t0 = time.monotonic()
     with log_path.open("w", encoding="utf-8") as log_f:
-        log_f.write(f"# {config_name}\n# started {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n")
+        log_f.write(
+            f"# {config_name}\n"
+            f"# started {time.strftime('%Y-%m-%d %H:%M:%S')}\n"
+            f"# pid={os.getpid()} jobs_env={os.environ.get('MONITOR_PARALLEL_JOBS', '')}\n"
+            f"# HTTP_MAX_RETRIES={os.environ.get('HTTP_MAX_RETRIES', '')}\n\n"
+        )
         log_f.flush()
         proc = subprocess.run(
             [sys.executable, str(ROOT / "travel_monitor.py"), "--config", str(config_path)],
