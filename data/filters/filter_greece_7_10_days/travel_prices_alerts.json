@@ -4752,10 +4752,82 @@
       "created_at": "2026-06-11T14:37:49.578313+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite_2026-06-11_14-36_comeback_9.5"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "old_price": 7528.0,
+      "new_price": 6811.0,
+      "price_change": -717.0,
+      "price_change_pct": -9.524442082890541,
+      "timestamp": "2026-06-11 17:55:03.330975+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-11T17:56:16.267984+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-11_17-55_-9.5"
+    },
+    {
+      "hotel_name": "Lindos Breeze Beach Grecja, Rodos, Kiotari",
+      "old_price": 6711.0,
+      "new_price": 9119.0,
+      "price_change": 2408.0,
+      "price_change_pct": 35.88138876471465,
+      "timestamp": "2026-06-11 17:55:03.330975+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-11T17:56:16.268011+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lindos Breeze Beach Grecja, Rodos, Kiotari_2026-06-11_17-55_+35.9"
+    },
+    {
+      "hotel_name": "Grand Blue Beach Grecja, kos, Kardamaina",
+      "old_price": 8386.0,
+      "new_price": 8386.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-11 17:55:03.330975+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-11T17:56:16.268028+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Blue Beach Grecja, kos, Kardamaina_2026-06-11_17-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "old_price": 9479.0,
+      "new_price": 9479.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-11 17:55:03.330975+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-11T17:56:16.268036+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-06-11_17-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "White Olive Elite",
+      "old_price": 9852.0,
+      "new_price": 9852.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-11 17:55:03.330975+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-11T17:56:16.268043+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite_2026-06-11_17-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kipriotis Panorama & Suites",
+      "old_price": 10953.0,
+      "new_price": 9920.0,
+      "price_change": -1033.0,
+      "price_change_pct": -9.431206062266046,
+      "timestamp": "2026-06-11 17:55:03.330975+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-11T17:56:16.268064+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Panorama & Suites_2026-06-11_17-55_comeback_9.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-11T14:36:30.156665+00:00",
+    "last_processed_run": "2026-06-11T17:55:03.330975+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -4914,7 +4986,7 @@
         "premium_peak": 19947.0
       },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
-        "history_max": 9704.0,
+        "history_max": 9852.0,
         "premium_peak": null
       },
       "Village Heights Resort": {
@@ -5370,8 +5442,8 @@
         "premium_peak": 12980.0
       },
       "Lindos Royal (ex. COOEE)": {
-        "history_max": 10371.0,
-        "premium_peak": 10371.0
+        "history_max": 10516.0,
+        "premium_peak": 10516.0
       },
       "Hydramis Palace Beach Resort": {
         "history_max": 9445.0,
@@ -5402,7 +5474,7 @@
         "premium_peak": 10057.0
       },
       "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti": {
-        "history_max": 9452.0,
+        "history_max": 9644.0,
         "premium_peak": null
       },
       "Rimondi Grand Resort & Spa": {
@@ -5418,8 +5490,8 @@
         "premium_peak": null
       },
       "Grand Blue Beach": {
-        "history_max": 10312.0,
-        "premium_peak": 10312.0
+        "history_max": 10413.0,
+        "premium_peak": 10413.0
       },
       "Bella Beach Grecja, Kreta Wschodnia, Anissaras": {
         "history_max": 9995.0,
@@ -5536,6 +5608,10 @@
       "Mitsis Rodos Village": {
         "history_max": 17351.0,
         "premium_peak": 17351.0
+      },
+      "Sandy Beach Resort": {
+        "history_max": 12133.0,
+        "premium_peak": 12133.0
       }
     }
   }

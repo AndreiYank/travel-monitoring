@@ -3408,10 +3408,82 @@
       "created_at": "2026-06-11T14:35:55.682473+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-06-11_14-34_comeback_8.2"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "old_price": 9562.0,
+      "new_price": 8491.0,
+      "price_change": -1071.0,
+      "price_change_pct": -11.200585651537336,
+      "timestamp": "2026-06-11 17:53:38.074121+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-11T17:54:34.170945+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-06-11_17-53_-11.2"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "old_price": 9817.0,
+      "new_price": 10977.0,
+      "price_change": 1160.0,
+      "price_change_pct": 11.8162371396557,
+      "timestamp": "2026-06-11 17:53:38.074121+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-11T17:54:34.170975+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-06-11_17-53_zone_out_+11.8"
+    },
+    {
+      "hotel_name": "Jaz Lamaya Resort (ex Iberotel)",
+      "old_price": 10875.0,
+      "new_price": 9711.0,
+      "price_change": -1164.0,
+      "price_change_pct": -10.703448275862069,
+      "timestamp": "2026-06-11 17:53:38.074121+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-11T17:54:34.170997+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Lamaya Resort (ex Iberotel)_2026-06-11_17-53_comeback_10.7"
+    },
+    {
+      "hotel_name": "Gorgonia Beach",
+      "old_price": 10983.0,
+      "new_price": 9913.0,
+      "price_change": -1070.0,
+      "price_change_pct": -9.742329053992533,
+      "timestamp": "2026-06-11 17:53:38.074121+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-11T17:54:34.171009+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gorgonia Beach_2026-06-11_17-53_comeback_9.7"
+    },
+    {
+      "hotel_name": "Concorde Moreen Beach Resort & Spa",
+      "old_price": 10766.0,
+      "new_price": 9695.0,
+      "price_change": -1071.0,
+      "price_change_pct": -9.947984395318596,
+      "timestamp": "2026-06-11 17:53:38.074121+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-11T17:54:34.171020+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Moreen Beach Resort & Spa_2026-06-11_17-53_comeback_9.9"
+    },
+    {
+      "hotel_name": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)",
+      "old_price": 10381.0,
+      "new_price": 9311.0,
+      "price_change": -1070.0,
+      "price_change_pct": -10.30729216838455,
+      "timestamp": "2026-06-11 17:53:38.074121+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-11T17:54:34.171028+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)_2026-06-11_17-53_comeback_10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-11T14:34:52.999379+00:00",
+    "last_processed_run": "2026-06-11T17:53:38.074121+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
@@ -3762,8 +3834,8 @@
         "premium_peak": 12978.0
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
-        "history_max": 14361.0,
-        "premium_peak": 14361.0
+        "history_max": 14514.0,
+        "premium_peak": 14514.0
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)": {
         "history_max": 13634.0,
