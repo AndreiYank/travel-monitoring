@@ -12,6 +12,7 @@ import csv
 import os
 import sys
 import re
+import time
 import html as ihtml
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Optional
@@ -37,12 +38,22 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
+
+def _log_timing(label: str, started: float, extra: str = "") -> float:
+    """Логирует длительность шага; возвращает elapsed в секундах."""
+    elapsed = time.monotonic() - started
+    suffix = f" | {extra}" if extra else ""
+    logger.info(f"⏱ {label}: {elapsed:.2f}s{suffix}")
+    return elapsed
+
+
 class TravelPriceMonitor:
     def __init__(self, config_file: str = "config.json", data_file: Optional[str] = None):
         self.config_file = config_file
         self.config = self.load_config()
         # data_file из аргументов имеет приоритет над output_data_file из конфигурации
         self.data_file = data_file or self.config.get('output_data_file', 'travel_prices.csv')
+        self._timing_summary: Dict[str, float] = {}
         
     def load_config(self) -> Dict[str, Any]:
         """Загружает конфигурацию из файла"""
@@ -91,6 +102,17 @@ class TravelPriceMonitor:
             return ts
         return datetime.now(timezone.utc).isoformat()
 
+    def _resolve_http_max_retries(self) -> int:
+        env_val = os.environ.get("HTTP_MAX_RETRIES", "").strip()
+        if env_val.isdigit():
+            return max(1, int(env_val))
+        return max(1, int(self.config.get("http_max_retries", 6)))
+
+    def _http_retry_pause_seconds(self, attempt_index: int) -> float:
+        base = float(self.config.get("http_retry_delay", self.config.get("retry_delay", 5)))
+        cap = float(self.config.get("http_retry_delay_max", 45))
+        return min(base * (2 ** attempt_index), cap)
+
     async def scrape_offers_with_retry(self) -> List[Dict[str, Any]]:
         """Парсит предложения.
 
@@ -100,46 +122,90 @@ class TravelPriceMonitor:
         откатываемся на надёжный браузерный парсинг через Playwright.
         """
         self._current_scrape_at = datetime.now(timezone.utc).isoformat()
+        scrape_t0 = time.monotonic()
+        http_total_pause = 0.0
         if self.config.get('disable_http_fast_path') is not True:
-            http_max_retries = int(
-                self.config.get('http_max_retries', self.config.get('max_retries', 3))
+            http_max_retries = self._resolve_http_max_retries()
+            logger.info(
+                f"HTTP fast path: max_retries={http_max_retries}, "
+                f"page_retries={self.config.get('http_page_retries', 3)}"
             )
-            retry_delay = float(self.config.get('retry_delay', 5))
+            last_http_note = "неизвестно"
+            http_phase_t0 = time.monotonic()
             for http_attempt in range(http_max_retries):
+                attempt_t0 = time.monotonic()
                 try:
                     if http_attempt > 0:
+                        pause = self._http_retry_pause_seconds(http_attempt - 1)
                         logger.info(
                             f"Повтор HTTP {http_attempt + 1}/{http_max_retries} "
-                            f"(пауза {retry_delay:.0f} с)..."
+                            f"(пауза {pause:.0f} с)..."
                         )
-                        await asyncio.sleep(retry_delay)
-                    offers = self.scrape_offers_http()
+                        await asyncio.sleep(pause)
+                        http_total_pause += pause
+                    offers, last_http_note = self.scrape_offers_http()
+                    _log_timing(
+                        f"HTTP попытка {http_attempt + 1}/{http_max_retries}",
+                        attempt_t0,
+                        f"offers={len(offers)}, note={last_http_note or 'ok'}",
+                    )
                     if offers:
+                        self._timing_summary["scrape_http"] = time.monotonic() - http_phase_t0
+                        self._timing_summary["scrape_http_pause"] = http_total_pause
+                        self._timing_summary["scrape_total"] = time.monotonic() - scrape_t0
                         logger.info(f"⚡ Быстрый HTTP-парсинг успешен: {len(offers)} предложений")
                         return offers
                     logger.warning(
-                        f"HTTP-попытка {http_attempt + 1}/{http_max_retries}: результатов нет"
+                        f"HTTP-попытка {http_attempt + 1}/{http_max_retries}: "
+                        f"результатов нет ({last_http_note})"
                     )
                 except Exception as e:
+                    last_http_note = str(e)
+                    _log_timing(
+                        f"HTTP попытка {http_attempt + 1}/{http_max_retries} (ошибка)",
+                        attempt_t0,
+                        str(e),
+                    )
                     logger.warning(
                         f"HTTP-попытка {http_attempt + 1}/{http_max_retries} не удалась ({e})"
                     )
-            logger.warning("HTTP-парсинг не дал результатов — переключаемся на Playwright")
+            self._timing_summary["scrape_http_failed"] = time.monotonic() - http_phase_t0
+            self._timing_summary["scrape_http_pause"] = http_total_pause
+            logger.warning(
+                f"HTTP-парсинг не дал результатов после {http_max_retries} попыток "
+                f"({last_http_note}, паузы между попытками {http_total_pause:.0f}s) — "
+                f"переключаемся на Playwright"
+            )
 
+        pw_phase_t0 = time.monotonic()
         for attempt in range(self.config['max_retries']):
+            attempt_t0 = time.monotonic()
             try:
                 logger.info(f"Попытка {attempt + 1}/{self.config['max_retries']} (Playwright)")
                 offers = await self.scrape_offers()
+                _log_timing(
+                    f"Playwright попытка {attempt + 1}/{self.config['max_retries']}",
+                    attempt_t0,
+                    f"offers={len(offers)}",
+                )
                 if offers:
+                    self._timing_summary["scrape_playwright"] = time.monotonic() - pw_phase_t0
+                    self._timing_summary["scrape_total"] = time.monotonic() - scrape_t0
                     return offers
-                else:
-                    logger.warning(f"Попытка {attempt + 1} не дала результатов")
+                logger.warning(f"Попытка {attempt + 1} не дала результатов")
             except Exception as e:
+                _log_timing(
+                    f"Playwright попытка {attempt + 1}/{self.config['max_retries']} (ошибка)",
+                    attempt_t0,
+                    str(e),
+                )
                 logger.error(f"Ошибка в попытке {attempt + 1}: {e}")
                 if attempt < self.config['max_retries'] - 1:
                     logger.info(f"Ждем {self.config['retry_delay']} секунд...")
                     await asyncio.sleep(self.config['retry_delay'])
         
+        self._timing_summary["scrape_playwright_failed"] = time.monotonic() - pw_phase_t0
+        self._timing_summary["scrape_total"] = time.monotonic() - scrape_t0
         logger.error("Все попытки исчерпаны")
         return []
 
@@ -233,11 +299,78 @@ class TravelPriceMonitor:
 
         return offers
 
-    def scrape_offers_http(self) -> List[Dict[str, Any]]:
+    def _fetch_search_page_html(
+        self,
+        session: requests.Session,
+        url: str,
+        page_number: int,
+        timeout_s: float,
+    ) -> tuple[Optional[str], str]:
+        """Загружает HTML страницы выдачи с короткими ретраями на уровне страницы."""
+        page_retries = max(1, int(self.config.get("http_page_retries", 3)))
+        page_retry_delay = float(self.config.get("http_page_retry_delay", 3))
+        last_note = "неизвестно"
+
+        for page_attempt in range(page_retries):
+            req_t0 = time.monotonic()
+            if page_attempt > 0:
+                pause = page_retry_delay * page_attempt
+                logger.info(
+                    f"Страница {page_number}: повтор {page_attempt + 1}/{page_retries} "
+                    f"(пауза {pause:.0f} с)..."
+                )
+                time.sleep(pause)
+            try:
+                resp = session.get(url, timeout=timeout_s)
+            except requests.RequestException as exc:
+                last_note = f"сеть: {exc}"
+                _log_timing(
+                    f"HTTP GET стр.{page_number} попытка {page_attempt + 1}",
+                    req_t0,
+                    f"ошибка: {exc}",
+                )
+                continue
+
+            if resp.status_code != 200:
+                last_note = f"HTTP {resp.status_code}"
+                _log_timing(
+                    f"HTTP GET стр.{page_number} попытка {page_attempt + 1}",
+                    req_t0,
+                    f"status={resp.status_code}, bytes={len(resp.content)}",
+                )
+                continue
+
+            html = resp.text or ""
+            if "card-offer-search" not in html:
+                if len(html) < 5000:
+                    last_note = "короткий HTML (возможно анти-бот/ошибка fly.pl)"
+                else:
+                    last_note = "в HTML нет card-offer-search (разметка или пустая выдача)"
+                _log_timing(
+                    f"HTTP GET стр.{page_number} попытка {page_attempt + 1}",
+                    req_t0,
+                    f"bytes={len(html)}, {last_note}",
+                )
+                continue
+
+            _log_timing(
+                f"HTTP GET стр.{page_number} попытка {page_attempt + 1}",
+                req_t0,
+                f"ok, bytes={len(html)}, cards≈{html.count('card-offer-search')}",
+            )
+            return html, ""
+
+        logger.warning(
+            f"Страница {page_number}: не удалось загрузить после {page_retries} попыток ({last_note})"
+        )
+        return None, last_note
+
+    def scrape_offers_http(self) -> tuple[List[Dict[str, Any]], str]:
         """Быстрый парсинг через прямые HTTP-запросы (без браузера).
 
         Постранично запрашивает выдачу (пагинация p:N), разбирает HTML и применяет
         те же фильтры (мин/макс цена, целевой scope), что и браузерный путь.
+        Возвращает (офферы, причина_пустого_результата).
         """
         max_price_threshold = float(
             self.config.get('max_price_threshold')
@@ -248,6 +381,7 @@ class TravelPriceMonitor:
         max_pages = int(self.config.get('max_pages', 10))
         max_offers = int(self.config.get('max_offers', 0))
         timeout_s = float(self.config.get('wait_timeout', 30000)) / 1000.0
+        empty_note = "нет офферов"
 
         session = requests.Session()
         session.headers.update({
@@ -264,15 +398,23 @@ class TravelPriceMonitor:
 
         all_offers: List[Dict[str, Any]] = []
         page_number = 1
+        http_scan_t0 = time.monotonic()
         while page_number <= max_pages:
+            page_t0 = time.monotonic()
             url = self._build_page_url(page_number)
-            resp = session.get(url, timeout=timeout_s)
-            if resp.status_code != 200:
-                logger.warning(f"HTTP {resp.status_code} на странице {page_number}")
+            page_html, fetch_note = self._fetch_search_page_html(
+                session, url, page_number, timeout_s
+            )
+            if not page_html:
+                empty_note = fetch_note or empty_note
+                _log_timing(f"HTTP страница {page_number} (fetch fail)", page_t0, fetch_note)
                 break
 
-            raw_offers = self._parse_offers_from_html(resp.text)
+            parse_t0 = time.monotonic()
+            raw_offers = self._parse_offers_from_html(page_html)
+            parse_elapsed = time.monotonic() - parse_t0
             if not raw_offers:
+                empty_note = "парсер не извлёк карточки из HTML"
                 logger.info(f"Страница {page_number}: карточки не найдены, завершаем")
                 break
 
@@ -304,13 +446,28 @@ class TravelPriceMonitor:
                     logger.info(f"Достигнута максимальная цена {max_price_threshold:.0f} PLN, завершаем")
                     break
             else:
+                empty_note = (
+                    f"после фильтра 0 офферов (сырых {len(raw_offers)}, отфильтровано {filtered_out})"
+                )
                 logger.info(f"Страница {page_number}: после фильтра не осталось предложений, завершаем")
                 break
 
+            _log_timing(
+                f"HTTP страница {page_number}",
+                page_t0,
+                f"raw={len(raw_offers)}, kept={len(page_offers)}, parse={parse_elapsed:.2f}s",
+            )
             page_number += 1
 
+        _log_timing(
+            "HTTP scan total",
+            http_scan_t0,
+            f"offers={len(all_offers)}, pages={page_number}",
+        )
         logger.info(f"⚡ HTTP-парсинг завершён: {len(all_offers)} предложений с {page_number} страниц")
-        return all_offers
+        if not all_offers:
+            return [], empty_note
+        return all_offers, ""
 
     async def scrape_offers(self) -> List[Dict[str, Any]]:
         """Парсит предложения с сайта fly.pl с пагинацией"""
@@ -333,7 +490,9 @@ class TravelPriceMonitor:
         if max_offers > 0:
             logger.info(f"Лимит предложений: {max_offers}")
         
+        pw_t0 = time.monotonic()
         async with async_playwright() as p:
+            launch_t0 = time.monotonic()
             browser = await p.chromium.launch(
                 headless=True,
                 args=[
@@ -343,6 +502,7 @@ class TravelPriceMonitor:
                     '--disable-web-security'
                 ]
             )
+            _log_timing("Playwright browser launch", launch_t0)
             
             context = await browser.new_context(
                 user_agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",
@@ -357,38 +517,54 @@ class TravelPriceMonitor:
                 # Устанавливаем таймауты
                 page.set_default_timeout(self.config['wait_timeout'])
                 
-                # Переходим на страницу
+                goto_t0 = time.monotonic()
                 response = await page.goto(
                     self.config['url'], 
                     wait_until='domcontentloaded',
                     timeout=self.config['wait_timeout']
                 )
+                _log_timing(
+                    "Playwright goto page 1",
+                    goto_t0,
+                    f"status={response.status if response else 'none'}",
+                )
                 
                 if not response or response.status >= 400:
                     raise Exception(f"Ошибка загрузки: {response.status if response else 'No response'}")
                 
+                wait_t0 = time.monotonic()
                 logger.info("Страница загружена, ждем контент...")
                 await page.wait_for_timeout(5000)
+                _log_timing("Playwright post-goto wait", wait_t0, "5000ms fixed")
                 
                 # Парсим страницы пока не достигнем максимальной цены
                 while page_number <= max_pages:
+                    page_t0 = time.monotonic()
                     logger.info(f"Парсим страницу {page_number}...")
                     
-                    # Ищем предложения на текущей странице
+                    find_t0 = time.monotonic()
                     offers_data = await self.find_offers(page)
+                    find_elapsed = time.monotonic() - find_t0
                     
                     if not offers_data:
-                        logger.warning("Предложения не найдены, пробуем альтернативный подход...")
+                        logger.warning(
+                            f"Предложения не найдены за {find_elapsed:.2f}s, "
+                            f"пробуем альтернативный подход..."
+                        )
+                        alt_t0 = time.monotonic()
                         offers_data = await self.find_offers_alternative(page)
+                        _log_timing("Playwright find_offers_alternative", alt_t0, f"found={len(offers_data)}")
+                    else:
+                        _log_timing("Playwright find_offers", find_t0, f"found={len(offers_data)}")
                     
                         if not offers_data:
                             logger.info("Предложения не найдены, завершаем парсинг")
                             break
                     
-                    # Парсим предложения с текущей страницы
                     page_offers = []
                     max_price_on_page = 0
                     filtered_out_on_scope = 0
+                    extract_t0 = time.monotonic()
                     
                     for i in range(len(offers_data)):
                         try:
@@ -407,10 +583,14 @@ class TravelPriceMonitor:
                         except Exception as e:
                             logger.warning(f"Ошибка парсинга предложения {i}: {e}")
                         continue
+                    extract_elapsed = time.monotonic() - extract_t0
                     
                     if page_offers:
                         all_offers.extend(page_offers)
-                        logger.info(f"Страница {page_number}: собрано {len(page_offers)} предложений, максимальная цена: {max_price_on_page:.0f} PLN")
+                        logger.info(
+                            f"Страница {page_number}: собрано {len(page_offers)} предложений, "
+                            f"макс. цена {max_price_on_page:.0f} PLN, extract {extract_elapsed:.2f}s"
+                        )
                         if filtered_out_on_scope:
                             logger.info(f"Страница {page_number}: отфильтровано нерелевантных предложений: {filtered_out_on_scope}")
 
@@ -427,22 +607,36 @@ class TravelPriceMonitor:
                         logger.info(f"На странице {page_number} не найдено предложений")
                         break
                     
-                    # Ищем кнопку "Следующая страница"
+                    next_t0 = time.monotonic()
                     next_page_url = await self.find_next_page_url(page)
+                    _log_timing(
+                        "Playwright find_next_page",
+                        next_t0,
+                        "found" if next_page_url else "not found",
+                    )
                     if not next_page_url:
                         logger.info("Кнопка 'Следующая страница' не найдена, завершаем парсинг")
+                        _log_timing(f"Playwright страница {page_number} total", page_t0)
                         break
                     
-                    # Переходим на следующую страницу
                     logger.info(f"Переходим на страницу {page_number + 1}...")
+                    nav_t0 = time.monotonic()
                     try:
                         await page.goto(next_page_url, wait_until='domcontentloaded', timeout=self.config['wait_timeout'])
-                        await page.wait_for_timeout(3000)  # Ждем загрузки контента
+                        await page.wait_for_timeout(3000)
+                        _log_timing(f"Playwright goto page {page_number + 1}", nav_t0, "incl. 3000ms wait")
+                        _log_timing(f"Playwright страница {page_number} total", page_t0)
                         page_number += 1
                     except Exception as e:
+                        _log_timing(f"Playwright goto page {page_number + 1} (ошибка)", nav_t0, str(e))
                         logger.warning(f"Ошибка перехода на страницу {page_number + 1}: {e}")
                         break
                 
+                _log_timing(
+                    "Playwright scan total",
+                    pw_t0,
+                    f"offers={len(all_offers)}, pages={page_number}",
+                )
                 logger.info(f"Парсинг завершен. Всего собрано {len(all_offers)} предложений с {page_number} страниц")
                 
             except Exception as e:
@@ -645,6 +839,7 @@ class TravelPriceMonitor:
     async def find_offers(self, page) -> List:
         """Ищет предложения на странице"""
         selectors_to_try = [
+            '.card-offer-search',
             '.offer-item',
             '.trip-item', 
             '.hotel-item',
@@ -660,13 +855,20 @@ class TravelPriceMonitor:
         ]
         
         for selector in selectors_to_try:
+            sel_t0 = time.monotonic()
             try:
                 await page.wait_for_selector(selector, timeout=10000)
                 elements = await page.query_selector_all(selector)
                 if elements and len(elements) > 0:
-                    logger.info(f"Найдено {len(elements)} предложений с селектором: {selector}")
+                    _log_timing(
+                        "Playwright selector hit",
+                        sel_t0,
+                        f"{selector} → {len(elements)}",
+                    )
                     return elements
-            except:
+                _log_timing("Playwright selector miss", sel_t0, f"{selector} → 0")
+            except Exception as exc:
+                _log_timing("Playwright selector timeout", sel_t0, f"{selector}: {exc}")
                 continue
         
         return []
@@ -1580,8 +1782,12 @@ class TravelPriceMonitor:
     def check_price_alerts(self):
         """Проверяет изменения цен и создает алерты (новая логика V2)"""
         try:
-            # Создаем региональный файл алертов на основе data_file
+            alerts_t0 = time.monotonic()
             alerts_file = self.data_file.replace('.csv', '_alerts.json')
+            csv_path = os.path.join(self.config['data_dir'], self.data_file)
+            if os.path.exists(csv_path):
+                csv_size = os.path.getsize(csv_path)
+                logger.info(f"Алерты: CSV {csv_path} ({csv_size / 1024 / 1024:.1f} MB)")
             alert_manager = PriceAlertManagerV2(
                 data_file=os.path.join(self.config['data_dir'], self.data_file), 
                 alerts_file=os.path.join(self.config['data_dir'], alerts_file),
@@ -1593,13 +1799,15 @@ class TravelPriceMonitor:
                 logger.warning("Нет данных для проверки алертов")
                 return
             
-            # Обрабатываем все изменения и получаем только новые алерты
+            proc_t0 = time.monotonic()
             new_alerts = alert_manager.process_all_changes()
+            _log_timing("alerts process_all_changes", proc_t0, f"new={len(new_alerts)}")
 
-            # Отчёт из уже посчитанных изменений — без повторного scan
+            report_t0 = time.monotonic()
             report = alert_manager.create_alert_report(
                 all_changes=alert_manager._last_all_changes,
             )
+            _log_timing("alerts create_alert_report", report_t0)
             
             # Логируем новые алерты
             if new_alerts:
@@ -1623,6 +1831,7 @@ class TravelPriceMonitor:
             with open(report_path, 'w', encoding='utf-8') as f:
                 f.write(report)
             logger.info(f"📊 Отчет об алертах сохранен: {report_path}")
+            _log_timing("check_price_alerts total", alerts_t0)
                 
         except Exception as e:
             logger.error(f"Ошибка при проверке алертов: {e}")
@@ -1658,10 +1867,10 @@ class TravelPriceMonitor:
 
     async def run_monitoring(self):
         """Запускает полный цикл мониторинга"""
-        logger.info("🚀 Начинаем мониторинг цен на путешествия...")
+        run_t0 = time.monotonic()
+        logger.info(f"🚀 Начинаем мониторинг ({self.config_file}, data_dir={self.config.get('data_dir')})...")
         
         try:
-            # Собираем данные с повторными попытками
             offers = await self.scrape_offers_with_retry()
             
             if not offers:
@@ -1669,29 +1878,46 @@ class TravelPriceMonitor:
                 return False
 
             raw_count = len(offers)
+            t0 = time.monotonic()
             self.save_departure_offers_append(offers)
+            _log_timing("save_departure_offers + analytics", t0)
 
+            t0 = time.monotonic()
             offers = self._dedupe_lowest_per_hotel(offers)
+            _log_timing("dedupe_lowest_per_hotel", t0, f"{raw_count} → {len(offers)}")
             if len(offers) < raw_count:
                 logger.info(
                     f"Дедупликация: {raw_count} офферов → {len(offers)} отелей (мин. цена на отель)"
                 )
             
-            # Перед сохранением проверяем, кто исчез из выдачи, и создаём алерты
+            t0 = time.monotonic()
             self.detect_missing_hotels_and_alert(offers)
+            _log_timing("detect_missing_hotels_and_alert", t0)
             
-            # Сохраняем данные (добавляем к существующим)
+            t0 = time.monotonic()
             self.save_data_append(offers)
+            _log_timing("save_data_append", t0)
             
-            # Создаем графики
+            t0 = time.monotonic()
             self.create_charts()
+            _log_timing("create_charts", t0)
             
-            # Генерируем отчет
+            t0 = time.monotonic()
             self.generate_report()
+            _log_timing("generate_report", t0)
             
-            # Проверяем изменения цен и создаем алерты
+            t0 = time.monotonic()
             self.check_price_alerts()
-            
+            _log_timing("check_price_alerts", t0)
+
+            total = time.monotonic() - run_t0
+            scrape_total = self._timing_summary.get("scrape_total", 0.0)
+            post_total = total - scrape_total
+            logger.info(
+                f"📊 TIMING SUMMARY config={self.config_file}: "
+                f"total={total:.1f}s scrape={scrape_total:.1f}s post={post_total:.1f}s "
+                f"detail={self._timing_summary}"
+            )
             logger.info("✅ Мониторинг завершен успешно!")
             return True
             

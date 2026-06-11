@@ -6,7 +6,9 @@ from __future__ import annotations
 import argparse
 import csv
 import json
+import logging
 import os
+import time
 from datetime import timedelta
 from typing import Any, Dict, List, Optional, Tuple
 
@@ -29,6 +31,15 @@ CHEAP_TIER_SHARE = 0.25
 from departure_identity import DEPARTURE_FIELDS, build_departure_identity
 from departure_airports import hub_regions_subtitle, parse_hub_departure_key, turkey_hub_label, turkey_hub_regions
 from hotel_deal_score import compute_hotel_deal_metrics
+
+logger = logging.getLogger(__name__)
+
+
+def _log_timing(label: str, started: float, extra: str = "") -> float:
+    elapsed = time.monotonic() - started
+    suffix = f" | {extra}" if extra else ""
+    logger.info(f"⏱ departure_analytics {label}: {elapsed:.2f}s{suffix}")
+    return elapsed
 
 
 BASE_OFFER_FIELDS = [
@@ -350,6 +361,34 @@ def _pick_lookback_run(
     return None
 
 
+def _offers_through_run(offer_work: pd.DataFrame, run_started_at: str) -> pd.DataFrame:
+    """Офферы, известные на момент scrape-run (без «будущей» истории)."""
+    cutoff = pd.to_datetime(run_started_at, errors="coerce", utc=True)
+    if pd.isna(cutoff) or offer_work.empty:
+        return offer_work.iloc[0:0].copy()
+    run_ts = pd.to_datetime(offer_work["run_started_at"], errors="coerce", utc=True)
+    return offer_work.loc[run_ts <= cutoff].copy()
+
+
+def _hotel_histories_for_run(
+    offer_work: pd.DataFrame,
+    run_started_at: str,
+) -> Dict[str, pd.DataFrame]:
+    pit = _offers_through_run(offer_work, run_started_at)
+    if pit.empty:
+        return {}
+    return {str(name): grp for name, grp in pit.groupby("hotel_name", sort=False)}
+
+
+def _cohort_rows_to_update(
+    work: pd.DataFrame,
+    runs_to_update: Optional[set],
+) -> pd.Series:
+    if runs_to_update is None:
+        return pd.Series(True, index=work.index)
+    return work["run_started_at"].astype(str).isin(runs_to_update)
+
+
 def _build_run_hotel_prices(work: pd.DataFrame) -> Dict[Tuple[str, str], pd.Series]:
     prices_by_run: Dict[Tuple[str, str], pd.Series] = {}
     if work.empty:
@@ -400,18 +439,29 @@ def _intersection_changes(prev_prices: pd.Series, curr_prices: pd.Series) -> Dic
     }
 
 
-def _enrich_deal_metrics(cohorts: pd.DataFrame, offers: pd.DataFrame) -> pd.DataFrame:
-    """Per-run deal aggregates for hotels on each departure (same logic as modal Deal Score)."""
+def _enrich_deal_metrics(
+    cohorts: pd.DataFrame,
+    offers: pd.DataFrame,
+    runs_to_update: Optional[set] = None,
+) -> pd.DataFrame:
+    """Per-run deal aggregates (Deal Score) с point-in-time историей по run."""
+    enrich_t0 = time.monotonic()
     work = cohorts.copy()
-    for col, default in (
+    update_mask = _cohort_rows_to_update(work, runs_to_update)
+    deal_defaults = (
         ("avg_deal_score", 0),
         ("mean_avg_delta_pct", 0.0),
         ("hot_deal_count", 0),
         ("good_deal_count", 0),
-    ):
-        work[col] = default
+    )
+    if runs_to_update is None:
+        for col, default in deal_defaults:
+            work[col] = default
+    else:
+        for col, default in deal_defaults:
+            work.loc[update_mask, col] = default
 
-    if work.empty or offers.empty:
+    if work.empty or offers.empty or not update_mask.any():
         return work
 
     offer_work = assign_scrape_runs(offers)
@@ -420,18 +470,21 @@ def _enrich_deal_metrics(cohorts: pd.DataFrame, offers: pd.DataFrame) -> pd.Data
     if offer_work.empty:
         return work
 
-    hotel_histories = {
-        str(name): grp for name, grp in offer_work.groupby("hotel_name", sort=False)
-    }
     prices_by_run = _build_run_hotel_prices(offer_work)
+    runs_needed = set(work.loc[update_mask, "run_started_at"].astype(str).unique())
+    hist_by_run: Dict[str, Dict[str, pd.DataFrame]] = {
+        run_key: _hotel_histories_for_run(offer_work, run_key) for run_key in runs_needed
+    }
 
-    for idx, row in work.iterrows():
+    updated_n = 0
+    for idx, row in work.loc[update_mask].iterrows():
         departure_key = str(row["departure_key"])
         run_started_at = str(row["run_started_at"])
         curr_prices = prices_by_run.get((departure_key, run_started_at), {})
         if len(curr_prices) < MIN_DEAL_HOTELS:
             continue
 
+        hotel_histories = hist_by_run.get(run_started_at, {})
         deal_scores: List[int] = []
         avg_deltas: List[float] = []
         hot_n = 0
@@ -455,21 +508,41 @@ def _enrich_deal_metrics(cohorts: pd.DataFrame, offers: pd.DataFrame) -> pd.Data
         work.at[idx, "mean_avg_delta_pct"] = round(sum(avg_deltas) / len(avg_deltas), 2)
         work.at[idx, "hot_deal_count"] = hot_n
         work.at[idx, "good_deal_count"] = good_n
+        updated_n += 1
 
+    scope = f"all {len(work)}" if runs_to_update is None else f"{updated_n}/{int(update_mask.sum())} updated"
+    _log_timing(
+        "_enrich_deal_metrics",
+        enrich_t0,
+        f"cohorts={len(cohorts)}, offers={len(offers)}, scope={scope}, point_in_time=True",
+    )
     return work
 
 
-def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = None) -> pd.DataFrame:
+def _add_change_columns(
+    cohorts: pd.DataFrame,
+    offers: pd.DataFrame | None = None,
+    runs_to_update: Optional[set] = None,
+) -> pd.DataFrame:
+    add_t0 = time.monotonic()
     if cohorts.empty:
         return cohorts
     work = cohorts.copy()
     work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
     work = work.sort_values(["departure_key", "_run_ts"]).reset_index(drop=True)
-    work["hotel_count_delta"] = 0
-    work["common_hotel_count"] = 0
+    update_mask = _cohort_rows_to_update(work, runs_to_update)
+    if runs_to_update is None:
+        work["hotel_count_delta"] = 0
+        work["common_hotel_count"] = 0
+    else:
+        work.loc[update_mask, "hotel_count_delta"] = 0
+        work.loc[update_mask, "common_hotel_count"] = 0
 
+    prices_t0 = time.monotonic()
     prices_by_run = _build_run_hotel_prices(offers) if offers is not None and not offers.empty else {}
+    _log_timing("_build_run_hotel_prices", prices_t0, f"runs={len(prices_by_run)}")
 
+    runs_t0 = time.monotonic()
     runs_by_key: Dict[str, List[Tuple[pd.Timestamp, str]]] = {}
     hotel_count_by_run: Dict[Tuple[str, str], int] = {}
     for _, row in work.iterrows():
@@ -480,10 +553,15 @@ def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = Non
             hotel_count_by_run[(departure_key, run_started_at)] = int(row["hotel_count"])
         except (TypeError, ValueError):
             hotel_count_by_run[(departure_key, run_started_at)] = 0
+    _log_timing("_add_change_columns index runs", runs_t0, f"cohorts={len(work)}")
 
+    changes_t0 = time.monotonic()
+    lookback_updated = 0
     for idx, row in work.iterrows():
-        departure_key = str(row["departure_key"])
         run_started_at = str(row["run_started_at"])
+        if runs_to_update is not None and run_started_at not in runs_to_update:
+            continue
+        departure_key = str(row["departure_key"])
         prev_run = _pick_lookback_run(runs_by_key.get(departure_key, []), row["_run_ts"])
         if prev_run:
             prev_prices = prices_by_run.get((departure_key, prev_run))
@@ -512,10 +590,30 @@ def _add_change_columns(cohorts: pd.DataFrame, offers: pd.DataFrame | None = Non
                 "min_change_pct", "p10_change_pct", "median_change_pct",
             ]:
                 work.at[idx, col] = 0.0
+        lookback_updated += 1
+    lookback_scope = (
+        f"cohorts={len(work)}"
+        if runs_to_update is None
+        else f"updated={lookback_updated}/{int(update_mask.sum())}"
+    )
+    _log_timing("_add_change_columns lookback loop", changes_t0, lookback_scope)
 
     if offers is not None and not offers.empty:
-        work = _enrich_deal_metrics(work, offers)
-    work["hot_score"] = work.apply(lambda row: _hot_score(row.to_dict()), axis=1)
+        work = _enrich_deal_metrics(work, offers, runs_to_update=runs_to_update)
+    hot_t0 = time.monotonic()
+    if runs_to_update is None:
+        work["hot_score"] = work.apply(lambda row: _hot_score(row.to_dict()), axis=1)
+    else:
+        work.loc[update_mask, "hot_score"] = work.loc[update_mask].apply(
+            lambda row: _hot_score(row.to_dict()),
+            axis=1,
+        )
+    _log_timing("_add_change_columns hot_score", hot_t0)
+    _log_timing(
+        "_add_change_columns total",
+        add_t0,
+        f"cohorts={len(cohorts)}, incremental={runs_to_update is not None}",
+    )
     return work.drop(columns=["_run_ts"])
 
 
@@ -1168,7 +1266,10 @@ def write_departure_analytics(
     output_dir: str,
     force_full: bool = False,
 ) -> dict:
+    write_t0 = time.monotonic()
+    load_t0 = time.monotonic()
     df = load_departure_offers(input_csv)
+    _log_timing("load_departure_offers", load_t0, f"rows={len(df)}")
     os.makedirs(output_dir, exist_ok=True)
     cohorts_path = os.path.join(output_dir, "departure_cohorts.csv")
     events_path = os.path.join(output_dir, "departure_events.json")
@@ -1208,7 +1309,9 @@ def write_departure_analytics(
         except Exception:
             pass
 
+    prep_t0 = time.monotonic()
     work = _prepare_cohort_offer_work(df)
+    _log_timing("_prepare_cohort_offer_work", prep_t0, f"offers={len(work)}")
     runs_to_rebuild: Optional[set] = None
     existing = pd.DataFrame(columns=COHORT_FIELDS)
     if not force_full and os.path.exists(cohorts_path):
@@ -1217,8 +1320,10 @@ def write_departure_analytics(
         except Exception:
             existing = pd.DataFrame(columns=COHORT_FIELDS)
 
+    cohort_t0 = time.monotonic()
     if force_full or existing.empty or work.empty:
         cohorts = build_cohort_snapshots(df) if not work.empty else pd.DataFrame(columns=COHORT_FIELDS)
+        logger.info("⏱ departure_analytics: full cohort rebuild")
     else:
         all_runs = set(work["run_started_at"].astype(str).unique())
         known_runs = set(existing["run_started_at"].astype(str).unique())
@@ -1230,11 +1335,21 @@ def write_departure_analytics(
         keep = existing[~existing["run_started_at"].astype(str).isin(runs_to_rebuild)]
         new_frame = build_cohort_snapshot_frame(df, runs_to_rebuild, work=work)
         combined = pd.concat([keep, new_frame], ignore_index=True, sort=False)
-        cohorts = _add_change_columns(combined, work)
+        logger.info(
+            f"⏱ departure_analytics incremental: cohorts={len(combined)} "
+            f"rebuild_runs={len(runs_to_rebuild)} new_rows={len(new_frame)}"
+        )
+        cohorts = _add_change_columns(combined, work, runs_to_update=runs_to_rebuild)
+    _log_timing("build cohorts", cohort_t0, f"rows={len(cohorts)}")
 
+    ev_t0 = time.monotonic()
     events = build_departure_events(cohorts)
+    _log_timing("build_departure_events", ev_t0, f"n={len(events)}")
+    hot_t0 = time.monotonic()
     hot_history = build_hot_departure_history(cohorts)
+    _log_timing("build_hot_departure_history", hot_t0, f"n={len(hot_history)}")
 
+    save_t0 = time.monotonic()
     cohorts.to_csv(cohorts_path, index=False, quoting=csv.QUOTE_ALL)
     with open(events_path, "w", encoding="utf-8") as f:
         json.dump({"events": events}, f, ensure_ascii=False, indent=2)
@@ -1243,6 +1358,8 @@ def write_departure_analytics(
     if current_fp:
         with open(fingerprint_path, "w", encoding="utf-8") as f:
             f.write(current_fp)
+    _log_timing("save outputs", save_t0)
+    _log_timing("write_departure_analytics total", write_t0, f"cohorts={len(cohorts)}")
 
     return {
         "skipped": False,
