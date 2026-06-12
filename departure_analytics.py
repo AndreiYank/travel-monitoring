@@ -48,6 +48,9 @@ BASE_OFFER_FIELDS = [
     "dates",
     "duration",
     "rating",
+    "ta_rating",
+    "ta_review_count",
+    "ta_source",
     "departure_airport",
     "scraped_at",
     "url",
@@ -89,6 +92,8 @@ COHORT_FIELDS = [
     "mean_avg_delta_pct",
     "hot_deal_count",
     "good_deal_count",
+    "median_ta_rating",
+    "ta_rated_hotel_count",
     "hot_score",
 ]
 
@@ -275,9 +280,21 @@ def _hot_score_deal_aggregate(row: Dict[str, Any]) -> int:
 
     share_hot = hot_deals / hotel_count if hotel_count else 0.0
     share_good = (hot_deals + good_deals) / hotel_count if hotel_count else 0.0
+
+    try:
+        median_ta = float(row.get("median_ta_rating") or 0)
+        ta_rated = int(row.get("ta_rated_hotel_count") or 0)
+    except (TypeError, ValueError):
+        median_ta = 0.0
+        ta_rated = 0
+    ta_part = 0.0
+    if ta_rated >= MIN_DEAL_HOTELS and median_ta >= 4.0:
+        ta_part = min(12, (median_ta - 3.8) * 18)
+    elif ta_rated >= MIN_DEAL_HOTELS and median_ta > 0 and median_ta < 3.5:
+        ta_part = -min(8, (3.5 - median_ta) * 12)
     breadth_part = min(22, share_hot * 55 + share_good * 12)
 
-    score = int(round(delta_part + deal_part + breadth_part + _proximity_bonus(days_f)))
+    score = int(round(delta_part + deal_part + breadth_part + ta_part + _proximity_bonus(days_f)))
     return min(100, score)
 
 
@@ -380,6 +397,41 @@ def _hotel_histories_for_run(
     return {str(name): grp for name, grp in pit.groupby("hotel_name", sort=False)}
 
 
+def _ta_stats_for_offer_group(grp: pd.DataFrame) -> Dict[str, Any]:
+    if grp.empty or "ta_rating" not in grp.columns:
+        return {"median_ta_rating": 0.0, "ta_rated_hotel_count": 0}
+    ta = pd.to_numeric(grp["ta_rating"], errors="coerce")
+    rated_mask = ta > 0
+    rated = ta[rated_mask]
+    per_hotel = (
+        grp.assign(_ta=ta)
+        .groupby("hotel_name", sort=False)["_ta"]
+        .max()
+    )
+    per_hotel = per_hotel[per_hotel > 0]
+    return {
+        "median_ta_rating": round(float(per_hotel.median()), 2) if not per_hotel.empty else 0.0,
+        "ta_rated_hotel_count": int(len(per_hotel)),
+    }
+
+
+def _build_ta_lookup_by_run_hotel(offer_work: pd.DataFrame) -> Dict[Tuple[str, str, str], Tuple[Any, Any]]:
+    lookup: Dict[Tuple[str, str, str], Tuple[Any, Any]] = {}
+    if offer_work.empty or "ta_rating" not in offer_work.columns:
+        return lookup
+    work = offer_work.copy()
+    work["_ta_rating"] = pd.to_numeric(work["ta_rating"], errors="coerce")
+    work["_ta_reviews"] = pd.to_numeric(work.get("ta_review_count"), errors="coerce")
+    group_cols = ["departure_key", "run_started_at", "hotel_name"]
+    for (departure_key, run_started_at, hotel_name), grp in work.groupby(group_cols, sort=False):
+        pick = grp.sort_values(["price", "_ta_reviews"], ascending=[True, False]).iloc[0]
+        lookup[(str(departure_key), str(run_started_at), str(hotel_name))] = (
+            pick["_ta_rating"] if pd.notna(pick["_ta_rating"]) else None,
+            int(pick["_ta_reviews"]) if pd.notna(pick["_ta_reviews"]) else None,
+        )
+    return lookup
+
+
 def _cohort_rows_to_update(
     work: pd.DataFrame,
     runs_to_update: Optional[set],
@@ -471,6 +523,7 @@ def _enrich_deal_metrics(
         return work
 
     prices_by_run = _build_run_hotel_prices(offer_work)
+    ta_lookup = _build_ta_lookup_by_run_hotel(offer_work)
     runs_needed = set(work.loc[update_mask, "run_started_at"].astype(str).unique())
     hist_by_run: Dict[str, Dict[str, pd.DataFrame]] = {
         run_key: _hotel_histories_for_run(offer_work, run_key) for run_key in runs_needed
@@ -493,7 +546,16 @@ def _enrich_deal_metrics(
             hist = hotel_histories.get(hotel_name)
             if hist is None or len(hist) < 2:
                 continue
-            metrics = compute_hotel_deal_metrics(hist, price)
+            ta_rating, ta_reviews = ta_lookup.get(
+                (departure_key, run_started_at, str(hotel_name)),
+                (None, None),
+            )
+            metrics = compute_hotel_deal_metrics(
+                hist,
+                price,
+                ta_rating=ta_rating,
+                ta_review_count=ta_reviews,
+            )
             deal_scores.append(int(metrics["deal_score"]))
             avg_deltas.append(float(metrics["avg_delta_pct"]))
             if metrics["deal_score"] >= 80:
@@ -672,6 +734,7 @@ def _cohort_snapshot_rows(
             "below_10000_count": int((prices <= 10000).sum()),
             "below_8000_count": int((prices <= 8000).sum()),
         }
+        row.update(_ta_stats_for_offer_group(grp))
         row["min_change_pct"] = 0.0
         row["p10_change_pct"] = 0.0
         row["median_change_pct"] = 0.0
@@ -684,6 +747,10 @@ def _cohort_snapshot_rows(
         row["mean_avg_delta_pct"] = 0.0
         row["hot_deal_count"] = 0
         row["good_deal_count"] = 0
+        if "median_ta_rating" not in row:
+            row["median_ta_rating"] = 0.0
+        if "ta_rated_hotel_count" not in row:
+            row["ta_rated_hotel_count"] = 0
         row["hot_score"] = 0
         rows.append(row)
     return rows
@@ -1085,6 +1152,7 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
         "hot_score", "days_to_departure", "min_price", "p10_price", "median_price",
         "hotel_count", "below_10000_count", "p10_change_pct", "median_change_pct",
         "avg_deal_score", "mean_avg_delta_pct", "hot_deal_count", "good_deal_count",
+        "median_ta_rating", "ta_rated_hotel_count",
     ]:
         if col in work.columns:
             work[col] = pd.to_numeric(work[col], errors="coerce")
@@ -1119,10 +1187,13 @@ def build_hot_departure_history(cohorts: pd.DataFrame) -> List[Dict[str, Any]]:
                 | (grp["median_change_pct"].fillna(0) <= -12)
             )
         )
+        ta_known = grp["median_ta_rating"].fillna(0) > 0
+        ta_ok = (~ta_known) | (grp["median_ta_rating"].fillna(0) >= 3.8)
         deal_signal = (
             (grp["hotel_count"].fillna(0) >= MIN_DEAL_HOTELS)
             & (grp["avg_deal_score"].fillna(0) >= 68)
             & (grp["mean_avg_delta_pct"].fillna(0) <= -5)
+            & ta_ok
         )
         hot_mask = (
             late_window

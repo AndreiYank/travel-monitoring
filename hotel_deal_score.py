@@ -3,13 +3,18 @@
 
 from __future__ import annotations
 
-from typing import Any, Dict, List, Optional
+import re
+from typing import Any, Dict, List, Optional, Tuple
 
 import pandas as pd
 
 MIN_PREMIUM_PLATEAU_HOURS = 6.0
 MIN_PREMIUM_OBSERVATIONS = 2
 ISOLATED_SPIKE_NEIGHBOR_RATIO = 0.55
+# TripAdvisor: полный вес влияния на Deal Score при достаточном числе отзывов.
+TA_DEAL_FULL_WEIGHT_REVIEWS = 50
+TA_DEAL_NEUTRAL_RATING = 3.8
+TA_DEAL_MAX_ADJUST = 8.0
 
 
 def _clamp(v: float, lo: float, hi: float) -> float:
@@ -210,11 +215,183 @@ def time_weighted_price_volatility(grp: pd.DataFrame, time_col: str = "scraped_a
     return float(var ** 0.5 / mean)
 
 
+def _listing_page_url(base_url: str, page_number: int) -> str:
+    if page_number <= 1:
+        return base_url
+    if "?" in base_url:
+        path, query = base_url.split("?", 1)
+    else:
+        path, query = base_url, ""
+    query = re.sub(r"filter(?:\[|%5B)fp(?:\]|%5D)=[^&]*&?", "", query).strip("&")
+    if not path.endswith("/"):
+        path += "/"
+    query_part = f"?{query}" if query else ""
+    return f"{path}p:{page_number}/{query_part}"
+
+
+def fetch_tripadvisor_from_listing_url(
+    search_url: str,
+    *,
+    max_pages: int = 5,
+    timeout_s: float = 25,
+) -> Dict[str, Dict[str, Any]]:
+    """Снимок TA с live-выдачи fly.pl (для backfill, пока CSV без ta_* колонок)."""
+    import html as ihtml
+
+    try:
+        import requests
+    except ImportError:
+        return {}
+
+    headers = {
+        "User-Agent": (
+            "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+            "AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"
+        ),
+    }
+    by_name: Dict[str, Dict[str, Any]] = {}
+    by_offer: Dict[str, Dict[str, Any]] = {}
+
+    for page_number in range(1, max_pages + 1):
+        url = _listing_page_url(search_url, page_number)
+        try:
+            resp = requests.get(url, headers=headers, timeout=timeout_s)
+        except Exception:
+            break
+        if resp.status_code != 200 or "card-offer-search" not in resp.text:
+            break
+        cards = re.split(r'<div class="card-offer-search', resp.text)[1:]
+        if not cards:
+            break
+        page_hits = 0
+        for card in cards:
+            ta = extract_tripadvisor_from_card_html(card)
+            if not ta.get("ta_rating"):
+                continue
+            name = ""
+            mh = re.search(r'<h2[^>]*property="schema:name"[^>]*>(.*?)</h2>', card, re.S)
+            if mh:
+                name = re.sub(r"<[^>]+>", "", mh.group(1)).strip()
+            if not name:
+                nm = re.search(r'property="schema:name"[^>]*content="([^"]+)"', card)
+                if nm:
+                    name = ihtml.unescape(nm.group(1)).strip()
+            offer_url = ""
+            for pat in (
+                r'property="schema:url"[^>]*content="([^"]+)"',
+                r'data-phref="([^"]+)"',
+            ):
+                om = re.search(pat, card)
+                if om:
+                    offer_url = ihtml.unescape(om.group(1)).strip()
+                    break
+            payload = {
+                "ta_rating": f"{float(ta['ta_rating']):.1f}",
+                "ta_review_count": int(ta["ta_review_count"] or 0),
+                "ta_source": "tripadvisor",
+            }
+            if name:
+                by_name[name] = payload
+                page_hits += 1
+            if offer_url:
+                by_offer[offer_url] = payload
+        if page_hits == 0:
+            break
+    return {"by_name": by_name, "by_offer": by_offer}
+
+
+def extract_tripadvisor_from_card_html(card_html: str) -> Dict[str, Any]:
+    """TripAdvisor rating + review count из server-side карточки fly.pl."""
+    empty = {"ta_rating": None, "ta_review_count": None, "ta_source": ""}
+    if not card_html:
+        return empty
+    rating_m = re.search(
+        r'property="schema:ratingValue"[^>]*content="([^"]+)"',
+        card_html,
+    )
+    count_m = re.search(
+        r'property="schema:ratingCount"[^>]*content="([^"]+)"',
+        card_html,
+    )
+    if not rating_m:
+        img_m = re.search(
+            r'tripadvisor\.com/img/cdsi/img2/ratings/traveler/([0-9.]+)-',
+            card_html,
+            re.I,
+        )
+        if img_m:
+            try:
+                empty["ta_rating"] = float(img_m.group(1))
+            except (TypeError, ValueError):
+                pass
+    else:
+        try:
+            empty["ta_rating"] = float(rating_m.group(1).replace(",", "."))
+        except (TypeError, ValueError):
+            pass
+    if count_m:
+        try:
+            empty["ta_review_count"] = int(float(count_m.group(1)))
+        except (TypeError, ValueError):
+            pass
+    else:
+        opin_m = re.search(r"(\d+)\s*opinii", card_html, re.I)
+        if opin_m:
+            try:
+                empty["ta_review_count"] = int(opin_m.group(1))
+            except (TypeError, ValueError):
+                pass
+    if empty["ta_rating"] is not None and empty["ta_rating"] > 0:
+        empty["ta_source"] = "tripadvisor"
+    return empty
+
+
+def tripadvisor_review_weight(
+    review_count: Any,
+    *,
+    full_weight_reviews: int = TA_DEAL_FULL_WEIGHT_REVIEWS,
+) -> float:
+    """0 для новых отелей; растёт с числом отзывов (в разумных пределах)."""
+    try:
+        reviews = int(review_count or 0)
+    except (TypeError, ValueError):
+        return 0.0
+    if reviews <= 0:
+        return 0.0
+    return _clamp((reviews / max(1, full_weight_reviews)) ** 0.65, 0.0, 1.0)
+
+
+def blend_tripadvisor_into_deal_score(
+    deal_score: int,
+    ta_rating: Any = None,
+    ta_review_count: Any = None,
+    *,
+    neutral_rating: float = TA_DEAL_NEUTRAL_RATING,
+    max_adjust: float = TA_DEAL_MAX_ADJUST,
+    full_weight_reviews: int = TA_DEAL_FULL_WEIGHT_REVIEWS,
+) -> Tuple[int, float]:
+    """Смещает Deal Score по TA; без отзывов влияние ≈0."""
+    weight = tripadvisor_review_weight(ta_review_count, full_weight_reviews=full_weight_reviews)
+    if weight < 0.05:
+        return int(deal_score), weight
+    try:
+        rating = float(ta_rating)
+    except (TypeError, ValueError):
+        return int(deal_score), 0.0
+    if rating <= 0:
+        return int(deal_score), 0.0
+    delta = (rating - neutral_rating) * (max_adjust / 1.2)
+    adjusted = int(round(_clamp(deal_score + delta * weight, 0, 100)))
+    return adjusted, weight
+
+
 def compute_hotel_deal_metrics(
     hist_df: pd.DataFrame,
     latest_price: float,
     time_col: str = "scraped_at",
     price_col: str = "price",
+    ta_rating: Any = None,
+    ta_review_count: Any = None,
 ) -> Dict[str, Any]:
     """Deal Score + Δ к типичной цене (как в дашборде, по истории офферов отеля)."""
     empty = {"deal_score": 0, "avg_delta_pct": 0.0, "confidence": "Low"}
@@ -286,8 +463,17 @@ def compute_hotel_deal_metrics(
 
     avg_delta_pct = round((latest - median) / median * 100.0, 2) if median > 0 else 0.0
 
+    price_deal_score = deal_score
+    deal_score, ta_weight = blend_tripadvisor_into_deal_score(
+        deal_score,
+        ta_rating,
+        ta_review_count,
+    )
+
     return {
         "deal_score": deal_score,
+        "price_deal_score": price_deal_score,
+        "ta_weight": round(ta_weight, 3),
         "avg_delta_pct": avg_delta_pct,
         "confidence": confidence,
     }

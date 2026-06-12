@@ -26,6 +26,7 @@ from price_alerts_v2 import PriceAlertManagerV2, ALERT_THRESHOLD_PERCENT
 from airport_comparison import AirportComparison
 from departure_analytics import BASE_OFFER_FIELDS, write_departure_analytics
 from departure_identity import DEPARTURE_FIELDS, enrich_offers
+from hotel_deal_score import extract_tripadvisor_from_card_html
 
 # Настройка логирования
 logging.basicConfig(
@@ -37,6 +38,12 @@ logging.basicConfig(
     ]
 )
 logger = logging.getLogger(__name__)
+
+TRAVEL_PRICE_CSV_FIELDS = [
+    'hotel_name', 'price', 'dates', 'duration', 'rating',
+    'ta_rating', 'ta_review_count', 'ta_source',
+    'departure_airport', 'scraped_at', 'url', 'image_url', 'offer_url',
+]
 
 
 def _log_timing(label: str, started: float, extra: str = "") -> float:
@@ -230,6 +237,23 @@ class TravelPriceMonitor:
         query_part = f"?{query}" if query else ''
         return f"{path}p:{page_number}/{query_part}"
 
+    def _ta_fields_from_card(self, card_html: str) -> Dict[str, Any]:
+        ta = extract_tripadvisor_from_card_html(card_html)
+        rating_val = ta.get("ta_rating")
+        review_val = ta.get("ta_review_count")
+        rating_str = ""
+        if rating_val is not None:
+            try:
+                rating_str = f"{float(rating_val):.1f}"
+            except (TypeError, ValueError):
+                rating_str = ""
+        return {
+            "rating": rating_str,
+            "ta_rating": rating_str,
+            "ta_review_count": review_val if review_val is not None else "",
+            "ta_source": ta.get("ta_source") or "",
+        }
+
     def _parse_offers_from_html(self, page_html: str) -> List[Dict[str, Any]]:
         """Извлекает все офферы со страницы за один проход по HTML.
 
@@ -283,13 +307,17 @@ class TravelPriceMonitor:
             )
             dates = md.group(1).strip() if md else ''
             duration = md.group(2).strip() if md else ''
+            ta_fields = self._ta_fields_from_card(card)
 
             offers.append({
                 'hotel_name': (name or 'Предложение')[:100],
                 'price': price_value,
                 'dates': dates[:50],
                 'duration': duration[:30],
-                'rating': '',
+                'rating': ta_fields['rating'],
+                'ta_rating': ta_fields['ta_rating'],
+                'ta_review_count': ta_fields['ta_review_count'],
+                'ta_source': ta_fields['ta_source'],
                 'departure_airport': departure_airport,
                 'scraped_at': self._scrape_timestamp(),
                 'url': self.config['url'],
@@ -1024,9 +1052,20 @@ class TravelPriceMonitor:
             if not duration:
                 duration = "6-15 дней"  # Из URL конфигурации
             
-            # Рейтинг не извлекаем - не очень важен
             rating = ""
-            
+            ta_rating = ""
+            ta_review_count = ""
+            ta_source = ""
+            try:
+                card_html = await element.inner_html()
+                ta_fields = self._ta_fields_from_card(card_html)
+                rating = ta_fields['rating']
+                ta_rating = ta_fields['ta_rating']
+                ta_review_count = ta_fields['ta_review_count']
+                ta_source = ta_fields['ta_source']
+            except Exception:
+                pass
+
             # Изображение отеля (если доступно на карточке)
             image_url = await self.extract_image_url_from_offer(element)
             
@@ -1054,6 +1093,9 @@ class TravelPriceMonitor:
                 'dates': dates[:50],
                 'duration': duration[:30],
                 'rating': rating[:20],
+                'ta_rating': str(ta_rating)[:10],
+                'ta_review_count': ta_review_count if ta_review_count != "" else "",
+                'ta_source': str(ta_source)[:20],
                 'departure_airport': departure_airport,
                 'scraped_at': self._scrape_timestamp(),
                 'url': self.config['url'],
@@ -1539,18 +1581,7 @@ class TravelPriceMonitor:
                     reader = csv.DictReader(f)
                     for row in reader:
                         # Заполняем отсутствующие поля пустыми значениями
-                        normalized_row = {
-                            'hotel_name': row.get('hotel_name', ''),
-                            'price': row.get('price', ''),
-                            'dates': row.get('dates', ''),
-                            'duration': row.get('duration', ''),
-                            'rating': row.get('rating', ''),
-                            'departure_airport': row.get('departure_airport', ''),
-                            'scraped_at': row.get('scraped_at', ''),
-                            'url': row.get('url', ''),
-                            'image_url': row.get('image_url', ''),
-                            'offer_url': row.get('offer_url', '')
-                        }
+                        normalized_row = {k: row.get(k, '') for k in TRAVEL_PRICE_CSV_FIELDS}
                         existing_data.append(normalized_row)
             except Exception as e:
                 logger.warning(f"Ошибка чтения существующих данных: {e}, создаем новый файл")
@@ -1558,7 +1589,7 @@ class TravelPriceMonitor:
         
         # Перезаписываем файл с правильными заголовками
         with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
-            fieldnames = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'departure_airport', 'scraped_at', 'url', 'image_url', 'offer_url']
+            fieldnames = TRAVEL_PRICE_CSV_FIELDS
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
             writer.writeheader()
             
@@ -1730,7 +1761,7 @@ class TravelPriceMonitor:
             df = pd.read_csv(filepath, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             
             # Проверяем, что все необходимые колонки присутствуют
-            required_columns = ['hotel_name', 'price', 'dates', 'duration', 'rating', 'scraped_at', 'url', 'image_url', 'offer_url']
+            required_columns = TRAVEL_PRICE_CSV_FIELDS
             missing_columns = [col for col in required_columns if col not in df.columns]
             
             if missing_columns:

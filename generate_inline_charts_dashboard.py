@@ -8,6 +8,7 @@ import json
 import csv
 import hashlib
 from datetime import datetime, timedelta, timezone
+from typing import Any, List, Optional
 import os
 import re
 import html as html_lib
@@ -29,9 +30,11 @@ from departure_analytics import (
     COHORT_LOOKBACK_TARGET_HOURS,
 )
 from hotel_deal_score import (
+    blend_tripadvisor_into_deal_score,
     build_premium_history_by_hotel,
     comeback_from_premium,
     compute_hotel_deal_metrics,
+    fetch_tripadvisor_from_listing_url,
 )
 from departure_identity import parse_offer_path
 from departure_airports import (
@@ -41,7 +44,144 @@ from departure_airports import (
     should_group_by_arrival_airport,
 )
 from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
-from filter_params import load_filter_config, render_filter_params_html, resolve_config_path
+from filter_params import (
+    DATA_DIR_CONFIG_FILES,
+    load_filter_config,
+    render_filter_params_html,
+    resolve_config_path,
+)
+
+# Официальный logomark TripAdvisor (owl), cropped from TA_logo_primary.svg (tacdn.com).
+TRIPADVISOR_HEADER_ICON_HTML = (
+    '<span class="th-ta-icon" aria-hidden="true">'
+    '<svg class="th-ta-svg" viewBox="0 0 50 30" xmlns="http://www.w3.org/2000/svg">'
+    '<path fill="#FAC415" d="M8.69853,6.34985C13.42485,5.74015,26.834,5.32015,23.16029,24.69632l4.16692-.339C25.50191,12.41381,29.31986,6.324,41.25838,5.74015,21.45779-5.22456,10.18426,6.15809,8.69853,6.34985Z"/>'
+    '<path fill="#fff" d="M27.13191,21.62794A11.34312,11.34312,0,1,0,33.84147,7.055,11.347,11.347,0,0,0,27.13191,21.62794Z"/>'
+    '<circle fill="#fff" cx="12.62599" cy="17.65102" r="11.34537"/>'
+    '<circle fill="#EE6946" cx="12.4632" cy="17.53993" r="2.0971"/>'
+    '<circle fill="#00AF87" cx="37.74486" cy="17.53993" r="2.09618"/>'
+    '<path fill="#000" d="M47.89824,10.18a16.25082,16.25082,0,0,1,2.48088-5.0444l-8.41926-.00647A30.65918,30.65918,0,0,0,25.14368.461,31.36745,31.36745,0,0,0,7.90015,5.18868L0,5.19309a16.3389,16.3389,0,0,1,2.46941,5.00044A12.60265,12.60265,0,0,0,22.46235,25.53426L25.14721,29.554l2.71074-4.05353A12.61369,12.61369,0,0,0,47.89824,10.18ZM37.37,5.094A12.57259,12.57259,0,0,0,25.19676,16.73368,12.6202,12.6202,0,0,0,12.87912,5.04515,31.17654,31.17654,0,0,1,25.14368,2.66044,29.67419,29.67419,0,0,1,37.37,5.094ZM12.62632,27.71926A10.06971,10.06971,0,1,1,22.695,17.652,10.08062,10.08062,0,0,1,12.62632,27.71926Zm28.63412-.57147a10.07577,10.07577,0,0,1-12.93515-5.96V21.185A10.07008,10.07008,0,1,1,41.26044,27.14779Z"/>'
+    '<path fill="#000" d="M12.47059,11.3094a6.231,6.231,0,1,0,6.22191,6.23A6.24029,6.24029,0,0,0,12.47059,11.3094Zm0,10.31575a4.08509,4.08509,0,1,1,4.07706-4.08574A4.09513,4.09513,0,0,1,12.47059,21.62515Z"/>'
+    '<path fill="#000" d="M37.74486,11.3094a6.231,6.231,0,1,0,6.22779,6.23A6.23822,6.23822,0,0,0,37.74486,11.3094Zm0,10.31575a4.08508,4.08508,0,1,1,4.08367-4.08574A4.091,4.091,0,0,1,37.74486,21.62515Z"/>'
+    '</svg></span>'
+)
+
+
+def _parse_ta_rating_value(value: Any) -> Optional[float]:
+    try:
+        rating = float(value)
+    except (TypeError, ValueError):
+        return None
+    return rating if rating > 0 else None
+
+
+def _parse_ta_review_count(value: Any) -> int:
+    try:
+        return max(0, int(float(value)))
+    except (TypeError, ValueError):
+        return 0
+
+
+def _resolve_listing_url_for_backfill(
+    df: pd.DataFrame,
+    config_file: Optional[str],
+    data_file: str,
+) -> str:
+    if config_file and os.path.isfile(config_file):
+        try:
+            with open(config_file, encoding="utf-8") as f:
+                cfg = json.load(f)
+            url = str(cfg.get("url") or "").strip()
+            if url:
+                return url
+        except Exception:
+            pass
+    if not df.empty and "url" in df.columns:
+        for val in reversed(df["url"].dropna().astype(str).tolist()):
+            if "fly.pl/oferta/" in val:
+                return val
+    data_dir = os.path.dirname(data_file) or "."
+    folder = os.path.basename(os.path.normpath(data_dir))
+    cfg_name = DATA_DIR_CONFIG_FILES.get(folder)
+    if cfg_name and os.path.isfile(cfg_name):
+        try:
+            with open(cfg_name, encoding="utf-8") as f:
+                return str(json.load(f).get("url") or "")
+        except Exception:
+            pass
+    return ""
+
+
+def _backfill_ta_for_latest_rows(
+    latest_rows: List[dict],
+    df: pd.DataFrame,
+    config_file: Optional[str],
+    data_file: str,
+) -> int:
+    if not latest_rows:
+        return 0
+    missing = [
+        row for row in latest_rows
+        if _parse_ta_rating_value(row.get("ta_rating")) is None
+    ]
+    if not missing:
+        return 0
+    search_url = _resolve_listing_url_for_backfill(df, config_file, data_file)
+    if not search_url:
+        print("⚠️ TA backfill: не найден URL выдачи fly.pl")
+        return 0
+    print(f"⭐ TA backfill: live-выдача fly.pl для {len(missing)} отелей без оценки...")
+    lookup = fetch_tripadvisor_from_listing_url(search_url, max_pages=8)
+    by_name = lookup.get("by_name") or {}
+    by_offer = lookup.get("by_offer") or {}
+    filled = 0
+    for row in latest_rows:
+        if _parse_ta_rating_value(row.get("ta_rating")) is not None:
+            continue
+        offer_url = str(row.get("offer_url") or "").strip()
+        hotel_name = str(row.get("hotel_name") or "").strip()
+        ta = by_offer.get(offer_url) or by_name.get(hotel_name)
+        if not ta:
+            continue
+        row.update(ta)
+        filled += 1
+    print(f"⭐ TA backfill: заполнено {filled}/{len(missing)}")
+    return filled
+
+
+def _render_ta_rating_html(ta_rating: Any, ta_review_count: Any) -> str:
+    rating = _parse_ta_rating_value(ta_rating)
+    reviews = _parse_ta_review_count(ta_review_count)
+    if rating is None:
+        return (
+            '<span class="ta-rating ta-rating--empty" data-sort-value="-1" '
+            'title="Новый отель или нет отзывов TripAdvisor">'
+            '<span class="ta-stars ta-stars--empty">—</span>'
+            '<span class="ta-meta"><span class="ta-score">—</span></span>'
+            '</span>'
+        )
+    full = int(rating)
+    frac = rating - full
+    stars = []
+    for idx in range(1, 6):
+        if rating >= idx:
+            stars.append('<span class="ta-star ta-star--full">★</span>')
+        elif idx - 1 < rating < idx and frac >= 0.25:
+            stars.append('<span class="ta-star ta-star--half">★</span>')
+        else:
+            stars.append('<span class="ta-star ta-star--empty">☆</span>')
+    stars_html = "".join(stars)
+    reviews_html = (
+        f'<span class="ta-reviews">{reviews} opinii</span>'
+        if reviews > 0 else '<span class="ta-reviews ta-reviews--new">новый</span>'
+    )
+    return (
+        f'<span class="ta-rating" data-sort-value="{rating:.2f}" '
+        f'title="TripAdvisor {rating:.1f}/5 · {reviews} opinii">'
+        f'<span class="ta-stars" style="--ta-fill:{min(100, rating / 5 * 100):.0f}%">{stars_html}</span>'
+        f'<span class="ta-meta"><span class="ta-score">{rating:.1f}</span>{reviews_html}</span>'
+        f'</span>'
+    )
 
 
 def _merge_departure_cohorts(*frames: pd.DataFrame) -> pd.DataFrame:
@@ -66,6 +206,7 @@ def _prepare_departure_cohorts(df: pd.DataFrame) -> pd.DataFrame:
         "min_price", "p10_price", "median_price", "p10_change_pct",
         "median_change_pct", "min_change_pct", "hotel_count_delta", "common_hotel_count",
         "avg_deal_score", "mean_avg_delta_pct", "hot_deal_count", "good_deal_count",
+        "median_ta_rating", "ta_rated_hotel_count",
     ]:
         if col in work.columns:
             work[col] = pd.to_numeric(work[col], errors="coerce")
@@ -1171,6 +1312,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         df = df.dropna(subset=['scraped_at_local'])
         # Используем локализованное время без дополнительных сдвигов
         df['scraped_at_display'] = df['scraped_at_local']
+        for col in ('ta_rating', 'ta_review_count', 'ta_source'):
+            if col not in df.columns:
+                df[col] = ''
         print(f"✅ Загружено {len(df)} записей")
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
@@ -1652,8 +1796,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'url': last.get('url', None),
             'from_airport': last.get('from_airport', None),
             'offer_url': last.get('offer_url', None),
-            'image_url': last.get('image_url', None)
+            'image_url': last.get('image_url', None),
+            'ta_rating': last.get('ta_rating', ''),
+            'ta_review_count': last.get('ta_review_count', ''),
+            'ta_source': last.get('ta_source', ''),
         })
+    _backfill_ta_for_latest_rows(latest_rows, df, config_file, data_file)
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     # Актуальная цена для таблицы — только последний ран; дельты — vs вся df_canonical.
     table_prices = {row['hotel_name']: float(row['price']) for row in latest_rows}
@@ -1846,6 +1994,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     deal_score_by_hotel = {}
     entry_candidates = []
+    ta_by_hotel = {
+        str(row['hotel_name']): {
+            'ta_rating': row.get('ta_rating', ''),
+            'ta_review_count': row.get('ta_review_count', ''),
+        }
+        for _, row in all_hotels.iterrows()
+    }
 
     for hotel_name, grp in df_sorted.groupby('hotel_name'):
         grp = grp.sort_values('scraped_at_display')
@@ -1950,6 +2105,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             penalty = (d48_pct + d_avg_pct) / 2.0
             deal_score = int(_clamp(50 - penalty * 1.2, 5, 42))
 
+        ta_info = ta_by_hotel.get(str(hotel_name), {})
+        deal_score, ta_weight = blend_tripadvisor_into_deal_score(
+            deal_score,
+            ta_info.get('ta_rating'),
+            ta_info.get('ta_review_count'),
+        )
+
         deal_score_by_hotel[hotel_name] = {
             'score': deal_score,
             'raw_score': int(round(raw_deal_score)),
@@ -1962,12 +2124,25 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'is_bad': is_bad,
             'comeback_drop_pct': comeback_drop_pct,
             'typical_price': median,
+            'ta_rating': _parse_ta_rating_value(ta_info.get('ta_rating')),
+            'ta_review_count': _parse_ta_review_count(ta_info.get('ta_review_count')),
+            'ta_weight': ta_weight,
         }
 
         delta48 = delta48_info
 
-        # Кандидаты для "раннего входа"
-        if delta48 is not None and delta48[1] <= -2.0 and latest <= p25 and deal_score >= 72 and confidence_level != "Low":
+        # Кандидаты для "раннего входа" (цена + TA при достаточных отзывах)
+        ta_rating_val = _parse_ta_rating_value(ta_info.get('ta_rating'))
+        ta_reviews_val = _parse_ta_review_count(ta_info.get('ta_review_count'))
+        ta_ok = (
+            ta_rating_val is None
+            or ta_reviews_val < 15
+            or ta_rating_val >= 3.8
+        )
+        if (
+            delta48 is not None and delta48[1] <= -2.0 and latest <= p25
+            and deal_score >= 72 and confidence_level != "Low" and ta_ok
+        ):
             entry_candidates.append({
                 'hotel_name': hotel_name,
                 'deal_score': deal_score,
@@ -3034,7 +3209,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                             offer["deal_class"] = ""
                             offer["delta_avg"] = "—"
                             continue
-                        metrics = compute_hotel_deal_metrics(hist, offer_price)
+                        metrics = compute_hotel_deal_metrics(
+                            hist,
+                            offer_price,
+                            ta_rating=offer.get("ta_rating"),
+                            ta_review_count=offer.get("ta_review_count"),
+                        )
                         deal_score = int(metrics["deal_score"])
                         confidence = metrics["confidence"]
                         d_avg = float(metrics["avg_delta_pct"])
@@ -5126,8 +5306,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         .hotels-table col.col-w-hotel {{ width: 29%; }}
         .hotels-table col.col-w-price {{ width: 8.2%; }}
-        .hotels-table col.col-w-deal {{ width: 9%; }}
-        .hotels-table col.col-w-d48 {{ width: 5.9%; }}
+        .hotels-table col.col-w-deal {{ width: 8.5%; }}
+        .hotels-table col.col-w-ta {{ width: 8.5%; }}
+        .hotels-table col.col-w-d48 {{ width: 5.5%; }}
         .hotels-table col.col-w-davg {{ width: 7%; }}
         .hotels-table col.col-w-region {{ width: 10%; }}
         .hotels-table col.col-w-dates {{ width: 15%; }}
@@ -5233,6 +5414,92 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         @keyframes gradientDrift {{
             0% {{ transform: translate3d(0,0,0) scale(1); }}
             100% {{ transform: translate3d(-10px, 8px, 0) scale(1.02); }}
+        }}
+        @keyframes taStarPulse {{
+            0%, 100% {{ transform: scale(1); filter: brightness(1); }}
+            50% {{ transform: scale(1.08); filter: brightness(1.15); }}
+        }}
+        @keyframes taGlow {{
+            0%, 100% {{ box-shadow: 0 0 0 rgba(245, 158, 11, 0); }}
+            50% {{ box-shadow: 0 0 12px rgba(245, 158, 11, 0.35); }}
+        }}
+
+        .ta-rating {{
+            display: inline-flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.1rem;
+            line-height: 1.1;
+            animation: taGlow 4s ease-in-out infinite;
+        }}
+        .ta-rating--empty {{
+            opacity: 0.55;
+            animation: none;
+        }}
+        .ta-stars {{
+            display: inline-flex;
+            gap: 0.05rem;
+            letter-spacing: -0.05em;
+        }}
+        .ta-star {{
+            font-size: 0.82rem;
+            line-height: 1;
+        }}
+        .ta-star--full, .ta-star--half {{
+            color: #f59e0b;
+            text-shadow: 0 0 8px rgba(245, 158, 11, 0.35);
+            animation: taStarPulse 2.8s ease-in-out infinite;
+        }}
+        .ta-star--half {{
+            opacity: 0.72;
+        }}
+        .ta-star--empty {{
+            color: #cbd5e1;
+        }}
+        .ta-meta {{
+            display: inline-flex;
+            align-items: baseline;
+            gap: 0.35rem;
+            font-size: 0.72rem;
+            color: #64748b;
+            white-space: nowrap;
+        }}
+        .ta-score {{
+            font-weight: 800;
+            color: #b45309;
+            font-variant-numeric: tabular-nums;
+        }}
+        .ta-reviews {{
+            opacity: 0.9;
+        }}
+        .ta-reviews--new {{
+            font-style: italic;
+            opacity: 0.75;
+        }}
+        .hotels-table th.th-ta {{
+            text-align: center;
+        }}
+        .th-ta-icon {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.75rem;
+            height: 1.2rem;
+            border-radius: 0.25rem;
+            background: #fff;
+            padding: 0.08rem 0.12rem;
+            box-shadow: 0 1px 3px rgba(15, 23, 42, 0.18);
+            vertical-align: middle;
+        }}
+        .th-ta-svg {{
+            display: block;
+            width: 100%;
+            height: auto;
+        }}
+        .hotels-table td.col-w-ta-td {{
+            font-size: 0.78rem;
+            vertical-align: middle;
+            text-align: center;
         }}
         
         .hotels-table .col-hotel {{
@@ -6433,6 +6700,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <span class="deal-badge-bad">📈 Bad</span> = подорожало за 48ч и vs средней,
                 <span class="deal-badge-warm">⏳ Warm-up</span> = пока мало истории.
                 Confidence: Low / Medium / High — степень надежности оценки.
+                TripAdvisor слегка сдвигает Deal Score; без отзывов влияние минимально.
             </div>
             
             <!-- Table Filters -->
@@ -6440,6 +6708,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <input type="text" class="filter-input" id="searchInput" placeholder="🔍 Поиск по отелям..." />
                 <select class="filter-select" id="priceFilter">
                     {price_filter_options_html}
+                </select>
+                <select class="filter-select" id="taFilter">
+                    <option value="">Все рейтинги TripAdvisor</option>
+                    <option value="4.5">Рейтинг ≥ 4.5</option>
+                    <option value="4.0">Рейтинг ≥ 4.0</option>
+                    <option value="3.5">Рейтинг ≥ 3.5</option>
+                    <option value="none">Без оценки</option>
                 </select>
                 <select class="filter-select" id="changeFilter">
                     <option value="">Все изменения</option>
@@ -6460,6 +6735,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <col class="col-w-hotel">
                     <col class="col-w-price">
                     <col class="col-w-deal">
+                    <col class="col-w-ta">
                     <col class="col-w-d48">
                     <col class="col-w-davg">
                     <col class="col-w-region">
@@ -6472,6 +6748,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <th class="sortable col-hotel" data-sort="hotel">Отель</th>
                         <th class="sortable col-tight" data-sort="price">Цена</th>
                         <th class="sortable col-tight" data-sort="deal">Deal Score</th>
+                        <th class="sortable col-tight th-ta" data-sort="ta" title="Рейтинг на TripAdvisor">{TRIPADVISOR_HEADER_ICON_HTML}</th>
                         <th class="sortable col-tight" data-sort="delta48">Δ 48ч</th>
                         <th class="sortable col-tight" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней</th>
                         <th class="sortable col-tight" data-sort="region">Регион</th>
@@ -6557,12 +6834,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_name_html = html_lib.escape(str(hotel_name))
         hotel_name_attr = html_lib.escape(str(hotel_name), quote=True)
         arrival_hub_html = html_lib.escape(str(arrival_hub))
+        ta_rating_html = _render_ta_rating_html(
+            hotel.get('ta_rating', ''),
+            hotel.get('ta_review_count', ''),
+        )
+        ta_sort_val = _parse_ta_rating_value(hotel.get('ta_rating', ''))
+        ta_data_attr = f"{ta_sort_val:.2f}" if ta_sort_val is not None else "-1"
         
         html_template += f"""
-                    <tr data-region="{arrival_hub_html}">
+                    <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}">
                         <td class="hotel-name col-hotel"><a class=\"open-chart-link hotel-hover-link\" href=\"{chart_href}\" target=\"_blank\" data-hotel-name=\"{hotel_name_attr}\">{hotel_name_html}</a></td>
                         <td class="price col-tight" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}</td>
                         <td class="col-tight col-w-deal-td" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
+                        <td class="col-tight col-w-ta-td">{ta_rating_html}</td>
                         <td class="col-tight col-w-d48-td" data-sort-value="{delta_info[1] if delta_info else 0}"><span class=\"{delta_class}\">{delta_display}</span></td>
                         <td class="col-tight col-w-davg-td" data-sort-value="{avg_sort_value}">{avg_display}</td>
                         <td class="arrival-hub col-tight" data-sort-value="{arrival_hub_html}">{arrival_hub_html}</td>
@@ -7028,7 +7312,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       let currentSort = { column: null, direction: 'asc' };
       
       function getColumnIndex(column) {
-        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'delta48': 3, 'deltaavg': 4, 'region': 5, 'dates': 6, 'duration': 7, 'offer': 8 };
+        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'ta': 3, 'delta48': 4, 'deltaavg': 5, 'region': 6, 'dates': 7, 'duration': 8, 'offer': 9 };
         return columnMap[column];
       }
 
@@ -7046,6 +7330,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         if (column === 'duration') {
           const m = raw.match(/(\d+)/);
           return m ? parseFloat(m[1]) : 0;
+        }
+        if (column === 'ta') {
+          const cellRating = cell ? cell.querySelector('.ta-rating') : null;
+          const ds = cellRating ? cellRating.getAttribute('data-sort-value') : raw;
+          const val = parseFloat(ds);
+          return Number.isFinite(val) ? val : -1;
         }
         return parseFloat(raw) || 0;
       }
@@ -7187,6 +7477,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         const priceFilter = document.getElementById('priceFilter');
         const changeFilter = document.getElementById('changeFilter');
         const regionFilter = document.getElementById('regionFilter');
+        const taFilter = document.getElementById('taFilter');
         const clearFilters = document.getElementById('clearFilters');
         const table = document.getElementById('hotelsTable');
         const tbody = table.querySelector('tbody');
@@ -7250,12 +7541,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const priceRange = priceFilter.value;
           const changeType = changeFilter.value;
           const regionValue = regionFilter ? regionFilter.value : '';
+          const taValue = taFilter ? taFilter.value : '';
           
           filteredRows = rows.filter(row => {
             const hotelName = row.cells[0].textContent.toLowerCase();
             const price = parseFloat(row.cells[1].textContent.replace(/[^0-9.-]/g, ''));
-            const delta48 = row.cells[3].textContent.trim();
-            const rowRegion = row.dataset.region || row.cells[5].textContent.trim();
+            const delta48 = row.cells[4].textContent.trim();
+            const rowRegion = row.dataset.region || row.cells[6].textContent.trim();
+            const rowTa = parseFloat(row.dataset.taRating || '-1');
             
             // Search filter
             if (searchTerm && !hotelName.includes(searchTerm)) {
@@ -7283,6 +7576,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
             if (regionValue && rowRegion !== regionValue) {
               return false;
+            }
+
+            if (taValue) {
+              if (taValue === 'none') {
+                if (rowTa > 0) return false;
+              } else {
+                const minTa = parseFloat(taValue);
+                if (!Number.isFinite(rowTa) || rowTa < minTa) return false;
+              }
             }
             
             return true;
@@ -7343,11 +7645,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         priceFilter.addEventListener('change', filterRows);
         changeFilter.addEventListener('change', filterRows);
         if (regionFilter) regionFilter.addEventListener('change', filterRows);
+        if (taFilter) taFilter.addEventListener('change', filterRows);
         clearFilters.addEventListener('click', function() {
           searchInput.value = '';
           priceFilter.value = '';
           changeFilter.value = '';
           if (regionFilter) regionFilter.value = '';
+          if (taFilter) taFilter.value = '';
           filterRows();
         });
         nextPage.addEventListener('click', nextPageFunc);
