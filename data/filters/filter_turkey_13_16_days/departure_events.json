@@ -2881,6 +2881,26 @@
       "hot_score": 100.0
     },
     {
+      "event_time": "2026-06-12T17:37:29+0000",
+      "departure_key": "turcja|alanya|2026-06-13|2026-06-27|14|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-13",
+      "return_date": "2026-06-27",
+      "nights": 14.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 11236.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 2,
+      "hot_score": 98.0
+    },
+    {
       "event_time": "2026-06-11T05:26:08+0000",
       "departure_key": "turcja|alanya|2026-06-14|2026-06-27|13|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_price_dump",
@@ -9859,6 +9879,26 @@
       "hotel_count": 15.0,
       "hotel_delta": 1,
       "hot_score": 49.0
+    },
+    {
+      "event_time": "2026-06-12T17:37:29+0000",
+      "departure_key": "turcja|side|2026-06-20|2026-07-04|14|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-20",
+      "return_date": "2026-07-04",
+      "nights": 14.0,
+      "days_to_departure": 8.0,
+      "old_min_price": "",
+      "new_min_price": 11457.0,
+      "min_drop_pct": -8.03,
+      "p10_drop_pct": -6.81,
+      "median_drop_pct": -7.66,
+      "hotel_count": 14.0,
+      "hotel_delta": 0,
+      "hot_score": 54.0
     }
   ]
 }
