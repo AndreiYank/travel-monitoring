@@ -5592,10 +5592,58 @@
       "created_at": "2026-06-13T09:59:21.240324+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Bella Beach_2026-06-13_09-57_comeback_9.5"
+    },
+    {
+      "hotel_name": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas",
+      "old_price": 8257.0,
+      "new_price": 9057.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.688748940293085,
+      "timestamp": "2026-06-13 11:54:11.555305+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-13T11:56:04.694039+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas_2026-06-13_11-54_+9.7"
+    },
+    {
+      "hotel_name": "Ibiscus Corfu Grecja, Korfu, Roda",
+      "old_price": 7231.0,
+      "new_price": 9363.0,
+      "price_change": 2132.0,
+      "price_change_pct": 29.484165398976632,
+      "timestamp": "2026-06-13 11:54:11.555305+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-13T11:56:04.694085+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ibiscus Corfu Grecja, Korfu, Roda_2026-06-13_11-54_+29.5"
+    },
+    {
+      "hotel_name": "CHC Athina Palace Resort & Spa (Agia Pelagia)",
+      "old_price": 9941.0,
+      "new_price": 9941.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-13 11:54:11.555305+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-13T11:56:04.694120+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "CHC Athina Palace Resort & Spa (Agia Pelagia)_2026-06-13_11-54_zone_out_gone"
+    },
+    {
+      "hotel_name": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas",
+      "old_price": 9497.0,
+      "new_price": 9497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-13 11:54:11.555305+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-13T11:56:04.694140+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas_2026-06-13_11-54_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-13T09:57:59.879387+00:00",
+    "last_processed_run": "2026-06-13T11:54:11.555305+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -5714,8 +5762,8 @@
         "premium_peak": 14448.0
       },
       "Mitsis Faliraki": {
-        "history_max": 15242.0,
-        "premium_peak": 15242.0
+        "history_max": 16896.0,
+        "premium_peak": 16896.0
       },
       "Porto Platanias Village": {
         "history_max": 11336.0,
@@ -6387,6 +6435,10 @@
       },
       "Kouros Palace Grecja, Kos, Mastichari": {
         "history_max": 9397.0,
+        "premium_peak": null
+      },
+      "Athina Palace (Agia Pelagia) Grecja, Kreta Wschodnia, Agia Pelagia": {
+        "history_max": 9541.0,
         "premium_peak": null
       }
     }
