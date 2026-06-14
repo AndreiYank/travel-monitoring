@@ -403,10 +403,23 @@
       "created_at": "2026-06-14T13:01:10.084221+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe_2026-06-14_13-00_zone_out_+37.6"
+    },
+    {
+      "hotel_name": "Benata",
+      "duration_bucket": "",
+      "old_price": 9197.0,
+      "new_price": 9197.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 13:34:20.701674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T13:34:53.759512+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Benata_2026-06-14_13-34_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-14T13:00:39.915015+00:00",
+    "last_processed_run": "2026-06-14T13:34:20.701674+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11810.0,
@@ -953,8 +966,8 @@
         "premium_peak": 11498.0
       },
       "Siam Elegance": {
-        "history_max": 11771.0,
-        "premium_peak": 11771.0
+        "history_max": 11930.0,
+        "premium_peak": 11930.0
       },
       "Side Star Resort (ex Club)": {
         "history_max": 12728.0,
@@ -1153,16 +1166,16 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 6941.0,
-        "premium_peak": null
+        "history_max": 12695.0,
+        "premium_peak": 12695.0
       },
       "Ozkaymak Incekum": {
-        "history_max": 6019.0,
-        "premium_peak": null
+        "history_max": 11751.0,
+        "premium_peak": 11751.0
       },
       "Ozkaymak Falez": {
-        "history_max": 6095.0,
-        "premium_peak": null
+        "history_max": 11739.0,
+        "premium_peak": 11739.0
       },
       "Oz Sui Resort": {
         "history_max": 11158.0,
@@ -1193,8 +1206,8 @@
         "premium_peak": 13712.0
       },
       "Ramada Resort Lara": {
-        "history_max": 11521.0,
-        "premium_peak": 11521.0
+        "history_max": 12119.0,
+        "premium_peak": 12119.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 9197.0,
@@ -1635,6 +1648,10 @@
       "Pine Beach Belek (ex. Maritim Pine Beach Resort)": {
         "history_max": 12343.0,
         "premium_peak": 12343.0
+      },
+      "Side Star Beach": {
+        "history_max": 13327.0,
+        "premium_peak": 13327.0
       }
     }
   }
