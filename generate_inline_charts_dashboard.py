@@ -35,6 +35,7 @@ from hotel_deal_score import (
     comeback_from_premium,
     compute_hotel_deal_metrics,
     fetch_tripadvisor_from_listing_url,
+    robust_premium_peak,
 )
 from departure_identity import parse_offer_path
 from departure_airports import (
@@ -47,8 +48,19 @@ from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_char
 from filter_params import (
     DATA_DIR_CONFIG_FILES,
     load_filter_config,
+    resolve_config_url,
     render_filter_params_html,
+    render_global_duration_switch_html,
     resolve_config_path,
+)
+from filter_trip import (
+    _duration_bucket_is_missing,
+    infer_offer_duration_bucket,
+    is_fixed_trip_config,
+    offer_duration_days,
+    parse_trip_duration_buckets,
+    trip_duration_bucket_id,
+    trip_row_key,
 )
 
 # Официальный logomark TripAdvisor (owl), cropped from TA_logo_primary.svg (tacdn.com).
@@ -91,7 +103,7 @@ def _resolve_listing_url_for_backfill(
         try:
             with open(config_file, encoding="utf-8") as f:
                 cfg = json.load(f)
-            url = str(cfg.get("url") or "").strip()
+            url = resolve_config_url(cfg)
             if url:
                 return url
         except Exception:
@@ -106,7 +118,7 @@ def _resolve_listing_url_for_backfill(
     if cfg_name and os.path.isfile(cfg_name):
         try:
             with open(cfg_name, encoding="utf-8") as f:
-                return str(json.load(f).get("url") or "")
+                return resolve_config_url(json.load(f))
         except Exception:
             pass
     return ""
@@ -221,6 +233,13 @@ def _load_departure_cohort_frames(data_dir: str, data_file: str):
 
 def _hotel_chart_viewer_href(filter_id: str, hotel_slug: str) -> str:
     return f"hotel-chart.html?filter={quote(str(filter_id))}&hotel={quote(str(hotel_slug))}"
+
+
+def slugify(text: str) -> str:
+    text = str(text).lower().strip()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    text = re.sub(r"-+", "-", text).strip('-')
+    return text or "hotel"
 
 
 def _hotel_series_payload_hash(payload: dict) -> str:
@@ -436,19 +455,20 @@ def iter_scrape_runs(df, time_col='scraped_at_display', gap_minutes=5):
         yield start_idx, end_idx, df_time.iloc[start_idx:end_idx]
 
 
-def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
-    """One canonical row per hotel per scrape run.
+def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5, group_cols=None):
+    """One canonical row per hotel (and optional duration bucket) per scrape run.
 
     With a display ceiling, consider only offers at or below it, then pick
     the cheapest. Hotels only seen above the ceiling in a run are omitted
     from that band (they remain in the wider history band up to history ceiling).
     """
+    group_cols = group_cols or ['hotel_name']
     if df.empty:
         return df.copy()
 
     rows = []
     for _, _, run_slice in iter_scrape_runs(df, gap_minutes=run_gap_minutes):
-        for _, grp in run_slice.groupby('hotel_name', sort=False):
+        for _, grp in run_slice.groupby(group_cols, sort=False):
             pick = grp.sort_values('scraped_at_display')
             if ceiling_val is not None:
                 in_band = pick[pick['price'].astype(float) <= ceiling_val]
@@ -459,7 +479,73 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5):
 
     if not rows:
         return pd.DataFrame(columns=df.columns)
-    return pd.DataFrame(rows).sort_values(['hotel_name', 'scraped_at_display']).reset_index(drop=True)
+    sort_cols = list(group_cols) + ['scraped_at_display']
+    return pd.DataFrame(rows).sort_values(sort_cols).reset_index(drop=True)
+
+
+def _prepare_trip_duration_columns(df: pd.DataFrame, filter_config: dict) -> tuple[list[str], list[dict], bool]:
+    buckets = (
+        parse_trip_duration_buckets(filter_config)
+        if is_fixed_trip_config(filter_config)
+        else []
+    )
+    if not buckets:
+        return ['hotel_name'], buckets, False
+    if 'duration_bucket' not in df.columns:
+        df['duration_bucket'] = ''
+    mask = df['duration_bucket'].apply(
+        lambda value: _duration_bucket_is_missing(value)
+    )
+    if mask.any():
+        df.loc[mask, 'duration_bucket'] = df.loc[mask].apply(
+            lambda row: infer_offer_duration_bucket(row.to_dict(), filter_config),
+            axis=1,
+        )
+    known_ids = {str(b['id']) for b in buckets}
+    stale = ~df['duration_bucket'].astype(str).isin(known_ids)
+    if stale.any():
+        df.loc[stale, 'duration_bucket'] = df.loc[stale].apply(
+            lambda row: trip_duration_bucket_id(
+                offer_duration_days(row.to_dict()), buckets
+            ),
+            axis=1,
+        )
+    df.drop(
+        df[~df['duration_bucket'].astype(str).isin(known_ids)].index,
+        inplace=True,
+    )
+    return ['hotel_name', 'duration_bucket'], buckets, True
+
+
+def _unpack_table_group_key(group_key, use_trip_buckets: bool) -> tuple[str, str, str]:
+    if use_trip_buckets:
+        if isinstance(group_key, tuple):
+            hotel_name = str(group_key[0])
+            bucket = str(group_key[1] if len(group_key) > 1 else '')
+        else:
+            hotel_name = str(group_key)
+            bucket = ''
+        return hotel_name, bucket, trip_row_key(hotel_name, bucket)
+    hotel_name = str(group_key[0] if isinstance(group_key, tuple) else group_key)
+    return hotel_name, '', hotel_name
+
+
+def _build_premium_history_index(df_history, display_ceiling, group_cols):
+    out = {}
+    if df_history is None or df_history.empty:
+        return out
+    use_buckets = 'duration_bucket' in group_cols
+    for group_key, grp in df_history.groupby(group_cols, sort=False):
+        _, _, row_id = _unpack_table_group_key(group_key, use_buckets)
+        prices = grp['price'].astype(float)
+        if prices.empty:
+            continue
+        premium_peak = robust_premium_peak(grp, display_ceiling, 'scraped_at_display', 'price')
+        out[row_id] = {
+            'history_max': float(prices.max()),
+            'premium_peak': premium_peak,
+        }
+    return out
 
 
 def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None, comeback_drop_pct=None):
@@ -555,21 +641,40 @@ def _resolve_chart_href(hotel_name: str, lookup: dict, charts_subdir: str, slugi
     return _hotel_chart_viewer_href(active_filter_id(charts_subdir), slug)
 
 
-def _alert_is_current(alert, table_prices, tolerance=2.0):
+def _alert_is_current(alert, table_prices, tolerance=2.0, scope_duration_bucket=None):
     """Alert is current if the hotel is in the last run at the alert's new price."""
     hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
     alert_type = alert.get('alert_type') or alert.get('type') or ''
     new_price = alert.get('new_price') if 'new_price' in alert else (alert.get('to') or alert.get('current_price'))
     if not hotel_name or alert_type == 'missing' or new_price in (None, '', 'null'):
         return False
-    if hotel_name not in table_prices:
+    alert_bucket = str(alert.get('duration_bucket') or '').strip()
+    if _duration_bucket_is_missing(alert_bucket):
+        alert_bucket = ''
+    scope_bucket = str(scope_duration_bucket or '').strip()
+    if scope_bucket:
+        if alert_bucket and alert_bucket != scope_bucket:
+            return False
+        if not alert_bucket:
+            return False
+    row_id = trip_row_key(hotel_name, alert_bucket or scope_bucket) if (alert_bucket or scope_bucket) else hotel_name
+    candidates = []
+    if row_id in table_prices:
+        candidates.append(float(table_prices[row_id]))
+    if not scope_bucket:
+        if hotel_name in table_prices:
+            candidates.append(float(table_prices[hotel_name]))
+        prefix = f"{hotel_name}|"
+        for key, value in table_prices.items():
+            if str(key).startswith(prefix):
+                candidates.append(float(value))
+    if not candidates:
         return False
     try:
-        current = float(table_prices[hotel_name])
         target = float(new_price)
     except (TypeError, ValueError):
         return False
-    return abs(current - target) <= tolerance
+    return any(abs(current - target) <= tolerance for current in candidates)
 
 
 def _alert_display_fields(alert, meta, slugify_fn, parse_iso_fn):
@@ -794,6 +899,143 @@ def _render_alert_history_row(alert, meta, slugify_fn, parse_iso_fn):
                             </div>
                         </div>
 """
+
+
+def _alert_matches_scope(alert, scope_hotel_names: set, scope_duration_bucket: str = '') -> bool:
+    hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
+    if hotel_name not in scope_hotel_names:
+        return False
+    scope_bucket = str(scope_duration_bucket or '').strip()
+    if not scope_bucket:
+        return True
+    alert_bucket = str(alert.get('duration_bucket') or '').strip()
+    if _duration_bucket_is_missing(alert_bucket):
+        return False
+    return alert_bucket == scope_bucket
+
+
+def _build_alerts_panel_html(
+    *,
+    alerts: list,
+    table_prices: dict,
+    premium_history_by_hotel: dict,
+    scope_hotel_names: set,
+    hotel_meta_by_name: dict,
+    latest_run_ts,
+    ceiling_val,
+    alert_threshold_percent: float,
+    parse_iso_fn,
+    scope_duration_bucket: str = '',
+) -> tuple[str, str]:
+    """Build alert summary chips and inner content for one duration scope."""
+    from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
+
+    threshold = float(alert_threshold_percent or ALERT_THRESHOLD_PERCENT)
+    scoped_alerts = [
+        a for a in alerts
+        if _alert_matches_scope(a, scope_hotel_names, scope_duration_bucket)
+    ]
+
+    current_alerts = []
+    current_keys = set()
+    for alert in scoped_alerts:
+        if not _alert_is_current(alert, table_prices, scope_duration_bucket=scope_duration_bucket):
+            continue
+        hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
+        unique_key = alert.get('unique_key') or f"{hotel_name}:{alert.get('new_price')}"
+        if unique_key in current_keys:
+            continue
+        current_keys.add(unique_key)
+        current_alerts.append(alert)
+
+    for row_id, price in table_prices.items():
+        hotel_name = str(row_id).split('|', 1)[0] if '|' in str(row_id) else str(row_id)
+        row_bucket = str(row_id).split('|', 1)[1] if '|' in str(row_id) else ''
+        if hotel_name not in scope_hotel_names:
+            continue
+        if scope_duration_bucket and row_bucket != scope_duration_bucket:
+            continue
+        comeback_key = f"{row_id}_comeback"
+        if comeback_key in current_keys:
+            continue
+        comeback = comeback_from_premium(
+            price, premium_history_by_hotel.get(row_id), ceiling_val
+        )
+        if not comeback or comeback['drop_from_peak_pct'] < threshold:
+            continue
+        peak = float(comeback['peak_price'])
+        curr = float(price)
+        current_alerts.append({
+            'hotel_name': hotel_name,
+            'duration_bucket': row_bucket,
+            'old_price': peak,
+            'new_price': curr,
+            'price_change': curr - peak,
+            'price_change_pct': (curr - peak) / peak * 100.0 if peak else 0.0,
+            'timestamp': latest_run_ts,
+            'alert_type': 'premium_comeback',
+            'created_at': latest_run_ts.isoformat() if latest_run_ts is not None else '',
+            'threshold_percent': threshold,
+            'unique_key': f"{row_id}_comeback_{peak:.0f}_to_{curr:.0f}",
+        })
+        current_keys.add(comeback_key)
+
+    current_alert_keys = {a.get('unique_key') for a in current_alerts if a.get('unique_key')}
+    history_alerts = [
+        a for a in scoped_alerts
+        if not a.get('unique_key') or a.get('unique_key') not in current_alert_keys
+    ]
+
+    def _count_alert_kinds(items):
+        drops = sum(1 for a in items if float(a.get('price_change') or 0) < 0)
+        ups = sum(1 for a in items if float(a.get('price_change') or 0) > 0)
+        return drops, ups
+
+    cur_drops, cur_ups = _count_alert_kinds(current_alerts)
+    chips_html = ""
+    if current_alerts:
+        if cur_drops:
+            chips_html += f'<span class="alert-chip drop">↓ {cur_drops} подешевело сейчас</span>'
+        if cur_ups:
+            chips_html += f'<span class="alert-chip up">↑ {cur_ups} подорожало сейчас</span>'
+    if history_alerts:
+        chips_html += f'<span class="alert-chip missing">🕘 {len(history_alerts)} в истории</span>'
+
+    content_parts = []
+    if scoped_alerts or current_alerts:
+        if current_alerts:
+            content_parts.append(
+                f'<p class="alerts-section-label">Действует сейчас · {len(current_alerts)}</p>'
+                '<div class="alerts-grid">'
+            )
+            for alert in current_alerts:
+                hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or 'Unknown')
+                meta = hotel_meta_by_name.get(hotel_name, {})
+                content_parts.append(_render_alert_card(alert, meta, slugify, parse_iso_fn))
+            content_parts.append('</div>')
+        else:
+            content_parts.append(
+                '<div class="alerts-empty">Сейчас нет отелей с актуальным изменением цены — '
+                'зафиксированные сдвиги уже устарели. Смотрите «Историю» ниже.</div>'
+            )
+        if history_alerts:
+            content_parts.append(
+                f'<details class="alerts-history-fold" onclick="event.stopPropagation()">'
+                f'<summary>🕘 Показать историю ({len(history_alerts)} прошлых изменений)</summary>'
+                '<div class="alert-history-list">'
+            )
+            for alert in history_alerts:
+                hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or 'Unknown')
+                meta = hotel_meta_by_name.get(hotel_name, {})
+                content_parts.append(_render_alert_history_row(alert, meta, slugify, parse_iso_fn))
+            content_parts.append('</div></details>')
+    else:
+        content_parts.append(
+            f'<div class="alerts-empty">Пока нет изменений от {threshold:.0f}% — '
+            'они появятся здесь после следующих проверок.</div>'
+        )
+
+    return chips_html, ''.join(content_parts)
 
 
 def _compute_chart_point_meta(y_values, alert_threshold, ceiling_val=None):
@@ -1312,7 +1554,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         df = df.dropna(subset=['scraped_at_local'])
         # Используем локализованное время без дополнительных сдвигов
         df['scraped_at_display'] = df['scraped_at_local']
-        for col in ('ta_rating', 'ta_review_count', 'ta_source'):
+        for col in ('ta_rating', 'ta_review_count', 'ta_source', 'duration_bucket'):
             if col not in df.columns:
                 df[col] = ''
         print(f"✅ Загружено {len(df)} записей")
@@ -1321,12 +1563,32 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         return
     # Откат фичи сравнения аэропортов: не используем общий датасет
     df_all_airports = None
+
+    filter_config = load_filter_config(data_file, config_file)
+    group_cols, trip_buckets, use_trip_buckets = _prepare_trip_duration_columns(df, filter_config or {})
+    df_all_durations = df.copy()
+    default_trip_duration_bucket = ''
+    if use_trip_buckets:
+        bucket_ids = [str(b['id']) for b in trip_buckets]
+        default_trip_duration_bucket = str(
+            (filter_config or {}).get('default_trip_duration_bucket') or bucket_ids[-1]
+        ).strip()
+        if default_trip_duration_bucket not in bucket_ids:
+            default_trip_duration_bucket = bucket_ids[-1]
+        df = df[df['duration_bucket'].astype(str) == default_trip_duration_bucket].copy()
+        group_cols = ['hotel_name']
+        default_label = next(
+            (b['label'] for b in trip_buckets if str(b['id']) == default_trip_duration_bucket),
+            default_trip_duration_bucket,
+        )
+        print(f"📏 Корзины длительности: {', '.join(b['label'] for b in trip_buckets)}")
+        print(f"📏 Стартовый фильтр (как отдельная страница): {default_label}")
     
     ceiling_val = _parse_price_ceiling(display_price_ceiling)
     history_val = _resolve_history_ceiling(ceiling_val, history_price_ceiling)
-    df_canonical = collapse_canonical_per_run(df, ceiling_val)
-    df_history = collapse_canonical_per_run(df, history_val)
-    df_full = collapse_canonical_per_run(df, None)
+    df_canonical = collapse_canonical_per_run(df, ceiling_val, group_cols=group_cols)
+    df_history = collapse_canonical_per_run(df, history_val, group_cols=group_cols)
+    df_full = collapse_canonical_per_run(df, None, group_cols=group_cols)
     if ceiling_val is not None:
         print(f"📊 Показ ≤{ceiling_val:.0f} PLN (таблица, алерты): {len(df_canonical)} записей")
     if history_val is not None:
@@ -1777,18 +2039,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     latest_run_slice = _last_run_slice(df_canonical)
     full_latest_run_slice = _last_run_slice(df)
 
-    df_sorted_all = latest_run_slice.sort_values(['hotel_name', 'scraped_at_display'])
+    df_sorted_all = latest_run_slice.sort_values(group_cols + ['scraped_at_display'])
     latest_rows = []
     skipped_above_ceiling = 0
     if ceiling_val is not None and not full_latest_run_slice.empty:
-        for hotel_name, grp in full_latest_run_slice.groupby('hotel_name'):
+        for group_key, grp in full_latest_run_slice.groupby(group_cols):
             if grp[grp['price'].astype(float) <= ceiling_val].empty:
                 skipped_above_ceiling += 1
-    for hotel_name, grp in df_sorted_all.groupby('hotel_name'):
+    for group_key, grp in df_sorted_all.groupby(group_cols):
+        hotel_name, bucket, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
         # В каноническом ране — одна строка на отель; берём актуальную, не мин. по всей истории.
         last = grp.sort_values('scraped_at_display').iloc[-1]
         latest_rows.append({
             'hotel_name': hotel_name,
+            'duration_bucket': bucket,
+            'row_id': row_id,
             'price': float(last['price']),
             'dates': last.get('dates', None),
             'duration': last.get('duration', None),
@@ -1804,7 +2069,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     _backfill_ta_for_latest_rows(latest_rows, df, config_file, data_file)
     all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
     # Актуальная цена для таблицы — только последний ран; дельты — vs вся df_canonical.
-    table_prices = {row['hotel_name']: float(row['price']) for row in latest_rows}
+    table_prices = {row['row_id']: float(row['price']) for row in latest_rows}
 
     total_offers = len(df_canonical)
     unique_hotels = int(df_canonical['hotel_name'].nunique()) if not df_canonical.empty else 0
@@ -1896,19 +2161,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             print(f"Ошибка вычисления блока 'до 8000 из любого вылета, нет из Варшавы': {e}")
     
     # Дельты: «текущая» цена = таблица (последний ран), база = каноническая история (все раны).
-    df_sorted = df_canonical.sort_values(['hotel_name', 'scraped_at_display'])
-    df_sorted_full = df_full.sort_values(['hotel_name', 'scraped_at_display'])
+    df_sorted = df_canonical.sort_values(group_cols + ['scraped_at_display'])
+    df_sorted_full = df_full.sort_values(group_cols + ['scraped_at_display'])
     ref_time_series = df_canonical['scraped_at_display'] if not df_canonical.empty else df['scraped_at_display']
 
     def compute_changes(window_hours: int):
         cutoff = (ref_time_series.max() or datetime.now()) - timedelta(hours=window_hours)
         changes = []
         deltas_map = {}
-        for hotel_name, grp in df_sorted.groupby('hotel_name'):
-            if hotel_name not in table_prices:
+        for group_key, grp in df_sorted.groupby(group_cols):
+            hotel_name, _, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
+            if row_id not in table_prices:
                 continue
             grp = grp.sort_values('scraped_at_display')
-            latest_price = table_prices[hotel_name]
+            latest_price = table_prices[row_id]
             latest_time = grp.iloc[-1]['scraped_at_display']
             win = grp[grp['scraped_at_display'] >= cutoff]
             if len(win) >= 2:
@@ -1916,15 +2182,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             elif len(grp) >= 2:
                 baseline_row = grp.iloc[-2]
             else:
-                deltas_map[hotel_name] = None
+                deltas_map[row_id] = None
                 continue
             baseline_price = float(baseline_row['price'])
             if baseline_price == 0:
-                deltas_map[hotel_name] = None
+                deltas_map[row_id] = None
                 continue
             change = latest_price - baseline_price
             if change == 0:
-                deltas_map[hotel_name] = None
+                deltas_map[row_id] = None
                 continue
             change_percent = (change / baseline_price) * 100.0
             changes.append({
@@ -1935,7 +2201,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 'change_percent': change_percent,
                 'timestamp': str(latest_time)
             })
-            deltas_map[hotel_name] = (change, change_percent)
+            deltas_map[row_id] = (change, change_percent)
         decreases = sorted([h for h in changes if h['change'] < 0], key=lambda x: x['change'])[:5]
         increases = sorted([h for h in changes if h['change'] > 0], key=lambda x: x['change'], reverse=True)[:5]
         return decreases, increases, deltas_map
@@ -1948,11 +2214,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     # Метки нового минимума/максимума за 7д и 30д
     ref_time = ref_time_series.max() or datetime.now()
     minmax_labels_by_hotel = {}
-    for hotel_name, grp in df_sorted.groupby('hotel_name'):
-        if hotel_name not in table_prices:
+    for group_key, grp in df_sorted.groupby(group_cols):
+        _, _, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
+        if row_id not in table_prices:
             continue
         grp = grp.sort_values('scraped_at_display')
-        latest_price = table_prices[hotel_name]
+        latest_price = table_prices[row_id]
         labels = []
         for days in (7, 30):
             cutoff_d = ref_time - timedelta(days=days)
@@ -1965,29 +2232,42 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 labels.append(f"Новый минимум {days}д")
             if latest_price >= win_max:
                 labels.append(f"Новый максимум {days}д")
-        minmax_labels_by_hotel[hotel_name] = labels
+        minmax_labels_by_hotel[row_id] = labels
 
     # Отклонение от "типичной" цены отеля:
     # baseline = time-weighted mean по всей истории (без потолка показа).
     avg_baseline_delta = {}
-    for hotel_name, last_price in table_prices.items():
-        grp = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name]
+    for row_id, last_price in table_prices.items():
+        if use_trip_buckets:
+            hotel_name, bucket, _ = _unpack_table_group_key(
+                tuple(row_id.split('|', 1)) if '|' in row_id else (row_id, ''),
+                True,
+            )
+            mask = (df_sorted_full['hotel_name'] == hotel_name)
+            if bucket:
+                mask &= (df_sorted_full['duration_bucket'].astype(str) == bucket)
+            grp = df_sorted_full[mask]
+        else:
+            grp = df_sorted_full[df_sorted_full['hotel_name'] == row_id]
         if grp.empty:
-            avg_baseline_delta[hotel_name] = None
+            avg_baseline_delta[row_id] = None
             continue
         grp = grp.sort_values('scraped_at_display')
         baseline = _time_weighted_price_baseline(grp)
         if baseline is None or baseline == 0:
-            avg_baseline_delta[hotel_name] = None
+            avg_baseline_delta[row_id] = None
             continue
         change_abs = float(last_price) - baseline
         change_pct = (change_abs / baseline) * 100.0
-        avg_baseline_delta[hotel_name] = (change_abs, change_pct)
+        avg_baseline_delta[row_id] = (change_abs, change_pct)
 
     # Deal Score: насколько предложение выгодно относительно своей исторической цены
-    premium_history_by_hotel = build_premium_history_by_hotel(
-        df_history, ceiling_val, time_col='scraped_at_display', price_col='price'
-    )
+    if use_trip_buckets:
+        premium_history_by_hotel = _build_premium_history_index(df_history, ceiling_val, group_cols)
+    else:
+        premium_history_by_hotel = build_premium_history_by_hotel(
+            df_history, ceiling_val, time_col='scraped_at_display', price_col='price'
+        )
 
     def _clamp(v, lo, hi):
         return max(lo, min(hi, v))
@@ -1995,22 +2275,29 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     deal_score_by_hotel = {}
     entry_candidates = []
     ta_by_hotel = {
-        str(row['hotel_name']): {
+        str(row.get('row_id') or row['hotel_name']): {
             'ta_rating': row.get('ta_rating', ''),
             'ta_review_count': row.get('ta_review_count', ''),
         }
         for _, row in all_hotels.iterrows()
     }
 
-    for hotel_name, grp in df_sorted.groupby('hotel_name'):
+    for group_key, grp in df_sorted.groupby(group_cols):
+        hotel_name, bucket, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
         grp = grp.sort_values('scraped_at_display')
-        grp_full = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name].sort_values('scraped_at_display')
+        if use_trip_buckets:
+            mask = (df_sorted_full['hotel_name'] == hotel_name)
+            if bucket:
+                mask &= (df_sorted_full['duration_bucket'].astype(str) == bucket)
+            grp_full = df_sorted_full[mask].sort_values('scraped_at_display')
+        else:
+            grp_full = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name].sort_values('scraped_at_display')
         hist_grp = grp_full if not grp_full.empty else grp
         prices = hist_grp['price'].astype(float).tolist()
         if not prices:
             continue
 
-        latest = float(table_prices.get(hotel_name, prices[-1]))
+        latest = float(table_prices.get(row_id, prices[-1]))
         series = pd.Series(prices, dtype='float64')
         samples = len(series)
         typical = _time_weighted_price_baseline(hist_grp) or latest
@@ -2075,13 +2362,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             confidence_level = "High"
 
-        delta48_info = deltas_by_hotel.get(hotel_name)
-        avg_info = avg_baseline_delta.get(hotel_name)
+        delta48_info = deltas_by_hotel.get(row_id)
+        avg_info = avg_baseline_delta.get(row_id)
         d48_pct = float(delta48_info[1]) if delta48_info is not None else None
         d_avg_pct = float(avg_info[1]) if avg_info is not None else None
 
         comeback = comeback_from_premium(
-            latest, premium_history_by_hotel.get(hotel_name), ceiling_val
+            latest, premium_history_by_hotel.get(row_id), ceiling_val
         )
         comeback_drop_pct = float(comeback['drop_from_peak_pct']) if comeback else None
         if comeback_drop_pct is not None:
@@ -2105,14 +2392,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             penalty = (d48_pct + d_avg_pct) / 2.0
             deal_score = int(_clamp(50 - penalty * 1.2, 5, 42))
 
-        ta_info = ta_by_hotel.get(str(hotel_name), {})
+        ta_info = ta_by_hotel.get(str(row_id), {})
         deal_score, ta_weight = blend_tripadvisor_into_deal_score(
             deal_score,
             ta_info.get('ta_rating'),
             ta_info.get('ta_review_count'),
         )
 
-        deal_score_by_hotel[hotel_name] = {
+        deal_score_by_hotel[row_id] = {
             'score': deal_score,
             'raw_score': int(round(raw_deal_score)),
             'confidence': confidence_level,
@@ -2160,11 +2447,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     entry_top = entry_candidates[:5]
     # Market breadth (48ч): доля отелей, которые подешевели среди отелей с валидной базовой точкой.
     # Считаем по актуальным отелям из последнего рана, чтобы метрика отражала "сейчас".
-    current_hotels_for_breadth = set(all_hotels['hotel_name'].astype(str).tolist()) if not all_hotels.empty else set()
+    current_hotels_for_breadth = (
+        set(all_hotels['row_id'].astype(str).tolist()) if not all_hotels.empty else set()
+    )
     breadth_total = 0
     breadth_down = 0
-    for hotel_name, grp in df_sorted.groupby('hotel_name'):
-        if current_hotels_for_breadth and hotel_name not in current_hotels_for_breadth:
+    for group_key, grp in df_sorted.groupby(group_cols):
+        _, _, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
+        if current_hotels_for_breadth and row_id not in current_hotels_for_breadth:
             continue
         grp = grp.sort_values('scraped_at_display')
         if len(grp) < 2:
@@ -2206,8 +2496,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         full_runs = list(iter_scrape_runs(df_history))
         if canonical_runs and table_prices is not None:
             all_seen_hotels = set(df_canonical['hotel_name'].astype(str).tolist())
-            current_table_hotels = set(table_prices.keys())
-            gone_hotels = all_seen_hotels - current_table_hotels
+            current_hotel_names = set()
+            for key in table_prices.keys():
+                key_str = str(key)
+                current_hotel_names.add(key_str.split('|', 1)[0] if '|' in key_str else key_str)
+            gone_hotels = all_seen_hotels - current_hotel_names
 
             latest_full_hotels = set()
             if full_runs:
@@ -2453,14 +2746,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     _ingest_images_source(images_map, os.path.join('data', 'hotel_images.json'))
     _ingest_images_source(images_map, os.path.join(_data_dir, 'hotel_images.json'))
 
-    # Функция для слуг-имени файла по названию отеля
-    def slugify(text: str) -> str:
-        import re  # локальный импорт во избежание проблем со scope в CI
-        text = text.lower().strip()
-        text = re.sub(r"[^a-z0-9]+", "-", text)
-        text = re.sub(r"-+", "-", text).strip('-')
-        return text or "hotel"
-
     def normalize_image_url(raw_url: str) -> str:
         if raw_url is None:
             return ""
@@ -2499,6 +2784,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     hotel_cards = []
     for _, hotel in all_hotels.head(200).iterrows():
         hotel_name = hotel['hotel_name']
+        row_id = str(hotel.get('row_id') or hotel_name)
+        duration_bucket = str(hotel.get('duration_bucket') or '')
         price = float(hotel['price'])
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '—'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '—'
@@ -2512,11 +2799,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_slug = slugify(hotel_name)
         chart_href = _hotel_chart_viewer_href(_filter_data_id, hotel_slug)
 
-        delta_info = deltas_by_hotel.get(hotel_name)
+        delta_info = deltas_by_hotel.get(row_id)
         delta48 = f"{delta_info[1]:+.1f}%" if delta_info is not None else "—"
-        avg_info = avg_baseline_delta.get(hotel_name)
+        avg_info = avg_baseline_delta.get(row_id)
         delta_avg = f"{avg_info[1]:+.1f}%" if avg_info is not None else "—"
-        deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low'})
+        deal_info = deal_score_by_hotel.get(row_id, {'score': 0, 'confidence': 'Low'})
         deal_score = int(deal_info.get('score', 0))
         confidence = deal_info.get('confidence', 'Low')
         d48_for_badge = float(delta_info[1]) if delta_info is not None else None
@@ -2526,7 +2813,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             deal_score, confidence, d48_for_badge, d_avg_for_badge, comeback_drop
         )
         comeback = comeback_from_premium(
-            price, premium_history_by_hotel.get(hotel_name), ceiling_val
+            price, premium_history_by_hotel.get(row_id), ceiling_val
         )
         comeback_html = (
             f'<span class="comeback-badge">{comeback["badge_html"]}</span>'
@@ -2535,6 +2822,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         hotel_cards.append({
             "hotel_name": hotel_name,
+            "row_id": row_id,
+            "duration_bucket": duration_bucket,
             "hotel_name_html": html_lib.escape(str(hotel_name)),
             "price": price,
             "dates": str(dates),
@@ -3236,13 +3525,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     except Exception:
         updated_str = datetime.now().strftime('%d.%m.%Y %H:%M')
 
-    filter_config = load_filter_config(data_file, config_file)
     filter_params_html = render_filter_params_html(
         filter_config,
         display_price_ceiling=ceiling_val,
         history_price_ceiling=history_val,
         escape=html_lib.escape,
     )
+    global_duration_switch_html = (
+        render_global_duration_switch_html(
+            trip_buckets,
+            default_bucket_id=default_trip_duration_bucket,
+            escape=html_lib.escape,
+        )
+        if use_trip_buckets else ""
+    )
+    duration_views_json_embed = ""
     cfg_path = resolve_config_path(data_file, config_file)
     if filter_config and cfg_path:
         print(f"📋 Параметры фильтра из {cfg_path}")
@@ -4510,6 +4807,49 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             width: 100%;
             overflow-x: auto;
             scrollbar-width: thin;
+        }}
+        .duration-global-switch {{
+            margin-top: .65rem;
+            display: flex;
+            align-items: center;
+            gap: .75rem;
+            flex-wrap: wrap;
+            padding: .55rem .7rem;
+            border-radius: 14px;
+            background: rgba(15,23,42,.34);
+            border: 1px solid rgba(255,255,255,.18);
+        }}
+        .duration-global-label {{
+            font-size: .78rem;
+            font-weight: 700;
+            letter-spacing: .04em;
+            text-transform: uppercase;
+            opacity: .9;
+        }}
+        .duration-global-options {{
+            display: flex;
+            flex-wrap: wrap;
+            gap: .45rem;
+        }}
+        .duration-global-btn {{
+            border: 1px solid rgba(255,255,255,.24);
+            background: rgba(255,255,255,.08);
+            color: inherit;
+            border-radius: 999px;
+            padding: .42rem .9rem;
+            font-size: .82rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background .15s ease, border-color .15s ease, transform .15s ease;
+        }}
+        .duration-global-btn:hover {{
+            background: rgba(255,255,255,.16);
+        }}
+        .duration-global-btn.active {{
+            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
+            color: #1f2937;
+            border-color: transparent;
+            box-shadow: 0 4px 14px rgba(245,158,11,.35);
         }}
         .fb-route-group {{
             display: flex;
@@ -6213,13 +6553,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <div style="margin-top:.35rem; font-size:.92rem; opacity:.96;">Сканируем рынок туров и показываем точки входа раньше массового спроса.</div>
                 <h1 style="margin:.55rem 0 0; font-size:clamp(1.4rem,3vw,2.1rem); font-weight:800; line-height:1.15;">{title.replace('🇬🇷 ', '').replace('🇪🇬 ', '').replace('🇹🇷 ', '')}</h1>
                 {filter_params_html}
+                {global_duration_switch_html}
                 <div class="hero-kpis">
                     <div class="hero-kpi">
                         <div class="hero-kpi__badge hero-kpi__badge--blue">
                             <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
                         </div>
                         <div class="hero-kpi__body">
-                            <div class="hero-kpi__v">{len(entry_candidates)}</div>
+                            <div class="hero-kpi__v" id="heroKpiEntryCount">{len(entry_candidates)}</div>
                             <div class="hero-kpi__l">Кандидаты входа</div>
                             <div class="hero-kpi__s">Отели с сильным Deal Score и ценой ниже обычного уровня.</div>
                         </div>
@@ -6229,7 +6570,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                             <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 18l-9.5-9.5-5 5L1 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
                         </div>
                         <div class="hero-kpi__body">
-                            <div class="hero-kpi__v">{market_breadth*100:.0f}%</div>
+                            <div class="hero-kpi__v" id="heroKpiBreadthPct">{market_breadth*100:.0f}%</div>
                             <div class="hero-kpi__l">Рынок дешевеет</div>
                             <div class="hero-kpi__s">Доля отелей, где цена снизилась за последние 48 часов.</div>
                         </div>
@@ -6239,7 +6580,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                             <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
                         </div>
                         <div class="hero-kpi__body">
-                            <div class="hero-kpi__v">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
+                            <div class="hero-kpi__v" id="heroKpiBestDeal">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
                             <div class="hero-kpi__l">Лучший Deal Score</div>
                             <div class="hero-kpi__s">Самая сильная найденная возможность в текущем ране.</div>
                         </div>
@@ -6262,64 +6603,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
     from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
 
-    current_alerts = []
-    current_hotels = set()
-    for a in alerts:
-        if not _alert_is_current(a, table_prices):
-            continue
-        hotel_name = str(a.get('hotel_name') or a.get('hotel') or '')
-        if hotel_name in current_hotels:
-            continue
-        current_hotels.add(hotel_name)
-        current_alerts.append(a)
-
-    latest_run_ts = None
-    if not df_canonical.empty:
-        latest_run_ts = df_canonical['scraped_at_display'].max()
-    for hotel_name, price in table_prices.items():
-        if hotel_name in current_hotels:
-            continue
-        comeback = comeback_from_premium(
-            price, premium_history_by_hotel.get(hotel_name), ceiling_val
-        )
-        if not comeback or comeback['drop_from_peak_pct'] < ALERT_THRESHOLD_PERCENT:
-            continue
-        peak = float(comeback['peak_price'])
-        curr = float(price)
-        current_alerts.append({
-            'hotel_name': hotel_name,
-            'old_price': peak,
-            'new_price': curr,
-            'price_change': curr - peak,
-            'price_change_pct': (curr - peak) / peak * 100.0 if peak else 0.0,
-            'timestamp': latest_run_ts,
-            'alert_type': 'premium_comeback',
-            'created_at': latest_run_ts.isoformat() if latest_run_ts is not None else '',
-            'threshold_percent': ALERT_THRESHOLD_PERCENT,
-            'unique_key': f"{hotel_name}_comeback_{peak:.0f}_to_{curr:.0f}",
-        })
-        current_hotels.add(hotel_name)
-
-    current_alert_keys = {a.get('unique_key') for a in current_alerts if a.get('unique_key')}
-    history_alerts = [
-        a for a in alerts
-        if not a.get('unique_key') or a.get('unique_key') not in current_alert_keys
-    ]
-
-    def _count_alert_kinds(items):
-        drops = sum(1 for a in items if float(a.get('price_change') or 0) < 0)
-        ups = sum(1 for a in items if float(a.get('price_change') or 0) > 0)
-        return drops, ups
-
-    cur_drops, cur_ups = _count_alert_kinds(current_alerts)
-    alert_chips_html = ""
-    if current_alerts:
-        if cur_drops:
-            alert_chips_html += f'<span class="alert-chip drop">↓ {cur_drops} подешевело сейчас</span>'
-        if cur_ups:
-            alert_chips_html += f'<span class="alert-chip up">↑ {cur_ups} подорожало сейчас</span>'
-    if history_alerts:
-        alert_chips_html += f'<span class="alert-chip missing">🕘 {len(history_alerts)} в истории</span>'
+    scope_hotel_names = set(df_canonical['hotel_name'].astype(str).tolist()) if not df_canonical.empty else set()
+    alert_chips_html, alerts_content_html = _build_alerts_panel_html(
+        alerts=alerts,
+        table_prices=table_prices,
+        premium_history_by_hotel=premium_history_by_hotel,
+        scope_hotel_names=scope_hotel_names,
+        hotel_meta_by_name=hotel_meta_by_name,
+        latest_run_ts=df_canonical['scraped_at_display'].max() if not df_canonical.empty else None,
+        ceiling_val=ceiling_val,
+        alert_threshold_percent=ALERT_THRESHOLD_PERCENT,
+        parse_iso_fn=parse_iso,
+        scope_duration_bucket=default_trip_duration_bucket if use_trip_buckets else '',
+    )
 
     alerts_html = f"""
         <div class="alerts-section" id="alertsSection">
@@ -6327,58 +6623,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <div class="alerts-header-main">
                     <h3>📊 Заметные изменения цен</h3>
                     <p class="alerts-lead">Отели, у которых <strong>заметно изменилась цена</strong> (от {ALERT_THRESHOLD_PERCENT:.0f}% между проверками или возврат из дорогого сегмента) и <strong>эта цена всё ещё актуальна</strong> — в последнем обновлении она не менялась. Прошлые события — в «Истории».</p>
-                    <div class="alerts-summary-chips">{alert_chips_html}</div>
+                    <div class="alerts-summary-chips" id="alertsSummaryChips">{alert_chips_html}</div>
                 </div>
                 <span class="expand-icon" id="alertsExpandIcon">▼</span>
             </div>
             <div class="alerts-content" id="alertsContent">
-"""
-
-    if alerts:
-        if current_alerts:
-            alerts_html += f"""
-                <p class="alerts-section-label">Действует сейчас · {len(current_alerts)}</p>
-                <div class="alerts-grid">
-"""
-            for a in current_alerts:
-                hotel_name = str(a.get('hotel_name') or a.get('hotel') or 'Unknown')
-                meta = hotel_meta_by_name.get(hotel_name, {})
-                alerts_html += _render_alert_card(a, meta, slugify, parse_iso)
-            alerts_html += """
-                </div>
-"""
-        else:
-            alerts_html += """
-                <div class="alerts-empty">Сейчас нет отелей с актуальным изменением цены — зафиксированные сдвиги уже устарели. Смотрите «Историю» ниже.</div>
-"""
-
-        if history_alerts:
-            alerts_html += f"""
-                <details class="alerts-history-fold" onclick="event.stopPropagation()">
-                    <summary>🕘 Показать историю ({len(history_alerts)} прошлых изменений)</summary>
-                    <div class="alert-history-list">
-"""
-            for a in history_alerts:
-                hotel_name = str(a.get('hotel_name') or a.get('hotel') or 'Unknown')
-                meta = hotel_meta_by_name.get(hotel_name, {})
-                alerts_html += _render_alert_history_row(a, meta, slugify, parse_iso)
-            alerts_html += """
-                    </div>
-                </details>
-"""
-    else:
-        alerts_html += """
-                <div class="alerts-empty">Пока нет изменений от {ALERT_THRESHOLD_PERCENT:.0f}% — они появятся здесь после следующих проверок.</div>
-"""
-    alerts_html += """
+{alerts_content_html}
+            </div>
         </div>
-    </div>
 """
 
     # Карточки отелей (визуальный режим)
+    cards_inner_html = ""
     cards_html = """
         <div class="cards-section" id="cardsSection">
-            <div class="cards-grid">
+            <div class="cards-grid" id="cardsGrid">
 """
     for c in hotel_cards:
         img_html = (
@@ -6386,8 +6645,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             f'onerror="this.onerror=null;this.parentElement.innerHTML=\'<div>Фото отеля</div>\';" />'
         ) if c["image_url"] else '<div>Фото отеля</div>'
         offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
-        cards_html += f"""
-            <article class="hotel-card">
+        card_article = f"""
+            <article class="hotel-card" data-duration-bucket="{html_lib.escape(c.get('duration_bucket', ''), quote=True)}">
                 <div class="hotel-card-img">{img_html}</div>
                 <div class="hotel-card-body">
                     <h4 class="hotel-card-title">{c["hotel_name_html"]}</h4>
@@ -6409,6 +6668,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </div>
             </article>
 """
+        cards_html += card_article
+        cards_inner_html += card_article
 
     cards_html += """
         </div>
@@ -6612,16 +6873,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <span class="fold-chevron">⌄</span>
             </summary>
             <div class="fold-content">
-                <div class="metrics metrics-compact">
+                <div class="metrics metrics-compact" id="statsMetricsRow1">
                     {stats_metrics_row1}
                 </div>
 
-                <div class="metrics metrics-compact">
+                <div class="metrics metrics-compact" id="statsMetricsRow2">
                     {stats_metrics_row2}
                 </div>
 
-                {changes_html}
-                {entry_signal_html}
+                <div id="durationScopedChanges">{changes_html}</div>
+                <div id="durationScopedEntry">{entry_signal_html}</div>
             </div>
         </details>
 """
@@ -6649,7 +6910,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     for _, _hotel_row in all_hotels.iterrows():
         _path = parse_offer_path(str(_hotel_row.get("offer_url") or ""))
         _hub_label = arrival_hub_label(_path.get("country"), _path.get("region"))
-        _hotel_key = str(_hotel_row.get("hotel_name") or "")
+        _hotel_key = str(_hotel_row.get("row_id") or _hotel_row.get("hotel_name") or "")
         arrival_hub_by_hotel[_hotel_key] = _hub_label
         if _hub_label and _hub_label != "—":
             arrival_hub_labels.add(_hub_label)
@@ -6686,6 +6947,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         price_filter_options_html = "\n                    ".join(_opts)
     else:
         price_filter_options_html = '<option value="">Все цены</option>'
+
+    duration_filter_html = ""
 
     html_template += f"""
         <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
@@ -6760,8 +7023,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <tbody>"""
 
     # Добавляем строки таблицы
+    table_rows_html_parts = []
     for i, (_, hotel) in enumerate(all_hotels.iterrows()):
         hotel_name = hotel['hotel_name']
+        row_id = str(hotel.get('row_id') or hotel_name)
+        duration_bucket = str(hotel.get('duration_bucket') or '')
         price = hotel['price']
         dates = hotel['dates'] if pd.notna(hotel['dates']) else '20-09-2025 - 04-10-2025'
         duration = hotel['duration'] if pd.notna(hotel['duration']) else '6-15 дней'
@@ -6769,7 +7035,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         # Δ 48ч
         delta_display = "—"
         delta_class = "delta flat"
-        delta_info = deltas_by_hotel.get(hotel_name)
+        delta_info = deltas_by_hotel.get(row_id)
         if delta_info is not None:
             delta_abs, delta_pct = delta_info
             arrow = '↑' if delta_abs > 0 else ('↓' if delta_abs < 0 else '→')
@@ -6779,7 +7045,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         # Δ к time-weighted средней по полной истории отеля (без потолка показа)
         avg_display = "—"
-        avg_info = avg_baseline_delta.get(hotel_name)
+        avg_info = avg_baseline_delta.get(row_id)
         avg_sort_value = 0
         if avg_info is not None:
             avg_abs, avg_pct = avg_info
@@ -6801,7 +7067,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             offer_link_html = "—"
         
-        deal_info = deal_score_by_hotel.get(hotel_name, {'score': 0, 'confidence': 'Low', 'samples': 0})
+        deal_info = deal_score_by_hotel.get(row_id, {'score': 0, 'confidence': 'Low', 'samples': 0})
         deal_score = int(deal_info.get('score', 0))
         confidence_level = deal_info.get('confidence', 'Low')
         d48_tbl = float(delta_info[1]) if delta_info is not None else None
@@ -6817,7 +7083,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         deal_title = html_lib.escape(f"{deal_score} {deal_badge} · {confidence_level}")
         duration_display = _table_duration_compact(duration)
         duration_title = html_lib.escape(str(duration))
-        comeback = comeback_from_premium(price, premium_history_by_hotel.get(hotel_name), ceiling_val)
+        comeback = comeback_from_premium(price, premium_history_by_hotel.get(row_id), ceiling_val)
         if comeback:
             peak = float(comeback["peak_price"])
             drop = float(comeback["drop_from_peak_pct"])
@@ -6830,10 +7096,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             )
         else:
             comeback_cell = ""
-        arrival_hub = arrival_hub_by_hotel.get(hotel_name, "—")
+        arrival_hub = arrival_hub_by_hotel.get(row_id, "—")
         hotel_name_html = html_lib.escape(str(hotel_name))
         hotel_name_attr = html_lib.escape(str(hotel_name), quote=True)
         arrival_hub_html = html_lib.escape(str(arrival_hub))
+        duration_bucket_attr = html_lib.escape(duration_bucket, quote=True)
         ta_rating_html = _render_ta_rating_html(
             hotel.get('ta_rating', ''),
             hotel.get('ta_review_count', ''),
@@ -6841,8 +7108,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         ta_sort_val = _parse_ta_rating_value(hotel.get('ta_rating', ''))
         ta_data_attr = f"{ta_sort_val:.2f}" if ta_sort_val is not None else "-1"
         
-        html_template += f"""
-                    <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}">
+        table_rows_html_parts.append(f"""
+                    <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}">
                         <td class="hotel-name col-hotel"><a class=\"open-chart-link hotel-hover-link\" href=\"{chart_href}\" target=\"_blank\" data-hotel-name=\"{hotel_name_attr}\">{hotel_name_html}</a></td>
                         <td class="price col-tight" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}</td>
                         <td class="col-tight col-w-deal-td" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
@@ -6853,7 +7120,52 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <td class="col-tight col-dates" data-sort-value="{dates}">{dates}</td>
                         <td class="col-tight col-w-dur-td col-duration" data-sort-value="{duration}" title="{duration_title}">{duration_display}</td>
                         <td class="offer-link-cell col-tight">{offer_link_html}</td>
-                    </tr>"""
+                    </tr>""")
+
+    table_rows_html = "".join(table_rows_html_parts)
+    html_template += table_rows_html
+
+    if use_trip_buckets:
+        from duration_view_bundle import (
+            build_duration_view_bundle,
+            duration_views_json,
+        )
+
+        duration_views_payload = {}
+        for bucket in trip_buckets:
+            bucket_id = str(bucket['id'])
+            df_bucket = df_all_durations[
+                df_all_durations['duration_bucket'].astype(str) == bucket_id
+            ].copy()
+            if df_bucket.empty:
+                continue
+            print(f"📏 Сбор представления: {bucket.get('label', bucket_id)}")
+            bundle = build_duration_view_bundle(
+                df_bucket,
+                group_cols=['hotel_name'],
+                use_trip_buckets=False,
+                ceiling_val=ceiling_val,
+                history_val=history_val,
+                data_file=data_file,
+                config_file=config_file,
+                filter_data_id=_filter_data_id,
+                price_scope_tip=_price_scope_tip,
+                skip_ta_backfill=True,
+                alerts=alerts,
+                hotel_meta_by_name=hotel_meta_by_name,
+                alert_threshold_percent=ALERT_THRESHOLD_PERCENT,
+                parse_iso_fn=parse_iso,
+                duration_bucket=bucket_id,
+            )
+            bundle['label'] = str(bucket.get('label') or bucket_id)
+            duration_views_payload[bucket_id] = bundle
+
+        duration_views_json_embed = (
+            '<script type="application/json" id="durationViewsData">'
+            + duration_views_json(duration_views_payload)
+            + '</script>'
+        )
+        print(f"📏 Виртуальные фильтры: {len(duration_views_payload)}")
 
     # --- HTML секции "Выпавшие отели" ---
     def _fmt_dt(ts):
@@ -7007,6 +7319,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </div>
         </div>
 {vanished_section_html}
+{duration_views_json_embed}
         <div class="footer">
             <p>🤖 Автоматически обновляется каждый час • Powered by GitHub Actions</p>
         </div>
@@ -7495,6 +7808,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         // Cards pagination
         const cardsGrid = document.querySelector('#cardsSection .cards-grid');
         const cardItems = cardsGrid ? Array.from(cardsGrid.querySelectorAll('.hotel-card')) : [];
+        let filteredCards = [...cardItems];
         const cardsPrevPage = document.getElementById('cardsPrevPage');
         const cardsNextPage = document.getElementById('cardsNextPage');
         const cardsShowingFrom = document.getElementById('cardsShowingFrom');
@@ -7504,14 +7818,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         const cardsPerPage = 24;
 
         function updateCardsPagination() {
-          const total = cardItems.length;
+          const total = filteredCards.length;
           const totalPages = Math.max(1, Math.ceil(total / cardsPerPage));
           if (cardsPage > totalPages) cardsPage = totalPages;
           const start = (cardsPage - 1) * cardsPerPage;
           const end = start + cardsPerPage;
 
-          cardItems.forEach((card, idx) => {
-            card.style.display = idx >= start && idx < end ? '' : 'none';
+          cardItems.forEach((card) => {
+            card.style.display = 'none';
+          });
+          filteredCards.slice(start, end).forEach((card) => {
+            card.style.display = '';
           });
 
           if (cardsTotalItems) cardsTotalItems.textContent = String(total);
@@ -7522,7 +7839,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }
 
         function cardsNextPageFunc() {
-          const totalPages = Math.max(1, Math.ceil(cardItems.length / cardsPerPage));
+          const totalPages = Math.max(1, Math.ceil(filteredCards.length / cardsPerPage));
           if (cardsPage < totalPages) {
             cardsPage++;
             updateCardsPagination();
@@ -7550,7 +7867,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             const rowRegion = row.dataset.region || row.cells[6].textContent.trim();
             const rowTa = parseFloat(row.dataset.taRating || '-1');
             
-            // Search filter
             if (searchTerm && !hotelName.includes(searchTerm)) {
               return false;
             }
@@ -7590,12 +7906,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return true;
           });
 
+          filteredCards = cardItems.filter((card) => {
+            const title = card.querySelector('.hotel-card-title');
+            const hotelName = title ? title.textContent.toLowerCase() : '';
+            if (searchTerm && !hotelName.includes(searchTerm)) {
+              return false;
+            }
+            return true;
+          });
+
           if (currentSort.column) {
             filteredRows.sort(compareHotelRows);
           }
           
           currentPage = 1;
+          cardsPage = 1;
           updateTable();
+          updateCardsPagination();
         }
         
         function updateTable() {
@@ -7640,6 +7967,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           updateTable();
         };
         
+        window._hotelTableFilterRows = filterRows;
+        window._rebindHotelTableRows = function() {
+          const freshRows = Array.from(tbody.querySelectorAll('tr'));
+          rows.length = 0;
+          freshRows.forEach((row) => rows.push(row));
+          filteredRows = [...rows];
+          const freshCards = cardsGrid ? Array.from(cardsGrid.querySelectorAll('.hotel-card')) : [];
+          cardItems.length = 0;
+          freshCards.forEach((card) => cardItems.push(card));
+          filteredCards = [...cardItems];
+          currentPage = 1;
+          cardsPage = 1;
+          filterRows();
+        };
+
         // Event listeners
         searchInput.addEventListener('input', filterRows);
         priceFilter.addEventListener('change', filterRows);
@@ -7862,6 +8204,235 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }
 
         document.addEventListener('DOMContentLoaded', bindDepartureOfferClicks);
+      })();
+    </script>
+    <script>
+      (function() {
+        const dataEl = document.getElementById('durationViewsData');
+        const switchRoot = document.getElementById('durationGlobalSwitch');
+        if (!dataEl || !switchRoot) return;
+
+        let views = {};
+        try {
+          views = JSON.parse(dataEl.textContent || '{}');
+        } catch (err) {
+          console.warn('duration views parse failed', err);
+          return;
+        }
+
+        function buildTop10HoverTexts(detailedData) {
+          return (detailedData || []).map((data) => {
+            const hover = (data && data.hover_data) || {};
+            let text = hover.title || '';
+            if (hover.avg_price) {
+              text += '<br><br><b>Средняя цена:</b><br>' + Math.round(hover.avg_price) + ' PLN';
+            }
+            if (hover.avg_change) {
+              text += '<br><br><b>Изменение средней цены:</b><br>';
+              text += hover.avg_change.arrow + ' ' + hover.avg_change.sign
+                + Math.round(hover.avg_change.change) + ' PLN ('
+                + hover.avg_change.sign + hover.avg_change.change_percent.toFixed(1) + '%)';
+            }
+            if (hover.price_changes && hover.price_changes.length) {
+              text += '<br><br><b>🏨 Изменения цен:</b><br>';
+              hover.price_changes.forEach((change) => {
+                text += '• ' + change.name + '<br>  ' + Math.round(change.old_price)
+                  + ' → ' + Math.round(change.new_price) + ' PLN<br>  '
+                  + change.arrow + ' ' + change.sign + Math.round(change.change) + ' PLN ('
+                  + change.sign + change.change_percent.toFixed(1) + '%)<br>';
+              });
+            }
+            if (hover.new_hotels && hover.new_hotels.length) {
+              text += '<br><b>🆕 Новые в ТОП-10:</b><br>';
+              hover.new_hotels.forEach((hotel) => {
+                text += '• ' + hotel.name + '<br>  Цена: ' + Math.round(hotel.price)
+                  + ' PLN (позиция ' + hotel.position + ')<br>';
+              });
+            }
+            if (hover.removed_hotels && hover.removed_hotels.length) {
+              text += '<br><b>❌ Покинули ТОП-10:</b><br>';
+              hover.removed_hotels.forEach((hotel) => {
+                text += '• ' + hotel.name + '<br>  Цена: ' + Math.round(hotel.price)
+                  + ' PLN (была позиция ' + hotel.position + ')<br>';
+              });
+            }
+            if (hover.no_changes) {
+              text += '<br><br><i>Нет изменений в этом ране</i>';
+            }
+            return text;
+          });
+        }
+
+        window.renderDashboardDurationCharts = function(charts) {
+          if (!window.Plotly || !charts) return;
+          const X = charts.top10_x || [];
+          const Y = charts.top10_y || [];
+          const detailedData = charts.top10_detailed || [];
+          if (X.length && Y.length) {
+            const hoverTexts = buildTop10HoverTexts(detailedData);
+            Plotly.react('avgTop10', [{
+              x: X,
+              y: Y,
+              type: 'scatter',
+              mode: 'lines+markers',
+              line: { color: '#A23B72', width: 3 },
+              marker: { size: 8 },
+              text: hoverTexts,
+              hovertemplate: '%{text}<extra></extra>',
+              hoverinfo: 'text',
+            }], {
+              margin: { t: 10, r: 10, b: 40, l: 50 },
+              xaxis: { title: 'Время', type: 'date' },
+              yaxis: { title: 'Цена (PLN)' },
+              hovermode: 'closest',
+            });
+          }
+          const trendX = charts.trend_x || [];
+          const trendY = charts.trend_y || [];
+          const trendDetailed = charts.trend_detailed || [];
+          if (trendX.length && trendY.length) {
+            const trendHoverTexts = trendDetailed.map((data) => {
+              let text = '<b>' + (data.run_time || '') + '</b><br>';
+              text += 'Среднее изменение: ' + (data.avg_change_pct || 0).toFixed(2) + '%<br>';
+              text += 'Отелей с изменением: ' + (data.hotels_with_changes || 0)
+                + ' / ' + (data.total_hotels || 0);
+              return text;
+            });
+            Plotly.react('trendIndexChart', [{
+              x: trendX,
+              y: trendY,
+              type: 'scatter',
+              mode: 'lines+markers',
+              line: { color: '#2E86AB', width: 2 },
+              marker: { size: 7 },
+              text: trendHoverTexts,
+              hovertemplate: '%{text}<extra></extra>',
+              hoverinfo: 'text',
+            }], {
+              margin: { t: 10, r: 10, b: 40, l: 50 },
+              xaxis: { title: 'Время', type: 'date' },
+              yaxis: { title: 'Изменение, %' },
+              hovermode: 'closest',
+            });
+          }
+        };
+
+        function formatMetricValue(kind, value) {
+          if (kind === 'total_offers') return Number(value).toLocaleString('ru-RU');
+          if (kind === 'avg_price' || kind === 'history_min_price' || kind === 'history_max_price') {
+            return Number(value).toLocaleString('ru-RU') + ' PLN';
+          }
+          if (kind === 'market_breadth_pct') return Number(value).toFixed(0) + '%';
+          return String(value);
+        }
+
+        const storageKey = 'tripDuration:' + window.location.pathname;
+        const baseTitle = document.title;
+
+        function resolveBucketId(preferred) {
+          const candidate = String(preferred || '').trim();
+          if (candidate && views[candidate]) return candidate;
+          const fallback = String(switchRoot.dataset.defaultBucket || '').trim();
+          if (fallback && views[fallback]) return fallback;
+          const keys = Object.keys(views);
+          return keys.length ? keys[0] : '';
+        }
+
+        window.applyDurationView = function(bucketId) {
+          const resolvedId = resolveBucketId(bucketId);
+          const view = views[resolvedId];
+          if (!view) return;
+
+          const hero = view.hero || {};
+          const stats = view.stats || {};
+          const html = view.html || {};
+          const entryEl = document.getElementById('heroKpiEntryCount');
+          const breadthEl = document.getElementById('heroKpiBreadthPct');
+          const bestDealEl = document.getElementById('heroKpiBestDeal');
+          if (entryEl) entryEl.textContent = String(hero.entry_candidates ?? '');
+          if (breadthEl) breadthEl.textContent = formatMetricValue('market_breadth_pct', hero.market_breadth_pct ?? 0);
+          if (bestDealEl) bestDealEl.textContent = String(hero.best_deal_score ?? '');
+
+          const statsRow1 = document.getElementById('statsMetricsRow1');
+          const statsRow2 = document.getElementById('statsMetricsRow2');
+          if (statsRow1 && view.stats_row1_html) statsRow1.innerHTML = view.stats_row1_html;
+          if (statsRow2 && view.stats_row2_html) statsRow2.innerHTML = view.stats_row2_html;
+
+          const changesEl = document.getElementById('durationScopedChanges');
+          const entrySignalEl = document.getElementById('durationScopedEntry');
+          if (changesEl) changesEl.innerHTML = html.changes || '';
+          if (entrySignalEl) entrySignalEl.innerHTML = html.entry_signal || '';
+
+          const alertsChipsEl = document.getElementById('alertsSummaryChips');
+          const alertsContentEl = document.getElementById('alertsContent');
+          if (alertsChipsEl) alertsChipsEl.innerHTML = html.alerts_chips || '';
+          if (alertsContentEl) alertsContentEl.innerHTML = html.alerts_content || '';
+
+          const cardsGrid = document.getElementById('cardsGrid');
+          if (cardsGrid) cardsGrid.innerHTML = html.cards || '';
+
+          const tbody = document.querySelector('#hotelsTable tbody');
+          if (tbody) {
+            tbody.innerHTML = html.table_rows || '';
+            if (typeof window._rebindHotelTableRows === 'function') {
+              window._rebindHotelTableRows();
+            }
+          }
+
+          const priceFilter = document.getElementById('priceFilter');
+          const regionFilter = document.getElementById('regionFilter');
+          if (priceFilter && html.price_filter_options) {
+            priceFilter.innerHTML = html.price_filter_options;
+          }
+          if (regionFilter && html.region_filter_options !== undefined) {
+            regionFilter.innerHTML = '<option value="">Все регионы</option>' + (html.region_filter_options || '');
+          }
+
+          window.renderDashboardDurationCharts(view.charts || {});
+          window.__activeDurationHotelNames = new Set((view.hotel_names || []).map(String));
+
+          switchRoot.querySelectorAll('.duration-global-btn').forEach((btn) => {
+            btn.classList.toggle('active', btn.dataset.durationBucket === resolvedId);
+          });
+
+          if (view.label) {
+            const suffix = ' • ' + view.label;
+            document.title = baseTitle.includes(suffix)
+              ? baseTitle
+              : baseTitle.replace(/ • [^•]+$/, '') + suffix;
+          }
+
+          try {
+            localStorage.setItem(storageKey, resolvedId);
+          } catch (err) {
+            /* ignore */
+          }
+          if (location.hash !== '#' + resolvedId) {
+            history.replaceState(null, '', '#' + resolvedId);
+          }
+
+          if (typeof window._hotelTableFilterRows === 'function') {
+            window._hotelTableFilterRows();
+          }
+        };
+
+        switchRoot.querySelectorAll('.duration-global-btn').forEach((btn) => {
+          btn.addEventListener('click', function() {
+            window.applyDurationView(btn.dataset.durationBucket || '');
+          });
+        });
+
+        const hashBucket = (location.hash || '').replace(/^#/, '');
+        let storedBucket = '';
+        try {
+          storedBucket = localStorage.getItem(storageKey) || '';
+        } catch (err) {
+          storedBucket = '';
+        }
+        const initialBucket = resolveBucketId(hashBucket || storedBucket || switchRoot.dataset.defaultBucket);
+        if (initialBucket && initialBucket !== switchRoot.dataset.defaultBucket) {
+          window.applyDurationView(initialBucket);
+        }
       })();
     </script>
   </body>

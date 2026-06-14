@@ -21,6 +21,15 @@ from generate_inline_charts_dashboard import (
     _resolve_history_ceiling,
 )
 from hotel_deal_score import comeback_from_premium
+from filter_trip import (
+    _duration_bucket_is_missing,
+    infer_offer_duration_bucket,
+    is_fixed_trip_config,
+    offer_duration_days,
+    parse_trip_duration_buckets,
+    trip_duration_bucket_id,
+    trip_row_key,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -43,6 +52,14 @@ def _normalize_run_key(run_time: Any) -> str:
     return ts.isoformat()
 
 
+def _split_price_key(key: str) -> Tuple[str, str]:
+    text = str(key or "").strip()
+    if "|" in text:
+        hotel_name, bucket = text.split("|", 1)
+        return hotel_name, bucket
+    return text, ""
+
+
 class PriceAlertManagerV2:
     def __init__(
         self,
@@ -50,11 +67,22 @@ class PriceAlertManagerV2:
         alerts_file="data/price_alerts_history.json",
         display_price_ceiling=None,
         history_price_ceiling=None,
+        filter_config: Optional[Dict[str, Any]] = None,
     ):
         self.data_file = data_file
         self.alerts_file = alerts_file
         self.display_price_ceiling = display_price_ceiling
         self.history_price_ceiling = history_price_ceiling
+        self.filter_config = filter_config or {}
+        self.use_duration_buckets = bool(
+            is_fixed_trip_config(self.filter_config)
+            and parse_trip_duration_buckets(self.filter_config)
+        )
+        self.group_cols = (
+            ["hotel_name", "duration_bucket"]
+            if self.use_duration_buckets
+            else ["hotel_name"]
+        )
         self.df_raw = self.load_data()
         self.df = self._build_canonical_df()
         self.df_history = self._build_history_df()
@@ -75,6 +103,31 @@ class PriceAlertManagerV2:
             df = pd.read_csv(self.data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
             df['scraped_at'] = pd.to_datetime(df['scraped_at'], errors='coerce', utc=True, format='ISO8601')
             df = df.dropna(subset=['scraped_at'])
+            if self.use_duration_buckets:
+                if 'duration_bucket' not in df.columns:
+                    df['duration_bucket'] = ''
+                missing = df['duration_bucket'].apply(_duration_bucket_is_missing)
+                if missing.any():
+                    df.loc[missing, 'duration_bucket'] = df.loc[missing].apply(
+                        lambda row: infer_offer_duration_bucket(
+                            row.to_dict(), self.filter_config
+                        ),
+                        axis=1,
+                    )
+                known_ids = {
+                    str(bucket['id'])
+                    for bucket in parse_trip_duration_buckets(self.filter_config)
+                }
+                buckets = parse_trip_duration_buckets(self.filter_config)
+                stale = ~df['duration_bucket'].astype(str).isin(known_ids)
+                if stale.any():
+                    df.loc[stale, 'duration_bucket'] = df.loc[stale].apply(
+                        lambda row: trip_duration_bucket_id(
+                            offer_duration_days(row.to_dict()), buckets
+                        ),
+                        axis=1,
+                    )
+                df = df[df['duration_bucket'].astype(str).isin(known_ids)].copy()
             return df
         except Exception as e:
             logger.error(f"Ошибка загрузки данных: {e}")
@@ -87,7 +140,7 @@ class PriceAlertManagerV2:
         work = self.df_raw.copy()
         work['scraped_at_display'] = work['scraped_at']
         ceiling = _parse_price_ceiling(self.display_price_ceiling)
-        return collapse_canonical_per_run(work, ceiling)
+        return collapse_canonical_per_run(work, ceiling, group_cols=self.group_cols)
 
     def _build_history_df(self) -> pd.DataFrame:
         """Мин. цена на отель за ран в полной зоне сбора (до history ceiling)."""
@@ -97,7 +150,7 @@ class PriceAlertManagerV2:
         work['scraped_at_display'] = work['scraped_at']
         display = _parse_price_ceiling(self.display_price_ceiling)
         history = _resolve_history_ceiling(display, self.history_price_ceiling)
-        return collapse_canonical_per_run(work, history)
+        return collapse_canonical_per_run(work, history, group_cols=self.group_cols)
     
     def _load_alerts_doc(self) -> Dict[str, Any]:
         """Загружает документ алертов (список или {alerts, meta})."""
@@ -140,6 +193,13 @@ class PriceAlertManagerV2:
         except Exception as e:
             logger.error(f"Ошибка сохранения алертов: {e}")
     
+    def _row_id_from_row(self, row: pd.Series) -> str:
+        hotel_name = str(row["hotel_name"])
+        if self.use_duration_buckets:
+            bucket = str(row.get("duration_bucket") or "")
+            return trip_row_key(hotel_name, bucket)
+        return hotel_name
+
     def _build_prices_by_run(self, frame: pd.DataFrame) -> Dict[datetime, Dict[str, float]]:
         prices_by_run: Dict[datetime, Dict[str, float]] = {}
         if frame.empty:
@@ -149,8 +209,8 @@ class PriceAlertManagerV2:
                 continue
             run_time = run_slice['scraped_at'].iloc[0]
             prices_by_run[run_time] = {
-                str(name): float(price)
-                for name, price in zip(run_slice['hotel_name'], run_slice['price'])
+                self._row_id_from_row(row): float(row['price'])
+                for _, row in run_slice.iterrows()
             }
         return prices_by_run
 
@@ -183,11 +243,11 @@ class PriceAlertManagerV2:
         disp = float(display)
 
         for run_time in self._run_times:
-            for hotel_name, price in self._history_prices_by_run.get(run_time, {}).items():
-                info = running.get(hotel_name)
+            for row_id, price in self._history_prices_by_run.get(run_time, {}).items():
+                info = running.get(row_id)
                 if info is None:
                     info = {'history_max': price, 'premium_peak': None}
-                    running[hotel_name] = info
+                    running[row_id] = info
                 else:
                     info['history_max'] = max(float(info['history_max']), price)
                 if price > disp:
@@ -210,8 +270,8 @@ class PriceAlertManagerV2:
             return state
         disp = float(display)
         next_state = {name: dict(info) for name, info in state.items()}
-        for hotel_name, price in self._history_prices_by_run.get(run_time, {}).items():
-            key = str(hotel_name)
+        for row_id, price in self._history_prices_by_run.get(run_time, {}).items():
+            key = str(row_id)
             info = next_state.get(key)
             if info is None:
                 info = {"history_max": price, "premium_peak": None}
@@ -312,12 +372,13 @@ class PriceAlertManagerV2:
         curr_prices = self._zone_prices_by_run.get(curr_run, {})
 
         changes: List[Dict[str, Any]] = []
-        for hotel_name, curr_price in curr_prices.items():
-            if hotel_name in prev_prices:
+        for row_id, curr_price in curr_prices.items():
+            if row_id in prev_prices:
                 continue
+            hotel_name, duration_bucket = _split_price_key(row_id)
             comeback = comeback_from_premium(
                 curr_price,
-                premium_snapshot.get(str(hotel_name)),
+                premium_snapshot.get(str(row_id)),
                 display,
                 min_drop_pct=threshold_percent,
             )
@@ -327,6 +388,7 @@ class PriceAlertManagerV2:
             drop_pct = float(comeback["drop_from_peak_pct"])
             changes.append({
                 "hotel_name": hotel_name,
+                "duration_bucket": duration_bucket,
                 "old_price": peak,
                 "new_price": curr_price,
                 "price_change": curr_price - peak,
@@ -336,7 +398,7 @@ class PriceAlertManagerV2:
                 "created_at": datetime.now(timezone.utc).isoformat(),
                 "threshold_percent": threshold_percent,
                 "unique_key": (
-                    f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}"
+                    f"{row_id}_{curr_run.strftime('%Y-%m-%d_%H-%M')}"
                     f"_comeback_{drop_pct:.1f}"
                 ),
             })
@@ -361,7 +423,9 @@ class PriceAlertManagerV2:
         self,
         changes: List[Dict[str, Any]],
         *,
+        row_id: str,
         hotel_name: str,
+        duration_bucket: str = "",
         old_price,
         new_price,
         alert_type: str,
@@ -387,6 +451,7 @@ class PriceAlertManagerV2:
             price_change_pct = 0.0
         changes.append({
             'hotel_name': hotel_name,
+            'duration_bucket': duration_bucket,
             'old_price': old_val if old_val is not None else new_val,
             'new_price': new_val,
             'price_change': price_change,
@@ -395,7 +460,7 @@ class PriceAlertManagerV2:
             'alert_type': alert_type,
             'created_at': datetime.now(timezone.utc).isoformat(),
             'threshold_percent': threshold_percent,
-            'unique_key': f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}_{unique_suffix}",
+            'unique_key': f"{row_id}_{curr_run.strftime('%Y-%m-%d_%H-%M')}_{unique_suffix}",
         })
 
     def find_zone_transitions_between_runs(
@@ -411,18 +476,21 @@ class PriceAlertManagerV2:
 
         changes: List[Dict[str, Any]] = []
 
-        for hotel_name in set(prev_zone.keys()) & set(curr_zone.keys()):
-            prev_price = prev_zone[hotel_name]
-            curr_price = curr_zone[hotel_name]
+        for row_id in set(prev_zone.keys()) & set(curr_zone.keys()):
+            prev_price = prev_zone[row_id]
+            curr_price = curr_zone[row_id]
             price_change_pct = (
                 (curr_price - prev_price) / prev_price * 100.0 if prev_price > 0 else 0.0
             )
             if abs(price_change_pct) < threshold_percent:
                 continue
+            hotel_name, duration_bucket = _split_price_key(row_id)
             alert_type = 'price_drop' if curr_price < prev_price else 'price_increase'
             self._append_alert(
                 changes,
+                row_id=row_id,
                 hotel_name=hotel_name,
+                duration_bucket=duration_bucket,
                 old_price=prev_price,
                 new_price=curr_price,
                 alert_type=alert_type,
@@ -431,16 +499,19 @@ class PriceAlertManagerV2:
                 unique_suffix=f"{price_change_pct:+.1f}",
             )
 
-        for hotel_name in sorted(set(prev_zone.keys()) - set(curr_zone.keys())):
-            last_zone_price = prev_zone[hotel_name]
-            raw_price = curr_history.get(hotel_name)
+        for row_id in sorted(set(prev_zone.keys()) - set(curr_zone.keys())):
+            last_zone_price = prev_zone[row_id]
+            raw_price = curr_history.get(row_id)
+            hotel_name, duration_bucket = _split_price_key(row_id)
             suffix = 'zone_out_gone'
             if raw_price is not None and last_zone_price > 0:
                 pct = (raw_price - last_zone_price) / last_zone_price * 100.0
                 suffix = f"zone_out_{pct:+.1f}"
             self._append_alert(
                 changes,
+                row_id=row_id,
                 hotel_name=hotel_name,
+                duration_bucket=duration_bucket,
                 old_price=last_zone_price,
                 new_price=raw_price if raw_price is not None else last_zone_price,
                 alert_type='zone_exit',
@@ -468,12 +539,13 @@ class PriceAlertManagerV2:
         premium = self._ensure_premium_by_run().get(prev_run, {})
 
         changes = []
-        for hotel_name, curr_price in curr_prices.items():
-            if hotel_name in prev_prices:
+        for row_id, curr_price in curr_prices.items():
+            if row_id in prev_prices:
                 continue
+            hotel_name, duration_bucket = _split_price_key(row_id)
             comeback = comeback_from_premium(
                 curr_price,
-                premium.get(str(hotel_name)),
+                premium.get(str(row_id)),
                 display,
                 min_drop_pct=threshold_percent,
             )
@@ -483,6 +555,7 @@ class PriceAlertManagerV2:
             drop_pct = float(comeback['drop_from_peak_pct'])
             changes.append({
                 'hotel_name': hotel_name,
+                'duration_bucket': duration_bucket,
                 'old_price': peak,
                 'new_price': curr_price,
                 'price_change': curr_price - peak,
@@ -492,7 +565,7 @@ class PriceAlertManagerV2:
                 'created_at': datetime.now(timezone.utc).isoformat(),
                 'threshold_percent': threshold_percent,
                 'unique_key': (
-                    f"{hotel_name}_{curr_run.strftime('%Y-%m-%d_%H-%M')}"
+                    f"{row_id}_{curr_run.strftime('%Y-%m-%d_%H-%M')}"
                     f"_comeback_{drop_pct:.1f}"
                 ),
             })

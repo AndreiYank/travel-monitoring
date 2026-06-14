@@ -1,0 +1,33 @@
+{
+  "filter_mode": "fixed_trip",
+  "dynamic_search_dates": false,
+  "trip_anchor_date": "2026-07-18",
+  "trip_departure_slip_days": 7,
+  "retire_after": "2026-08-14",
+  "default_trip_duration_bucket": "10-11",
+  "trip_duration_buckets": [
+    {"id": "7-9", "min": 7, "max": 9, "label": "7–9 дней"},
+    {"id": "10-11", "min": 10, "max": 11, "label": "10–11 дней"}
+  ],
+  "url": "https://fly.pl/kierunek/turcja/?filter[dest]=39:&filter[hotelids]=&filter[cityids]=&filter[cregids]=&filter[ofrType]=&filter[addObjType]=&filter[whenFrom]=18-07-2026&filter[whenTo]=13-08-2026&filter[duration]=7:11&filter[from]=Warszawa,Warszawa-Radom,Warszawa%20-%20Modlin,Warszawa%20-%20Radom&filter[person]=2&filter[child]=1&filter[price]=4610:20000&filter[PriceFrom]=4610&filter[PriceTo]=20000&filter[addCategory]=50&filter[addCatering]=1&filter[addMisc]=0&filter[addTransport]=F&filter[fp]=1&order_by=ofr_price&filter[tourOperator]=0&filter[childAge][1]=20200812",
+  "max_price_threshold": 20000,
+  "min_price_threshold": 4610,
+  "required_offer_url_contains": [
+    "/wycieczka/turcja",
+    "transport=accommodation_flight"
+  ],
+  "excluded_offer_url_contains": [
+    "/wycieczka/polska",
+    "/wycieczka/czechy",
+    "transport=accommodation&"
+  ],
+  "wait_timeout": 30000,
+  "max_retries": 3,
+  "max_offers": 0,
+  "max_pages": 10,
+  "display_price_ceiling": 10000,
+  "retry_delay": 5,
+  "data_dir": "data/filters/filter_turkey_vacation_jul18_2026",
+  "output_data_file": "travel_prices.csv",
+  "description": "CI filter • Турция • отпуск с 18.07.2026 • вылет ≈18.07 • 7-11 дн. • мониторинг цен до поездки"
+}
