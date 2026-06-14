@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import os
 import re
-from datetime import datetime
+from datetime import datetime, timedelta
 from typing import Any, Callable, Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, unquote, urlparse
 
@@ -13,7 +13,9 @@ DATA_DIR_CONFIG_FILES: Dict[str, str] = {
     "filter_7_10_days": "config_ci_filter_7_10.json",
     "filter_13_16_days": "config_ci_filter_13_16.json",
     "filter_turkey_7_10_days": "config_ci_filter_turkey_7_10.json",
+    "filter_turkey_9_11_days": "config_ci_filter_turkey_9_11.json",
     "filter_turkey_13_16_days": "config_ci_filter_turkey_13_16.json",
+    "filter_turkey_vacation_jul18_2026": "config_ci_filter_turkey_vacation_jul18.json",
     "filter_greece_7_10_days": "config_ci_filter_greece_7_10.json",
     "filter_greece_13_16_days": "config_ci_filter_greece_13_16.json",
 }
@@ -49,6 +51,44 @@ TRANSPORT_LABELS = {
 def _query_keys(name: str) -> List[str]:
     enc = name.replace("[", "%5B").replace("]", "%5D")
     return [f"filter[{name}]", enc, name]
+
+
+def make_fly_search_url_dynamic(url: str, *, window_days: int = 30) -> str:
+    """Подставляет whenFrom=сегодня и whenTo=сегодня+N дней (как в travel_monitor)."""
+    if not url:
+        return url
+    now = datetime.now()
+    from_date_str = now.strftime("%d-%m-%Y")
+    to_date_str = (now + timedelta(days=window_days)).strftime("%d-%m-%Y")
+    url = re.sub(
+        r"(filter(?:\[|%5B)whenFrom(?:\]|%5D)=)([^&]*)",
+        rf"\g<1>{from_date_str}",
+        url,
+    )
+    url = re.sub(
+        r"(filter(?:\[|%5B)whenTo(?:\]|%5D)=)([^&]*)",
+        rf"\g<1>{to_date_str}",
+        url,
+    )
+    return url
+
+
+def should_use_dynamic_search_dates(config: Optional[Dict[str, Any]]) -> bool:
+    cfg = config or {}
+    if cfg.get("dynamic_search_dates") is False:
+        return False
+    if str(cfg.get("filter_mode") or "") == "fixed_trip":
+        return False
+    return True
+
+
+def resolve_config_url(config: Optional[Dict[str, Any]]) -> str:
+    url = str((config or {}).get("url") or "")
+    if not url:
+        return url
+    if should_use_dynamic_search_dates(config):
+        return make_fly_search_url_dynamic(url)
+    return url
 
 
 def fly_query_param(url: str, name: str) -> str:
@@ -88,7 +128,11 @@ def load_filter_config(
     if not path:
         return {}
     with open(path, encoding="utf-8") as fh:
-        return json.load(fh)
+        config = json.load(fh)
+    if config.get("url"):
+        config = dict(config)
+        config["url"] = resolve_config_url(config)
+    return config
 
 
 def _country_label(config: Dict[str, Any], url: str) -> str:
@@ -583,6 +627,42 @@ def render_filter_params_html(
     if budget_hint:
         budget_title = f"{budget_main} ({budget_hint})"
 
+    duration_kicker = "Длительность"
+    duration_value = f"{esc(duration)} дней"
+    duration_sub = ""
+    duration_title = ""
+    if str(config.get("filter_mode") or "") == "fixed_trip":
+        duration_kicker = "Отпуск"
+        wf = fly_query_param(url, "whenFrom")
+        wt = fly_query_param(url, "whenTo")
+        anchor_raw = str(config.get("trip_anchor_date") or "")
+        anchor_fmt = anchor_raw
+        anchor_dt = None
+        for fmt in ("%Y-%m-%d", "%d-%m-%Y"):
+            try:
+                anchor_dt = datetime.strptime(anchor_raw, fmt)
+                anchor_fmt = anchor_dt.strftime("%d.%m.%Y")
+                break
+            except ValueError:
+                continue
+        duration_value = f"с {esc(anchor_fmt)}" if anchor_fmt else duration_value
+        slip = int(config.get("trip_departure_slip_days", 7))
+        duration_sub = f"вылет ±{slip} дн. от {anchor_fmt}" if anchor_fmt else ""
+        buckets = config.get("trip_duration_buckets") or []
+        bucket_labels = [
+            str(b.get("label") or "").strip()
+            for b in buckets
+            if isinstance(b, dict) and str(b.get("label") or "").strip()
+        ]
+        if bucket_labels:
+            duration_sub = (
+                f"{duration_sub} • {' / '.join(bucket_labels)} — переключатель на странице"
+                if duration_sub
+                else f"{' / '.join(bucket_labels)} — два фильтра на одной странице"
+            )
+        if wf or wt:
+            duration_title = f"Поиск на fly.pl: {wf} — {wt}"
+
     dep_slot = _fb_slot(
         esc, "Вылет", esc(airports_compact), "plane", "blue", title=airport_title
     )
@@ -602,11 +682,13 @@ def render_filter_params_html(
         _fb_vdiv(),
         _fb_slot(
             esc,
-            "Длительность",
-            f"{esc(duration)} дней",
+            duration_kicker,
+            duration_value,
             "calendar",
             "gold",
             value_class="fb-value--gold",
+            sub=duration_sub,
+            title=duration_title,
         ),
         _fb_vdiv(),
         _fb_slot(esc, "Туристы", esc(party_value), "users", "neutral", sub=party_sub),
@@ -643,4 +725,44 @@ def render_filter_params_html(
         '<div class="filter-bar filter-bar--premium" role="region" aria-label="Параметры фильтра">'
         f'<div class="filter-bar__track">{track}</div>'
         "</div>"
+    )
+
+
+def render_global_duration_switch_html(
+    buckets: list[dict],
+    *,
+    default_bucket_id: str = "",
+    escape: Any = None,
+) -> str:
+    """Segmented control: separate virtual filters on one dashboard page."""
+    import html as html_mod
+
+    esc = escape or html_mod.escape
+    if not buckets:
+        return ""
+    options = []
+    for item in buckets:
+        if not isinstance(item, dict):
+            continue
+        bucket_id = str(item.get("id") or "").strip()
+        if not bucket_id:
+            continue
+        label = str(item.get("label") or bucket_id).strip()
+        options.append({'id': bucket_id, 'label': label})
+    if not options:
+        return ""
+    default_id = str(default_bucket_id or options[-1]["id"]).strip()
+    buttons = []
+    for opt in options:
+        active = ' active' if opt['id'] == default_id else ''
+        buttons.append(
+            f'<button type="button" class="duration-global-btn{active}" '
+            f'data-duration-bucket="{esc(opt["id"], quote=True)}">{esc(opt["label"])}</button>'
+        )
+    return (
+        '<div class="duration-global-switch" id="durationGlobalSwitch" role="group" '
+        f'aria-label="Вариант фильтра" data-default-bucket="{esc(default_id, quote=True)}">'
+        '<span class="duration-global-label">Фильтр</span>'
+        f'<div class="duration-global-options">{"".join(buttons)}</div>'
+        '</div>'
     )

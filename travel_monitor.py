@@ -26,6 +26,8 @@ from price_alerts_v2 import PriceAlertManagerV2, ALERT_THRESHOLD_PERCENT
 from airport_comparison import AirportComparison
 from departure_analytics import BASE_OFFER_FIELDS, write_departure_analytics
 from departure_identity import DEPARTURE_FIELDS, enrich_offers
+from filter_params import fly_query_param, resolve_config_url, should_use_dynamic_search_dates
+from filter_trip import is_fixed_trip_config, select_trip_offers
 from hotel_deal_score import extract_tripadvisor_from_card_html
 
 # Настройка логирования
@@ -40,7 +42,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 TRAVEL_PRICE_CSV_FIELDS = [
-    'hotel_name', 'price', 'dates', 'duration', 'rating',
+    'hotel_name', 'price', 'dates', 'duration', 'duration_bucket', 'rating',
     'ta_rating', 'ta_review_count', 'ta_source',
     'departure_airport', 'scraped_at', 'url', 'image_url', 'offer_url',
 ]
@@ -70,37 +72,25 @@ class TravelPriceMonitor:
             logger.info(f"Конфигурация загружена из {self.config_file}")
             
             if 'url' in config and config['url']:
-                config['url'] = self._make_url_dynamic(config['url'])
+                config['url'] = resolve_config_url(config)
+                if should_use_dynamic_search_dates(config):
+                    logger.info(
+                        "🔄 URL обновлен динамически: с %s по %s",
+                        fly_query_param(config['url'], 'whenFrom'),
+                        fly_query_param(config['url'], 'whenTo'),
+                    )
+                elif is_fixed_trip_config(config):
+                    logger.info(
+                        "📌 Фиксированное окно поиска: %s — %s (вылет ≈ %s)",
+                        fly_query_param(config['url'], 'whenFrom'),
+                        fly_query_param(config['url'], 'whenTo'),
+                        config.get('trip_anchor_date', '—'),
+                    )
                 
             return config
         except Exception as e:
             logger.error(f"Ошибка загрузки конфигурации: {e}")
             sys.exit(1)
-
-    def _make_url_dynamic(self, url: str) -> str:
-        """Динамически заменяет даты в URL на период: сегодня + 30 дней"""
-        import re
-        from datetime import datetime, timedelta
-        
-        now = datetime.now()
-        from_date_str = now.strftime('%d-%m-%Y')
-        to_date_str = (now + timedelta(days=30)).strftime('%d-%m-%Y')
-        
-        # Регулярные выражения для замены whenFrom и whenTo (с поддержкой [ ] и %5B %5D)
-        url = re.sub(
-            r'(filter(?:\[|%5B)whenFrom(?:\]|%5D)=)([^&]*)',
-            rf'\g<1>{from_date_str}',
-            url
-        )
-        url = re.sub(
-            r'(filter(?:\[|%5B)whenTo(?:\]|%5D)=)([^&]*)',
-            rf'\g<1>{to_date_str}',
-            url
-        )
-        
-        logger.info(f"🔄 URL обновлен динамически: с {from_date_str} по {to_date_str}")
-        return url
-
 
     def _scrape_timestamp(self) -> str:
         """One UTC timestamp for the whole scrape run (all offers in a batch)."""
@@ -1824,6 +1814,7 @@ class TravelPriceMonitor:
                 alerts_file=os.path.join(self.config['data_dir'], alerts_file),
                 display_price_ceiling=self.config.get('display_price_ceiling', 10000),
                 history_price_ceiling=self.config.get('history_price_ceiling'),
+                filter_config=self.config,
             )
             
             if alert_manager.df.empty:
@@ -1909,6 +1900,22 @@ class TravelPriceMonitor:
                 return False
 
             raw_count = len(offers)
+            if is_fixed_trip_config(self.config):
+                t0 = time.monotonic()
+                offers = select_trip_offers(offers, self.config)
+                _log_timing("select_trip_offers", t0, f"{raw_count} → {len(offers)}")
+                logger.info(
+                    "📌 Trip-фильтр: %s офферов → %s (вылет в пределах ±%s дн. от %s)",
+                    raw_count,
+                    len(offers),
+                    self.config.get("trip_departure_slip_days", 7),
+                    self.config.get("trip_anchor_date", "—"),
+                )
+                if not offers:
+                    logger.warning("⚠️ После trip-фильтра не осталось офферов с подходящим вылетом")
+                    return False
+                raw_count = len(offers)
+
             t0 = time.monotonic()
             self.save_departure_offers_append(offers)
             _log_timing("save_departure_offers + analytics", t0)

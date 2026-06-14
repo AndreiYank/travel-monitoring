@@ -12,11 +12,16 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from filter_trip import should_skip_monitor_config
 
 DEFAULT_CONFIGS = [
     "config_ci_filter_7_10.json",
     "config_ci_filter_13_16.json",
     "config_ci_filter_turkey_7_10.json",
+    "config_ci_filter_turkey_9_11.json",
+    "config_ci_filter_turkey_vacation_jul18.json",
     "config_ci_filter_turkey_13_16.json",
     "config_ci_filter_greece_7_10.json",
     "config_ci_filter_greece_13_16.json",
@@ -27,6 +32,9 @@ def _run_one(config_name: str, log_dir: Path) -> tuple[str, int, float]:
     config_path = ROOT / config_name
     if not config_path.is_file():
         return config_name, 127, 0.0
+    if should_skip_monitor_config(str(config_path)):
+        print(f"  ⏭ {config_name} (retire_after прошёл, пропуск)")
+        return config_name, 0, 0.0
 
     log_dir.mkdir(parents=True, exist_ok=True)
     log_path = log_dir / f"{config_path.stem}.log"
@@ -68,7 +76,7 @@ def main() -> int:
         "configs",
         nargs="*",
         default=DEFAULT_CONFIGS,
-        help="Config JSON paths (default: all 6 CI filters)",
+        help="Config JSON paths (default: all 8 CI filters)",
     )
     args = parser.parse_args()
     jobs = max(1, args.jobs)

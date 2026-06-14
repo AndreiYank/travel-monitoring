@@ -36,6 +36,21 @@ DEFAULT_DASHBOARDS = [
         "alerts": "data/filters/filter_turkey_7_10_days/travel_prices_alerts.json",
     },
     {
+        "data": "data/filters/filter_turkey_9_11_days/travel_prices.csv",
+        "output": "index_filter_turkey_9_11_days.html",
+        "title": "Мониторинг цен • Турция • 9–11 дней",
+        "charts": "hotel-charts/filter_turkey_9_11_days",
+        "alerts": "data/filters/filter_turkey_9_11_days/travel_prices_alerts.json",
+    },
+    {
+        "data": "data/filters/filter_turkey_vacation_jul18_2026/travel_prices.csv",
+        "output": "index_filter_turkey_vacation_jul18.html",
+        "title": "Мониторинг цен • Турция • отпуск 18 июля 2026",
+        "charts": "hotel-charts/filter_turkey_vacation_jul18_2026",
+        "alerts": "data/filters/filter_turkey_vacation_jul18_2026/travel_prices_alerts.json",
+        "config": "config_ci_filter_turkey_vacation_jul18.json",
+    },
+    {
         "data": "data/filters/filter_turkey_13_16_days/travel_prices.csv",
         "output": "index_filter_turkey_13_16_days.html",
         "title": "Мониторинг цен • Турция • 13–16 дней",
@@ -81,6 +96,8 @@ def _run_one(spec: dict, log_dir: Path) -> tuple[str, int, float]:
         "--history-price-ceiling",
         "20000",
     ]
+    if spec.get("config"):
+        cmd.extend(["--config-file", spec["config"]])
     t0 = time.monotonic()
     with log_path.open("w", encoding="utf-8") as log_f:
         log_f.write(f"# {output}\n# started {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n")

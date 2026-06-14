@@ -8,6 +8,8 @@ FILTER_IDS=(
   filter_7_10_days
   filter_13_16_days
   filter_turkey_7_10_days
+  filter_turkey_9_11_days
+  filter_turkey_vacation_jul18_2026
   filter_turkey_13_16_days
   filter_greece_7_10_days
   filter_greece_13_16_days
@@ -22,6 +24,8 @@ cp -f index.html site/index.html
 cp -f index_filter_7_10_days.html site/
 cp -f index_filter_13_16_days.html site/
 cp -f index_filter_turkey_7_10_days.html site/
+cp -f index_filter_turkey_9_11_days.html site/
+cp -f index_filter_turkey_vacation_jul18.html site/
 cp -f index_filter_turkey_13_16_days.html site/
 cp -f index_filter_greece_7_10_days.html site/
 cp -f index_filter_greece_13_16_days.html site/

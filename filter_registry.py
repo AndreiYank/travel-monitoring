@@ -2,6 +2,20 @@
 
 FILTER_GROUPS = [
     {
+        'id': 'trips',
+        'label': 'Поездки',
+        'icon': '🎯',
+        'filters': [
+            {
+                'id': 'turkey_vacation_jul18_2026',
+                'title': 'Турция • отпуск 18 июля',
+                'subtitle': '7–9 / 10–11 дн. • один фильтр, переключатель на странице',
+                'href': 'index_filter_turkey_vacation_jul18.html',
+                'charts_subdir': 'hotel-charts/filter_turkey_vacation_jul18_2026',
+            },
+        ],
+    },
+    {
         'id': 'egypt',
         'label': 'Египет',
         'icon': '🇪🇬',
@@ -33,6 +47,13 @@ FILTER_GROUPS = [
                 'subtitle': 'сбор 4–20k PLN • показ ≤10k • WAW/RDO',
                 'href': 'index_filter_turkey_7_10_days.html',
                 'charts_subdir': 'hotel-charts/filter_turkey_7_10_days',
+            },
+            {
+                'id': 'turkey_9_11',
+                'title': '9–11 дней',
+                'subtitle': 'сбор 4.6–20k PLN • показ ≤10k • WAW/WMI/RDO • с питанием',
+                'href': 'index_filter_turkey_9_11_days.html',
+                'charts_subdir': 'hotel-charts/filter_turkey_9_11_days',
             },
             {
                 'id': 'turkey_13_16',
