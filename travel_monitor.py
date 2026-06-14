@@ -27,7 +27,12 @@ from airport_comparison import AirportComparison
 from departure_analytics import BASE_OFFER_FIELDS, write_departure_analytics
 from departure_identity import DEPARTURE_FIELDS, enrich_offers
 from filter_params import fly_query_param, resolve_config_url, should_use_dynamic_search_dates
-from filter_trip import is_fixed_trip_config, select_trip_offers
+from filter_trip import (
+    is_fixed_trip_config,
+    parse_trip_duration_buckets,
+    select_trip_offers,
+    trip_scrape_passes,
+)
 from hotel_deal_score import extract_tripadvisor_from_card_html
 
 # Настройка логирования
@@ -760,6 +765,58 @@ class TravelPriceMonitor:
             if prev is None or price < float(prev.get('price') or 0):
                 best[name] = offer
         return list(best.values())
+
+    @staticmethod
+    def _dedupe_lowest_per_hotel_and_bucket(offers: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        """Один оффер на пару (отель, duration_bucket) — для multi-duration trip-фильтров."""
+        best: Dict[tuple, Dict[str, Any]] = {}
+        for offer in offers:
+            if not offer:
+                continue
+            name = (offer.get('hotel_name') or '').strip()
+            if not name:
+                continue
+            bucket = str(offer.get('duration_bucket') or '').strip()
+            try:
+                price = float(offer.get('price') or 0)
+            except (TypeError, ValueError):
+                continue
+            key = (name, bucket)
+            prev = best.get(key)
+            if prev is None or price < float(prev.get('price') or 0):
+                best[key] = offer
+        return list(best.values())
+
+    async def _scrape_offers_for_config(self) -> List[Dict[str, Any]]:
+        """Scrape once or once per duration bucket (fixed-trip virtual filters)."""
+        passes = trip_scrape_passes(self.config)
+        if len(passes) <= 1:
+            return await self.scrape_offers_with_retry()
+
+        merged: List[Dict[str, Any]] = []
+        saved_url = self.config.get('url')
+        try:
+            for index, spec in enumerate(passes, start=1):
+                scrape_url = str(spec.get('url') or '').strip()
+                if not scrape_url:
+                    continue
+                self.config['url'] = scrape_url
+                label = str(spec.get('label') or spec.get('bucket_id') or f'pass {index}')
+                duration_q = fly_query_param(scrape_url, 'duration') or '—'
+                logger.info(
+                    "📏 Scrape pass %s/%s: %s (duration=%s)",
+                    index,
+                    len(passes),
+                    label,
+                    duration_q,
+                )
+                chunk = await self.scrape_offers_with_retry()
+                logger.info("   → %s offers", len(chunk))
+                merged.extend(chunk)
+            return merged
+        finally:
+            if saved_url is not None:
+                self.config['url'] = saved_url
 
     def _load_previous_hotels_latest(self) -> pd.DataFrame:
         """Загружает предыдущие данные и возвращает последние цены по каждому отелю.
@@ -1893,7 +1950,7 @@ class TravelPriceMonitor:
         logger.info(f"🚀 Начинаем мониторинг ({self.config_file}, data_dir={self.config.get('data_dir')})...")
         
         try:
-            offers = await self.scrape_offers_with_retry()
+            offers = await self._scrape_offers_for_config()
             
             if not offers:
                 logger.error("❌ Не удалось собрать данные после всех попыток")
@@ -1921,8 +1978,13 @@ class TravelPriceMonitor:
             _log_timing("save_departure_offers + analytics", t0)
 
             t0 = time.monotonic()
-            offers = self._dedupe_lowest_per_hotel(offers)
-            _log_timing("dedupe_lowest_per_hotel", t0, f"{raw_count} → {len(offers)}")
+            if is_fixed_trip_config(self.config) and parse_trip_duration_buckets(self.config):
+                offers = self._dedupe_lowest_per_hotel_and_bucket(offers)
+                dedupe_label = "dedupe_lowest_per_hotel_and_bucket"
+            else:
+                offers = self._dedupe_lowest_per_hotel(offers)
+                dedupe_label = "dedupe_lowest_per_hotel"
+            _log_timing(dedupe_label, t0, f"{raw_count} → {len(offers)}")
             if len(offers) < raw_count:
                 logger.info(
                     f"Дедупликация: {raw_count} офферов → {len(offers)} отелей (мин. цена на отель)"

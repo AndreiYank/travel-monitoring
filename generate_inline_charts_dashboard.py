@@ -8268,6 +8268,34 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           });
         }
 
+        function emptyChartLayout(kind) {
+          const annotation = {
+            text: 'Нет данных для этого фильтра',
+            showarrow: false,
+            xref: 'paper',
+            yref: 'paper',
+            x: 0.5,
+            y: 0.5,
+            font: { size: 14, color: '#94a3b8' },
+          };
+          if (kind === 'trend') {
+            return {
+              margin: { t: 10, r: 10, b: 40, l: 50 },
+              xaxis: { title: 'Время', type: 'date' },
+              yaxis: { title: 'Изменение, %' },
+              hovermode: 'closest',
+              annotations: [annotation],
+            };
+          }
+          return {
+            margin: { t: 10, r: 10, b: 40, l: 50 },
+            xaxis: { title: 'Время', type: 'date' },
+            yaxis: { title: 'Цена (PLN)' },
+            hovermode: 'closest',
+            annotations: [annotation],
+          };
+        }
+
         window.renderDashboardDurationCharts = function(charts) {
           if (!window.Plotly || !charts) return;
           const X = charts.top10_x || [];
@@ -8291,6 +8319,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
               yaxis: { title: 'Цена (PLN)' },
               hovermode: 'closest',
             });
+          } else {
+            Plotly.react('avgTop10', [], emptyChartLayout('top10'));
           }
           const trendX = charts.trend_x || [];
           const trendY = charts.trend_y || [];
@@ -8319,6 +8349,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
               yaxis: { title: 'Изменение, %' },
               hovermode: 'closest',
             });
+          } else {
+            Plotly.react('trendIndexChart', [], emptyChartLayout('trend'));
           }
         };
 
@@ -8367,6 +8399,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if (typeof window._hotelTableFilterRows === 'function') {
               window._hotelTableFilterRows();
             }
+            window.renderDashboardDurationCharts({});
             return;
           }
 

@@ -16,6 +16,37 @@ def is_fixed_trip_config(config: Optional[Dict[str, Any]]) -> bool:
     return str((config or {}).get("filter_mode") or "") == "fixed_trip"
 
 
+def set_fly_duration_in_url(url: str, lo: int, hi: int) -> str:
+    """Replace fly.pl filter[duration]=X:Y in a search URL."""
+    text = str(url or "").strip()
+    if not text:
+        return text
+    return re.sub(
+        r"(filter(?:\[|%5B)duration(?:\]|%5D)=)(\d+):(\d+)",
+        rf"\g<1>{int(lo)}:{int(hi)}",
+        text,
+        count=1,
+    )
+
+
+def trip_scrape_passes(config: Dict[str, Any]) -> List[Dict[str, Any]]:
+    """Build one scrape URL per duration bucket (fixed-trip multi-filter)."""
+    base_url = str((config or {}).get("url") or "").strip()
+    if not is_fixed_trip_config(config) or not base_url:
+        return [{"url": base_url, "bucket_id": "", "label": ""}]
+    buckets = parse_trip_duration_buckets(config)
+    if not buckets:
+        return [{"url": base_url, "bucket_id": "", "label": ""}]
+    return [
+        {
+            "url": set_fly_duration_in_url(base_url, bucket["min"], bucket["max"]),
+            "bucket_id": str(bucket["id"]),
+            "label": str(bucket.get("label") or bucket["id"]),
+        }
+        for bucket in buckets
+    ]
+
+
 def parse_trip_duration_buckets(config: Dict[str, Any]) -> List[Dict[str, Any]]:
     raw = config.get("trip_duration_buckets") or []
     buckets: List[Dict[str, Any]] = []
