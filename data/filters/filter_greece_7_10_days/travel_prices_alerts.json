@@ -6136,10 +6136,40 @@
       "created_at": "2026-06-14T10:38:14.570920+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Radisson Blu Beach Resort (ex Minos Imperial) Grecja, Kreta Wschodnia, Milatos_2026-06-14_10-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali",
+      "duration_bucket": "",
+      "old_price": 9244.0,
+      "new_price": 9244.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:31:07.773975+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:32:54.825935+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-06-14_11-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 11655.0,
+      "new_price": 9564.0,
+      "price_change": -2091.0,
+      "price_change_pct": -17.94079794079794,
+      "timestamp": "2026-06-14 11:31:07.773975+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-14T11:32:54.825980+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)_2026-06-14_11-31_comeback_17.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-14T10:36:54.956847+00:00",
+<<<<<<< Updated upstream
+    "last_processed_run": "2026-06-14T11:31:07.773975+00:00",
+=======
+    "last_processed_run": "2026-06-14T11:49:14.362212+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -6478,7 +6508,7 @@
         "premium_peak": 13549.0
       },
       "Filion Suites Resort Grecja, Kreta Wschodnia, Bali": {
-        "history_max": 9244.0,
+        "history_max": 9551.0,
         "premium_peak": null
       },
       "Euphoria Resort": {

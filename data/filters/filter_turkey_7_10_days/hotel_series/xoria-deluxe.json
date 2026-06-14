@@ -73,7 +73,12 @@
     "2026-06-14T02:03:56.865188+02:00",
     "2026-06-14T06:01:13.670916+02:00",
     "2026-06-14T10:14:28.783903+02:00",
-    "2026-06-14T12:34:29.179190+02:00"
+    "2026-06-14T12:34:29.179190+02:00",
+<<<<<<< Updated upstream
+    "2026-06-14T13:28:25.683684+02:00"
+=======
+    "2026-06-14T13:46:49.751327+02:00"
+>>>>>>> Stashed changes
   ],
   "y": [
     6757.0,
@@ -145,7 +150,12 @@
     6719.0,
     6719.0,
     6822.0,
-    7718.0
+    7718.0,
+<<<<<<< Updated upstream
+    8240.0
+=======
+    6728.0
+>>>>>>> Stashed changes
   ],
   "hover": [
     "Проверка: 02.06.2026 17:36<br>Даты поездки: 08.06.2026 - 15.06.2026",
@@ -217,26 +227,50 @@
     "Проверка: 14.06.2026 02:03<br>Даты поездки: 15.06.2026 - 22.06.2026",
     "Проверка: 14.06.2026 06:01<br>Даты поездки: 15.06.2026 - 22.06.2026",
     "Проверка: 14.06.2026 10:14<br>Даты поездки: 15.06.2026 - 22.06.2026",
-    "Проверка: 14.06.2026 12:34<br>Даты поездки: 17.06.2026 - 24.06.2026"
+    "Проверка: 14.06.2026 12:34<br>Даты поездки: 17.06.2026 - 24.06.2026",
+<<<<<<< Updated upstream
+    "Проверка: 14.06.2026 13:28<br>Даты поездки: 19.06.2026 - 26.06.2026"
   ],
   "meta": {
-    "dates": "17.06.2026 - 24.06.2026",
+    "dates": "19.06.2026 - 26.06.2026",
     "duration": "8 dni/7 nocy",
-    "offer_url": "https://fly.pl/wycieczka/turcja,alanya,payallar/xoria/pVwMykxNs8U4tAqqQVIarnAAogeq8sZtla_p5qQGYgsdVxQUa_jn7c1Td-lEV1el0AzFQqBE9SRVgwvoe60QZIpjxQQVg9YAJqBks3LjIuMXI1mwEVBxcAWAhWAlwIEV9A4wVP20BdJFOrJ1IAXpaUAUvtQ2EATOWMOiCc-pcJDQACEmMBAgy5_lwS/?operator=OREX&adults=2&children=2020-12-10&nsv=1&objectId=199160&transport=accommodation_flight&departureDate=2026-06-17&returnDate=2026-06-24&departureLocation=Warszawa%2CWarszawa+-+Radom&opt=delta&catering=all_inclusive",
+    "offer_url": "https://fly.pl/wycieczka/turcja,alanya,payallar/xoria/pvM9KkGCQc88oHI9yg22KqAAogeq8sZtla_p5qQGYgsdVxQbnc_BbvIRjxfVSKjyyfp_cqBE9SRVgw66C60QZIsEBQQVhsYAJqBks3LjIuMXI1mwEVBxcAWAhWAlwIEV9A4wVP20BdJFOrJ1IAXpaUAUvtQ2EATOWMOiCe-pcJDQACEmMBAgwff9pU/?operator=OREX&adults=2&children=2020-12-10&nsv=1&objectId=199160&transport=accommodation_flight&departureDate=2026-06-19&returnDate=2026-06-26&departureLocation=Warszawa%2CWarszawa+-+Radom&opt=delta&catering=all_inclusive",
     "image_url": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/11/Xoria-Deluxe-fly-pl.jpg"
   },
-  "deal_score": 36,
+  "deal_score": 27,
   "deal_label": "Bad",
   "deal_class": "bad",
-  "delta48": "+3.5%",
-  "delta_avg": "+22.4%",
+  "delta48": "+10.5%",
+  "delta_avg": "+30.7%",
   "confidence": "High",
-  "median_p": 6304.4195959259,
+  "median_p": 6302.80033749914,
+  "min_p": 5535.0,
+  "max_p": 8240.0,
+  "samples": 71,
+  "alert_threshold": 8.0,
+  "trip_dates_label": "19.06.2026 - 26.06.2026",
+=======
+    "Проверка: 14.06.2026 13:46<br>Даты поездки: 16.06.2026 - 24.06.2026"
+  ],
+  "meta": {
+    "dates": "16.06.2026 - 24.06.2026",
+    "duration": "9 dni/8 nocy",
+    "offer_url": "https://fly.pl/wycieczka/turcja,alanya,payallar/xoria/p5B2q58AxemF9rdyGHPLCoAAogHDaofonKfQlZU3tGpnlw9HxvaltyJS5Mn9dul-wto3QqBEpPSU4wrqm60QZIyDRQAVgkYAJqAlVBciEcEdBIuQT42wGrBNEBG5ipKBiO_wIBkb2TrQECEmMBAwyFKCOm/?operator=JOIN&adults=2&children=2020-12-10&nsv=1&objectId=199160&transport=accommodation_flight&departureDate=2026-06-16&returnDate=2026-06-24&departureLocation=Warszawa%2CWarszawa+-+Radom&opt=delta&catering=all_inclusive",
+    "image_url": "https://fly.pl/cdn/photo/assets/uploads/582/278/2018/11/Xoria-Deluxe-fly-pl.jpg"
+  },
+  "deal_score": 47,
+  "deal_label": "Normal",
+  "deal_class": "normal",
+  "delta48": "-9.8%",
+  "delta_avg": "+6.8%",
+  "confidence": "High",
+  "median_p": 6298.107868562536,
   "min_p": 5535.0,
   "max_p": 7718.0,
-  "samples": 70,
+  "samples": 71,
   "alert_threshold": 8.0,
-  "trip_dates_label": "17.06.2026 - 24.06.2026",
+  "trip_dates_label": "16.06.2026 - 24.06.2026",
+>>>>>>> Stashed changes
   "display_price_ceiling": 10000.0,
   "history_price_ceiling": 20000.0,
   "back_href": "index_filter_turkey_7_10_days.html"
