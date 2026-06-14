@@ -28,6 +28,7 @@ from departure_analytics import BASE_OFFER_FIELDS, write_departure_analytics
 from departure_identity import DEPARTURE_FIELDS, enrich_offers
 from filter_params import fly_query_param, resolve_config_url, should_use_dynamic_search_dates
 from filter_trip import (
+    has_multiple_trip_duration_buckets,
     is_fixed_trip_config,
     parse_trip_duration_buckets,
     select_trip_offers,
@@ -787,33 +788,45 @@ class TravelPriceMonitor:
                 best[key] = offer
         return list(best.values())
 
-    async def _scrape_offers_for_config(self) -> List[Dict[str, Any]]:
-        """Scrape once or once per duration bucket (fixed-trip virtual filters)."""
-        passes = trip_scrape_passes(self.config)
-        if len(passes) <= 1:
+    async def _collect_virtual_filter_offers(self) -> List[Dict[str, Any]]:
+        """Collect offers: one independent virtual filter per duration bucket."""
+        if not has_multiple_trip_duration_buckets(self.config):
             return await self.scrape_offers_with_retry()
 
-        merged: List[Dict[str, Any]] = []
+        virtual_datasets: List[Dict[str, Any]] = []
         saved_url = self.config.get('url')
         try:
+            passes = trip_scrape_passes(self.config)
             for index, spec in enumerate(passes, start=1):
                 scrape_url = str(spec.get('url') or '').strip()
-                if not scrape_url:
+                bucket_id = str(spec.get('bucket_id') or '').strip()
+                if not scrape_url or not bucket_id:
                     continue
                 self.config['url'] = scrape_url
-                label = str(spec.get('label') or spec.get('bucket_id') or f'pass {index}')
+                label = str(spec.get('label') or bucket_id)
                 duration_q = fly_query_param(scrape_url, 'duration') or '—'
                 logger.info(
-                    "📏 Scrape pass %s/%s: %s (duration=%s)",
+                    "📏 Virtual filter %s/%s: %s (duration=%s)",
                     index,
                     len(passes),
                     label,
                     duration_q,
                 )
-                chunk = await self.scrape_offers_with_retry()
-                logger.info("   → %s offers", len(chunk))
-                merged.extend(chunk)
-            return merged
+                raw = await self.scrape_offers_with_retry()
+                filtered = select_trip_offers(
+                    raw,
+                    self.config,
+                    force_bucket_id=bucket_id,
+                )
+                dataset = self._dedupe_lowest_per_hotel_and_bucket(filtered)
+                logger.info(
+                    "   → %s scraped, %s after trip-filter, %s in virtual dataset",
+                    len(raw),
+                    len(filtered),
+                    len(dataset),
+                )
+                virtual_datasets.extend(dataset)
+            return virtual_datasets
         finally:
             if saved_url is not None:
                 self.config['url'] = saved_url
@@ -1950,14 +1963,15 @@ class TravelPriceMonitor:
         logger.info(f"🚀 Начинаем мониторинг ({self.config_file}, data_dir={self.config.get('data_dir')})...")
         
         try:
-            offers = await self._scrape_offers_for_config()
-            
+            multi_bucket_trip = has_multiple_trip_duration_buckets(self.config)
+            offers = await self._collect_virtual_filter_offers()
+
             if not offers:
                 logger.error("❌ Не удалось собрать данные после всех попыток")
                 return False
 
             raw_count = len(offers)
-            if is_fixed_trip_config(self.config):
+            if is_fixed_trip_config(self.config) and not multi_bucket_trip:
                 t0 = time.monotonic()
                 offers = select_trip_offers(offers, self.config)
                 _log_timing("select_trip_offers", t0, f"{raw_count} → {len(offers)}")
@@ -1972,13 +1986,25 @@ class TravelPriceMonitor:
                     logger.warning("⚠️ После trip-фильтра не осталось офферов с подходящим вылетом")
                     return False
                 raw_count = len(offers)
+            elif multi_bucket_trip:
+                per_bucket: Dict[str, int] = {}
+                for offer in offers:
+                    bucket = str(offer.get("duration_bucket") or "").strip()
+                    per_bucket[bucket] = per_bucket.get(bucket, 0) + 1
+                logger.info(
+                    "📌 Virtual filters merged: %s offers (%s)",
+                    raw_count,
+                    ", ".join(f"{k}={v}" for k, v in sorted(per_bucket.items())),
+                )
 
             t0 = time.monotonic()
             self.save_departure_offers_append(offers)
             _log_timing("save_departure_offers + analytics", t0)
 
             t0 = time.monotonic()
-            if is_fixed_trip_config(self.config) and parse_trip_duration_buckets(self.config):
+            if multi_bucket_trip:
+                dedupe_label = "virtual_filter_datasets_ready"
+            elif is_fixed_trip_config(self.config) and parse_trip_duration_buckets(self.config):
                 offers = self._dedupe_lowest_per_hotel_and_bucket(offers)
                 dedupe_label = "dedupe_lowest_per_hotel_and_bucket"
             else:

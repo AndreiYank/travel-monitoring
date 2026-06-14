@@ -47,6 +47,10 @@ def trip_scrape_passes(config: Dict[str, Any]) -> List[Dict[str, Any]]:
     ]
 
 
+def has_multiple_trip_duration_buckets(config: Optional[Dict[str, Any]]) -> bool:
+    return is_fixed_trip_config(config) and len(parse_trip_duration_buckets(config or {})) > 1
+
+
 def parse_trip_duration_buckets(config: Dict[str, Any]) -> List[Dict[str, Any]]:
     raw = config.get("trip_duration_buckets") or []
     buckets: List[Dict[str, Any]] = []
@@ -151,13 +155,20 @@ def offer_departure_iso(offer: Dict[str, Any]) -> str:
 def select_trip_offers(
     offers: List[Dict[str, Any]],
     config: Dict[str, Any],
+    *,
+    force_bucket_id: str = "",
 ) -> List[Dict[str, Any]]:
-    """Keep best offer per hotel (and per duration bucket when configured)."""
+    """Keep best offer per hotel (and per duration bucket when configured).
+
+    When force_bucket_id is set (one fly.pl scrape pass = one virtual filter),
+    all kept rows are tagged with that bucket — independent of other passes.
+    """
     anchor = parse_trip_anchor_date(config)
     buckets = parse_trip_duration_buckets(config)
     if anchor is None:
         return offers
     slip_days = int(config.get("trip_departure_slip_days", 7))
+    forced_bucket = str(force_bucket_id or "").strip()
 
     candidates: List[tuple[int, float, str, Dict[str, Any]]] = []
     for offer in offers:
@@ -177,9 +188,12 @@ def select_trip_offers(
         name = str(offer.get("hotel_name") or "").strip()
         if not name:
             continue
-        bucket_id = trip_duration_bucket_id(offer_duration_days(offer), buckets)
-        if buckets and not bucket_id:
-            continue
+        if forced_bucket:
+            bucket_id = forced_bucket
+        else:
+            bucket_id = trip_duration_bucket_id(offer_duration_days(offer), buckets)
+            if buckets and not bucket_id:
+                continue
         candidates.append((delta_days, price, bucket_id, dict(offer)))
 
     best: Dict[Tuple[str, str], tuple[int, float, Dict[str, Any]]] = {}
