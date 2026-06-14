@@ -9,7 +9,7 @@ FILTER_GROUPS = [
             {
                 'id': 'turkey_vacation_jul18_2026',
                 'title': 'Турция • отпуск 18 июля',
-                'subtitle': '7–9 / 10–11 дн. • один фильтр, переключатель на странице',
+                'subtitle': '7–9 / 9–11 дн. • один фильтр, переключатель на странице',
                 'href': 'index_filter_turkey_vacation_jul18.html',
                 'charts_subdir': 'hotel-charts/filter_turkey_vacation_jul18_2026',
             },
