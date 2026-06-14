@@ -42744,10 +42744,75 @@
       "created_at": "2026-06-14T15:50:51.575403+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Yasmin Resort_2026-06-14_15-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Champion Holiday Village (Kemer)",
+      "duration_bucket": "",
+      "old_price": 8377.0,
+      "new_price": 9577.0,
+      "price_change": 1200.0,
+      "price_change_pct": 14.324937328399187,
+      "timestamp": "2026-06-14 17:14:45.185233+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T17:17:46.576062+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Champion Holiday Village (Kemer)_2026-06-14_17-14_+14.3"
+    },
+    {
+      "hotel_name": "Aydinbey Gold Dreams Turcja, Alanya, Turkler",
+      "duration_bucket": "",
+      "old_price": 6080.0,
+      "new_price": 6080.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 17:14:45.185233+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T17:17:46.576161+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Gold Dreams Turcja, Alanya, Turkler_2026-06-14_17-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Kaptan Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 6096.0,
+      "new_price": 6096.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 17:14:45.185233+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T17:17:46.576171+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kaptan Turcja, Alanya_2026-06-14_17-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Orka Lotus Beach",
+      "duration_bucket": "",
+      "old_price": 6193.0,
+      "new_price": 6193.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 17:14:45.185233+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T17:17:46.576179+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orka Lotus Beach_2026-06-14_17-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Turunc",
+      "duration_bucket": "",
+      "old_price": 6506.0,
+      "new_price": 6506.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 17:14:45.185233+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T17:17:46.576187+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc_2026-06-14_17-14_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-14T15:47:49.903425+00:00",
+    "last_processed_run": "2026-06-14T17:14:45.185233+00:00",
     "premium_state": {
       "First Class Turcja, Alanya, Mahmutlar": {
         "history_max": 5450.0,
@@ -43354,7 +43419,7 @@
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 8877.0,
+        "history_max": 9577.0,
         "premium_peak": null
       },
       "Zena Resort": {
@@ -44751,6 +44816,14 @@
       },
       "Amelia Beach Resort & Spa Turcja, Side, Kizilot": {
         "history_max": 6113.0,
+        "premium_peak": null
+      },
+      "Turunc Turcja, Marmaris, Turunc": {
+        "history_max": 5560.0,
+        "premium_peak": null
+      },
+      "Orka Lotus Beach Turcja, Marmaris, Icmeler": {
+        "history_max": 5840.0,
         "premium_peak": null
       }
     }
