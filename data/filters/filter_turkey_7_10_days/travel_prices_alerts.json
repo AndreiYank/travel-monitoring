@@ -37849,6 +37849,7 @@
       "unique_key": "Sural Resort_2026-06-14_10-34_zone_out_gone"
     },
     {
+<<<<<<< Updated upstream
       "hotel_name": "Selectum Noa",
       "duration_bucket": "",
       "old_price": 7628.0,
@@ -37925,6 +37926,32 @@
       "created_at": "2026-06-14T11:31:16.967931+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asteria Family Belek_2026-06-14_11-28_+9.8"
+=======
+      "hotel_name": "Salmakis Beach Resort",
+      "duration_bucket": "",
+      "old_price": 6335.0,
+      "new_price": 9471.0,
+      "price_change": 3136.0,
+      "price_change_pct": 49.50276243093923,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411412+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Salmakis Beach Resort_2026-06-14_11-46_+49.5"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 7718.0,
+      "new_price": 6728.0,
+      "price_change": -990.0,
+      "price_change_pct": -12.827157294635915,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-14T11:49:02.411444+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-06-14_11-46_-12.8"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "The Sense Deluxe",
@@ -37933,6 +37960,7 @@
       "new_price": 9525.0,
       "price_change": 1093.0,
       "price_change_pct": 12.962523719165087,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-06-14T11:31:16.967941+00:00",
@@ -37951,6 +37979,39 @@
       "created_at": "2026-06-14T11:31:16.967958+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Laur Experience & Elegance_2026-06-14_11-28_+24.8"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411456+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Sense Deluxe_2026-06-14_11-46_+13.0"
+    },
+    {
+      "hotel_name": "Armonia Holiday Village",
+      "duration_bucket": "",
+      "old_price": 6251.0,
+      "new_price": 8337.0,
+      "price_change": 2086.0,
+      "price_change_pct": 33.370660694288915,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411468+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armonia Holiday Village_2026-06-14_11-46_+33.4"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 5892.0,
+      "new_price": 4610.0,
+      "price_change": -1282.0,
+      "price_change_pct": -21.758316361167683,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-14T11:49:02.411480+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa Turcja, Alanya_2026-06-14_11-46_-21.8"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Sealife Family Resort",
@@ -37959,11 +38020,58 @@
       "new_price": 8019.0,
       "price_change": 622.0,
       "price_change_pct": 8.408814384209814,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-06-14T11:31:16.967969+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sealife Family Resort_2026-06-14_11-28_+8.4"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411491+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealife Family Resort_2026-06-14_11-46_+8.4"
+    },
+    {
+      "hotel_name": "Grand Park Lara",
+      "duration_bucket": "",
+      "old_price": 7223.0,
+      "new_price": 7934.0,
+      "price_change": 711.0,
+      "price_change_pct": 9.843555309428217,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411502+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Park Lara_2026-06-14_11-46_+9.8"
+    },
+    {
+      "hotel_name": "Laur Experience & Elegance",
+      "duration_bucket": "",
+      "old_price": 6538.0,
+      "new_price": 8162.0,
+      "price_change": 1624.0,
+      "price_change_pct": 24.839400428265524,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411511+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Laur Experience & Elegance_2026-06-14_11-46_+24.8"
+    },
+    {
+      "hotel_name": "Lucas Didim Resort (ex. Club Tarhan Serenity)",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 8457.0,
+      "price_change": 1200.0,
+      "price_change_pct": 16.53575857792476,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411523+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lucas Didim Resort (ex. Club Tarhan Serenity)_2026-06-14_11-46_+16.5"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
@@ -37972,11 +38080,32 @@
       "new_price": 4239.0,
       "price_change": -486.0,
       "price_change_pct": -10.285714285714285,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "price_drop",
       "created_at": "2026-06-14T11:31:16.967992+00:00",
       "threshold_percent": 8.0,
       "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-06-14_11-28_-10.3"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-14T11:49:02.411532+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-06-14_11-46_-10.3"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 6327.0,
+      "new_price": 7331.0,
+      "price_change": 1004.0,
+      "price_change_pct": 15.868500079026395,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411544+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-06-14_11-46_+15.9"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Antique Roman Palace",
@@ -37985,6 +38114,7 @@
       "new_price": 9091.0,
       "price_change": 814.0,
       "price_change_pct": 9.83448109218316,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-06-14T11:31:16.968003+00:00",
@@ -38003,6 +38133,13 @@
       "created_at": "2026-06-14T11:31:16.968012+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aydinbey Famous_2026-06-14_11-28_+9.7"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411553+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Antique Roman Palace_2026-06-14_11-46_+9.8"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Sensitive Premium Resort & Spa",
@@ -38011,6 +38148,7 @@
       "new_price": 7197.0,
       "price_change": 940.0,
       "price_change_pct": 15.023174045069524,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-06-14T11:31:16.968025+00:00",
@@ -38042,6 +38180,104 @@
       "created_at": "2026-06-14T11:31:16.968068+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Armonia Holiday Village_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411561+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sensitive Premium Resort & Spa_2026-06-14_11-46_+15.0"
+    },
+    {
+      "hotel_name": "Selectum Noa",
+      "duration_bucket": "",
+      "old_price": 7628.0,
+      "new_price": 8505.0,
+      "price_change": 877.0,
+      "price_change_pct": 11.497115888830624,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411570+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum Noa_2026-06-14_11-46_+11.5"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "",
+      "old_price": 7975.0,
+      "new_price": 6914.0,
+      "price_change": -1061.0,
+      "price_change_pct": -13.30407523510972,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-14T11:49:02.411578+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)_2026-06-14_11-46_-13.3"
+    },
+    {
+      "hotel_name": "Orange County Alanya",
+      "duration_bucket": "",
+      "old_price": 7700.0,
+      "new_price": 6757.0,
+      "price_change": -943.0,
+      "price_change_pct": -12.246753246753245,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-14T11:49:02.411588+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Alanya_2026-06-14_11-46_-12.2"
+    },
+    {
+      "hotel_name": "Side Alegria (ex Holiday Point & Spa)",
+      "duration_bucket": "",
+      "old_price": 7445.0,
+      "new_price": 8961.0,
+      "price_change": 1516.0,
+      "price_change_pct": 20.36265950302216,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411601+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Alegria (ex Holiday Point & Spa)_2026-06-14_11-46_+20.4"
+    },
+    {
+      "hotel_name": "Aydinbey Famous",
+      "duration_bucket": "",
+      "old_price": 6988.0,
+      "new_price": 7663.0,
+      "price_change": 675.0,
+      "price_change_pct": 9.65941614195764,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411611+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Famous_2026-06-14_11-46_+9.7"
+    },
+    {
+      "hotel_name": "Asteria Family Belek",
+      "duration_bucket": "",
+      "old_price": 7565.0,
+      "new_price": 8303.0,
+      "price_change": 738.0,
+      "price_change_pct": 9.755452742894912,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411622+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Belek_2026-06-14_11-46_+9.8"
+    },
+    {
+      "hotel_name": "Ramada Resort Lara",
+      "duration_bucket": "",
+      "old_price": 8267.0,
+      "new_price": 9459.0,
+      "price_change": 1192.0,
+      "price_change_pct": 14.418773436554977,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-14T11:49:02.411629+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada Resort Lara_2026-06-14_11-46_+14.4"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Asia Beach Resort and Spa Turcja, Alanya",
@@ -38050,11 +38286,19 @@
       "new_price": 4397.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968076+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asia Beach Resort and Spa Turcja, Alanya_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411667+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa Turcja, Alanya_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Aydinbey Gold Dreams",
@@ -38063,11 +38307,19 @@
       "new_price": 6280.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968083+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aydinbey Gold Dreams_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411676+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Gold Dreams_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Bodrum Holiday Resort",
@@ -38076,11 +38328,71 @@
       "new_price": 7199.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968090+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Bodrum Holiday Resort_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411683+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bodrum Holiday Resort_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Castival (ex. La Grande Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 7057.0,
+      "new_price": 7057.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411690+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Castival (ex. La Grande Resort & Spa)_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Delta by Marriott Bodrum",
+      "duration_bucket": "",
+      "old_price": 6257.0,
+      "new_price": 6257.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411697+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Delta by Marriott Bodrum_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Diamond Hill Resort",
+      "duration_bucket": "",
+      "old_price": 7081.0,
+      "new_price": 7081.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411703+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Hill Resort_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Diamond of Bodrum Turcja, Bodrum",
+      "duration_bucket": "",
+      "old_price": 4998.0,
+      "new_price": 4998.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411710+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond of Bodrum Turcja, Bodrum_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Grand Kaptan Turcja, Alanya",
@@ -38089,6 +38401,7 @@
       "new_price": 4817.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968097+00:00",
@@ -38107,6 +38420,13 @@
       "created_at": "2026-06-14T11:31:16.968104+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Grand Park Lara_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411717+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kaptan Turcja, Alanya_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Holiday Park Resort (Okurcalar)",
@@ -38115,6 +38435,7 @@
       "new_price": 6216.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968111+00:00",
@@ -38146,6 +38467,117 @@
       "created_at": "2026-06-14T11:31:16.968125+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Orange County Alanya_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411724+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Justiniano Club Park Conti",
+      "duration_bucket": "",
+      "old_price": 8790.0,
+      "new_price": 8790.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411731+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Justiniano Club Park Conti_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler)",
+      "duration_bucket": "",
+      "old_price": 8764.0,
+      "new_price": 8764.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411737+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler)_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "La Blanche Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7958.0,
+      "new_price": 7958.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411744+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "La Blanche Resort & Spa_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lake River Side Spa",
+      "duration_bucket": "",
+      "old_price": 6257.0,
+      "new_price": 6257.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411750+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lake River Side Spa_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 4746.0,
+      "new_price": 4746.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411757+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites Turcja, Marmaris_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 7057.0,
+      "new_price": 7057.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411764+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Orka Lotus Beach",
+      "duration_bucket": "",
+      "old_price": 7011.0,
+      "new_price": 7011.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411770+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orka Lotus Beach_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Incekum",
+      "duration_bucket": "",
+      "old_price": 6785.0,
+      "new_price": 6785.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411777+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Incekum_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Ozkaymak Kemer Marina Turcja, Kemer",
@@ -38154,6 +38586,7 @@
       "new_price": 5648.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968131+00:00",
@@ -38198,6 +38631,52 @@
       "created_at": "2026-06-14T11:31:16.968152+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Royal Asarlik Beach Turcja, Bodrum, Gumbet_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411784+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Kemer Marina Turcja, Kemer_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pine Bay Holiday Resort",
+      "duration_bucket": "",
+      "old_price": 7057.0,
+      "new_price": 7057.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411791+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pine Bay Holiday Resort_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Port River & Spa",
+      "duration_bucket": "",
+      "old_price": 6257.0,
+      "new_price": 6257.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411798+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River & Spa_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Primasol Hane Family Resort",
+      "duration_bucket": "",
+      "old_price": 8618.0,
+      "new_price": 8618.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411824+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Primasol Hane Family Resort_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Seaphoria Beach Resort Turcja, Alanya, Okurcalar",
@@ -38206,11 +38685,19 @@
       "new_price": 5611.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968158+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seaphoria Beach Resort Turcja, Alanya, Okurcalar_2026-06-14_11-28_zone_out_gone"
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411831+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaphoria Beach Resort Turcja, Alanya, Okurcalar_2026-06-14_11-46_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Sural",
@@ -38219,6 +38706,7 @@
       "new_price": 8991.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-06-14 11:28:25.683684+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-06-14T11:31:16.968165+00:00",
@@ -38280,6 +38768,30 @@
   ],
   "meta": {
     "last_processed_run": "2026-06-14T11:28:25.683684+00:00",
+=======
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411838+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sural_2026-06-14_11-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Vikingen Infinity Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8797.0,
+      "new_price": 8797.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 11:46:49.751327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T11:49:02.411845+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vikingen Infinity Resort & Spa_2026-06-14_11-46_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-06-14T11:46:49.751327+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "First Class Turcja, Alanya, Mahmutlar": {
         "history_max": 5450.0,
@@ -38490,7 +39002,7 @@
         "premium_peak": null
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 7182.0,
+        "history_max": 7331.0,
         "premium_peak": null
       },
       "Labranda Alantur Resort": {
@@ -39518,7 +40030,7 @@
         "premium_peak": null
       },
       "Salmakis Beach Resort": {
-        "history_max": 9433.0,
+        "history_max": 9471.0,
         "premium_peak": null
       },
       "Hillstone Bodrum (ex. Grand Yazici)": {
@@ -40126,7 +40638,7 @@
         "premium_peak": null
       },
       "Kimeros Park Holiday Village": {
-        "history_max": 8625.0,
+        "history_max": 9721.0,
         "premium_peak": null
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa) Turcja, Alanya, Konakli": {
@@ -40277,6 +40789,13 @@
         "history_max": 9534.0,
         "premium_peak": null
       },
+<<<<<<< Updated upstream
+=======
+      "Amelia Beach Resort & Spa Turcja, Side, Kizilot": {
+        "history_max": 6113.0,
+        "premium_peak": null
+      },
+>>>>>>> Stashed changes
       "Royal Seginus": {
         "history_max": 9720.0,
         "premium_peak": null
