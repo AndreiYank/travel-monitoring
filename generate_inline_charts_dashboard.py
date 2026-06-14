@@ -5674,6 +5674,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .hotels-section.full-width-table-section h3,
         .hotels-section.full-width-table-section .deal-legend,
         .hotels-section.full-width-table-section .table-filters,
+        .hotels-section.full-width-table-section .mobile-sort-bar,
         .hotels-section.full-width-table-section .pagination,
         .hotels-section.full-width-table-section .pagination-info {{
             margin-left: 0;
@@ -5717,7 +5718,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .hotels-table {{
-            width: max-content;
+            width: 100%;
             min-width: 960px;
             table-layout: fixed;
             border-collapse: collapse;
