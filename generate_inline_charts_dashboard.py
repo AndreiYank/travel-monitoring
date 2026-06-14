@@ -2067,7 +2067,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'ta_source': last.get('ta_source', ''),
         })
     _backfill_ta_for_latest_rows(latest_rows, df, config_file, data_file)
-    all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
+    if latest_rows:
+        all_hotels = pd.DataFrame(latest_rows).sort_values('price').reset_index(drop=True)
+    else:
+        all_hotels = pd.DataFrame(columns=[
+            'hotel_name', 'duration_bucket', 'row_id', 'price', 'dates', 'duration',
+            'scraped_at_local', 'url', 'from_airport', 'offer_url', 'image_url',
+            'ta_rating', 'ta_review_count', 'ta_source',
+        ])
     # Актуальная цена для таблицы — только последний ран; дельты — vs вся df_canonical.
     table_prices = {row['row_id']: float(row['price']) for row in latest_rows}
 
