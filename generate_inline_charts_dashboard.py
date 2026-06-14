@@ -7144,8 +7144,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             df_bucket = df_all_durations[
                 df_all_durations['duration_bucket'].astype(str) == bucket_id
             ].copy()
-            if df_bucket.empty:
-                continue
             print(f"📏 Сбор представления: {bucket.get('label', bucket_id)}")
             bundle = build_duration_view_bundle(
                 df_bucket,
@@ -8348,7 +8346,29 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         window.applyDurationView = function(bucketId) {
           const resolvedId = resolveBucketId(bucketId);
           const view = views[resolvedId];
-          if (!view) return;
+          if (!view) {
+            console.warn('duration view missing:', resolvedId);
+            switchRoot.querySelectorAll('.duration-global-btn').forEach((btn) => {
+              btn.classList.toggle('active', btn.dataset.durationBucket === resolvedId);
+            });
+            const cardsGrid = document.getElementById('cardsGrid');
+            if (cardsGrid) cardsGrid.innerHTML = '';
+            const tbody = document.querySelector('#hotelsTable tbody');
+            if (tbody) tbody.innerHTML = '';
+            window.__activeDurationHotelNames = new Set();
+            try {
+              localStorage.setItem(storageKey, resolvedId);
+            } catch (err) {
+              /* ignore */
+            }
+            if (location.hash !== '#' + resolvedId) {
+              history.replaceState(null, '', '#' + resolvedId);
+            }
+            if (typeof window._hotelTableFilterRows === 'function') {
+              window._hotelTableFilterRows();
+            }
+            return;
+          }
 
           const hero = view.hero || {};
           const stats = view.stats || {};
@@ -8437,7 +8457,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           storedBucket = '';
         }
         const initialBucket = resolveBucketId(hashBucket || storedBucket || switchRoot.dataset.defaultBucket);
-        if (initialBucket && initialBucket !== switchRoot.dataset.defaultBucket) {
+        if (initialBucket) {
           window.applyDurationView(initialBucket);
         }
       })();
