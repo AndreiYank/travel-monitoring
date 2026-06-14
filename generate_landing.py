@@ -172,14 +172,24 @@ def generate_landing(tiles=None, output_file='index.html'):
       margin-top: 24px;
       font-size: .9rem;
     }}
-    @media (max-width: 920px) {{
+    @media (max-width: 768px) {{
       .card {{ grid-column: span 12; }}
     }}
     @media (max-width: 640px) {{
       .container {{ padding: 14px; }}
       .header {{ padding: 20px 16px; border-radius: 16px; }}
-      .meta {{ width: 100%; justify-content: center; border-radius: 12px; }}
+      .header h1 {{ font-size: 1.45rem; }}
+      .subtitle {{ font-size: .9rem; line-height: 1.45; }}
+      .meta {{
+        width: 100%;
+        justify-content: center;
+        border-radius: 12px;
+        flex-wrap: wrap;
+        gap: .35rem .5rem;
+        padding: 10px 12px;
+      }}
       .card-body {{ padding: 16px; }}
+      .card-title {{ font-size: 1.05rem; }}
     }}
   </style>
 </head>
