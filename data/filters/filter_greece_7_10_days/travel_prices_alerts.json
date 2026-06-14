@@ -6773,10 +6773,49 @@
       "created_at": "2026-06-14T13:37:17.090270+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Breeze Beach_2026-06-14_13-35_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "Akti Coast Club",
+      "duration_bucket": "",
+      "old_price": 9682.0,
+      "new_price": 9682.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 14:37:24.689702+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T14:38:58.509311+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akti Coast Club_2026-06-14_14-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-14 14:37:24.689702+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-14T14:38:58.509338+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-06-14_14-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lindos Breeze Beach",
+      "duration_bucket": "",
+      "old_price": 11873.0,
+      "new_price": 9606.0,
+      "price_change": -2267.0,
+      "price_change_pct": -19.093742103933295,
+      "timestamp": "2026-06-14 14:37:24.689702+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-14T14:38:58.509363+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lindos Breeze Beach_2026-06-14_14-37_comeback_19.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-14T13:35:45.925715+00:00",
+    "last_processed_run": "2026-06-14T14:37:24.689702+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -6971,8 +7010,8 @@
         "premium_peak": 18667.0
       },
       "Elios Hill": {
-        "history_max": 12757.0,
-        "premium_peak": 12757.0
+        "history_max": 13957.0,
+        "premium_peak": 13957.0
       },
       "Knossos Beach": {
         "history_max": 18149.0,
