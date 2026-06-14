@@ -10,6 +10,18 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
+
+def _reference_time(series: pd.Series) -> datetime:
+    """Latest timestamp from a series, or now when history is empty."""
+    if series is None or series.empty:
+        return datetime.now()
+    value = series.max()
+    if value is None or pd.isna(value):
+        return datetime.now()
+    if hasattr(value, "to_pydatetime"):
+        return value.to_pydatetime()
+    return value
+
 from departure_airports import arrival_hub_label
 from departure_identity import parse_offer_path
 from hotel_deal_score import (
@@ -428,7 +440,7 @@ def build_duration_view_bundle(
     ref_time_series = df_canonical['scraped_at_display'] if not df_canonical.empty else df['scraped_at_display']
 
     def compute_changes(window_hours: int):
-        cutoff = (ref_time_series.max() or datetime.now()) - timedelta(hours=window_hours)
+        cutoff = _reference_time(ref_time_series) - timedelta(hours=window_hours)
         changes = []
         deltas_map = {}
         for group_key, grp in df_sorted.groupby(group_cols):
@@ -608,7 +620,7 @@ def build_duration_view_bundle(
         grp = grp.sort_values('scraped_at_display')
         if len(grp) < 2:
             continue
-        cutoff = (df['scraped_at_display'].max() or datetime.now()) - timedelta(hours=48)
+        cutoff = _reference_time(df['scraped_at_display']) - timedelta(hours=48)
         win = grp[grp['scraped_at_display'] >= cutoff]
         baseline_row = win.iloc[0] if len(win) >= 2 else grp.iloc[-2]
         latest_price = float(grp.iloc[-1]['price'])
@@ -843,7 +855,7 @@ def build_duration_view_bundle(
     scope_hotel_names = (
         set(df_canonical['hotel_name'].astype(str).tolist()) if not df_canonical.empty else set()
     )
-    latest_run_ts = df_canonical['scraped_at_display'].max() if not df_canonical.empty else None
+    latest_run_ts = _reference_time(df_canonical['scraped_at_display']) if not df_canonical.empty else None
     alerts_chips_html = ""
     alerts_content_html = ""
     if alerts is not None:
