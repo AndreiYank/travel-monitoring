@@ -7761,6 +7761,26 @@
       "hot_score": 78.0
     },
     {
+      "event_time": "2026-06-15T23:01:49+0000",
+      "departure_key": "turcja|alanya|2026-06-17|2026-06-24|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-17",
+      "return_date": "2026-06-24",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 5811.0,
+      "min_drop_pct": -8.06,
+      "p10_drop_pct": -7.01,
+      "median_drop_pct": -9.98,
+      "hotel_count": 22.0,
+      "hotel_delta": -1,
+      "hot_score": 78.0
+    },
+    {
       "event_time": "2026-06-15T13:03:27+0000",
       "departure_key": "turcja|alanya|2026-06-20|2026-06-27|7|Warszawa,Warszawa - Radom|2+1",
       "event_type": "late_price_dump",
@@ -7798,6 +7818,26 @@
       "median_drop_pct": -5.06,
       "hotel_count": 21.0,
       "hotel_delta": -4,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-06-15T23:01:49+0000",
+      "departure_key": "turcja|alanya|2026-06-24|2026-07-01|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "turcja",
+      "region": "alanya",
+      "departure_date": "2026-06-24",
+      "return_date": "2026-07-01",
+      "nights": 7.0,
+      "days_to_departure": 9.0,
+      "old_min_price": "",
+      "new_min_price": 5658.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": -0.31,
+      "median_drop_pct": -5.06,
+      "hotel_count": 18.0,
+      "hotel_delta": -7,
       "hot_score": 0.0
     },
     {
@@ -36359,6 +36399,26 @@
       "hotel_count": 24.0,
       "hotel_delta": -13,
       "hot_score": 63.0
+    },
+    {
+      "event_time": "2026-06-15T23:01:49+0000",
+      "departure_key": "turcja|side|2026-06-17|2026-06-24|7|Warszawa,Warszawa - Radom|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-17",
+      "return_date": "2026-06-24",
+      "nights": 7.0,
+      "days_to_departure": 2.0,
+      "old_min_price": "",
+      "new_min_price": 5462.0,
+      "min_drop_pct": -8.58,
+      "p10_drop_pct": -9.74,
+      "median_drop_pct": 1.06,
+      "hotel_count": 25.0,
+      "hotel_delta": -8,
+      "hot_score": 60.0
     }
   ]
 }

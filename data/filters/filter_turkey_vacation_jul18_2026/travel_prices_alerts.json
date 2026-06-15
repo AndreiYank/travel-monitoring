@@ -546,10 +546,88 @@
       "created_at": "2026-06-15T20:55:02.960709+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|7-9_2026-06-15_20-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Azura World (ex. Wyndham Alanya)",
+      "duration_bucket": "7-9",
+      "old_price": 9603.0,
+      "new_price": 10615.0,
+      "price_change": 1012.0,
+      "price_change_pct": 10.538373424971363,
+      "timestamp": "2026-06-15 23:04:01.531674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:05:06.461698+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azura World (ex. Wyndham Alanya)|7-9_2026-06-15_23-04_zone_out_+10.5"
+    },
+    {
+      "hotel_name": "Beach Club Doganay",
+      "duration_bucket": "7-9",
+      "old_price": 9401.0,
+      "new_price": 9401.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 23:04:01.531674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:05:06.461728+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Beach Club Doganay|7-9_2026-06-15_23-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9568.0,
+      "new_price": 10708.0,
+      "price_change": 1140.0,
+      "price_change_pct": 11.914715719063546,
+      "timestamp": "2026-06-15 23:04:01.531674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:05:06.461741+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort|7-9_2026-06-15_23-04_zone_out_+11.9"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9963.0,
+      "new_price": 9963.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 23:04:01.531674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:05:06.461751+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)|7-9_2026-06-15_23-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9276.0,
+      "new_price": 10416.0,
+      "price_change": 1140.0,
+      "price_change_pct": 12.289780077619664,
+      "timestamp": "2026-06-15 23:04:01.531674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:05:06.461761+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort|7-9_2026-06-15_23-04_zone_out_+12.3"
+    },
+    {
+      "hotel_name": "Terrace Elite Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9564.0,
+      "new_price": 10676.0,
+      "price_change": 1112.0,
+      "price_change_pct": 11.626934337097449,
+      "timestamp": "2026-06-15 23:04:01.531674+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:05:06.461769+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Terrace Elite Resort|7-9_2026-06-15_23-04_zone_out_+11.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T20:53:51.561819+00:00",
+    "last_processed_run": "2026-06-15T23:04:01.531674+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -764,7 +842,7 @@
         "premium_peak": 10471.0
       },
       "Fantasia De Luxe Kusadasi|7-9": {
-        "history_max": 9116.0,
+        "history_max": 9225.0,
         "premium_peak": null
       },
       "Utopia World|7-9": {
@@ -2418,6 +2496,58 @@
       "Ramada Resort Kusadasi|7-9": {
         "history_max": 11191.0,
         "premium_peak": 11191.0
+      },
+      "Tusan Beach Resort|7-9": {
+        "history_max": 10727.0,
+        "premium_peak": 10727.0
+      },
+      "Aria Claros Beach and Spa Resort|7-9": {
+        "history_max": 11160.0,
+        "premium_peak": 11160.0
+      },
+      "Crystal Family Comfort Collection|7-9": {
+        "history_max": 12405.0,
+        "premium_peak": 12405.0
+      },
+      "Flora Garden Ephesus|9-11": {
+        "history_max": 13156.0,
+        "premium_peak": 13156.0
+      },
+      "Fantasia De Luxe Kusadasi|9-11": {
+        "history_max": 12932.0,
+        "premium_peak": 12932.0
+      },
+      "Duja Didim|9-11": {
+        "history_max": 15056.0,
+        "premium_peak": 15056.0
+      },
+      "Garden of Sun Spa & Wellness|9-11": {
+        "history_max": 11501.0,
+        "premium_peak": 11501.0
+      },
+      "Aria Claros Beach and Spa Resort|9-11": {
+        "history_max": 13841.0,
+        "premium_peak": 13841.0
+      },
+      "Richmond Ephesus|9-11": {
+        "history_max": 14714.0,
+        "premium_peak": 14714.0
+      },
+      "Signature Blue Resort (ex. Grand Ozcelik)|9-11": {
+        "history_max": 11682.0,
+        "premium_peak": 11682.0
+      },
+      "Tusan Beach Resort|9-11": {
+        "history_max": 13029.0,
+        "premium_peak": 13029.0
+      },
+      "Ladonia Adakule|9-11": {
+        "history_max": 11081.0,
+        "premium_peak": 11081.0
+      },
+      "Megasaray Resort Side (ex. Aska Side Grand Prestige)|9-11": {
+        "history_max": 13699.0,
+        "premium_peak": 13699.0
       }
     }
   }

@@ -2379,10 +2379,88 @@
       "created_at": "2026-06-15T20:54:21.027957+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Riolavitas SPA & Resort_2026-06-15_20-53_comeback_9.5"
+    },
+    {
+      "hotel_name": "Orange County Alanya",
+      "duration_bucket": "",
+      "old_price": 7459.0,
+      "new_price": 9275.0,
+      "price_change": 1816.0,
+      "price_change_pct": 24.346427135004692,
+      "timestamp": "2026-06-15 23:04:00.569038+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T23:04:39.514936+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Alanya_2026-06-15_23-04_+24.3"
+    },
+    {
+      "hotel_name": "Side Moon Palace",
+      "duration_bucket": "",
+      "old_price": 6155.0,
+      "new_price": 8041.0,
+      "price_change": 1886.0,
+      "price_change_pct": 30.641754670999187,
+      "timestamp": "2026-06-15 23:04:00.569038+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T23:04:39.515000+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Moon Palace_2026-06-15_23-04_+30.6"
+    },
+    {
+      "hotel_name": "Orange County Belek",
+      "duration_bucket": "",
+      "old_price": 8919.0,
+      "new_price": 10724.0,
+      "price_change": 1805.0,
+      "price_change_pct": 20.237694808835073,
+      "timestamp": "2026-06-15 23:04:00.569038+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:04:39.515031+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Belek_2026-06-15_23-04_zone_out_+20.2"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 8280.0,
+      "new_price": 8280.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 23:04:00.569038+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:04:39.515040+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-06-15_23-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "",
+      "old_price": 9932.0,
+      "new_price": 10972.0,
+      "price_change": 1040.0,
+      "price_change_pct": 10.471204188481675,
+      "timestamp": "2026-06-15 23:04:00.569038+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:04:39.515049+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort_2026-06-15_23-04_zone_out_+10.5"
+    },
+    {
+      "hotel_name": "Saphir Hotel & Villas",
+      "duration_bucket": "",
+      "old_price": 9363.0,
+      "new_price": 11192.0,
+      "price_change": 1829.0,
+      "price_change_pct": 19.53433728505821,
+      "timestamp": "2026-06-15 23:04:00.569038+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T23:04:39.515057+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Saphir Hotel & Villas_2026-06-15_23-04_zone_out_+19.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T20:53:41.824980+00:00",
+    "last_processed_run": "2026-06-15T23:04:00.569038+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11975.0,
@@ -2741,8 +2819,8 @@
         "premium_peak": 12173.0
       },
       "Grand Pasa": {
-        "history_max": 12644.0,
-        "premium_peak": 12644.0
+        "history_max": 12679.0,
+        "premium_peak": 12679.0
       },
       "Grand Park Lara": {
         "history_max": 10206.0,
@@ -2797,16 +2875,16 @@
         "premium_peak": 10510.0
       },
       "Flora Garden Ephesus": {
-        "history_max": 10433.0,
-        "premium_peak": 10433.0
+        "history_max": 10762.0,
+        "premium_peak": 10762.0
       },
       "First Class": {
         "history_max": 5891.0,
         "premium_peak": null
       },
       "Fantasia De Luxe Kusadasi": {
-        "history_max": 11473.0,
-        "premium_peak": 11473.0
+        "history_max": 11849.0,
+        "premium_peak": 11849.0
       },
       "Fame Residence (Kemer)": {
         "history_max": 13100.0,
@@ -2845,7 +2923,7 @@
         "premium_peak": 10474.0
       },
       "Terrace Elite Resort": {
-        "history_max": 9390.0,
+        "history_max": 9841.0,
         "premium_peak": null
       },
       "Terrace Beach Resort (Side)": {
@@ -3017,7 +3095,7 @@
         "premium_peak": null
       },
       "Unique Residence Golf Spa": {
-        "history_max": 9707.0,
+        "history_max": 9958.0,
         "premium_peak": null
       },
       "Ulusoy Kemer Holiday Club": {
@@ -3025,8 +3103,8 @@
         "premium_peak": 11797.0
       },
       "Tusan Beach Resort": {
-        "history_max": 12430.0,
-        "premium_peak": 12430.0
+        "history_max": 12681.0,
+        "premium_peak": 12681.0
       },
       "Turunc Premium": {
         "history_max": 13160.0,
@@ -3093,16 +3171,16 @@
         "premium_peak": 11416.0
       },
       "Port Side Resort": {
-        "history_max": 12114.0,
-        "premium_peak": 12114.0
+        "history_max": 12738.0,
+        "premium_peak": 12738.0
       },
       "Port River & Spa": {
         "history_max": 9397.0,
         "premium_peak": null
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
-        "history_max": 10490.0,
-        "premium_peak": 10490.0
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Queens Park Le Jardin Resort": {
         "history_max": 13474.0,
@@ -3409,8 +3487,8 @@
         "premium_peak": null
       },
       "Aria Claros Beach and Spa Resort": {
-        "history_max": 12644.0,
-        "premium_peak": 12644.0
+        "history_max": 12895.0,
+        "premium_peak": 12895.0
       },
       "Aventura Park": {
         "history_max": 10197.0,
@@ -3453,8 +3531,8 @@
         "premium_peak": 13119.0
       },
       "Club Atlantis Resort": {
-        "history_max": 13249.0,
-        "premium_peak": 13249.0
+        "history_max": 13500.0,
+        "premium_peak": 13500.0
       },
       "Andriake Beach Club": {
         "history_max": 11093.0,
@@ -3537,8 +3615,8 @@
         "premium_peak": 10974.0
       },
       "Signature Blue Resort (ex. Grand Ozcelik)": {
-        "history_max": 10843.0,
-        "premium_peak": 10843.0
+        "history_max": 11220.0,
+        "premium_peak": 11220.0
       },
       "Side Crown Serenity": {
         "history_max": 8683.0,
