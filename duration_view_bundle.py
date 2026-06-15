@@ -707,7 +707,9 @@ def build_duration_view_bundle(
             f'<a class="card-btn" href="{html_lib.escape(offer_url, quote=True)}" target="_blank">Открыть оффер</a>'
             if offer_url.strip() else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
         )
-        forecast = g.determine_price_forecast(deal_score, confidence, d_avg, d48)
+        forecast = g.determine_price_forecast(
+            deal_score, confidence, d_avg, d48, deal_info.get('comeback_drop_pct'),
+        )
         dep_date_esc = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
         dep_key_esc = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
 
@@ -789,7 +791,10 @@ def build_duration_view_bundle(
         ta_html = g._render_ta_rating_html(hotel.get('ta_rating', ''), hotel.get('ta_review_count', ''))
         ta_sort_val = g._parse_ta_rating_value(hotel.get('ta_rating', ''))
         ta_data_attr = f"{ta_sort_val:.2f}" if ta_sort_val is not None else "-1"
-        forecast = g.determine_price_forecast(deal_score, confidence_level, d_avg_tbl, d48_tbl)
+        forecast = g.determine_price_forecast(
+            deal_score, confidence_level, d_avg_tbl, d48_tbl,
+            deal_info.get('comeback_drop_pct'),
+        )
         dep_date_esc = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
         dep_key_esc = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
         
