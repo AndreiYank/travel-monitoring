@@ -196,6 +196,9 @@ def pack_duration_view_bundle(
     trend_x: list,
     trend_y: list,
     trend_detailed: list,
+    offers_count_dates: list,
+    offers_count_values: list,
+    offers_count_meta: list,
     changes_html: str,
     entry_signal_html: str,
     cards_html: str,
@@ -233,6 +236,9 @@ def pack_duration_view_bundle(
             'trend_x': trend_x,
             'trend_y': trend_y,
             'trend_detailed': trend_detailed,
+            'offers_count_dates': offers_count_dates,
+            'offers_count_values': offers_count_values,
+            'offers_count_meta': offers_count_meta,
         },
         'html': {
             'changes': changes_html,
@@ -403,6 +409,13 @@ def build_duration_view_bundle(
                 'price_changes': price_changes,
             })
         prev_hotel_prices = current_hotel_prices.copy()
+
+    offers_count_timeline = g.build_daily_offers_count_timeline(
+        df,
+        ceiling_val=ceiling_val,
+        group_cols=group_cols,
+        pick='last',
+    )
 
     latest_run_slice = g._last_run_slice(df_canonical)
     df_sorted_all = latest_run_slice.sort_values(group_cols + ['scraped_at_display'])
@@ -891,6 +904,9 @@ def build_duration_view_bundle(
         trend_x=trend_index_x_values,
         trend_y=trend_index_y_values,
         trend_detailed=trend_index_detailed_data,
+        offers_count_dates=offers_count_timeline['dates'],
+        offers_count_values=offers_count_timeline['counts'],
+        offers_count_meta=offers_count_timeline['meta'],
         changes_html=changes_html,
         entry_signal_html=entry_signal_html,
         cards_html=cards_html,
