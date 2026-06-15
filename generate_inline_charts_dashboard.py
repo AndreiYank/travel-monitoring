@@ -635,6 +635,25 @@ def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None, 
     return "Normal", "normal", "↔️ Normal"
 
 
+def determine_price_forecast(deal_score, confidence, avg_pct, delta48_pct):
+    """Returns price forecast classification: {text, class, icon}."""
+    if confidence == "Low":
+        return {'text': 'Мало данных', 'class': 'forecast-nodata', 'icon': '⏳'}
+    
+    avg_pct_val = float(avg_pct) if avg_pct is not None else 0.0
+    delta48_pct_val = float(delta48_pct) if delta48_pct is not None else 0.0
+    
+    if avg_pct_val < -5.0:
+        if delta48_pct_val <= 0.0:
+            return {'text': 'Покупать', 'class': 'forecast-buy', 'icon': '🟢'}
+        else:
+            return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
+    elif -5.0 <= avg_pct_val <= 5.0:
+        return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
+    else:
+        return {'text': 'Дорого', 'class': 'forecast-expensive', 'icon': '🔴'}
+
+
 def _table_deal_badge_compact(display_badge: str) -> str:
     text = str(display_badge or "").strip()
     return text.split()[0] if text else ""
@@ -2163,6 +2182,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             'ta_rating': last.get('ta_rating', ''),
             'ta_review_count': last.get('ta_review_count', ''),
             'ta_source': last.get('ta_source', ''),
+            'departure_date': last.get('departure_date', None),
+            'departure_key': last.get('departure_key', None),
         })
     _backfill_ta_for_latest_rows(latest_rows, df, config_file, data_file)
     if latest_rows:
@@ -2171,7 +2192,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         all_hotels = pd.DataFrame(columns=[
             'hotel_name', 'duration_bucket', 'row_id', 'price', 'dates', 'duration',
             'scraped_at_local', 'url', 'from_airport', 'offer_url', 'image_url',
-            'ta_rating', 'ta_review_count', 'ta_source',
+            'ta_rating', 'ta_review_count', 'ta_source', 'departure_date', 'departure_key',
         ])
     # Актуальная цена для таблицы — только последний ран; дельты — vs вся df_canonical.
     table_prices = {row['row_id']: float(row['price']) for row in latest_rows}
@@ -2924,6 +2945,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             f'<span class="comeback-badge">{comeback["badge_html"]}</span>'
             if comeback else ''
         )
+        
+        forecast = determine_price_forecast(deal_score, confidence, d_avg_for_badge, d48_for_badge)
 
         hotel_cards.append({
             "hotel_name": hotel_name,
@@ -2943,6 +2966,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "deal_class": deal_class,
             "confidence": confidence,
             "comeback_html": comeback_html,
+            "departure_date": str(hotel.get('departure_date') or ''),
+            "departure_key": str(hotel.get('departure_key') or ''),
+            "forecast_text": forecast["text"],
+            "forecast_class": forecast["class"],
+            "forecast_icon": forecast["icon"],
         })
 
     hotel_meta_by_name = {c["hotel_name"]: c for c in hotel_cards}
@@ -5825,16 +5853,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-size: 0.875rem;
         }}
 
-        .hotels-table col.col-w-hotel {{ width: 29%; }}
+        .hotels-table col.col-w-hotel {{ width: 22%; }}
         .hotels-table col.col-w-price {{ width: 8.2%; }}
         .hotels-table col.col-w-deal {{ width: 8.5%; }}
+        .hotels-table col.col-w-forecast {{ width: 9%; }}
         .hotels-table col.col-w-ta {{ width: 8.5%; }}
         .hotels-table col.col-w-d48 {{ width: 5.5%; }}
         .hotels-table col.col-w-davg {{ width: 7%; }}
         .hotels-table col.col-w-region {{ width: 10%; }}
-        .hotels-table col.col-w-dates {{ width: 15%; }}
+        .hotels-table col.col-w-dates {{ width: 13.4%; }}
         .hotels-table col.col-w-dur {{ width: 7.8%; }}
-        .hotels-table col.col-w-link {{ width: 8.6%; }}
+        .hotels-table col.col-w-link {{ width: 5%; }}
 
         .hotels-table td.col-w-deal-td,
         .hotels-table td.col-w-davg-td {{
@@ -6894,6 +6923,200 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .hover-thumb {{ position: absolute; display: none; width: 240px; height: 160px; background: #fff; border: 1px solid #ddd; box-shadow: 0 2px 8px rgba(0,0,0,.15); border-radius: 6px; padding: 4px; z-index: 9999; }}
         .hover-thumb img {{ width: 100%; height: 100%; object-fit: cover; border-radius: 4px; }}
         
+        /* Watchlist Star Button */
+        .watchlist-star-btn {{
+            background: none;
+            border: none;
+            color: #94a3b8;
+            font-size: 1.25rem;
+            cursor: pointer;
+            padding: 0 4px;
+            transition: transform 0.2s ease, color 0.2s ease;
+            vertical-align: middle;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            outline: none;
+        }}
+        .watchlist-star-btn:hover {{
+            transform: scale(1.25);
+            color: #f59e0b;
+        }}
+        .watchlist-star-btn.starred {{
+            color: #f59e0b;
+        }}
+        
+        .hotel-card-img {{
+            position: relative;
+        }}
+        .watchlist-star-btn.card-star {{
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: rgba(255, 255, 255, 0.75);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+            border-radius: 50%;
+            width: 32px;
+            height: 32px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            z-index: 10;
+            padding: 0;
+            color: #94a3b8;
+        }}
+        .watchlist-star-btn.card-star.starred {{
+            color: #f59e0b;
+            background: rgba(255, 255, 255, 0.9);
+        }}
+        .dark-theme .watchlist-star-btn.card-star {{
+            background: rgba(15, 23, 42, 0.75);
+            color: #64748b;
+        }}
+        .dark-theme .watchlist-star-btn.card-star.starred {{
+            background: rgba(15, 23, 42, 0.9);
+            color: #f59e0b;
+        }}
+
+        /* Price Forecast Pills */
+        .forecast-pill {{
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.025em;
+            white-space: nowrap;
+            width: fit-content;
+        }}
+        .forecast-buy {{
+            background-color: #dcfce7;
+            color: #15803d;
+        }}
+        .forecast-wait {{
+            background-color: #fef9c3;
+            color: #a16207;
+        }}
+        .forecast-expensive {{
+            background-color: #fee2e2;
+            color: #b91c1c;
+        }}
+        .forecast-nodata {{
+            background-color: #f1f5f9;
+            color: #475569;
+        }}
+        
+        .dark-theme .forecast-buy {{
+            background-color: rgba(21, 128, 61, 0.2);
+            color: #4ade80;
+        }}
+        .dark-theme .forecast-wait {{
+            background-color: rgba(161, 98, 7, 0.2);
+            color: #facc15;
+        }}
+        .dark-theme .forecast-expensive {{
+            background-color: rgba(185, 28, 28, 0.2);
+            color: #f87171;
+        }}
+        .dark-theme .forecast-nodata {{
+            background-color: rgba(71, 85, 105, 0.2);
+            color: #94a3b8;
+        }}
+
+        /* Calendar Heatmap Section */
+        .calendar-section h3 {{
+            margin-top: 0;
+            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+            color: var(--text-primary);
+        }}
+        .calendar-month-container {{
+            margin-bottom: 1.5rem;
+            background: rgba(255,255,255,0.7);
+            border-radius: var(--radius-md);
+            padding: 1rem;
+            border: 1px solid var(--border-soft);
+        }}
+        .dark-theme .calendar-month-container {{
+            background: rgba(15, 23, 42, 0.4);
+        }}
+        .calendar-month-title {{
+            font-size: 0.95rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            text-transform: capitalize;
+            color: var(--text-primary);
+            border-left: 3px solid var(--color-primary);
+            padding-left: 8px;
+        }}
+        .calendar-grid-container {{
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            min-width: 280px;
+        }}
+        .calendar-day-header {{
+            text-align: center;
+            font-weight: 700;
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            padding: 4px 0;
+            text-transform: uppercase;
+        }}
+        .calendar-day-cell {{
+            aspect-ratio: 1.25;
+            border-radius: var(--radius-sm);
+            padding: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border: 1px solid var(--border-soft);
+            position: relative;
+            background-color: var(--panel-bg);
+            color: var(--text-primary);
+        }}
+        @media (max-width: 600px) {{
+            .calendar-day-cell {{
+                aspect-ratio: 1;
+                padding: 4px;
+            }}
+        }}
+        .calendar-day-cell:hover {{
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            border-color: var(--color-primary);
+        }}
+        .calendar-day-cell.empty {{
+            background: rgba(241, 245, 249, 0.5) !important;
+            color: #cbd5e1;
+            cursor: default;
+            border: 1px dashed var(--border-soft);
+        }}
+        .dark-theme .calendar-day-cell.empty {{
+            background: rgba(30, 41, 59, 0.3) !important;
+            color: #475569;
+        }}
+        .calendar-day-cell.empty:hover {{
+            transform: none;
+            box-shadow: none;
+            border-color: var(--border-soft);
+        }}
+        .calendar-day-number {{
+            font-weight: 700;
+        }}
+        .calendar-day-price {{
+            font-weight: 800;
+            align-self: flex-end;
+            font-size: 0.75rem;
+        }}
+        .calendar-day-cell.selected {{
+            box-shadow: 0 0 0 3px var(--color-primary) !important;
+            border-color: var(--color-primary) !important;
+        }}
     </style>
 </head>
 <body>
@@ -7019,13 +7242,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         ) if c["image_url"] else '<div>Фото отеля</div>'
         offer_btn = f'<a class="card-btn" href="{html_lib.escape(c["offer_url"], quote=True)}" target="_blank">Открыть оффер</a>' if c["offer_url"] else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
         card_article = f"""
-            <article class="hotel-card" data-duration-bucket="{html_lib.escape(c.get('duration_bucket', ''), quote=True)}">
-                <div class="hotel-card-img">{img_html}</div>
+            <article class="hotel-card" data-duration-bucket="{html_lib.escape(c.get('duration_bucket', ''), quote=True)}" data-departure-date="{html_lib.escape(c.get('departure_date', ''), quote=True)}" data-departure-key="{html_lib.escape(c.get('departure_key', ''), quote=True)}">
+                <div class="hotel-card-img">{img_html}<button class="watchlist-star-btn card-star" data-hotel-name="{html_lib.escape(c['hotel_name'], quote=True)}" title="Добавить в избранное">☆</button></div>
                 <div class="hotel-card-body">
                     <h4 class="hotel-card-title">{c["hotel_name_html"]}</h4>
                     <div class="hotel-card-meta">
                         <div class="hotel-card-price">{c["price"]:.0f} PLN</div>
                         <span class="deal-pill {c["deal_class"]}">Deal {c["deal_score"]} • {c["deal_label"]}</span>
+                        <span class="forecast-pill {c['forecast_class']}">{c['forecast_icon']} {c['forecast_text']}</span>
                     </div>
                     {c["comeback_html"]}
                     <div class="hotel-card-stats">
@@ -7225,6 +7449,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div id="avgTop10" style="height:300px;"></div>
         </div>
 
+        <details class="dashboard-fold" id="calendarFold">
+            <summary>
+                <span>📅 Ценовой календарь по датам вылета</span>
+                <span class="fold-title-meta">Тепловая карта цен</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+                <div class="calendar-section">
+                    <h3>📅 Календарь минимальных цен по датам вылета</h3>
+                    <p class="chart-section-note">Показывает минимальную цену предложения на каждую дату вылета. Зелёные ячейки соответствуют наиболее дешёвым датам. Нажмите на дату, чтобы отфильтровать отели ниже.</p>
+                    <div id="calendarHeatmapWrapper" style="margin-top: 1rem; overflow-x: auto;"></div>
+                </div>
+            </div>
+        </details>
+
         <details class="dashboard-fold" id="offersCountFold">
             <summary>
                 <span>Количество предложений по дням</span>
@@ -7377,6 +7616,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <option value="">Все регионы</option>
                     {region_filter_options_html}
                 </select>
+                <button class="filter-button" id="watchlistToggle" style="padding: 0.75rem 1rem; background: #cbd5e1; color: #1e293b; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">⭐ Избранные</button>
                 <button class="filter-button" id="clearFilters" style="padding: 0.75rem 1rem; background: var(--gradient-primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600;">Очистить</button>
             </div>
 
@@ -7406,6 +7646,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <col class="col-w-hotel">
                     <col class="col-w-price">
                     <col class="col-w-deal">
+                    <col class="col-w-forecast">
                     <col class="col-w-ta">
                     <col class="col-w-d48">
                     <col class="col-w-davg">
@@ -7419,6 +7660,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <th class="sortable col-hotel" data-sort="hotel">Отель</th>
                         <th class="sortable col-tight" data-sort="price">Цена</th>
                         <th class="sortable col-tight" data-sort="deal">Deal Score</th>
+                        <th class="sortable col-tight" data-sort="forecast">Прогноз</th>
                         <th class="sortable col-tight th-ta col-hide-sm" data-sort="ta" title="Рейтинг на TripAdvisor">{TRIPADVISOR_HEADER_ICON_HTML}</th>
                         <th class="sortable col-tight" data-sort="delta48">Δ 48ч</th>
                         <th class="sortable col-tight col-hide-sm" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней</th>
@@ -7516,13 +7758,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         ta_sort_val = _parse_ta_rating_value(hotel.get('ta_rating', ''))
         ta_data_attr = f"{ta_sort_val:.2f}" if ta_sort_val is not None else "-1"
         
+        forecast = determine_price_forecast(deal_score, confidence_level, d_avg_tbl, d48_tbl)
+        departure_date_attr = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
+        departure_key_attr = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
+
         table_rows_html_parts.append(f"""
-                    <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}">
-                        <td class="hotel-name col-hotel" data-label="Отель"><a class=\"open-chart-link hotel-hover-link\" href=\"{chart_href}\" target=\"_blank\" data-hotel-name=\"{hotel_name_attr}\">{hotel_name_html}</a></td>
+                    <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}" data-departure-date="{departure_date_attr}" data-departure-key="{departure_key_attr}">
+                        <td class="hotel-name col-hotel" data-label="Отель"><button class="watchlist-star-btn" data-hotel-name="{hotel_name_attr}" title="Добавить в избранное">☆</button><a class="open-chart-link hotel-hover-link" href="{chart_href}" target="_blank" data-hotel-name="{hotel_name_attr}">{hotel_name_html}</a></td>
                         <td class="price col-tight" data-label="Цена" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}</td>
                         <td class="col-tight col-w-deal-td" data-label="Deal" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
+                        <td class="col-tight col-w-forecast-td" data-label="Прогноз" data-sort-value="{forecast['text']}"><span class="forecast-pill {forecast['class']}">{forecast['icon']} {forecast['text']}</span></td>
                         <td class="col-tight col-w-ta-td col-hide-sm" data-label="TripAdvisor">{ta_rating_html}</td>
-                        <td class="col-tight col-w-d48-td" data-label="Δ 48ч" data-sort-value="{delta_info[1] if delta_info else 0}"><span class=\"{delta_class}\">{delta_display}</span></td>
+                        <td class="col-tight col-w-d48-td" data-label="Δ 48ч" data-sort-value="{delta_info[1] if delta_info else 0}"><span class="{delta_class}">{delta_display}</span></td>
                         <td class="col-tight col-w-davg-td col-hide-sm" data-label="Δ к средней" data-sort-value="{avg_sort_value}">{avg_display}</td>
                         <td class="arrival-hub col-tight" data-label="Регион" data-sort-value="{arrival_hub_html}">{arrival_hub_html}</td>
                         <td class="col-tight col-dates" data-label="Даты" data-sort-value="{dates}">{dates}</td>
@@ -7669,8 +7916,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             vanished_summary_meta = f"заметных: {vanished_notable_count}"
         else:
             vanished_summary_meta = ""
+        vanished_hint_text = (
+            f"Все отели, которые хотя бы раз были в зоне отслеживания (≤{ceiling_val:.0f} PLN), но сейчас не в основной таблице. "
+            f"Графики показывают полную историю до {history_val:.0f} PLN; если отель всё ещё в выдаче выше потолка — показываем актуальную цену."
+            if ceiling_val is not None and history_val is not None
+            else "Все отели, которые хотя бы раз были в выдаче, но сейчас не в основной таблице."
+        )
         vanished_inner_html = f"""
-                <p class="vanished-hint">Все отели, которые хотя бы раз были в зоне отслеживания (≤{ceiling_val:.0f} PLN), но сейчас не в основной таблице. Графики показывают полную историю до {history_val:.0f} PLN; если отель всё ещё в выдаче выше потолка — показываем актуальную цену.</p>
+                <p class="vanished-hint">{vanished_hint_text}</p>
                 <div class="table-container">
                     <table class="hotels-table vanished-table">
                         <thead>
@@ -7690,8 +7943,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 </div>
 """
     else:
+        vanished_empty_text = (
+            f"Пока нет отелей вне основной таблицы: все, кто когда-либо был в зоне ≤{ceiling_val:.0f} PLN, сейчас в ней же."
+            if ceiling_val is not None
+            else "Пока нет отелей вне основной таблицы."
+        )
         vanished_inner_html = f"""
-                <p class="vanished-hint">Пока нет отелей вне основной таблицы: все, кто когда-либо был в зоне ≤{ceiling_val:.0f} PLN, сейчас в ней же.</p>
+                <p class="vanished-hint">{vanished_empty_text}</p>
 """
         vanished_summary_meta = "пусто"
 
@@ -8084,7 +8342,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       let currentSort = { column: null, direction: 'asc' };
       
       function getColumnIndex(column) {
-        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'ta': 3, 'delta48': 4, 'deltaavg': 5, 'region': 6, 'dates': 7, 'duration': 8, 'offer': 9 };
+        const columnMap = { 'hotel': 0, 'price': 1, 'deal': 2, 'forecast': 3, 'ta': 4, 'delta48': 5, 'deltaavg': 6, 'region': 7, 'dates': 8, 'duration': 9, 'offer': 10 };
         return columnMap[column];
       }
 
@@ -8092,6 +8350,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         const idx = getColumnIndex(column);
         const cell = row.cells[idx];
         const raw = (cell && (cell.dataset.sortValue || cell.textContent) || '').trim();
+        if (column === 'forecast') {
+          return raw === 'Покупать' ? 3 : (raw === 'Наблюдать' ? 2 : (raw === 'Дорого' ? 1 : 0));
+        }
         if (column === 'hotel' || column === 'region') {
           return (row.cells[getColumnIndex(column)].textContent || '').trim().toLowerCase();
         }
@@ -8387,6 +8648,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           if (cardsShowingTo) cardsShowingTo.textContent = total ? String(Math.min(end, total)) : '0';
           if (cardsPrevPage) cardsPrevPage.disabled = cardsPage <= 1;
           if (cardsNextPage) cardsNextPage.disabled = cardsPage >= totalPages;
+
+          if (typeof window.syncWatchlistUI === 'function') {
+            window.syncWatchlistUI();
+          }
         }
 
         function cardsNextPageFunc() {
@@ -8410,22 +8675,33 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const changeType = changeFilter.value;
           const regionValue = regionFilter ? regionFilter.value : '';
           const taValue = taFilter ? taFilter.value : '';
+          const watchlistToggle = document.getElementById('watchlistToggle');
+          const watchlistOnly = watchlistToggle ? watchlistToggle.classList.contains('active') : false;
+          const watchlist = typeof window.getWatchlist === 'function' ? window.getWatchlist() : [];
           
           filteredRows = rows.filter(row => {
-            const hotelName = (row.querySelector('.col-hotel')?.textContent || row.cells[0]?.textContent || '').toLowerCase();
+            const hotelName = (row.querySelector('.col-hotel a')?.textContent || row.querySelector('.col-hotel')?.textContent || row.cells[0]?.textContent || '').toLowerCase();
+            const rawHotelName = (row.querySelector('.col-hotel a')?.getAttribute('data-hotel-name') || '').trim();
             const priceCell = row.querySelector('.price');
             const price = parseFloat((priceCell?.textContent || row.cells[1]?.textContent || '').replace(/[^0-9.-]/g, ''));
             const d48Cell = row.querySelector('.col-w-d48-td');
-            const delta48 = (d48Cell?.textContent || row.cells[4]?.textContent || '').trim();
+            const delta48 = (d48Cell?.textContent || row.cells[5]?.textContent || '').trim();
             const regionCell = row.querySelector('.arrival-hub');
-            const rowRegion = row.dataset.region || (regionCell?.textContent || row.cells[6]?.textContent || '').trim();
+            const rowRegion = row.dataset.region || (regionCell?.textContent || row.cells[7]?.textContent || '').trim();
             const rowTa = parseFloat(row.dataset.taRating || '-1');
+            const rowDate = row.dataset.departureDate || '';
             
             if (searchTerm && !hotelName.includes(searchTerm)) {
               return false;
             }
+            if (watchlistOnly && !watchlist.includes(rawHotelName)) {
+              return false;
+            }
+            if (window.activeCalendarDate && rowDate !== window.activeCalendarDate) {
+              return false;
+            }
             
-            // Price filter (диапазоны генерируются динамически под текущий фильтр)
+            // Price filter
             if (priceRange) {
               if (priceRange.endsWith('+')) {
                 if (price < parseFloat(priceRange)) return false;
@@ -8463,8 +8739,50 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           filteredCards = cardItems.filter((card) => {
             const title = card.querySelector('.hotel-card-title');
             const hotelName = title ? title.textContent.toLowerCase() : '';
+            const rawHotelName = title ? title.textContent.trim() : '';
+            const priceText = card.querySelector('.hotel-card-price')?.textContent || '';
+            const price = parseFloat(priceText.replace(/[^0-9.-]/g, ''));
+            const region = card.dataset.region || '';
+            const cardDate = card.dataset.departureDate || '';
+            const taValueAttr = card.dataset.taRating || card.dataset.ta || '-1';
+            const rowTa = parseFloat(taValueAttr);
+            const cardStats = card.querySelector('.hotel-card-stats');
+            const delta48Text = cardStats ? cardStats.querySelector('div:first-child strong')?.textContent || '' : '';
+
             if (searchTerm && !hotelName.includes(searchTerm)) {
               return false;
+            }
+            if (watchlistOnly && !watchlist.includes(rawHotelName)) {
+              return false;
+            }
+            if (window.activeCalendarDate && cardDate !== window.activeCalendarDate) {
+              return false;
+            }
+            if (priceRange) {
+              if (priceRange.endsWith('+')) {
+                if (price < parseFloat(priceRange)) return false;
+              } else {
+                const parts = priceRange.split('-');
+                const min = parseFloat(parts[0]);
+                const max = parseFloat(parts[1]);
+                if (price < min || price > max) return false;
+              }
+            }
+            if (changeType) {
+              if (changeType === 'decrease' && !delta48Text.includes('-')) return false;
+              if (changeType === 'increase' && !delta48Text.includes('+')) return false;
+              if (changeType === 'stable' && delta48Text !== '—') return false;
+            }
+            if (regionValue && region !== regionValue) {
+              return false;
+            }
+            if (taValue) {
+              if (taValue === 'none') {
+                if (rowTa > 0) return false;
+              } else {
+                const minTa = parseFloat(taValue);
+                if (isNaN(rowTa) || rowTa < minTa) return false;
+              }
             }
             return true;
           });
@@ -8477,6 +8795,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           cardsPage = 1;
           updateTable();
           updateCardsPagination();
+
+          if (typeof window.updateCalendarHeatmap === 'function') {
+            window.updateCalendarHeatmap();
+          }
         }
         
         function updateTable() {
@@ -8498,6 +8820,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           // Update pagination buttons
           prevPage.disabled = currentPage === 1;
           nextPage.disabled = endIndex >= filteredRows.length;
+
+          if (typeof window.syncWatchlistUI === 'function') {
+            window.syncWatchlistUI();
+          }
         }
         
         function nextPageFunc() {
@@ -8541,6 +8867,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         };
 
         // Event listeners
+        const watchlistToggle = document.getElementById('watchlistToggle');
+        if (watchlistToggle) {
+          watchlistToggle.addEventListener('click', function(event) {
+            event.preventDefault();
+            watchlistToggle.classList.toggle('active');
+            if (watchlistToggle.classList.contains('active')) {
+              watchlistToggle.style.background = 'var(--gradient-primary)';
+              watchlistToggle.style.color = 'white';
+            } else {
+              watchlistToggle.style.background = '#cbd5e1';
+              watchlistToggle.style.color = '#1e293b';
+            }
+            filterRows();
+          });
+        }
+
         if (searchInput) searchInput.addEventListener('input', filterRows);
         if (priceFilter) priceFilter.addEventListener('change', filterRows);
         if (changeFilter) changeFilter.addEventListener('change', filterRows);
@@ -8552,6 +8894,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           if (changeFilter) changeFilter.value = '';
           if (regionFilter) regionFilter.value = '';
           if (taFilter) taFilter.value = '';
+          if (watchlistToggle) {
+            watchlistToggle.classList.remove('active');
+            watchlistToggle.style.background = '#cbd5e1';
+            watchlistToggle.style.color = '#1e293b';
+          }
+          window.activeCalendarDate = null;
           filterRows();
         });
         if (nextPage) nextPage.addEventListener('click', nextPageFunc);
@@ -8573,6 +8921,273 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       (function(){
         const departureOffers = """ + departure_offers_json + """;
         const departurePriceCurves = """ + departure_price_curves_json + """;
+        window.departureOffers = departureOffers;
+
+        // Watchlist helper functions
+        function getWatchlist() {
+          try {
+            return JSON.parse(localStorage.getItem('watchlist_hotels') || '[]');
+          } catch(e) {
+            return [];
+          }
+        }
+        function saveWatchlist(list) {
+          try {
+            localStorage.setItem('watchlist_hotels', JSON.stringify(list));
+          } catch(e) {}
+        }
+        window.getWatchlist = getWatchlist;
+        window.saveWatchlist = saveWatchlist;
+        
+        window.toggleWatchlist = function(hotelName) {
+          const list = getWatchlist();
+          const idx = list.indexOf(hotelName);
+          if (idx > -1) {
+            list.splice(idx, 1);
+          } else {
+            list.push(hotelName);
+          }
+          saveWatchlist(list);
+          window.syncWatchlistUI();
+          if (window._hotelTableFilterRows) {
+            window._hotelTableFilterRows();
+          }
+        };
+
+        window.syncWatchlistUI = function() {
+          const list = getWatchlist();
+          document.querySelectorAll('.watchlist-star-btn').forEach(btn => {
+            const hotel = btn.getAttribute('data-hotel-name');
+            if (list.includes(hotel)) {
+              btn.classList.add('starred');
+              btn.textContent = '★';
+            } else {
+              btn.classList.remove('starred');
+              btn.textContent = '☆';
+            }
+          });
+        };
+
+        // Initialize Watchlist events
+        window.initWatchlistEvents = function() {
+          document.addEventListener('click', function(e) {
+            const btn = e.target.closest('.watchlist-star-btn');
+            if (btn) {
+              e.preventDefault();
+              e.stopPropagation();
+              const hotel = btn.getAttribute('data-hotel-name');
+              if (hotel) {
+                window.toggleWatchlist(hotel);
+              }
+            }
+          });
+        };
+        
+        // Run once on load
+        window.initWatchlistEvents();
+
+        // Calendar Heatmap Implementation
+        function getMonthName(yearMonthStr) {
+          const [year, month] = yearMonthStr.split('-');
+          const date = new Date(year, parseInt(month) - 1, 1);
+          return date.toLocaleString('ru-RU', { month: 'long', year: 'numeric' });
+        }
+
+        window.updateCalendarHeatmap = function() {
+          const wrapper = document.getElementById('calendarHeatmapWrapper');
+          if (!wrapper || !window.departureOffers) return;
+
+          const searchInput = document.getElementById('searchInput');
+          const priceFilter = document.getElementById('priceFilter');
+          const changeFilter = document.getElementById('changeFilter');
+          const regionFilter = document.getElementById('regionFilter');
+          const taFilter = document.getElementById('taFilter');
+          const watchlistToggle = document.getElementById('watchlistToggle');
+          
+          const searchTerm = searchInput ? searchInput.value.toLowerCase() : '';
+          const priceRange = priceFilter ? priceFilter.value : '';
+          const changeType = changeFilter ? changeFilter.value : '';
+          const regionValue = regionFilter ? regionFilter.value : '';
+          const taValue = taFilter ? taFilter.value : '';
+          const watchlistOnly = watchlistToggle ? watchlistToggle.classList.contains('active') : false;
+          const watchlist = getWatchlist();
+
+          const dateMinPrices = {};
+          let overallMin = Infinity;
+          let overallMax = -Infinity;
+
+          for (let key in window.departureOffers) {
+            const dep = window.departureOffers[key];
+            const dateStr = dep.departure_date;
+            if (!dateStr) continue;
+
+            if (regionValue && dep.region !== regionValue) continue;
+
+            dep.offers.forEach(offer => {
+              if (searchTerm && !offer.hotel_name.toLowerCase().includes(searchTerm)) return;
+              if (watchlistOnly && !watchlist.includes(offer.hotel_name)) return;
+
+              const price = parseFloat(offer.price);
+              if (priceRange) {
+                if (priceRange.endsWith('+')) {
+                  if (price < parseFloat(priceRange)) return;
+                } else {
+                  const parts = priceRange.split('-');
+                  const min = parseFloat(parts[0]);
+                  const max = parseFloat(parts[1]);
+                  if (price < min || price > max) return;
+                }
+              }
+
+              const rowTa = parseFloat(offer.ta_rating || '-1');
+              if (taValue) {
+                if (taValue === 'none') {
+                  if (rowTa > 0) return;
+                } else {
+                  const minTa = parseFloat(taValue);
+                  if (isNaN(rowTa) || rowTa < minTa) return;
+                }
+              }
+
+              const delta48 = offer.delta_avg || '';
+              if (changeType) {
+                if (changeType === 'decrease' && !delta48.includes('-')) return;
+                if (changeType === 'increase' && !delta48.includes('+')) return;
+                if (changeType === 'stable' && delta48 !== '—') return;
+              }
+
+              if (!dateMinPrices[dateStr]) {
+                dateMinPrices[dateStr] = { minPrice: Infinity, count: 0, best: null };
+              }
+              const dStats = dateMinPrices[dateStr];
+              dStats.count++;
+              if (price < dStats.minPrice) {
+                dStats.minPrice = price;
+                dStats.best = offer;
+              }
+            });
+          }
+
+          for (let dStr in dateMinPrices) {
+            const price = dateMinPrices[dStr].minPrice;
+            if (price < overallMin) overallMin = price;
+            if (price > overallMax) overallMax = price;
+          }
+
+          const allDates = new Set();
+          for (let key in window.departureOffers) {
+            if (window.departureOffers[key].departure_date) {
+              allDates.add(window.departureOffers[key].departure_date);
+            }
+          }
+          if (allDates.size === 0) {
+            wrapper.innerHTML = '<div style="color:var(--text-secondary);text-align:center;padding:1rem;">Нет доступных дат вылета</div>';
+            return;
+          }
+
+          const sortedDates = Array.from(allDates).sort();
+          const minDate = new Date(sortedDates[0]);
+          const maxDate = new Date(sortedDates[sortedDates.length - 1]);
+
+          const months = {};
+          let curr = new Date(minDate.getFullYear(), minDate.getMonth(), 1);
+          const endLimit = new Date(maxDate.getFullYear(), maxDate.getMonth() + 1, 1);
+
+          while (curr < endLimit) {
+            const year = curr.getFullYear();
+            const month = String(curr.getMonth() + 1).padStart(2, '0');
+            const key = `${year}-${month}`;
+            
+            const firstDay = new Date(year, curr.getMonth(), 1).getDay();
+            const startOffset = firstDay === 0 ? 6 : firstDay - 1;
+            const totalDays = new Date(year, curr.getMonth() + 1, 0).getDate();
+
+            months[key] = {
+              title: getMonthName(key),
+              startOffset: startOffset,
+              totalDays: totalDays,
+              year: year,
+              monthIndex: curr.getMonth()
+            };
+
+            curr.setMonth(curr.getMonth() + 1);
+          }
+
+          let html = '';
+          for (let mKey in months) {
+            const m = months[mKey];
+            html += `<div class="calendar-month-container">`;
+            html += `<div class="calendar-month-title">${m.title}</div>`;
+            html += `<div class="calendar-grid-container">`;
+            
+            ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'].forEach(day => {
+              html += `<div class="calendar-day-header">${day}</div>`;
+            });
+
+            for (let i = 0; i < m.startOffset; i++) {
+              html += `<div class="calendar-day-cell empty"></div>`;
+            }
+
+            for (let d = 1; d <= m.totalDays; d++) {
+              const dayStr = `${m.year}-${String(m.monthIndex + 1).padStart(2, '0')}-${String(d).padStart(2, '0')}`;
+              
+              if (allDates.has(dayStr)) {
+                const stats = dateMinPrices[dayStr];
+                if (stats && stats.minPrice !== Infinity) {
+                  let hue = 140;
+                  if (overallMax > overallMin) {
+                    const pct = (stats.minPrice - overallMin) / (overallMax - overallMin);
+                    hue = 140 - Math.round(pct * 100);
+                  }
+                  
+                  const isSelected = window.activeCalendarDate === dayStr ? ' selected' : '';
+                  const tooltipText = `Дата: ${dayStr}\\nМинимальная цена: ${Math.round(stats.minPrice)} PLN\\nЛучший отель: ${stats.best.hotel_name}\\nВсего предложений: ${stats.count}`;
+
+                  html += `
+                    <div class="calendar-day-cell${isSelected}" 
+                         style="background-color: hsla(${hue}, 80%, 40%, 0.7); color: #fff;" 
+                         title="${escapeHtml(tooltipText)}"
+                         onclick="window.selectCalendarDate('${dayStr}')">
+                      <span class="calendar-day-number">${d}</span>
+                      <span class="calendar-day-price">${Math.round(stats.minPrice)}</span>
+                    </div>`;
+                } else {
+                  html += `
+                    <div class="calendar-day-cell empty" title="Нет предложений по выбранным фильтрам на эту дату">
+                      <span class="calendar-day-number">${d}</span>
+                      <span style="font-size:0.6rem;align-self:flex-end;">—</span>
+                    </div>`;
+                }
+              } else {
+                html += `
+                  <div class="calendar-day-cell empty">
+                    <span class="calendar-day-number">${d}</span>
+                  </div>`;
+              }
+            }
+
+            const totalCells = m.startOffset + m.totalDays;
+            const remaining = (7 - (totalCells % 7)) % 7;
+            for (let i = 0; i < remaining; i++) {
+              html += `<div class="calendar-day-cell empty"></div>`;
+            }
+
+            html += `</div></div>`;
+          }
+
+          wrapper.innerHTML = html;
+        };
+
+        window.selectCalendarDate = function(dateStr) {
+          if (window.activeCalendarDate === dateStr) {
+            window.activeCalendarDate = null;
+          } else {
+            window.activeCalendarDate = dateStr;
+          }
+          if (window._hotelTableFilterRows) {
+            window._hotelTableFilterRows();
+          }
+        };
 
         function regionLabel(value) {
           return String(value || 'region').replace(/-/g, ' ').replace(/\\b\\w/g, function(c) { return c.toUpperCase(); });
@@ -8764,9 +9379,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           });
         }
 
-        document.addEventListener('DOMContentLoaded', bindDepartureOfferClicks);
+        document.addEventListener('DOMContentLoaded', function() {
+          bindDepartureOfferClicks();
+          if (typeof window.updateCalendarHeatmap === 'function') window.updateCalendarHeatmap();
+          if (typeof window.syncWatchlistUI === 'function') window.syncWatchlistUI();
+        });
         if (document.readyState !== 'loading') {
           bindDepartureOfferClicks();
+          if (typeof window.updateCalendarHeatmap === 'function') window.updateCalendarHeatmap();
+          if (typeof window.syncWatchlistUI === 'function') window.syncWatchlistUI();
         }
       })();
     </script>
