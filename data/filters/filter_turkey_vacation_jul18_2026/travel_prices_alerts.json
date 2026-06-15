@@ -494,10 +494,62 @@
       "created_at": "2026-06-15T18:12:46.406012+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Terrace Elite Resort|7-9_2026-06-15_18-11_comeback_10.4"
+    },
+    {
+      "hotel_name": "Club Side Coast",
+      "duration_bucket": "7-9",
+      "old_price": 8336.0,
+      "new_price": 8336.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 20:53:51.561819+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:55:02.960614+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Side Coast|7-9_2026-06-15_20-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Seker",
+      "duration_bucket": "7-9",
+      "old_price": 9917.0,
+      "new_price": 10262.0,
+      "price_change": 345.0,
+      "price_change_pct": 3.4788746596753053,
+      "timestamp": "2026-06-15 20:53:51.561819+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:55:02.960663+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Seker|7-9_2026-06-15_20-53_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "7-9",
+      "old_price": 8956.0,
+      "new_price": 8956.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 20:53:51.561819+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:55:02.960689+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva|7-9_2026-06-15_20-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 8794.0,
+      "new_price": 8794.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 20:53:51.561819+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:55:02.960709+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-06-15_20-53_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T18:11:32.554306+00:00",
+    "last_processed_run": "2026-06-15T20:53:51.561819+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -552,8 +604,8 @@
         "premium_peak": 12439.0
       },
       "Gypsophila Holiday Village|7-9": {
-        "history_max": 11500.0,
-        "premium_peak": 11500.0
+        "history_max": 11630.0,
+        "premium_peak": 11630.0
       },
       "The Nora Hotels Family Club (Kargicak)|7-9": {
         "history_max": 9416.0,
@@ -1712,8 +1764,8 @@
         "premium_peak": 14714.0
       },
       "Baia Salima Kemer (ex Club Salima)|9-11": {
-        "history_max": 14505.0,
-        "premium_peak": 14505.0
+        "history_max": 14603.0,
+        "premium_peak": 14603.0
       },
       "Azura Deluxe Resort & Spa|9-11": {
         "history_max": 13640.0,
@@ -1740,8 +1792,8 @@
         "premium_peak": 13563.0
       },
       "Asteria Collection Side|9-11": {
-        "history_max": 10463.0,
-        "premium_peak": 10463.0
+        "history_max": 10548.0,
+        "premium_peak": 10548.0
       },
       "Armas Pemar Beach Resort|9-11": {
         "history_max": 10854.0,
@@ -2362,6 +2414,10 @@
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|9-11": {
         "history_max": 14225.0,
         "premium_peak": 14225.0
+      },
+      "Ramada Resort Kusadasi|7-9": {
+        "history_max": 11191.0,
+        "premium_peak": 11191.0
       }
     }
   }

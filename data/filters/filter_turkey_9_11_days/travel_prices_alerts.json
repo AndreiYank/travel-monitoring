@@ -2262,10 +2262,127 @@
       "created_at": "2026-06-15T18:11:52.029444+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Orange County (Kemer)_2026-06-15_18-11_zone_out_+27.0"
+    },
+    {
+      "hotel_name": "Side Moon Palace",
+      "duration_bucket": "",
+      "old_price": 7771.0,
+      "new_price": 6155.0,
+      "price_change": -1616.0,
+      "price_change_pct": -20.795264444730407,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T20:54:21.027801+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Moon Palace_2026-06-15_20-53_-20.8"
+    },
+    {
+      "hotel_name": "Orange County Alanya",
+      "duration_bucket": "",
+      "old_price": 9275.0,
+      "new_price": 7459.0,
+      "price_change": -1816.0,
+      "price_change_pct": -19.579514824797844,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T20:54:21.027846+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Alanya_2026-06-15_20-53_-19.6"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9111.0,
+      "new_price": 10095.0,
+      "price_change": 984.0,
+      "price_change_pct": 10.80013170892328,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:54:21.027876+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-06-15_20-53_zone_out_+10.8"
+    },
+    {
+      "hotel_name": "Narcia Resort Side",
+      "duration_bucket": "",
+      "old_price": 8485.0,
+      "new_price": 10969.0,
+      "price_change": 2484.0,
+      "price_change_pct": 29.275191514437243,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:54:21.027888+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Narcia Resort Side_2026-06-15_20-53_zone_out_+29.3"
+    },
+    {
+      "hotel_name": "Sensitive Premium Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9197.0,
+      "new_price": 10997.0,
+      "price_change": 1800.0,
+      "price_change_pct": 19.571599434598237,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:54:21.027897+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sensitive Premium Resort & Spa_2026-06-15_20-53_zone_out_+19.6"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8231.0,
+      "new_price": 8231.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T20:54:21.027906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-06-15_20-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Orange County Belek",
+      "duration_bucket": "",
+      "old_price": 11034.0,
+      "new_price": 8919.0,
+      "price_change": -2115.0,
+      "price_change_pct": -19.168026101141926,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T20:54:21.027931+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Belek_2026-06-15_20-53_comeback_19.2"
+    },
+    {
+      "hotel_name": "Saphir Hotel & Villas",
+      "duration_bucket": "",
+      "old_price": 11380.0,
+      "new_price": 9363.0,
+      "price_change": -2017.0,
+      "price_change_pct": -17.724077328646747,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T20:54:21.027945+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Saphir Hotel & Villas_2026-06-15_20-53_comeback_17.7"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "",
+      "old_price": 10972.0,
+      "new_price": 9932.0,
+      "price_change": -1040.0,
+      "price_change_pct": -9.47867298578199,
+      "timestamp": "2026-06-15 20:53:41.824980+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T20:54:21.027957+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort_2026-06-15_20-53_comeback_9.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T18:11:09.173001+00:00",
+    "last_processed_run": "2026-06-15T20:53:41.824980+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11975.0,
@@ -2580,8 +2697,8 @@
         "premium_peak": 11897.0
       },
       "Club Yali Hotels & Resort": {
-        "history_max": 12260.0,
-        "premium_peak": 12260.0
+        "history_max": 12511.0,
+        "premium_peak": 12511.0
       },
       "Club Turan Prince World": {
         "history_max": 13678.0,
@@ -2660,7 +2777,7 @@
         "premium_peak": 13716.0
       },
       "Glamour Resort & Spa": {
-        "history_max": 9302.0,
+        "history_max": 9412.0,
         "premium_peak": null
       },
       "Garden of Sun Spa & Wellness": {
@@ -2708,8 +2825,8 @@
         "premium_peak": null
       },
       "OZ Incekum Beach Resort": {
-        "history_max": 11330.0,
-        "premium_peak": 11330.0
+        "history_max": 11588.0,
+        "premium_peak": 11588.0
       },
       "Omer Prime Holiday Resort": {
         "history_max": 11778.0,
@@ -3056,8 +3173,8 @@
         "premium_peak": 12119.0
       },
       "Sensitive Premium Resort & Spa": {
-        "history_max": 9197.0,
-        "premium_peak": null
+        "history_max": 10997.0,
+        "premium_peak": 10997.0
       },
       "Selectum Noa": {
         "history_max": 11084.0,
@@ -3392,8 +3509,8 @@
         "premium_peak": 10818.0
       },
       "Narcia Resort Side": {
-        "history_max": 10825.0,
-        "premium_peak": 10825.0
+        "history_max": 10969.0,
+        "premium_peak": 10969.0
       },
       "Asia Beach Resort and Spa": {
         "history_max": 10656.0,
