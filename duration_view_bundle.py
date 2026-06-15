@@ -707,14 +707,19 @@ def build_duration_view_bundle(
             f'<a class="card-btn" href="{html_lib.escape(offer_url, quote=True)}" target="_blank">Открыть оффер</a>'
             if offer_url.strip() else '<span class="card-btn" style="opacity:.6;">Оффер недоступен</span>'
         )
+        forecast = g.determine_price_forecast(deal_score, confidence, d_avg, d48)
+        dep_date_esc = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
+        dep_key_esc = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
+
         chart_href = g._hotel_chart_viewer_href(filter_data_id, g.slugify(hotel_name))
         cards_parts.append(
-            f'<article class="hotel-card" data-duration-bucket="{html_lib.escape(bucket, quote=True)}">'
-            f'<div class="hotel-card-img">{img_html}</div>'
+            f'<article class="hotel-card" data-duration-bucket="{html_lib.escape(bucket, quote=True)}" data-departure-date="{dep_date_esc}" data-departure-key="{dep_key_esc}">'
+            f'<div class="hotel-card-img">{img_html}<button class="watchlist-star-btn card-star" data-hotel-name="{html_lib.escape(str(hotel_name), quote=True)}" title="Добавить в избранное">☆</button></div>'
             f'<div class="hotel-card-body">'
             f'<h4 class="hotel-card-title">{html_lib.escape(str(hotel_name))}</h4>'
             f'<div class="hotel-card-meta"><div class="hotel-card-price">{price:.0f} PLN</div>'
-            f'<span class="deal-pill {deal_class}">Deal {deal_score} • {deal_label}</span></div>'
+            f'<span class="deal-pill {deal_class}">Deal {deal_score} • {deal_label}</span>'
+            f'<span class="forecast-pill {forecast["class"]}">{forecast["icon"]} {forecast["text"]}</span></div>'
             f'{comeback_html}'
             f'<div class="hotel-card-stats">'
             f'<div>Δ48ч: <strong>{f"{d48:+.1f}%" if d48 is not None else "—"}</strong></div>'
@@ -784,16 +789,22 @@ def build_duration_view_bundle(
         ta_html = g._render_ta_rating_html(hotel.get('ta_rating', ''), hotel.get('ta_review_count', ''))
         ta_sort_val = g._parse_ta_rating_value(hotel.get('ta_rating', ''))
         ta_data_attr = f"{ta_sort_val:.2f}" if ta_sort_val is not None else "-1"
+        forecast = g.determine_price_forecast(deal_score, confidence_level, d_avg_tbl, d48_tbl)
+        dep_date_esc = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
+        dep_key_esc = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
+        
         table_rows_parts.append(
             f'<tr data-region="{html_lib.escape(str(arrival_hub))}" data-ta-rating="{ta_data_attr}" '
-            f'data-duration-bucket="{html_lib.escape(bucket, quote=True)}">'
-            f'<td class="hotel-name col-hotel" data-label="Отель"><a class="open-chart-link hotel-hover-link" href="{chart_href}" '
+            f'data-duration-bucket="{html_lib.escape(bucket, quote=True)}" data-departure-date="{dep_date_esc}" data-departure-key="{dep_key_esc}">'
+            f'<td class="hotel-name col-hotel" data-label="Отель"><button class="watchlist-star-btn" data-hotel-name="{html_lib.escape(str(hotel_name), quote=True)}" title="Добавить в избранное">☆</button><a class="open-chart-link hotel-hover-link" href="{chart_href}" '
             f'target="_blank" data-hotel-name="{html_lib.escape(str(hotel_name), quote=True)}">'
             f'{html_lib.escape(str(hotel_name))}</a></td>'
             f'<td class="price col-tight" data-label="Цена" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}</td>'
             f'<td class="col-tight col-w-deal-td" data-label="Deal" data-sort-value="{deal_score}" title="{deal_title}">'
             f'<span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> '
             f'<span class="deal-conf-short">{confidence_short}</span></span></td>'
+            f'<td class="col-tight col-w-forecast-td" data-label="Прогноз" data-sort-value="{forecast["text"]}">'
+            f'<span class="forecast-pill {forecast["class"]}">{forecast["icon"]} {forecast["text"]}</span></td>'
             f'<td class="col-tight col-w-ta-td col-hide-sm" data-label="TripAdvisor">{ta_html}</td>'
             f'<td class="col-tight col-w-d48-td" data-label="Δ 48ч" data-sort-value="{d48_tbl or 0}"><span class="{delta_class}">{delta_display}</span></td>'
             f'<td class="col-tight col-w-davg-td col-hide-sm" data-label="Δ к средней" data-sort-value="{avg_sort_value}">{avg_display}</td>'
