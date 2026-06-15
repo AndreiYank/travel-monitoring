@@ -442,10 +442,62 @@
       "created_at": "2026-06-15T16:45:24.003165+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Riolavitas SPA & Resort|7-9_2026-06-15_16-43_zone_out_+11.3"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10536.0,
+      "new_price": 9276.0,
+      "price_change": -1260.0,
+      "price_change_pct": -11.958997722095672,
+      "timestamp": "2026-06-15 18:11:32.554306+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T18:12:46.405903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort|7-9_2026-06-15_18-11_comeback_12.0"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10708.0,
+      "new_price": 9568.0,
+      "price_change": -1140.0,
+      "price_change_pct": -10.646245797534554,
+      "timestamp": "2026-06-15 18:11:32.554306+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T18:12:46.405950+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort|7-9_2026-06-15_18-11_comeback_10.6"
+    },
+    {
+      "hotel_name": "Azura World (ex. Wyndham Alanya)",
+      "duration_bucket": "7-9",
+      "old_price": 10615.0,
+      "new_price": 9603.0,
+      "price_change": -1012.0,
+      "price_change_pct": -9.533678756476684,
+      "timestamp": "2026-06-15 18:11:32.554306+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T18:12:46.405984+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azura World (ex. Wyndham Alanya)|7-9_2026-06-15_18-11_comeback_9.5"
+    },
+    {
+      "hotel_name": "Terrace Elite Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10676.0,
+      "new_price": 9564.0,
+      "price_change": -1112.0,
+      "price_change_pct": -10.415886099662796,
+      "timestamp": "2026-06-15 18:11:32.554306+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T18:12:46.406012+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Terrace Elite Resort|7-9_2026-06-15_18-11_comeback_10.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T16:43:37.563093+00:00",
+    "last_processed_run": "2026-06-15T18:11:32.554306+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -2272,8 +2324,8 @@
         "premium_peak": 11331.0
       },
       "Turan Prince|7-9": {
-        "history_max": 12198.0,
-        "premium_peak": 12198.0
+        "history_max": 12318.0,
+        "premium_peak": 12318.0
       },
       "Dizalya Palm Garden|7-9": {
         "history_max": 10925.0,
@@ -2298,6 +2350,18 @@
       "Crystal Flora Pearl Collection|9-11": {
         "history_max": 15896.0,
         "premium_peak": 15896.0
+      },
+      "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|7-9": {
+        "history_max": 11669.0,
+        "premium_peak": 11669.0
+      },
+      "Utopia Resort & Residence (ex Alara Park)|7-9": {
+        "history_max": 11004.0,
+        "premium_peak": 11004.0
+      },
+      "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|9-11": {
+        "history_max": 14225.0,
+        "premium_peak": 14225.0
       }
     }
   }
