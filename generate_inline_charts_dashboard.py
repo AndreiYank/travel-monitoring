@@ -635,23 +635,37 @@ def classify_deal_badge(deal_score, confidence, delta48_pct=None, avg_pct=None, 
     return "Normal", "normal", "↔️ Normal"
 
 
-def determine_price_forecast(deal_score, confidence, avg_pct, delta48_pct):
+def determine_price_forecast(
+    deal_score, confidence, avg_pct, delta48_pct, comeback_drop_pct=None,
+):
     """Returns price forecast classification: {text, class, icon}."""
+    strong_comeback = comeback_drop_pct is not None and comeback_drop_pct >= 8.0
     if confidence == "Low":
+        if strong_comeback:
+            return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
         return {'text': 'Мало данных', 'class': 'forecast-nodata', 'icon': '⏳'}
-    
+
     avg_pct_val = float(avg_pct) if avg_pct is not None else 0.0
     delta48_pct_val = float(delta48_pct) if delta48_pct is not None else 0.0
-    
+    is_bad = (
+        delta48_pct is not None and delta48_pct_val > 0
+        and avg_pct is not None and avg_pct_val > 0
+    )
+
+    if strong_comeback:
+        if avg_pct_val < -5.0 and delta48_pct_val <= 0.0:
+            return {'text': 'Покупать', 'class': 'forecast-buy', 'icon': '🟢'}
+        return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
+
     if avg_pct_val < -5.0:
         if delta48_pct_val <= 0.0:
             return {'text': 'Покупать', 'class': 'forecast-buy', 'icon': '🟢'}
-        else:
-            return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
-    elif -5.0 <= avg_pct_val <= 5.0:
         return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
-    else:
+    if -5.0 <= avg_pct_val <= 5.0:
+        return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
+    if is_bad or deal_score < 80:
         return {'text': 'Дорого', 'class': 'forecast-expensive', 'icon': '🔴'}
+    return {'text': 'Наблюдать', 'class': 'forecast-wait', 'icon': '🟡'}
 
 
 def _table_deal_badge_compact(display_badge: str) -> str:
@@ -2946,7 +2960,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if comeback else ''
         )
         
-        forecast = determine_price_forecast(deal_score, confidence, d_avg_for_badge, d48_for_badge)
+        forecast = determine_price_forecast(
+            deal_score, confidence, d_avg_for_badge, d48_for_badge, comeback_drop,
+        )
 
         hotel_cards.append({
             "hotel_name": hotel_name,
@@ -7758,7 +7774,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         ta_sort_val = _parse_ta_rating_value(hotel.get('ta_rating', ''))
         ta_data_attr = f"{ta_sort_val:.2f}" if ta_sort_val is not None else "-1"
         
-        forecast = determine_price_forecast(deal_score, confidence_level, d_avg_tbl, d48_tbl)
+        forecast = determine_price_forecast(
+            deal_score, confidence_level, d_avg_tbl, d48_tbl, comeback_drop_tbl,
+        )
         departure_date_attr = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
         departure_key_attr = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
 
