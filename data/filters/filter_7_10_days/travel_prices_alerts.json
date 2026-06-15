@@ -31889,10 +31889,49 @@
       "created_at": "2026-06-15T15:04:45.527858+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-06-15_15-02_comeback_24.2"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 6762.0,
+      "new_price": 7367.0,
+      "price_change": 605.0,
+      "price_change_pct": 8.947057083703045,
+      "timestamp": "2026-06-15 16:40:53.789527+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T16:43:53.410711+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-06-15_16-40_+8.9"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 5436.0,
+      "new_price": 7002.0,
+      "price_change": 1566.0,
+      "price_change_pct": 28.807947019867548,
+      "timestamp": "2026-06-15 16:40:53.789527+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T16:43:53.410744+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-06-15_16-40_+28.8"
+    },
+    {
+      "hotel_name": "El Kasr Red Sea",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10017.0,
+      "price_change": 220.0,
+      "price_change_pct": 2.245585383280596,
+      "timestamp": "2026-06-15 16:40:53.789527+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T16:43:53.410786+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-06-15_16-40_zone_out_+2.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T15:02:25.166051+00:00",
+    "last_processed_run": "2026-06-15T16:40:53.789527+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -32583,8 +32622,8 @@
         "premium_peak": 10611.0
       },
       "Maritim Jolie Ville Resort and Casino": {
-        "history_max": 10268.0,
-        "premium_peak": 10268.0
+        "history_max": 10361.0,
+        "premium_peak": 10361.0
       },
       "Pickalbatros Royal Grand Resort Sharm": {
         "history_max": 12402.0,

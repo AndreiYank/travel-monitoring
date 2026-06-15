@@ -46059,10 +46059,114 @@
       "created_at": "2026-06-15T15:05:34.914733+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xafira Deluxe Resort & Spa_2026-06-15_15-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eftalia Aqua",
+      "duration_bucket": "",
+      "old_price": 7347.0,
+      "new_price": 8568.0,
+      "price_change": 1221.0,
+      "price_change_pct": 16.61902817476521,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T16:44:18.428807+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Aqua_2026-06-15_16-40_+16.6"
+    },
+    {
+      "hotel_name": "Side Aluna",
+      "duration_bucket": "",
+      "old_price": 9351.0,
+      "new_price": 7965.0,
+      "price_change": -1386.0,
+      "price_change_pct": -14.82194417709336,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T16:44:18.428845+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Aluna_2026-06-15_16-40_-14.8"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "",
+      "old_price": 8680.0,
+      "new_price": 9520.0,
+      "price_change": 840.0,
+      "price_change_pct": 9.67741935483871,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T16:44:18.428885+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort_2026-06-15_16-40_+9.7"
+    },
+    {
+      "hotel_name": "Pine Bay Holiday Resort",
+      "duration_bucket": "",
+      "old_price": 8257.0,
+      "new_price": 7457.0,
+      "price_change": -800.0,
+      "price_change_pct": -9.688748940293085,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T16:44:18.428903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pine Bay Holiday Resort_2026-06-15_16-40_-9.7"
+    },
+    {
+      "hotel_name": "Seashell Vega (ex. Side Crown Sunshine)",
+      "duration_bucket": "",
+      "old_price": 7397.0,
+      "new_price": 9797.0,
+      "price_change": 2400.0,
+      "price_change_pct": 32.445586048398,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T16:44:18.428914+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seashell Vega (ex. Side Crown Sunshine)_2026-06-15_16-40_+32.4"
+    },
+    {
+      "hotel_name": "Adalya Ocean Deluxe",
+      "duration_bucket": "",
+      "old_price": 9727.0,
+      "new_price": 9727.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T16:44:18.428954+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Adalya Ocean Deluxe_2026-06-15_16-40_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eftalia Village",
+      "duration_bucket": "",
+      "old_price": 6515.0,
+      "new_price": 6515.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T16:44:18.428963+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Village_2026-06-15_16-40_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Moon Palace Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 5631.0,
+      "new_price": 5631.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 16:40:53.641460+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T16:44:18.428971+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Moon Palace Turcja, Side_2026-06-15_16-40_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T15:02:25.307855+00:00",
+    "last_processed_run": "2026-06-15T16:40:53.641460+00:00",
     "premium_state": {
       "First Class Turcja, Alanya, Mahmutlar": {
         "history_max": 5450.0,
@@ -46505,7 +46609,7 @@
         "premium_peak": null
       },
       "Design Plus Seya Beach": {
-        "history_max": 7857.0,
+        "history_max": 8257.0,
         "premium_peak": null
       },
       "Side Moon Palace": {
@@ -46865,7 +46969,7 @@
         "premium_peak": null
       },
       "Seashell Vega (ex. Side Crown Sunshine)": {
-        "history_max": 9057.0,
+        "history_max": 9797.0,
         "premium_peak": null
       },
       "Quattro Beach Spa": {
@@ -46981,7 +47085,7 @@
         "premium_peak": null
       },
       "Aska Just in Beach": {
-        "history_max": 9702.0,
+        "history_max": 9780.0,
         "premium_peak": null
       },
       "Elite World Kusadasi (ex Marina)": {
@@ -47697,7 +47801,7 @@
         "premium_peak": null
       },
       "Crystal De Luxe Comfort Collection": {
-        "history_max": 9069.0,
+        "history_max": 9705.0,
         "premium_peak": null
       },
       "Crystal Family Comfort Collection": {
