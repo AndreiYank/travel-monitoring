@@ -31538,10 +31538,62 @@
       "created_at": "2026-06-15T06:22:52.067690+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Makadina_2026-06-15_06-19_zone_out_+5.5"
+    },
+    {
+      "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
+      "duration_bucket": "",
+      "old_price": 7955.0,
+      "new_price": 7016.0,
+      "price_change": -939.0,
+      "price_change_pct": -11.803896920175989,
+      "timestamp": "2026-06-15 07:30:29.944244+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T07:32:44.297647+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-06-15_07-30_-11.8"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7311.0,
+      "new_price": 9144.0,
+      "price_change": 1833.0,
+      "price_change_pct": 25.071809601969637,
+      "timestamp": "2026-06-15 07:30:29.944244+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T07:32:44.297678+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-06-15_07-30_+25.1"
+    },
+    {
+      "hotel_name": "Royal Brayka Beach Resort (ex Zee Brayka)",
+      "duration_bucket": "",
+      "old_price": 7357.0,
+      "new_price": 6557.0,
+      "price_change": -800.0,
+      "price_change_pct": -10.87399755335055,
+      "timestamp": "2026-06-15 07:30:29.944244+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T07:32:44.297695+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-06-15_07-30_-10.9"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 8017.0,
+      "new_price": 7346.0,
+      "price_change": -671.0,
+      "price_change_pct": -8.369714356991393,
+      "timestamp": "2026-06-15 07:30:29.944244+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T07:32:44.297711+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-06-15_07-30_-8.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T06:19:58.419335+00:00",
+    "last_processed_run": "2026-06-15T07:30:29.944244+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -31648,7 +31700,7 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 7753.0,
+        "history_max": 9144.0,
         "premium_peak": null
       },
       "Xperience Kiroseiz Parkland": {
@@ -31928,7 +31980,7 @@
         "premium_peak": null
       },
       "Continental (ex Movenpick Resort)": {
-        "history_max": 9877.0,
+        "history_max": 9921.0,
         "premium_peak": null
       },
       "Domina Coral Bay Resort": {
@@ -32028,8 +32080,8 @@
         "premium_peak": 10430.0
       },
       "Beach Albatros Resort": {
-        "history_max": 10083.0,
-        "premium_peak": 10083.0
+        "history_max": 10107.0,
+        "premium_peak": 10107.0
       },
       "Concorde El Salam Front Area": {
         "history_max": 8922.0,
