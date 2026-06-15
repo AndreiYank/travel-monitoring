@@ -31798,10 +31798,101 @@
       "created_at": "2026-06-15T13:05:45.436006+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Laguna Vista Beach_2026-06-15_13-03_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 7002.0,
+      "new_price": 5436.0,
+      "price_change": -1566.0,
+      "price_change_pct": -22.36503856041131,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T15:04:45.527624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-06-15_15-02_-22.4"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7367.0,
+      "new_price": 6762.0,
+      "price_change": -605.0,
+      "price_change_pct": -8.212298086059453,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T15:04:45.527686+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-06-15_15-02_-8.2"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 5997.0,
+      "new_price": 7857.0,
+      "price_change": 1860.0,
+      "price_change_pct": 31.015507753876935,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T15:04:45.527708+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-06-15_15-02_+31.0"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Bellavista",
+      "duration_bucket": "",
+      "old_price": 9268.0,
+      "new_price": 9268.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T15:04:45.527764+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Bellavista_2026-06-15_15-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 6957.0,
+      "new_price": 6957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T15:04:45.527782+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-06-15_15-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Elite Amara",
+      "duration_bucket": "",
+      "old_price": 12274.0,
+      "new_price": 9733.0,
+      "price_change": -2541.0,
+      "price_change_pct": -20.702297539514422,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T15:04:45.527834+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Amara_2026-06-15_15-02_comeback_20.7"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 11300.0,
+      "new_price": 8561.0,
+      "price_change": -2739.0,
+      "price_change_pct": -24.238938053097346,
+      "timestamp": "2026-06-15 15:02:25.166051+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T15:04:45.527858+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-06-15_15-02_comeback_24.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T13:03:27.419910+00:00",
+    "last_processed_run": "2026-06-15T15:02:25.166051+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -31948,7 +32039,7 @@
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 8586.0,
+        "history_max": 9009.0,
         "premium_peak": null
       },
       "Titanic Beach Spa & Aqua Park": {
@@ -32560,8 +32651,8 @@
         "premium_peak": 10099.0
       },
       "Sunrise Montemare Resort": {
-        "history_max": 10327.0,
-        "premium_peak": 10327.0
+        "history_max": 11552.0,
+        "premium_peak": 11552.0
       },
       "Sentido Reef Oasis Senses Resort": {
         "history_max": 10912.0,

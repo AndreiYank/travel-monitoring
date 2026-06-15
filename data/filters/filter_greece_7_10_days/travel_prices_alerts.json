@@ -7228,10 +7228,101 @@
       "created_at": "2026-06-15T13:07:52.127365+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Solimar Aquamarine_2026-06-15_13-06_zone_out_gone"
+    },
+    {
+      "hotel_name": "Serita Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 7683.0,
+      "new_price": 8458.0,
+      "price_change": 775.0,
+      "price_change_pct": 10.0872055186776,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T15:07:38.513418+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serita Beach Grecja, Kreta Wschodnia, Anissaras_2026-06-15_15-05_+10.1"
+    },
+    {
+      "hotel_name": "Ibiscus Corfu Grecja, Korfu, Roda",
+      "duration_bucket": "",
+      "old_price": 9155.0,
+      "new_price": 8281.0,
+      "price_change": -874.0,
+      "price_change_pct": -9.546695794647734,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T15:07:38.513446+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ibiscus Corfu Grecja, Korfu, Roda_2026-06-15_15-05_-9.5"
+    },
+    {
+      "hotel_name": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos",
+      "duration_bucket": "",
+      "old_price": 9337.0,
+      "new_price": 8096.0,
+      "price_change": -1241.0,
+      "price_change_pct": -13.291207025811289,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T15:07:38.513457+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-06-15_15-05_-13.3"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 9342.0,
+      "new_price": 8594.0,
+      "price_change": -748.0,
+      "price_change_pct": -8.006850781417256,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-15T15:07:38.513465+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-15_15-05_-8.0"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 7548.0,
+      "new_price": 8709.0,
+      "price_change": 1161.0,
+      "price_change_pct": 15.381558028616851,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T15:07:38.513475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-06-15_15-05_+15.4"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 8284.0,
+      "new_price": 9142.0,
+      "price_change": 858.0,
+      "price_change_pct": 10.357315306615162,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T15:07:38.513482+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-06-15_15-05_+10.4"
+    },
+    {
+      "hotel_name": "Aldemar Olympian Village Grecja, Peloponez, Skafidia",
+      "duration_bucket": "",
+      "old_price": 9447.0,
+      "new_price": 9447.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 15:05:36.494990+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T15:07:38.513498+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aldemar Olympian Village Grecja, Peloponez, Skafidia_2026-06-15_15-05_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T13:06:18.931056+00:00",
+    "last_processed_run": "2026-06-15T15:05:36.494990+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -7246,8 +7337,8 @@
         "premium_peak": null
       },
       "Arina Beach Resort (ex Aquis Arina Sand)": {
-        "history_max": 13847.0,
-        "premium_peak": 13847.0
+        "history_max": 15827.0,
+        "premium_peak": 15827.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo)": {
         "history_max": 14547.0,
@@ -7326,8 +7417,8 @@
         "premium_peak": 12020.0
       },
       "Iberostar Selection Creta Marine": {
-        "history_max": 15327.0,
-        "premium_peak": 15327.0
+        "history_max": 15499.0,
+        "premium_peak": 15499.0
       },
       "CHC Athina Palace Resort & Spa (Agia Pelagia)": {
         "history_max": 11591.0,
@@ -7722,8 +7813,8 @@
         "premium_peak": 10437.0
       },
       "Kresten Royal Euphoria Resort (ex. Kresten Royal Villas)": {
-        "history_max": 13529.0,
-        "premium_peak": 13529.0
+        "history_max": 14710.0,
+        "premium_peak": 14710.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 13437.0,
