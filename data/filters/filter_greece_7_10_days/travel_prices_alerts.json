@@ -6916,10 +6916,75 @@
       "created_at": "2026-06-14T22:20:59.350272+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Natura Park Village_2026-06-14_22-19_zone_out_+3.1"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:23:15.288060+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:25:27.057477+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-06-15_06-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari",
+      "duration_bucket": "",
+      "old_price": 9322.0,
+      "new_price": 9322.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:23:15.288060+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:25:27.057521+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari_2026-06-15_06-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Filion Suites Resort",
+      "duration_bucket": "",
+      "old_price": 9551.0,
+      "new_price": 9551.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:23:15.288060+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:25:27.057543+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Filion Suites Resort_2026-06-15_06-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hersonissos Palace",
+      "duration_bucket": "",
+      "old_price": 9563.0,
+      "new_price": 9563.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:23:15.288060+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:25:27.057559+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hersonissos Palace_2026-06-15_06-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Akti Coast Club",
+      "duration_bucket": "",
+      "old_price": 11774.0,
+      "new_price": 9622.0,
+      "price_change": -2152.0,
+      "price_change_pct": -18.277560727025648,
+      "timestamp": "2026-06-15 06:23:15.288060+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-15T06:25:27.057604+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akti Coast Club_2026-06-15_06-23_comeback_18.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T00:10:45.221851+00:00",
+    "last_processed_run": "2026-06-15T06:23:15.288060+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -6938,8 +7003,8 @@
         "premium_peak": 13847.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo)": {
-        "history_max": 14427.0,
-        "premium_peak": 14427.0
+        "history_max": 14547.0,
+        "premium_peak": 14547.0
       },
       "Enorme Santanna Island": {
         "history_max": 15734.0,
@@ -6994,8 +7059,8 @@
         "premium_peak": 13997.0
       },
       "Mitsis Rodos Maris": {
-        "history_max": 14422.0,
-        "premium_peak": 14422.0
+        "history_max": 14661.0,
+        "premium_peak": 14661.0
       },
       "Porto Platanias Village": {
         "history_max": 11336.0,
@@ -7082,8 +7147,8 @@
         "premium_peak": null
       },
       "Istion Club": {
-        "history_max": 14130.0,
-        "premium_peak": 14130.0
+        "history_max": 14754.0,
+        "premium_peak": 14754.0
       },
       "Rethymno Palace": {
         "history_max": 13492.0,
@@ -7334,8 +7399,8 @@
         "premium_peak": 19947.0
       },
       "Mitsis Summer Palace": {
-        "history_max": 12463.0,
-        "premium_peak": 12463.0
+        "history_max": 13259.0,
+        "premium_peak": 13259.0
       },
       "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki": {
         "history_max": 9879.0,
@@ -7723,6 +7788,10 @@
       },
       "Almyra Village": {
         "history_max": 9557.0,
+        "premium_peak": null
+      },
+      "Mare blue (ex. Sunshine Crete Beach)": {
+        "history_max": 9597.0,
         "premium_peak": null
       }
     }

@@ -117,14 +117,66 @@
       "created_at": "2026-06-15T00:10:43.789027+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sun Star Resort|9-11_2026-06-15_00-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "7-9",
+      "old_price": 8012.0,
+      "new_price": 8721.0,
+      "price_change": 709.0,
+      "price_change_pct": 8.849226160758862,
+      "timestamp": "2026-06-15 06:22:53.154594+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-15T06:23:58.412791+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)|7-9_2026-06-15_06-22_+8.8"
+    },
+    {
+      "hotel_name": "Fantasia De Luxe Kusadasi",
+      "duration_bucket": "7-9",
+      "old_price": 8919.0,
+      "new_price": 8919.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:22:53.154594+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:23:58.412854+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantasia De Luxe Kusadasi|7-9_2026-06-15_06-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Linda Sunny Beach",
+      "duration_bucket": "7-9",
+      "old_price": 9977.0,
+      "new_price": 9977.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:22:53.154594+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:23:58.412878+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Linda Sunny Beach|7-9_2026-06-15_06-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "7-9",
+      "old_price": 9397.0,
+      "new_price": 9397.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-15 06:22:53.154594+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-15T06:23:58.412896+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)|7-9_2026-06-15_06-22_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T00:09:40.191431+00:00",
+    "last_processed_run": "2026-06-15T06:22:53.154594+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
-        "history_max": 10863.0,
-        "premium_peak": 10863.0
+        "history_max": 11004.0,
+        "premium_peak": 11004.0
       },
       "Golden Rock Beach|7-9": {
         "history_max": 10040.0,
@@ -211,7 +263,7 @@
         "premium_peak": 11785.0
       },
       "The Marilis Hill Resort and Spa (Alanya)|7-9": {
-        "history_max": 8012.0,
+        "history_max": 8721.0,
         "premium_peak": null
       },
       "Justiniano Deluxe Resort|7-9": {
@@ -275,8 +327,8 @@
         "premium_peak": 12457.0
       },
       "Champion Holiday Village (Kemer)|7-9": {
-        "history_max": 11478.0,
-        "premium_peak": 11478.0
+        "history_max": 11568.0,
+        "premium_peak": 11568.0
       },
       "Club Boran Mare Beach|7-9": {
         "history_max": 11673.0,
@@ -643,8 +695,8 @@
         "premium_peak": 12151.0
       },
       "Orange County (Kemer)|7-9": {
-        "history_max": 11767.0,
-        "premium_peak": 11767.0
+        "history_max": 12165.0,
+        "premium_peak": 12165.0
       },
       "OZ Incekum Beach Resort|7-9": {
         "history_max": 10289.0,
@@ -1809,6 +1861,38 @@
       "Azura World (ex. Wyndham Alanya)|9-11": {
         "history_max": 12015.0,
         "premium_peak": 12015.0
+      },
+      "Orange County Belek|7-9": {
+        "history_max": 11817.0,
+        "premium_peak": 11817.0
+      },
+      "Diamond Premium|7-9": {
+        "history_max": 11589.0,
+        "premium_peak": 11589.0
+      },
+      "Aventura Park|7-9": {
+        "history_max": 9397.0,
+        "premium_peak": null
+      },
+      "Delta by Marriott Bodrum|9-11": {
+        "history_max": 13537.0,
+        "premium_peak": 13537.0
+      },
+      "Misal (ex. Nox Inn Club)|9-11": {
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
+      },
+      "Laguna Beach Alya|9-11": {
+        "history_max": 13917.0,
+        "premium_peak": 13917.0
+      },
+      "Labranda TMT Bodrum Resort|9-11": {
+        "history_max": 15183.0,
+        "premium_peak": 15183.0
+      },
+      "Champion Holiday Village (Kemer)|9-11": {
+        "history_max": 13627.0,
+        "premium_peak": 13627.0
       }
     }
   }
