@@ -483,6 +483,75 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5, group_co
     return pd.DataFrame(rows).sort_values(sort_cols).reset_index(drop=True)
 
 
+def build_daily_offers_count_timeline(
+    df,
+    ceiling_val=None,
+    group_cols=None,
+    tz='Europe/Warsaw',
+    pick='last',
+    run_gap_minutes=5,
+):
+    """One point per calendar day: canonical offer count from first/last scrape run that day."""
+    empty = {'dates': [], 'counts': [], 'meta': []}
+    if df is None or df.empty:
+        return empty
+
+    group_cols = group_cols or ['hotel_name']
+    canon = collapse_canonical_per_run(
+        df,
+        ceiling_val,
+        group_cols=group_cols,
+        run_gap_minutes=run_gap_minutes,
+    )
+    if canon.empty:
+        return empty
+
+    runs = []
+    for _, _, run_slice in iter_scrape_runs(canon, gap_minutes=run_gap_minutes):
+        if run_slice.empty:
+            continue
+        run_time = run_slice['scraped_at_display'].iloc[0]
+        try:
+            day = pd.Timestamp(run_time).tz_convert(tz).date()
+        except Exception:
+            day = pd.Timestamp(run_time).date()
+        runs.append({
+            'day': day,
+            'time': run_time,
+            'count': len(run_slice),
+        })
+
+    if not runs:
+        return empty
+
+    run_df = pd.DataFrame(runs).sort_values('time')
+    if pick == 'first':
+        daily = run_df.groupby('day', as_index=False).first()
+    else:
+        daily = run_df.groupby('day', as_index=False).last()
+
+    meta = []
+    dates = []
+    counts = []
+    for _, row in daily.iterrows():
+        day_ts = pd.Timestamp(row['day'])
+        run_ts = pd.Timestamp(row['time'])
+        try:
+            run_label = run_ts.tz_convert(tz).strftime('%d.%m.%Y %H:%M')
+        except Exception:
+            run_label = run_ts.strftime('%d.%m.%Y %H:%M')
+        dates.append(day_ts.strftime('%Y-%m-%d'))
+        counts.append(int(row['count']))
+        meta.append({
+            'day': day_ts.strftime('%d.%m.%Y'),
+            'count': int(row['count']),
+            'run_time': run_label,
+            'pick': pick,
+        })
+
+    return {'dates': dates, 'counts': counts, 'meta': meta}
+
+
 def _prepare_trip_duration_columns(df: pd.DataFrame, filter_config: dict) -> tuple[list[str], list[dict], bool]:
     buckets = (
         parse_trip_duration_buckets(filter_config)
@@ -1604,6 +1673,28 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         print(f"📈 Расширенная история: {len(df_history)} записей")
     if len(df_full) > len(df_history):
         print(f"📉 Полная история (без потолка): {len(df_full)} записей")
+
+    try:
+        offers_count_timeline = build_daily_offers_count_timeline(
+            df,
+            ceiling_val=ceiling_val,
+            group_cols=group_cols,
+            tz=tz,
+            pick='last',
+        )
+        offers_count_dates = offers_count_timeline['dates']
+        offers_count_values = offers_count_timeline['counts']
+        offers_count_meta = offers_count_timeline['meta']
+        if offers_count_dates:
+            print(
+                f"📈 Предложений по дням: {len(offers_count_dates)} точек "
+                f"(последний ран дня, последнее: {offers_count_values[-1]})"
+            )
+    except Exception as e:
+        print(f"⚠️ Не удалось посчитать динамику количества предложений: {e}")
+        offers_count_dates = []
+        offers_count_values = []
+        offers_count_meta = []
 
     # Модель данных:
     # • df_canonical — ≤ display (10k): таблица, карточки, алерты.
@@ -4015,6 +4106,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             display: flex;
             align-items: center;
             gap: 0.5rem;
+        }}
+
+        .chart-section-note {{
+            margin: -0.85rem 0 1rem;
+            font-size: 0.82rem;
+            color: var(--text-muted);
+            line-height: 1.4;
         }}
         
         .trend-section {{
@@ -7127,6 +7225,21 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             <div id="avgTop10" style="height:300px;"></div>
         </div>
 
+        <details class="dashboard-fold" id="offersCountFold">
+            <summary>
+                <span>Количество предложений по дням</span>
+                <span class="fold-title-meta">Доп. аналитика</span>
+                <span class="fold-chevron">⌄</span>
+            </summary>
+            <div class="fold-content">
+                <div class="avg-top10-section offers-count-section">
+                    <h3>📈 Количество предложений по дням</h3>
+                    <p class="chart-section-note">Одна точка в день — последний скрап за сутки{f" • видимая зона ≤{ceiling_val:.0f} PLN" if ceiling_val is not None else ""}</p>
+                    <div id="offersCountChart" style="height:280px;"></div>
+                </div>
+            </div>
+        </details>
+
         <details class="dashboard-fold" id="trendFold">
             <summary>
                 <span>Индекс ценовой динамики</span>
@@ -7801,6 +7914,59 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }
       })();
 
+      (function(){
+        const offersDates = """ + json.dumps(offers_count_dates, ensure_ascii=False) + """;
+        const offersCounts = """ + json.dumps(offers_count_values, ensure_ascii=False) + """;
+        const offersMeta = """ + json.dumps(offers_count_meta, ensure_ascii=False, default=str) + """;
+
+        function buildOffersCountHoverTexts(meta) {
+          return (meta || []).map((row) => {
+            let text = '<b>' + (row.day || '') + '</b><br>';
+            text += 'Предложений: <b>' + (row.count || 0) + '</b><br>';
+            if (row.run_time) {
+              text += 'Скрап: ' + row.run_time;
+            }
+            return text;
+          });
+        }
+
+        window.renderOffersCountChart = function(dates, counts, meta) {
+          const chartEl = document.getElementById('offersCountChart');
+          if (!chartEl || !window.Plotly) return;
+          const x = Array.isArray(dates) ? dates : [];
+          const y = Array.isArray(counts) ? counts : [];
+          if (!x.length || !y.length) {
+            try { Plotly.purge(chartEl); } catch (e) {}
+            chartEl.innerHTML = '<div style="padding:1rem;color:#64748b;font-size:.9rem;">Пока недостаточно истории по дням</div>';
+            return;
+          }
+          try { Plotly.purge(chartEl); } catch (e) {}
+          chartEl.innerHTML = '';
+          const hoverTexts = buildOffersCountHoverTexts(meta);
+          const trace = {
+            x: x,
+            y: y,
+            type: 'scatter',
+            mode: 'lines+markers',
+            line: { color: '#059669', width: 2.5 },
+            marker: { size: 7, color: '#059669' },
+            text: hoverTexts,
+            hovertemplate: '%{text}<extra></extra>',
+            hoverinfo: 'text',
+          };
+          const layout = {
+            margin: { t: 10, r: 12, b: 45, l: 52 },
+            xaxis: { title: 'День', type: 'date', tickformat: '%d.%m' },
+            yaxis: { title: 'Предложений', rangemode: 'tozero' },
+            hovermode: 'closest',
+          };
+          const config = { responsive: true, displayModeBar: false };
+          Plotly.newPlot('offersCountChart', [trace], layout, config);
+        };
+
+        window.renderOffersCountChart(offersDates, offersCounts, offersMeta);
+      })();
+
       // Секция «Когда покупать»: статистика снижения цен по времени
       (function(){
         const TIMING = """ + timing_json + """;
@@ -8133,6 +8299,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             setMode(btn.dataset.mode || 'cards');
           });
         }
+        bindFoldPersistence('offersCountFold', 'dashboard_fold_offers_count', false);
         bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
         bindFoldPersistence('timingFold', 'dashboard_fold_timing', false);
         bindFoldPersistence('statsFold', 'dashboard_fold_stats', false);
@@ -8743,6 +8910,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             }, { responsive: true, displayModeBar: false });
           } else {
             Plotly.react('trendIndexChart', [], emptyChartLayout('trend'));
+          }
+          if (typeof window.renderOffersCountChart === 'function') {
+            window.renderOffersCountChart(
+              charts.offers_count_dates || [],
+              charts.offers_count_values || [],
+              charts.offers_count_meta || []
+            );
           }
         };
 
