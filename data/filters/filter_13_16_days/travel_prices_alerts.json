@@ -4277,10 +4277,75 @@
       "created_at": "2026-06-15T13:05:36.279433+00:00",
       "threshold_percent": 8.0,
       "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-15_13-03_comeback_36.8"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 7952.0,
+      "new_price": 9545.0,
+      "price_change": 1593.0,
+      "price_change_pct": 20.032696177062373,
+      "timestamp": "2026-06-16 12:10:47.813206+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-16T12:12:51.401248+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-16_12-10_+20.0"
+    },
+    {
+      "hotel_name": "Jasmine Palace",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 11357.0,
+      "price_change": 1800.0,
+      "price_change_pct": 18.83436224756723,
+      "timestamp": "2026-06-16 12:10:47.813206+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T12:12:51.401282+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jasmine Palace_2026-06-16_12-10_zone_out_+18.8"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 9563.0,
+      "new_price": 11156.0,
+      "price_change": 1593.0,
+      "price_change_pct": 16.65795252535815,
+      "timestamp": "2026-06-16 12:10:47.813206+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T12:12:51.401293+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-06-16_12-10_zone_out_+16.7"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 8685.0,
+      "new_price": 10278.0,
+      "price_change": 1593.0,
+      "price_change_pct": 18.341968911917096,
+      "timestamp": "2026-06-16 12:10:47.813206+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T12:12:51.401302+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-06-16_12-10_zone_out_+18.3"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 8703.0,
+      "new_price": 10296.0,
+      "price_change": 1593.0,
+      "price_change_pct": 18.304033092037226,
+      "timestamp": "2026-06-16 12:10:47.813206+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T12:12:51.401310+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-06-16_12-10_zone_out_+18.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T06:30:43.801253+00:00",
+    "last_processed_run": "2026-06-16T12:10:47.813206+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
@@ -4971,8 +5036,8 @@
         "premium_peak": 18097.0
       },
       "Jaz Elite Riviera": {
-        "history_max": 19617.0,
-        "premium_peak": 19617.0
+        "history_max": 19997.0,
+        "premium_peak": 19997.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
         "history_max": 18669.0,
