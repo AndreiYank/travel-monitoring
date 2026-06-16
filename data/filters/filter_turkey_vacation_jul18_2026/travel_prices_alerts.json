@@ -1131,10 +1131,49 @@
       "created_at": "2026-06-16T18:06:00.686559+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|9-11_2026-06-16_18-04_comeback_9.4"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 9100.0,
+      "new_price": 9858.0,
+      "price_change": 758.0,
+      "price_change_pct": 8.32967032967033,
+      "timestamp": "2026-06-16 20:47:20.970230+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-16T20:48:35.697333+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)|7-9_2026-06-16_20-47_+8.3"
+    },
+    {
+      "hotel_name": "Luna Vista Belek",
+      "duration_bucket": "7-9",
+      "old_price": 9679.0,
+      "new_price": 9679.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 20:47:20.970230+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T20:48:35.697419+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Luna Vista Belek|7-9_2026-06-16_20-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8934.0,
+      "new_price": 8934.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 20:47:20.970230+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T20:48:35.697442+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|7-9_2026-06-16_20-47_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T18:04:39.854684+00:00",
+    "last_processed_run": "2026-06-16T20:47:20.970230+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -1565,8 +1604,8 @@
         "premium_peak": 10757.0
       },
       "Lonicera Premium|7-9": {
-        "history_max": 11518.0,
-        "premium_peak": 11518.0
+        "history_max": 11665.0,
+        "premium_peak": 11665.0
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)|7-9": {
         "history_max": 11135.0,
@@ -1757,8 +1796,8 @@
         "premium_peak": 11670.0
       },
       "Alba Queen|7-9": {
-        "history_max": 11140.0,
-        "premium_peak": 11140.0
+        "history_max": 11184.0,
+        "premium_peak": 11184.0
       },
       "Berry Blue|7-9": {
         "history_max": 11157.0,
@@ -2521,8 +2560,8 @@
         "premium_peak": 10265.0
       },
       "Seher Sun Palace Resort & Spa|9-11": {
-        "history_max": 10348.0,
-        "premium_peak": 10348.0
+        "history_max": 10495.0,
+        "premium_peak": 10495.0
       },
       "Seher Resort & Spa|9-11": {
         "history_max": 11022.0,
@@ -2633,8 +2672,8 @@
         "premium_peak": 14486.0
       },
       "Kaila Beach (ex Katya)|9-11": {
-        "history_max": 11871.0,
-        "premium_peak": 11871.0
+        "history_max": 11881.0,
+        "premium_peak": 11881.0
       },
       "Kadikale Resort Spa & Wellness|9-11": {
         "history_max": 13617.0,
@@ -3195,6 +3234,18 @@
       "Andriake Beach Club|7-9": {
         "history_max": 10364.0,
         "premium_peak": 10364.0
+      },
+      "Limak Limra|9-11": {
+        "history_max": 15696.0,
+        "premium_peak": 15696.0
+      },
+      "Sunis Elita Beach Resort (ex Asteria Elita)|9-11": {
+        "history_max": 13169.0,
+        "premium_peak": 13169.0
+      },
+      "Diamond Excellence Resort & Spa|9-11": {
+        "history_max": 13588.0,
+        "premium_peak": 13588.0
       }
     }
   }

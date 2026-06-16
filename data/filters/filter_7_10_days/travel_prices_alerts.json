@@ -32370,10 +32370,62 @@
       "created_at": "2026-06-16T18:04:55.535247+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-06-16_18-01_+22.2"
+    },
+    {
+      "hotel_name": "Calimera Blend Paradise Resort",
+      "duration_bucket": "",
+      "old_price": 6759.0,
+      "new_price": 6197.0,
+      "price_change": -562.0,
+      "price_change_pct": -8.314839473294866,
+      "timestamp": "2026-06-16 20:44:37.249326+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T20:47:19.991903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calimera Blend Paradise Resort_2026-06-16_20-44_-8.3"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 8177.0,
+      "new_price": 7417.0,
+      "price_change": -760.0,
+      "price_change_pct": -9.294362235538706,
+      "timestamp": "2026-06-16 20:44:37.249326+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T20:47:19.991954+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-06-16_20-44_-9.3"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 7457.0,
+      "new_price": 6757.0,
+      "price_change": -700.0,
+      "price_change_pct": -9.387153010594073,
+      "timestamp": "2026-06-16 20:44:37.249326+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T20:47:19.991966+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-06-16_20-44_-9.4"
+    },
+    {
+      "hotel_name": "Aurora Oriental Resort",
+      "duration_bucket": "",
+      "old_price": 9442.0,
+      "new_price": 9442.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 20:44:37.249326+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T20:47:19.991996+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aurora Oriental Resort_2026-06-16_20-44_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T18:01:42.749463+00:00",
+    "last_processed_run": "2026-06-16T20:44:37.249326+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -32508,7 +32560,7 @@
         "premium_peak": null
       },
       "Invidia Coral Beach Tiran": {
-        "history_max": 8279.0,
+        "history_max": 8337.0,
         "premium_peak": null
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
