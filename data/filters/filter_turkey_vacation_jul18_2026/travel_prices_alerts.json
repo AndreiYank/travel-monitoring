@@ -1040,10 +1040,101 @@
       "created_at": "2026-06-16T16:19:58.342909+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|9-11_2026-06-16_16-18_zone_out_+9.4"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 9219.0,
+      "new_price": 8079.0,
+      "price_change": -1140.0,
+      "price_change_pct": -12.365766352098927,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T18:06:00.686426+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-06-16_18-04_-12.4"
+    },
+    {
+      "hotel_name": "Grand Seker",
+      "duration_bucket": "7-9",
+      "old_price": 10404.0,
+      "new_price": 9162.0,
+      "price_change": -1242.0,
+      "price_change_pct": -11.937716262975778,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T18:06:00.686493+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Seker|7-9_2026-06-16_18-04_comeback_11.9"
+    },
+    {
+      "hotel_name": "Wind of Lara",
+      "duration_bucket": "7-9",
+      "old_price": 11068.0,
+      "new_price": 9928.0,
+      "price_change": -1140.0,
+      "price_change_pct": -10.29996385977593,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T18:06:00.686509+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Wind of Lara|7-9_2026-06-16_18-04_comeback_10.3"
+    },
+    {
+      "hotel_name": "Terrace Elite Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10676.0,
+      "new_price": 9524.0,
+      "price_change": -1152.0,
+      "price_change_pct": -10.790558261521168,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T18:06:00.686524+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Terrace Elite Resort|7-9_2026-06-16_18-04_comeback_10.8"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10708.0,
+      "new_price": 9568.0,
+      "price_change": -1140.0,
+      "price_change_pct": -10.646245797534554,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T18:06:00.686536+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort|7-9_2026-06-16_18-04_comeback_10.6"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10536.0,
+      "new_price": 9276.0,
+      "price_change": -1260.0,
+      "price_change_pct": -11.958997722095672,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T18:06:00.686547+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort|7-9_2026-06-16_18-04_comeback_12.0"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "9-11",
+      "old_price": 10896.0,
+      "new_price": 9871.0,
+      "price_change": -1025.0,
+      "price_change_pct": -9.40712187958884,
+      "timestamp": "2026-06-16 18:04:39.854684+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T18:06:00.686559+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|9-11_2026-06-16_18-04_comeback_9.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T16:18:36.626797+00:00",
+    "last_processed_run": "2026-06-16T18:04:39.854684+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -1058,7 +1149,7 @@
         "premium_peak": 11253.0
       },
       "Grand Kolibri Prestige & Spa|7-9": {
-        "history_max": 9688.0,
+        "history_max": 9782.0,
         "premium_peak": null
       },
       "Grand Pasa|7-9": {
@@ -1438,8 +1529,8 @@
         "premium_peak": null
       },
       "Side Mare Resort|7-9": {
-        "history_max": 12385.0,
-        "premium_peak": 12385.0
+        "history_max": 12574.0,
+        "premium_peak": 12574.0
       },
       "Seaden Sea World Resort & Spa|7-9": {
         "history_max": 11190.0,
@@ -3100,6 +3191,10 @@
       "Royal Dragon|9-11": {
         "history_max": 15896.0,
         "premium_peak": 15896.0
+      },
+      "Andriake Beach Club|7-9": {
+        "history_max": 10364.0,
+        "premium_peak": 10364.0
       }
     }
   }
