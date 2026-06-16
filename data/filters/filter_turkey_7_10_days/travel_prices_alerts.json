@@ -46800,10 +46800,49 @@
       "created_at": "2026-06-16T05:05:32.248260+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Q Premium Resort_2026-06-16_05-01_zone_out_gone"
+    },
+    {
+      "hotel_name": "Riolavitas SPA & Resort",
+      "duration_bucket": "",
+      "old_price": 9752.0,
+      "new_price": 8400.0,
+      "price_change": -1352.0,
+      "price_change_pct": -13.863822805578344,
+      "timestamp": "2026-06-16 06:30:43.725307+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T06:33:28.919869+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Riolavitas SPA & Resort_2026-06-16_06-30_-13.9"
+    },
+    {
+      "hotel_name": "Eftalia Ocean (Alanya)",
+      "duration_bucket": "",
+      "old_price": 8933.0,
+      "new_price": 9941.0,
+      "price_change": 1008.0,
+      "price_change_pct": 11.284003134445316,
+      "timestamp": "2026-06-16 06:30:43.725307+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-16T06:33:28.919918+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Ocean (Alanya)_2026-06-16_06-30_+11.3"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 6908.0,
+      "new_price": 6908.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 06:30:43.725307+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T06:33:28.919961+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-06-16_06-30_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T05:01:42.628718+00:00",
+    "last_processed_run": "2026-06-16T06:30:43.725307+00:00",
     "premium_state": {
       "First Class Turcja, Alanya, Mahmutlar": {
         "history_max": 5450.0,
@@ -47574,7 +47613,7 @@
         "premium_peak": null
       },
       "Club Nena (Side)": {
-        "history_max": 9592.0,
+        "history_max": 9663.0,
         "premium_peak": null
       },
       "Horus Paradise Luxury Resort": {
@@ -47818,7 +47857,7 @@
         "premium_peak": null
       },
       "Adora Hotel & Resort (ex. Adora Golf)": {
-        "history_max": 9602.0,
+        "history_max": 9942.0,
         "premium_peak": null
       },
       "Crystal Admiral Aqua Collection": {
@@ -48462,7 +48501,7 @@
         "premium_peak": null
       },
       "Eftalia Ocean (Alanya)": {
-        "history_max": 8933.0,
+        "history_max": 9941.0,
         "premium_peak": null
       },
       "Linda Resort (Side) Turcja, Side, Titreyengol": {
@@ -48474,7 +48513,7 @@
         "premium_peak": null
       },
       "Starlight Resort & Convention Center (Side)": {
-        "history_max": 9657.0,
+        "history_max": 9851.0,
         "premium_peak": null
       },
       "Belconti Resort (Belek)": {
