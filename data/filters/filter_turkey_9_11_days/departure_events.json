@@ -79,6 +79,26 @@
       "hotel_count": 5.0,
       "hotel_delta": 0,
       "hot_score": 97.0
+    },
+    {
+      "event_time": "2026-06-16T00:31:16+0000",
+      "departure_key": "turcja|side|2026-06-20|2026-06-29|9|Warszawa,Warszawa-Radom,Warszawa - Modlin,Warszawa - Radom|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-06-20",
+      "return_date": "2026-06-29",
+      "nights": 9.0,
+      "days_to_departure": 4.0,
+      "old_min_price": "",
+      "new_min_price": 6993.0,
+      "min_drop_pct": -4.26,
+      "p10_drop_pct": -4.32,
+      "median_drop_pct": -5.29,
+      "hotel_count": 34.0,
+      "hotel_delta": -24,
+      "hot_score": 54.0
     }
   ]
 }

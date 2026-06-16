@@ -2457,10 +2457,36 @@
       "created_at": "2026-06-15T23:04:39.515057+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Saphir Hotel & Villas_2026-06-15_23-04_zone_out_+19.5"
+    },
+    {
+      "hotel_name": "Sun Star Resort",
+      "duration_bucket": "",
+      "old_price": 7545.0,
+      "new_price": 8268.0,
+      "price_change": 723.0,
+      "price_change_pct": 9.582504970178926,
+      "timestamp": "2026-06-16 00:31:16.511877+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-16T00:32:07.332889+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sun Star Resort_2026-06-16_00-31_+9.6"
+    },
+    {
+      "hotel_name": "Zena Resort",
+      "duration_bucket": "",
+      "old_price": 9181.0,
+      "new_price": 10292.0,
+      "price_change": 1111.0,
+      "price_change_pct": 12.10107831390916,
+      "timestamp": "2026-06-16 00:31:16.511877+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T00:32:07.332980+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Zena Resort_2026-06-16_00-31_zone_out_+12.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T23:04:00.569038+00:00",
+    "last_processed_run": "2026-06-16T00:31:16.511877+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11975.0,
@@ -2583,8 +2609,8 @@
         "premium_peak": null
       },
       "Nova Park": {
-        "history_max": 11735.0,
-        "premium_peak": 11735.0
+        "history_max": 12080.0,
+        "premium_peak": 12080.0
       },
       "Nova Life": {
         "history_max": 10481.0,
@@ -2619,7 +2645,7 @@
         "premium_peak": 11665.0
       },
       "Master Family Club": {
-        "history_max": 9466.0,
+        "history_max": 9988.0,
         "premium_peak": null
       },
       "Litore Resort & Spa": {
@@ -2627,8 +2653,8 @@
         "premium_peak": 12542.0
       },
       "Mary Side (ex. Mary Palace)": {
-        "history_max": 12069.0,
-        "premium_peak": 12069.0
+        "history_max": 12119.0,
+        "premium_peak": 12119.0
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
         "history_max": 7304.0,
@@ -2947,7 +2973,7 @@
         "premium_peak": null
       },
       "Sun Star Resort": {
-        "history_max": 7545.0,
+        "history_max": 8268.0,
         "premium_peak": null
       },
       "Starlight Resort & Convention Center (Side)": {
@@ -2975,8 +3001,8 @@
         "premium_peak": 13712.0
       },
       "Side Prenses": {
-        "history_max": 10713.0,
-        "premium_peak": 10713.0
+        "history_max": 11041.0,
+        "premium_peak": 11041.0
       },
       "Side Premium by OZ Hotels": {
         "history_max": 10777.0,
@@ -3027,8 +3053,8 @@
         "premium_peak": 11177.0
       },
       "Zena Resort": {
-        "history_max": 9181.0,
-        "premium_peak": null
+        "history_max": 10292.0,
+        "premium_peak": 10292.0
       },
       "Xoria Deluxe": {
         "history_max": 10475.0,
@@ -3515,8 +3541,8 @@
         "premium_peak": null
       },
       "Can Garden Resort (Side)": {
-        "history_max": 10342.0,
-        "premium_peak": 10342.0
+        "history_max": 10421.0,
+        "premium_peak": 10421.0
       },
       "Adalya Ocean Deluxe": {
         "history_max": 13490.0,
@@ -3599,7 +3625,7 @@
         "premium_peak": 10940.0
       },
       "Insula Resort": {
-        "history_max": 9073.0,
+        "history_max": 9654.0,
         "premium_peak": null
       },
       "Marvida Family Eco": {
@@ -3643,8 +3669,8 @@
         "premium_peak": 12997.0
       },
       "Seamelia Beach Resort & Spa": {
-        "history_max": 10925.0,
-        "premium_peak": 10925.0
+        "history_max": 11219.0,
+        "premium_peak": 11219.0
       },
       "Aria Resort & SPA": {
         "history_max": 10976.0,
@@ -3745,6 +3771,10 @@
       "Crystal Flora Pearl Collection": {
         "history_max": 13504.0,
         "premium_peak": 13504.0
+      },
+      "Gravel Select": {
+        "history_max": 12585.0,
+        "premium_peak": 12585.0
       }
     }
   }

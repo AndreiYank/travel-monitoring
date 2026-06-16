@@ -32032,10 +32032,36 @@
       "created_at": "2026-06-15T23:04:00.519597+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Queen Resort_2026-06-15_23-01_-15.0"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 5414.0,
+      "new_price": 6366.0,
+      "price_change": 952.0,
+      "price_change_pct": 17.584041374214998,
+      "timestamp": "2026-06-16 00:29:52.993607+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-16T00:32:16.551751+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-06-16_00-29_+17.6"
+    },
+    {
+      "hotel_name": "Club Magic Life Kalawy",
+      "duration_bucket": "",
+      "old_price": 10233.0,
+      "new_price": 8313.0,
+      "price_change": -1920.0,
+      "price_change_pct": -18.762826150688948,
+      "timestamp": "2026-06-16 00:29:52.993607+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T00:32:16.551843+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Magic Life Kalawy_2026-06-16_00-29_comeback_18.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-15T23:01:49.314226+00:00",
+    "last_processed_run": "2026-06-16T00:29:52.993607+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -32750,8 +32776,8 @@
         "premium_peak": 10430.0
       },
       "Sunrise Royal Makadi Aqua Resort": {
-        "history_max": 10133.0,
-        "premium_peak": 10133.0
+        "history_max": 10313.0,
+        "premium_peak": 10313.0
       },
       "Xanadu Club Makadi Bay": {
         "history_max": 10168.0,
