@@ -32266,10 +32266,75 @@
       "created_at": "2026-06-16T12:13:14.676703+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tropitel Sahl Hasheesh_2026-06-16_12-10_-11.2"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 5829.0,
+      "new_price": 5085.0,
+      "price_change": -744.0,
+      "price_change_pct": -12.76376737004632,
+      "timestamp": "2026-06-16 16:15:45.160209+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T16:18:54.061973+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-06-16_16-15_-12.8"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 6757.0,
+      "new_price": 7757.0,
+      "price_change": 1000.0,
+      "price_change_pct": 14.79946721918011,
+      "timestamp": "2026-06-16 16:15:45.160209+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-16T16:18:54.062020+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-06-16_16-15_+14.8"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 9637.0,
+      "new_price": 8837.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.301338590847775,
+      "timestamp": "2026-06-16 16:15:45.160209+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T16:18:54.062036+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino_2026-06-16_16-15_-8.3"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 9829.0,
+      "new_price": 8247.0,
+      "price_change": -1582.0,
+      "price_change_pct": -16.095228405738123,
+      "timestamp": "2026-06-16 16:15:45.160209+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-16T16:18:54.062048+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-06-16_16-15_-16.1"
+    },
+    {
+      "hotel_name": "Jaz Almaza Blu",
+      "duration_bucket": "",
+      "old_price": 8897.0,
+      "new_price": 12997.0,
+      "price_change": 4100.0,
+      "price_change_pct": 46.08294930875576,
+      "timestamp": "2026-06-16 16:15:45.160209+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T16:18:54.062077+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Almaza Blu_2026-06-16_16-15_zone_out_+46.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T12:10:47.956252+00:00",
+    "last_processed_run": "2026-06-16T16:15:45.160209+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -32516,7 +32581,7 @@
         "premium_peak": null
       },
       "Charmillion Garden Aqua Park": {
-        "history_max": 8494.0,
+        "history_max": 9004.0,
         "premium_peak": null
       },
       "Domina Coral Bay Harem": {
@@ -32724,7 +32789,7 @@
         "premium_peak": null
       },
       "Reef Oasis Blue Bay Resort": {
-        "history_max": 9767.0,
+        "history_max": 9825.0,
         "premium_peak": null
       },
       "Pickalbatros Royal Moderna": {
@@ -32752,8 +32817,8 @@
         "premium_peak": 11293.0
       },
       "Jaz Almaza Blu": {
-        "history_max": 10430.0,
-        "premium_peak": 10430.0
+        "history_max": 12997.0,
+        "premium_peak": 12997.0
       },
       "Beach Albatros Resort": {
         "history_max": 10107.0,
@@ -32828,7 +32893,7 @@
         "premium_peak": null
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 8273.0,
+        "history_max": 8363.0,
         "premium_peak": null
       },
       "Jaz Mirabel Beach Resort": {
@@ -33040,8 +33105,8 @@
         "premium_peak": 13211.0
       },
       "Desert Rose Resort": {
-        "history_max": 11322.0,
-        "premium_peak": 11322.0
+        "history_max": 12593.0,
+        "premium_peak": 12593.0
       },
       "Swissotel Sharm El Sheikh": {
         "history_max": 11593.0,
