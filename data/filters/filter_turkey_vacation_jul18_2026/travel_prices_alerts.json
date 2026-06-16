@@ -624,10 +624,88 @@
       "created_at": "2026-06-15T23:05:06.461769+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Terrace Elite Resort|7-9_2026-06-15_23-04_zone_out_+11.6"
+    },
+    {
+      "hotel_name": "Fantasia De Luxe Kusadasi",
+      "duration_bucket": "7-9",
+      "old_price": 9225.0,
+      "new_price": 9225.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 05:04:26.111129+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T05:05:42.806588+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantasia De Luxe Kusadasi|7-9_2026-06-16_05-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Linda Sunny Beach",
+      "duration_bucket": "7-9",
+      "old_price": 9977.0,
+      "new_price": 10757.0,
+      "price_change": 780.0,
+      "price_change_pct": 7.817981357121378,
+      "timestamp": "2026-06-16 05:04:26.111129+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T05:05:42.806620+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Linda Sunny Beach|7-9_2026-06-16_05-04_zone_out_+7.8"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "7-9",
+      "old_price": 9397.0,
+      "new_price": 9397.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 05:04:26.111129+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T05:05:42.806632+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)|7-9_2026-06-16_05-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sun Star Resort",
+      "duration_bucket": "9-11",
+      "old_price": 9482.0,
+      "new_price": 9482.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-16 05:04:26.111129+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-16T05:05:42.806642+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sun Star Resort|9-11_2026-06-16_05-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Terrace Elite Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10676.0,
+      "new_price": 9606.0,
+      "price_change": -1070.0,
+      "price_change_pct": -10.022480329711502,
+      "timestamp": "2026-06-16 05:04:26.111129+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T05:05:42.806668+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Terrace Elite Resort|7-9_2026-06-16_05-04_comeback_10.0"
+    },
+    {
+      "hotel_name": "Grand Seker",
+      "duration_bucket": "7-9",
+      "old_price": 10262.0,
+      "new_price": 9304.0,
+      "price_change": -958.0,
+      "price_change_pct": -9.33541220035081,
+      "timestamp": "2026-06-16 05:04:26.111129+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-16T05:05:42.806685+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Seker|7-9_2026-06-16_05-04_comeback_9.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T00:32:08.723726+00:00",
+    "last_processed_run": "2026-06-16T05:04:26.111129+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -874,8 +952,8 @@
         "premium_peak": 12138.0
       },
       "VONResort Golden Beach|7-9": {
-        "history_max": 11844.0,
-        "premium_peak": 11844.0
+        "history_max": 12063.0,
+        "premium_peak": 12063.0
       },
       "Diamond Hill Resort|7-9": {
         "history_max": 9517.0,
@@ -1054,8 +1132,8 @@
         "premium_peak": null
       },
       "Linda Sunny Beach|7-9": {
-        "history_max": 9977.0,
-        "premium_peak": null
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       },
       "Lonicera Premium|7-9": {
         "history_max": 11518.0,
@@ -1958,8 +2036,8 @@
         "premium_peak": 10837.0
       },
       "Ozkaymak Marina (Kemer)|9-11": {
-        "history_max": 13357.0,
-        "premium_peak": 13357.0
+        "history_max": 14011.0,
+        "premium_peak": 14011.0
       },
       "Ozkaymak Incekum|9-11": {
         "history_max": 13046.0,
@@ -2042,8 +2120,8 @@
         "premium_peak": 13251.0
       },
       "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)|9-11": {
-        "history_max": 14637.0,
-        "premium_peak": 14637.0
+        "history_max": 15097.0,
+        "premium_peak": 15097.0
       },
       "Saphir Resort|9-11": {
         "history_max": 14485.0,
@@ -2318,8 +2396,8 @@
         "premium_peak": 12015.0
       },
       "Orange County Belek|7-9": {
-        "history_max": 11817.0,
-        "premium_peak": 11817.0
+        "history_max": 11819.0,
+        "premium_peak": 11819.0
       },
       "Diamond Premium|7-9": {
         "history_max": 11589.0,
@@ -2564,6 +2642,22 @@
       "Nova Park|9-11": {
         "history_max": 13312.0,
         "premium_peak": 13312.0
+      },
+      "Anadolu Hotels Didim Club (ex. Palm Wings Didim)|7-9": {
+        "history_max": 12197.0,
+        "premium_peak": 12197.0
+      },
+      "Labranda TMT Bodrum Resort|7-9": {
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
+      },
+      "Palm Wings Ephesus|7-9": {
+        "history_max": 12750.0,
+        "premium_peak": 12750.0
+      },
+      "VONResort Elite|9-11": {
+        "history_max": 15931.0,
+        "premium_peak": 15931.0
       }
     }
   }
