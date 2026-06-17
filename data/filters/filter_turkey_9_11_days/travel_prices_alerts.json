@@ -3952,10 +3952,88 @@
       "created_at": "2026-06-16T20:47:49.843311+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Premium by OZ Hotels_2026-06-16_20-46_zone_out_+8.3"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 5119.0,
+      "new_price": 6791.0,
+      "price_change": 1672.0,
+      "price_change_pct": 32.66262941980856,
+      "timestamp": "2026-06-17 00:26:34.783821+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T00:27:41.059074+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-06-17_00-26_+32.7"
+    },
+    {
+      "hotel_name": "Palemon Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7392.0,
+      "new_price": 9128.0,
+      "price_change": 1736.0,
+      "price_change_pct": 23.484848484848484,
+      "timestamp": "2026-06-17 00:26:34.783821+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T00:27:41.059148+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palemon Resort & Spa_2026-06-17_00-26_+23.5"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9412.0,
+      "new_price": 10108.0,
+      "price_change": 696.0,
+      "price_change_pct": 7.39481512962176,
+      "timestamp": "2026-06-17 00:26:34.783821+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T00:27:41.059195+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-06-17_00-26_zone_out_+7.4"
+    },
+    {
+      "hotel_name": "Master Family Club",
+      "duration_bucket": "",
+      "old_price": 9988.0,
+      "new_price": 10039.0,
+      "price_change": 51.0,
+      "price_change_pct": 0.5106127352823387,
+      "timestamp": "2026-06-17 00:26:34.783821+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T00:27:41.059217+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Master Family Club_2026-06-17_00-26_zone_out_+0.5"
+    },
+    {
+      "hotel_name": "Nova Park",
+      "duration_bucket": "",
+      "old_price": 12080.0,
+      "new_price": 9935.0,
+      "price_change": -2145.0,
+      "price_change_pct": -17.75662251655629,
+      "timestamp": "2026-06-17 00:26:34.783821+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-17T00:27:41.059263+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Park_2026-06-17_00-26_comeback_17.8"
+    },
+    {
+      "hotel_name": "Side Mare Resort",
+      "duration_bucket": "",
+      "old_price": 11267.0,
+      "new_price": 9786.0,
+      "price_change": -1481.0,
+      "price_change_pct": -13.144581521256768,
+      "timestamp": "2026-06-17 00:26:34.783821+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-17T00:27:41.059288+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Mare Resort_2026-06-17_00-26_comeback_13.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-16T20:46:48.854373+00:00",
+    "last_processed_run": "2026-06-17T00:26:34.783821+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,
@@ -4010,8 +4088,8 @@
         "premium_peak": 11877.0
       },
       "Kaya (Belek)": {
-        "history_max": 13554.0,
-        "premium_peak": 13554.0
+        "history_max": 13801.0,
+        "premium_peak": 13801.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)": {
         "history_max": 13446.0,
@@ -4114,8 +4192,8 @@
         "premium_peak": 13232.0
       },
       "Master Family Club": {
-        "history_max": 9988.0,
-        "premium_peak": null
+        "history_max": 10039.0,
+        "premium_peak": 10039.0
       },
       "Litore Resort & Spa": {
         "history_max": 13752.0,
@@ -4162,8 +4240,8 @@
         "premium_peak": 11457.0
       },
       "Lonicera West (ex. Gold Island)": {
-        "history_max": 12943.0,
-        "premium_peak": 12943.0
+        "history_max": 13445.0,
+        "premium_peak": 13445.0
       },
       "Lonicera Premium": {
         "history_max": 12722.0,
@@ -4350,8 +4428,8 @@
         "premium_peak": 13716.0
       },
       "Glamour Resort & Spa": {
-        "history_max": 9412.0,
-        "premium_peak": null
+        "history_max": 10108.0,
+        "premium_peak": 10108.0
       },
       "Garden of Sun Spa & Wellness": {
         "history_max": 10026.0,
@@ -4374,7 +4452,7 @@
         "premium_peak": 10762.0
       },
       "First Class": {
-        "history_max": 5891.0,
+        "history_max": 6791.0,
         "premium_peak": null
       },
       "Fantasia De Luxe Kusadasi": {
@@ -4422,8 +4500,8 @@
         "premium_peak": null
       },
       "Terrace Beach Resort (Side)": {
-        "history_max": 11387.0,
-        "premium_peak": 11387.0
+        "history_max": 11447.0,
+        "premium_peak": 11447.0
       },
       "Sural Resort": {
         "history_max": 13291.0,
@@ -4534,8 +4612,8 @@
         "premium_peak": null
       },
       "Wind of Lara": {
-        "history_max": 11016.0,
-        "premium_peak": 11016.0
+        "history_max": 11534.0,
+        "premium_peak": 11534.0
       },
       "White City Resort": {
         "history_max": 10104.0,
@@ -4614,8 +4692,8 @@
         "premium_peak": null
       },
       "Timo Deluxe Resort": {
-        "history_max": 11759.0,
-        "premium_peak": 11759.0
+        "history_max": 13790.0,
+        "premium_peak": 13790.0
       },
       "Victory Volare": {
         "history_max": 9069.0,
@@ -4666,8 +4744,8 @@
         "premium_peak": 11416.0
       },
       "Port Side Resort": {
-        "history_max": 12738.0,
-        "premium_peak": 12738.0
+        "history_max": 12834.0,
+        "premium_peak": 12834.0
       },
       "Port River & Spa": {
         "history_max": 9397.0,
@@ -4694,7 +4772,7 @@
         "premium_peak": 12921.0
       },
       "Palemon Resort & Spa": {
-        "history_max": 7643.0,
+        "history_max": 9128.0,
         "premium_peak": null
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)": {
@@ -4718,16 +4796,16 @@
         "premium_peak": 11158.0
       },
       "Orange Palace": {
-        "history_max": 12551.0,
-        "premium_peak": 12551.0
+        "history_max": 13680.0,
+        "premium_peak": 13680.0
       },
       "Orange County Belek": {
         "history_max": 11034.0,
         "premium_peak": 11034.0
       },
       "Orange County Alanya": {
-        "history_max": 10815.0,
-        "premium_peak": 10815.0
+        "history_max": 10854.0,
+        "premium_peak": 10854.0
       },
       "Paloma Sencia": {
         "history_max": 13766.0,
@@ -4834,8 +4912,8 @@
         "premium_peak": 10377.0
       },
       "Riolavitas SPA & Resort": {
-        "history_max": 11050.0,
-        "premium_peak": 11050.0
+        "history_max": 11570.0,
+        "premium_peak": 11570.0
       },
       "Ring Beach (Kemer)": {
         "history_max": 8591.0,
@@ -4870,8 +4948,8 @@
         "premium_peak": 10625.0
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 12246.0,
-        "premium_peak": 12246.0
+        "history_max": 12616.0,
+        "premium_peak": 12616.0
       },
       "Club Grand Aqua": {
         "history_max": 12787.0,
@@ -4882,8 +4960,8 @@
         "premium_peak": 11784.0
       },
       "Castival (ex. La Grande Resort & Spa)": {
-        "history_max": 12868.0,
-        "premium_peak": 12868.0
+        "history_max": 12877.0,
+        "premium_peak": 12877.0
       },
       "Azura World (ex. Wyndham Alanya)": {
         "history_max": 11183.0,
@@ -4994,8 +5072,8 @@
         "premium_peak": null
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
-        "history_max": 12062.0,
-        "premium_peak": 12062.0
+        "history_max": 12662.0,
+        "premium_peak": 12662.0
       },
       "Casa Fora Beach Resort": {
         "history_max": 13325.0,
@@ -5094,7 +5172,7 @@
         "premium_peak": 10940.0
       },
       "Insula Resort": {
-        "history_max": 9654.0,
+        "history_max": 9734.0,
         "premium_peak": null
       },
       "Marvida Family Eco": {
@@ -5254,8 +5332,8 @@
         "premium_peak": 12554.0
       },
       "Green Bay Resort": {
-        "history_max": 13200.0,
-        "premium_peak": 13200.0
+        "history_max": 13800.0,
+        "premium_peak": 13800.0
       },
       "Kustur Club Holiday Village": {
         "history_max": 11935.0,
@@ -5278,8 +5356,8 @@
         "premium_peak": 13631.0
       },
       "Sueno Golf Belek": {
-        "history_max": 13523.0,
-        "premium_peak": 13523.0
+        "history_max": 13656.0,
+        "premium_peak": 13656.0
       },
       "Seven Seas Life": {
         "history_max": 13776.0,
@@ -5300,6 +5378,10 @@
       "Duja Didim": {
         "history_max": 13704.0,
         "premium_peak": 13704.0
+      },
+      "Turquoise Hotel": {
+        "history_max": 13661.0,
+        "premium_peak": 13661.0
       }
     }
   }
