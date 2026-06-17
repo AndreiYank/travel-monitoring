@@ -50102,10 +50102,62 @@
       "created_at": "2026-06-17T05:20:45.635985+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe_2026-06-17_05-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Andriake Beach Club",
+      "duration_bucket": "",
+      "old_price": 9522.0,
+      "new_price": 8744.0,
+      "price_change": -778.0,
+      "price_change_pct": -8.170552404956942,
+      "timestamp": "2026-06-17 06:08:11.618265+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-17T06:11:32.011463+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Andriake Beach Club_2026-06-17_06-08_-8.2"
+    },
+    {
+      "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 4298.0,
+      "new_price": 4725.0,
+      "price_change": 427.0,
+      "price_change_pct": 9.93485342019544,
+      "timestamp": "2026-06-17 06:08:11.618265+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T06:11:32.011511+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-06-17_06-08_+9.9"
+    },
+    {
+      "hotel_name": "Dream World Aqua",
+      "duration_bucket": "",
+      "old_price": 9216.0,
+      "new_price": 9216.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-17 06:08:11.618265+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T06:11:32.011559+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream World Aqua_2026-06-17_06-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ramada Plaza Antalya",
+      "duration_bucket": "",
+      "old_price": 9204.0,
+      "new_price": 9204.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-17 06:08:11.618265+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T06:11:32.011570+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada Plaza Antalya_2026-06-17_06-08_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-17T05:17:27.531720+00:00",
+    "last_processed_run": "2026-06-17T06:08:11.618265+00:00",
     "premium_state": {
       "First Class Turcja, Alanya, Mahmutlar": {
         "history_max": 5450.0,
@@ -50232,7 +50284,7 @@
         "premium_peak": null
       },
       "Well Palace Side (ex. Side Crown Charm Palace)": {
-        "history_max": 8316.0,
+        "history_max": 8613.0,
         "premium_peak": null
       },
       "Mandarin Resort (Bodrum)": {
@@ -51340,7 +51392,7 @@
         "premium_peak": null
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
-        "history_max": 6993.0,
+        "history_max": 7358.0,
         "premium_peak": null
       },
       "Salmakis Beach Resort": {
@@ -52142,6 +52194,10 @@
       "Alba Queen": {
         "history_max": 10088.0,
         "premium_peak": 10088.0
+      },
+      "Alba Resort": {
+        "history_max": 10094.0,
+        "premium_peak": 10094.0
       }
     }
   }
