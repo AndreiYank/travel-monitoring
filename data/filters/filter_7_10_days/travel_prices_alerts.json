@@ -33423,10 +33423,114 @@
       "created_at": "2026-06-17T17:55:19.375738+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Reef Oasis Blue Bay Resort_2026-06-17_17-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 8059.0,
+      "new_price": 7079.0,
+      "price_change": -980.0,
+      "price_change_pct": -12.160317657277577,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-17T20:09:01.066741+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-06-17_20-06_-12.2"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 5259.0,
+      "new_price": 5831.0,
+      "price_change": 572.0,
+      "price_change_pct": 10.876592508081384,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T20:09:01.066777+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-06-17_20-06_+10.9"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 9157.0,
+      "new_price": 9957.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.736485748607622,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T20:09:01.066795+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-06-17_20-06_+8.7"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 5540.0,
+      "new_price": 6861.0,
+      "price_change": 1321.0,
+      "price_change_pct": 23.84476534296029,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T20:09:01.066809+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-06-17_20-06_+23.8"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 7407.0,
+      "new_price": 8497.0,
+      "price_change": 1090.0,
+      "price_change_pct": 14.715809369515323,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T20:09:01.066820+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-06-17_20-06_+14.7"
+    },
+    {
+      "hotel_name": "Aldiana Club Naga Bay",
+      "duration_bucket": "",
+      "old_price": 7277.0,
+      "new_price": 9657.0,
+      "price_change": 2380.0,
+      "price_change_pct": 32.70578535110623,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T20:09:01.066829+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aldiana Club Naga Bay_2026-06-17_20-06_+32.7"
+    },
+    {
+      "hotel_name": "Jaz Aquaviva",
+      "duration_bucket": "",
+      "old_price": 7155.0,
+      "new_price": 8657.0,
+      "price_change": 1502.0,
+      "price_change_pct": 20.992313067784764,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-17T20:09:01.066844+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquaviva_2026-06-17_20-06_+21.0"
+    },
+    {
+      "hotel_name": "Premier Le Reve & Spa",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 12069.0,
+      "price_change": 2112.0,
+      "price_change_pct": 21.211208195239532,
+      "timestamp": "2026-06-17 20:06:27.139616+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:09:01.066870+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Premier Le Reve & Spa_2026-06-17_20-06_zone_out_+21.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-17T17:52:34.019452+00:00",
+    "last_processed_run": "2026-06-17T20:06:27.139616+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6436.0,
@@ -33501,7 +33605,7 @@
         "premium_peak": null
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
-        "history_max": 6944.0,
+        "history_max": 7157.0,
         "premium_peak": null
       },
       "Jaz Neo Naama Bay": {
@@ -33697,7 +33801,7 @@
         "premium_peak": null
       },
       "Jaz Aquamarine Resort": {
-        "history_max": 8438.0,
+        "history_max": 8497.0,
         "premium_peak": null
       },
       "Coral Sea Holiday Resort": {
@@ -33749,7 +33853,7 @@
         "premium_peak": null
       },
       "Jaz Aquaviva": {
-        "history_max": 7937.0,
+        "history_max": 8657.0,
         "premium_peak": null
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
@@ -34273,8 +34377,8 @@
         "premium_peak": 12324.0
       },
       "Pickalbatros Blu Spa Resort Hurghada": {
-        "history_max": 13668.0,
-        "premium_peak": 13668.0
+        "history_max": 13797.0,
+        "premium_peak": 13797.0
       },
       "Rixos Premium Magawish Bay View": {
         "history_max": 14211.0,

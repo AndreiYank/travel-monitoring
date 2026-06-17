@@ -1963,10 +1963,101 @@
       "created_at": "2026-06-17T17:56:57.489142+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Wind of Lara|7-9_2026-06-17_17-55_comeback_9.7"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 8890.0,
+      "new_price": 8159.0,
+      "price_change": -731.0,
+      "price_change_pct": -8.222722159730033,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-17T20:10:18.099209+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-06-17_20-09_-8.2"
+    },
+    {
+      "hotel_name": "Alba Queen",
+      "duration_bucket": "7-9",
+      "old_price": 9912.0,
+      "new_price": 11120.0,
+      "price_change": 1208.0,
+      "price_change_pct": 12.18724778046812,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:10:18.099253+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alba Queen|7-9_2026-06-17_20-09_zone_out_+12.2"
+    },
+    {
+      "hotel_name": "Champion Holiday Village (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9678.0,
+      "new_price": 10419.0,
+      "price_change": 741.0,
+      "price_change_pct": 7.656540607563546,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:10:18.099265+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Champion Holiday Village (Kemer)|7-9_2026-06-17_20-09_zone_out_+7.7"
+    },
+    {
+      "hotel_name": "Fame Residence (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9656.0,
+      "new_price": 9656.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:10:18.099274+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Kemer)|7-9_2026-06-17_20-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 9982.0,
+      "new_price": 10113.0,
+      "price_change": 131.0,
+      "price_change_pct": 1.3123622520536966,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:10:18.099282+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa|9-11_2026-06-17_20-09_zone_out_+1.3"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 9792.0,
+      "new_price": 10495.0,
+      "price_change": 703.0,
+      "price_change_pct": 7.179330065359476,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:10:18.099291+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-06-17_20-09_zone_out_+7.2"
+    },
+    {
+      "hotel_name": "Wind of Lara",
+      "duration_bucket": "7-9",
+      "old_price": 9990.0,
+      "new_price": 10008.0,
+      "price_change": 18.0,
+      "price_change_pct": 0.18018018018018017,
+      "timestamp": "2026-06-17 20:09:02.530341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-17T20:10:18.099299+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Wind of Lara|7-9_2026-06-17_20-09_zone_out_+0.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-17T17:55:20.930239+00:00",
+    "last_processed_run": "2026-06-17T20:09:02.530341+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -2101,8 +2192,8 @@
         "premium_peak": 10514.0
       },
       "Turunc|7-9": {
-        "history_max": 12130.0,
-        "premium_peak": 12130.0
+        "history_max": 12401.0,
+        "premium_peak": 12401.0
       },
       "Galeri Resort|7-9": {
         "history_max": 10351.0,
@@ -2353,7 +2444,7 @@
         "premium_peak": 11453.0
       },
       "Seher Sun Palace Resort & Spa|7-9": {
-        "history_max": 8934.0,
+        "history_max": 9081.0,
         "premium_peak": null
       },
       "Seher Resort & Spa|7-9": {
@@ -2497,8 +2588,8 @@
         "premium_peak": 10289.0
       },
       "Side Sunport (ex. Side Sungate)|7-9": {
-        "history_max": 12281.0,
-        "premium_peak": 12281.0
+        "history_max": 12731.0,
+        "premium_peak": 12731.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)|7-9": {
         "history_max": 12242.0,
@@ -2653,7 +2744,7 @@
         "premium_peak": null
       },
       "First Class|7-9": {
-        "history_max": 6987.0,
+        "history_max": 7001.0,
         "premium_peak": null
       },
       "Grand Cettia|7-9": {
@@ -2737,8 +2828,8 @@
         "premium_peak": 11772.0
       },
       "Side Star Elegance (ex. Asteria)|9-11": {
-        "history_max": 14963.0,
-        "premium_peak": 14963.0
+        "history_max": 15888.0,
+        "premium_peak": 15888.0
       },
       "Side Star Beach|9-11": {
         "history_max": 14793.0,
@@ -3093,8 +3184,8 @@
         "premium_peak": 15227.0
       },
       "Alba Resort|9-11": {
-        "history_max": 13408.0,
-        "premium_peak": 13408.0
+        "history_max": 13439.0,
+        "premium_peak": 13439.0
       },
       "Alba Queen|9-11": {
         "history_max": 13167.0,
@@ -3177,8 +3268,8 @@
         "premium_peak": 10987.0
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)|9-11": {
-        "history_max": 14714.0,
-        "premium_peak": 14714.0
+        "history_max": 14861.0,
+        "premium_peak": 14861.0
       },
       "Baia Salima Kemer (ex Club Salima)|9-11": {
         "history_max": 14603.0,
@@ -3461,8 +3552,8 @@
         "premium_peak": 13201.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)|9-11": {
-        "history_max": 14486.0,
-        "premium_peak": 14486.0
+        "history_max": 14887.0,
+        "premium_peak": 14887.0
       },
       "Kaila Beach (ex Katya)|9-11": {
         "history_max": 11881.0,
@@ -3597,7 +3688,7 @@
         "premium_peak": 14103.0
       },
       "Vita Silva|7-9": {
-        "history_max": 9356.0,
+        "history_max": 9552.0,
         "premium_peak": null
       },
       "Baia Salima Kemer (ex Club Salima)|7-9": {
@@ -3657,8 +3748,8 @@
         "premium_peak": 13649.0
       },
       "Orange County Belek|7-9": {
-        "history_max": 11821.0,
-        "premium_peak": 11821.0
+        "history_max": 12085.0,
+        "premium_peak": 12085.0
       },
       "Diamond Premium|7-9": {
         "history_max": 11589.0,
@@ -3781,8 +3872,8 @@
         "premium_peak": 13308.0
       },
       "Orka Lotus Beach|7-9": {
-        "history_max": 11962.0,
-        "premium_peak": 11962.0
+        "history_max": 12164.0,
+        "premium_peak": 12164.0
       },
       "Omer Prime Holiday Resort|7-9": {
         "history_max": 11471.0,
@@ -3825,8 +3916,8 @@
         "premium_peak": 12263.0
       },
       "Utopia Resort & Residence (ex Alara Park)|7-9": {
-        "history_max": 11025.0,
-        "premium_peak": 11025.0
+        "history_max": 11104.0,
+        "premium_peak": 11104.0
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|9-11": {
         "history_max": 14225.0,
@@ -4095,6 +4186,10 @@
       "Asteria Bloom Side|9-11": {
         "history_max": 10476.0,
         "premium_peak": 10476.0
+      },
+      "Diamond Premium|9-11": {
+        "history_max": 13371.0,
+        "premium_peak": 13371.0
       }
     }
   }
