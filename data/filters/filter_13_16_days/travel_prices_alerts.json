@@ -4732,10 +4732,49 @@
       "created_at": "2026-06-18T10:13:57.310143+00:00",
       "threshold_percent": 8.0,
       "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-18_10-12_comeback_27.1"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 9393.0,
+      "new_price": 10433.0,
+      "price_change": 1040.0,
+      "price_change_pct": 11.072074949430426,
+      "timestamp": "2026-06-18 14:03:27.687130+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-18T14:06:02.499439+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-06-18_14-03_zone_out_+11.1"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 12070.0,
+      "new_price": 9553.0,
+      "price_change": -2517.0,
+      "price_change_pct": -20.853355426677712,
+      "timestamp": "2026-06-18 14:03:27.687130+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-18T14:06:02.499486+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-06-18_14-03_comeback_20.9"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 11397.0,
+      "new_price": 8833.0,
+      "price_change": -2564.0,
+      "price_change_pct": -22.497148372378696,
+      "timestamp": "2026-06-18 14:03:27.687130+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-18T14:06:02.499507+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-06-18_14-03_comeback_22.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-18T10:12:12.880659+00:00",
+    "last_processed_run": "2026-06-18T14:03:27.687130+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
@@ -4842,8 +4881,8 @@
         "premium_peak": 11117.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
-        "history_max": 10417.0,
-        "premium_peak": 10417.0
+        "history_max": 10433.0,
+        "premium_peak": 10433.0
       },
       "Sharm Grand Plaza Resort": {
         "history_max": 12736.0,
@@ -4950,8 +4989,8 @@
         "premium_peak": 13057.0
       },
       "Sunrise Anjum Resort": {
-        "history_max": 14883.0,
-        "premium_peak": 14883.0
+        "history_max": 14945.0,
+        "premium_peak": 14945.0
       },
       "Creek Hotel and Residences": {
         "history_max": 11972.0,
@@ -5006,8 +5045,8 @@
         "premium_peak": 14060.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 14137.0,
-        "premium_peak": 14137.0
+        "history_max": 14317.0,
+        "premium_peak": 14317.0
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
         "history_max": 14291.0,
@@ -5378,8 +5417,8 @@
         "premium_peak": 17997.0
       },
       "Sentido Akassia Beach (ex. LTI Akassia Beach)": {
-        "history_max": 17087.0,
-        "premium_peak": 17087.0
+        "history_max": 17973.0,
+        "premium_peak": 17973.0
       },
       "Serenity Alma Heights Ross Park Collection": {
         "history_max": 19911.0,
