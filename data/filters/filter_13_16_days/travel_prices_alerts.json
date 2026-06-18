@@ -4628,10 +4628,49 @@
       "created_at": "2026-06-18T00:15:23.847730+00:00",
       "threshold_percent": 8.0,
       "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-18_00-13_comeback_27.1"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 9918.0,
+      "new_price": 8977.0,
+      "price_change": -941.0,
+      "price_change_pct": -9.487799959669289,
+      "timestamp": "2026-06-18 05:35:15.229756+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-18T05:36:55.254976+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-06-18_05-35_-9.5"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 9545.0,
+      "new_price": 11944.0,
+      "price_change": 2399.0,
+      "price_change_pct": 25.133577789418542,
+      "timestamp": "2026-06-18 05:35:15.229756+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-18T05:36:55.255012+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-18_05-35_zone_out_+25.1"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 13523.0,
+      "price_change": 3566.0,
+      "price_change_pct": 35.81400020086372,
+      "timestamp": "2026-06-18 05:35:15.229756+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-18T05:36:55.255025+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-06-18_05-35_zone_out_+35.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-18T00:13:50.991837+00:00",
+    "last_processed_run": "2026-06-18T05:35:15.229756+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
