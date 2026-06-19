@@ -4849,10 +4849,36 @@
       "created_at": "2026-06-19T16:06:38.315082+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cardina Resort by Sunrise_2026-06-19_16-04_-8.0"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 6858.0,
+      "new_price": 8954.0,
+      "price_change": 2096.0,
+      "price_change_pct": 30.562846310877806,
+      "timestamp": "2026-06-19 22:51:39.178002+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-19T22:53:24.504077+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-06-19_22-51_+30.6"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 13097.0,
+      "new_price": 9500.0,
+      "price_change": -3597.0,
+      "price_change_pct": -27.464304802626554,
+      "timestamp": "2026-06-19 22:51:39.178002+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-19T22:53:24.504158+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-19_22-51_comeback_27.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-19T21:09:48.413795+00:00",
+    "last_processed_run": "2026-06-19T22:51:39.178002+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,

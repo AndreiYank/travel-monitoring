@@ -3614,10 +3614,36 @@
       "created_at": "2026-06-19T21:14:09.720921+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Sun Palace Resort & Spa|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9568.0,
+      "new_price": 9568.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 22:55:08.896974+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T22:56:36.100474+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort|7-9_2026-06-19_22-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seven For Life Thermal",
+      "duration_bucket": "7-9",
+      "old_price": 9239.0,
+      "new_price": 9239.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 22:55:08.896974+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T22:56:36.100503+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seven For Life Thermal|7-9_2026-06-19_22-55_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-19T21:12:25.298101+00:00",
+    "last_processed_run": "2026-06-19T22:55:08.896974+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -4340,8 +4366,8 @@
         "premium_peak": 14307.0
       },
       "Transatlantik (Kemer)|9-11": {
-        "history_max": 11259.0,
-        "premium_peak": 11259.0
+        "history_max": 12060.0,
+        "premium_peak": 12060.0
       },
       "Timo Deluxe Resort|9-11": {
         "history_max": 11786.0,
@@ -5922,6 +5948,10 @@
       "Balmy Foresta|9-11": {
         "history_max": 15800.0,
         "premium_peak": 15800.0
+      },
+      "Transatlantik (Kemer)|7-9": {
+        "history_max": 11012.0,
+        "premium_peak": 11012.0
       }
     }
   }
