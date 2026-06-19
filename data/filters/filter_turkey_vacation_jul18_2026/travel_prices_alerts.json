@@ -2834,10 +2834,62 @@
       "created_at": "2026-06-18T23:37:54.340240+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunland Resort (ex. Imperial Sunland Resort & Spa)|7-9_2026-06-18_23-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Linda Sunny Beach",
+      "duration_bucket": "7-9",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 03:05:30.847905+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T03:06:58.257830+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Linda Sunny Beach|7-9_2026-06-19_03-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "7-9",
+      "old_price": 8539.0,
+      "new_price": 8539.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 03:05:30.847905+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T03:06:58.257858+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez|7-9_2026-06-19_03-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10708.0,
+      "new_price": 9648.0,
+      "price_change": -1060.0,
+      "price_change_pct": -9.899140829286516,
+      "timestamp": "2026-06-19 03:05:30.847905+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-19T03:06:58.257884+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort|7-9_2026-06-19_03-05_comeback_9.9"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "9-11",
+      "old_price": 10896.0,
+      "new_price": 9791.0,
+      "price_change": -1105.0,
+      "price_change_pct": -10.141336270190896,
+      "timestamp": "2026-06-19 03:05:30.847905+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-19T03:06:58.257907+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|9-11_2026-06-19_03-05_comeback_10.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-18T23:36:50.518921+00:00",
+    "last_processed_run": "2026-06-19T03:05:30.847905+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -2952,8 +3004,8 @@
         "premium_peak": 12497.0
       },
       "Karmir Resort (Kemer)|7-9": {
-        "history_max": 11136.0,
-        "premium_peak": 11136.0
+        "history_max": 11212.0,
+        "premium_peak": 11212.0
       },
       "Terrace Elite Resort|7-9": {
         "history_max": 10746.0,
@@ -3180,16 +3232,16 @@
         "premium_peak": 10107.0
       },
       "Royal Atlantis Icon|7-9": {
-        "history_max": 11542.0,
-        "premium_peak": 11542.0
+        "history_max": 11597.0,
+        "premium_peak": 11597.0
       },
       "Side Moon Palace|7-9": {
         "history_max": 9601.0,
         "premium_peak": null
       },
       "Sentido Serra Family Resort|7-9": {
-        "history_max": 12317.0,
-        "premium_peak": 12317.0
+        "history_max": 12697.0,
+        "premium_peak": 12697.0
       },
       "Sentido Lycus Beach (ex. Lti)|7-9": {
         "history_max": 9895.0,
@@ -3460,8 +3512,8 @@
         "premium_peak": 11670.0
       },
       "Alba Queen|7-9": {
-        "history_max": 11260.0,
-        "premium_peak": 11260.0
+        "history_max": 11317.0,
+        "premium_peak": 11317.0
       },
       "Berry Blue|7-9": {
         "history_max": 11157.0,
@@ -3644,8 +3696,8 @@
         "premium_peak": 12256.0
       },
       "Side Sunport (ex. Side Sungate)|9-11": {
-        "history_max": 15749.0,
-        "premium_peak": 15749.0
+        "history_max": 15868.0,
+        "premium_peak": 15868.0
       },
       "Vita Silva|9-11": {
         "history_max": 11586.0,
@@ -3680,8 +3732,8 @@
         "premium_peak": 10896.0
       },
       "Side Moon Palace|9-11": {
-        "history_max": 13573.0,
-        "premium_peak": 13573.0
+        "history_max": 13701.0,
+        "premium_peak": 13701.0
       },
       "Sunmelia Beach Resort & Spa|9-11": {
         "history_max": 11957.0,
@@ -4168,8 +4220,8 @@
         "premium_peak": 10837.0
       },
       "Ozkaymak Marina (Kemer)|9-11": {
-        "history_max": 14013.0,
-        "premium_peak": 14013.0
+        "history_max": 14125.0,
+        "premium_peak": 14125.0
       },
       "Ozkaymak Incekum|9-11": {
         "history_max": 13046.0,
@@ -4260,8 +4312,8 @@
         "premium_peak": 14485.0
       },
       "Royal Seginus|9-11": {
-        "history_max": 15332.0,
-        "premium_peak": 15332.0
+        "history_max": 16498.0,
+        "premium_peak": 16498.0
       },
       "Royal Holiday Palace|9-11": {
         "history_max": 15768.0,
@@ -4280,8 +4332,8 @@
         "premium_peak": 11029.0
       },
       "Orange County Belek|9-11": {
-        "history_max": 14351.0,
-        "premium_peak": 14351.0
+        "history_max": 14615.0,
+        "premium_peak": 14615.0
       },
       "Lucida Beach (ex.Novia Lucida)|9-11": {
         "history_max": 12060.0,
@@ -4664,8 +4716,8 @@
         "premium_peak": 11331.0
       },
       "Turan Prince|7-9": {
-        "history_max": 12596.0,
-        "premium_peak": 12596.0
+        "history_max": 12676.0,
+        "premium_peak": 12676.0
       },
       "Dizalya Palm Garden|7-9": {
         "history_max": 10925.0,
@@ -4680,8 +4732,8 @@
         "premium_peak": 15870.0
       },
       "Seashell Resort & Spa|7-9": {
-        "history_max": 12706.0,
-        "premium_peak": 12706.0
+        "history_max": 12766.0,
+        "premium_peak": 12766.0
       },
       "Crystal Family Comfort Collection|9-11": {
         "history_max": 15896.0,
@@ -4820,8 +4872,8 @@
         "premium_peak": 11992.0
       },
       "Side Aluna|7-9": {
-        "history_max": 10696.0,
-        "premium_peak": 10696.0
+        "history_max": 10776.0,
+        "premium_peak": 10776.0
       },
       "Garden of Sun Spa & Wellness|7-9": {
         "history_max": 9843.0,
@@ -4832,8 +4884,8 @@
         "premium_peak": 12594.0
       },
       "Sural Resort|7-9": {
-        "history_max": 11479.0,
-        "premium_peak": 11479.0
+        "history_max": 11552.0,
+        "premium_peak": 11552.0
       },
       "Spice|9-11": {
         "history_max": 16385.0,
@@ -4892,8 +4944,8 @@
         "premium_peak": 11588.0
       },
       "Royal Dragon|9-11": {
-        "history_max": 15896.0,
-        "premium_peak": 15896.0
+        "history_max": 16462.0,
+        "premium_peak": 16462.0
       },
       "Andriake Beach Club|7-9": {
         "history_max": 10364.0,
@@ -5082,6 +5134,22 @@
       "Mirada Del Mar|9-11": {
         "history_max": 16097.0,
         "premium_peak": 16097.0
+      },
+      "Crystal Tat Beach Pearl Collection|7-9": {
+        "history_max": 12297.0,
+        "premium_peak": 12297.0
+      },
+      "Q Premium Resort|7-9": {
+        "history_max": 11297.0,
+        "premium_peak": 11297.0
+      },
+      "Seashell Vega (ex. Side Crown Sunshine)|7-9": {
+        "history_max": 11697.0,
+        "premium_peak": 11697.0
+      },
+      "Dream World Palace|9-11": {
+        "history_max": 15897.0,
+        "premium_peak": 15897.0
       }
     }
   }
