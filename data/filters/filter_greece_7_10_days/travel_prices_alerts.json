@@ -9542,10 +9542,36 @@
       "created_at": "2026-06-19T19:35:49.564496+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lydia Maris Resort & Spa_2026-06-19_19-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia",
+      "duration_bucket": "",
+      "old_price": 9219.0,
+      "new_price": 9219.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:14:10.686357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:16:24.173499+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia_2026-06-19_21-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bella Beach",
+      "duration_bucket": "",
+      "old_price": 10828.0,
+      "new_price": 9470.0,
+      "price_change": -1358.0,
+      "price_change_pct": -12.54155892131511,
+      "timestamp": "2026-06-19 21:14:10.686357+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-19T21:16:24.173539+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bella Beach_2026-06-19_21-14_comeback_12.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-19T19:34:15.288646+00:00",
+    "last_processed_run": "2026-06-19T21:14:10.686357+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -9900,8 +9926,8 @@
         "premium_peak": 15667.0
       },
       "Kakkos Bay": {
-        "history_max": 12200.0,
-        "premium_peak": 12200.0
+        "history_max": 12294.0,
+        "premium_peak": 12294.0
       },
       "Lindos Breeze Beach Grecja, Rodos, Kiotari": {
         "history_max": 9927.0,

@@ -3510,10 +3510,114 @@
       "created_at": "2026-06-19T19:34:55.759532+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Port Side Resort|7-9_2026-06-19_19-33_comeback_12.1"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "7-9",
+      "old_price": 8972.0,
+      "new_price": 8972.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720810+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 7678.0,
+      "new_price": 7678.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720836+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "7-9",
+      "old_price": 8198.0,
+      "new_price": 8198.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720847+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Champion Holiday Village (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9918.0,
+      "new_price": 9918.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720857+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Champion Holiday Village (Kemer)|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9310.0,
+      "new_price": 10223.0,
+      "price_change": 913.0,
+      "price_change_pct": 9.806659505907627,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720892+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa|7-9_2026-06-19_21-12_zone_out_+9.8"
+    },
+    {
+      "hotel_name": "Green Garden Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9472.0,
+      "new_price": 9472.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720904+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Garden Resort|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8310.0,
+      "new_price": 8310.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720913+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa|7-9_2026-06-19_21-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8164.0,
+      "new_price": 8164.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-19 21:12:25.298101+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-19T21:14:09.720921+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|7-9_2026-06-19_21-12_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-19T19:33:36.174154+00:00",
+    "last_processed_run": "2026-06-19T21:12:25.298101+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -5814,6 +5918,10 @@
       "Siu Collection by Aydinbey|9-11": {
         "history_max": 15708.0,
         "premium_peak": 15708.0
+      },
+      "Balmy Foresta|9-11": {
+        "history_max": 15800.0,
+        "premium_peak": 15800.0
       }
     }
   }
