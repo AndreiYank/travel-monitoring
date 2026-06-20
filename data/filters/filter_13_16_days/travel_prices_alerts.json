@@ -5005,10 +5005,36 @@
       "created_at": "2026-06-20T12:33:32.733911+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sirena Beach Resort & Spa_2026-06-20_12-31_zone_out_+28.5"
+    },
+    {
+      "hotel_name": "Cardina Resort by Sunrise",
+      "duration_bucket": "",
+      "old_price": 8128.0,
+      "new_price": 10557.0,
+      "price_change": 2429.0,
+      "price_change_pct": 29.884350393700785,
+      "timestamp": "2026-06-20 23:19:37.596187+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-20T23:22:06.220502+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cardina Resort by Sunrise_2026-06-20_23-19_zone_out_+29.9"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 13097.0,
+      "new_price": 9500.0,
+      "price_change": -3597.0,
+      "price_change_pct": -27.464304802626554,
+      "timestamp": "2026-06-20 23:19:37.596187+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-20T23:22:06.220561+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-20_23-19_comeback_27.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-20T22:09:17.100870+00:00",
+    "last_processed_run": "2026-06-20T23:19:37.596187+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
@@ -5771,8 +5797,8 @@
         "premium_peak": 19285.0
       },
       "Shams Lodge Resort": {
-        "history_max": 16616.0,
-        "premium_peak": 16616.0
+        "history_max": 17720.0,
+        "premium_peak": 17720.0
       },
       "Steigenberger Al Dau Beach": {
         "history_max": 19791.0,

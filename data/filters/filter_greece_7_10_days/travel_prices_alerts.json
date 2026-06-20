@@ -9971,10 +9971,49 @@
       "created_at": "2026-06-20T22:15:35.488412+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-06-20_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 5713.0,
+      "new_price": 5012.0,
+      "price_change": -701.0,
+      "price_change_pct": -12.270260808681952,
+      "timestamp": "2026-06-20 23:23:18.746613+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-20T23:25:22.449206+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-06-20_23-23_-12.3"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 7357.0,
+      "new_price": 7357.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-20 23:23:18.746613+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-20T23:25:22.449241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-06-20_23-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina)",
+      "duration_bucket": "",
+      "old_price": 9343.0,
+      "new_price": 9343.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-20 23:23:18.746613+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-20T23:25:22.449251+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina)_2026-06-20_23-23_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-20T22:13:24.998518+00:00",
+    "last_processed_run": "2026-06-20T23:23:18.746613+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -10233,8 +10272,8 @@
         "premium_peak": 19914.0
       },
       "Zeus Kos Beach": {
-        "history_max": 10057.0,
-        "premium_peak": 10057.0
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Atrium Prestige Thalasso Spa Resort & Villas": {
         "history_max": 19986.0,
