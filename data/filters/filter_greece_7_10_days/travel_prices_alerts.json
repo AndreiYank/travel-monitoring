@@ -9724,10 +9724,62 @@
       "created_at": "2026-06-20T07:58:21.625384+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite_2026-06-20_07-55_comeback_13.8"
+    },
+    {
+      "hotel_name": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki",
+      "duration_bucket": "",
+      "old_price": 8337.0,
+      "new_price": 7590.0,
+      "price_change": -747.0,
+      "price_change_pct": -8.960057574667147,
+      "timestamp": "2026-06-20 10:39:35.608709+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-20T10:41:38.454333+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki_2026-06-20_10-39_-9.0"
+    },
+    {
+      "hotel_name": "Akti Coast Club",
+      "duration_bucket": "",
+      "old_price": 9941.0,
+      "new_price": 12430.0,
+      "price_change": 2489.0,
+      "price_change_pct": 25.037722563122422,
+      "timestamp": "2026-06-20 10:39:35.608709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-20T10:41:38.454369+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akti Coast Club_2026-06-20_10-39_zone_out_+25.0"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 9155.0,
+      "new_price": 9155.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-20 10:39:35.608709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-20T10:41:38.454382+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-06-20_10-39_zone_out_gone"
+    },
+    {
+      "hotel_name": "White Olive Elite",
+      "duration_bucket": "",
+      "old_price": 9391.0,
+      "new_price": 9391.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-20 10:39:35.608709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-20T10:41:38.454391+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite_2026-06-20_10-39_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-20T07:55:58.310424+00:00",
+    "last_processed_run": "2026-06-20T10:39:35.608709+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -9842,8 +9894,8 @@
         "premium_peak": 18987.0
       },
       "Porto Carras Meliton": {
-        "history_max": 19924.0,
-        "premium_peak": 19924.0
+        "history_max": 19948.0,
+        "premium_peak": 19948.0
       },
       "Dimitra Beach Hotel & Suites": {
         "history_max": 15485.0,
@@ -10030,8 +10082,8 @@
         "premium_peak": null
       },
       "Aquila Rithymna Beach": {
-        "history_max": 14301.0,
-        "premium_peak": 14301.0
+        "history_max": 15775.0,
+        "premium_peak": 15775.0
       },
       "Pegasos Beach (Faliraki)": {
         "history_max": 17397.0,
@@ -10566,7 +10618,11 @@
         "premium_peak": 12557.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta": {
-        "history_max": 8869.0,
+        "history_max": 9038.0,
+        "premium_peak": null
+      },
+      "Galini Sea View (Agia Marina)": {
+        "history_max": 9343.0,
         "premium_peak": null
       }
     }
