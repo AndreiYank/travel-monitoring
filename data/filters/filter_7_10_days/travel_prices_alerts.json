@@ -42978,10 +42978,62 @@
       "created_at": "2026-06-21T21:17:32.544797+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunrise Anjum Resort_2026-06-21_21-14_comeback_25.2"
+    },
+    {
+      "hotel_name": "Jaz Belvedere",
+      "duration_bucket": "",
+      "old_price": 8047.0,
+      "new_price": 8847.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.941593140300734,
+      "timestamp": "2026-06-21 23:10:33.807234+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T23:12:58.153798+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Belvedere_2026-06-21_23-10_+9.9"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 6450.0,
+      "new_price": 5433.0,
+      "price_change": -1017.0,
+      "price_change_pct": -15.767441860465118,
+      "timestamp": "2026-06-21 23:10:33.807234+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-21T23:12:58.153829+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-06-21_23-10_-15.8"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8752.0,
+      "new_price": 7038.0,
+      "price_change": -1714.0,
+      "price_change_pct": -19.584095063985373,
+      "timestamp": "2026-06-21 23:10:33.807234+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-21T23:12:58.153840+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-06-21_23-10_-19.6"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 6138.0,
+      "new_price": 7138.0,
+      "price_change": 1000.0,
+      "price_change_pct": 16.291951775822746,
+      "timestamp": "2026-06-21 23:10:33.807234+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T23:12:58.153850+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-06-21_23-10_+16.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-21T21:14:06.282680+00:00",
+    "last_processed_run": "2026-06-21T23:10:33.807234+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6938.0,
@@ -43396,7 +43448,7 @@
         "premium_peak": null
       },
       "Jaz Belvedere": {
-        "history_max": 8787.0,
+        "history_max": 8847.0,
         "premium_peak": null
       },
       "Monte Carlo Resort Spa": {
