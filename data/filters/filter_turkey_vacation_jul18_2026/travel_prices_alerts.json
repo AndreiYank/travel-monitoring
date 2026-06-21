@@ -4472,10 +4472,62 @@
       "created_at": "2026-06-21T13:22:06.252532+00:00",
       "threshold_percent": 8.0,
       "unique_key": "First Class|9-11_2026-06-21_13-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dedeman Kemer Resort",
+      "duration_bucket": "7-9",
+      "old_price": 8988.0,
+      "new_price": 8988.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 15:58:53.962071+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T16:00:45.444361+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dedeman Kemer Resort|7-9_2026-06-21_15-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Marina (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9660.0,
+      "new_price": 11977.0,
+      "price_change": 2317.0,
+      "price_change_pct": 23.985507246376812,
+      "timestamp": "2026-06-21 15:58:53.962071+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T16:00:45.444394+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Marina (Kemer)|7-9_2026-06-21_15-58_zone_out_+24.0"
+    },
+    {
+      "hotel_name": "Side Moon Palace",
+      "duration_bucket": "7-9",
+      "old_price": 9304.0,
+      "new_price": 10851.0,
+      "price_change": 1547.0,
+      "price_change_pct": 16.62725709372313,
+      "timestamp": "2026-06-21 15:58:53.962071+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T16:00:45.444407+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Moon Palace|7-9_2026-06-21_15-58_zone_out_+16.6"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "7-9",
+      "old_price": 8154.0,
+      "new_price": 8154.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 15:58:53.962071+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T16:00:45.444416+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)|7-9_2026-06-21_15-58_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-21T13:20:17.936611+00:00",
+    "last_processed_run": "2026-06-21T15:58:53.962071+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -4822,8 +4874,8 @@
         "premium_peak": 11597.0
       },
       "Side Moon Palace|7-9": {
-        "history_max": 9601.0,
-        "premium_peak": null
+        "history_max": 10851.0,
+        "premium_peak": 10851.0
       },
       "Sentido Serra Family Resort|7-9": {
         "history_max": 12697.0,
@@ -4970,8 +5022,8 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)|7-9": {
-        "history_max": 9660.0,
-        "premium_peak": null
+        "history_max": 11977.0,
+        "premium_peak": 11977.0
       },
       "Ozkaymak Incekum|7-9": {
         "history_max": 8475.0,
@@ -5110,7 +5162,7 @@
         "premium_peak": 11068.0
       },
       "Xoria Deluxe|7-9": {
-        "history_max": 9219.0,
+        "history_max": 9495.0,
         "premium_peak": null
       },
       "Azura World (ex. Wyndham Alanya)|7-9": {
@@ -6114,8 +6166,8 @@
         "premium_peak": 12534.0
       },
       "The Sense Deluxe|7-9": {
-        "history_max": 11424.0,
-        "premium_peak": 11424.0
+        "history_max": 11760.0,
+        "premium_peak": 11760.0
       },
       "Club Sera|7-9": {
         "history_max": 12657.0,
