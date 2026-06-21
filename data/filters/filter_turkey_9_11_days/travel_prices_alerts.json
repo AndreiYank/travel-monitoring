@@ -9490,10 +9490,75 @@
       "created_at": "2026-06-20T23:23:17.849727+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Armella Hill_2026-06-20_23-22_comeback_26.4"
+    },
+    {
+      "hotel_name": "Drita Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8649.0,
+      "new_price": 9649.0,
+      "price_change": 1000.0,
+      "price_change_pct": 11.562030292519367,
+      "timestamp": "2026-06-21 02:52:29.460353+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T02:53:52.262095+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Drita Resort & Spa_2026-06-21_02-52_+11.6"
+    },
+    {
+      "hotel_name": "Armas Green Fugla",
+      "duration_bucket": "",
+      "old_price": 9531.0,
+      "new_price": 9531.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 02:52:29.460353+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T02:53:52.262132+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Green Fugla_2026-06-21_02-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asteria Collection Side",
+      "duration_bucket": "",
+      "old_price": 9864.0,
+      "new_price": 9864.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 02:52:29.460353+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T02:53:52.262143+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Collection Side_2026-06-21_02-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Signature Blue Resort (ex. Grand Ozcelik)",
+      "duration_bucket": "",
+      "old_price": 11220.0,
+      "new_price": 9940.0,
+      "price_change": -1280.0,
+      "price_change_pct": -11.408199643493761,
+      "timestamp": "2026-06-21 02:52:29.460353+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-21T02:53:52.262165+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-06-21_02-52_comeback_11.4"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11273.0,
+      "new_price": 9992.0,
+      "price_change": -1281.0,
+      "price_change_pct": -11.363434755610752,
+      "timestamp": "2026-06-21 02:52:29.460353+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-21T02:53:52.262210+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort_2026-06-21_02-52_comeback_11.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-20T23:22:07.585162+00:00",
+    "last_processed_run": "2026-06-21T02:52:29.460353+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,

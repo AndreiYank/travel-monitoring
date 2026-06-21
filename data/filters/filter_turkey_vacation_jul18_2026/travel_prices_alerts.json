@@ -4316,10 +4316,49 @@
       "created_at": "2026-06-20T23:24:18.630423+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Fantasia De Luxe Kusadasi|7-9_2026-06-20_23-22_comeback_9.0"
+    },
+    {
+      "hotel_name": "Daima Biz (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 8830.0,
+      "new_price": 7866.0,
+      "price_change": -964.0,
+      "price_change_pct": -10.917327293318234,
+      "timestamp": "2026-06-21 02:53:26.050854+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-21T02:55:05.755555+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz (Kemer)|7-9_2026-06-21_02-53_-10.9"
+    },
+    {
+      "hotel_name": "Dedeman Kemer Resort",
+      "duration_bucket": "7-9",
+      "old_price": 8748.0,
+      "new_price": 8748.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 02:53:26.050854+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T02:55:05.755597+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dedeman Kemer Resort|7-9_2026-06-21_02-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9645.0,
+      "new_price": 9645.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 02:53:26.050854+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T02:55:05.755608+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort|7-9_2026-06-21_02-53_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-20T23:22:39.519419+00:00",
+    "last_processed_run": "2026-06-21T02:53:26.050854+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -5934,8 +5973,8 @@
         "premium_peak": 13649.0
       },
       "Lykia World & Links Golf Antalya|9-11": {
-        "history_max": 12222.0,
-        "premium_peak": 12222.0
+        "history_max": 12384.0,
+        "premium_peak": 12384.0
       },
       "Zena Resort|9-11": {
         "history_max": 14025.0,
