@@ -42939,10 +42939,49 @@
       "created_at": "2026-06-21T19:27:06.431102+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Elite Maraya_2026-06-21_19-23_comeback_8.2"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7146.0,
+      "new_price": 8752.0,
+      "price_change": 1606.0,
+      "price_change_pct": 22.474111390987968,
+      "timestamp": "2026-06-21 21:14:06.282680+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T21:17:32.544699+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-06-21_21-14_+22.5"
+    },
+    {
+      "hotel_name": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)",
+      "duration_bucket": "",
+      "old_price": 6168.0,
+      "new_price": 5255.0,
+      "price_change": -913.0,
+      "price_change_pct": -14.802204928664073,
+      "timestamp": "2026-06-21 21:14:06.282680+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-21T21:17:32.544748+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-06-21_21-14_-14.8"
+    },
+    {
+      "hotel_name": "Sunrise Anjum Resort",
+      "duration_bucket": "",
+      "old_price": 10563.0,
+      "new_price": 7900.0,
+      "price_change": -2663.0,
+      "price_change_pct": -25.210640916406323,
+      "timestamp": "2026-06-21 21:14:06.282680+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-21T21:17:32.544797+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Anjum Resort_2026-06-21_21-14_comeback_25.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-21T19:23:48.948910+00:00",
+    "last_processed_run": "2026-06-21T21:14:06.282680+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6938.0,
@@ -43345,7 +43384,7 @@
         "premium_peak": 10751.0
       },
       "Amphoras Beach": {
-        "history_max": 9187.0,
+        "history_max": 9387.0,
         "premium_peak": null
       },
       "Domina Coral Bay Aquamarine": {
@@ -43493,8 +43532,8 @@
         "premium_peak": 18797.0
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
-        "history_max": 11888.0,
-        "premium_peak": 11888.0
+        "history_max": 12456.0,
+        "premium_peak": 12456.0
       },
       "Creek Hotel and Residences": {
         "history_max": 7285.0,
