@@ -42848,10 +42848,101 @@
       "created_at": "2026-06-21T17:31:58.816756+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunrise Select Garden Beach Resort & Spa_2026-06-21_17-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 5433.0,
+      "new_price": 6450.0,
+      "price_change": 1017.0,
+      "price_change_pct": 18.71893981225842,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T19:27:06.430960+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-06-21_19-23_+18.7"
+    },
+    {
+      "hotel_name": "Dreams Beach Sharm Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 7007.0,
+      "new_price": 7917.0,
+      "price_change": 910.0,
+      "price_change_pct": 12.987012987012985,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T19:27:06.431018+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-06-21_19-23_+13.0"
+    },
+    {
+      "hotel_name": "Movenpick Resort El Quseir",
+      "duration_bucket": "",
+      "old_price": 8687.0,
+      "new_price": 8687.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T19:27:06.431048+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort El Quseir_2026-06-21_19-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunrise Anjum Resort",
+      "duration_bucket": "",
+      "old_price": 8321.0,
+      "new_price": 8321.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T19:27:06.431057+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Anjum Resort_2026-06-21_19-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "The V Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 8456.0,
+      "new_price": 8456.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T19:27:06.431065+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The V Luxury Resort_2026-06-21_19-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunrise Select Garden Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10353.0,
+      "new_price": 8604.0,
+      "price_change": -1749.0,
+      "price_change_pct": -16.89365401332947,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-21T19:27:06.431086+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Select Garden Beach Resort & Spa_2026-06-21_19-23_comeback_16.9"
+    },
+    {
+      "hotel_name": "Jaz Elite Maraya",
+      "duration_bucket": "",
+      "old_price": 10099.0,
+      "new_price": 9274.0,
+      "price_change": -825.0,
+      "price_change_pct": -8.169125656005544,
+      "timestamp": "2026-06-21 19:23:48.948910+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-21T19:27:06.431102+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Maraya_2026-06-21_19-23_comeback_8.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-21T17:28:26.119439+00:00",
+    "last_processed_run": "2026-06-21T19:23:48.948910+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6938.0,
@@ -42966,7 +43057,7 @@
         "premium_peak": null
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
-        "history_max": 7467.0,
+        "history_max": 7917.0,
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam": {
@@ -42978,7 +43069,7 @@
         "premium_peak": 10647.0
       },
       "Regency Plaza Aqua Park Spa": {
-        "history_max": 7247.0,
+        "history_max": 7407.0,
         "premium_peak": null
       },
       "Sharm Grand Plaza Resort": {
