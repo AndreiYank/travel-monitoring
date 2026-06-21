@@ -10244,10 +10244,88 @@
       "created_at": "2026-06-21T16:01:47.666529+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas_2026-06-21_15-59_zone_out_+21.8"
+    },
+    {
+      "hotel_name": "Kouros Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 6757.0,
+      "new_price": 9397.0,
+      "price_change": 2640.0,
+      "price_change_pct": 39.070593458635486,
+      "timestamp": "2026-06-21 17:32:36.670324+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:35:23.249342+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kouros Palace Grecja, Kos, Mastichari_2026-06-21_17-32_+39.1"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 4873.0,
+      "new_price": 5863.0,
+      "price_change": 990.0,
+      "price_change_pct": 20.31602708803612,
+      "timestamp": "2026-06-21 17:32:36.670324+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:35:23.249385+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-06-21_17-32_+20.3"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 4335.0,
+      "new_price": 5863.0,
+      "price_change": 1528.0,
+      "price_change_pct": 35.2479815455594,
+      "timestamp": "2026-06-21 17:32:36.670324+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:35:23.249410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-06-21_17-32_+35.2"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 7370.0,
+      "new_price": 8109.0,
+      "price_change": 739.0,
+      "price_change_pct": 10.027137042062414,
+      "timestamp": "2026-06-21 17:32:36.670324+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:35:23.249438+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-21_17-32_+10.0"
+    },
+    {
+      "hotel_name": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos",
+      "duration_bucket": "",
+      "old_price": 8657.0,
+      "new_price": 8657.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 17:32:36.670324+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T17:35:23.249466+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos_2026-06-21_17-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 9808.0,
+      "new_price": 9808.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 17:32:36.670324+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T17:35:23.249485+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-06-21_17-32_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-21T15:59:24.583301+00:00",
+    "last_processed_run": "2026-06-21T17:32:36.670324+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -10810,8 +10888,8 @@
         "premium_peak": 11212.0
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
-        "history_max": 9817.0,
-        "premium_peak": null
+        "history_max": 10397.0,
+        "premium_peak": 10397.0
       },
       "Zeus Eleva Mirabello Bay": {
         "history_max": 16904.0,
@@ -10830,8 +10908,8 @@
         "premium_peak": 19942.0
       },
       "Ammos (Mastichari) Grecja, Kos, Mastichari": {
-        "history_max": 8757.0,
-        "premium_peak": null
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki": {
         "history_max": 9995.0,
@@ -10930,8 +11008,8 @@
         "premium_peak": null
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
-        "history_max": 10857.0,
-        "premium_peak": 10857.0
+        "history_max": 11317.0,
+        "premium_peak": 11317.0
       },
       "Atlantica Porto Bello Royal Grecja, kos, Kardamaina": {
         "history_max": 8757.0,

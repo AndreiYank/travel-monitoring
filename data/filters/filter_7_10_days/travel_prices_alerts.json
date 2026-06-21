@@ -42744,10 +42744,114 @@
       "created_at": "2026-06-21T15:58:57.514612+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xanadu Makadi Bay_2026-06-21_15-55_comeback_16.0"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 6643.0,
+      "new_price": 5775.0,
+      "price_change": -868.0,
+      "price_change_pct": -13.066385669125394,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-21T17:31:58.816630+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-06-21_17-28_-13.1"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 6450.0,
+      "new_price": 5433.0,
+      "price_change": -1017.0,
+      "price_change_pct": -15.767441860465118,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-21T17:31:58.816670+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-06-21_17-28_-15.8"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 5828.0,
+      "new_price": 6902.0,
+      "price_change": 1074.0,
+      "price_change_pct": 18.42827728208648,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:31:58.816689+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-06-21_17-28_+18.4"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 5303.0,
+      "new_price": 5814.0,
+      "price_change": 511.0,
+      "price_change_pct": 9.636055063171789,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:31:58.816704+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-06-21_17-28_+9.6"
+    },
+    {
+      "hotel_name": "Jaz Elite Casa Del Mar Beach",
+      "duration_bucket": "",
+      "old_price": 8584.0,
+      "new_price": 9459.0,
+      "price_change": 875.0,
+      "price_change_pct": 10.193383038210623,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-21T17:31:58.816713+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Casa Del Mar Beach_2026-06-21_17-28_+10.2"
+    },
+    {
+      "hotel_name": "Jaz Elite Maraya",
+      "duration_bucket": "",
+      "old_price": 9274.0,
+      "new_price": 9274.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T17:31:58.816737+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Maraya_2026-06-21_17-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Elite Riviera",
+      "duration_bucket": "",
+      "old_price": 9738.0,
+      "new_price": 11738.0,
+      "price_change": 2000.0,
+      "price_change_pct": 20.53809817210926,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T17:31:58.816747+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Riviera_2026-06-21_17-28_zone_out_+20.5"
+    },
+    {
+      "hotel_name": "Sunrise Select Garden Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8766.0,
+      "new_price": 8766.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-21 17:28:26.119439+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-21T17:31:58.816756+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Select Garden Beach Resort & Spa_2026-06-21_17-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-21T15:55:10.039483+00:00",
+    "last_processed_run": "2026-06-21T17:28:26.119439+00:00",
     "premium_state": {
       "Amarina Queen Resort": {
         "history_max": 6938.0,
@@ -43378,8 +43482,8 @@
         "premium_peak": null
       },
       "Caribbean World Soma Bay": {
-        "history_max": 13767.0,
-        "premium_peak": 13767.0
+        "history_max": 14397.0,
+        "premium_peak": 14397.0
       },
       "Azur One Eleven": {
         "history_max": 8203.0,
