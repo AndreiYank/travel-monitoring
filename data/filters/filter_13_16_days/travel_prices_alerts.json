@@ -5161,10 +5161,36 @@
       "created_at": "2026-06-22T17:38:40.903087+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Lagoon Resort_2026-06-22_17-36_comeback_42.8"
+    },
+    {
+      "hotel_name": "Novotel Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9131.0,
+      "new_price": 9966.0,
+      "price_change": 835.0,
+      "price_change_pct": 9.144671996495456,
+      "timestamp": "2026-06-23 07:50:30.023344+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-23T07:53:28.812655+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Marsa Alam_2026-06-23_07-50_+9.1"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 11597.0,
+      "new_price": 9885.0,
+      "price_change": -1712.0,
+      "price_change_pct": -14.762438561696992,
+      "timestamp": "2026-06-23 07:50:30.023344+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-23T07:53:28.812722+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-06-23_07-50_comeback_14.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-23T03:51:58.274462+00:00",
+    "last_processed_run": "2026-06-23T07:50:30.023344+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
@@ -5471,8 +5497,8 @@
         "premium_peak": 18497.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
-        "history_max": 16800.0,
-        "premium_peak": 16800.0
+        "history_max": 16839.0,
+        "premium_peak": 16839.0
       },
       "Ancient Sands Golf Resort": {
         "history_max": 14586.0,
@@ -5563,8 +5589,8 @@
         "premium_peak": 18621.0
       },
       "Rewaya Luxury Resort": {
-        "history_max": 15147.0,
-        "premium_peak": 15147.0
+        "history_max": 15368.0,
+        "premium_peak": 15368.0
       },
       "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
         "history_max": 18140.0,
@@ -5979,12 +6005,20 @@
         "premium_peak": 16527.0
       },
       "Serenity Alma Heights (ex. Serenity Fun City)": {
-        "history_max": 14537.0,
-        "premium_peak": 14537.0
+        "history_max": 14997.0,
+        "premium_peak": 14997.0
       },
       "Caribbean World Soma Bay": {
         "history_max": 11757.0,
         "premium_peak": 11757.0
+      },
+      "Sunrise Royal Makadi Aqua Resort": {
+        "history_max": 17813.0,
+        "premium_peak": 17813.0
+      },
+      "Sentido Mamlouk Palace Resort & Spa (ex Sunrise)": {
+        "history_max": 16293.0,
+        "premium_peak": 16293.0
       }
     }
   }
