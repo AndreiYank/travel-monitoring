@@ -12233,10 +12233,36 @@
       "created_at": "2026-06-22T22:56:21.539540+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Master Family Club_2026-06-22_22-54_comeback_30.7"
+    },
+    {
+      "hotel_name": "Club Side Coast",
+      "duration_bucket": "",
+      "old_price": 6872.0,
+      "new_price": 7499.0,
+      "price_change": 627.0,
+      "price_change_pct": 9.123981373690338,
+      "timestamp": "2026-06-23 00:13:09.228750+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-23T00:14:49.057670+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Side Coast_2026-06-23_00-13_+9.1"
+    },
+    {
+      "hotel_name": "Side Moon Palace",
+      "duration_bucket": "",
+      "old_price": 9510.0,
+      "new_price": 10137.0,
+      "price_change": 627.0,
+      "price_change_pct": 6.593059936908517,
+      "timestamp": "2026-06-23 00:13:09.228750+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-23T00:14:49.057723+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Moon Palace_2026-06-23_00-13_zone_out_+6.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-22T22:54:24.261983+00:00",
+    "last_processed_run": "2026-06-23T00:13:09.228750+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,
@@ -12583,8 +12609,8 @@
         "premium_peak": 14447.0
       },
       "Green Garden Resort": {
-        "history_max": 13229.0,
-        "premium_peak": 13229.0
+        "history_max": 13272.0,
+        "premium_peak": 13272.0
       },
       "Grand Seker": {
         "history_max": 10916.0,
@@ -13003,8 +13029,8 @@
         "premium_peak": 15527.0
       },
       "Orange County Belek": {
-        "history_max": 13535.0,
-        "premium_peak": 13535.0
+        "history_max": 14343.0,
+        "premium_peak": 14343.0
       },
       "Orange County Alanya": {
         "history_max": 12497.0,
@@ -13781,6 +13807,10 @@
       "FashionTV Luxe Resort": {
         "history_max": 13568.0,
         "premium_peak": 13568.0
+      },
+      "Fame Residence (Göynük)": {
+        "history_max": 12454.0,
+        "premium_peak": 12454.0
       }
     }
   }
