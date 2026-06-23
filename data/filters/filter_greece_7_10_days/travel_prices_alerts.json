@@ -11024,10 +11024,101 @@
       "created_at": "2026-06-23T11:11:31.016761+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-06-23_11-08_comeback_10.8"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 5498.0,
+      "new_price": 4696.0,
+      "price_change": -802.0,
+      "price_change_pct": -14.587122590032738,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-23T13:54:35.460361+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-23_13-52_-14.6"
+    },
+    {
+      "hotel_name": "Grand Blue Beach Grecja, kos, Kardamaina",
+      "duration_bucket": "",
+      "old_price": 6978.0,
+      "new_price": 6378.0,
+      "price_change": -600.0,
+      "price_change_pct": -8.598452278589853,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-23T13:54:35.460407+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Blue Beach Grecja, kos, Kardamaina_2026-06-23_13-52_-8.6"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 9857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-23T13:54:35.460438+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-06-23_13-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9516.0,
+      "new_price": 9516.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-23T13:54:35.460454+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-06-23_13-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia",
+      "duration_bucket": "",
+      "old_price": 9219.0,
+      "new_price": 9219.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-23T13:54:35.460469+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia_2026-06-23_13-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare",
+      "duration_bucket": "",
+      "old_price": 11141.0,
+      "new_price": 9916.0,
+      "price_change": -1225.0,
+      "price_change_pct": -10.995422313975405,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-23T13:54:35.460506+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare_2026-06-23_13-52_comeback_11.0"
+    },
+    {
+      "hotel_name": "Ibiscus Corfu",
+      "duration_bucket": "",
+      "old_price": 11198.0,
+      "new_price": 9775.0,
+      "price_change": -1423.0,
+      "price_change_pct": -12.70762636185033,
+      "timestamp": "2026-06-23 13:52:13.992128+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-23T13:54:35.460531+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ibiscus Corfu_2026-06-23_13-52_comeback_12.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-23T11:08:57.521800+00:00",
+    "last_processed_run": "2026-06-23T13:52:13.992128+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -11278,8 +11369,8 @@
         "premium_peak": null
       },
       "Panorama Leptos (Kato Galatas)": {
-        "history_max": 12743.0,
-        "premium_peak": 12743.0
+        "history_max": 13479.0,
+        "premium_peak": 13479.0
       },
       "Aquila Elounda Village": {
         "history_max": 19914.0,
@@ -11338,8 +11429,8 @@
         "premium_peak": 17397.0
       },
       "Porto Platanias Beach (Chania)": {
-        "history_max": 14386.0,
-        "premium_peak": 14386.0
+        "history_max": 14645.0,
+        "premium_peak": 14645.0
       },
       "Elinotel Apolamare": {
         "history_max": 11141.0,
@@ -11398,8 +11489,8 @@
         "premium_peak": 10529.0
       },
       "Euphoria Resort": {
-        "history_max": 17175.0,
-        "premium_peak": 17175.0
+        "history_max": 17463.0,
+        "premium_peak": 17463.0
       },
       "Creta Maris Beach Resort (ex Terra Maris)": {
         "history_max": 17762.0,
@@ -11522,8 +11613,8 @@
         "premium_peak": 14781.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
-        "history_max": 15996.0,
-        "premium_peak": 15996.0
+        "history_max": 16022.0,
+        "premium_peak": 16022.0
       },
       "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
         "history_max": 9484.0,
@@ -11578,7 +11669,7 @@
         "premium_peak": null
       },
       "Lydia Maris Resort & Spa": {
-        "history_max": 9695.0,
+        "history_max": 9819.0,
         "premium_peak": null
       },
       "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
