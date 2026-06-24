@@ -11687,10 +11687,75 @@
       "created_at": "2026-06-24T16:29:26.977334+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-06-24_16-26_comeback_11.3"
+    },
+    {
+      "hotel_name": "Serita Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 9236.0,
+      "new_price": 7010.0,
+      "price_change": -2226.0,
+      "price_change_pct": -24.101342572542226,
+      "timestamp": "2026-06-24 18:44:14.533829+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-24T18:46:57.566186+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serita Beach Grecja, Kreta Wschodnia, Anissaras_2026-06-24_18-44_-24.1"
+    },
+    {
+      "hotel_name": "Costa Lindia Beach Grecja, Rodos, Lardos",
+      "duration_bucket": "",
+      "old_price": 9875.0,
+      "new_price": 10140.0,
+      "price_change": 265.0,
+      "price_change_pct": 2.6835443037974684,
+      "timestamp": "2026-06-24 18:44:14.533829+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T18:46:57.566253+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Costa Lindia Beach Grecja, Rodos, Lardos_2026-06-24_18-44_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 7206.0,
+      "new_price": 7206.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 18:44:14.533829+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T18:46:57.566274+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios_2026-06-24_18-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 7663.0,
+      "new_price": 7663.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 18:44:14.533829+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T18:46:57.566291+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-06-24_18-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia",
+      "duration_bucket": "",
+      "old_price": 9869.0,
+      "new_price": 10119.0,
+      "price_change": 250.0,
+      "price_change_pct": 2.53318471982977,
+      "timestamp": "2026-06-24 18:44:14.533829+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T18:46:57.566323+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia_2026-06-24_18-44_zone_out_+2.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T16:26:58.838586+00:00",
+    "last_processed_run": "2026-06-24T18:44:14.533829+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -11813,8 +11878,8 @@
         "premium_peak": 16330.0
       },
       "Grecotel LuxMe Costa Botanica (ex. Gelina Village)": {
-        "history_max": 16431.0,
-        "premium_peak": 16431.0
+        "history_max": 17212.0,
+        "premium_peak": 17212.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
         "history_max": 9569.0,
@@ -12061,8 +12126,8 @@
         "premium_peak": 10529.0
       },
       "Euphoria Resort": {
-        "history_max": 18439.0,
-        "premium_peak": 18439.0
+        "history_max": 19039.0,
+        "premium_peak": 19039.0
       },
       "Creta Maris Beach Resort (ex Terra Maris)": {
         "history_max": 19999.0,
@@ -12173,8 +12238,8 @@
         "premium_peak": null
       },
       "Atlantica Ocean Beach Resort (ex. Creta Princess by Atlantica)": {
-        "history_max": 18449.0,
-        "premium_peak": 18449.0
+        "history_max": 18767.0,
+        "premium_peak": 18767.0
       },
       "Apollonia Beach (Ammoudara)": {
         "history_max": 10437.0,
@@ -12553,8 +12618,8 @@
         "premium_peak": null
       },
       "Costa Lindia Beach Grecja, Rodos, Lardos": {
-        "history_max": 9927.0,
-        "premium_peak": null
+        "history_max": 10140.0,
+        "premium_peak": 10140.0
       },
       "Atlantica Aegean Blue": {
         "history_max": 19486.0,

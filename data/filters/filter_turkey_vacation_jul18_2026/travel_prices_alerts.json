@@ -7280,10 +7280,36 @@
       "created_at": "2026-06-24T16:27:48.001823+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cenger Blue Collection|9-11_2026-06-24_16-25_comeback_11.8"
+    },
+    {
+      "hotel_name": "Fame Residence (Göynük)",
+      "duration_bucket": "7-9",
+      "old_price": 9605.0,
+      "new_price": 10219.0,
+      "price_change": 614.0,
+      "price_change_pct": 6.392503904216554,
+      "timestamp": "2026-06-24 18:43:36.465447+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T18:45:58.821988+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Göynük)|7-9_2026-06-24_18-43_zone_out_+6.4"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9938.0,
+      "new_price": 9938.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 18:43:36.465447+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T18:45:58.822036+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort|7-9_2026-06-24_18-43_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T16:25:28.892511+00:00",
+    "last_processed_run": "2026-06-24T18:43:36.465447+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -7462,8 +7488,8 @@
         "premium_peak": 12570.0
       },
       "Club Yali Hotels & Resort|7-9": {
-        "history_max": 10487.0,
-        "premium_peak": 10487.0
+        "history_max": 10549.0,
+        "premium_peak": 10549.0
       },
       "Concordia Celes Beach|7-9": {
         "history_max": 8504.0,
@@ -9606,8 +9632,8 @@
         "premium_peak": 15384.0
       },
       "Asia Beach Resort and Spa|7-9": {
-        "history_max": 11269.0,
-        "premium_peak": 11269.0
+        "history_max": 11422.0,
+        "premium_peak": 11422.0
       },
       "Mary Alanya (ex. Sirius Deluxe)|9-11": {
         "history_max": 15589.0,
@@ -9712,6 +9738,14 @@
       "Dobedan Beach Resort Comfort (ex. Alva Donna Beach Resort)|9-11": {
         "history_max": 15644.0,
         "premium_peak": 15644.0
+      },
+      "Belconti Resort (Belek)|7-9": {
+        "history_max": 12016.0,
+        "premium_peak": 12016.0
+      },
+      "Avia Resort & Spa|9-11": {
+        "history_max": 11776.0,
+        "premium_peak": 11776.0
       }
     }
   }
