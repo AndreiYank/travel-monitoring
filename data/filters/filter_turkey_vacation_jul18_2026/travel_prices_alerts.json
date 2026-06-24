@@ -7189,10 +7189,101 @@
       "created_at": "2026-06-24T13:29:02.342373+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams|9-11_2026-06-24_13-26_comeback_10.4"
+    },
+    {
+      "hotel_name": "Seamelia Beach Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9596.0,
+      "new_price": 9596.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T16:27:48.001710+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seamelia Beach Resort & Spa|7-9_2026-06-24_16-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "7-9",
+      "old_price": 8809.0,
+      "new_price": 8809.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T16:27:48.001743+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)|7-9_2026-06-24_16-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fame Residence (Göynük)",
+      "duration_bucket": "7-9",
+      "old_price": 11719.0,
+      "new_price": 9605.0,
+      "price_change": -2114.0,
+      "price_change_pct": -18.039081832920896,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T16:27:48.001776+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Göynük)|7-9_2026-06-24_16-25_comeback_18.0"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "9-11",
+      "old_price": 11264.0,
+      "new_price": 9860.0,
+      "price_change": -1404.0,
+      "price_change_pct": -12.464488636363637,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T16:27:48.001791+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|9-11_2026-06-24_16-25_comeback_12.5"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 11322.0,
+      "new_price": 10000.0,
+      "price_change": -1322.0,
+      "price_change_pct": -11.676382264617558,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T16:27:48.001802+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa|9-11_2026-06-24_16-25_comeback_11.7"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 11132.0,
+      "new_price": 9810.0,
+      "price_change": -1322.0,
+      "price_change_pct": -11.875673733381245,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T16:27:48.001813+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-06-24_16-25_comeback_11.9"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "9-11",
+      "old_price": 11178.0,
+      "new_price": 9856.0,
+      "price_change": -1322.0,
+      "price_change_pct": -11.826802648058687,
+      "timestamp": "2026-06-24 16:25:28.892511+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T16:27:48.001823+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection|9-11_2026-06-24_16-25_comeback_11.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T13:26:49.719068+00:00",
+    "last_processed_run": "2026-06-24T16:25:28.892511+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 11004.0,
@@ -7955,8 +8046,8 @@
         "premium_peak": 15048.0
       },
       "Sunland Resort (ex. Imperial Sunland Resort & Spa)|9-11": {
-        "history_max": 11171.0,
-        "premium_peak": 11171.0
+        "history_max": 12434.0,
+        "premium_peak": 12434.0
       },
       "Well Palace Side (ex. Side Crown Charm Palace)|9-11": {
         "history_max": 11772.0,
@@ -9075,8 +9166,8 @@
         "premium_peak": 12405.0
       },
       "Flora Garden Ephesus|9-11": {
-        "history_max": 13781.0,
-        "premium_peak": 13781.0
+        "history_max": 13907.0,
+        "premium_peak": 13907.0
       },
       "Fantasia De Luxe Kusadasi|9-11": {
         "history_max": 13578.0,
@@ -9103,8 +9194,8 @@
         "premium_peak": 15593.0
       },
       "Tusan Beach Resort|9-11": {
-        "history_max": 13586.0,
-        "premium_peak": 13586.0
+        "history_max": 13712.0,
+        "premium_peak": 13712.0
       },
       "Ladonia Adakule|9-11": {
         "history_max": 11081.0,
@@ -9539,20 +9630,20 @@
         "premium_peak": 12795.0
       },
       "Paloma Sencia|9-11": {
-        "history_max": 15650.0,
-        "premium_peak": 15650.0
+        "history_max": 15656.0,
+        "premium_peak": 15656.0
       },
       "Rubi Platinum (Alanya)|9-11": {
         "history_max": 15881.0,
         "premium_peak": 15881.0
       },
       "Club Atlantis Resort|9-11": {
-        "history_max": 14166.0,
-        "premium_peak": 14166.0
+        "history_max": 14292.0,
+        "premium_peak": 14292.0
       },
       "Club Yali Hotels & Resort|9-11": {
-        "history_max": 15420.0,
-        "premium_peak": 15420.0
+        "history_max": 15545.0,
+        "premium_peak": 15545.0
       },
       "Avia Resort & Spa|7-9": {
         "history_max": 9721.0,
@@ -9611,8 +9702,16 @@
         "premium_peak": 13952.0
       },
       "Unique Residence Golf Spa|9-11": {
-        "history_max": 12793.0,
-        "premium_peak": 12793.0
+        "history_max": 12919.0,
+        "premium_peak": 12919.0
+      },
+      "Armas Labada|7-9": {
+        "history_max": 11869.0,
+        "premium_peak": 11869.0
+      },
+      "Dobedan Beach Resort Comfort (ex. Alva Donna Beach Resort)|9-11": {
+        "history_max": 15644.0,
+        "premium_peak": 15644.0
       }
     }
   }
