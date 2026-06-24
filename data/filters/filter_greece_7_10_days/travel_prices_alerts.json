@@ -11531,10 +11531,88 @@
       "created_at": "2026-06-24T10:33:34.723176+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Costa Lindia Beach Grecja, Rodos, Lardos_2026-06-24_10-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Porto Angeli Grecja, Rodos, Archangelos",
+      "duration_bucket": "",
+      "old_price": 9741.0,
+      "new_price": 8664.0,
+      "price_change": -1077.0,
+      "price_change_pct": -11.056359716661532,
+      "timestamp": "2026-06-24 13:28:34.152292+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-24T13:31:19.832688+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Porto Angeli Grecja, Rodos, Archangelos_2026-06-24_13-28_-11.1"
+    },
+    {
+      "hotel_name": "Serita Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 8329.0,
+      "new_price": 9059.0,
+      "price_change": 730.0,
+      "price_change_pct": 8.764557569936366,
+      "timestamp": "2026-06-24 13:28:34.152292+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T13:31:19.832718+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serita Beach Grecja, Kreta Wschodnia, Anissaras_2026-06-24_13-28_+8.8"
+    },
+    {
+      "hotel_name": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari",
+      "duration_bucket": "",
+      "old_price": 6993.0,
+      "new_price": 9591.0,
+      "price_change": 2598.0,
+      "price_change_pct": 37.15143715143715,
+      "timestamp": "2026-06-24 13:28:34.152292+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T13:31:19.832733+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-06-24_13-28_+37.2"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 8857.0,
+      "price_change": -1000.0,
+      "price_change_pct": -10.145074566298062,
+      "timestamp": "2026-06-24 13:28:34.152292+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-24T13:31:19.832743+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-06-24_13-28_-10.1"
+    },
+    {
+      "hotel_name": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos",
+      "duration_bucket": "",
+      "old_price": 9649.0,
+      "new_price": 9649.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 13:28:34.152292+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T13:31:19.832760+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-06-24_13-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 10359.0,
+      "new_price": 9243.0,
+      "price_change": -1116.0,
+      "price_change_pct": -10.773240660295395,
+      "timestamp": "2026-06-24 13:28:34.152292+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T13:31:19.832784+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-24_13-28_comeback_10.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T10:30:44.598650+00:00",
+    "last_processed_run": "2026-06-24T13:28:34.152292+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -11721,7 +11799,7 @@
         "premium_peak": null
       },
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
-        "history_max": 9877.0,
+        "history_max": 9883.0,
         "premium_peak": null
       },
       "Atrium Platinum Resort & Spa": {
@@ -11865,8 +11943,8 @@
         "premium_peak": 15910.0
       },
       "Anemos Luxury Grand Resort": {
-        "history_max": 16020.0,
-        "premium_peak": 16020.0
+        "history_max": 17517.0,
+        "premium_peak": 17517.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
         "history_max": 16167.0,

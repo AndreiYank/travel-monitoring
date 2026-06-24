@@ -15145,10 +15145,114 @@
       "created_at": "2026-06-24T10:30:43.635404+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Mandarin Resort (Bodrum)_2026-06-24_10-28_comeback_27.4"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 7542.0,
+      "new_price": 6440.0,
+      "price_change": -1102.0,
+      "price_change_pct": -14.611508883585255,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-24T13:26:48.679390+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-06-24_13-24_-14.6"
+    },
+    {
+      "hotel_name": "Daima Biz (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9724.0,
+      "new_price": 10518.0,
+      "price_change": 794.0,
+      "price_change_pct": 8.165364047716988,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T13:26:48.679440+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz (Kemer)_2026-06-24_13-24_zone_out_+8.2"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "",
+      "old_price": 8568.0,
+      "new_price": 10523.0,
+      "price_change": 1955.0,
+      "price_change_pct": 22.817460317460316,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T13:26:48.679454+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa_2026-06-24_13-24_zone_out_+22.8"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 10974.0,
+      "new_price": 9622.0,
+      "price_change": -1352.0,
+      "price_change_pct": -12.32002915983233,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T13:26:48.679479+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-06-24_13-24_comeback_12.3"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 10899.0,
+      "new_price": 9676.0,
+      "price_change": -1223.0,
+      "price_change_pct": -11.221212955317002,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T13:26:48.679493+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-06-24_13-24_comeback_11.2"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11439.0,
+      "new_price": 9540.0,
+      "price_change": -1899.0,
+      "price_change_pct": -16.601101494885917,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T13:26:48.679505+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-06-24_13-24_comeback_16.6"
+    },
+    {
+      "hotel_name": "Galeri Resort",
+      "duration_bucket": "",
+      "old_price": 12293.0,
+      "new_price": 9970.0,
+      "price_change": -2323.0,
+      "price_change_pct": -18.89693321402424,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T13:26:48.679515+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galeri Resort_2026-06-24_13-24_comeback_18.9"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11022.0,
+      "new_price": 9802.0,
+      "price_change": -1220.0,
+      "price_change_pct": -11.068771547813464,
+      "timestamp": "2026-06-24 13:24:56.345783+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T13:26:48.679525+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-06-24_13-24_comeback_11.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T10:28:32.251749+00:00",
+    "last_processed_run": "2026-06-24T13:24:56.345783+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,
@@ -15419,8 +15523,8 @@
         "premium_peak": 11128.0
       },
       "Daima Biz (Kemer)": {
-        "history_max": 10336.0,
-        "premium_peak": 10336.0
+        "history_max": 10518.0,
+        "premium_peak": 10518.0
       },
       "Drita Resort & Spa": {
         "history_max": 9734.0,
@@ -15435,8 +15539,8 @@
         "premium_peak": 15097.0
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
-        "history_max": 14013.0,
-        "premium_peak": 14013.0
+        "history_max": 14900.0,
+        "premium_peak": 14900.0
       },
       "Crystal Prestige Pearl Collection": {
         "history_max": 15357.0,
@@ -15463,8 +15567,8 @@
         "premium_peak": 13487.0
       },
       "Club Yali Hotels & Resort": {
-        "history_max": 12511.0,
-        "premium_peak": 12511.0
+        "history_max": 13368.0,
+        "premium_peak": 13368.0
       },
       "Club Turan Prince World": {
         "history_max": 13678.0,
@@ -15503,8 +15607,8 @@
         "premium_peak": 10916.0
       },
       "Grand Ring": {
-        "history_max": 12173.0,
-        "premium_peak": 12173.0
+        "history_max": 13373.0,
+        "premium_peak": 13373.0
       },
       "Grand Pasa": {
         "history_max": 13415.0,
@@ -15563,16 +15667,16 @@
         "premium_peak": 13412.0
       },
       "Flora Garden Ephesus": {
-        "history_max": 10762.0,
-        "premium_peak": 10762.0
+        "history_max": 12015.0,
+        "premium_peak": 12015.0
       },
       "First Class": {
         "history_max": 7844.0,
         "premium_peak": null
       },
       "Fantasia De Luxe Kusadasi": {
-        "history_max": 11849.0,
-        "premium_peak": 11849.0
+        "history_max": 14025.0,
+        "premium_peak": 14025.0
       },
       "Fame Residence (Kemer)": {
         "history_max": 13478.0,
@@ -15783,16 +15887,16 @@
         "premium_peak": 12429.0
       },
       "Unique Residence Golf Spa": {
-        "history_max": 9958.0,
-        "premium_peak": null
+        "history_max": 10523.0,
+        "premium_peak": 10523.0
       },
       "Ulusoy Kemer Holiday Club": {
         "history_max": 13597.0,
         "premium_peak": 13597.0
       },
       "Tusan Beach Resort": {
-        "history_max": 12681.0,
-        "premium_peak": 12681.0
+        "history_max": 13704.0,
+        "premium_peak": 13704.0
       },
       "Turunc Premium": {
         "history_max": 14815.0,
@@ -15871,8 +15975,8 @@
         "premium_peak": 11007.0
       },
       "Queens Park Le Jardin Resort": {
-        "history_max": 14511.0,
-        "premium_peak": 14511.0
+        "history_max": 14801.0,
+        "premium_peak": 14801.0
       },
       "Perre Delta": {
         "history_max": 9104.0,
@@ -16175,8 +16279,8 @@
         "premium_peak": 12745.0
       },
       "Aria Claros Beach and Spa Resort": {
-        "history_max": 12895.0,
-        "premium_peak": 12895.0
+        "history_max": 13959.0,
+        "premium_peak": 13959.0
       },
       "Aventura Park": {
         "history_max": 10497.0,
@@ -16375,8 +16479,8 @@
         "premium_peak": 13718.0
       },
       "Pine Beach Belek (ex. Maritim Pine Beach Resort)": {
-        "history_max": 14500.0,
-        "premium_peak": 14500.0
+        "history_max": 14576.0,
+        "premium_peak": 14576.0
       },
       "Side Star Beach": {
         "history_max": 15361.0,
@@ -16491,8 +16595,8 @@
         "premium_peak": 13949.0
       },
       "Duja Didim": {
-        "history_max": 13704.0,
-        "premium_peak": 13704.0
+        "history_max": 14236.0,
+        "premium_peak": 14236.0
       },
       "Turquoise Hotel": {
         "history_max": 15058.0,
@@ -16543,8 +16647,8 @@
         "premium_peak": 14271.0
       },
       "Dobedan Beach Resort Comfort (ex. Alva Donna Beach Resort)": {
-        "history_max": 14138.0,
-        "premium_peak": 14138.0
+        "history_max": 14385.0,
+        "premium_peak": 14385.0
       },
       "Aydinbey Famous": {
         "history_max": 14568.0,
