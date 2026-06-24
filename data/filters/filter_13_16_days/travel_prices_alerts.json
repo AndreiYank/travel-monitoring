@@ -5915,10 +5915,36 @@
       "created_at": "2026-06-24T06:53:07.529271+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Queen Resort_2026-06-24_06-51_zone_out_+37.3"
+    },
+    {
+      "hotel_name": "Parrotel Lagoon Resort",
+      "duration_bucket": "",
+      "old_price": 16819.0,
+      "new_price": 9617.0,
+      "price_change": -7202.0,
+      "price_change_pct": -42.82061953742791,
+      "timestamp": "2026-06-24 20:40:32.541515+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T20:42:35.009252+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort_2026-06-24_20-40_comeback_42.8"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 11975.0,
+      "new_price": 9793.0,
+      "price_change": -2182.0,
+      "price_change_pct": -18.221294363256785,
+      "timestamp": "2026-06-24 20:40:32.541515+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T20:42:35.009283+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-06-24_20-40_comeback_18.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T18:39:59.406602+00:00",
+    "last_processed_run": "2026-06-24T20:40:32.541515+00:00",
     "premium_state": {
       "Sea Star Beau Rivage": {
         "history_max": 12397.0,
@@ -6289,8 +6315,8 @@
         "premium_peak": 17874.0
       },
       "Reef Oasis Blue Bay Resort": {
-        "history_max": 15080.0,
-        "premium_peak": 15080.0
+        "history_max": 15626.0,
+        "premium_peak": 15626.0
       },
       "Jaz Almaza Blu": {
         "history_max": 19197.0,
