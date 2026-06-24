@@ -11453,10 +11453,88 @@
       "created_at": "2026-06-24T06:57:39.310335+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-24_06-55_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 8318.0,
+      "new_price": 9695.0,
+      "price_change": 1377.0,
+      "price_change_pct": 16.554460206780476,
+      "timestamp": "2026-06-24 10:30:44.598650+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T10:33:34.722994+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-06-24_10-30_+16.6"
+    },
+    {
+      "hotel_name": "Serita Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 9295.0,
+      "new_price": 8329.0,
+      "price_change": -966.0,
+      "price_change_pct": -10.392684238838084,
+      "timestamp": "2026-06-24 10:30:44.598650+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-24T10:33:34.723069+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serita Beach Grecja, Kreta Wschodnia, Anissaras_2026-06-24_10-30_-10.4"
+    },
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 7097.0,
+      "new_price": 6497.0,
+      "price_change": -600.0,
+      "price_change_pct": -8.454276454840073,
+      "timestamp": "2026-06-24 10:30:44.598650+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-24T10:33:34.723098+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-06-24_10-30_-8.5"
+    },
+    {
+      "hotel_name": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes",
+      "duration_bucket": "",
+      "old_price": 5553.0,
+      "new_price": 6898.0,
+      "price_change": 1345.0,
+      "price_change_pct": 24.22114172519359,
+      "timestamp": "2026-06-24 10:30:44.598650+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T10:33:34.723120+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-06-24_10-30_+24.2"
+    },
+    {
+      "hotel_name": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara",
+      "duration_bucket": "",
+      "old_price": 9767.0,
+      "new_price": 10107.0,
+      "price_change": 340.0,
+      "price_change_pct": 3.48110985973175,
+      "timestamp": "2026-06-24 10:30:44.598650+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T10:33:34.723156+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara_2026-06-24_10-30_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Costa Lindia Beach Grecja, Rodos, Lardos",
+      "duration_bucket": "",
+      "old_price": 9927.0,
+      "new_price": 9927.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-24 10:30:44.598650+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T10:33:34.723176+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Costa Lindia Beach Grecja, Rodos, Lardos_2026-06-24_10-30_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T06:55:37.454097+00:00",
+    "last_processed_run": "2026-06-24T10:30:44.598650+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -11503,8 +11581,8 @@
         "premium_peak": 19057.0
       },
       "White Olive Elite Rethymno": {
-        "history_max": 9978.0,
-        "premium_peak": null
+        "history_max": 10359.0,
+        "premium_peak": 10359.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
         "history_max": 7700.0,
@@ -11767,8 +11845,8 @@
         "premium_peak": 17397.0
       },
       "Porto Platanias Beach (Chania)": {
-        "history_max": 14645.0,
-        "premium_peak": 14645.0
+        "history_max": 14888.0,
+        "premium_peak": 14888.0
       },
       "Elinotel Apolamare": {
         "history_max": 11141.0,
@@ -11887,8 +11965,8 @@
         "premium_peak": 19671.0
       },
       "Mythos Palace": {
-        "history_max": 18021.0,
-        "premium_peak": 18021.0
+        "history_max": 18171.0,
+        "premium_peak": 18171.0
       },
       "Solimar Aquamarine": {
         "history_max": 12657.0,
@@ -11927,7 +12005,7 @@
         "premium_peak": 19266.0
       },
       "Almyra Village Grecja, Kreta Wschodnia, Koutsounari": {
-        "history_max": 9557.0,
+        "history_max": 9857.0,
         "premium_peak": null
       },
       "Mitsis Selection Alila": {
@@ -11999,8 +12077,8 @@
         "premium_peak": 12938.0
       },
       "Lindos Breeze Beach": {
-        "history_max": 12928.0,
-        "premium_peak": 12928.0
+        "history_max": 13281.0,
+        "premium_peak": 13281.0
       },
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
         "history_max": 9611.0,
