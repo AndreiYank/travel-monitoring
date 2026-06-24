@@ -14326,10 +14326,49 @@
       "created_at": "2026-06-23T23:15:18.428319+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gold City_2026-06-23_23-13_comeback_37.5"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 8566.0,
+      "new_price": 9709.0,
+      "price_change": 1143.0,
+      "price_change_pct": 13.343450852206399,
+      "timestamp": "2026-06-24 00:12:33.333266+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T00:14:11.013295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-06-24_00-12_+13.3"
+    },
+    {
+      "hotel_name": "Flora Garden Ephesus",
+      "duration_bucket": "",
+      "old_price": 9430.0,
+      "new_price": 10071.0,
+      "price_change": 641.0,
+      "price_change_pct": 6.79745493107105,
+      "timestamp": "2026-06-24 00:12:33.333266+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T00:14:11.013345+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Flora Garden Ephesus_2026-06-24_00-12_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Signature Blue Resort (ex. Grand Ozcelik)",
+      "duration_bucket": "",
+      "old_price": 9325.0,
+      "new_price": 10331.0,
+      "price_change": 1006.0,
+      "price_change_pct": 10.788203753351207,
+      "timestamp": "2026-06-24 00:12:33.333266+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T00:14:11.013359+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-06-24_00-12_zone_out_+10.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-23T23:13:20.456043+00:00",
+    "last_processed_run": "2026-06-24T00:12:33.333266+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,
@@ -14460,8 +14499,8 @@
         "premium_peak": 11012.0
       },
       "My Home Resort": {
-        "history_max": 12699.0,
-        "premium_peak": 12699.0
+        "history_max": 12749.0,
+        "premium_peak": 12749.0
       },
       "Monachus Family Resort Sorgun": {
         "history_max": 15092.0,
@@ -14728,8 +14767,8 @@
         "premium_peak": 11439.0
       },
       "Garden of Sun Spa & Wellness": {
-        "history_max": 11448.0,
-        "premium_peak": 11448.0
+        "history_max": 11964.0,
+        "premium_peak": 11964.0
       },
       "Galeri Resort": {
         "history_max": 12293.0,
@@ -15898,6 +15937,10 @@
       "Delphin Botanik (Alanya)": {
         "history_max": 14373.0,
         "premium_peak": 14373.0
+      },
+      "Garcia Resort & Spa": {
+        "history_max": 13846.0,
+        "premium_peak": 13846.0
       }
     }
   }
