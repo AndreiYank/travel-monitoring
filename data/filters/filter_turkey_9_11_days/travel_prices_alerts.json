@@ -14365,10 +14365,127 @@
       "created_at": "2026-06-24T00:14:11.013359+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-06-24_00-12_zone_out_+10.8"
+    },
+    {
+      "hotel_name": "Misal (ex. Nox Inn Club)",
+      "duration_bucket": "",
+      "old_price": 8611.0,
+      "new_price": 9897.0,
+      "price_change": 1286.0,
+      "price_change_pct": 14.934386250145163,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T06:54:52.062819+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Misal (ex. Nox Inn Club)_2026-06-24_06-53_+14.9"
+    },
+    {
+      "hotel_name": "Prestige Alanya",
+      "duration_bucket": "",
+      "old_price": 5229.0,
+      "new_price": 5729.0,
+      "price_change": 500.0,
+      "price_change_pct": 9.562057754828839,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-24T06:54:52.062853+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Prestige Alanya_2026-06-24_06-53_+9.6"
+    },
+    {
+      "hotel_name": "Crystal World of Colours Comfort Collection",
+      "duration_bucket": "",
+      "old_price": 7443.0,
+      "new_price": 11115.0,
+      "price_change": 3672.0,
+      "price_change_pct": 49.334945586457074,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-24T06:54:52.062880+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Crystal World of Colours Comfort Collection_2026-06-24_06-53_zone_out_+49.3"
+    },
+    {
+      "hotel_name": "Nova Life",
+      "duration_bucket": "",
+      "old_price": 11012.0,
+      "new_price": 6894.0,
+      "price_change": -4118.0,
+      "price_change_pct": -37.39556847075917,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T06:54:52.062901+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life_2026-06-24_06-53_comeback_37.4"
+    },
+    {
+      "hotel_name": "Well Palace Side (ex. Side Crown Charm Palace)",
+      "duration_bucket": "",
+      "old_price": 12027.0,
+      "new_price": 9396.0,
+      "price_change": -2631.0,
+      "price_change_pct": -21.8757794961337,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T06:54:52.062913+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Well Palace Side (ex. Side Crown Charm Palace)_2026-06-24_06-53_comeback_21.9"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 10899.0,
+      "new_price": 9936.0,
+      "price_change": -963.0,
+      "price_change_pct": -8.835672997522709,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T06:54:52.062924+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-06-24_06-53_comeback_8.8"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 11892.0,
+      "new_price": 9976.0,
+      "price_change": -1916.0,
+      "price_change_pct": -16.111671712075346,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T06:54:52.062933+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-06-24_06-53_comeback_16.1"
+    },
+    {
+      "hotel_name": "Sealife Family Resort",
+      "duration_bucket": "",
+      "old_price": 12677.0,
+      "new_price": 9027.0,
+      "price_change": -3650.0,
+      "price_change_pct": -28.79230101759091,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T06:54:52.062942+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealife Family Resort_2026-06-24_06-53_comeback_28.8"
+    },
+    {
+      "hotel_name": "Asteria Family Belek",
+      "duration_bucket": "",
+      "old_price": 12771.0,
+      "new_price": 8622.0,
+      "price_change": -4149.0,
+      "price_change_pct": -32.4876673713883,
+      "timestamp": "2026-06-24 06:53:08.519649+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-24T06:54:52.062952+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Belek_2026-06-24_06-53_comeback_32.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T03:06:13.917558+00:00",
+    "last_processed_run": "2026-06-24T06:53:08.519649+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,
@@ -14507,7 +14624,7 @@
         "premium_peak": 15092.0
       },
       "Misal (ex. Nox Inn Club)": {
-        "history_max": 9211.0,
+        "history_max": 9897.0,
         "premium_peak": null
       },
       "Mira Meridia Beach Resort": {
@@ -14647,8 +14764,8 @@
         "premium_peak": null
       },
       "Crystal World of Colours Comfort Collection": {
-        "history_max": 10778.0,
-        "premium_peak": 10778.0
+        "history_max": 11115.0,
+        "premium_peak": 11115.0
       },
       "Crystal Tat Beach Pearl Collection": {
         "history_max": 15097.0,
@@ -15123,8 +15240,8 @@
         "premium_peak": 13102.0
       },
       "Ozkaymak Falez": {
-        "history_max": 13286.0,
-        "premium_peak": 13286.0
+        "history_max": 13360.0,
+        "premium_peak": 13360.0
       },
       "Oz Sui Resort": {
         "history_max": 11273.0,
@@ -15207,8 +15324,8 @@
         "premium_peak": 13957.0
       },
       "Saphir Resort": {
-        "history_max": 13059.0,
-        "premium_peak": 13059.0
+        "history_max": 13239.0,
+        "premium_peak": 13239.0
       },
       "Saphir Hotel & Villas": {
         "history_max": 13059.0,
