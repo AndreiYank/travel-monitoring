@@ -11856,10 +11856,101 @@
       "created_at": "2026-06-25T06:47:51.083325+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros_2026-06-25_06-45_zone_out_+1.7"
+    },
+    {
+      "hotel_name": "Ibiscus Corfu Grecja, Korfu, Roda",
+      "duration_bucket": "",
+      "old_price": 9709.0,
+      "new_price": 8619.0,
+      "price_change": -1090.0,
+      "price_change_pct": -11.226696879184262,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-25T07:54:30.235736+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ibiscus Corfu Grecja, Korfu, Roda_2026-06-25_07-51_-11.2"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9569.0,
+      "new_price": 8759.0,
+      "price_change": -810.0,
+      "price_change_pct": -8.464834360957257,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-25T07:54:30.235764+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-06-25_07-51_-8.5"
+    },
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 6497.0,
+      "new_price": 9997.0,
+      "price_change": 3500.0,
+      "price_change_pct": 53.87101739264276,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-25T07:54:30.235777+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-06-25_07-51_+53.9"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 8341.0,
+      "new_price": 7281.0,
+      "price_change": -1060.0,
+      "price_change_pct": -12.708308356312193,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-25T07:54:30.235789+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-06-25_07-51_-12.7"
+    },
+    {
+      "hotel_name": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos",
+      "duration_bucket": "",
+      "old_price": 9891.0,
+      "new_price": 9891.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T07:54:30.235803+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-06-25_07-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bella Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 10338.0,
+      "new_price": 9171.0,
+      "price_change": -1167.0,
+      "price_change_pct": -11.288450377248985,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-25T07:54:30.235829+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bella Beach Grecja, Kreta Wschodnia, Anissaras_2026-06-25_07-51_comeback_11.3"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 10408.0,
+      "new_price": 9504.0,
+      "price_change": -904.0,
+      "price_change_pct": -8.685626441199078,
+      "timestamp": "2026-06-25 07:51:52.309438+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-25T07:54:30.235842+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-06-25_07-51_comeback_8.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-25T06:45:37.693814+00:00",
+    "last_processed_run": "2026-06-25T07:51:52.309438+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -11878,8 +11969,8 @@
         "premium_peak": 16804.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo)": {
-        "history_max": 15287.0,
-        "premium_peak": 15287.0
+        "history_max": 15457.0,
+        "premium_peak": 15457.0
       },
       "Enorme Santanna Island": {
         "history_max": 17026.0,
@@ -12102,7 +12193,7 @@
         "premium_peak": 12991.0
       },
       "Rodos Palace Grecja, Rodos, Ixia": {
-        "history_max": 8557.0,
+        "history_max": 9997.0,
         "premium_peak": null
       },
       "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia": {
@@ -12190,8 +12281,8 @@
         "premium_peak": 15910.0
       },
       "Anemos Luxury Grand Resort": {
-        "history_max": 17967.0,
-        "premium_peak": 17967.0
+        "history_max": 18065.0,
+        "premium_peak": 18065.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
         "history_max": 16167.0,
@@ -12350,8 +12441,8 @@
         "premium_peak": 10437.0
       },
       "Kresten Royal Euphoria Resort (ex. Kresten Royal Villas)": {
-        "history_max": 14998.0,
-        "premium_peak": 14998.0
+        "history_max": 15103.0,
+        "premium_peak": 15103.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 16142.0,
@@ -12646,8 +12737,8 @@
         "premium_peak": 12781.0
       },
       "Hersonissos Palace": {
-        "history_max": 9563.0,
-        "premium_peak": null
+        "history_max": 10262.0,
+        "premium_peak": 10262.0
       },
       "Kouros Palace Grecja, Kos, Mastichari": {
         "history_max": 9397.0,
@@ -12702,8 +12793,8 @@
         "premium_peak": null
       },
       "Galini Sea View (Agia Marina)": {
-        "history_max": 9343.0,
-        "premium_peak": null
+        "history_max": 10289.0,
+        "premium_peak": 10289.0
       },
       "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos": {
         "history_max": 9901.0,
