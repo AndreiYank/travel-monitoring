@@ -12064,10 +12064,101 @@
       "created_at": "2026-06-25T13:33:47.136910+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-06-25_13-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 7281.0,
+      "new_price": 7881.0,
+      "price_change": 600.0,
+      "price_change_pct": 8.240626287597857,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-25T16:36:12.161479+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-06-25_16-33_+8.2"
+    },
+    {
+      "hotel_name": "Bella Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 9362.0,
+      "new_price": 8428.0,
+      "price_change": -934.0,
+      "price_change_pct": -9.976500747703481,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-25T16:36:12.161507+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bella Beach Grecja, Kreta Wschodnia, Anissaras_2026-06-25_16-33_-10.0"
+    },
+    {
+      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 7632.0,
+      "new_price": 6748.0,
+      "price_change": -884.0,
+      "price_change_pct": -11.582809224318659,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-25T16:36:12.161522+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-06-25_16-33_-11.6"
+    },
+    {
+      "hotel_name": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia",
+      "duration_bucket": "",
+      "old_price": 9219.0,
+      "new_price": 9219.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:36:12.161538+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia_2026-06-25_16-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Natura Park Village Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 7466.0,
+      "new_price": 7466.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:36:12.161548+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-06-25_16-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Porto Angeli Grecja, Rodos, Archangelos",
+      "duration_bucket": "",
+      "old_price": 9597.0,
+      "new_price": 9597.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:36:12.161556+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Porto Angeli Grecja, Rodos, Archangelos_2026-06-25_16-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rodos Palace",
+      "duration_bucket": "",
+      "old_price": 9997.0,
+      "new_price": 9997.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 16:33:10.629989+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:36:12.161563+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace_2026-06-25_16-33_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-25T13:30:32.797132+00:00",
+    "last_processed_run": "2026-06-25T16:33:10.629989+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -12254,8 +12345,8 @@
         "premium_peak": null
       },
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
-        "history_max": 9891.0,
-        "premium_peak": null
+        "history_max": 10063.0,
+        "premium_peak": 10063.0
       },
       "Atrium Platinum Resort & Spa": {
         "history_max": 18667.0,
@@ -12558,8 +12649,8 @@
         "premium_peak": 10437.0
       },
       "Kresten Royal Euphoria Resort (ex. Kresten Royal Villas)": {
-        "history_max": 15103.0,
-        "premium_peak": 15103.0
+        "history_max": 15345.0,
+        "premium_peak": 15345.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 16142.0,
@@ -12618,8 +12709,8 @@
         "premium_peak": null
       },
       "Lydia Maris Resort & Spa": {
-        "history_max": 9819.0,
-        "premium_peak": null
+        "history_max": 10319.0,
+        "premium_peak": 10319.0
       },
       "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
         "history_max": 10529.0,
@@ -12750,8 +12841,8 @@
         "premium_peak": 10557.0
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
-        "history_max": 11357.0,
-        "premium_peak": 11357.0
+        "history_max": 12157.0,
+        "premium_peak": 12157.0
       },
       "Atlantica Porto Bello Royal Grecja, kos, Kardamaina": {
         "history_max": 8757.0,

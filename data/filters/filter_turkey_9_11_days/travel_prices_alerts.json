@@ -18434,10 +18434,88 @@
       "created_at": "2026-06-25T13:30:03.897803+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Resort & Spa_2026-06-25_13-27_zone_out_+0.3"
+    },
+    {
+      "hotel_name": "Misal (ex. Nox Inn Club)",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 10157.0,
+      "price_change": 260.0,
+      "price_change_pct": 2.627058704657977,
+      "timestamp": "2026-06-25 16:29:51.384452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:31:47.977346+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Misal (ex. Nox Inn Club)_2026-06-25_16-29_zone_out_+2.6"
+    },
+    {
+      "hotel_name": "Selectum Colours Side",
+      "duration_bucket": "",
+      "old_price": 9936.0,
+      "new_price": 10004.0,
+      "price_change": 68.0,
+      "price_change_pct": 0.6843800322061192,
+      "timestamp": "2026-06-25 16:29:51.384452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:31:47.977374+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum Colours Side_2026-06-25_16-29_zone_out_+0.7"
+    },
+    {
+      "hotel_name": "Transatlantik (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9702.0,
+      "new_price": 11853.0,
+      "price_change": 2151.0,
+      "price_change_pct": 22.17068645640074,
+      "timestamp": "2026-06-25 16:29:51.384452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:31:47.977387+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Transatlantik (Kemer)_2026-06-25_16-29_zone_out_+22.2"
+    },
+    {
+      "hotel_name": "Well Palace Side (ex. Side Crown Charm Palace)",
+      "duration_bucket": "",
+      "old_price": 9432.0,
+      "new_price": 10103.0,
+      "price_change": 671.0,
+      "price_change_pct": 7.114079728583546,
+      "timestamp": "2026-06-25 16:29:51.384452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T16:31:47.977397+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Well Palace Side (ex. Side Crown Charm Palace)_2026-06-25_16-29_zone_out_+7.1"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 10760.0,
+      "new_price": 9891.0,
+      "price_change": -869.0,
+      "price_change_pct": -8.07620817843866,
+      "timestamp": "2026-06-25 16:29:51.384452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-25T16:31:47.977442+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-06-25_16-29_comeback_8.1"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "",
+      "old_price": 13918.0,
+      "new_price": 10000.0,
+      "price_change": -3918.0,
+      "price_change_pct": -28.150596350050293,
+      "timestamp": "2026-06-25 16:29:51.384452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-25T16:31:47.977459+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)_2026-06-25_16-29_comeback_28.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-25T13:27:58.353739+00:00",
+    "last_processed_run": "2026-06-25T16:29:51.384452+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12516.0,
@@ -18464,8 +18542,8 @@
         "premium_peak": 12043.0
       },
       "Labranda Alantur Resort": {
-        "history_max": 12897.0,
-        "premium_peak": 12897.0
+        "history_max": 13497.0,
+        "premium_peak": 13497.0
       },
       "La Blanche Resort & Spa": {
         "history_max": 13331.0,
@@ -18552,8 +18630,8 @@
         "premium_peak": 11097.0
       },
       "Long Beach (Avsallar)": {
-        "history_max": 14242.0,
-        "premium_peak": 14242.0
+        "history_max": 14861.0,
+        "premium_peak": 14861.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)": {
         "history_max": 11897.0,
@@ -18568,16 +18646,16 @@
         "premium_peak": 11012.0
       },
       "My Home Resort": {
-        "history_max": 12749.0,
-        "premium_peak": 12749.0
+        "history_max": 12869.0,
+        "premium_peak": 12869.0
       },
       "Monachus Family Resort Sorgun": {
         "history_max": 15092.0,
         "premium_peak": 15092.0
       },
       "Misal (ex. Nox Inn Club)": {
-        "history_max": 9897.0,
-        "premium_peak": null
+        "history_max": 10157.0,
+        "premium_peak": 10157.0
       },
       "Mira Meridia Beach Resort": {
         "history_max": 11356.0,
@@ -18696,8 +18774,8 @@
         "premium_peak": 13923.0
       },
       "Design Plus Seya Beach": {
-        "history_max": 13157.0,
-        "premium_peak": 13157.0
+        "history_max": 13557.0,
+        "premium_peak": 13557.0
       },
       "Delta by Marriott Bodrum": {
         "history_max": 12757.0,
@@ -18784,12 +18862,12 @@
         "premium_peak": 14485.0
       },
       "Green Garden Resort": {
-        "history_max": 14570.0,
-        "premium_peak": 14570.0
+        "history_max": 14571.0,
+        "premium_peak": 14571.0
       },
       "Grand Seker": {
-        "history_max": 10916.0,
-        "premium_peak": 10916.0
+        "history_max": 11336.0,
+        "premium_peak": 11336.0
       },
       "Grand Ring": {
         "history_max": 13373.0,
@@ -18836,8 +18914,8 @@
         "premium_peak": 11439.0
       },
       "Garden of Sun Spa & Wellness": {
-        "history_max": 11964.0,
-        "premium_peak": 11964.0
+        "history_max": 12244.0,
+        "premium_peak": 12244.0
       },
       "Galeri Resort": {
         "history_max": 12293.0,
@@ -18900,8 +18978,8 @@
         "premium_peak": 11610.0
       },
       "Terrace Elite Resort": {
-        "history_max": 11977.0,
-        "premium_peak": 11977.0
+        "history_max": 12634.0,
+        "premium_peak": 12634.0
       },
       "Terrace Beach Resort (Side)": {
         "history_max": 14536.0,
@@ -18960,8 +19038,8 @@
         "premium_peak": 12511.0
       },
       "Side Moon Palace": {
-        "history_max": 12405.0,
-        "premium_peak": 12405.0
+        "history_max": 13353.0,
+        "premium_peak": 13353.0
       },
       "Side Mare Resort": {
         "history_max": 15254.0,
@@ -19068,8 +19146,8 @@
         "premium_peak": 13680.0
       },
       "Utopia Resort & Residence (ex Alara Park)": {
-        "history_max": 12429.0,
-        "premium_peak": 12429.0
+        "history_max": 13187.0,
+        "premium_peak": 13187.0
       },
       "Unique Residence Golf Spa": {
         "history_max": 10523.0,
@@ -19092,8 +19170,8 @@
         "premium_peak": 15435.0
       },
       "Transatlantik (Kemer)": {
-        "history_max": 10620.0,
-        "premium_peak": 10620.0
+        "history_max": 11853.0,
+        "premium_peak": 11853.0
       },
       "Timo Deluxe Resort": {
         "history_max": 14542.0,
@@ -19148,8 +19226,8 @@
         "premium_peak": 14801.0
       },
       "Port Side Resort": {
-        "history_max": 13158.0,
-        "premium_peak": 13158.0
+        "history_max": 13278.0,
+        "premium_peak": 13278.0
       },
       "Port River & Spa": {
         "history_max": 11497.0,
@@ -19280,8 +19358,8 @@
         "premium_peak": 13923.0
       },
       "Saphir Hotel & Villas": {
-        "history_max": 13693.0,
-        "premium_peak": 13693.0
+        "history_max": 14113.0,
+        "premium_peak": 14113.0
       },
       "Salmakis Beach Resort": {
         "history_max": 13702.0,
@@ -19540,8 +19618,8 @@
         "premium_peak": 13136.0
       },
       "Berry Blue": {
-        "history_max": 12875.0,
-        "premium_peak": 12875.0
+        "history_max": 13211.0,
+        "premium_peak": 13211.0
       },
       "Blue Waters Club (Sorgun)": {
         "history_max": 14516.0,
@@ -19608,8 +19686,8 @@
         "premium_peak": 10663.0
       },
       "Royal Taj Mahal": {
-        "history_max": 15201.0,
-        "premium_peak": 15201.0
+        "history_max": 15363.0,
+        "premium_peak": 15363.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
         "history_max": 12695.0,
@@ -19684,8 +19762,8 @@
         "premium_peak": 14505.0
       },
       "Selectum Family Resort (ex Letoonia Golf Resort)": {
-        "history_max": 13932.0,
-        "premium_peak": 13932.0
+        "history_max": 14364.0,
+        "premium_peak": 14364.0
       },
       "Side Sunport (ex. Side Sungate)": {
         "history_max": 14846.0,
@@ -19888,8 +19966,8 @@
         "premium_peak": 15345.0
       },
       "Novum Garden Side (ex. Allsun Novum Garden)": {
-        "history_max": 14558.0,
-        "premium_peak": 14558.0
+        "history_max": 14720.0,
+        "premium_peak": 14720.0
       },
       "Aquasis Deluxe Resort & Spa": {
         "history_max": 15162.0,
@@ -19952,8 +20030,8 @@
         "premium_peak": 15253.0
       },
       "Corendon Hydros Club": {
-        "history_max": 15129.0,
-        "premium_peak": 15129.0
+        "history_max": 15287.0,
+        "premium_peak": 15287.0
       },
       "Trendy Perge Resort & Suites": {
         "history_max": 15386.0,
@@ -20042,6 +20120,10 @@
       "Rubi Platinum (Alanya)": {
         "history_max": 15282.0,
         "premium_peak": 15282.0
+      },
+      "Belek Beach Resort": {
+        "history_max": 13545.0,
+        "premium_peak": 13545.0
       }
     }
   }
