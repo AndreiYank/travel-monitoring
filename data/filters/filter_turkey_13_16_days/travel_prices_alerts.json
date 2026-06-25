@@ -7813,14 +7813,27 @@
       "created_at": "2026-06-24T13:30:39.375173+00:00",
       "threshold_percent": 8.0,
       "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-06-24_13-26_-15.9"
+    },
+    {
+      "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 7461.0,
+      "new_price": 10215.0,
+      "price_change": 2754.0,
+      "price_change_pct": 36.91194209891435,
+      "timestamp": "2026-06-25 00:15:14.800198+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T00:18:29.726411+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-06-25_00-15_zone_out_+36.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-24T22:24:48.167896+00:00",
+    "last_processed_run": "2026-06-25T00:15:14.800198+00:00",
     "premium_state": {
       "First Class Turcja, Alanya, Mahmutlar": {
-        "history_max": 9769.0,
-        "premium_peak": null
+        "history_max": 10215.0,
+        "premium_peak": 10215.0
       },
       "Perre Delta Turcja, Alanya, Okurcalar": {
         "history_max": 11867.0,
@@ -9583,8 +9596,8 @@
         "premium_peak": 19420.0
       },
       "Crystal Club World of Colours Turcja, Belek, Boğazkent": {
-        "history_max": 9531.0,
-        "premium_peak": null
+        "history_max": 12510.0,
+        "premium_peak": 12510.0
       },
       "Omer Prime Holiday Resort": {
         "history_max": 19957.0,
