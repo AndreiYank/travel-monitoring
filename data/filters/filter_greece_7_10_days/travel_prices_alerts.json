@@ -12025,10 +12025,49 @@
       "created_at": "2026-06-25T10:54:20.929886+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-06-25_10-51_-11.6"
+    },
+    {
+      "hotel_name": "Natura Park Village Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 8228.0,
+      "new_price": 7466.0,
+      "price_change": -762.0,
+      "price_change_pct": -9.261059795819154,
+      "timestamp": "2026-06-25 13:30:32.797132+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-25T13:33:47.136839+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-06-25_13-30_-9.3"
+    },
+    {
+      "hotel_name": "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros",
+      "duration_bucket": "",
+      "old_price": 9765.0,
+      "new_price": 9765.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 13:30:32.797132+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T13:33:47.136887+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros_2026-06-25_13-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 9997.0,
+      "new_price": 9997.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-25 13:30:32.797132+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-25T13:33:47.136910+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-06-25_13-30_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-25T10:51:08.448540+00:00",
+    "last_processed_run": "2026-06-25T13:30:32.797132+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 19849.0,
@@ -12159,8 +12198,8 @@
         "premium_peak": null
       },
       "Thassos Grand Resort": {
-        "history_max": 12757.0,
-        "premium_peak": 12757.0
+        "history_max": 12957.0,
+        "premium_peak": 12957.0
       },
       "Mitsis Royal Mare": {
         "history_max": 17354.0,
@@ -12359,8 +12398,8 @@
         "premium_peak": 15910.0
       },
       "Anemos Luxury Grand Resort": {
-        "history_max": 18065.0,
-        "premium_peak": 18065.0
+        "history_max": 18127.0,
+        "premium_peak": 18127.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
         "history_max": 16167.0,
@@ -12543,7 +12582,7 @@
         "premium_peak": null
       },
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
-        "history_max": 9737.0,
+        "history_max": 9869.0,
         "premium_peak": null
       },
       "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes": {
@@ -12819,7 +12858,7 @@
         "premium_peak": 10262.0
       },
       "Kouros Palace Grecja, Kos, Mastichari": {
-        "history_max": 9397.0,
+        "history_max": 9857.0,
         "premium_peak": null
       },
       "Athina Palace (Agia Pelagia) Grecja, Kreta Wschodnia, Agia Pelagia": {
@@ -12897,6 +12936,10 @@
       "Atlantica Aegean Blue": {
         "history_max": 19486.0,
         "premium_peak": 19486.0
+      },
+      "Rodos Palace": {
+        "history_max": 9997.0,
+        "premium_peak": null
       }
     }
   }
