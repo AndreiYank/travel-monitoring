@@ -2652,10 +2652,88 @@
       "created_at": "2026-06-26T10:29:56.586547+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cenger Blue Collection|9-11_2026-06-26_10-28_comeback_11.8"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "7-9",
+      "old_price": 8491.0,
+      "new_price": 8491.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-26 13:16:34.402471+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T13:17:29.891926+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection|7-9_2026-06-26_13-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "9-11",
+      "old_price": 9858.0,
+      "new_price": 9858.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-26 13:16:34.402471+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T13:17:29.891953+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection|9-11_2026-06-26_13-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9833.0,
+      "new_price": 9833.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-26 13:16:34.402471+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T13:17:29.891964+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa|7-9_2026-06-26_13-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "9-11",
+      "old_price": 9862.0,
+      "new_price": 10429.0,
+      "price_change": 567.0,
+      "price_change_pct": 5.7493409044818495,
+      "timestamp": "2026-06-26 13:16:34.402471+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T13:17:29.891977+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|9-11_2026-06-26_13-16_zone_out_+5.7"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10888.0,
+      "new_price": 9808.0,
+      "price_change": -1080.0,
+      "price_change_pct": -9.919177075679647,
+      "timestamp": "2026-06-26 13:16:34.402471+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-26T13:17:29.891998+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort|7-9_2026-06-26_13-16_comeback_9.9"
+    },
+    {
+      "hotel_name": "Dizalya Palm Garden",
+      "duration_bucket": "7-9",
+      "old_price": 11143.0,
+      "new_price": 9811.0,
+      "price_change": -1332.0,
+      "price_change_pct": -11.95369290137306,
+      "timestamp": "2026-06-26 13:16:34.402471+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-26T13:17:29.892015+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dizalya Palm Garden|7-9_2026-06-26_13-16_comeback_12.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-26T10:28:55.239013+00:00",
+    "last_processed_run": "2026-06-26T13:16:34.402471+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -2798,8 +2876,8 @@
         "premium_peak": 11949.0
       },
       "Transatlantik (Kemer)|7-9": {
-        "history_max": 11012.0,
-        "premium_peak": 11012.0
+        "history_max": 11061.0,
+        "premium_peak": 11061.0
       },
       "Alba Queen|7-9": {
         "history_max": 11317.0,
@@ -3158,7 +3236,7 @@
         "premium_peak": 12024.0
       },
       "Calido Maris|7-9": {
-        "history_max": 9710.0,
+        "history_max": 9754.0,
         "premium_peak": null
       },
       "Grand Pasa|7-9": {
@@ -3510,8 +3588,8 @@
         "premium_peak": null
       },
       "Narcia Resort Side|9-11": {
-        "history_max": 13497.0,
-        "premium_peak": 13497.0
+        "history_max": 13925.0,
+        "premium_peak": 13925.0
       },
       "My Home Resort|9-11": {
         "history_max": 13497.0,
@@ -3758,8 +3836,8 @@
         "premium_peak": 15887.0
       },
       "Alba Resort|9-11": {
-        "history_max": 13500.0,
-        "premium_peak": 13500.0
+        "history_max": 13550.0,
+        "premium_peak": 13550.0
       },
       "Signature Blue Resort (ex. Grand Ozcelik)|9-11": {
         "history_max": 11879.0,
@@ -3998,8 +4076,8 @@
         "premium_peak": null
       },
       "Fame Residence (Kemer)|7-9": {
-        "history_max": 9978.0,
-        "premium_peak": null
+        "history_max": 10018.0,
+        "premium_peak": 10018.0
       },
       "Armas Green Fugla|7-9": {
         "history_max": 9617.0,
@@ -4480,6 +4558,26 @@
       "Innvista Belek (ex. Vera Verde)|7-9": {
         "history_max": 10853.0,
         "premium_peak": 10853.0
+      },
+      "Mandarin Resort (Bodrum)|7-9": {
+        "history_max": 8390.0,
+        "premium_peak": null
+      },
+      "Green Garden Suite|7-9": {
+        "history_max": 11922.0,
+        "premium_peak": 11922.0
+      },
+      "Mary Alanya (ex. Sirius Deluxe)|7-9": {
+        "history_max": 10010.0,
+        "premium_peak": 10010.0
+      },
+      "Palmeras Beach|9-11": {
+        "history_max": 11564.0,
+        "premium_peak": 11564.0
+      },
+      "Dizalya Palm Garden|9-11": {
+        "history_max": 14042.0,
+        "premium_peak": 14042.0
       }
     }
   }
