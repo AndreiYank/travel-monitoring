@@ -192,6 +192,7 @@ def generate_landing(tiles=None, output_file='index.html'):
       .card-title {{ font-size: 1.05rem; }}
     }}
   </style>
+  <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "1b9c3c0ee6164106a1cb5eda9e61a045"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
   <div class="container">
