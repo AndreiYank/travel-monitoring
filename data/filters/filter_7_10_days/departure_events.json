@@ -1841,11 +1841,7 @@
       "hot_score": 84.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-06-26T06:52:05+0000",
-=======
-      "event_time": "2026-06-26T07:13:11+0000",
->>>>>>> Stashed changes
       "departure_key": "egipt|dolny-egipt|2026-07-01|2026-07-08|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -1863,6 +1859,46 @@
       "hotel_count": 3.0,
       "hotel_delta": 2,
       "hot_score": 68.0
+    },
+    {
+      "event_time": "2026-06-26T07:13:11+0000",
+      "departure_key": "egipt|dolny-egipt|2026-07-01|2026-07-08|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "dolny-egipt",
+      "departure_date": "2026-07-01",
+      "return_date": "2026-07-08",
+      "nights": 7.0,
+      "days_to_departure": 5.0,
+      "old_min_price": "",
+      "new_min_price": 9997.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 2,
+      "hot_score": 68.0
+    },
+    {
+      "event_time": "2026-06-26T07:43:25+0000",
+      "departure_key": "egipt|dolny-egipt|2026-07-01|2026-07-08|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "dolny-egipt",
+      "departure_date": "2026-07-01",
+      "return_date": "2026-07-08",
+      "nights": 7.0,
+      "days_to_departure": 5.0,
+      "old_min_price": "",
+      "new_min_price": 9997.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 2,
+      "hot_score": 95.0
     },
     {
       "event_time": "2026-06-03T02:49:11+0000",
