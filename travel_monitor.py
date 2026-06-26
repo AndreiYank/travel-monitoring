@@ -54,12 +54,24 @@ TRAVEL_PRICE_CSV_FIELDS = [
 ]
 
 
+def get_week_str(ts_str: str) -> str:
+    if not ts_str or len(ts_str) < 10:
+        return ""
+    date_part = ts_str[:10]
+    try:
+        dt = datetime.strptime(date_part, '%Y-%m-%d')
+        return dt.strftime('%Y-w%W')
+    except Exception:
+        return date_part[:7]
+
+
 def _log_timing(label: str, started: float, extra: str = "") -> float:
     """Логирует длительность шага; возвращает elapsed в секундах."""
     elapsed = time.monotonic() - started
     suffix = f" | {extra}" if extra else ""
     logger.info(f"⏱ {label}: {elapsed:.2f}s{suffix}")
     return elapsed
+
 
 
 class TravelPriceMonitor:
@@ -1616,46 +1628,70 @@ class TravelPriceMonitor:
             return "Неизвестно"
 
     @staticmethod
-    def _archive_if_month_rolled(filepath: str) -> None:
-        """Если текущий месяц не совпадает с первой записью в файле — архивируем.
+    def _archive_if_week_rolled(filepath: str) -> None:
+        """Если текущая неделя не совпадает с неделей какой-либо из записей — архивируем.
 
-        Архивный файл: <dir>/archive/<name>_YYYY-MM.csv
+        Архивный файл: <dir>/archive/<name>_YYYY-wWW.csv
         Если файл отсутствует или пуст — ничего не делаем.
         """
         if not os.path.exists(filepath):
             return
         try:
-            # Читаем только первую строку данных (после заголовка) для определения месяца файла
+            # Читаем все строки
             with open(filepath, 'r', encoding='utf-8') as f:
                 reader = csv.DictReader(f)
-                first_row = next(reader, None)
-            if first_row is None:
-                return  # файл пустой
-            file_ts = str(first_row.get('scraped_at') or '')
-            if not file_ts:
+                fieldnames = reader.fieldnames
+                rows = list(reader)
+            
+            if not rows or not fieldnames:
                 return
-            file_month = file_ts[:7]  # 'YYYY-MM'
-            current_month = datetime.now(timezone.utc).strftime('%Y-%m')
-            if file_month == current_month:
-                return  # тот же месяц — архивировать не нужно
-            # Архивируем
+            
+            # Определяем текущую неделю
+            current_week = datetime.now(timezone.utc).strftime('%Y-w%W')
+            
+            # Группируем строки по неделям
+            rows_by_week = {}
+            for r in rows:
+                ts = r.get('scraped_at') or ''
+                w = get_week_str(ts)
+                if not w:
+                    w = current_week
+                rows_by_week.setdefault(w, []).append(r)
+                
+            # Проверяем, есть ли архивные недели
+            archive_weeks = [w for w in rows_by_week if w != current_week]
+            if not archive_weeks:
+                return  # все данные относятся к текущей неделе
+                
             parent = os.path.dirname(filepath)
             archive_dir = os.path.join(parent, 'archive')
             os.makedirs(archive_dir, exist_ok=True)
             base = os.path.splitext(os.path.basename(filepath))[0]
-            archive_path = os.path.join(archive_dir, f'{base}_{file_month}.csv')
-            if not os.path.exists(archive_path):
-                import shutil
-                shutil.copy2(filepath, archive_path)
-                logger.info(f"📦 Архивирован {os.path.basename(filepath)} → archive/{os.path.basename(archive_path)}")
-            # Очищаем основной файл (оставляем только заголовок)
-            with open(filepath, 'r', encoding='utf-8') as f:
-                header = f.readline()
-            with open(filepath, 'w', encoding='utf-8') as f:
-                f.write(header)
-            logger.info(f"🗂️ Начат новый месяц ({current_month}) в {os.path.basename(filepath)}")
+            
+            # Записываем архивные недели
+            for w in archive_weeks:
+                archive_path = os.path.join(archive_dir, f'{base}_{w}.csv')
+                file_existed = os.path.exists(archive_path)
+                mode = 'a' if file_existed else 'w'
+                with open(archive_path, mode, newline='', encoding='utf-8') as f_arch:
+                    writer = csv.DictWriter(f_arch, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+                    if not file_existed:
+                        writer.writeheader()
+                    for r in rows_by_week[w]:
+                        writer.writerow(r)
+                logger.info(f"📦 Архивированы данные за неделю {w} для {os.path.basename(filepath)} → archive/{os.path.basename(archive_path)}")
+                
+            # Перезаписываем основной файл только данными текущей недели
+            current_rows = rows_by_week.get(current_week, [])
+            with open(filepath, 'w', newline='', encoding='utf-8') as f_main:
+                writer = csv.DictWriter(f_main, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
+                writer.writeheader()
+                for r in current_rows:
+                    writer.writerow(r)
+            logger.info(f"🗂️ Очищен {os.path.basename(filepath)}, оставлено {len(current_rows)} строк текущей недели ({current_week})")
         except Exception as e:
-            logger.warning(f"Ошибка при архивировании {filepath}: {e}")
+            logger.warning(f"Ошибка при еженедельном архивировании {filepath}: {e}")
+
 
     def save_data_append(self, offers: List[Dict[str, Any]]):
         """Сохраняет данные, добавляя к существующим"""
@@ -1668,8 +1704,8 @@ class TravelPriceMonitor:
         
         filepath = os.path.join(self.config['data_dir'], self.data_file)
 
-        # Архивируем при смене календарного месяца (хранит полную историю, но каждый файл < 50 MB)
-        self._archive_if_month_rolled(filepath)
+        # Архивируем при смене календарной недели (хранит полную историю, но каждый файл < 50 MB)
+        self._archive_if_week_rolled(filepath)
         
         # Начиная с этого момента пишем каждую запись как новую точку истории,
         # чтобы графики и анализ имели полную временную серию даже без изменений цен.
@@ -1748,8 +1784,8 @@ class TravelPriceMonitor:
         os.makedirs(self.config['data_dir'], exist_ok=True)
         filepath = os.path.join(self.config['data_dir'], 'departure_offers.csv')
 
-        # Архивируем при смене календарного месяца (полная история сохраняется в archive/)
-        self._archive_if_month_rolled(filepath)
+        # Архивируем при смене календарной недели (полная история сохраняется в archive/)
+        self._archive_if_week_rolled(filepath)
 
         fieldnames = BASE_OFFER_FIELDS + DEPARTURE_FIELDS
         enriched = enrich_offers(offers, self.config, self.config_file)
