@@ -2860,10 +2860,36 @@
       "created_at": "2026-06-26T16:21:48.940035+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Port Side Resort|7-9_2026-06-26_16-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "7-9",
+      "old_price": 9030.0,
+      "new_price": 9030.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-26 18:37:04.564656+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T18:38:10.981015+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris|7-9_2026-06-26_18-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 11608.0,
+      "new_price": 9437.0,
+      "price_change": -2171.0,
+      "price_change_pct": -18.7026188835286,
+      "timestamp": "2026-06-26 18:37:04.564656+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-26T18:38:10.981059+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)|7-9_2026-06-26_18-37_comeback_18.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-26T16:20:46.476705+00:00",
+    "last_processed_run": "2026-06-26T18:37:04.564656+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3102,8 +3128,8 @@
         "premium_peak": null
       },
       "Aria Claros Beach and Spa Resort|7-9": {
-        "history_max": 11411.0,
-        "premium_peak": 11411.0
+        "history_max": 11453.0,
+        "premium_peak": 11453.0
       },
       "Seaphoria Beach Resort|7-9": {
         "history_max": 11789.0,
@@ -3878,8 +3904,8 @@
         "premium_peak": 13122.0
       },
       "The Sense Deluxe|9-11": {
-        "history_max": 14038.0,
-        "premium_peak": 14038.0
+        "history_max": 14098.0,
+        "premium_peak": 14098.0
       },
       "Siam Elegance|9-11": {
         "history_max": 14307.0,
@@ -4586,8 +4612,8 @@
         "premium_peak": null
       },
       "Green Bay Resort|7-9": {
-        "history_max": 12479.0,
-        "premium_peak": 12479.0
+        "history_max": 12506.0,
+        "premium_peak": 12506.0
       },
       "Holiday Garden Resort (Okurcalar)|9-11": {
         "history_max": 11505.0,

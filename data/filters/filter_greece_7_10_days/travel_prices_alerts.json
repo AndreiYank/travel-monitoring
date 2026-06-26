@@ -1469,10 +1469,49 @@
       "created_at": "2026-06-26T16:22:18.836433+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos_2026-06-26_16-21_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 8457.0,
+      "price_change": -1200.0,
+      "price_change_pct": -12.426219322771047,
+      "timestamp": "2026-06-26 18:37:51.146586+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-26T18:38:50.879824+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-06-26_18-37_-12.4"
+    },
+    {
+      "hotel_name": "Cabana Beach Grecja, Kos, Kardamena",
+      "duration_bucket": "",
+      "old_price": 9242.0,
+      "new_price": 9242.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-26 18:37:51.146586+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T18:38:50.879858+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cabana Beach Grecja, Kos, Kardamena_2026-06-26_18-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 10529.0,
+      "new_price": 9136.0,
+      "price_change": -1393.0,
+      "price_change_pct": -13.230126317788965,
+      "timestamp": "2026-06-26 18:37:51.146586+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-26T18:38:50.879882+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-06-26_18-37_comeback_13.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-26T16:21:25.118455+00:00",
+    "last_processed_run": "2026-06-26T18:37:51.146586+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17389.0,
@@ -1699,8 +1738,8 @@
         "premium_peak": 13591.0
       },
       "Cooks Club Corfu (ex Ionian Park)": {
-        "history_max": 18577.0,
-        "premium_peak": 18577.0
+        "history_max": 18587.0,
+        "premium_peak": 18587.0
       },
       "Costa Lindia Beach": {
         "history_max": 12825.0,
@@ -1871,8 +1910,8 @@
         "premium_peak": 17203.0
       },
       "Kouros Palace Grecja, Kos, Mastichari": {
-        "history_max": 9397.0,
-        "premium_peak": null
+        "history_max": 10297.0,
+        "premium_peak": 10297.0
       },
       "Kresten Royal Euphoria Resort (ex. Kresten Royal Villas)": {
         "history_max": 15369.0,
@@ -2107,8 +2146,8 @@
         "premium_peak": null
       },
       "Aldemar Olympian Village Grecja, Peloponez, Skafidia": {
-        "history_max": 9293.0,
-        "premium_peak": null
+        "history_max": 10282.0,
+        "premium_peak": 10282.0
       },
       "Atlantica Aegean Blue": {
         "history_max": 19486.0,
