@@ -1313,17 +1313,82 @@
       "created_at": "2026-06-26T13:18:07.454460+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou_2026-06-26_13-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 7754.0,
+      "new_price": 8445.0,
+      "price_change": 691.0,
+      "price_change_pct": 8.911529533144185,
+      "timestamp": "2026-06-26 14:36:33.209988+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-26T14:37:23.680572+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-06-26_14-36_+8.9"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 9416.0,
+      "new_price": 7745.0,
+      "price_change": -1671.0,
+      "price_change_pct": -17.746389124893795,
+      "timestamp": "2026-06-26 14:36:33.209988+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-26T14:37:23.680599+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-06-26_14-36_-17.7"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 9516.0,
+      "new_price": 8722.0,
+      "price_change": -794.0,
+      "price_change_pct": -8.343841950399328,
+      "timestamp": "2026-06-26 14:36:33.209988+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-26T14:37:23.680613+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-06-26_14-36_-8.3"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 9606.0,
+      "new_price": 7870.0,
+      "price_change": -1736.0,
+      "price_change_pct": -18.072038309389963,
+      "timestamp": "2026-06-26 14:36:33.209988+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-26T14:37:23.680625+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-06-26_14-36_-18.1"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9243.0,
+      "new_price": 10015.0,
+      "price_change": 772.0,
+      "price_change_pct": 8.352266580114682,
+      "timestamp": "2026-06-26 14:36:33.209988+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-26T14:37:23.680643+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-06-26_14-36_zone_out_+8.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-26T13:17:11.700491+00:00",
+    "last_processed_run": "2026-06-26T14:36:33.209988+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17389.0,
         "premium_peak": 17389.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 9044.0,
+        "history_max": 9076.0,
         "premium_peak": null
       },
       "Elios Hill": {
@@ -1455,12 +1520,12 @@
         "premium_peak": 17887.0
       },
       "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)": {
-        "history_max": 12938.0,
-        "premium_peak": 12938.0
+        "history_max": 12967.0,
+        "premium_peak": 12967.0
       },
       "Apollo Blue": {
-        "history_max": 18307.0,
-        "premium_peak": 18307.0
+        "history_max": 18376.0,
+        "premium_peak": 18376.0
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
         "history_max": 10497.0,
@@ -1515,8 +1580,8 @@
         "premium_peak": 19576.0
       },
       "Avra Imperial Beach Resort & Spa": {
-        "history_max": 17181.0,
-        "premium_peak": 17181.0
+        "history_max": 17544.0,
+        "premium_peak": 17544.0
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
         "history_max": 12157.0,
@@ -1583,8 +1648,8 @@
         "premium_peak": 10057.0
       },
       "Pilot Beach Resort": {
-        "history_max": 18987.0,
-        "premium_peak": 18987.0
+        "history_max": 19227.0,
+        "premium_peak": 19227.0
       },
       "Porto Angeli": {
         "history_max": 12852.0,
@@ -1603,8 +1668,8 @@
         "premium_peak": 13067.0
       },
       "Princess Andriana Resort & Spa": {
-        "history_max": 13597.0,
-        "premium_peak": 13597.0
+        "history_max": 13617.0,
+        "premium_peak": 13617.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 16142.0,
