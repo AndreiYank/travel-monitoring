@@ -129,11 +129,24 @@ def load_combined_departure_offers(
     data_dir: str,
     travel_prices_file: str | None = None,
 ) -> pd.DataFrame:
-    """Raw offers for modals: prefer departure_offers.csv, backfill from travel_prices."""
+    """Raw offers for modals: prefer departure_offers.csv + archive/, backfill from travel_prices."""
     frames: List[pd.DataFrame] = []
     offers_path = os.path.join(data_dir, "departure_offers.csv")
+
+    # Сначала загружаем архивные файлы прошлых месяцев (отсортировано по имени = по хронологии)
+    archive_dir = os.path.join(data_dir, "archive")
+    if os.path.isdir(archive_dir):
+        archive_files = sorted(
+            f for f in os.listdir(archive_dir)
+            if f.startswith("departure_offers_") and f.endswith(".csv")
+        )
+        for af in archive_files:
+            frames.append(load_departure_offers(os.path.join(archive_dir, af)))
+
+    # Затем текущий месяц
     if os.path.exists(offers_path):
         frames.append(load_departure_offers(offers_path))
+
     if travel_prices_file and os.path.exists(travel_prices_file):
         frames.append(load_departure_offers(travel_prices_file))
     if not frames:
@@ -143,6 +156,7 @@ def load_combined_departure_offers(
     if dedupe_cols:
         combined = combined.drop_duplicates(subset=dedupe_cols, keep="first")
     return combined
+
 
 
 def load_departure_offers(path: str) -> pd.DataFrame:
@@ -891,11 +905,12 @@ def load_stored_departure_cohorts(
         print(f"📂 Cohorts: загружено {len(current)} снимков из {cohorts_path}")
 
     if current.empty:
-        offers_path = os.path.join(data_dir, "departure_offers.csv")
-        source = offers_path if os.path.exists(offers_path) else (travel_prices_file or "")
-        if source and os.path.exists(source):
-            print(f"⚠️ Cohorts cache отсутствует — полный пересчёт из {source}")
-            current = build_cohort_snapshots(load_departure_offers(source))
+        # При отсутствии кэша — полный пересчёт из всех архивных файлов + текущего месяца
+        offers_combined = load_combined_departure_offers(data_dir, travel_prices_file)
+        if not offers_combined.empty:
+            print(f"⚠️ Cohorts cache отсутствует — полный пересчёт из всех архивных departure_offers")
+            current = build_cohort_snapshots(offers_combined)
+
 
     travel_snapshots = pd.DataFrame(columns=COHORT_FIELDS)
     if travel_prices_file and os.path.exists(travel_prices_file):
