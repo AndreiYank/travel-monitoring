@@ -1644,9 +1644,29 @@ def _render_hotel_chart_page(
 def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', output_file: str = 'index.html', title: str = 'Travel Price Monitor • Расширенный дашборд', charts_subdir: str = 'hotel-charts', tz: str = 'Europe/Warsaw', alerts_file: str = None, all_airports_data_file: str = None, disappeared_after_runs: int = 2, display_price_ceiling: float = None, history_price_ceiling: float = None, write_legacy_hotel_html: bool = False, config_file: str = None):
     """Генерирует дашборд с встроенными графиками"""
     
-    # Загружаем данные
+    # Загружаем данные (текущий месяц + архивные месяцы для полной истории сезона)
     try:
-        df = pd.read_csv(data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+        frames = []
+        data_file_abs = os.path.abspath(data_file)
+        data_dir = os.path.dirname(data_file_abs)
+        base_name = os.path.splitext(os.path.basename(data_file_abs))[0]  # e.g. 'travel_prices'
+        archive_dir = os.path.join(data_dir, 'archive')
+        # Читаем архивные файлы прошлых месяцев (отсортированы хронологически)
+        if os.path.isdir(archive_dir):
+            archive_files = sorted(
+                f for f in os.listdir(archive_dir)
+                if f.startswith(f"{base_name}_") and f.endswith('.csv')
+            )
+            for af in archive_files:
+                try:
+                    frames.append(pd.read_csv(os.path.join(archive_dir, af), quoting=csv.QUOTE_ALL, on_bad_lines='skip'))
+                except Exception as ae:
+                    print(f"⚠️ Ошибка чтения архива {af}: {ae}")
+        # Текущий месяц
+        frames.append(pd.read_csv(data_file, quoting=csv.QUOTE_ALL, on_bad_lines='skip'))
+        df = pd.concat(frames, ignore_index=True, sort=False) if len(frames) > 1 else frames[0]
+        if archive_files if os.path.isdir(archive_dir) else []:
+            print(f"📦 Загружено архивных файлов: {len(archive_files)}, итого строк: {len(df)}")
         # Нормализуем время: аккуратно обрабатываем смешанные строки (с/без таймзоны)
         raw = df['scraped_at'].astype(str)
         mask_tz = raw.str.contains(r"Z$|[+-]\d{2}:\d{2}$", regex=True)
@@ -1670,6 +1690,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     except Exception as e:
         print(f"❌ Ошибка загрузки данных: {e}")
         return
+
     # Откат фичи сравнения аэропортов: не используем общий датасет
     df_all_airports = None
 

@@ -1615,6 +1615,48 @@ class TravelPriceMonitor:
             logger.warning(f"Ошибка извлечения аэропорта из URL: {e}")
             return "Неизвестно"
 
+    @staticmethod
+    def _archive_if_month_rolled(filepath: str) -> None:
+        """Если текущий месяц не совпадает с первой записью в файле — архивируем.
+
+        Архивный файл: <dir>/archive/<name>_YYYY-MM.csv
+        Если файл отсутствует или пуст — ничего не делаем.
+        """
+        if not os.path.exists(filepath):
+            return
+        try:
+            # Читаем только первую строку данных (после заголовка) для определения месяца файла
+            with open(filepath, 'r', encoding='utf-8') as f:
+                reader = csv.DictReader(f)
+                first_row = next(reader, None)
+            if first_row is None:
+                return  # файл пустой
+            file_ts = str(first_row.get('scraped_at') or '')
+            if not file_ts:
+                return
+            file_month = file_ts[:7]  # 'YYYY-MM'
+            current_month = datetime.now(timezone.utc).strftime('%Y-%m')
+            if file_month == current_month:
+                return  # тот же месяц — архивировать не нужно
+            # Архивируем
+            parent = os.path.dirname(filepath)
+            archive_dir = os.path.join(parent, 'archive')
+            os.makedirs(archive_dir, exist_ok=True)
+            base = os.path.splitext(os.path.basename(filepath))[0]
+            archive_path = os.path.join(archive_dir, f'{base}_{file_month}.csv')
+            if not os.path.exists(archive_path):
+                import shutil
+                shutil.copy2(filepath, archive_path)
+                logger.info(f"📦 Архивирован {os.path.basename(filepath)} → archive/{os.path.basename(archive_path)}")
+            # Очищаем основной файл (оставляем только заголовок)
+            with open(filepath, 'r', encoding='utf-8') as f:
+                header = f.readline()
+            with open(filepath, 'w', encoding='utf-8') as f:
+                f.write(header)
+            logger.info(f"🗂️ Начат новый месяц ({current_month}) в {os.path.basename(filepath)}")
+        except Exception as e:
+            logger.warning(f"Ошибка при архивировании {filepath}: {e}")
+
     def save_data_append(self, offers: List[Dict[str, Any]]):
         """Сохраняет данные, добавляя к существующим"""
         if not offers:
@@ -1625,6 +1667,9 @@ class TravelPriceMonitor:
         os.makedirs(self.config['data_dir'], exist_ok=True)
         
         filepath = os.path.join(self.config['data_dir'], self.data_file)
+
+        # Архивируем при смене календарного месяца (хранит полную историю, но каждый файл < 50 MB)
+        self._archive_if_month_rolled(filepath)
         
         # Начиная с этого момента пишем каждую запись как новую точку истории,
         # чтобы графики и анализ имели полную временную серию даже без изменений цен.
@@ -1702,6 +1747,10 @@ class TravelPriceMonitor:
 
         os.makedirs(self.config['data_dir'], exist_ok=True)
         filepath = os.path.join(self.config['data_dir'], 'departure_offers.csv')
+
+        # Архивируем при смене календарного месяца (полная история сохраняется в archive/)
+        self._archive_if_month_rolled(filepath)
+
         fieldnames = BASE_OFFER_FIELDS + DEPARTURE_FIELDS
         enriched = enrich_offers(offers, self.config, self.config_file)
 
@@ -1715,6 +1764,7 @@ class TravelPriceMonitor:
             except Exception as e:
                 logger.warning(f"Ошибка чтения departure_offers.csv: {e}, создаем новый файл")
                 existing_data = []
+
 
         with open(filepath, 'w', newline='', encoding='utf-8') as csvfile:
             writer = csv.DictWriter(csvfile, fieldnames=fieldnames, quoting=csv.QUOTE_ALL)
