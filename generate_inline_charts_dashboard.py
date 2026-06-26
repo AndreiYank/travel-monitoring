@@ -1554,6 +1554,7 @@ def _render_hotel_chart_page(
             #chart {{ height: 320px; }}
         }}
     </style>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "1b9c3c0ee6164106a1cb5eda9e61a045"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
     <div class="page">
@@ -7155,6 +7156,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-color: var(--color-primary) !important;
         }}
     </style>
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "1b9c3c0ee6164106a1cb5eda9e61a045"}}'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
     <div class="app-topbar">
