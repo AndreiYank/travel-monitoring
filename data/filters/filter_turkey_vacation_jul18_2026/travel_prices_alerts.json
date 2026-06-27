@@ -2899,10 +2899,49 @@
       "created_at": "2026-06-26T20:41:35.261753+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Grand Kolibri Prestige & Spa|7-9_2026-06-26_20-40_comeback_9.3"
+    },
+    {
+      "hotel_name": "Grand Kolibri Prestige & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9583.0,
+      "new_price": 9583.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-27 00:08:56.988688+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T00:09:56.745435+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kolibri Prestige & Spa|7-9_2026-06-27_00-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 9612.0,
+      "new_price": 9612.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-27 00:08:56.988688+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T00:09:56.745462+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-06-27_00-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "9-11",
+      "old_price": 11032.0,
+      "new_price": 9862.0,
+      "price_change": -1170.0,
+      "price_change_pct": -10.605511240029006,
+      "timestamp": "2026-06-27 00:08:56.988688+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-27T00:09:56.745492+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|9-11_2026-06-27_00-08_comeback_10.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-26T20:40:38.239535+00:00",
+    "last_processed_run": "2026-06-27T00:08:56.988688+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -4593,8 +4632,8 @@
         "premium_peak": 12442.0
       },
       "Aydinbey Queens Palace & Spa|7-9": {
-        "history_max": 11988.0,
-        "premium_peak": 11988.0
+        "history_max": 12164.0,
+        "premium_peak": 12164.0
       },
       "Gold City|7-9": {
         "history_max": 9585.0,
