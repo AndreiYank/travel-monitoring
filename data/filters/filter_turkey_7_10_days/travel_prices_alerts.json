@@ -17433,10 +17433,88 @@
       "created_at": "2026-06-27T17:10:43.523677+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-06-27_17-09_comeback_9.5"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "",
+      "old_price": 8540.0,
+      "new_price": 9294.0,
+      "price_change": 754.0,
+      "price_change_pct": 8.829039812646371,
+      "timestamp": "2026-06-27 18:09:45.600480+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-27T18:10:55.078742+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)_2026-06-27_18-09_+8.8"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8957.0,
+      "new_price": 8957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-27 18:09:45.600480+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T18:10:55.078800+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-06-27_18-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fame Residence (Göynük)",
+      "duration_bucket": "",
+      "old_price": 9893.0,
+      "new_price": 10090.0,
+      "price_change": 197.0,
+      "price_change_pct": 1.9913069847366824,
+      "timestamp": "2026-06-27 18:09:45.600480+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T18:10:55.078814+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Göynük)_2026-06-27_18-09_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "",
+      "old_price": 9360.0,
+      "new_price": 9360.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-27 18:09:45.600480+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T18:10:55.078823+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)_2026-06-27_18-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)",
+      "duration_bucket": "",
+      "old_price": 8171.0,
+      "new_price": 8171.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-27 18:09:45.600480+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T18:10:55.078831+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)_2026-06-27_18-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Port River Turcja, Side, Titreyengol",
+      "duration_bucket": "",
+      "old_price": 8097.0,
+      "new_price": 8097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-27 18:09:45.600480+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T18:10:55.078839+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River Turcja, Side, Titreyengol_2026-06-27_18-09_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-27T17:09:34.278553+00:00",
+    "last_processed_run": "2026-06-27T18:09:45.600480+00:00",
     "premium_state": {
       "Side Premium by OZ Hotels": {
         "history_max": 10489.0,
@@ -18359,7 +18437,7 @@
         "premium_peak": null
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 8574.0,
+        "history_max": 8624.0,
         "premium_peak": null
       },
       "Pemar Beach Resort Turcja, Alanya, Okurcalar": {
@@ -18571,8 +18649,8 @@
         "premium_peak": null
       },
       "Ramada Plaza Antalya": {
-        "history_max": 10617.0,
-        "premium_peak": 10617.0
+        "history_max": 10746.0,
+        "premium_peak": 10746.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 9097.0,
@@ -19099,8 +19177,8 @@
         "premium_peak": null
       },
       "Karmir Resort (Kemer)": {
-        "history_max": 11314.0,
-        "premium_peak": 11314.0
+        "history_max": 11443.0,
+        "premium_peak": 11443.0
       },
       "Kaya Izmir Thermal & Convention": {
         "history_max": 10736.0,
@@ -19401,6 +19479,10 @@
       "Sheraton Istanbul Levent": {
         "history_max": 10788.0,
         "premium_peak": 10788.0
+      },
+      "Otium Ozkaymak Select (ex. Ozkaymak Select) Turcja, Alanya, Avsallar": {
+        "history_max": 8083.0,
+        "premium_peak": null
       }
     }
   }
