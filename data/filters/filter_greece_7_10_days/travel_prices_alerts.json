@@ -1560,10 +1560,62 @@
       "created_at": "2026-06-26T20:42:14.656661+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-06-26_20-41_zone_out_+17.4"
+    },
+    {
+      "hotel_name": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria",
+      "duration_bucket": "",
+      "old_price": 6849.0,
+      "new_price": 9378.0,
+      "price_change": 2529.0,
+      "price_change_pct": 36.925098554533506,
+      "timestamp": "2026-06-27 09:34:52.040479+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-27T09:35:38.566071+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-06-27_09-34_+36.9"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9136.0,
+      "new_price": 9922.0,
+      "price_change": 786.0,
+      "price_change_pct": 8.603327495621716,
+      "timestamp": "2026-06-27 09:34:52.040479+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-27T09:35:38.566097+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-06-27_09-34_+8.6"
+    },
+    {
+      "hotel_name": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 9989.0,
+      "new_price": 10013.0,
+      "price_change": 24.0,
+      "price_change_pct": 0.2402642907197918,
+      "timestamp": "2026-06-27 09:34:52.040479+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-27T09:35:38.566110+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos_2026-06-27_09-34_zone_out_+0.2"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 10359.0,
+      "new_price": 9107.0,
+      "price_change": -1252.0,
+      "price_change_pct": -12.086108697750749,
+      "timestamp": "2026-06-27 09:34:52.040479+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-27T09:35:38.566128+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-06-27_09-34_comeback_12.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-27T06:35:52.071751+00:00",
+    "last_processed_run": "2026-06-27T09:34:52.040479+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17389.0,
@@ -1582,8 +1634,8 @@
         "premium_peak": 18547.0
       },
       "Enorme Santanna Island": {
-        "history_max": 16902.0,
-        "premium_peak": 16902.0
+        "history_max": 17001.0,
+        "premium_peak": 17001.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
         "history_max": 9628.0,
@@ -1618,7 +1670,7 @@
         "premium_peak": null
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
-        "history_max": 9867.0,
+        "history_max": 9945.0,
         "premium_peak": null
       },
       "Georgioupolis Suites": {
@@ -2170,8 +2222,8 @@
         "premium_peak": null
       },
       "Natura Park Village": {
-        "history_max": 10470.0,
-        "premium_peak": 10470.0
+        "history_max": 10981.0,
+        "premium_peak": 10981.0
       },
       "Sandy Beach Resort": {
         "history_max": 12781.0,
@@ -2186,8 +2238,8 @@
         "premium_peak": 10719.0
       },
       "Costa Lindia Beach Grecja, Rodos, Lardos": {
-        "history_max": 9927.0,
-        "premium_peak": null
+        "history_max": 10107.0,
+        "premium_peak": 10107.0
       },
       "Rethymno Palace": {
         "history_max": 12091.0,
