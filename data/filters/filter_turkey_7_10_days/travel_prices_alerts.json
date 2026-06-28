@@ -19292,10 +19292,88 @@
       "created_at": "2026-06-28T20:20:56.652956+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sensitive Premium Resort & Spa_2026-06-28_20-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Concordia Celes Beach",
+      "duration_bucket": "",
+      "old_price": 8037.0,
+      "new_price": 8037.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 22:07:25.758339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T22:08:47.708604+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concordia Celes Beach_2026-06-28_22-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Diamond Excellence Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9960.0,
+      "new_price": 10633.0,
+      "price_change": 673.0,
+      "price_change_pct": 6.757028112449799,
+      "timestamp": "2026-06-28 22:07:25.758339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T22:08:47.708636+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Excellence Resort & Spa_2026-06-28_22-07_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 8957.0,
+      "new_price": 8957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 22:07:25.758339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T22:08:47.708647+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-06-28_22-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "OZ Incekum Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9903.0,
+      "new_price": 10660.0,
+      "price_change": 757.0,
+      "price_change_pct": 7.6441482379077055,
+      "timestamp": "2026-06-28 22:07:25.758339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T22:08:47.708658+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "OZ Incekum Beach Resort_2026-06-28_22-07_zone_out_+7.6"
+    },
+    {
+      "hotel_name": "Perre Delta Turcja, Alanya, Okurcalar",
+      "duration_bucket": "",
+      "old_price": 7904.0,
+      "new_price": 7904.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 22:07:25.758339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T22:08:47.708666+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Perre Delta Turcja, Alanya, Okurcalar_2026-06-28_22-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Premium by OZ Hotels",
+      "duration_bucket": "",
+      "old_price": 9939.0,
+      "new_price": 10489.0,
+      "price_change": 550.0,
+      "price_change_pct": 5.53375591105745,
+      "timestamp": "2026-06-28 22:07:25.758339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T22:08:47.708674+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Premium by OZ Hotels_2026-06-28_22-07_zone_out_+5.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T20:19:29.982243+00:00",
+    "last_processed_run": "2026-06-28T22:07:25.758339+00:00",
     "premium_state": {
       "Side Premium by OZ Hotels": {
         "history_max": 10489.0,
@@ -19754,8 +19832,8 @@
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 9688.0,
-        "premium_peak": null
+        "history_max": 11097.0,
+        "premium_peak": 11097.0
       },
       "Club Atlantis Resort": {
         "history_max": 10467.0,
@@ -20358,8 +20436,8 @@
         "premium_peak": 11494.0
       },
       "OZ Incekum Beach Resort": {
-        "history_max": 10586.0,
-        "premium_peak": 10586.0
+        "history_max": 10660.0,
+        "premium_peak": 10660.0
       },
       "Ring Beach Turcja, Kemer, Beldibi": {
         "history_max": 7538.0,
