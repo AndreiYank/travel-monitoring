@@ -19097,10 +19097,101 @@
       "created_at": "2026-06-28T15:26:28.490419+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Justiniano Deluxe Resort_2026-06-28_15-25_comeback_9.2"
+    },
+    {
+      "hotel_name": "Armas Bella Sun (ex.Club Bella Sun)",
+      "duration_bucket": "",
+      "old_price": 8027.0,
+      "new_price": 8027.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T17:13:15.008059+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Bella Sun (ex.Club Bella Sun)_2026-06-28_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 8153.0,
+      "new_price": 8153.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T17:13:15.008091+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-06-28_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aydinbey Queens Palace & Spa",
+      "duration_bucket": "",
+      "old_price": 9882.0,
+      "new_price": 10103.0,
+      "price_change": 221.0,
+      "price_change_pct": 2.2363893948593403,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T17:13:15.008107+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Queens Palace & Spa_2026-06-28_17-11_zone_out_+2.2"
+    },
+    {
+      "hotel_name": "Fun & Sun Smart Hane Sun Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 7997.0,
+      "new_price": 7997.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T17:13:15.008116+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fun & Sun Smart Hane Sun Turcja, Side, Colakli_2026-06-28_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Turunc Turcja, Marmaris, Turunc",
+      "duration_bucket": "",
+      "old_price": 7685.0,
+      "new_price": 7685.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T17:13:15.008125+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc Turcja, Marmaris, Turunc_2026-06-28_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Horus Paradise Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 10924.0,
+      "new_price": 9921.0,
+      "price_change": -1003.0,
+      "price_change_pct": -9.18161845477847,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T17:13:15.008155+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Horus Paradise Luxury Resort_2026-06-28_17-11_comeback_9.2"
+    },
+    {
+      "hotel_name": "Turunc",
+      "duration_bucket": "",
+      "old_price": 10051.0,
+      "new_price": 8135.0,
+      "price_change": -1916.0,
+      "price_change_pct": -19.062779822903195,
+      "timestamp": "2026-06-28 17:11:49.571221+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T17:13:15.008173+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc_2026-06-28_17-11_comeback_19.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T15:25:09.881595+00:00",
+    "last_processed_run": "2026-06-28T17:11:49.571221+00:00",
     "premium_state": {
       "Side Premium by OZ Hotels": {
         "history_max": 10489.0,
@@ -20723,8 +20814,8 @@
         "premium_peak": 11057.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
-        "history_max": 11469.0,
-        "premium_peak": 11469.0
+        "history_max": 11652.0,
+        "premium_peak": 11652.0
       },
       "Ramada Resort Kusadasi": {
         "history_max": 10638.0,
@@ -20935,7 +21026,7 @@
         "premium_peak": null
       },
       "Turunc Premium Turcja, Marmaris, Turunc": {
-        "history_max": 7794.0,
+        "history_max": 7938.0,
         "premium_peak": null
       },
       "World Star Beach Resort & Spa": {
