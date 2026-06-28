@@ -1716,10 +1716,88 @@
       "created_at": "2026-06-28T07:10:20.064134+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-06-28_07-09_comeback_8.2"
+    },
+    {
+      "hotel_name": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari",
+      "duration_bucket": "",
+      "old_price": 8600.0,
+      "new_price": 9920.0,
+      "price_change": 1320.0,
+      "price_change_pct": 15.348837209302326,
+      "timestamp": "2026-06-28 10:08:06.698950+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-28T10:09:05.013236+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-06-28_10-08_+15.3"
+    },
+    {
+      "hotel_name": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki",
+      "duration_bucket": "",
+      "old_price": 7197.0,
+      "new_price": 9930.0,
+      "price_change": 2733.0,
+      "price_change_pct": 37.97415589829096,
+      "timestamp": "2026-06-28 10:08:06.698950+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-28T10:09:05.013264+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki_2026-06-28_10-08_+38.0"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 9539.0,
+      "new_price": 10389.0,
+      "price_change": 850.0,
+      "price_change_pct": 8.910787294265646,
+      "timestamp": "2026-06-28 10:08:06.698950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T10:09:05.013284+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-06-28_10-08_zone_out_+8.9"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 9900.0,
+      "new_price": 10238.0,
+      "price_change": 338.0,
+      "price_change_pct": 3.414141414141414,
+      "timestamp": "2026-06-28 10:08:06.698950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T10:09:05.013295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-06-28_10-08_zone_out_+3.4"
+    },
+    {
+      "hotel_name": "Natura Park Village Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 9703.0,
+      "new_price": 9703.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 10:08:06.698950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T10:09:05.013303+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-06-28_10-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 9758.0,
+      "new_price": 10540.0,
+      "price_change": 782.0,
+      "price_change_pct": 8.013937282229964,
+      "timestamp": "2026-06-28 10:08:06.698950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T10:09:05.013312+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos_2026-06-28_10-08_zone_out_+8.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T07:09:24.901708+00:00",
+    "last_processed_run": "2026-06-28T10:08:06.698950+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17389.0,
@@ -1770,7 +1848,7 @@
         "premium_peak": 14897.0
       },
       "Galini Palace Grecja, Kreta Zachodnia, Kolymvari": {
-        "history_max": 8600.0,
+        "history_max": 9920.0,
         "premium_peak": null
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
@@ -2014,7 +2092,7 @@
         "premium_peak": 16142.0
       },
       "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki": {
-        "history_max": 9427.0,
+        "history_max": 9930.0,
         "premium_peak": null
       },
       "Restia (Acharavi)": {
@@ -2034,8 +2112,8 @@
         "premium_peak": 13479.0
       },
       "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos": {
-        "history_max": 10094.0,
-        "premium_peak": 10094.0
+        "history_max": 10540.0,
+        "premium_peak": 10540.0
       },
       "Santa Marina Pearl": {
         "history_max": 14457.0,
@@ -2058,8 +2136,8 @@
         "premium_peak": null
       },
       "Solimar Aquamarine": {
-        "history_max": 12657.0,
-        "premium_peak": 12657.0
+        "history_max": 13057.0,
+        "premium_peak": 13057.0
       },
       "Stella Palace Aqua Park Resort": {
         "history_max": 17578.0,
@@ -2326,8 +2404,8 @@
         "premium_peak": null
       },
       "Natura Park Village": {
-        "history_max": 10981.0,
-        "premium_peak": 10981.0
+        "history_max": 11876.0,
+        "premium_peak": 11876.0
       },
       "Sandy Beach Resort": {
         "history_max": 12781.0,
@@ -2366,8 +2444,8 @@
         "premium_peak": 10497.0
       },
       "Atlantica Ocean Beach Resort (ex. Creta Princess by Atlantica)": {
-        "history_max": 19323.0,
-        "premium_peak": 19323.0
+        "history_max": 19423.0,
+        "premium_peak": 19423.0
       },
       "Cavo Spada Luxury Resort & Spa Grecja, Kreta Zachodnia, Rapaniana": {
         "history_max": 10457.0,

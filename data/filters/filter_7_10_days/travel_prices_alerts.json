@@ -14573,10 +14573,75 @@
       "created_at": "2026-06-28T07:08:33.287292+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Sea Breeze Resort_2026-06-28_07-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 6421.0,
+      "new_price": 5899.0,
+      "price_change": -522.0,
+      "price_change_pct": -8.129574832580595,
+      "timestamp": "2026-06-28 10:06:27.093003+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-28T10:07:14.151358+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-28_10-06_-8.1"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 9067.0,
+      "new_price": 9067.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 10:06:27.093003+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T10:07:14.151414+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-06-28_10-06_zone_out_gone"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9537.0,
+      "new_price": 10617.0,
+      "price_change": 1080.0,
+      "price_change_pct": 11.324315822585719,
+      "timestamp": "2026-06-28 10:06:27.093003+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T10:07:14.151429+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-06-28_10-06_zone_out_+11.3"
+    },
+    {
+      "hotel_name": "Pickalbatros Palace Resort",
+      "duration_bucket": "",
+      "old_price": 11052.0,
+      "new_price": 9677.0,
+      "price_change": -1375.0,
+      "price_change_pct": -12.441187115454216,
+      "timestamp": "2026-06-28 10:06:27.093003+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T10:07:14.151453+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Palace Resort_2026-06-28_10-06_comeback_12.4"
+    },
+    {
+      "hotel_name": "Pickalbatros Golf Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11397.0,
+      "new_price": 9627.0,
+      "price_change": -1770.0,
+      "price_change_pct": -15.530402737562515,
+      "timestamp": "2026-06-28 10:06:27.093003+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T10:07:14.151468+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Golf Beach Resort_2026-06-28_10-06_comeback_15.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T07:07:46.657391+00:00",
+    "last_processed_run": "2026-06-28T10:06:27.093003+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7956.0,
@@ -14659,8 +14724,8 @@
         "premium_peak": 12596.0
       },
       "Sunrise Anjum Resort": {
-        "history_max": 10505.0,
-        "premium_peak": 10505.0
+        "history_max": 10593.0,
+        "premium_peak": 10593.0
       },
       "Jaz Mirabel Park & Club": {
         "history_max": 9354.0,
@@ -14751,8 +14816,8 @@
         "premium_peak": 14067.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 10231.0,
-        "premium_peak": 10231.0
+        "history_max": 10531.0,
+        "premium_peak": 10531.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
         "history_max": 10217.0,
@@ -15115,7 +15180,7 @@
         "premium_peak": null
       },
       "True Beach Resort": {
-        "history_max": 9436.0,
+        "history_max": 9586.0,
         "premium_peak": null
       },
       "Sunrise Holidays Resort": {
@@ -15371,7 +15436,7 @@
         "premium_peak": null
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 9611.0,
+        "history_max": 9658.0,
         "premium_peak": null
       },
       "Sirena Beach Resort & Spa": {
