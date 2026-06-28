@@ -3250,10 +3250,88 @@
       "created_at": "2026-06-27T23:10:27.566329+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|7-9_2026-06-27_23-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Misal (ex. Nox Inn Club)",
+      "duration_bucket": "9-11",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 07:08:34.402459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T07:09:38.778739+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Misal (ex. Nox Inn Club)|9-11_2026-06-28_07-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9527.0,
+      "new_price": 9527.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 07:08:34.402459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T07:09:38.778768+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|7-9_2026-06-28_07-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "7-9",
+      "old_price": 9497.0,
+      "new_price": 9497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 07:08:34.402459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T07:09:38.778779+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)|7-9_2026-06-28_07-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9175.0,
+      "new_price": 9175.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 07:08:34.402459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T07:09:38.778787+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa|7-9_2026-06-28_07-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "7-9",
+      "old_price": 10717.0,
+      "new_price": 8523.0,
+      "price_change": -2194.0,
+      "price_change_pct": -20.472147056079127,
+      "timestamp": "2026-06-28 07:08:34.402459+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T07:09:38.778811+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa|7-9_2026-06-28_07-08_comeback_20.5"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 10647.0,
+      "new_price": 9133.0,
+      "price_change": -1514.0,
+      "price_change_pct": -14.219968066121913,
+      "timestamp": "2026-06-28 07:08:34.402459+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T07:09:38.778826+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-06-28_07-08_comeback_14.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T02:45:24.642721+00:00",
+    "last_processed_run": "2026-06-28T07:08:34.402459+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -4628,12 +4706,12 @@
         "premium_peak": 14882.0
       },
       "Limak Limra|9-11": {
-        "history_max": 15344.0,
-        "premium_peak": 15344.0
+        "history_max": 15667.0,
+        "premium_peak": 15667.0
       },
       "The Lumos Deluxe Resort & Spa|9-11": {
-        "history_max": 11789.0,
-        "premium_peak": 11789.0
+        "history_max": 12217.0,
+        "premium_peak": 12217.0
       },
       "Lykia World & Links Golf Antalya|9-11": {
         "history_max": 12060.0,
@@ -5126,6 +5204,10 @@
       "Terrace Elite Resort|9-11": {
         "history_max": 13214.0,
         "premium_peak": 13214.0
+      },
+      "Diamond De Luxe ( Colakli)|9-11": {
+        "history_max": 15125.0,
+        "premium_peak": 15125.0
       }
     }
   }
