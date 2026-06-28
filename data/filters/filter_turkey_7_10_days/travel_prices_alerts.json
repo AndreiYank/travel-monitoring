@@ -19188,10 +19188,75 @@
       "created_at": "2026-06-28T17:13:15.008173+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Turunc_2026-06-28_17-11_comeback_19.1"
+    },
+    {
+      "hotel_name": "Port River & Spa",
+      "duration_bucket": "",
+      "old_price": 8097.0,
+      "new_price": 9297.0,
+      "price_change": 1200.0,
+      "price_change_pct": 14.820303816228234,
+      "timestamp": "2026-06-28 18:16:32.811547+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-28T18:17:55.299648+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River & Spa_2026-06-28_18-16_+14.8"
+    },
+    {
+      "hotel_name": "Concordia Celes Beach",
+      "duration_bucket": "",
+      "old_price": 8037.0,
+      "new_price": 8037.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 18:16:32.811547+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T18:17:55.299714+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concordia Celes Beach_2026-06-28_18-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fame Residence (Göynük)",
+      "duration_bucket": "",
+      "old_price": 9703.0,
+      "new_price": 10219.0,
+      "price_change": 516.0,
+      "price_change_pct": 5.317942904256415,
+      "timestamp": "2026-06-28 18:16:32.811547+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T18:17:55.299728+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Göynük)_2026-06-28_18-16_zone_out_+5.3"
+    },
+    {
+      "hotel_name": "Turunc",
+      "duration_bucket": "",
+      "old_price": 8135.0,
+      "new_price": 8135.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 18:16:32.811547+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T18:17:55.299738+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc_2026-06-28_18-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Turunc Premium Turcja, Marmaris, Turunc",
+      "duration_bucket": "",
+      "old_price": 7938.0,
+      "new_price": 7938.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 18:16:32.811547+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T18:17:55.299746+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc Premium Turcja, Marmaris, Turunc_2026-06-28_18-16_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T17:11:49.571221+00:00",
+    "last_processed_run": "2026-06-28T18:16:32.811547+00:00",
     "premium_state": {
       "Side Premium by OZ Hotels": {
         "history_max": 10489.0,
@@ -19234,7 +19299,7 @@
         "premium_peak": null
       },
       "Glamour Resort & Spa": {
-        "history_max": 9636.0,
+        "history_max": 9639.0,
         "premium_peak": null
       },
       "Grand Kaptan": {
@@ -19618,8 +19683,8 @@
         "premium_peak": 11292.0
       },
       "Turunc Premium": {
-        "history_max": 9519.0,
-        "premium_peak": null
+        "history_max": 11060.0,
+        "premium_peak": 11060.0
       },
       "Ulusoy Kemer Holiday Club": {
         "history_max": 10357.0,
@@ -19986,7 +20051,7 @@
         "premium_peak": null
       },
       "Port River & Spa": {
-        "history_max": 8097.0,
+        "history_max": 9297.0,
         "premium_peak": null
       },
       "Mandarin Resort (Bodrum)": {
@@ -20410,8 +20475,8 @@
         "premium_peak": null
       },
       "My Home Resort": {
-        "history_max": 10297.0,
-        "premium_peak": 10297.0
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Miarosa Kemer Beach Turcja, Kemer, Kiris": {
         "history_max": 5621.0,
@@ -20442,7 +20507,7 @@
         "premium_peak": null
       },
       "Concordia Celes Beach Turcja, Alanya, Okurcalar": {
-        "history_max": 7678.0,
+        "history_max": 8037.0,
         "premium_peak": null
       },
       "Club Jovia Kemer (ex. Armir Resort) Turcja, Kemer": {
