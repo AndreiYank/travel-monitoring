@@ -3328,10 +3328,75 @@
       "created_at": "2026-06-28T07:09:38.778826+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|7-9_2026-06-28_07-08_comeback_14.2"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8946.0,
+      "new_price": 8221.0,
+      "price_change": -725.0,
+      "price_change_pct": -8.104180639391908,
+      "timestamp": "2026-06-28 13:29:38.219437+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-28T13:31:04.100924+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|7-9_2026-06-28_13-29_-8.1"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "7-9",
+      "old_price": 9925.0,
+      "new_price": 10070.0,
+      "price_change": 145.0,
+      "price_change_pct": 1.4609571788413098,
+      "timestamp": "2026-06-28 13:29:38.219437+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T13:31:04.100957+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)|7-9_2026-06-28_13-29_zone_out_+1.5"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "7-9",
+      "old_price": 9635.0,
+      "new_price": 9635.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-28 13:29:38.219437+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T13:31:04.100968+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams|7-9_2026-06-28_13-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fame Residence (Göynük)",
+      "duration_bucket": "7-9",
+      "old_price": 10219.0,
+      "new_price": 9365.0,
+      "price_change": -854.0,
+      "price_change_pct": -8.35698209218123,
+      "timestamp": "2026-06-28 13:29:38.219437+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T13:31:04.100991+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Göynük)|7-9_2026-06-28_13-29_comeback_8.4"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 11132.0,
+      "new_price": 9915.0,
+      "price_change": -1217.0,
+      "price_change_pct": -10.932446999640675,
+      "timestamp": "2026-06-28 13:29:38.219437+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T13:31:04.101005+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-06-28_13-29_comeback_10.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T10:07:15.055848+00:00",
+    "last_processed_run": "2026-06-28T13:29:38.219437+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3562,8 +3627,8 @@
         "premium_peak": 11774.0
       },
       "Saphir Resort|7-9": {
-        "history_max": 11878.0,
-        "premium_peak": 11878.0
+        "history_max": 12014.0,
+        "premium_peak": 12014.0
       },
       "Sentido Lycus Beach (ex. Lti)|7-9": {
         "history_max": 10072.0,
@@ -4310,8 +4375,8 @@
         "premium_peak": 13897.0
       },
       "Antique Roman Palace|9-11": {
-        "history_max": 14173.0,
-        "premium_peak": 14173.0
+        "history_max": 14299.0,
+        "premium_peak": 14299.0
       },
       "Side Premium by OZ Hotels|9-11": {
         "history_max": 12394.0,
@@ -5178,8 +5243,8 @@
         "premium_peak": 14042.0
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|9-11": {
-        "history_max": 15393.0,
-        "premium_peak": 15393.0
+        "history_max": 15477.0,
+        "premium_peak": 15477.0
       },
       "Turan Prince|9-11": {
         "history_max": 15522.0,
@@ -5208,6 +5273,10 @@
       "Diamond De Luxe ( Colakli)|9-11": {
         "history_max": 15125.0,
         "premium_peak": 15125.0
+      },
+      "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|7-9": {
+        "history_max": 12547.0,
+        "premium_peak": 12547.0
       }
     }
   }

@@ -14638,10 +14638,75 @@
       "created_at": "2026-06-28T10:07:14.151468+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Golf Beach Resort_2026-06-28_10-06_comeback_15.5"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 5899.0,
+      "new_price": 7361.0,
+      "price_change": 1462.0,
+      "price_change_pct": 24.78386167146974,
+      "timestamp": "2026-06-28 13:28:46.086132+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-28T13:29:37.260558+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-06-28_13-28_+24.8"
+    },
+    {
+      "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
+      "duration_bucket": "",
+      "old_price": 7325.0,
+      "new_price": 8130.0,
+      "price_change": 805.0,
+      "price_change_pct": 10.98976109215017,
+      "timestamp": "2026-06-28 13:28:46.086132+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-28T13:29:37.260589+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-06-28_13-28_+11.0"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 8703.0,
+      "new_price": 9407.0,
+      "price_change": 704.0,
+      "price_change_pct": 8.089164655865794,
+      "timestamp": "2026-06-28 13:28:46.086132+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-28T13:29:37.260609+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-06-28_13-28_+8.1"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 9175.0,
+      "new_price": 10305.0,
+      "price_change": 1130.0,
+      "price_change_pct": 12.316076294277929,
+      "timestamp": "2026-06-28 13:28:46.086132+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-28T13:29:37.260633+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-06-28_13-28_zone_out_+12.3"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 14397.0,
+      "new_price": 9707.0,
+      "price_change": -4690.0,
+      "price_change_pct": -32.57623115926929,
+      "timestamp": "2026-06-28 13:28:46.086132+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-28T13:29:37.260659+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-06-28_13-28_comeback_32.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-28T10:06:27.093003+00:00",
+    "last_processed_run": "2026-06-28T13:28:46.086132+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7956.0,
@@ -15124,8 +15189,8 @@
         "premium_peak": null
       },
       "Hilton Plaza (Hurghada)": {
-        "history_max": 10116.0,
-        "premium_peak": 10116.0
+        "history_max": 10305.0,
+        "premium_peak": 10305.0
       },
       "Sunrise Royal Makadi Aqua Resort": {
         "history_max": 12497.0,
@@ -15304,8 +15369,8 @@
         "premium_peak": 17123.0
       },
       "Steigenberger Al Dau Beach": {
-        "history_max": 14394.0,
-        "premium_peak": 14394.0
+        "history_max": 14705.0,
+        "premium_peak": 14705.0
       },
       "Serenity Alma Heights Ross Park Collection": {
         "history_max": 15815.0,
@@ -15496,8 +15561,8 @@
         "premium_peak": null
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
-        "history_max": 10866.0,
-        "premium_peak": 10866.0
+        "history_max": 10922.0,
+        "premium_peak": 10922.0
       },
       "Sheraton Soma Bay": {
         "history_max": 11607.0,
