@@ -195,10 +195,49 @@
       "created_at": "2026-06-29T19:14:22.235727+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams|9-11_2026-06-29_19-13_zone_out_+3.8"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "7-9",
+      "old_price": 9490.0,
+      "new_price": 9490.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-29 21:03:29.928157+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-29T21:04:19.614137+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris|7-9_2026-06-29_21-03_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Star Park",
+      "duration_bucket": "7-9",
+      "old_price": 11198.0,
+      "new_price": 9854.0,
+      "price_change": -1344.0,
+      "price_change_pct": -12.002143239864262,
+      "timestamp": "2026-06-29 21:03:29.928157+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-29T21:04:19.614198+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Star Park|7-9_2026-06-29_21-03_comeback_12.0"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "7-9",
+      "old_price": 10622.0,
+      "new_price": 9526.0,
+      "price_change": -1096.0,
+      "price_change_pct": -10.318207493880625,
+      "timestamp": "2026-06-29 21:03:29.928157+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-29T21:04:19.614222+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium|7-9_2026-06-29_21-03_comeback_10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-29T19:13:32.981675+00:00",
+    "last_processed_run": "2026-06-29T21:03:29.928157+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -329,8 +368,8 @@
         "premium_peak": 10297.0
       },
       "OZ Incekum Beach Resort|7-9": {
-        "history_max": 10926.0,
-        "premium_peak": 10926.0
+        "history_max": 10929.0,
+        "premium_peak": 10929.0
       },
       "Orange Palace|7-9": {
         "history_max": 11628.0,
@@ -685,8 +724,8 @@
         "premium_peak": 15805.0
       },
       "OZ Incekum Beach Resort|9-11": {
-        "history_max": 12836.0,
-        "premium_peak": 12836.0
+        "history_max": 12839.0,
+        "premium_peak": 12839.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)|9-11": {
         "history_max": 12497.0,
@@ -1029,8 +1068,8 @@
         "premium_peak": 14540.0
       },
       "Alba Resort|9-11": {
-        "history_max": 12862.0,
-        "premium_peak": 12862.0
+        "history_max": 13162.0,
+        "premium_peak": 13162.0
       },
       "Sultan of Dreams|9-11": {
         "history_max": 10354.0,
@@ -1069,8 +1108,8 @@
         "premium_peak": 14297.0
       },
       "Royal Alhambra Palace|9-11": {
-        "history_max": 15262.0,
-        "premium_peak": 15262.0
+        "history_max": 15634.0,
+        "premium_peak": 15634.0
       },
       "Diamond Excellence Resort & Spa|9-11": {
         "history_max": 12144.0,
@@ -1207,6 +1246,62 @@
       "Garcia Resort & Spa|7-9": {
         "history_max": 10473.0,
         "premium_peak": 10473.0
+      },
+      "Xafira Deluxe Resort & Spa|7-9": {
+        "history_max": 9019.0,
+        "premium_peak": null
+      },
+      "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)|7-9": {
+        "history_max": 11576.0,
+        "premium_peak": 11576.0
+      },
+      "Melas Lara|7-9": {
+        "history_max": 12140.0,
+        "premium_peak": 12140.0
+      },
+      "Aria Resort & SPA|7-9": {
+        "history_max": 11044.0,
+        "premium_peak": 11044.0
+      },
+      "Cenger Beach Resort (Side)|7-9": {
+        "history_max": 8650.0,
+        "premium_peak": null
+      },
+      "Sidera Kirman Premium|7-9": {
+        "history_max": 12182.0,
+        "premium_peak": 12182.0
+      },
+      "Pirates Beach Club|9-11": {
+        "history_max": 13776.0,
+        "premium_peak": 13776.0
+      },
+      "Xafira Deluxe Resort & Spa|9-11": {
+        "history_max": 10790.0,
+        "premium_peak": 10790.0
+      },
+      "Justiniano Club Park Conti|9-11": {
+        "history_max": 14116.0,
+        "premium_peak": 14116.0
+      },
+      "Quattro Beach Spa|9-11": {
+        "history_max": 15135.0,
+        "premium_peak": 15135.0
+      },
+      "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)|9-11": {
+        "history_max": 11434.0,
+        "premium_peak": 11434.0
+      },
+      "Blue Marlin Deluxe Spa & Resort|9-11": {
+        "history_max": 13341.0,
+        "premium_peak": 13341.0
+      },
+      "Queens Park Goynuk (Kemer)|9-11": {
+        "history_max": 13794.0,
+        "premium_peak": 13794.0
+      },
+      "Zena Resort|9-11": {
+        "history_max": 12871.0,
+        "premium_peak": 12871.0
       }
     }
   }
