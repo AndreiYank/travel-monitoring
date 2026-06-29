@@ -1,8 +1,35 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9386.0,
+      "new_price": 9386.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-29 09:35:47.823686+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-29T09:36:30.819903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa|7-9_2026-06-29_09-35_zone_out_gone"
+    },
+    {
+      "hotel_name": "Misal (ex. Nox Inn Club)",
+      "duration_bucket": "7-9",
+      "old_price": 8297.0,
+      "new_price": 8297.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-29 09:35:47.823686+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-29T09:36:30.819930+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Misal (ex. Nox Inn Club)|7-9_2026-06-29_09-35_zone_out_gone"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-06-29T04:21:01.462160+00:00",
+    "last_processed_run": "2026-06-29T09:35:47.823686+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -113,8 +140,8 @@
         "premium_peak": 11256.0
       },
       "Mary Side (ex. Mary Palace)|7-9": {
-        "history_max": 11190.0,
-        "premium_peak": 11190.0
+        "history_max": 11240.0,
+        "premium_peak": 11240.0
       },
       "Design Plus Seya Beach|7-9": {
         "history_max": 11557.0,
@@ -145,7 +172,7 @@
         "premium_peak": 11697.0
       },
       "Oz Sui Resort|7-9": {
-        "history_max": 9527.0,
+        "history_max": 9674.0,
         "premium_peak": null
       },
       "Club Yali Hotels & Resort|7-9": {
@@ -409,8 +436,8 @@
         "premium_peak": 12285.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)|9-11": {
-        "history_max": 14900.0,
-        "premium_peak": 14900.0
+        "history_max": 15048.0,
+        "premium_peak": 15048.0
       },
       "Sunland Resort (ex. Imperial Sunland Resort & Spa)|9-11": {
         "history_max": 12434.0,
@@ -533,8 +560,8 @@
         "premium_peak": 14543.0
       },
       "Armas Bella Sun (ex.Club Bella Sun)|9-11": {
-        "history_max": 10967.0,
-        "premium_peak": 10967.0
+        "history_max": 11052.0,
+        "premium_peak": 11052.0
       },
       "Club Boran Mare Beach|9-11": {
         "history_max": 15333.0,
@@ -631,6 +658,66 @@
       "Selectum Colours Bodrum (ex Asteria Bodrum Resort)|7-9": {
         "history_max": 12308.0,
         "premium_peak": 12308.0
+      },
+      "Side Sunport (ex. Side Sungate)|7-9": {
+        "history_max": 12108.0,
+        "premium_peak": 12108.0
+      },
+      "Asteria Family Belek|7-9": {
+        "history_max": 10949.0,
+        "premium_peak": 10949.0
+      },
+      "Innvista Belek (ex. Vera Verde)|7-9": {
+        "history_max": 10853.0,
+        "premium_peak": 10853.0
+      },
+      "Calido Maris|7-9": {
+        "history_max": 9642.0,
+        "premium_peak": null
+      },
+      "Grand Pasa|7-9": {
+        "history_max": 10017.0,
+        "premium_peak": 10017.0
+      },
+      "Fantasia De Luxe Kusadasi|7-9": {
+        "history_max": 8744.0,
+        "premium_peak": null
+      },
+      "Q Premium Resort|7-9": {
+        "history_max": 11297.0,
+        "premium_peak": 11297.0
+      },
+      "Dream Fun World|9-11": {
+        "history_max": 15897.0,
+        "premium_peak": 15897.0
+      },
+      "Dream Water World|9-11": {
+        "history_max": 15897.0,
+        "premium_peak": 15897.0
+      },
+      "Azura World (ex. Wyndham Alanya)|9-11": {
+        "history_max": 13545.0,
+        "premium_peak": 13545.0
+      },
+      "Armas Life Belek|9-11": {
+        "history_max": 11151.0,
+        "premium_peak": 11151.0
+      },
+      "Seashell Vega (ex. Side Crown Sunshine)|9-11": {
+        "history_max": 14297.0,
+        "premium_peak": 14297.0
+      },
+      "Seher Resort & Spa|9-11": {
+        "history_max": 10665.0,
+        "premium_peak": 10665.0
+      },
+      "Sidera Kirman Premium|9-11": {
+        "history_max": 15735.0,
+        "premium_peak": 15735.0
+      },
+      "Misal (ex. Nox Inn Club)|9-11": {
+        "history_max": 9897.0,
+        "premium_peak": null
       }
     }
   }
