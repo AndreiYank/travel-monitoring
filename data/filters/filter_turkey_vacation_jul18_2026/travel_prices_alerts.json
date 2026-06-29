@@ -234,10 +234,49 @@
       "created_at": "2026-06-29T21:04:19.614222+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Diamond Premium|7-9_2026-06-29_21-03_comeback_10.3"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "7-9",
+      "old_price": 9526.0,
+      "new_price": 9526.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-29 22:18:23.113317+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-29T22:19:10.854077+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium|7-9_2026-06-29_22-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Linda Sunny Beach",
+      "duration_bucket": "7-9",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-29 22:18:23.113317+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-29T22:19:10.854103+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Linda Sunny Beach|7-9_2026-06-29_22-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Star Park",
+      "duration_bucket": "7-9",
+      "old_price": 9854.0,
+      "new_price": 11201.0,
+      "price_change": 1347.0,
+      "price_change_pct": 13.669575806778973,
+      "timestamp": "2026-06-29 22:18:23.113317+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-29T22:19:10.854118+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Star Park|7-9_2026-06-29_22-18_zone_out_+13.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-29T21:03:29.928157+00:00",
+    "last_processed_run": "2026-06-29T22:18:23.113317+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -544,8 +583,8 @@
         "premium_peak": 12073.0
       },
       "Side Star Park|7-9": {
-        "history_max": 11198.0,
-        "premium_peak": 11198.0
+        "history_max": 11201.0,
+        "premium_peak": 11201.0
       },
       "Armas Labada|7-9": {
         "history_max": 11869.0,
@@ -688,8 +727,8 @@
         "premium_peak": 14172.0
       },
       "Rai Foresta Tekirova|9-11": {
-        "history_max": 14756.0,
-        "premium_peak": 14756.0
+        "history_max": 15080.0,
+        "premium_peak": 15080.0
       },
       "Queens Park Le Jardin Resort|9-11": {
         "history_max": 13991.0,
@@ -1302,6 +1341,82 @@
       "Zena Resort|9-11": {
         "history_max": 12871.0,
         "premium_peak": 12871.0
+      },
+      "Sentido Lycus Beach (ex. Lti)|7-9": {
+        "history_max": 8728.0,
+        "premium_peak": null
+      },
+      "Kirbiyik Resort (ex. Dinler)|7-9": {
+        "history_max": 9080.0,
+        "premium_peak": null
+      },
+      "Korumar Deluxe|7-9": {
+        "history_max": 11757.0,
+        "premium_peak": 11757.0
+      },
+      "Adora Hotel & Resort (ex. Adora Golf)|7-9": {
+        "history_max": 12263.0,
+        "premium_peak": 12263.0
+      },
+      "Justiniano Deluxe Resort|7-9": {
+        "history_max": 11074.0,
+        "premium_peak": 11074.0
+      },
+      "M. C. Arancia Resort|7-9": {
+        "history_max": 9695.0,
+        "premium_peak": null
+      },
+      "Victory Volare|7-9": {
+        "history_max": 11438.0,
+        "premium_peak": 11438.0
+      },
+      "Seven Seas Palmeras Bay|7-9": {
+        "history_max": 11631.0,
+        "premium_peak": 11631.0
+      },
+      "White City Resort|9-11": {
+        "history_max": 13355.0,
+        "premium_peak": 13355.0
+      },
+      "Diamond Hill Resort|9-11": {
+        "history_max": 11204.0,
+        "premium_peak": 11204.0
+      },
+      "Justiniano Deluxe Resort|9-11": {
+        "history_max": 13528.0,
+        "premium_peak": 13528.0
+      },
+      "Kadikale Resort Spa & Wellness|9-11": {
+        "history_max": 15157.0,
+        "premium_peak": 15157.0
+      },
+      "Adora Hotel & Resort (ex. Adora Golf)|9-11": {
+        "history_max": 15056.0,
+        "premium_peak": 15056.0
+      },
+      "Avia Resort & Spa|9-11": {
+        "history_max": 11019.0,
+        "premium_peak": 11019.0
+      },
+      "Labranda TMT Bodrum Resort|9-11": {
+        "history_max": 14843.0,
+        "premium_peak": 14843.0
+      },
+      "Sealife Family Resort|9-11": {
+        "history_max": 14468.0,
+        "premium_peak": 14468.0
+      },
+      "Seven Seas Palmeras Bay|9-11": {
+        "history_max": 13566.0,
+        "premium_peak": 13566.0
+      },
+      "Numa Bay Exclusive (ex Sentido Numa Bay)|9-11": {
+        "history_max": 14821.0,
+        "premium_peak": 14821.0
+      },
+      "Palemon Resort & Spa|9-11": {
+        "history_max": 12645.0,
+        "premium_peak": 12645.0
       }
     }
   }
