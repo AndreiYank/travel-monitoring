@@ -2535,10 +2535,114 @@
       "created_at": "2026-06-30T00:08:19.681727+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Karmir Resort (Kemer)_2026-06-30_00-07_comeback_15.9"
+    },
+    {
+      "hotel_name": "Rixos Elysium Suites",
+      "duration_bucket": "",
+      "old_price": 9836.0,
+      "new_price": 8486.0,
+      "price_change": -1350.0,
+      "price_change_pct": -13.725091500610004,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-06-30T02:29:36.055515+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rixos Elysium Suites_2026-06-30_02-28_-13.7"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 7619.0,
+      "new_price": 7619.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:36.055565+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-06-30_02-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dedeman Kemer Resort",
+      "duration_bucket": "",
+      "old_price": 8165.0,
+      "new_price": 8165.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:36.055575+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dedeman Kemer Resort_2026-06-30_02-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac",
+      "duration_bucket": "",
+      "old_price": 7542.0,
+      "new_price": 7542.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:36.055584+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac_2026-06-30_02-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Labranda Ephesus Princess Turcja, Kusadasi, Bayraklidede",
+      "duration_bucket": "",
+      "old_price": 7551.0,
+      "new_price": 7551.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:36.055591+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Ephesus Princess Turcja, Kusadasi, Bayraklidede_2026-06-30_02-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Selectum For Two Side (ex. Heaven Beach Resort & Spa) Turcja, Side, Kizilagac",
+      "duration_bucket": "",
+      "old_price": 7551.0,
+      "new_price": 7551.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:36.055598+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum For Two Side (ex. Heaven Beach Resort & Spa) Turcja, Side, Kizilagac_2026-06-30_02-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "",
+      "old_price": 7708.0,
+      "new_price": 7708.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:36.055605+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum_2026-06-30_02-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Adalya Art Side (Ex. Grand Art Side)",
+      "duration_bucket": "",
+      "old_price": 11194.0,
+      "new_price": 9694.0,
+      "price_change": -1500.0,
+      "price_change_pct": -13.400035733428622,
+      "timestamp": "2026-06-30 02:28:44.060457+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-30T02:29:36.055629+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Adalya Art Side (Ex. Grand Art Side)_2026-06-30_02-28_comeback_13.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-30T00:07:27.600498+00:00",
+    "last_processed_run": "2026-06-30T02:28:44.060457+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10551.0,
@@ -2825,7 +2929,7 @@
         "premium_peak": 11451.0
       },
       "Golden Tulip Bayrampasa": {
-        "history_max": 9092.0,
+        "history_max": 9242.0,
         "premium_peak": null
       },
       "Sealife Family Resort": {
@@ -2833,8 +2937,8 @@
         "premium_peak": 10040.0
       },
       "Sheraton Istanbul Levent": {
-        "history_max": 10938.0,
-        "premium_peak": 10938.0
+        "history_max": 11088.0,
+        "premium_peak": 11088.0
       },
       "Gold Island Selected": {
         "history_max": 10496.0,
@@ -3225,8 +3329,8 @@
         "premium_peak": 10206.0
       },
       "DoubleTree by Hilton Istanbul - Piyalepasa": {
-        "history_max": 10142.0,
-        "premium_peak": 10142.0
+        "history_max": 10292.0,
+        "premium_peak": 10292.0
       },
       "Azura World (ex. Wyndham Alanya)": {
         "history_max": 9889.0,
@@ -3601,8 +3705,8 @@
         "premium_peak": 11519.0
       },
       "Dedeman Istanbul": {
-        "history_max": 10210.0,
-        "premium_peak": 10210.0
+        "history_max": 10460.0,
+        "premium_peak": 10460.0
       },
       "Diamond Excellence Resort & Spa": {
         "history_max": 10633.0,
@@ -3633,7 +3737,7 @@
         "premium_peak": 10675.0
       },
       "Crowne Plaza Istanbul Harbiye": {
-        "history_max": 9102.0,
+        "history_max": 9252.0,
         "premium_peak": null
       },
       "Sural": {
@@ -3995,6 +4099,18 @@
       "Aska Lara Resort & Spa": {
         "history_max": 11269.0,
         "premium_peak": 11269.0
+      },
+      "Diamond De Luxe ( Colakli)": {
+        "history_max": 11351.0,
+        "premium_peak": 11351.0
+      },
+      "Club Jovia Kemer (ex. Armir Resort) Turcja, Kemer": {
+        "history_max": 7538.0,
+        "premium_peak": null
+      },
+      "Turquoise Hotel": {
+        "history_max": 11256.0,
+        "premium_peak": 11256.0
       }
     }
   }

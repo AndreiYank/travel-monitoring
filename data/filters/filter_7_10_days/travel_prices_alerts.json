@@ -1885,10 +1885,36 @@
       "created_at": "2026-06-30T00:08:05.507444+00:00",
       "threshold_percent": 8.0,
       "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-06-30_00-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 7340.0,
+      "new_price": 8136.0,
+      "price_change": 796.0,
+      "price_change_pct": 10.844686648501362,
+      "timestamp": "2026-06-30 02:28:44.128013+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-30T02:29:24.892758+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-06-30_02-28_+10.8"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10127.0,
+      "price_change": 330.0,
+      "price_change_pct": 3.3683780749208942,
+      "timestamp": "2026-06-30 02:28:44.128013+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T02:29:24.892810+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-06-30_02-28_zone_out_+3.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-30T00:07:27.810089+00:00",
+    "last_processed_run": "2026-06-30T02:28:44.128013+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,
@@ -1923,8 +1949,8 @@
         "premium_peak": 10397.0
       },
       "Jaz Viva Casa Maza": {
-        "history_max": 9797.0,
-        "premium_peak": null
+        "history_max": 10127.0,
+        "premium_peak": 10127.0
       },
       "KaiSol Romance Resort (ex. Sunrise Romance Resort)": {
         "history_max": 18207.0,
@@ -2139,7 +2165,7 @@
         "premium_peak": 10777.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
-        "history_max": 8634.0,
+        "history_max": 8639.0,
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino": {
@@ -2479,7 +2505,7 @@
         "premium_peak": null
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
-        "history_max": 9174.0,
+        "history_max": 9179.0,
         "premium_peak": null
       },
       "Caribbean World Soma Bay": {
@@ -2499,8 +2525,8 @@
         "premium_peak": null
       },
       "Caves Beach Resort": {
-        "history_max": 12492.0,
-        "premium_peak": 12492.0
+        "history_max": 12504.0,
+        "premium_peak": 12504.0
       },
       "Beach Albatros Resort": {
         "history_max": 11318.0,
