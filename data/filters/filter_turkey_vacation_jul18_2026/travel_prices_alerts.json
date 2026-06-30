@@ -767,10 +767,75 @@
       "created_at": "2026-06-30T21:06:51.564286+00:00",
       "threshold_percent": 8.0,
       "unique_key": "OZ Incekum Beach Resort|7-9_2026-06-30_21-05_comeback_9.3"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "9-11",
+      "old_price": 9972.0,
+      "new_price": 9972.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 22:23:53.106006+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T22:24:42.881587+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams|9-11_2026-06-30_22-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunmelia Beach Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9033.0,
+      "new_price": 9033.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 22:23:53.106006+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T22:24:42.881614+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunmelia Beach Resort & Spa|7-9_2026-06-30_22-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "7-9",
+      "old_price": 8107.0,
+      "new_price": 8107.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 22:23:53.106006+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T22:24:42.881624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)|7-9_2026-06-30_22-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "7-9",
+      "old_price": 10625.0,
+      "new_price": 9688.0,
+      "price_change": -937.0,
+      "price_change_pct": -8.818823529411764,
+      "timestamp": "2026-06-30 22:23:53.106006+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-30T22:24:42.881647+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium|7-9_2026-06-30_22-23_comeback_8.8"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "7-9",
+      "old_price": 10075.0,
+      "new_price": 9138.0,
+      "price_change": -937.0,
+      "price_change_pct": -9.300248138957816,
+      "timestamp": "2026-06-30 22:23:53.106006+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-30T22:24:42.881664+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)|7-9_2026-06-30_22-23_comeback_9.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-30T21:05:59.405381+00:00",
+    "last_processed_run": "2026-06-30T22:23:53.106006+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1169,8 +1234,8 @@
         "premium_peak": 13170.0
       },
       "Tusan Beach Resort|9-11": {
-        "history_max": 13962.0,
-        "premium_peak": 13962.0
+        "history_max": 15035.0,
+        "premium_peak": 15035.0
       },
       "Transatlantik (Kemer)|9-11": {
         "history_max": 12434.0,
@@ -1485,8 +1550,8 @@
         "premium_peak": 11311.0
       },
       "Wind of Lara|7-9": {
-        "history_max": 10358.0,
-        "premium_peak": 10358.0
+        "history_max": 10520.0,
+        "premium_peak": 10520.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)|7-9": {
         "history_max": 12215.0,
@@ -1653,8 +1718,8 @@
         "premium_peak": 10863.0
       },
       "Kaya (Belek)|9-11": {
-        "history_max": 15500.0,
-        "premium_peak": 15500.0
+        "history_max": 15502.0,
+        "premium_peak": 15502.0
       },
       "Fame Residence Lara (Antalya)|9-11": {
         "history_max": 15723.0,
@@ -1741,8 +1806,8 @@
         "premium_peak": 10435.0
       },
       "Fame Residence (Kemer)|7-9": {
-        "history_max": 10057.0,
-        "premium_peak": 10057.0
+        "history_max": 10186.0,
+        "premium_peak": 10186.0
       },
       "Mira Meridia Beach Resort|7-9": {
         "history_max": 9689.0,
@@ -2275,6 +2340,10 @@
       "Side Star Elegance (ex. Asteria)|9-11": {
         "history_max": 14798.0,
         "premium_peak": 14798.0
+      },
+      "Kaya Side (ex. Club Calimera Kaya Side)|7-9": {
+        "history_max": 11732.0,
+        "premium_peak": 11732.0
       }
     }
   }
