@@ -936,10 +936,36 @@
       "created_at": "2026-06-30T13:19:36.884878+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xafira Deluxe Resort & Spa_2026-06-30_13-18_zone_out_+12.3"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "",
+      "old_price": 9718.0,
+      "new_price": 10220.0,
+      "price_change": 502.0,
+      "price_change_pct": 5.165671948960691,
+      "timestamp": "2026-06-30 16:30:23.278556+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T16:31:03.100963+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa_2026-06-30_16-30_zone_out_+5.2"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11121.0,
+      "new_price": 9634.0,
+      "price_change": -1487.0,
+      "price_change_pct": -13.37109972124809,
+      "timestamp": "2026-06-30 16:30:23.278556+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-30T16:31:03.101024+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-06-30_16-30_comeback_13.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-30T13:18:59.181757+00:00",
+    "last_processed_run": "2026-06-30T16:30:23.278556+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12263.0,
@@ -1042,8 +1068,8 @@
         "premium_peak": 12443.0
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
-        "history_max": 12871.0,
-        "premium_peak": 12871.0
+        "history_max": 13043.0,
+        "premium_peak": 13043.0
       },
       "Seher Sun Palace Resort & Spa": {
         "history_max": 10805.0,
@@ -1134,8 +1160,8 @@
         "premium_peak": 15197.0
       },
       "Duja Didim": {
-        "history_max": 13772.0,
-        "premium_peak": 13772.0
+        "history_max": 13898.0,
+        "premium_peak": 13898.0
       },
       "Side Star Elegance (ex. Asteria)": {
         "history_max": 15516.0,
@@ -1198,8 +1224,8 @@
         "premium_peak": 13614.0
       },
       "Grand Seker": {
-        "history_max": 11516.0,
-        "premium_peak": 11516.0
+        "history_max": 11636.0,
+        "premium_peak": 11636.0
       },
       "Grand Ring": {
         "history_max": 13373.0,
@@ -1254,8 +1280,8 @@
         "premium_peak": 11649.0
       },
       "Side Mare Resort": {
-        "history_max": 13540.0,
-        "premium_peak": 13540.0
+        "history_max": 13900.0,
+        "premium_peak": 13900.0
       },
       "Galeri Resort": {
         "history_max": 12009.0,
@@ -1306,8 +1332,8 @@
         "premium_peak": 12320.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
-        "history_max": 14647.0,
-        "premium_peak": 14647.0
+        "history_max": 14821.0,
+        "premium_peak": 14821.0
       },
       "Raxeria (Side)": {
         "history_max": 12533.0,
@@ -1378,8 +1404,8 @@
         "premium_peak": null
       },
       "Port Side Resort": {
-        "history_max": 13210.0,
-        "premium_peak": 13210.0
+        "history_max": 13280.0,
+        "premium_peak": 13280.0
       },
       "Port River & Spa": {
         "history_max": 12357.0,
@@ -1854,8 +1880,8 @@
         "premium_peak": 13131.0
       },
       "Azura World (ex. Wyndham Alanya)": {
-        "history_max": 13357.0,
-        "premium_peak": 13357.0
+        "history_max": 13521.0,
+        "premium_peak": 13521.0
       },
       "Turan Prince": {
         "history_max": 15497.0,
@@ -1898,8 +1924,8 @@
         "premium_peak": 10630.0
       },
       "Aydinbey Queens Palace & Spa": {
-        "history_max": 13023.0,
-        "premium_peak": 13023.0
+        "history_max": 13338.0,
+        "premium_peak": 13338.0
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)": {
         "history_max": 14207.0,
@@ -2260,6 +2286,10 @@
       "VONResort Golden Beach": {
         "history_max": 15511.0,
         "premium_peak": 15511.0
+      },
+      "Royal Asarlik Beach": {
+        "history_max": 13449.0,
+        "premium_peak": 13449.0
       }
     }
   }
