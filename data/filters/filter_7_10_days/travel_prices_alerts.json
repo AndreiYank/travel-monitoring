@@ -1859,10 +1859,36 @@
       "created_at": "2026-06-29T22:18:22.166125+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Renaissance Golden View Beach Resort by Marriott_2026-06-29_22-17_comeback_17.0"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 6570.0,
+      "new_price": 7367.0,
+      "price_change": 797.0,
+      "price_change_pct": 12.130898021308981,
+      "timestamp": "2026-06-30 00:07:27.810089+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-30T00:08:05.507389+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-06-30_00-07_+12.1"
+    },
+    {
+      "hotel_name": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)",
+      "duration_bucket": "",
+      "old_price": 9013.0,
+      "new_price": 9013.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 00:07:27.810089+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T00:08:05.507444+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-06-30_00-07_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-29T22:17:46.545573+00:00",
+    "last_processed_run": "2026-06-30T00:07:27.810089+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,
@@ -2581,8 +2607,8 @@
         "premium_peak": null
       },
       "Sunrise Anjum Resort": {
-        "history_max": 10593.0,
-        "premium_peak": 10593.0
+        "history_max": 10655.0,
+        "premium_peak": 10655.0
       },
       "Grand Rotana Resort & Spa": {
         "history_max": 10257.0,
@@ -2703,6 +2729,14 @@
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
         "history_max": 10609.0,
         "premium_peak": 10609.0
+      },
+      "Club Magic Life Kalawy": {
+        "history_max": 9613.0,
+        "premium_peak": null
+      },
+      "Sunrise Select Garden Beach Resort & Spa": {
+        "history_max": 10953.0,
+        "premium_peak": 10953.0
       }
     }
   }
