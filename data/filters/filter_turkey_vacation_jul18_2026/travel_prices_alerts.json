@@ -598,10 +598,101 @@
       "created_at": "2026-06-30T16:31:17.210173+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|7-9_2026-06-30_16-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "7-9",
+      "old_price": 9382.0,
+      "new_price": 9382.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T18:43:44.151589+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris|7-9_2026-06-30_18-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9389.0,
+      "new_price": 9389.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T18:43:44.151620+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|7-9_2026-06-30_18-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Incekum",
+      "duration_bucket": "7-9",
+      "old_price": 8353.0,
+      "new_price": 8353.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T18:43:44.151631+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Incekum|7-9_2026-06-30_18-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8503.0,
+      "new_price": 8503.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T18:43:44.151641+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa|7-9_2026-06-30_18-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8363.0,
+      "new_price": 8363.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T18:43:44.151648+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|7-9_2026-06-30_18-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 9903.0,
+      "new_price": 10081.0,
+      "price_change": 178.0,
+      "price_change_pct": 1.7974351206705037,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T18:43:44.151661+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-06-30_18-42_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 10409.0,
+      "new_price": 9234.0,
+      "price_change": -1175.0,
+      "price_change_pct": -11.288308194831396,
+      "timestamp": "2026-06-30 18:42:58.578778+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-06-30T18:43:44.151687+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-06-30_18-42_comeback_11.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-30T16:30:27.640356+00:00",
+    "last_processed_run": "2026-06-30T18:42:58.578778+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1268,8 +1359,8 @@
         "premium_peak": 15897.0
       },
       "Azura World (ex. Wyndham Alanya)|9-11": {
-        "history_max": 13545.0,
-        "premium_peak": 13545.0
+        "history_max": 13705.0,
+        "premium_peak": 13705.0
       },
       "Armas Life Belek|9-11": {
         "history_max": 11201.0,
@@ -1376,8 +1467,8 @@
         "premium_peak": 14038.0
       },
       "The Lumos Deluxe Resort & Spa|9-11": {
-        "history_max": 12150.0,
-        "premium_peak": 12150.0
+        "history_max": 12171.0,
+        "premium_peak": 12171.0
       },
       "Crystal Prestige Pearl Collection|9-11": {
         "history_max": 14557.0,
@@ -1404,8 +1495,8 @@
         "premium_peak": 10344.0
       },
       "Diamond De Luxe ( Colakli)|9-11": {
-        "history_max": 14960.0,
-        "premium_peak": 14960.0
+        "history_max": 15083.0,
+        "premium_peak": 15083.0
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)|9-11": {
         "history_max": 14758.0,
@@ -1424,8 +1515,8 @@
         "premium_peak": 15351.0
       },
       "Cenger Blue Collection|9-11": {
-        "history_max": 10106.0,
-        "premium_peak": 10106.0
+        "history_max": 10127.0,
+        "premium_peak": 10127.0
       },
       "Belconti Resort (Belek)|9-11": {
         "history_max": 14540.0,
@@ -1444,8 +1535,8 @@
         "premium_peak": 15294.0
       },
       "Lonicera Premium|9-11": {
-        "history_max": 12896.0,
-        "premium_peak": 12896.0
+        "history_max": 12917.0,
+        "premium_peak": 12917.0
       },
       "Limak Limra|9-11": {
         "history_max": 15682.0,
@@ -1476,8 +1567,8 @@
         "premium_peak": 15634.0
       },
       "Diamond Excellence Resort & Spa|9-11": {
-        "history_max": 12144.0,
-        "premium_peak": 12144.0
+        "history_max": 12165.0,
+        "premium_peak": 12165.0
       },
       "Seher Sun Palace Resort & Spa|9-11": {
         "history_max": 10863.0,
@@ -1488,24 +1579,24 @@
         "premium_peak": 15500.0
       },
       "Fame Residence Lara (Antalya)|9-11": {
-        "history_max": 15643.0,
-        "premium_peak": 15643.0
+        "history_max": 15723.0,
+        "premium_peak": 15723.0
       },
       "Side Star Beach|9-11": {
         "history_max": 15233.0,
         "premium_peak": 15233.0
       },
       "Fame Residence (Göynük)|9-11": {
-        "history_max": 11354.0,
-        "premium_peak": 11354.0
+        "history_max": 12314.0,
+        "premium_peak": 12314.0
       },
       "Emelda Sun Club (ex. Simena Sun Club)|9-11": {
         "history_max": 14666.0,
         "premium_peak": 14666.0
       },
       "Side Star Park|9-11": {
-        "history_max": 12117.0,
-        "premium_peak": 12117.0
+        "history_max": 12611.0,
+        "premium_peak": 12611.0
       },
       "Side Star Resort (ex Club)|9-11": {
         "history_max": 15296.0,
@@ -1516,8 +1607,8 @@
         "premium_peak": 14757.0
       },
       "Diamond Premium|9-11": {
-        "history_max": 11328.0,
-        "premium_peak": 11328.0
+        "history_max": 11349.0,
+        "premium_peak": 11349.0
       },
       "Glamour Resort & Spa|9-11": {
         "history_max": 10816.0,
@@ -1548,8 +1639,8 @@
         "premium_peak": 13576.0
       },
       "Siam Elegance|9-11": {
-        "history_max": 13124.0,
-        "premium_peak": 13124.0
+        "history_max": 13289.0,
+        "premium_peak": 13289.0
       },
       "Side Crown Palace (Side)|9-11": {
         "history_max": 12557.0,
@@ -2020,8 +2111,8 @@
         "premium_peak": 10488.0
       },
       "Turan Prince|9-11": {
-        "history_max": 15522.0,
-        "premium_peak": 15522.0
+        "history_max": 15602.0,
+        "premium_peak": 15602.0
       },
       "Utopia World|9-11": {
         "history_max": 13878.0,
@@ -2086,6 +2177,18 @@
       "Viking Star|9-11": {
         "history_max": 11039.0,
         "premium_peak": 11039.0
+      },
+      "Mandarin Resort (Bodrum)|7-9": {
+        "history_max": 8840.0,
+        "premium_peak": null
+      },
+      "Sunis Elita Beach Resort (ex Asteria Elita)|7-9": {
+        "history_max": 11145.0,
+        "premium_peak": 11145.0
+      },
+      "Mary Side (ex. Mary Palace)|9-11": {
+        "history_max": 11923.0,
+        "premium_peak": 11923.0
       }
     }
   }
