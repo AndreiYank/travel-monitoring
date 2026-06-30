@@ -702,10 +702,49 @@
       "created_at": "2026-06-30T18:44:10.510383+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-06-30_18-43_+8.1"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 6665.0,
+      "new_price": 8584.0,
+      "price_change": 1919.0,
+      "price_change_pct": 28.79219804951238,
+      "timestamp": "2026-06-30 21:06:36.000583+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-06-30T21:07:23.457538+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-06-30_21-06_+28.8"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 9531.0,
+      "new_price": 10181.0,
+      "price_change": 650.0,
+      "price_change_pct": 6.819851012485574,
+      "timestamp": "2026-06-30 21:06:36.000583+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T21:07:23.457571+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-06-30_21-06_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 9696.0,
+      "new_price": 9696.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-06-30 21:06:36.000583+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-06-30T21:07:23.457583+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-06-30_21-06_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-06-30T18:43:29.491079+00:00",
+    "last_processed_run": "2026-06-30T21:06:36.000583+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17273.0,
@@ -716,16 +755,16 @@
         "premium_peak": 12162.0
       },
       "Knossos Beach": {
-        "history_max": 17123.0,
-        "premium_peak": 17123.0
+        "history_max": 17317.0,
+        "premium_peak": 17317.0
       },
       "Kouros Palace": {
         "history_max": 12397.0,
         "premium_peak": 12397.0
       },
       "Kresten Royal Euphoria Resort (ex. Kresten Royal Villas)": {
-        "history_max": 14866.0,
-        "premium_peak": 14866.0
+        "history_max": 14868.0,
+        "premium_peak": 14868.0
       },
       "Lindian Village": {
         "history_max": 19399.0,
@@ -940,7 +979,7 @@
         "premium_peak": null
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 8415.0,
+        "history_max": 8584.0,
         "premium_peak": null
       },
       "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas": {
@@ -1108,8 +1147,8 @@
         "premium_peak": null
       },
       "Costa Lindia Blue Star": {
-        "history_max": 14161.0,
-        "premium_peak": 14161.0
+        "history_max": 14195.0,
+        "premium_peak": 14195.0
       },
       "Apollonion Asterias Resort & Spa": {
         "history_max": 13371.0,
@@ -1284,8 +1323,8 @@
         "premium_peak": 10397.0
       },
       "Rethymno Palace": {
-        "history_max": 12331.0,
-        "premium_peak": 12331.0
+        "history_max": 12658.0,
+        "premium_peak": 12658.0
       },
       "Kouros Palace Grecja, Kos, Mastichari": {
         "history_max": 10057.0,
@@ -1296,8 +1335,8 @@
         "premium_peak": 19763.0
       },
       "Grand Blue Beach": {
-        "history_max": 11214.0,
-        "premium_peak": 11214.0
+        "history_max": 11524.0,
+        "premium_peak": 11524.0
       },
       "Pilot Beach Resort": {
         "history_max": 19966.0,
@@ -1318,6 +1357,10 @@
       "Arion Palace Grecja, Kreta Wschodnia, Ierapetra": {
         "history_max": 10221.0,
         "premium_peak": 10221.0
+      },
+      "Kiani Beach": {
+        "history_max": 10986.0,
+        "premium_peak": 10986.0
       }
     }
   }
