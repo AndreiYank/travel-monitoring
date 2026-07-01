@@ -6747,10 +6747,114 @@
       "created_at": "2026-07-01T00:13:12.778341+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)_2026-07-01_00-12_comeback_18.6"
+    },
+    {
+      "hotel_name": "Crystal Aura Aqua Collection",
+      "duration_bucket": "",
+      "old_price": 8097.0,
+      "new_price": 8757.0,
+      "price_change": 660.0,
+      "price_change_pct": 8.151167098925528,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T03:51:43.815937+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Crystal Aura Aqua Collection_2026-07-01_03-50_+8.2"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8478.0,
+      "new_price": 9775.0,
+      "price_change": 1297.0,
+      "price_change_pct": 15.298419438546826,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T03:51:43.815995+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-07-01_03-50_+15.3"
+    },
+    {
+      "hotel_name": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 6566.0,
+      "new_price": 7340.0,
+      "price_change": 774.0,
+      "price_change_pct": 11.787998781602194,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T03:51:43.816010+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi_2026-07-01_03-50_+11.8"
+    },
+    {
+      "hotel_name": "Megasaray Resort Side (ex. Aska Side Grand Prestige)",
+      "duration_bucket": "",
+      "old_price": 9749.0,
+      "new_price": 10041.0,
+      "price_change": 292.0,
+      "price_change_pct": 2.995178992717202,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T03:51:43.816041+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Megasaray Resort Side (ex. Aska Side Grand Prestige)_2026-07-01_03-50_zone_out_+3.0"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "",
+      "old_price": 8321.0,
+      "new_price": 8321.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T03:51:43.816051+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez_2026-07-01_03-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Saray Regency Resort & Spa Turcja, Side, Titreyengol",
+      "duration_bucket": "",
+      "old_price": 7110.0,
+      "new_price": 7110.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T03:51:43.816059+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Saray Regency Resort & Spa Turcja, Side, Titreyengol_2026-07-01_03-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8091.0,
+      "new_price": 8091.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T03:51:43.816067+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa_2026-07-01_03-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seven Seas Palmeras Bay",
+      "duration_bucket": "",
+      "old_price": 10636.0,
+      "new_price": 9772.0,
+      "price_change": -864.0,
+      "price_change_pct": -8.123354644603234,
+      "timestamp": "2026-07-01 03:50:46.986729+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T03:51:43.816097+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seven Seas Palmeras Bay_2026-07-01_03-50_comeback_8.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T00:12:19.564699+00:00",
+    "last_processed_run": "2026-07-01T03:50:46.986729+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10551.0,
@@ -7149,8 +7253,8 @@
         "premium_peak": 10492.0
       },
       "Ramada Plaza Antalya": {
-        "history_max": 10961.0,
-        "premium_peak": 10961.0
+        "history_max": 11225.0,
+        "premium_peak": 11225.0
       },
       "Misal (ex. Nox Inn Club)": {
         "history_max": 8297.0,
@@ -7281,8 +7385,8 @@
         "premium_peak": 11386.0
       },
       "Saphir Hotel & Villas": {
-        "history_max": 10515.0,
-        "premium_peak": 10515.0
+        "history_max": 10776.0,
+        "premium_peak": 10776.0
       },
       "Linda Resort (Side)": {
         "history_max": 8841.0,
@@ -7737,7 +7841,7 @@
         "premium_peak": null
       },
       "Vita Silva": {
-        "history_max": 8761.0,
+        "history_max": 9775.0,
         "premium_peak": null
       },
       "Armas Beach": {
@@ -8153,8 +8257,8 @@
         "premium_peak": null
       },
       "Megasaray Resort Side (ex. Aska Side Grand Prestige)": {
-        "history_max": 10000.0,
-        "premium_peak": null
+        "history_max": 10041.0,
+        "premium_peak": 10041.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)": {
         "history_max": 8497.0,
