@@ -1508,10 +1508,49 @@
       "created_at": "2026-07-01T21:32:58.372237+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams|7-9_2026-07-01_21-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "7-9",
+      "old_price": 9774.0,
+      "new_price": 9774.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 23:17:19.997154+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T23:18:17.081681+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium|7-9_2026-07-01_23-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nova Life",
+      "duration_bucket": "9-11",
+      "old_price": 9905.0,
+      "new_price": 9905.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 23:17:19.997154+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T23:18:17.081706+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life|9-11_2026-07-01_23-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8548.0,
+      "new_price": 8548.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 23:17:19.997154+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T23:18:17.081718+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa|7-9_2026-07-01_23-17_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T21:32:01.566415+00:00",
+    "last_processed_run": "2026-07-01T23:17:19.997154+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3144,6 +3183,46 @@
       "Hane Sun Elite (ex Noble Palace Side)|9-11": {
         "history_max": 9999.0,
         "premium_peak": null
+      },
+      "Crystal World of Colours Comfort Collection|9-11": {
+        "history_max": 11502.0,
+        "premium_peak": 11502.0
+      },
+      "Fun & Sun Smart Hane Sun|9-11": {
+        "history_max": 10251.0,
+        "premium_peak": 10251.0
+      },
+      "Gold City|9-11": {
+        "history_max": 10103.0,
+        "premium_peak": 10103.0
+      },
+      "Lykia World & Links Golf Antalya|9-11": {
+        "history_max": 12384.0,
+        "premium_peak": 12384.0
+      },
+      "Kremlin Palace|9-11": {
+        "history_max": 13419.0,
+        "premium_peak": 13419.0
+      },
+      "Timo Deluxe Resort|9-11": {
+        "history_max": 11309.0,
+        "premium_peak": 11309.0
+      },
+      "Sy Belek Boutique Luxury|9-11": {
+        "history_max": 14675.0,
+        "premium_peak": 14675.0
+      },
+      "Selectum Family Resort (ex Letoonia Golf Resort)|9-11": {
+        "history_max": 15552.0,
+        "premium_peak": 15552.0
+      },
+      "World Star Beach Resort & Spa|9-11": {
+        "history_max": 11003.0,
+        "premium_peak": 11003.0
+      },
+      "Perre La Mer Resort & Spa (ex. La Mer)|9-11": {
+        "history_max": 11007.0,
+        "premium_peak": 11007.0
       }
     }
   }
