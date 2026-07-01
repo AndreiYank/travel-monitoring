@@ -4797,10 +4797,101 @@
       "created_at": "2026-07-01T14:22:06.294790+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Elite Casa Del Mar Beach_2026-07-01_14-21_comeback_23.2"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 9006.0,
+      "new_price": 8199.0,
+      "price_change": -807.0,
+      "price_change_pct": -8.960692871419054,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-01T17:20:54.244052+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-07-01_17-20_-9.0"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 6741.0,
+      "new_price": 8186.0,
+      "price_change": 1445.0,
+      "price_change_pct": 21.435988725708352,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T17:20:54.244081+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-01_17-20_+21.4"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 6498.0,
+      "new_price": 7160.0,
+      "price_change": 662.0,
+      "price_change_pct": 10.187750076946752,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T17:20:54.244112+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-07-01_17-20_+10.2"
+    },
+    {
+      "hotel_name": "Dreams Vacation Sharm Resort",
+      "duration_bucket": "",
+      "old_price": 8297.0,
+      "new_price": 8297.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T17:20:54.244136+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Sharm Resort_2026-07-01_17-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Belvedere",
+      "duration_bucket": "",
+      "old_price": 8897.0,
+      "new_price": 10657.0,
+      "price_change": 1760.0,
+      "price_change_pct": 19.78194897156345,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T17:20:54.244147+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Belvedere_2026-07-01_17-20_zone_out_+19.8"
+    },
+    {
+      "hotel_name": "Jaz Makadi Saraya (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 8622.0,
+      "new_price": 10494.0,
+      "price_change": 1872.0,
+      "price_change_pct": 21.711899791231733,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T17:20:54.244156+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Saraya (ex Iberotel)_2026-07-01_17-20_zone_out_+21.7"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 14087.0,
+      "new_price": 9011.0,
+      "price_change": -5076.0,
+      "price_change_pct": -36.033222119684815,
+      "timestamp": "2026-07-01 17:20:14.599710+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T17:20:54.244182+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-01_17-20_comeback_36.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T14:21:29.730868+00:00",
+    "last_processed_run": "2026-07-01T17:20:14.599710+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,
@@ -4815,7 +4906,7 @@
         "premium_peak": 12187.0
       },
       "Sirena Beach Resort & Spa": {
-        "history_max": 9057.0,
+        "history_max": 9531.0,
         "premium_peak": null
       },
       "Jaz Sharm Dreams Resort": {
@@ -5015,12 +5106,12 @@
         "premium_peak": null
       },
       "Steigenberger Alcazar": {
-        "history_max": 13059.0,
-        "premium_peak": 13059.0
+        "history_max": 14897.0,
+        "premium_peak": 14897.0
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
-        "history_max": 9518.0,
-        "premium_peak": null
+        "history_max": 10494.0,
+        "premium_peak": 10494.0
       },
       "Jaz Makadina": {
         "history_max": 11970.0,
@@ -5063,7 +5154,7 @@
         "premium_peak": 15111.0
       },
       "Royal Brayka Beach Resort (ex Zee Brayka)": {
-        "history_max": 7457.0,
+        "history_max": 7657.0,
         "premium_peak": null
       },
       "Pickalbatros White Beach Resort": {
@@ -5087,8 +5178,8 @@
         "premium_peak": null
       },
       "Rixos Radamis Beach": {
-        "history_max": 16737.0,
-        "premium_peak": 16737.0
+        "history_max": 18747.0,
+        "premium_peak": 18747.0
       },
       "Royal Regency Club": {
         "history_max": 10045.0,
@@ -5291,7 +5382,7 @@
         "premium_peak": 14087.0
       },
       "Concorde Moreen Beach Resort & Spa": {
-        "history_max": 8073.0,
+        "history_max": 8257.0,
         "premium_peak": null
       },
       "Swissotel Sharm El Sheikh": {
