@@ -1456,10 +1456,49 @@
       "created_at": "2026-07-01T17:21:57.859257+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Timo Deluxe Resort|7-9_2026-07-01_17-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "7-9",
+      "old_price": 10625.0,
+      "new_price": 9774.0,
+      "price_change": -851.0,
+      "price_change_pct": -8.009411764705883,
+      "timestamp": "2026-07-01 19:44:34.386915+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T19:45:34.649660+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium|7-9_2026-07-01_19-44_comeback_8.0"
+    },
+    {
+      "hotel_name": "OZ Incekum Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10929.0,
+      "new_price": 9994.0,
+      "price_change": -935.0,
+      "price_change_pct": -8.555220056729802,
+      "timestamp": "2026-07-01 19:44:34.386915+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T19:45:34.649690+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "OZ Incekum Beach Resort|7-9_2026-07-01_19-44_comeback_8.6"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 10863.0,
+      "new_price": 9864.0,
+      "price_change": -999.0,
+      "price_change_pct": -9.1963545981773,
+      "timestamp": "2026-07-01 19:44:34.386915+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T19:45:34.649708+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-07-01_19-44_comeback_9.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T17:20:55.143971+00:00",
+    "last_processed_run": "2026-07-01T19:44:34.386915+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1710,8 +1749,8 @@
         "premium_peak": 12587.0
       },
       "Dizalya Palm Garden|7-9": {
-        "history_max": 10894.0,
-        "premium_peak": 10894.0
+        "history_max": 10995.0,
+        "premium_peak": 10995.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)|7-9": {
         "history_max": 12658.0,
@@ -2150,8 +2189,8 @@
         "premium_peak": null
       },
       "Side Star Elegance (ex. Asteria)|7-9": {
-        "history_max": 12462.0,
-        "premium_peak": 12462.0
+        "history_max": 12548.0,
+        "premium_peak": 12548.0
       },
       "Turunc Premium|7-9": {
         "history_max": 11818.0,
@@ -2206,8 +2245,8 @@
         "premium_peak": null
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)|7-9": {
-        "history_max": 12204.0,
-        "premium_peak": 12204.0
+        "history_max": 12220.0,
+        "premium_peak": 12220.0
       },
       "Orka Lotus Beach|7-9": {
         "history_max": 12415.0,
@@ -2234,8 +2273,8 @@
         "premium_peak": 14038.0
       },
       "The Lumos Deluxe Resort & Spa|9-11": {
-        "history_max": 12304.0,
-        "premium_peak": 12304.0
+        "history_max": 12438.0,
+        "premium_peak": 12438.0
       },
       "Crystal Prestige Pearl Collection|9-11": {
         "history_max": 14557.0,
@@ -2266,8 +2305,8 @@
         "premium_peak": 15248.0
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)|9-11": {
-        "history_max": 14758.0,
-        "premium_peak": 14758.0
+        "history_max": 14762.0,
+        "premium_peak": 14762.0
       },
       "Ulusoy Kemer Holiday Club|9-11": {
         "history_max": 15897.0,
@@ -2306,8 +2345,8 @@
         "premium_peak": 13184.0
       },
       "Limak Limra|9-11": {
-        "history_max": 15754.0,
-        "premium_peak": 15754.0
+        "history_max": 15888.0,
+        "premium_peak": 15888.0
       },
       "Saphir Resort|9-11": {
         "history_max": 14849.0,
@@ -2394,8 +2433,8 @@
         "premium_peak": 14543.0
       },
       "Sentido Lycus Beach (ex. Lti)|9-11": {
-        "history_max": 10884.0,
-        "premium_peak": 10884.0
+        "history_max": 10888.0,
+        "premium_peak": 10888.0
       },
       "Labranda Alantur Resort|9-11": {
         "history_max": 12757.0,
@@ -2430,8 +2469,8 @@
         "premium_peak": 10435.0
       },
       "Fame Residence (Kemer)|7-9": {
-        "history_max": 10186.0,
-        "premium_peak": 10186.0
+        "history_max": 10272.0,
+        "premium_peak": 10272.0
       },
       "Mira Meridia Beach Resort|7-9": {
         "history_max": 9689.0,
@@ -3002,8 +3041,8 @@
         "premium_peak": null
       },
       "Ma Biche Kemer by Werde Hotels|7-9": {
-        "history_max": 10728.0,
-        "premium_peak": 10728.0
+        "history_max": 11088.0,
+        "premium_peak": 11088.0
       },
       "Side Star Resort (ex Club)|7-9": {
         "history_max": 12570.0,
@@ -3084,6 +3123,10 @@
       "Solivia (Ex. Titan Select)|9-11": {
         "history_max": 9689.0,
         "premium_peak": null
+      },
+      "Selectum Family Comfort Side (ex. Lyra Resort)|9-11": {
+        "history_max": 13545.0,
+        "premium_peak": 13545.0
       }
     }
   }

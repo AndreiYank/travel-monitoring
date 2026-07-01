@@ -4888,10 +4888,75 @@
       "created_at": "2026-07-01T17:20:54.244182+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-01_17-20_comeback_36.0"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 8006.0,
+      "new_price": 8917.0,
+      "price_change": 911.0,
+      "price_change_pct": 11.378965775668249,
+      "timestamp": "2026-07-01 19:43:53.382439+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T19:44:33.386001+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-07-01_19-43_+11.4"
+    },
+    {
+      "hotel_name": "Serenity Alpha Beach (ex. Serenity Makadi Beach)",
+      "duration_bucket": "",
+      "old_price": 7641.0,
+      "new_price": 8550.0,
+      "price_change": 909.0,
+      "price_change_pct": 11.896348645465253,
+      "timestamp": "2026-07-01 19:43:53.382439+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T19:44:33.386042+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alpha Beach (ex. Serenity Makadi Beach)_2026-07-01_19-43_+11.9"
+    },
+    {
+      "hotel_name": "Calimera Blend Paradise Resort",
+      "duration_bucket": "",
+      "old_price": 9405.0,
+      "new_price": 11793.0,
+      "price_change": 2388.0,
+      "price_change_pct": 25.39074960127592,
+      "timestamp": "2026-07-01 19:43:53.382439+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:33.386070+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calimera Blend Paradise Resort_2026-07-01_19-43_zone_out_+25.4"
+    },
+    {
+      "hotel_name": "Sheraton Miramar Resort (El Gouna)",
+      "duration_bucket": "",
+      "old_price": 9464.0,
+      "new_price": 10257.0,
+      "price_change": 793.0,
+      "price_change_pct": 8.379120879120878,
+      "timestamp": "2026-07-01 19:43:53.382439+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:33.386080+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sheraton Miramar Resort (El Gouna)_2026-07-01_19-43_zone_out_+8.4"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 7157.0,
+      "new_price": 7157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 19:43:53.382439+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:33.386088+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-07-01_19-43_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T17:20:14.599710+00:00",
+    "last_processed_run": "2026-07-01T19:43:53.382439+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,
@@ -5438,12 +5503,12 @@
         "premium_peak": null
       },
       "Sunrise White Hills Resort": {
-        "history_max": 14697.0,
-        "premium_peak": 14697.0
+        "history_max": 18687.0,
+        "premium_peak": 18687.0
       },
       "Calimera Blend Paradise Resort": {
-        "history_max": 10989.0,
-        "premium_peak": 10989.0
+        "history_max": 11793.0,
+        "premium_peak": 11793.0
       },
       "Domina Coral Bay Harem": {
         "history_max": 9086.0,
@@ -5574,8 +5639,8 @@
         "premium_peak": null
       },
       "Sunrise Diamond Beach Resort Grand Select": {
-        "history_max": 15457.0,
-        "premium_peak": 15457.0
+        "history_max": 17577.0,
+        "premium_peak": 17577.0
       },
       "Xanadu Club Makadi Bay": {
         "history_max": 11336.0,
@@ -5714,7 +5779,7 @@
         "premium_peak": null
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
-        "history_max": 8897.0,
+        "history_max": 9357.0,
         "premium_peak": null
       },
       "Domina Coral Bay Sultan": {

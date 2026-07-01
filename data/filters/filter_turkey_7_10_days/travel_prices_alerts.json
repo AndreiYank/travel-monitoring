@@ -9191,10 +9191,114 @@
       "created_at": "2026-07-01T17:21:17.330798+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Turunc Premium_2026-07-01_17-20_comeback_18.8"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "",
+      "old_price": 9167.0,
+      "new_price": 9917.0,
+      "price_change": 750.0,
+      "price_change_pct": 8.181520671975564,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T19:44:56.598729+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort_2026-07-01_19-43_+8.2"
+    },
+    {
+      "hotel_name": "Alba Queen",
+      "duration_bucket": "",
+      "old_price": 9746.0,
+      "new_price": 10097.0,
+      "price_change": 351.0,
+      "price_change_pct": 3.6014775292427665,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:56.598798+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alba Queen_2026-07-01_19-43_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "Aska Just in Beach Turcja, Alanya, Avsallar",
+      "duration_bucket": "",
+      "old_price": 7875.0,
+      "new_price": 7875.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:56.598810+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aska Just in Beach Turcja, Alanya, Avsallar_2026-07-01_19-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jadore Deluxe",
+      "duration_bucket": "",
+      "old_price": 7957.0,
+      "new_price": 7957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:56.598818+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jadore Deluxe_2026-07-01_19-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7443.0,
+      "new_price": 7443.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:56.598825+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-07-01_19-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mary Alanya (ex. Sirius Deluxe)",
+      "duration_bucket": "",
+      "old_price": 8720.0,
+      "new_price": 10370.0,
+      "price_change": 1650.0,
+      "price_change_pct": 18.922018348623855,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:56.598834+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Alanya (ex. Sirius Deluxe)_2026-07-01_19-43_zone_out_+18.9"
+    },
+    {
+      "hotel_name": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 8897.0,
+      "new_price": 8897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:44:56.598841+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)_2026-07-01_19-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Golden Rock Beach",
+      "duration_bucket": "",
+      "old_price": 10244.0,
+      "new_price": 8094.0,
+      "price_change": -2150.0,
+      "price_change_pct": -20.987895353377585,
+      "timestamp": "2026-07-01 19:43:53.299169+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T19:44:56.598865+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Golden Rock Beach_2026-07-01_19-43_comeback_21.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T17:20:14.504860+00:00",
+    "last_processed_run": "2026-07-01T19:43:53.299169+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10551.0,
@@ -9237,8 +9341,8 @@
         "premium_peak": 11268.0
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)": {
-        "history_max": 11614.0,
-        "premium_peak": 11614.0
+        "history_max": 11794.0,
+        "premium_peak": 11794.0
       },
       "Green Nature Resort & Spa Turcja, Marmaris": {
         "history_max": 7757.0,
@@ -9305,7 +9409,7 @@
         "premium_peak": 11732.0
       },
       "Seamelia Beach Resort & Spa": {
-        "history_max": 9589.0,
+        "history_max": 9645.0,
         "premium_peak": null
       },
       "Kaya Izmir Thermal & Convention": {
@@ -9353,8 +9457,8 @@
         "premium_peak": null
       },
       "Innvista Belek (ex. Vera Verde)": {
-        "history_max": 11708.0,
-        "premium_peak": 11708.0
+        "history_max": 11797.0,
+        "premium_peak": 11797.0
       },
       "Grand Park Lara": {
         "history_max": 10781.0,
@@ -9417,8 +9521,8 @@
         "premium_peak": 11219.0
       },
       "Duja Didim": {
-        "history_max": 11253.0,
-        "premium_peak": 11253.0
+        "history_max": 11378.0,
+        "premium_peak": 11378.0
       },
       "Side Moon Palace": {
         "history_max": 10212.0,
@@ -9521,7 +9625,7 @@
         "premium_peak": 11073.0
       },
       "Side Alegria (ex Holiday Point & Spa)": {
-        "history_max": 8988.0,
+        "history_max": 9338.0,
         "premium_peak": null
       },
       "Golden Rock Beach": {
@@ -9809,8 +9913,8 @@
         "premium_peak": 10210.0
       },
       "Mary Alanya (ex. Sirius Deluxe)": {
-        "history_max": 10155.0,
-        "premium_peak": 10155.0
+        "history_max": 10370.0,
+        "premium_peak": 10370.0
       },
       "Ring Beach Turcja, Kemer, Beldibi": {
         "history_max": 7542.0,
@@ -9949,8 +10053,8 @@
         "premium_peak": null
       },
       "Tusan Beach Resort": {
-        "history_max": 11283.0,
-        "premium_peak": 11283.0
+        "history_max": 11408.0,
+        "premium_peak": 11408.0
       },
       "Beach Club Doganay": {
         "history_max": 9664.0,
@@ -10189,8 +10293,8 @@
         "premium_peak": null
       },
       "Arin Resort Bodrum": {
-        "history_max": 11250.0,
-        "premium_peak": 11250.0
+        "history_max": 11826.0,
+        "premium_peak": 11826.0
       },
       "Washington Resort": {
         "history_max": 8897.0,
@@ -10225,8 +10329,8 @@
         "premium_peak": 10477.0
       },
       "Crystal De Luxe Comfort Collection": {
-        "history_max": 11426.0,
-        "premium_peak": 11426.0
+        "history_max": 11676.0,
+        "premium_peak": 11676.0
       },
       "Club Nena (Side)": {
         "history_max": 9377.0,
@@ -10289,7 +10393,7 @@
         "premium_peak": 10675.0
       },
       "Crowne Plaza Istanbul Harbiye": {
-        "history_max": 9352.0,
+        "history_max": 9652.0,
         "premium_peak": null
       },
       "Sural": {
@@ -10589,7 +10693,7 @@
         "premium_peak": 11264.0
       },
       "Ladonia Adakule": {
-        "history_max": 8070.0,
+        "history_max": 8418.0,
         "premium_peak": null
       },
       "Nova Life Turcja, Alanya, Konaklı": {

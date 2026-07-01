@@ -2041,10 +2041,75 @@
       "created_at": "2026-07-01T17:21:37.753904+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Armella Hill_2026-07-01_17-20_comeback_23.8"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 9333.0,
+      "new_price": 10926.0,
+      "price_change": 1593.0,
+      "price_change_pct": 17.068466730954675,
+      "timestamp": "2026-07-01 19:44:20.708044+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:45:10.747314+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-07-01_19-44_zone_out_+17.1"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9770.0,
+      "new_price": 10339.0,
+      "price_change": 569.0,
+      "price_change_pct": 5.823950870010235,
+      "timestamp": "2026-07-01 19:44:20.708044+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:45:10.747343+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-01_19-44_zone_out_+5.8"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9472.0,
+      "new_price": 10040.0,
+      "price_change": 568.0,
+      "price_change_pct": 5.996621621621621,
+      "timestamp": "2026-07-01 19:44:20.708044+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T19:45:10.747354+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-07-01_19-44_zone_out_+6.0"
+    },
+    {
+      "hotel_name": "Sunland Resort (ex. Imperial Sunland Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 12375.0,
+      "new_price": 9769.0,
+      "price_change": -2606.0,
+      "price_change_pct": -21.05858585858586,
+      "timestamp": "2026-07-01 19:44:20.708044+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T19:45:10.747376+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunland Resort (ex. Imperial Sunland Resort & Spa)_2026-07-01_19-44_comeback_21.1"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11121.0,
+      "new_price": 9882.0,
+      "price_change": -1239.0,
+      "price_change_pct": -11.141084434852981,
+      "timestamp": "2026-07-01 19:44:20.708044+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-01T19:45:10.747388+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-07-01_19-44_comeback_11.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T17:20:41.480205+00:00",
+    "last_processed_run": "2026-07-01T19:44:20.708044+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12263.0,
@@ -2135,16 +2200,16 @@
         "premium_peak": 12521.0
       },
       "Ladonia Adakule": {
-        "history_max": 9583.0,
-        "premium_peak": null
+        "history_max": 10926.0,
+        "premium_peak": 10926.0
       },
       "Seher Resort & Spa": {
         "history_max": 10881.0,
         "premium_peak": 10881.0
       },
       "Labranda TMT Bodrum Resort": {
-        "history_max": 12443.0,
-        "premium_peak": 12443.0
+        "history_max": 14843.0,
+        "premium_peak": 14843.0
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
         "history_max": 13043.0,
@@ -2239,8 +2304,8 @@
         "premium_peak": 15197.0
       },
       "Duja Didim": {
-        "history_max": 13985.0,
-        "premium_peak": 13985.0
+        "history_max": 14776.0,
+        "premium_peak": 14776.0
       },
       "Side Star Elegance (ex. Asteria)": {
         "history_max": 15516.0,
@@ -2427,8 +2492,8 @@
         "premium_peak": 14819.0
       },
       "Richmond Ephesus": {
-        "history_max": 13688.0,
-        "premium_peak": 13688.0
+        "history_max": 14172.0,
+        "premium_peak": 14172.0
       },
       "Nova Park": {
         "history_max": 14001.0,
@@ -2887,8 +2952,8 @@
         "premium_peak": 10107.0
       },
       "Unique Residence Golf Spa": {
-        "history_max": 10471.0,
-        "premium_peak": 10471.0
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
       },
       "Asteria Collection Side": {
         "history_max": 9995.0,
@@ -2899,8 +2964,8 @@
         "premium_peak": 10053.0
       },
       "Tusan Beach Resort": {
-        "history_max": 14624.0,
-        "premium_peak": 14624.0
+        "history_max": 15035.0,
+        "premium_peak": 15035.0
       },
       "Armella Hill": {
         "history_max": 11573.0,
@@ -2959,8 +3024,8 @@
         "premium_peak": 13748.0
       },
       "Azura World (ex. Wyndham Alanya)": {
-        "history_max": 13570.0,
-        "premium_peak": 13570.0
+        "history_max": 14103.0,
+        "premium_peak": 14103.0
       },
       "Turan Prince": {
         "history_max": 15497.0,
@@ -3031,8 +3096,8 @@
         "premium_peak": 10247.0
       },
       "Club Atlantis Resort": {
-        "history_max": 13848.0,
-        "premium_peak": 13848.0
+        "history_max": 14312.0,
+        "premium_peak": 14312.0
       },
       "Alba Queen": {
         "history_max": 13628.0,
@@ -3091,8 +3156,8 @@
         "premium_peak": 13096.0
       },
       "Signature Blue Resort (ex. Grand Ozcelik)": {
-        "history_max": 10343.0,
-        "premium_peak": 10343.0
+        "history_max": 11088.0,
+        "premium_peak": 11088.0
       },
       "Diamond De Luxe ( Colakli)": {
         "history_max": 15313.0,
@@ -3235,8 +3300,8 @@
         "premium_peak": 13734.0
       },
       "Club Yali Hotels & Resort": {
-        "history_max": 13368.0,
-        "premium_peak": 13368.0
+        "history_max": 15286.0,
+        "premium_peak": 15286.0
       },
       "Club Side Coast": {
         "history_max": 9387.0,
