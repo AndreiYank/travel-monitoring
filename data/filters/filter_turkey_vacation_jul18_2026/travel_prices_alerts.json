@@ -1495,10 +1495,23 @@
       "created_at": "2026-07-01T19:45:34.649708+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-07-01_19-44_comeback_9.2"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "7-9",
+      "old_price": 8794.0,
+      "new_price": 8794.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 21:32:01.566415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T21:32:58.372237+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams|7-9_2026-07-01_21-32_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T19:44:34.386915+00:00",
+    "last_processed_run": "2026-07-01T21:32:01.566415+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3127,6 +3140,10 @@
       "Selectum Family Comfort Side (ex. Lyra Resort)|9-11": {
         "history_max": 13545.0,
         "premium_peak": 13545.0
+      },
+      "Hane Sun Elite (ex Noble Palace Side)|9-11": {
+        "history_max": 9999.0,
+        "premium_peak": null
       }
     }
   }
