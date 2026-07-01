@@ -1001,10 +1001,88 @@
       "created_at": "2026-07-01T12:06:32.108135+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-07-01_12-05_comeback_10.8"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 8414.0,
+      "new_price": 9114.0,
+      "price_change": 700.0,
+      "price_change_pct": 8.319467554076539,
+      "timestamp": "2026-07-01 14:22:39.433091+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T14:23:21.572183+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-07-01_14-22_+8.3"
+    },
+    {
+      "hotel_name": "Serita Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 7725.0,
+      "new_price": 9333.0,
+      "price_change": 1608.0,
+      "price_change_pct": 20.815533980582522,
+      "timestamp": "2026-07-01 14:22:39.433091+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T14:23:21.572212+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serita Beach Grecja, Kreta Wschodnia, Anissaras_2026-07-01_14-22_+20.8"
+    },
+    {
+      "hotel_name": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos",
+      "duration_bucket": "",
+      "old_price": 8694.0,
+      "new_price": 9537.0,
+      "price_change": 843.0,
+      "price_change_pct": 9.696342305037957,
+      "timestamp": "2026-07-01 14:22:39.433091+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-01T14:23:21.572225+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-07-01_14-22_+9.7"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10457.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.087044739778837,
+      "timestamp": "2026-07-01 14:22:39.433091+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:21.572241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-07-01_14-22_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Bella Beach Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 9314.0,
+      "new_price": 10118.0,
+      "price_change": 804.0,
+      "price_change_pct": 8.632166630878247,
+      "timestamp": "2026-07-01 14:22:39.433091+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:21.572250+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bella Beach Grecja, Kreta Wschodnia, Anissaras_2026-07-01_14-22_zone_out_+8.6"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 9777.0,
+      "new_price": 10177.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.091234530019433,
+      "timestamp": "2026-07-01 14:22:39.433091+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:21.572258+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-07-01_14-22_zone_out_+4.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T12:05:47.182829+00:00",
+    "last_processed_run": "2026-07-01T14:22:39.433091+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17273.0,
@@ -1015,8 +1093,8 @@
         "premium_peak": 12162.0
       },
       "Knossos Beach": {
-        "history_max": 17483.0,
-        "premium_peak": 17483.0
+        "history_max": 17896.0,
+        "premium_peak": 17896.0
       },
       "Kouros Palace": {
         "history_max": 12397.0,
@@ -1031,8 +1109,8 @@
         "premium_peak": 19399.0
       },
       "Lindos Breeze Beach": {
-        "history_max": 13395.0,
-        "premium_peak": 13395.0
+        "history_max": 13795.0,
+        "premium_peak": 13795.0
       },
       "Lindos Imperial Resort & Spa": {
         "history_max": 13897.0,
@@ -1403,12 +1481,12 @@
         "premium_peak": 12157.0
       },
       "Ammos (Mastichari) Grecja, Kos, Mastichari": {
-        "history_max": 9857.0,
-        "premium_peak": null
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Costa Lindia Blue Star": {
-        "history_max": 14209.0,
-        "premium_peak": 14209.0
+        "history_max": 14237.0,
+        "premium_peak": 14237.0
       },
       "Apollonion Asterias Resort & Spa": {
         "history_max": 13374.0,
@@ -1447,8 +1525,8 @@
         "premium_peak": 12740.0
       },
       "Blue Marine Resort & SPA": {
-        "history_max": 15380.0,
-        "premium_peak": 15380.0
+        "history_max": 15620.0,
+        "premium_peak": 15620.0
       },
       "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)": {
         "history_max": 14549.0,
@@ -1499,8 +1577,8 @@
         "premium_peak": null
       },
       "Alia Palace": {
-        "history_max": 18617.0,
-        "premium_peak": 18617.0
+        "history_max": 18677.0,
+        "premium_peak": 18677.0
       },
       "Aldemar Olympian Village": {
         "history_max": 12589.0,
@@ -1547,8 +1625,8 @@
         "premium_peak": 10850.0
       },
       "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios": {
-        "history_max": 10121.0,
-        "premium_peak": 10121.0
+        "history_max": 10405.0,
+        "premium_peak": 10405.0
       },
       "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia": {
         "history_max": 10834.0,
@@ -1639,8 +1717,8 @@
         "premium_peak": 19479.0
       },
       "Sandy Villas Resort (ex. Kairaba Sandy Villas)": {
-        "history_max": 11099.0,
-        "premium_peak": 11099.0
+        "history_max": 11499.0,
+        "premium_peak": 11499.0
       },
       "Santa Marina Pearl Grecja, Kreta, Agia Marina": {
         "history_max": 10257.0,
@@ -1653,6 +1731,10 @@
       "Zante Park Resort & SPA - BW Premier Collection": {
         "history_max": 11357.0,
         "premium_peak": 11357.0
+      },
+      "Atlantica Porto Bello Royal Grecja, kos, Kardamaina": {
+        "history_max": 10257.0,
+        "premium_peak": 10257.0
       }
     }
   }

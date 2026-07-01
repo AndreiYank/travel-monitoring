@@ -1287,10 +1287,101 @@
       "created_at": "2026-07-01T12:06:03.009024+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Grand Pasa|7-9_2026-07-01_12-05_comeback_10.6"
+    },
+    {
+      "hotel_name": "Aydinbey Gold Dreams",
+      "duration_bucket": "7-9",
+      "old_price": 9518.0,
+      "new_price": 10518.0,
+      "price_change": 1000.0,
+      "price_change_pct": 10.506408909434755,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095377+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Gold Dreams|7-9_2026-07-01_14-22_zone_out_+10.5"
+    },
+    {
+      "hotel_name": "Grand Belish",
+      "duration_bucket": "7-9",
+      "old_price": 9896.0,
+      "new_price": 10596.0,
+      "price_change": 700.0,
+      "price_change_pct": 7.073565076798706,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095407+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Belish|7-9_2026-07-01_14-22_zone_out_+7.1"
+    },
+    {
+      "hotel_name": "Grand Kaptan",
+      "duration_bucket": "7-9",
+      "old_price": 9872.0,
+      "new_price": 10851.0,
+      "price_change": 979.0,
+      "price_change_pct": 9.916936790923824,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095419+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kaptan|7-9_2026-07-01_14-22_zone_out_+9.9"
+    },
+    {
+      "hotel_name": "Grand Pasa",
+      "duration_bucket": "7-9",
+      "old_price": 9417.0,
+      "new_price": 10017.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.371455877668048,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095428+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Pasa|7-9_2026-07-01_14-22_zone_out_+6.4"
+    },
+    {
+      "hotel_name": "OZ Incekum Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9994.0,
+      "new_price": 9994.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095436+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "OZ Incekum Beach Resort|7-9_2026-07-01_14-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Orange County Belek",
+      "duration_bucket": "7-9",
+      "old_price": 9790.0,
+      "new_price": 9790.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095444+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Belek|7-9_2026-07-01_14-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 9864.0,
+      "new_price": 9864.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-01 14:22:07.222701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-01T14:23:00.095451+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-07-01_14-22_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-01T12:05:13.827953+00:00",
+    "last_processed_run": "2026-07-01T14:22:07.222701+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1349,7 +1440,7 @@
         "premium_peak": 10596.0
       },
       "Ring Beach (Kemer)|7-9": {
-        "history_max": 8915.0,
+        "history_max": 9063.0,
         "premium_peak": null
       },
       "Royal Asarlik Beach|7-9": {
@@ -1609,8 +1700,8 @@
         "premium_peak": null
       },
       "Aydinbey Famous|7-9": {
-        "history_max": 12101.0,
-        "premium_peak": 12101.0
+        "history_max": 12161.0,
+        "premium_peak": 12161.0
       },
       "Aventura Park|7-9": {
         "history_max": 8897.0,
@@ -1625,8 +1716,8 @@
         "premium_peak": 15750.0
       },
       "Mary Alanya (ex. Sirius Deluxe)|9-11": {
-        "history_max": 14635.0,
-        "premium_peak": 14635.0
+        "history_max": 15240.0,
+        "premium_peak": 15240.0
       },
       "Gypsophila Holiday Village|9-11": {
         "history_max": 13645.0,
@@ -1637,8 +1728,8 @@
         "premium_peak": 13757.0
       },
       "Mandarin Resort (Bodrum)|9-11": {
-        "history_max": 12594.0,
-        "premium_peak": 12594.0
+        "history_max": 12744.0,
+        "premium_peak": 12744.0
       },
       "Lucas Didim Resort (ex. Club Tarhan Serenity)|9-11": {
         "history_max": 14557.0,
@@ -1805,8 +1896,8 @@
         "premium_peak": 13297.0
       },
       "Grand Belish|9-11": {
-        "history_max": 15084.0,
-        "premium_peak": 15084.0
+        "history_max": 15234.0,
+        "premium_peak": 15234.0
       },
       "Benata|9-11": {
         "history_max": 12697.0,
@@ -1933,7 +2024,7 @@
         "premium_peak": 12469.0
       },
       "Calido Maris|7-9": {
-        "history_max": 9844.0,
+        "history_max": 9916.0,
         "premium_peak": null
       },
       "Grand Pasa|7-9": {
@@ -1957,8 +2048,8 @@
         "premium_peak": 15897.0
       },
       "Azura World (ex. Wyndham Alanya)|9-11": {
-        "history_max": 13705.0,
-        "premium_peak": 13705.0
+        "history_max": 13775.0,
+        "premium_peak": 13775.0
       },
       "Armas Life Belek|9-11": {
         "history_max": 11201.0,
@@ -2009,8 +2100,8 @@
         "premium_peak": 10520.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)|7-9": {
-        "history_max": 12215.0,
-        "premium_peak": 12215.0
+        "history_max": 12283.0,
+        "premium_peak": 12283.0
       },
       "Lonicera Premium|7-9": {
         "history_max": 11845.0,
@@ -2065,8 +2156,8 @@
         "premium_peak": 14038.0
       },
       "The Lumos Deluxe Resort & Spa|9-11": {
-        "history_max": 12171.0,
-        "premium_peak": 12171.0
+        "history_max": 12304.0,
+        "premium_peak": 12304.0
       },
       "Crystal Prestige Pearl Collection|9-11": {
         "history_max": 14557.0,
@@ -2137,8 +2228,8 @@
         "premium_peak": 13184.0
       },
       "Limak Limra|9-11": {
-        "history_max": 15682.0,
-        "premium_peak": 15682.0
+        "history_max": 15754.0,
+        "premium_peak": 15754.0
       },
       "Saphir Resort|9-11": {
         "history_max": 14849.0,
@@ -2173,12 +2264,12 @@
         "premium_peak": 10863.0
       },
       "Kaya (Belek)|9-11": {
-        "history_max": 15502.0,
-        "premium_peak": 15502.0
+        "history_max": 15786.0,
+        "premium_peak": 15786.0
       },
       "Fame Residence Lara (Antalya)|9-11": {
-        "history_max": 15723.0,
-        "premium_peak": 15723.0
+        "history_max": 15856.0,
+        "premium_peak": 15856.0
       },
       "Side Star Beach|9-11": {
         "history_max": 15233.0,
@@ -2249,7 +2340,7 @@
         "premium_peak": 12406.0
       },
       "Club Nena (Side)|7-9": {
-        "history_max": 8992.0,
+        "history_max": 9604.0,
         "premium_peak": null
       },
       "Azura World (ex. Wyndham Alanya)|7-9": {
@@ -2633,8 +2724,8 @@
         "premium_peak": 10957.0
       },
       "Omer Prime Holiday Resort|7-9": {
-        "history_max": 11180.0,
-        "premium_peak": 11180.0
+        "history_max": 12202.0,
+        "premium_peak": 12202.0
       },
       "Akka Alinda|9-11": {
         "history_max": 15892.0,
@@ -2681,8 +2772,8 @@
         "premium_peak": 13747.0
       },
       "Seaphoria Beach Resort|7-9": {
-        "history_max": 11797.0,
-        "premium_peak": 11797.0
+        "history_max": 12297.0,
+        "premium_peak": 12297.0
       },
       "Ozkaymak Incekum|7-9": {
         "history_max": 8798.0,
@@ -2879,6 +2970,30 @@
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)|9-11": {
         "history_max": 13851.0,
         "premium_peak": 13851.0
+      },
+      "Armas Life Belek|7-9": {
+        "history_max": 10224.0,
+        "premium_peak": 10224.0
+      },
+      "Perre Delta|7-9": {
+        "history_max": 7755.0,
+        "premium_peak": null
+      },
+      "Catamaran Quality Times (ex. Catamaran Resort)|9-11": {
+        "history_max": 12285.0,
+        "premium_peak": 12285.0
+      },
+      "The Nora Hotels Family Club (Kargicak)|9-11": {
+        "history_max": 10827.0,
+        "premium_peak": 10827.0
+      },
+      "Can Garden Resort (Side)|9-11": {
+        "history_max": 13446.0,
+        "premium_peak": 13446.0
+      },
+      "Asteria Family Resort Side|9-11": {
+        "history_max": 10571.0,
+        "premium_peak": 10571.0
       }
     }
   }
