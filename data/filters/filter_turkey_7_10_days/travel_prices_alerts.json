@@ -11895,10 +11895,114 @@
       "created_at": "2026-07-02T21:08:50.993769+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Turunc Turcja, Marmaris, Turunc_2026-07-02_21-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 4941.0,
+      "new_price": 5337.0,
+      "price_change": 396.0,
+      "price_change_pct": 8.014571948998178,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-02T22:14:13.785079+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-07-02_22-13_+8.0"
+    },
+    {
+      "hotel_name": "Perre Delta Turcja, Alanya, Okurcalar",
+      "duration_bucket": "",
+      "old_price": 6161.0,
+      "new_price": 7367.0,
+      "price_change": 1206.0,
+      "price_change_pct": 19.57474435968187,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-02T22:14:13.785135+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Perre Delta Turcja, Alanya, Okurcalar_2026-07-02_22-13_+19.6"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8172.0,
+      "new_price": 8172.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T22:14:13.785165+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa_2026-07-02_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Side Coast",
+      "duration_bucket": "",
+      "old_price": 8085.0,
+      "new_price": 8085.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T22:14:13.785176+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Side Coast_2026-07-02_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fun & Sun Smart Hane Sun Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 7965.0,
+      "new_price": 7965.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T22:14:13.785184+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fun & Sun Smart Hane Sun Turcja, Side, Colakli_2026-07-02_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 7974.0,
+      "new_price": 7974.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T22:14:13.785191+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli_2026-07-02_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Port River & Spa",
+      "duration_bucket": "",
+      "old_price": 8097.0,
+      "new_price": 8097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T22:14:13.785198+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River & Spa_2026-07-02_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sural",
+      "duration_bucket": "",
+      "old_price": 9848.0,
+      "new_price": 10889.0,
+      "price_change": 1041.0,
+      "price_change_pct": 10.570674248578392,
+      "timestamp": "2026-07-02 22:13:03.919102+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T22:14:13.785207+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sural_2026-07-02_22-13_zone_out_+10.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T21:07:41.947067+00:00",
+    "last_processed_run": "2026-07-02T22:13:03.919102+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10870.0,
@@ -12873,7 +12977,7 @@
         "premium_peak": null
       },
       "Armas Green Fugla Turcja, Alanya": {
-        "history_max": 7979.0,
+        "history_max": 8028.0,
         "premium_peak": null
       },
       "Villa Side Residence": {
@@ -12973,7 +13077,7 @@
         "premium_peak": 11809.0
       },
       "Club Side Coast Turcja, Side, Colakli": {
-        "history_max": 7690.0,
+        "history_max": 8085.0,
         "premium_peak": null
       },
       "Dedeman Kemer Resort": {
@@ -13297,7 +13401,7 @@
         "premium_peak": null
       },
       "Nova Life Turcja, Alanya, Konaklı": {
-        "history_max": 7821.0,
+        "history_max": 8172.0,
         "premium_peak": null
       },
       "Megasaray Resort Side (ex. Aska Side Grand Prestige)": {
@@ -13537,8 +13641,8 @@
         "premium_peak": 11854.0
       },
       "Side Sunport (ex. Side Sungate)": {
-        "history_max": 11813.0,
-        "premium_peak": 11813.0
+        "history_max": 11868.0,
+        "premium_peak": 11868.0
       },
       "Side Crown Serenity Turcja, Side, Colakli": {
         "history_max": 8097.0,
@@ -13686,6 +13790,10 @@
       },
       "Grand Pasa Turcja, Marmaris": {
         "history_max": 8030.0,
+        "premium_peak": null
+      },
+      "Port River Turcja, Side, Titreyengol": {
+        "history_max": 8097.0,
         "premium_peak": null
       }
     }
