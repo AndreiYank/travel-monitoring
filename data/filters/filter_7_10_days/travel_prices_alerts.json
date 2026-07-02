@@ -5902,10 +5902,75 @@
       "created_at": "2026-07-02T15:20:25.986344+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Titanic Royal_2026-07-02_15-19_zone_out_+10.6"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 6067.0,
+      "new_price": 4889.0,
+      "price_change": -1178.0,
+      "price_change_pct": -19.41651557606725,
+      "timestamp": "2026-07-02 17:40:51.518593+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-02T17:41:34.707119+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-02_17-40_-19.4"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 8197.0,
+      "new_price": 7539.0,
+      "price_change": -658.0,
+      "price_change_pct": -8.02732707087959,
+      "timestamp": "2026-07-02 17:40:51.518593+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-02T17:41:34.707152+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-07-02_17-40_-8.0"
+    },
+    {
+      "hotel_name": "Titanic Palace Resort",
+      "duration_bucket": "",
+      "old_price": 8937.0,
+      "new_price": 9828.0,
+      "price_change": 891.0,
+      "price_change_pct": 9.969788519637463,
+      "timestamp": "2026-07-02 17:40:51.518593+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-02T17:41:34.707169+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Palace Resort_2026-07-02_17-40_+10.0"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa",
+      "duration_bucket": "",
+      "old_price": 8857.0,
+      "new_price": 8857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 17:40:51.518593+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T17:41:34.707195+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa_2026-07-02_17-40_zone_out_gone"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 13167.0,
+      "price_change": 3710.0,
+      "price_change_pct": 39.23019985196151,
+      "timestamp": "2026-07-02 17:40:51.518593+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T17:41:34.707206+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-02_17-40_zone_out_+39.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T15:19:45.934395+00:00",
+    "last_processed_run": "2026-07-02T17:40:51.518593+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,

@@ -2795,10 +2795,62 @@
       "created_at": "2026-07-02T15:21:13.167136+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galeri Resort_2026-07-02_15-20_comeback_17.6"
+    },
+    {
+      "hotel_name": "Aventura Park",
+      "duration_bucket": "",
+      "old_price": 9157.0,
+      "new_price": 10697.0,
+      "price_change": 1540.0,
+      "price_change_pct": 16.817735066069673,
+      "timestamp": "2026-07-02 17:41:20.967456+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T17:42:09.433844+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aventura Park_2026-07-02_17-41_zone_out_+16.8"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9864.0,
+      "new_price": 10106.0,
+      "price_change": 242.0,
+      "price_change_pct": 2.453365774533658,
+      "timestamp": "2026-07-02 17:41:20.967456+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T17:42:09.433872+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-07-02_17-41_zone_out_+2.5"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10881.0,
+      "new_price": 9658.0,
+      "price_change": -1223.0,
+      "price_change_pct": -11.239775755904788,
+      "timestamp": "2026-07-02 17:41:20.967456+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T17:42:09.433897+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-07-02_17-41_comeback_11.2"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 11327.0,
+      "new_price": 9976.0,
+      "price_change": -1351.0,
+      "price_change_pct": -11.927253465171713,
+      "timestamp": "2026-07-02 17:41:20.967456+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T17:42:09.433912+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-07-02_17-41_comeback_11.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T15:20:16.682779+00:00",
+    "last_processed_run": "2026-07-02T17:41:20.967456+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12708.0,
@@ -2917,8 +2969,8 @@
         "premium_peak": 12249.0
       },
       "Selectum Colours Side": {
-        "history_max": 10872.0,
-        "premium_peak": 10872.0
+        "history_max": 11183.0,
+        "premium_peak": 11183.0
       },
       "Kremlin Palace": {
         "history_max": 13577.0,
@@ -3113,8 +3165,8 @@
         "premium_peak": 12654.0
       },
       "Side Mare Resort": {
-        "history_max": 15100.0,
-        "premium_peak": 15100.0
+        "history_max": 15590.0,
+        "premium_peak": 15590.0
       },
       "Galeri Resort": {
         "history_max": 12009.0,
@@ -3141,8 +3193,8 @@
         "premium_peak": 11757.0
       },
       "Laur Experience & Elegance": {
-        "history_max": 15049.0,
-        "premium_peak": 15049.0
+        "history_max": 15492.0,
+        "premium_peak": 15492.0
       },
       "Rai Foresta Tekirova": {
         "history_max": 15404.0,
@@ -3245,8 +3297,8 @@
         "premium_peak": 12357.0
       },
       "PrimaSol Telatiye Resort": {
-        "history_max": 11557.0,
-        "premium_peak": 11557.0
+        "history_max": 12297.0,
+        "premium_peak": 12297.0
       },
       "Pirates Beach Club": {
         "history_max": 14953.0,
@@ -3377,8 +3429,8 @@
         "premium_peak": 10693.0
       },
       "Limak Limra": {
-        "history_max": 15071.0,
-        "premium_peak": 15071.0
+        "history_max": 15580.0,
+        "premium_peak": 15580.0
       },
       "Seaphoria Beach Resort": {
         "history_max": 15543.0,
@@ -3693,8 +3745,8 @@
         "premium_peak": 13511.0
       },
       "Aventura Park": {
-        "history_max": 10357.0,
-        "premium_peak": 10357.0
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Vikingen Infinity Resort & Spa": {
         "history_max": 13157.0,
@@ -3909,8 +3961,8 @@
         "premium_peak": 13937.0
       },
       "Concordia Celes Beach": {
-        "history_max": 10519.0,
-        "premium_peak": 10519.0
+        "history_max": 11691.0,
+        "premium_peak": 11691.0
       },
       "Terrace Beach Resort (Side)": {
         "history_max": 14327.0,
@@ -4053,8 +4105,8 @@
         "premium_peak": 15266.0
       },
       "Eftalia Sol": {
-        "history_max": 15262.0,
-        "premium_peak": 15262.0
+        "history_max": 15488.0,
+        "premium_peak": 15488.0
       },
       "Ramada Plaza Antalya": {
         "history_max": 15004.0,
@@ -4185,8 +4237,8 @@
         "premium_peak": 14760.0
       },
       "Royal Seginus": {
-        "history_max": 15272.0,
-        "premium_peak": 15272.0
+        "history_max": 15523.0,
+        "premium_peak": 15523.0
       }
     }
   }
