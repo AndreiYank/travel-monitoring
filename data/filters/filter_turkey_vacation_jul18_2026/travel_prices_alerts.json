@@ -1612,10 +1612,49 @@
       "created_at": "2026-07-02T06:45:57.320380+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Timo Deluxe Resort|7-9_2026-07-02_06-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9090.0,
+      "new_price": 9090.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 10:04:23.570732+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T10:05:17.771977+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa|7-9_2026-07-02_10-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Kolibri Prestige & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9666.0,
+      "new_price": 9666.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 10:04:23.570732+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T10:05:17.771999+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kolibri Prestige & Spa|7-9_2026-07-02_10-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9063.0,
+      "new_price": 9063.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 10:04:23.570732+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T10:05:17.772007+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)|7-9_2026-07-02_10-04_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T06:45:05.097287+00:00",
+    "last_processed_run": "2026-07-02T10:04:23.570732+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1866,8 +1905,8 @@
         "premium_peak": 12587.0
       },
       "Dizalya Palm Garden|7-9": {
-        "history_max": 10995.0,
-        "premium_peak": 10995.0
+        "history_max": 11310.0,
+        "premium_peak": 11310.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)|7-9": {
         "history_max": 12658.0,
@@ -1898,8 +1937,8 @@
         "premium_peak": 11570.0
       },
       "Selectum Collection Bodrum|7-9": {
-        "history_max": 12074.0,
-        "premium_peak": 12074.0
+        "history_max": 12272.0,
+        "premium_peak": 12272.0
       },
       "Seven For Life Thermal|7-9": {
         "history_max": 8145.0,
@@ -2062,8 +2101,8 @@
         "premium_peak": 14097.0
       },
       "Richmond Ephesus|9-11": {
-        "history_max": 14172.0,
-        "premium_peak": 14172.0
+        "history_max": 14874.0,
+        "premium_peak": 14874.0
       },
       "Rai Foresta Tekirova|9-11": {
         "history_max": 15242.0,
@@ -3288,6 +3327,14 @@
       "Perre La Mer Resort & Spa (ex. La Mer)|9-11": {
         "history_max": 11007.0,
         "premium_peak": 11007.0
+      },
+      "Asteria Collection Side|7-9": {
+        "history_max": 9369.0,
+        "premium_peak": null
+      },
+      "Prestige Alanya|9-11": {
+        "history_max": 8703.0,
+        "premium_peak": null
       }
     }
   }

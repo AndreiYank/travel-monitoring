@@ -1170,10 +1170,75 @@
       "created_at": "2026-07-02T02:28:58.465687+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-07-02_02-28_zone_out_+9.6"
+    },
+    {
+      "hotel_name": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 8657.0,
+      "price_change": -1000.0,
+      "price_change_pct": -10.355182768975872,
+      "timestamp": "2026-07-02 10:04:57.794931+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-02T10:05:40.648461+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia_2026-07-02_10-04_-10.4"
+    },
+    {
+      "hotel_name": "Cabana Beach Grecja, Kos, Kardamena",
+      "duration_bucket": "",
+      "old_price": 9814.0,
+      "new_price": 10439.0,
+      "price_change": 625.0,
+      "price_change_pct": 6.368453230079478,
+      "timestamp": "2026-07-02 10:04:57.794931+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T10:05:40.648506+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cabana Beach Grecja, Kos, Kardamena_2026-07-02_10-04_zone_out_+6.4"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9837.0,
+      "new_price": 10258.0,
+      "price_change": 421.0,
+      "price_change_pct": 4.279760089458168,
+      "timestamp": "2026-07-02 10:04:57.794931+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T10:05:40.648516+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-07-02_10-04_zone_out_+4.3"
+    },
+    {
+      "hotel_name": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria",
+      "duration_bucket": "",
+      "old_price": 9401.0,
+      "new_price": 10492.0,
+      "price_change": 1091.0,
+      "price_change_pct": 11.605148388469312,
+      "timestamp": "2026-07-02 10:04:57.794931+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T10:05:40.648523+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-07-02_10-04_zone_out_+11.6"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 10771.0,
+      "new_price": 7887.0,
+      "price_change": -2884.0,
+      "price_change_pct": -26.775601151239435,
+      "timestamp": "2026-07-02 10:04:57.794931+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T10:05:40.648541+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-07-02_10-04_comeback_26.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T06:45:38.139233+00:00",
+    "last_processed_run": "2026-07-02T10:04:57.794931+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17273.0,
@@ -1424,8 +1489,8 @@
         "premium_peak": 13263.0
       },
       "Zeus Eleva Mirabello Bay": {
-        "history_max": 13394.0,
-        "premium_peak": 13394.0
+        "history_max": 13404.0,
+        "premium_peak": 13404.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
         "history_max": 8509.0,
@@ -1516,8 +1581,8 @@
         "premium_peak": 14807.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo)": {
-        "history_max": 16786.0,
-        "premium_peak": 16786.0
+        "history_max": 16792.0,
+        "premium_peak": 16792.0
       },
       "Fodele Beach & Water Park Holiday Resort": {
         "history_max": 18623.0,
@@ -1592,8 +1657,8 @@
         "premium_peak": 16304.0
       },
       "Bella Beach": {
-        "history_max": 11450.0,
-        "premium_peak": 11450.0
+        "history_max": 11942.0,
+        "premium_peak": 11942.0
       },
       "Asterias Beach Resort": {
         "history_max": 12020.0,
@@ -1616,8 +1681,8 @@
         "premium_peak": 12740.0
       },
       "Blue Marine Resort & SPA": {
-        "history_max": 15620.0,
-        "premium_peak": 15620.0
+        "history_max": 15860.0,
+        "premium_peak": 15860.0
       },
       "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)": {
         "history_max": 14549.0,
@@ -1684,12 +1749,12 @@
         "premium_peak": 18877.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
-        "history_max": 10457.0,
-        "premium_peak": 10457.0
+        "history_max": 10492.0,
+        "premium_peak": 10492.0
       },
       "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
-        "history_max": 10027.0,
-        "premium_peak": 10027.0
+        "history_max": 10258.0,
+        "premium_peak": 10258.0
       },
       "Atlantica Ocean Beach Resort (ex. Creta Princess by Atlantica)": {
         "history_max": 19679.0,
@@ -1712,8 +1777,8 @@
         "premium_peak": 12076.0
       },
       "Mare blue (ex. Sunshine Crete Beach)": {
-        "history_max": 10850.0,
-        "premium_peak": 10850.0
+        "history_max": 11054.0,
+        "premium_peak": 11054.0
       },
       "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios": {
         "history_max": 10721.0,
