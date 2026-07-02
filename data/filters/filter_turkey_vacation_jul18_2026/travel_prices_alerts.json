@@ -1768,10 +1768,62 @@
       "created_at": "2026-07-02T12:17:54.381461+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Royal Asarlik Beach|7-9_2026-07-02_12-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Belish",
+      "duration_bucket": "7-9",
+      "old_price": 9996.0,
+      "new_price": 10596.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.002400960384153,
+      "timestamp": "2026-07-02 15:20:27.020797+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T15:21:28.026572+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Belish|7-9_2026-07-02_15-20_zone_out_+6.0"
+    },
+    {
+      "hotel_name": "Seven For Life Thermal",
+      "duration_bucket": "7-9",
+      "old_price": 9081.0,
+      "new_price": 9081.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 15:20:27.020797+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T15:21:28.026604+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seven For Life Thermal|7-9_2026-07-02_15-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 10409.0,
+      "new_price": 9309.0,
+      "price_change": -1100.0,
+      "price_change_pct": -10.567777884523009,
+      "timestamp": "2026-07-02 15:20:27.020797+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T15:21:28.026631+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-07-02_15-20_comeback_10.6"
+    },
+    {
+      "hotel_name": "Grand Pasa",
+      "duration_bucket": "7-9",
+      "old_price": 10530.0,
+      "new_price": 9417.0,
+      "price_change": -1113.0,
+      "price_change_pct": -10.56980056980057,
+      "timestamp": "2026-07-02 15:20:27.020797+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T15:21:28.026649+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Pasa|7-9_2026-07-02_15-20_comeback_10.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T12:16:54.195299+00:00",
+    "last_processed_run": "2026-07-02T15:20:27.020797+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3066,8 +3118,8 @@
         "premium_peak": null
       },
       "Terrace Beach Resort (Side)|7-9": {
-        "history_max": 10940.0,
-        "premium_peak": 10940.0
+        "history_max": 11334.0,
+        "premium_peak": 11334.0
       },
       "Sunmelia Beach Resort & Spa|7-9": {
         "history_max": 9835.0,
@@ -3150,8 +3202,8 @@
         "premium_peak": 14228.0
       },
       "Terrace Beach Resort (Side)|9-11": {
-        "history_max": 13034.0,
-        "premium_peak": 13034.0
+        "history_max": 13652.0,
+        "premium_peak": 13652.0
       },
       "Dream World Aqua|9-11": {
         "history_max": 15850.0,
@@ -3460,6 +3512,30 @@
       "Aydinbey Gold Dreams|9-11": {
         "history_max": 14038.0,
         "premium_peak": 14038.0
+      },
+      "Orange County Alanya|7-9": {
+        "history_max": 10503.0,
+        "premium_peak": 10503.0
+      },
+      "Seamelia Beach Resort & Spa|7-9": {
+        "history_max": 10974.0,
+        "premium_peak": 10974.0
+      },
+      "Ozcelik|7-9": {
+        "history_max": 12385.0,
+        "premium_peak": 12385.0
+      },
+      "Grand Park Lara|9-11": {
+        "history_max": 12515.0,
+        "premium_peak": 12515.0
+      },
+      "M. C. Arancia Resort|9-11": {
+        "history_max": 11574.0,
+        "premium_peak": 11574.0
+      },
+      "Ozcelik|9-11": {
+        "history_max": 15830.0,
+        "premium_peak": 15830.0
       }
     }
   }
