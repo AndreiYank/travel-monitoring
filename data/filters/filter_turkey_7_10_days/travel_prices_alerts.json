@@ -9542,14 +9542,105 @@
       "created_at": "2026-07-02T02:27:58.422730+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Washington Resort Turcja, Side, Kizilagac_2026-07-02_02-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunmelia Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8151.0,
+      "new_price": 8886.0,
+      "price_change": 735.0,
+      "price_change_pct": 9.017298490982702,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-02T06:45:25.647431+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunmelia Beach Resort & Spa_2026-07-02_06-44_+9.0"
+    },
+    {
+      "hotel_name": "Holiday Park Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 8066.0,
+      "new_price": 8066.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T06:45:25.647490+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)_2026-07-02_06-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jadore Deluxe Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 8057.0,
+      "new_price": 8057.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T06:45:25.647500+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jadore Deluxe Turcja, Side_2026-07-02_06-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Palemon Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9335.0,
+      "new_price": 10404.0,
+      "price_change": 1069.0,
+      "price_change_pct": 11.451526513122657,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T06:45:25.647526+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palemon Resort & Spa_2026-07-02_06-44_zone_out_+11.5"
+    },
+    {
+      "hotel_name": "Seamelia Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9554.0,
+      "new_price": 10019.0,
+      "price_change": 465.0,
+      "price_change_pct": 4.867071383713628,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-02T06:45:25.647535+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seamelia Beach Resort & Spa_2026-07-02_06-44_zone_out_+4.9"
+    },
+    {
+      "hotel_name": "Rixos Elysium Suites",
+      "duration_bucket": "",
+      "old_price": 10136.0,
+      "new_price": 8686.0,
+      "price_change": -1450.0,
+      "price_change_pct": -14.30544593528019,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T06:45:25.647562+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rixos Elysium Suites_2026-07-02_06-44_comeback_14.3"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "",
+      "old_price": 11332.0,
+      "new_price": 9736.0,
+      "price_change": -1596.0,
+      "price_change_pct": -14.084009883515709,
+      "timestamp": "2026-07-02 06:44:27.769837+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-02T06:45:25.647575+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort_2026-07-02_06-44_comeback_14.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T02:26:56.780969+00:00",
+    "last_processed_run": "2026-07-02T06:44:27.769837+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
-        "history_max": 10551.0,
-        "premium_peak": 10551.0
+        "history_max": 10870.0,
+        "premium_peak": 10870.0
       },
       "Hotel Su": {
         "history_max": 11477.0,
@@ -9656,8 +9747,8 @@
         "premium_peak": 11732.0
       },
       "Seamelia Beach Resort & Spa": {
-        "history_max": 9645.0,
-        "premium_peak": null
+        "history_max": 10019.0,
+        "premium_peak": 10019.0
       },
       "Kaya Izmir Thermal & Convention": {
         "history_max": 10451.0,
@@ -9988,8 +10079,8 @@
         "premium_peak": 11387.0
       },
       "Palemon Resort & Spa": {
-        "history_max": 9779.0,
-        "premium_peak": null
+        "history_max": 10404.0,
+        "premium_peak": 10404.0
       },
       "Port River & Spa": {
         "history_max": 9297.0,
@@ -10336,7 +10427,7 @@
         "premium_peak": 11273.0
       },
       "Calido Sol (Alanya)": {
-        "history_max": 8664.0,
+        "history_max": 8710.0,
         "premium_peak": null
       },
       "Calido Maris": {
@@ -10368,7 +10459,7 @@
         "premium_peak": 10805.0
       },
       "Timo Deluxe Resort": {
-        "history_max": 9917.0,
+        "history_max": 9920.0,
         "premium_peak": null
       },
       "Benata": {
@@ -10672,8 +10763,8 @@
         "premium_peak": 10853.0
       },
       "Crystal Waterworld Aqua Collection": {
-        "history_max": 11429.0,
-        "premium_peak": 11429.0
+        "history_max": 11523.0,
+        "premium_peak": 11523.0
       },
       "Sun Star Resort": {
         "history_max": 8425.0,
@@ -11208,7 +11299,7 @@
         "premium_peak": 10929.0
       },
       "Holiday Park Resort (Okurcalar) Turcja, Alanya, Okurcalar": {
-        "history_max": 6520.0,
+        "history_max": 7815.0,
         "premium_peak": null
       },
       "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar": {
