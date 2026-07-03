@@ -13598,10 +13598,101 @@
       "created_at": "2026-07-03T16:06:00.242630+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tusan Beach Resort_2026-07-03_16-04_comeback_13.3"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 9874.0,
+      "new_price": 8780.0,
+      "price_change": -1094.0,
+      "price_change_pct": -11.079602997771925,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-03T17:28:55.125949+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-07-03_17-27_-11.1"
+    },
+    {
+      "hotel_name": "Seaphoria Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9477.0,
+      "new_price": 8385.0,
+      "price_change": -1092.0,
+      "price_change_pct": -11.522633744855968,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-03T17:28:55.125997+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaphoria Beach Resort_2026-07-03_17-27_-11.5"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 6637.0,
+      "new_price": 7447.0,
+      "price_change": 810.0,
+      "price_change_pct": 12.204309175832455,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T17:28:55.126027+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-07-03_17-27_+12.2"
+    },
+    {
+      "hotel_name": "Aydinbey Gold Dreams",
+      "duration_bucket": "",
+      "old_price": 9212.0,
+      "new_price": 8298.0,
+      "price_change": -914.0,
+      "price_change_pct": -9.921841076856275,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-03T17:28:55.126047+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Gold Dreams_2026-07-03_17-27_-9.9"
+    },
+    {
+      "hotel_name": "Fame Residence (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9915.0,
+      "new_price": 10041.0,
+      "price_change": 126.0,
+      "price_change_pct": 1.2708018154311649,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T17:28:55.126073+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fame Residence (Kemer)_2026-07-03_17-27_zone_out_+1.3"
+    },
+    {
+      "hotel_name": "Sealight Resort (ex Otium Sealight Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10001.0,
+      "price_change": 204.0,
+      "price_change_pct": 2.082270082678371,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T17:28:55.126083+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-07-03_17-27_zone_out_+2.1"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 10406.0,
+      "new_price": 8993.0,
+      "price_change": -1413.0,
+      "price_change_pct": -13.57870459350375,
+      "timestamp": "2026-07-03 17:27:38.981382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T17:28:55.126109+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-07-03_17-27_comeback_13.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T16:04:33.364851+00:00",
+    "last_processed_run": "2026-07-03T17:27:38.981382+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10870.0,
@@ -14276,7 +14367,7 @@
         "premium_peak": 10427.0
       },
       "Mandarin Resort (Bodrum) Turcja, Bodrum": {
-        "history_max": 7570.0,
+        "history_max": 7683.0,
         "premium_peak": null
       },
       "Dream World Aqua": {
@@ -15422,6 +15513,10 @@
       "Royal Alhambra Palace": {
         "history_max": 11637.0,
         "premium_peak": 11637.0
+      },
+      "Prime Beach": {
+        "history_max": 11580.0,
+        "premium_peak": 11580.0
       }
     }
   }
