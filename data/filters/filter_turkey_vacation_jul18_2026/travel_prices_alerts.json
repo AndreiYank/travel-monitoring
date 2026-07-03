@@ -2080,10 +2080,49 @@
       "created_at": "2026-07-03T02:11:39.051812+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-07-03_02-10_comeback_8.7"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8172.0,
+      "new_price": 8172.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 05:58:41.340148+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T05:59:43.008592+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa|7-9_2026-07-03_05-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 9922.0,
+      "new_price": 9922.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 05:58:41.340148+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T05:59:43.008621+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-07-03_05-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "9-11",
+      "old_price": 11043.0,
+      "new_price": 9904.0,
+      "price_change": -1139.0,
+      "price_change_pct": -10.314226206646744,
+      "timestamp": "2026-07-03 05:58:41.340148+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T05:59:43.008650+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa|9-11_2026-07-03_05-58_comeback_10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T02:10:37.313174+00:00",
+    "last_processed_run": "2026-07-03T05:58:41.340148+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -2414,16 +2453,16 @@
         "premium_peak": 13897.0
       },
       "Marti Myra|9-11": {
-        "history_max": 15753.0,
-        "premium_peak": 15753.0
+        "history_max": 15833.0,
+        "premium_peak": 15833.0
       },
       "Mary Alanya (ex. Sirius Deluxe)|9-11": {
         "history_max": 15240.0,
         "premium_peak": 15240.0
       },
       "Gypsophila Holiday Village|9-11": {
-        "history_max": 13645.0,
-        "premium_peak": 13645.0
+        "history_max": 13651.0,
+        "premium_peak": 13651.0
       },
       "Maril Resort Beach & Spa|9-11": {
         "history_max": 13757.0,
@@ -2450,8 +2489,8 @@
         "premium_peak": 13685.0
       },
       "Ladonia Adakule|9-11": {
-        "history_max": 11401.0,
-        "premium_peak": 11401.0
+        "history_max": 13868.0,
+        "premium_peak": 13868.0
       },
       "PrimaSol Telatiye Resort|9-11": {
         "history_max": 12297.0,
@@ -2570,8 +2609,8 @@
         "premium_peak": 15805.0
       },
       "OZ Incekum Beach Resort|9-11": {
-        "history_max": 12839.0,
-        "premium_peak": 12839.0
+        "history_max": 12884.0,
+        "premium_peak": 12884.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)|9-11": {
         "history_max": 12497.0,
@@ -3054,8 +3093,8 @@
         "premium_peak": 10435.0
       },
       "Fame Residence (Kemer)|7-9": {
-        "history_max": 10418.0,
-        "premium_peak": 10418.0
+        "history_max": 10466.0,
+        "premium_peak": 10466.0
       },
       "Mira Meridia Beach Resort|7-9": {
         "history_max": 9689.0,
@@ -3578,8 +3617,8 @@
         "premium_peak": 11145.0
       },
       "Mary Side (ex. Mary Palace)|9-11": {
-        "history_max": 11923.0,
-        "premium_peak": 11923.0
+        "history_max": 12651.0,
+        "premium_peak": 12651.0
       },
       "Pirates Beach Club|7-9": {
         "history_max": 11395.0,
@@ -3832,6 +3871,14 @@
       "Delta by Marriott Bodrum|7-9": {
         "history_max": 11557.0,
         "premium_peak": 11557.0
+      },
+      "Dream World Hill|7-9": {
+        "history_max": 10262.0,
+        "premium_peak": 10262.0
+      },
+      "Dream World Hill|9-11": {
+        "history_max": 12162.0,
+        "premium_peak": 12162.0
       }
     }
   }
