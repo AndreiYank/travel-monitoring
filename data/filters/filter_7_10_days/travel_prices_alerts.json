@@ -7319,10 +7319,101 @@
       "created_at": "2026-07-03T13:56:57.978323+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Steigenberger Aqua Magic_2026-07-03_13-56_zone_out_+9.6"
+    },
+    {
+      "hotel_name": "Double Tree by Hilton Mangroovy El Gouna Resort",
+      "duration_bucket": "",
+      "old_price": 7398.0,
+      "new_price": 8649.0,
+      "price_change": 1251.0,
+      "price_change_pct": 16.909975669099754,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T16:05:26.355797+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-07-03_16-04_+16.9"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 8469.0,
+      "new_price": 7326.0,
+      "price_change": -1143.0,
+      "price_change_pct": -13.496280552603611,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-03T16:05:26.355827+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-03_16-04_-13.5"
+    },
+    {
+      "hotel_name": "Jasmine Palace",
+      "duration_bucket": "",
+      "old_price": 9257.0,
+      "new_price": 8457.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.642108674516583,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-03T16:05:26.355840+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jasmine Palace_2026-07-03_16-04_-8.6"
+    },
+    {
+      "hotel_name": "The V Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 8492.0,
+      "new_price": 9450.0,
+      "price_change": 958.0,
+      "price_change_pct": 11.281205840791333,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T16:05:26.355855+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The V Luxury Resort_2026-07-03_16-04_+11.3"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 9619.0,
+      "new_price": 10019.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.1584364279031085,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T16:05:26.355878+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-07-03_16-04_zone_out_+4.2"
+    },
+    {
+      "hotel_name": "Sunrise Royal Makadi Aqua Resort",
+      "duration_bucket": "",
+      "old_price": 9558.0,
+      "new_price": 10517.0,
+      "price_change": 959.0,
+      "price_change_pct": 10.033479807491107,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T16:05:26.355889+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Royal Makadi Aqua Resort_2026-07-03_16-04_zone_out_+10.0"
+    },
+    {
+      "hotel_name": "Titanic Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10317.0,
+      "price_change": 360.0,
+      "price_change_pct": 3.6155468514612834,
+      "timestamp": "2026-07-03 16:04:33.376719+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T16:05:26.355899+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Palace Resort_2026-07-03_16-04_zone_out_+3.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T13:56:10.657649+00:00",
+    "last_processed_run": "2026-07-03T16:04:33.376719+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,
@@ -7409,7 +7500,7 @@
         "premium_peak": 10787.0
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
-        "history_max": 8257.0,
+        "history_max": 8457.0,
         "premium_peak": null
       },
       "Seven Seas Jolie Bay": {
@@ -7537,8 +7628,8 @@
         "premium_peak": null
       },
       "Steigenberger Alcazar": {
-        "history_max": 14897.0,
-        "premium_peak": 14897.0
+        "history_max": 14967.0,
+        "premium_peak": 14967.0
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
         "history_max": 10494.0,
@@ -7897,8 +7988,8 @@
         "premium_peak": null
       },
       "Cleopatra Sidi Heneish": {
-        "history_max": 11250.0,
-        "premium_peak": 11250.0
+        "history_max": 12703.0,
+        "premium_peak": 12703.0
       },
       "Caesar Bay Resort": {
         "history_max": 10197.0,
@@ -7909,8 +8000,8 @@
         "premium_peak": null
       },
       "Titanic Palace Resort": {
-        "history_max": 10207.0,
-        "premium_peak": 10207.0
+        "history_max": 10317.0,
+        "premium_peak": 10317.0
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
         "history_max": 9179.0,
