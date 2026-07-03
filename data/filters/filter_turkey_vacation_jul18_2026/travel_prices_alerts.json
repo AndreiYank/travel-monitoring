@@ -2301,10 +2301,88 @@
       "created_at": "2026-07-03T19:17:49.070988+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Sun Palace Resort & Spa|9-11_2026-07-03_19-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8002.0,
+      "new_price": 8002.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 23:11:33.122105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:12:45.639889+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa|7-9_2026-07-03_23-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "7-9",
+      "old_price": 8323.0,
+      "new_price": 8323.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 23:11:33.122105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:12:45.639918+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection|7-9_2026-07-03_23-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8989.0,
+      "new_price": 8989.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 23:11:33.122105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:12:45.639929+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa|7-9_2026-07-03_23-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "7-9",
+      "old_price": 8703.0,
+      "new_price": 8703.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 23:11:33.122105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:12:45.639938+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams|7-9_2026-07-03_23-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "7-9",
+      "old_price": 10075.0,
+      "new_price": 8776.0,
+      "price_change": -1299.0,
+      "price_change_pct": -12.893300248138958,
+      "timestamp": "2026-07-03 23:11:33.122105+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T23:12:45.639963+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)|7-9_2026-07-03_23-11_comeback_12.9"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "9-11",
+      "old_price": 11206.0,
+      "new_price": 9760.0,
+      "price_change": -1446.0,
+      "price_change_pct": -12.903801534892024,
+      "timestamp": "2026-07-03 23:11:33.122105+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T23:12:45.639981+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|9-11_2026-07-03_23-11_comeback_12.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T19:16:39.624850+00:00",
+    "last_processed_run": "2026-07-03T23:11:33.122105+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3763,7 +3841,7 @@
         "premium_peak": 12027.0
       },
       "Timo Deluxe Resort|7-9": {
-        "history_max": 9917.0,
+        "history_max": 9963.0,
         "premium_peak": null
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)|9-11": {
@@ -4193,6 +4271,18 @@
       "Linda Resort (Side)|9-11": {
         "history_max": 11429.0,
         "premium_peak": 11429.0
+      },
+      "Asteria Bloom Side|9-11": {
+        "history_max": 10994.0,
+        "premium_peak": 10994.0
+      },
+      "Royal Seginus|9-11": {
+        "history_max": 15528.0,
+        "premium_peak": 15528.0
+      },
+      "Royal Dragon|9-11": {
+        "history_max": 15692.0,
+        "premium_peak": 15692.0
       }
     }
   }

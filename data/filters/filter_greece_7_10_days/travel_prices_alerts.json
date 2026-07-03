@@ -1846,10 +1846,75 @@
       "created_at": "2026-07-03T17:30:16.952641+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari_2026-07-03_17-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 7132.0,
+      "new_price": 8343.0,
+      "price_change": 1211.0,
+      "price_change_pct": 16.97980931015143,
+      "timestamp": "2026-07-03 23:12:29.185431+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T23:13:35.075018+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-07-03_23-12_+17.0"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 8857.0,
+      "new_price": 9657.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.032403748447555,
+      "timestamp": "2026-07-03 23:12:29.185431+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T23:13:35.075047+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-07-03_23-12_+9.0"
+    },
+    {
+      "hotel_name": "Natura Park Village Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 9460.0,
+      "new_price": 10334.0,
+      "price_change": 874.0,
+      "price_change_pct": 9.238900634249472,
+      "timestamp": "2026-07-03 23:12:29.185431+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:13:35.075065+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-07-03_23-12_zone_out_+9.2"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 9984.0,
+      "new_price": 10330.0,
+      "price_change": 346.0,
+      "price_change_pct": 3.465544871794872,
+      "timestamp": "2026-07-03 23:12:29.185431+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:13:35.075076+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-07-03_23-12_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 10795.0,
+      "new_price": 9825.0,
+      "price_change": -970.0,
+      "price_change_pct": -8.985641500694767,
+      "timestamp": "2026-07-03 23:12:29.185431+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T23:13:35.075097+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-07-03_23-12_comeback_9.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T19:17:31.532215+00:00",
+    "last_processed_run": "2026-07-03T23:12:29.185431+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17273.0,
@@ -2016,8 +2081,8 @@
         "premium_peak": 17964.0
       },
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
-        "history_max": 10340.0,
-        "premium_peak": 10340.0
+        "history_max": 10360.0,
+        "premium_peak": 10360.0
       },
       "Mitsis Royal Mare": {
         "history_max": 16230.0,
@@ -2032,8 +2097,8 @@
         "premium_peak": 19067.0
       },
       "Sea Coast Halkidiki": {
-        "history_max": 15983.0,
-        "premium_peak": 15983.0
+        "history_max": 16274.0,
+        "premium_peak": 16274.0
       },
       "Senseana Sea Side Resort & Spa (ex. Golden Star)": {
         "history_max": 16190.0,
@@ -2072,16 +2137,16 @@
         "premium_peak": 12957.0
       },
       "Village Heights Resort": {
-        "history_max": 16920.0,
-        "premium_peak": 16920.0
+        "history_max": 17595.0,
+        "premium_peak": 17595.0
       },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
         "history_max": 10771.0,
         "premium_peak": 10771.0
       },
       "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki": {
-        "history_max": 10185.0,
-        "premium_peak": 10185.0
+        "history_max": 10330.0,
+        "premium_peak": 10330.0
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
         "history_max": 9133.0,
@@ -2184,8 +2249,8 @@
         "premium_peak": 10048.0
       },
       "Restia (Acharavi)": {
-        "history_max": 19382.0,
-        "premium_peak": 19382.0
+        "history_max": 19598.0,
+        "premium_peak": 19598.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
         "history_max": 16107.0,
@@ -2340,7 +2405,7 @@
         "premium_peak": 13299.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 9596.0,
+        "history_max": 9768.0,
         "premium_peak": null
       },
       "Alia Palace": {
@@ -2476,8 +2541,8 @@
         "premium_peak": 10657.0
       },
       "Natura Park Village Grecja, Kos, Psalidi": {
-        "history_max": 10290.0,
-        "premium_peak": 10290.0
+        "history_max": 10334.0,
+        "premium_peak": 10334.0
       },
       "Gennadi Grand Resort": {
         "history_max": 19479.0,

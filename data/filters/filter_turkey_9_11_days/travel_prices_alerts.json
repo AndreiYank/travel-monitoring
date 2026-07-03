@@ -4784,10 +4784,36 @@
       "created_at": "2026-07-03T19:17:30.596745+00:00",
       "threshold_percent": 8.0,
       "unique_key": "World Star Beach Resort & Spa_2026-07-03_19-16_zone_out_+1.0"
+    },
+    {
+      "hotel_name": "Viking Star",
+      "duration_bucket": "",
+      "old_price": 9743.0,
+      "new_price": 10107.0,
+      "price_change": 364.0,
+      "price_change_pct": 3.7360156009442673,
+      "timestamp": "2026-07-03 23:11:20.782276+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T23:12:28.239823+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star_2026-07-03_23-11_zone_out_+3.7"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 11128.0,
+      "new_price": 9760.0,
+      "price_change": -1368.0,
+      "price_change_pct": -12.293314162473042,
+      "timestamp": "2026-07-03 23:11:20.782276+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T23:12:28.239886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-03_23-11_comeback_12.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T19:16:23.668702+00:00",
+    "last_processed_run": "2026-07-03T23:11:20.782276+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12708.0,
@@ -4902,16 +4928,16 @@
         "premium_peak": 12357.0
       },
       "L' Oceanica Beach Resort (Kemer)": {
-        "history_max": 12551.0,
-        "premium_peak": 12551.0
+        "history_max": 12587.0,
+        "premium_peak": 12587.0
       },
       "Selectum Colours Side": {
         "history_max": 11183.0,
         "premium_peak": 11183.0
       },
       "Kremlin Palace": {
-        "history_max": 14013.0,
-        "premium_peak": 14013.0
+        "history_max": 14508.0,
+        "premium_peak": 14508.0
       },
       "Korumar Deluxe": {
         "history_max": 14157.0,
@@ -5326,8 +5352,8 @@
         "premium_peak": 14027.0
       },
       "Sealife Family Resort": {
-        "history_max": 13491.0,
-        "premium_peak": 13491.0
+        "history_max": 13527.0,
+        "premium_peak": 13527.0
       },
       "Lonicera Resort & Spa": {
         "history_max": 15426.0,
@@ -5418,8 +5444,8 @@
         "premium_peak": 15710.0
       },
       "Mary Side (ex. Mary Palace)": {
-        "history_max": 13211.0,
-        "premium_peak": 13211.0
+        "history_max": 13243.0,
+        "premium_peak": 13243.0
       },
       "Mirada Del Mar": {
         "history_max": 15557.0,
@@ -5622,8 +5648,8 @@
         "premium_peak": 10260.0
       },
       "Asteria Family Belek": {
-        "history_max": 12528.0,
-        "premium_peak": 12528.0
+        "history_max": 13163.0,
+        "premium_peak": 13163.0
       },
       "Armas Pemar Beach Resort": {
         "history_max": 10107.0,
@@ -5638,8 +5664,8 @@
         "premium_peak": 10611.0
       },
       "Viking Star": {
-        "history_max": 10053.0,
-        "premium_peak": 10053.0
+        "history_max": 10107.0,
+        "premium_peak": 10107.0
       },
       "Tusan Beach Resort": {
         "history_max": 15035.0,
@@ -5990,8 +6016,8 @@
         "premium_peak": 15759.0
       },
       "Trendy Perge Resort & Suites": {
-        "history_max": 15476.0,
-        "premium_peak": 15476.0
+        "history_max": 15899.0,
+        "premium_peak": 15899.0
       },
       "Greenwood Suites Resort (ex. Sherwood Suites Resort)": {
         "history_max": 15345.0,
@@ -6162,8 +6188,8 @@
         "premium_peak": 14805.0
       },
       "Royal Dragon": {
-        "history_max": 14976.0,
-        "premium_peak": 14976.0
+        "history_max": 15692.0,
+        "premium_peak": 15692.0
       },
       "Trendy Aspendos Beach": {
         "history_max": 15683.0,
@@ -6220,6 +6246,10 @@
       "Fame Residence Lara (Antalya)": {
         "history_max": 15853.0,
         "premium_peak": 15853.0
+      },
+      "Balmy Foresta": {
+        "history_max": 15826.0,
+        "premium_peak": 15826.0
       }
     }
   }
