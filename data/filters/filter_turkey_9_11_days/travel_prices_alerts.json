@@ -4511,10 +4511,101 @@
       "created_at": "2026-07-03T11:41:25.831108+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Glamour Resort & Spa_2026-07-03_11-40_comeback_11.6"
+    },
+    {
+      "hotel_name": "Lake River Side Spa",
+      "duration_bucket": "",
+      "old_price": 8557.0,
+      "new_price": 9557.0,
+      "price_change": 1000.0,
+      "price_change_pct": 11.68633867009466,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T13:57:44.531642+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lake River Side Spa_2026-07-03_13-56_+11.7"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 6008.0,
+      "new_price": 7295.0,
+      "price_change": 1287.0,
+      "price_change_pct": 21.42143808255659,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T13:57:44.531670+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-07-03_13-56_+21.4"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "",
+      "old_price": 8757.0,
+      "new_price": 9497.0,
+      "price_change": 740.0,
+      "price_change_pct": 8.450382551101976,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T13:57:44.531685+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)_2026-07-03_13-56_+8.5"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "",
+      "old_price": 9819.0,
+      "new_price": 10534.0,
+      "price_change": 715.0,
+      "price_change_pct": 7.281800590691516,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T13:57:44.531706+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection_2026-07-03_13-56_zone_out_+7.3"
+    },
+    {
+      "hotel_name": "Port River & Spa",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 11297.0,
+      "price_change": 1740.0,
+      "price_change_pct": 18.20655017264832,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T13:57:44.531716+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River & Spa_2026-07-03_13-56_zone_out_+18.2"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 9885.0,
+      "new_price": 10780.0,
+      "price_change": 895.0,
+      "price_change_pct": 9.054122407688418,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T13:57:44.531725+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-07-03_13-56_zone_out_+9.1"
+    },
+    {
+      "hotel_name": "Asteria Bloom Side",
+      "duration_bucket": "",
+      "old_price": 12902.0,
+      "new_price": 9203.0,
+      "price_change": -3699.0,
+      "price_change_pct": -28.669973647496512,
+      "timestamp": "2026-07-03 13:56:42.232748+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-03T13:57:44.531746+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Bloom Side_2026-07-03_13-56_comeback_28.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-03T11:40:20.671121+00:00",
+    "last_processed_run": "2026-07-03T13:56:42.232748+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12708.0,
@@ -4541,8 +4632,8 @@
         "premium_peak": 14279.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 11560.0,
-        "premium_peak": 11560.0
+        "history_max": 11704.0,
+        "premium_peak": 11704.0
       },
       "Horus Paradise Luxury Resort": {
         "history_max": 13277.0,
@@ -4665,8 +4756,8 @@
         "premium_peak": 13685.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)": {
-        "history_max": 14576.0,
-        "premium_peak": 14576.0
+        "history_max": 15308.0,
+        "premium_peak": 15308.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
         "history_max": 15354.0,
@@ -4765,7 +4856,7 @@
         "premium_peak": 14490.0
       },
       "First Class": {
-        "history_max": 6755.0,
+        "history_max": 7295.0,
         "premium_peak": null
       },
       "Fore Resort & Spa": {
@@ -4793,16 +4884,16 @@
         "premium_peak": 12570.0
       },
       "Side Crown Palace (Side)": {
-        "history_max": 12157.0,
-        "premium_peak": 12157.0
+        "history_max": 13297.0,
+        "premium_peak": 13297.0
       },
       "Grand Kaptan": {
         "history_max": 14668.0,
         "premium_peak": 14668.0
       },
       "Grand Belish": {
-        "history_max": 15503.0,
-        "premium_peak": 15503.0
+        "history_max": 15534.0,
+        "premium_peak": 15534.0
       },
       "Laguna Beach Alya": {
         "history_max": 13897.0,
@@ -4849,8 +4940,8 @@
         "premium_peak": 14867.0
       },
       "Seashell Vega (ex. Side Crown Sunshine)": {
-        "history_max": 13757.0,
-        "premium_peak": 13757.0
+        "history_max": 14297.0,
+        "premium_peak": 14297.0
       },
       "Lake River Side Spa": {
         "history_max": 11757.0,
@@ -4917,8 +5008,8 @@
         "premium_peak": 13185.0
       },
       "My Home Resort": {
-        "history_max": 13129.0,
-        "premium_peak": 13129.0
+        "history_max": 13349.0,
+        "premium_peak": 13349.0
       },
       "Rox Royal (ex. Grand Haber)": {
         "history_max": 11169.0,
@@ -5141,8 +5232,8 @@
         "premium_peak": 12402.0
       },
       "Rubi Platinum Sign": {
-        "history_max": 15624.0,
-        "premium_peak": 15624.0
+        "history_max": 15710.0,
+        "premium_peak": 15710.0
       },
       "Mary Side (ex. Mary Palace)": {
         "history_max": 13211.0,
@@ -5153,16 +5244,16 @@
         "premium_peak": 15557.0
       },
       "Mary Alanya (ex. Sirius Deluxe)": {
-        "history_max": 14769.0,
-        "premium_peak": 14769.0
+        "history_max": 14807.0,
+        "premium_peak": 14807.0
       },
       "Marvida Family Eco": {
         "history_max": 15056.0,
         "premium_peak": 15056.0
       },
       "Marti Myra": {
-        "history_max": 15390.0,
-        "premium_peak": 15390.0
+        "history_max": 15534.0,
+        "premium_peak": 15534.0
       },
       "Saphir Resort": {
         "history_max": 14088.0,
@@ -5189,8 +5280,8 @@
         "premium_peak": 13037.0
       },
       "Saphir Hotel & Villas": {
-        "history_max": 14307.0,
-        "premium_peak": 14307.0
+        "history_max": 14751.0,
+        "premium_peak": 14751.0
       },
       "Sidera Kirman Premium": {
         "history_max": 15579.0,
@@ -5281,8 +5372,8 @@
         "premium_peak": 14157.0
       },
       "Arcanus Trendline Resort": {
-        "history_max": 13545.0,
-        "premium_peak": 13545.0
+        "history_max": 14724.0,
+        "premium_peak": 14724.0
       },
       "Cenger Blue Collection": {
         "history_max": 10790.0,
@@ -5421,8 +5512,8 @@
         "premium_peak": 11381.0
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)": {
-        "history_max": 15434.0,
-        "premium_peak": 15434.0
+        "history_max": 15578.0,
+        "premium_peak": 15578.0
       },
       "Villa Side Residence": {
         "history_max": 13748.0,
@@ -5613,8 +5704,8 @@
         "premium_peak": 11961.0
       },
       "Delta by Marriott Bodrum": {
-        "history_max": 13557.0,
-        "premium_peak": 13557.0
+        "history_max": 13957.0,
+        "premium_peak": 13957.0
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
         "history_max": 13984.0,
@@ -5641,8 +5732,8 @@
         "premium_peak": 14000.0
       },
       "Antique Roman Palace": {
-        "history_max": 13921.0,
-        "premium_peak": 13921.0
+        "history_max": 14021.0,
+        "premium_peak": 14021.0
       },
       "Club Grand Aqua": {
         "history_max": 15454.0,
@@ -5709,7 +5800,7 @@
         "premium_peak": 15286.0
       },
       "Club Side Coast": {
-        "history_max": 9833.0,
+        "history_max": 9920.0,
         "premium_peak": null
       },
       "Spice": {
