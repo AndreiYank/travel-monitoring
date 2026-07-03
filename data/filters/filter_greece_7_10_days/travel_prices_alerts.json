@@ -1469,10 +1469,36 @@
       "created_at": "2026-07-02T22:15:27.482426+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kakkos Bay Grecja, Kreta Wschodnia, Ierapetra_2026-07-02_22-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes",
+      "duration_bucket": "",
+      "old_price": 6839.0,
+      "new_price": 8447.0,
+      "price_change": 1608.0,
+      "price_change_pct": 23.51220938733733,
+      "timestamp": "2026-07-03 02:11:24.628209+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-03T02:12:23.398186+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-07-03_02-11_+23.5"
+    },
+    {
+      "hotel_name": "Sentido Asterias Beach Resort Grecja, Rodos, Afandou",
+      "duration_bucket": "",
+      "old_price": 8800.0,
+      "new_price": 8800.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-03 02:11:24.628209+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-03T02:12:23.398217+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Asterias Beach Resort Grecja, Rodos, Afandou_2026-07-03_02-11_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-02T22:14:33.577669+00:00",
+    "last_processed_run": "2026-07-03T02:11:24.628209+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17273.0,
@@ -1647,8 +1673,8 @@
         "premium_peak": 16230.0
       },
       "Mitsis Selection Blue Domes": {
-        "history_max": 16850.0,
-        "premium_peak": 16850.0
+        "history_max": 17411.0,
+        "premium_peak": 17411.0
       },
       "Mitsis Selection Laguna": {
         "history_max": 19067.0,
@@ -1775,8 +1801,8 @@
         "premium_peak": 13479.0
       },
       "Pegasos Beach (Faliraki)": {
-        "history_max": 17057.0,
-        "premium_peak": 17057.0
+        "history_max": 17797.0,
+        "premium_peak": 17797.0
       },
       "Porto Angeli": {
         "history_max": 13043.0,
@@ -1939,8 +1965,8 @@
         "premium_peak": 15605.0
       },
       "Aquila Porto Rethymno": {
-        "history_max": 14947.0,
-        "premium_peak": 14947.0
+        "history_max": 15526.0,
+        "premium_peak": 15526.0
       },
       "Elios Hill": {
         "history_max": 14599.0,
@@ -2129,6 +2155,10 @@
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
         "history_max": 10676.0,
         "premium_peak": 10676.0
+      },
+      "Sunrise Grecja, Lesbos, Mithymna": {
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       }
     }
   }
