@@ -2600,10 +2600,88 @@
       "created_at": "2026-07-04T11:34:01.972010+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Resort & Spa|7-9_2026-07-04_11-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 7834.0,
+      "new_price": 7834.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-04 13:14:40.826435+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T13:15:55.399271+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa|7-9_2026-07-04_13-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "L' Oceanica Beach Resort (Kemer)",
+      "duration_bucket": "7-9",
+      "old_price": 9902.0,
+      "new_price": 9902.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-04 13:14:40.826435+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T13:15:55.399299+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "L' Oceanica Beach Resort (Kemer)|7-9_2026-07-04_13-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "7-9",
+      "old_price": 8294.0,
+      "new_price": 8294.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-04 13:14:40.826435+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T13:15:55.399311+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez|7-9_2026-07-04_13-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Palemon Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9606.0,
+      "new_price": 9606.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-04 13:14:40.826435+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T13:15:55.399320+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palemon Resort & Spa|7-9_2026-07-04_13-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "7-9",
+      "old_price": 10075.0,
+      "new_price": 8874.0,
+      "price_change": -1201.0,
+      "price_change_pct": -11.92059553349876,
+      "timestamp": "2026-07-04 13:14:40.826435+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T13:15:55.399347+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)|7-9_2026-07-04_13-14_comeback_11.9"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 10409.0,
+      "new_price": 9103.0,
+      "price_change": -1306.0,
+      "price_change_pct": -12.546834470170046,
+      "timestamp": "2026-07-04 13:14:40.826435+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T13:15:55.399362+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-07-04_13-14_comeback_12.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-04T11:32:59.067640+00:00",
+    "last_processed_run": "2026-07-04T13:14:40.826435+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -4330,8 +4408,8 @@
         "premium_peak": null
       },
       "Utopia Resort & Residence (ex Alara Park)|7-9": {
-        "history_max": 10535.0,
-        "premium_peak": 10535.0
+        "history_max": 10815.0,
+        "premium_peak": 10815.0
       },
       "The Lumos Deluxe Resort & Spa|7-9": {
         "history_max": 10089.0,
@@ -4342,8 +4420,8 @@
         "premium_peak": 10392.0
       },
       "Side Premium by OZ Hotels|7-9": {
-        "history_max": 11122.0,
-        "premium_peak": 11122.0
+        "history_max": 11402.0,
+        "premium_peak": 11402.0
       },
       "Duja Didim|9-11": {
         "history_max": 15533.0,
