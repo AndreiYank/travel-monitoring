@@ -15145,10 +15145,114 @@
       "created_at": "2026-07-04T13:15:15.201259+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seaphoria Beach Resort_2026-07-04_13-13_comeback_8.2"
+    },
+    {
+      "hotel_name": "Design Plus Seya Beach",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 8157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T14:53:04.714388+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Design Plus Seya Beach_2026-07-04_14-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "L' Oceanica Beach Resort (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9496.0,
+      "new_price": 10051.0,
+      "price_change": 555.0,
+      "price_change_pct": 5.844566133108677,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T14:53:04.714422+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "L' Oceanica Beach Resort (Kemer)_2026-07-04_14-51_zone_out_+5.8"
+    },
+    {
+      "hotel_name": "Ozkaymak Incekum Turcja, Alanya, Incekum",
+      "duration_bucket": "",
+      "old_price": 7569.0,
+      "new_price": 7569.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T14:53:04.714433+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Incekum Turcja, Alanya, Incekum_2026-07-04_14-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rixos Elysium Suites",
+      "duration_bucket": "",
+      "old_price": 9986.0,
+      "new_price": 10236.0,
+      "price_change": 250.0,
+      "price_change_pct": 2.5035049068696176,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-04T14:53:04.714442+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rixos Elysium Suites_2026-07-04_14-51_zone_out_+2.5"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "",
+      "old_price": 11332.0,
+      "new_price": 9964.0,
+      "price_change": -1368.0,
+      "price_change_pct": -12.072008471584892,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T14:53:04.714469+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort_2026-07-04_14-51_comeback_12.1"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "",
+      "old_price": 10710.0,
+      "new_price": 9455.0,
+      "price_change": -1255.0,
+      "price_change_pct": -11.718020541549953,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T14:53:04.714484+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort_2026-07-04_14-51_comeback_11.7"
+    },
+    {
+      "hotel_name": "Sealife Family Resort",
+      "duration_bucket": "",
+      "old_price": 10179.0,
+      "new_price": 8730.0,
+      "price_change": -1449.0,
+      "price_change_pct": -14.235190097259062,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T14:53:04.714494+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealife Family Resort_2026-07-04_14-51_comeback_14.2"
+    },
+    {
+      "hotel_name": "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)",
+      "duration_bucket": "",
+      "old_price": 10697.0,
+      "new_price": 8622.0,
+      "price_change": -2075.0,
+      "price_change_pct": -19.3979620454333,
+      "timestamp": "2026-07-04 14:51:48.874395+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T14:53:04.714505+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)_2026-07-04_14-51_comeback_19.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-04T13:13:46.612197+00:00",
+    "last_processed_run": "2026-07-04T14:51:48.874395+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10871.0,
@@ -15443,8 +15547,8 @@
         "premium_peak": 10179.0
       },
       "Sheraton Istanbul Levent": {
-        "history_max": 11488.0,
-        "premium_peak": 11488.0
+        "history_max": 11588.0,
+        "premium_peak": 11588.0
       },
       "Gold Island Selected": {
         "history_max": 11723.0,
@@ -15475,7 +15579,7 @@
         "premium_peak": 11073.0
       },
       "Side Alegria (ex Holiday Point & Spa)": {
-        "history_max": 9440.0,
+        "history_max": 9507.0,
         "premium_peak": null
       },
       "Golden Rock Beach": {
@@ -15619,8 +15723,8 @@
         "premium_peak": null
       },
       "Porto Bello": {
-        "history_max": 11181.0,
-        "premium_peak": 11181.0
+        "history_max": 11700.0,
+        "premium_peak": 11700.0
       },
       "Oz Sui Resort": {
         "history_max": 9617.0,
@@ -15651,7 +15755,7 @@
         "premium_peak": 11633.0
       },
       "Ozkaymak Falez Turcja, Antalya": {
-        "history_max": 8040.0,
+        "history_max": 8046.0,
         "premium_peak": null
       },
       "Dream World Palace": {
@@ -15779,8 +15883,8 @@
         "premium_peak": 10098.0
       },
       "Rixos Elysium Suites": {
-        "history_max": 10136.0,
-        "premium_peak": 10136.0
+        "history_max": 10236.0,
+        "premium_peak": 10236.0
       },
       "Raxeria (Side)": {
         "history_max": 11552.0,
@@ -16159,7 +16263,7 @@
         "premium_peak": 10828.0
       },
       "The Marilis Hill Resort and Spa Turcja, Alanya": {
-        "history_max": 7952.0,
+        "history_max": 7983.0,
         "premium_peak": null
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
@@ -16211,23 +16315,23 @@
         "premium_peak": 11979.0
       },
       "Dedeman Istanbul": {
-        "history_max": 10760.0,
-        "premium_peak": 10760.0
+        "history_max": 10860.0,
+        "premium_peak": 10860.0
       },
       "Diamond Excellence Resort & Spa": {
         "history_max": 11678.0,
         "premium_peak": 11678.0
       },
       "Sural Resort": {
-        "history_max": 11809.0,
-        "premium_peak": 11809.0
+        "history_max": 11880.0,
+        "premium_peak": 11880.0
       },
       "Club Side Coast Turcja, Side, Colakli": {
         "history_max": 8085.0,
         "premium_peak": null
       },
       "Dedeman Kemer Resort": {
-        "history_max": 8667.0,
+        "history_max": 8747.0,
         "premium_peak": null
       },
       "Design Plus Seya Beach": {
@@ -16243,7 +16347,7 @@
         "premium_peak": 10675.0
       },
       "Crowne Plaza Istanbul Harbiye": {
-        "history_max": 9652.0,
+        "history_max": 9752.0,
         "premium_peak": null
       },
       "Sural": {
@@ -16467,8 +16571,8 @@
         "premium_peak": 11557.0
       },
       "Emelda Sun Club (ex. Simena Sun Club)": {
-        "history_max": 11742.0,
-        "premium_peak": 11742.0
+        "history_max": 11762.0,
+        "premium_peak": 11762.0
       },
       "Eftalia Sol": {
         "history_max": 11280.0,
@@ -16619,7 +16723,7 @@
         "premium_peak": 11839.0
       },
       "Ozkaymak Incekum": {
-        "history_max": 7748.0,
+        "history_max": 8266.0,
         "premium_peak": null
       },
       "Dobedan Beach Resort Comfort (ex. Alva Donna Beach Resort)": {
@@ -16643,7 +16747,7 @@
         "premium_peak": 11397.0
       },
       "Xafira Deluxe Resort & Spa": {
-        "history_max": 9522.0,
+        "history_max": 9710.0,
         "premium_peak": null
       },
       "Aventura Park Turcja, Alanya": {
@@ -16751,12 +16855,12 @@
         "premium_peak": null
       },
       "Sunrise Resort & SPA": {
-        "history_max": 11347.0,
-        "premium_peak": 11347.0
+        "history_max": 11586.0,
+        "premium_peak": 11586.0
       },
       "Starlight Resort & Convention Center (Side)": {
-        "history_max": 11377.0,
-        "premium_peak": 11377.0
+        "history_max": 11586.0,
+        "premium_peak": 11586.0
       },
       "VONResort Elite": {
         "history_max": 11042.0,
@@ -16992,6 +17096,10 @@
       },
       "Casa Fora Beach Resort Turcja, Side, Kızılot": {
         "history_max": 7897.0,
+        "premium_peak": null
+      },
+      "Design Plus Seya Beach Turcja, Cesme, Alacati": {
+        "history_max": 7957.0,
         "premium_peak": null
       }
     }
