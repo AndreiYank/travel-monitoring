@@ -8970,10 +8970,36 @@
       "created_at": "2026-07-04T20:22:53.851030+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-04_20-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 8141.0,
+      "new_price": 9352.0,
+      "price_change": 1211.0,
+      "price_change_pct": 14.875322441960448,
+      "timestamp": "2026-07-04 22:02:43.885948+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-04T22:03:43.649018+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-07-04_22-02_+14.9"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 14087.0,
+      "new_price": 8699.0,
+      "price_change": -5388.0,
+      "price_change_pct": -38.24803009867254,
+      "timestamp": "2026-07-04 22:02:43.885948+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-04T22:03:43.649100+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-04_22-02_comeback_38.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-04T20:20:34.082177+00:00",
+    "last_processed_run": "2026-07-04T22:02:43.885948+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7794.0,
@@ -9676,7 +9702,7 @@
         "premium_peak": 10217.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 9351.0,
+        "history_max": 9352.0,
         "premium_peak": null
       },
       "Sunrise Aqua Joy": {
