@@ -16263,10 +16263,101 @@
       "created_at": "2026-07-05T13:23:19.341764+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Anadolu Hotels Didim Club (ex. Palm Wings Didim)_2026-07-05_13-21_comeback_13.3"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites",
+      "duration_bucket": "",
+      "old_price": 8195.0,
+      "new_price": 9073.0,
+      "price_change": 878.0,
+      "price_change_pct": 10.713849908480782,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-05T15:22:08.448410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites_2026-07-05_15-20_+10.7"
+    },
+    {
+      "hotel_name": "Antique Roman Palace",
+      "duration_bucket": "",
+      "old_price": 9477.0,
+      "new_price": 10523.0,
+      "price_change": 1046.0,
+      "price_change_pct": 11.037248074285111,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-05T15:22:08.448475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Antique Roman Palace_2026-07-05_15-20_zone_out_+11.0"
+    },
+    {
+      "hotel_name": "Asteria Bloom Side",
+      "duration_bucket": "",
+      "old_price": 8177.0,
+      "new_price": 8177.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-05T15:22:08.448487+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Bloom Side_2026-07-05_15-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Incekum Turcja, Alanya, Incekum",
+      "duration_bucket": "",
+      "old_price": 7569.0,
+      "new_price": 7569.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-05T15:22:08.448496+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Incekum Turcja, Alanya, Incekum_2026-07-05_15-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Alegria (ex Holiday Point & Spa)",
+      "duration_bucket": "",
+      "old_price": 8292.0,
+      "new_price": 8292.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-05T15:22:08.448504+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Alegria (ex Holiday Point & Spa)_2026-07-05_15-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "",
+      "old_price": 10710.0,
+      "new_price": 9455.0,
+      "price_change": -1255.0,
+      "price_change_pct": -11.718020541549953,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-05T15:22:08.448528+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort_2026-07-05_15-20_comeback_11.7"
+    },
+    {
+      "hotel_name": "Seaden Sea World Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11064.0,
+      "new_price": 9981.0,
+      "price_change": -1083.0,
+      "price_change_pct": -9.788503253796096,
+      "timestamp": "2026-07-05 15:20:25.164915+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-05T15:22:08.448542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaden Sea World Resort & Spa_2026-07-05_15-20_comeback_9.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-05T13:21:46.475189+00:00",
+    "last_processed_run": "2026-07-05T15:20:25.164915+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10871.0,
@@ -16317,7 +16408,7 @@
         "premium_peak": null
       },
       "Selectum For Two Side (ex. Heaven Beach Resort & Spa) Turcja, Side, Kizilagac": {
-        "history_max": 7970.0,
+        "history_max": 8177.0,
         "premium_peak": null
       },
       "Gravel Select": {
@@ -16353,7 +16444,7 @@
         "premium_peak": 11420.0
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 9002.0,
+        "history_max": 9054.0,
         "premium_peak": null
       },
       "Kustur Club Holiday Village": {
@@ -16717,11 +16808,11 @@
         "premium_peak": null
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)": {
-        "history_max": 8381.0,
+        "history_max": 8615.0,
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 8793.0,
+        "history_max": 8988.0,
         "premium_peak": null
       },
       "Port Side Resort": {
@@ -16949,8 +17040,8 @@
         "premium_peak": 11596.0
       },
       "Side Aluna": {
-        "history_max": 10206.0,
-        "premium_peak": 10206.0
+        "history_max": 10260.0,
+        "premium_peak": 10260.0
       },
       "DoubleTree by Hilton Istanbul - Piyalepasa": {
         "history_max": 11542.0,
@@ -17057,8 +17148,8 @@
         "premium_peak": 11862.0
       },
       "Calido Sol (Alanya)": {
-        "history_max": 10203.0,
-        "premium_peak": 10203.0
+        "history_max": 10242.0,
+        "premium_peak": 10242.0
       },
       "Calido Maris": {
         "history_max": 9960.0,
@@ -17993,8 +18084,8 @@
         "premium_peak": 11826.0
       },
       "Yasmin Resort": {
-        "history_max": 11943.0,
-        "premium_peak": 11943.0
+        "history_max": 11999.0,
+        "premium_peak": 11999.0
       },
       "SeaLife Kemer Resort (ex. PGS Rose Residence Beach) Turcja, Kemer": {
         "history_max": 7557.0,
