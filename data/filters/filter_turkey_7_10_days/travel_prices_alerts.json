@@ -15652,10 +15652,49 @@
       "created_at": "2026-07-04T23:03:02.846060+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Alaiye Resort & Spa_2026-07-04_23-01_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9022.0,
+      "new_price": 9847.0,
+      "price_change": 825.0,
+      "price_change_pct": 9.144313899357128,
+      "timestamp": "2026-07-05 00:08:10.504338+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-05T00:09:32.631191+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-07-05_00-08_+9.1"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7956.0,
+      "new_price": 6637.0,
+      "price_change": -1319.0,
+      "price_change_pct": -16.57868275515334,
+      "timestamp": "2026-07-05 00:08:10.504338+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-05T00:09:32.631238+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-07-05_00-08_-16.6"
+    },
+    {
+      "hotel_name": "Siam Elegance",
+      "duration_bucket": "",
+      "old_price": 10945.0,
+      "new_price": 9757.0,
+      "price_change": -1188.0,
+      "price_change_pct": -10.854271356783919,
+      "timestamp": "2026-07-05 00:08:10.504338+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-05T00:09:32.631292+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siam Elegance_2026-07-05_00-08_comeback_10.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-04T23:01:38.648591+00:00",
+    "last_processed_run": "2026-07-05T00:08:10.504338+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10871.0,
@@ -15714,8 +15753,8 @@
         "premium_peak": 11197.0
       },
       "Grand Seker": {
-        "history_max": 10963.0,
-        "premium_peak": 10963.0
+        "history_max": 11574.0,
+        "premium_peak": 11574.0
       },
       "Selectum Noa": {
         "history_max": 11534.0,
@@ -15742,7 +15781,7 @@
         "premium_peak": 11420.0
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 8843.0,
+        "history_max": 9002.0,
         "premium_peak": null
       },
       "Kustur Club Holiday Village": {
@@ -15802,7 +15841,7 @@
         "premium_peak": 11010.0
       },
       "Seher Resort & Spa": {
-        "history_max": 8972.0,
+        "history_max": 9017.0,
         "premium_peak": null
       },
       "Jadore Deluxe": {
@@ -16158,7 +16197,7 @@
         "premium_peak": 11633.0
       },
       "Ozkaymak Falez Turcja, Antalya": {
-        "history_max": 8046.0,
+        "history_max": 8088.0,
         "premium_peak": null
       },
       "Dream World Palace": {
@@ -16322,8 +16361,8 @@
         "premium_peak": 11334.0
       },
       "Royal Atlantis Resort": {
-        "history_max": 10787.0,
-        "premium_peak": 10787.0
+        "history_max": 10817.0,
+        "premium_peak": 10817.0
       },
       "Lucida Beach (ex.Novia Lucida)": {
         "history_max": 10427.0,
@@ -16990,8 +17029,8 @@
         "premium_peak": null
       },
       "Marti Myra": {
-        "history_max": 11755.0,
-        "premium_peak": 11755.0
+        "history_max": 11898.0,
+        "premium_peak": 11898.0
       },
       "Mandarin Resort (Bodrum)": {
         "history_max": 8935.0,
@@ -17508,6 +17547,10 @@
       "Unique Residence Golf Spa": {
         "history_max": 8962.0,
         "premium_peak": null
+      },
+      "Dosso Dossi Down Town": {
+        "history_max": 11808.0,
+        "premium_peak": 11808.0
       }
     }
   }
