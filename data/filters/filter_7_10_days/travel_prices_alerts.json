@@ -1131,17 +1131,82 @@
       "created_at": "2026-07-06T19:57:25.567433+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-06_19-56_zone_out_gone"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 8750.0,
+      "new_price": 7230.0,
+      "price_change": -1520.0,
+      "price_change_pct": -17.37142857142857,
+      "timestamp": "2026-07-06 21:36:09.555738+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-06T21:36:42.363720+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-06_21-36_-17.4"
+    },
+    {
+      "hotel_name": "Caesar Bay Resort",
+      "duration_bucket": "",
+      "old_price": 7397.0,
+      "new_price": 8097.0,
+      "price_change": 700.0,
+      "price_change_pct": 9.46329593078275,
+      "timestamp": "2026-07-06 21:36:09.555738+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-06T21:36:42.363756+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caesar Bay Resort_2026-07-06_21-36_+9.5"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7583.0,
+      "new_price": 8204.0,
+      "price_change": 621.0,
+      "price_change_pct": 8.18937096136094,
+      "timestamp": "2026-07-06 21:36:09.555738+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-06T21:36:42.363774+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-07-06_21-36_+8.2"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 9457.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-06 21:36:09.555738+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-06T21:36:42.363794+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort_2026-07-06_21-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 11269.0,
+      "new_price": 9424.0,
+      "price_change": -1845.0,
+      "price_change_pct": -16.372348921820926,
+      "timestamp": "2026-07-06 21:36:09.555738+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-06T21:36:42.363817+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-07-06_21-36_comeback_16.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-06T19:56:49.415759+00:00",
+    "last_processed_run": "2026-07-06T21:36:09.555738+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7416.0,
         "premium_peak": null
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
-        "history_max": 9366.0,
+        "history_max": 9984.0,
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
@@ -1213,7 +1278,7 @@
         "premium_peak": null
       },
       "Rewaya Luxury Resort": {
-        "history_max": 7959.0,
+        "history_max": 8190.0,
         "premium_peak": null
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
@@ -1521,8 +1586,8 @@
         "premium_peak": null
       },
       "Titanic Palace Resort": {
-        "history_max": 10031.0,
-        "premium_peak": 10031.0
+        "history_max": 10644.0,
+        "premium_peak": 10644.0
       },
       "Titanic Beach Spa & Aqua Park": {
         "history_max": 9057.0,
@@ -1545,8 +1610,8 @@
         "premium_peak": null
       },
       "Titanic Royal": {
-        "history_max": 11005.0,
-        "premium_peak": 11005.0
+        "history_max": 11581.0,
+        "premium_peak": 11581.0
       },
       "Stella Beach Resort & Spa": {
         "history_max": 8441.0,
@@ -1789,7 +1854,7 @@
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 9108.0,
+        "history_max": 9149.0,
         "premium_peak": null
       },
       "Baron Palace Resort (Sahl Hasheesh)": {
@@ -1845,8 +1910,8 @@
         "premium_peak": null
       },
       "Desert Rose Resort": {
-        "history_max": 12000.0,
-        "premium_peak": 12000.0
+        "history_max": 12576.0,
+        "premium_peak": 12576.0
       },
       "Cleopatra Luxury Resort Sharm Adults Only": {
         "history_max": 12798.0,

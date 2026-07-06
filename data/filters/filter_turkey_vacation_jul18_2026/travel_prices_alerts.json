@@ -208,10 +208,36 @@
       "created_at": "2026-07-06T19:58:31.410047+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xafira Deluxe Resort & Spa|7-9_2026-07-06_19-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 7808.0,
+      "new_price": 7808.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-06 21:36:43.275014+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-06T21:37:32.736606+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)|7-9_2026-07-06_21-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Side Coast",
+      "duration_bucket": "7-9",
+      "old_price": 8403.0,
+      "new_price": 8403.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-06 21:36:43.275014+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-06T21:37:32.736635+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Side Coast|7-9_2026-07-06_21-36_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-06T19:57:26.425616+00:00",
+    "last_processed_run": "2026-07-06T21:36:43.275014+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1908,6 +1934,14 @@
       "Wind of Lara|9-11": {
         "history_max": 13328.0,
         "premium_peak": 13328.0
+      },
+      "Cenger Blue Collection|7-9": {
+        "history_max": 8680.0,
+        "premium_peak": null
+      },
+      "Side Sunport (ex. Side Sungate)|7-9": {
+        "history_max": 12315.0,
+        "premium_peak": 12315.0
       }
     }
   }
