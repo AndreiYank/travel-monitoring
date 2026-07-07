@@ -936,10 +936,36 @@
       "created_at": "2026-07-07T19:57:31.053559+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort|7-9_2026-07-07_19-56_comeback_11.2"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9497.0,
+      "new_price": 9497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-07 21:30:43.001080+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-07T21:31:42.213065+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort|7-9_2026-07-07_21-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "OZ Incekum Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9726.0,
+      "new_price": 10156.0,
+      "price_change": 430.0,
+      "price_change_pct": 4.421139214476661,
+      "timestamp": "2026-07-07 21:30:43.001080+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-07T21:31:42.213096+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "OZ Incekum Beach Resort|7-9_2026-07-07_21-30_zone_out_+4.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-07T19:56:27.913279+00:00",
+    "last_processed_run": "2026-07-07T21:30:43.001080+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -974,7 +1000,7 @@
         "premium_peak": 11097.0
       },
       "Avia Resort & Spa|7-9": {
-        "history_max": 8279.0,
+        "history_max": 8885.0,
         "premium_peak": null
       },
       "Innvista Belek (ex. Vera Verde)|7-9": {
@@ -1194,7 +1220,7 @@
         "premium_peak": 12389.0
       },
       "Hane Sun Elite (ex Noble Palace Side)|7-9": {
-        "history_max": 9045.0,
+        "history_max": 9288.0,
         "premium_peak": null
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)|7-9": {
@@ -1206,8 +1232,8 @@
         "premium_peak": 11905.0
       },
       "Aria Claros Beach and Spa Resort|7-9": {
-        "history_max": 11182.0,
-        "premium_peak": 11182.0
+        "history_max": 11479.0,
+        "premium_peak": 11479.0
       },
       "Prime Beach|7-9": {
         "history_max": 12403.0,
@@ -2010,8 +2036,8 @@
         "premium_peak": 10833.0
       },
       "Cenger Blue Collection|9-11": {
-        "history_max": 10146.0,
-        "premium_peak": 10146.0
+        "history_max": 10490.0,
+        "premium_peak": 10490.0
       },
       "Ulusoy Kemer Holiday Club|9-11": {
         "history_max": 15897.0,
@@ -2654,8 +2680,8 @@
         "premium_peak": 16232.0
       },
       "Side Star Elegance (ex. Asteria)|9-11": {
-        "history_max": 16216.0,
-        "premium_peak": 16216.0
+        "history_max": 16220.0,
+        "premium_peak": 16220.0
       },
       "Sentido Lycus Beach (ex. Lti)|9-11": {
         "history_max": 10667.0,
@@ -2836,6 +2862,14 @@
       "The Norm Oriental (ex. Asteria Kemer Resort)|7-9": {
         "history_max": 11790.0,
         "premium_peak": 11790.0
+      },
+      "Litore Resort & Spa|7-9": {
+        "history_max": 12596.0,
+        "premium_peak": 12596.0
+      },
+      "Kremlin Palace|7-9": {
+        "history_max": 12618.0,
+        "premium_peak": 12618.0
       }
     }
   }
