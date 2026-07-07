@@ -312,10 +312,62 @@
       "created_at": "2026-07-06T23:14:09.773860+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Solivia (Ex. Titan Select)|9-11_2026-07-06_23-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "7-9",
+      "old_price": 8793.0,
+      "new_price": 9687.0,
+      "price_change": 894.0,
+      "price_change_pct": 10.167178437393382,
+      "timestamp": "2026-07-07 04:59:07.449184+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-07T04:59:58.216865+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort|7-9_2026-07-07_04-59_+10.2"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "7-9",
+      "old_price": 7214.0,
+      "new_price": 7214.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-07 04:59:07.449184+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-07T04:59:58.216903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|7-9_2026-07-07_04-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9963.0,
+      "new_price": 9963.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-07 04:59:07.449184+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-07T04:59:58.216914+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort|7-9_2026-07-07_04-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 9025.0,
+      "new_price": 9025.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-07 04:59:07.449184+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-07T04:59:58.216922+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-07-07_04-59_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-07T00:19:24.941052+00:00",
+    "last_processed_run": "2026-07-07T04:59:07.449184+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1622,8 +1674,8 @@
         "premium_peak": 10769.0
       },
       "The Nora Hotels Family Club (Kargicak)|9-11": {
-        "history_max": 11246.0,
-        "premium_peak": 11246.0
+        "history_max": 11249.0,
+        "premium_peak": 11249.0
       },
       "Asteria Family Resort Side|9-11": {
         "history_max": 9486.0,
@@ -1830,8 +1882,8 @@
         "premium_peak": 11646.0
       },
       "Marvida Family Eco|7-9": {
-        "history_max": 12012.0,
-        "premium_peak": 12012.0
+        "history_max": 12263.0,
+        "premium_peak": 12263.0
       },
       "Megasaray Resort Side (ex. Aska Side Grand Prestige)|7-9": {
         "history_max": 11231.0,
@@ -1978,8 +2030,8 @@
         "premium_peak": 10116.0
       },
       "Crystal Family Comfort Collection|7-9": {
-        "history_max": 11878.0,
-        "premium_peak": 11878.0
+        "history_max": 12129.0,
+        "premium_peak": 12129.0
       },
       "Master Family Club|7-9": {
         "history_max": 9845.0,
@@ -2036,6 +2088,38 @@
       "Sentido Lycus Beach (ex. Lti)|9-11": {
         "history_max": 10667.0,
         "premium_peak": 10667.0
+      },
+      "Gypsophila Club Marine (ex. Amara Club Marine Nature)|7-9": {
+        "history_max": 12440.0,
+        "premium_peak": 12440.0
+      },
+      "Alarcha|7-9": {
+        "history_max": 11757.0,
+        "premium_peak": 11757.0
+      },
+      "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)|7-9": {
+        "history_max": 10957.0,
+        "premium_peak": 10957.0
+      },
+      "Calyptus Kirman Premium|9-11": {
+        "history_max": 16194.0,
+        "premium_peak": 16194.0
+      },
+      "Rubi Platinum Sign|9-11": {
+        "history_max": 16133.0,
+        "premium_peak": 16133.0
+      },
+      "Mirada Del Mar|9-11": {
+        "history_max": 16097.0,
+        "premium_peak": 16097.0
+      },
+      "Dobedan Beach Resort Comfort (ex. Alva Donna Beach Resort)|9-11": {
+        "history_max": 16127.0,
+        "premium_peak": 16127.0
+      },
+      "Corendon Hydros Club|9-11": {
+        "history_max": 16115.0,
+        "premium_peak": 16115.0
       }
     }
   }
