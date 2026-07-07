@@ -11881,6 +11881,26 @@
       "hot_score": 49.0
     },
     {
+      "event_time": "2026-07-07T11:54:56+0000",
+      "departure_key": "grecja|rodos|2026-07-10|2026-07-24|14|Все аэропорты|2+1",
+      "event_type": "late_price_dump",
+      "severity": "high",
+      "country": "grecja",
+      "region": "rodos",
+      "departure_date": "2026-07-10",
+      "return_date": "2026-07-24",
+      "nights": 14.0,
+      "days_to_departure": 3.0,
+      "old_min_price": "",
+      "new_min_price": 9982.0,
+      "min_drop_pct": -9.54,
+      "p10_drop_pct": -5.53,
+      "median_drop_pct": -8.58,
+      "hotel_count": 14.0,
+      "hotel_delta": -1,
+      "hot_score": 63.0
+    },
+    {
       "event_time": "2026-06-12T07:20:55+0000",
       "departure_key": "grecja|zakynthos|2026-06-21|2026-07-05|14|Katowice|2+1",
       "event_type": "deal_quality_surge",
@@ -12299,6 +12319,26 @@
       "hotel_count": 3.0,
       "hotel_delta": -1,
       "hot_score": 61.0
+    },
+    {
+      "event_time": "2026-07-07T11:54:56+0000",
+      "departure_key": "grecja|zakynthos|2026-07-14|2026-07-28|14|Все аэропорты|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "grecja",
+      "region": "zakynthos",
+      "departure_date": "2026-07-14",
+      "return_date": "2026-07-28",
+      "nights": 14.0,
+      "days_to_departure": 7.0,
+      "old_min_price": "",
+      "new_min_price": 12557.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 1,
+      "hot_score": 48.0
     }
   ]
 }
