@@ -2639,10 +2639,75 @@
       "created_at": "2026-07-08T10:23:22.586795+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-08_10-22_zone_out_+24.8"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 8750.0,
+      "new_price": 7230.0,
+      "price_change": -1520.0,
+      "price_change_pct": -17.37142857142857,
+      "timestamp": "2026-07-08 12:29:03.680008+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T12:29:45.361284+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-08_12-29_-17.4"
+    },
+    {
+      "hotel_name": "Dreams Beach Sharm Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 8857.0,
+      "new_price": 8857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 12:29:03.680008+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T12:29:45.361324+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-07-08_12-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 9757.0,
+      "new_price": 11057.0,
+      "price_change": 1300.0,
+      "price_change_pct": 13.323767551501486,
+      "timestamp": "2026-07-08 12:29:03.680008+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T12:29:45.361338+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-07-08_12-29_zone_out_+13.3"
+    },
+    {
+      "hotel_name": "Jaz Lamaya Resort (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 9839.0,
+      "new_price": 10719.0,
+      "price_change": 880.0,
+      "price_change_pct": 8.943998373818477,
+      "timestamp": "2026-07-08 12:29:03.680008+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T12:29:45.361349+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Lamaya Resort (ex Iberotel)_2026-07-08_12-29_zone_out_+8.9"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 12183.0,
+      "new_price": 9637.0,
+      "price_change": -2546.0,
+      "price_change_pct": -20.89797258474924,
+      "timestamp": "2026-07-08 12:29:03.680008+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-08T12:29:45.361371+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-08_12-29_comeback_20.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T10:22:41.046228+00:00",
+    "last_processed_run": "2026-07-08T12:29:03.680008+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8118.0,
@@ -2685,8 +2750,8 @@
         "premium_peak": 10797.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 10379.0,
-        "premium_peak": 10379.0
+        "history_max": 10765.0,
+        "premium_peak": 10765.0
       },
       "Pickalbatros Palace Resort": {
         "history_max": 10744.0,
@@ -2705,12 +2770,12 @@
         "premium_peak": 10734.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
-        "history_max": 10557.0,
-        "premium_peak": 10557.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Pickalbatros Vita Resort Portofino": {
-        "history_max": 10439.0,
-        "premium_peak": 10439.0
+        "history_max": 11039.0,
+        "premium_peak": 11039.0
       },
       "Pickalbatros Water Valley Resort Neverland": {
         "history_max": 15299.0,
@@ -2741,7 +2806,7 @@
         "premium_peak": null
       },
       "Parrotel Lagoon Resort": {
-        "history_max": 7657.0,
+        "history_max": 8057.0,
         "premium_peak": null
       },
       "Reef Oasis Suakin Resort": {
@@ -2793,12 +2858,12 @@
         "premium_peak": 14000.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
-        "history_max": 9510.0,
+        "history_max": 9744.0,
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
-        "history_max": 9839.0,
-        "premium_peak": null
+        "history_max": 10719.0,
+        "premium_peak": 10719.0
       },
       "Jaz Makadi Oasis Resort": {
         "history_max": 9833.0,
@@ -2877,7 +2942,7 @@
         "premium_peak": 10437.0
       },
       "Novotel Marsa Alam": {
-        "history_max": 9019.0,
+        "history_max": 9033.0,
         "premium_peak": null
       },
       "Xperience Sea Breeze Resort": {
@@ -2889,8 +2954,8 @@
         "premium_peak": null
       },
       "Movenpick Resort El Quseir": {
-        "history_max": 11717.0,
-        "premium_peak": 11717.0
+        "history_max": 12317.0,
+        "premium_peak": 12317.0
       },
       "Movenpick Resort & Spa El Gouna": {
         "history_max": 10094.0,
@@ -2917,8 +2982,8 @@
         "premium_peak": 11639.0
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
-        "history_max": 15197.0,
-        "premium_peak": 15197.0
+        "history_max": 15498.0,
+        "premium_peak": 15498.0
       },
       "Rixos Premium Magawish Bay View": {
         "history_max": 14139.0,
@@ -3081,7 +3146,7 @@
         "premium_peak": 12387.0
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
-        "history_max": 8957.0,
+        "history_max": 9357.0,
         "premium_peak": null
       },
       "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": {
@@ -3105,7 +3170,7 @@
         "premium_peak": null
       },
       "Royal Brayka Beach Resort (ex Zee Brayka)": {
-        "history_max": 8457.0,
+        "history_max": 8657.0,
         "premium_peak": null
       },
       "Rixos Sharm el Sheikh": {
@@ -3129,8 +3194,8 @@
         "premium_peak": 17220.0
       },
       "Jaz Elite Maraya": {
-        "history_max": 11079.0,
-        "premium_peak": 11079.0
+        "history_max": 11354.0,
+        "premium_peak": 11354.0
       },
       "Sentido Naga Bay": {
         "history_max": 10922.0,
@@ -3221,7 +3286,7 @@
         "premium_peak": null
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 8577.0,
+        "history_max": 8859.0,
         "premium_peak": null
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
@@ -3273,7 +3338,7 @@
         "premium_peak": 11126.0
       },
       "Gorgonia Beach": {
-        "history_max": 8457.0,
+        "history_max": 8657.0,
         "premium_peak": null
       },
       "Grand Rotana Resort & Spa": {
@@ -3401,8 +3466,8 @@
         "premium_peak": 12177.0
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 9757.0,
-        "premium_peak": null
+        "history_max": 11057.0,
+        "premium_peak": 11057.0
       },
       "Caesar Bay Resort": {
         "history_max": 10197.0,
@@ -3429,8 +3494,8 @@
         "premium_peak": 11016.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 10079.0,
-        "premium_peak": 10079.0
+        "history_max": 10622.0,
+        "premium_peak": 10622.0
       },
       "Amarina Queen Resort": {
         "history_max": 8339.0,
@@ -3453,8 +3518,8 @@
         "premium_peak": 13698.0
       },
       "Jaz Costa Mares": {
-        "history_max": 18057.0,
-        "premium_peak": 18057.0
+        "history_max": 18897.0,
+        "premium_peak": 18897.0
       },
       "Iberotel Makadi Beach": {
         "history_max": 10710.0,
