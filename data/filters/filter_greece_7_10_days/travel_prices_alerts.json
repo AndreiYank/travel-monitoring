@@ -494,10 +494,49 @@
       "created_at": "2026-07-08T12:31:18.740116+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-07-08_12-30_-9.6"
+    },
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 8997.0,
+      "new_price": 7597.0,
+      "price_change": -1400.0,
+      "price_change_pct": -15.560742469712126,
+      "timestamp": "2026-07-08 15:25:49.880034+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T15:26:36.502587+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-07-08_15-25_-15.6"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10257.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.058029826519225,
+      "timestamp": "2026-07-08 15:25:49.880034+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T15:26:36.502622+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-07-08_15-25_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 9673.0,
+      "new_price": 10235.0,
+      "price_change": 562.0,
+      "price_change_pct": 5.809986560529309,
+      "timestamp": "2026-07-08 15:25:49.880034+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T15:26:36.502634+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-07-08_15-25_zone_out_+5.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T12:30:27.397142+00:00",
+    "last_processed_run": "2026-07-08T15:25:49.880034+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17584.0,
@@ -576,8 +615,8 @@
         "premium_peak": 16028.0
       },
       "Kiani Beach": {
-        "history_max": 11938.0,
-        "premium_peak": 11938.0
+        "history_max": 12381.0,
+        "premium_peak": 12381.0
       },
       "Kakkos Beach": {
         "history_max": 16426.0,
@@ -696,8 +735,8 @@
         "premium_peak": null
       },
       "Thassos Grand Resort": {
-        "history_max": 11957.0,
-        "premium_peak": 11957.0
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
       },
       "Village Heights Resort": {
         "history_max": 18203.0,
@@ -744,12 +783,12 @@
         "premium_peak": 16107.0
       },
       "Mitsis Royal Mare": {
-        "history_max": 15715.0,
-        "premium_peak": 15715.0
+        "history_max": 15846.0,
+        "premium_peak": 15846.0
       },
       "Mitsis Selection Blue Domes": {
-        "history_max": 17268.0,
-        "premium_peak": 17268.0
+        "history_max": 17290.0,
+        "premium_peak": 17290.0
       },
       "Mitsis Selection Laguna": {
         "history_max": 18745.0,
@@ -840,8 +879,8 @@
         "premium_peak": 12557.0
       },
       "Eden Roc Resort": {
-        "history_max": 15693.0,
-        "premium_peak": 15693.0
+        "history_max": 15753.0,
+        "premium_peak": 15753.0
       },
       "Ammos (Mastichari) Grecja, Kos, Mastichari": {
         "history_max": 10857.0,
@@ -972,8 +1011,8 @@
         "premium_peak": 10524.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 9973.0,
-        "premium_peak": null
+        "history_max": 10235.0,
+        "premium_peak": 10235.0
       },
       "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos": {
         "history_max": 11130.0,
@@ -1082,6 +1121,10 @@
       "Thassos Grand Resort Grecja, Thassos, Alikí": {
         "history_max": 11357.0,
         "premium_peak": 11357.0
+      },
+      "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
+        "history_max": 11057.0,
+        "premium_peak": 11057.0
       }
     }
   }

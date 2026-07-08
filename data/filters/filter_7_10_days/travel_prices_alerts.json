@@ -2704,10 +2704,114 @@
       "created_at": "2026-07-08T12:29:45.361371+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-08_12-29_comeback_20.9"
+    },
+    {
+      "hotel_name": "Shams Lodge Resort",
+      "duration_bucket": "",
+      "old_price": 9219.0,
+      "new_price": 8349.0,
+      "price_change": -870.0,
+      "price_change_pct": -9.437032216075496,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T15:25:18.022554+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Shams Lodge Resort_2026-07-08_15-24_-9.4"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 7230.0,
+      "new_price": 9158.0,
+      "price_change": 1928.0,
+      "price_change_pct": 26.666666666666668,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T15:25:18.022587+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-08_15-24_+26.7"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)",
+      "duration_bucket": "",
+      "old_price": 8719.0,
+      "new_price": 7849.0,
+      "price_change": -870.0,
+      "price_change_pct": -9.978208510150246,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T15:25:18.022600+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)_2026-07-08_15-24_-10.0"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9462.0,
+      "new_price": 8644.0,
+      "price_change": -818.0,
+      "price_change_pct": -8.645106742760515,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T15:25:18.022611+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-08_15-24_-8.6"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 9689.0,
+      "new_price": 7695.0,
+      "price_change": -1994.0,
+      "price_change_pct": -20.580039219733717,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T15:25:18.022622+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-07-08_15-24_-20.6"
+    },
+    {
+      "hotel_name": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)",
+      "duration_bucket": "",
+      "old_price": 9953.0,
+      "new_price": 10128.0,
+      "price_change": 175.0,
+      "price_change_pct": 1.7582638400482267,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T15:25:18.022646+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)_2026-07-08_15-24_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 9337.0,
+      "new_price": 10798.0,
+      "price_change": 1461.0,
+      "price_change_pct": 15.647424226196852,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T15:25:18.022654+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-07-08_15-24_zone_out_+15.6"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9637.0,
+      "new_price": 10577.0,
+      "price_change": 940.0,
+      "price_change_pct": 9.754072844246135,
+      "timestamp": "2026-07-08 15:24:42.738774+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T15:25:18.022662+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-08_15-24_zone_out_+9.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T12:29:03.680008+00:00",
+    "last_processed_run": "2026-07-08T15:24:42.738774+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8118.0,
@@ -2770,8 +2874,8 @@
         "premium_peak": 10734.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
-        "history_max": 11157.0,
-        "premium_peak": 11157.0
+        "history_max": 11337.0,
+        "premium_peak": 11337.0
       },
       "Pickalbatros Vita Resort Portofino": {
         "history_max": 11039.0,
@@ -2806,7 +2910,7 @@
         "premium_peak": null
       },
       "Parrotel Lagoon Resort": {
-        "history_max": 8057.0,
+        "history_max": 8657.0,
         "premium_peak": null
       },
       "Reef Oasis Suakin Resort": {
@@ -2890,8 +2994,8 @@
         "premium_peak": 12733.0
       },
       "Jaz Oriental Resort": {
-        "history_max": 12468.0,
-        "premium_peak": 12468.0
+        "history_max": 13344.0,
+        "premium_peak": 13344.0
       },
       "Jaz Palmariva Beach": {
         "history_max": 8712.0,
@@ -2910,8 +3014,8 @@
         "premium_peak": 11767.0
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
-        "history_max": 11941.0,
-        "premium_peak": 11941.0
+        "history_max": 12817.0,
+        "premium_peak": 12817.0
       },
       "Jaz Viva Casa Maza": {
         "history_max": 11269.0,
@@ -3102,7 +3206,7 @@
         "premium_peak": null
       },
       "Time Marina": {
-        "history_max": 9137.0,
+        "history_max": 9158.0,
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
@@ -3318,7 +3422,7 @@
         "premium_peak": null
       },
       "Concorde Moreen Beach Resort & Spa": {
-        "history_max": 8657.0,
+        "history_max": 8857.0,
         "premium_peak": null
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
@@ -3330,8 +3434,8 @@
         "premium_peak": null
       },
       "Ghazala Alamein": {
-        "history_max": 13023.0,
-        "premium_peak": 13023.0
+        "history_max": 13652.0,
+        "premium_peak": 13652.0
       },
       "Beach Albatros Resort": {
         "history_max": 11126.0,
@@ -3526,8 +3630,8 @@
         "premium_peak": 10710.0
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 9953.0,
-        "premium_peak": null
+        "history_max": 10128.0,
+        "premium_peak": 10128.0
       },
       "Iberotel Palace": {
         "history_max": 13236.0,
@@ -3568,6 +3672,10 @@
       "Azur One Eleven": {
         "history_max": 10337.0,
         "premium_peak": 10337.0
+      },
+      "Jaz Villagio": {
+        "history_max": 11412.0,
+        "premium_peak": 11412.0
       }
     }
   }
