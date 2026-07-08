@@ -2301,10 +2301,114 @@
       "created_at": "2026-07-08T02:00:39.064469+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Siva Golden Bay Makadi_2026-07-08_01-59_comeback_18.2"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa",
+      "duration_bucket": "",
+      "old_price": 8257.0,
+      "new_price": 9057.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.688748940293085,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T05:14:31.607529+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa_2026-07-08_05-13_+9.7"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 8357.0,
+      "new_price": 9307.0,
+      "price_change": 950.0,
+      "price_change_pct": 11.36771568744765,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T05:14:31.607555+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-08_05-13_+11.4"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7664.0,
+      "new_price": 8285.0,
+      "price_change": 621.0,
+      "price_change_pct": 8.102818371607516,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T05:14:31.607568+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-07-08_05-13_+8.1"
+    },
+    {
+      "hotel_name": "Aldiana Club Naga Bay",
+      "duration_bucket": "",
+      "old_price": 9747.0,
+      "new_price": 10577.0,
+      "price_change": 830.0,
+      "price_change_pct": 8.515440648404638,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:14:31.607595+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aldiana Club Naga Bay_2026-07-08_05-13_zone_out_+8.5"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8807.0,
+      "new_price": 8807.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:14:31.607605+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-07-08_05-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 9227.0,
+      "new_price": 10457.0,
+      "price_change": 1230.0,
+      "price_change_pct": 13.330443264332937,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:14:31.607615+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-07-08_05-13_zone_out_+13.3"
+    },
+    {
+      "hotel_name": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)",
+      "duration_bucket": "",
+      "old_price": 9112.0,
+      "new_price": 10452.0,
+      "price_change": 1340.0,
+      "price_change_pct": 14.705882352941178,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:14:31.607624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-07-08_05-13_zone_out_+14.7"
+    },
+    {
+      "hotel_name": "Titanic Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9237.0,
+      "new_price": 10494.0,
+      "price_change": 1257.0,
+      "price_change_pct": 13.608314387788242,
+      "timestamp": "2026-07-08 05:13:55.483216+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:14:31.607632+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Palace Resort_2026-07-08_05-13_zone_out_+13.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T01:59:58.037040+00:00",
+    "last_processed_run": "2026-07-08T05:13:55.483216+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8118.0,
@@ -2387,8 +2491,8 @@
         "premium_peak": null
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
-        "history_max": 9112.0,
-        "premium_peak": null
+        "history_max": 10452.0,
+        "premium_peak": 10452.0
       },
       "Retac Qunay Dahab Resort & Spa": {
         "history_max": 10031.0,
@@ -2483,8 +2587,8 @@
         "premium_peak": null
       },
       "Jaz Neo Saraya Palms": {
-        "history_max": 12718.0,
-        "premium_peak": 12718.0
+        "history_max": 12733.0,
+        "premium_peak": 12733.0
       },
       "Jaz Oriental Resort": {
         "history_max": 12468.0,
@@ -2503,8 +2607,8 @@
         "premium_peak": null
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
-        "history_max": 11753.0,
-        "premium_peak": 11753.0
+        "history_max": 11767.0,
+        "premium_peak": 11767.0
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
         "history_max": 11941.0,
@@ -2591,7 +2695,7 @@
         "premium_peak": 14270.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
-        "history_max": 9056.0,
+        "history_max": 9067.0,
         "premium_peak": null
       },
       "Sultan Gardens Resort": {
@@ -2607,8 +2711,8 @@
         "premium_peak": 10911.0
       },
       "Sunrise Aqua Joy": {
-        "history_max": 11450.0,
-        "premium_peak": 11450.0
+        "history_max": 11463.0,
+        "premium_peak": 11463.0
       },
       "Sunrise Arabian Beach Resort": {
         "history_max": 12049.0,
@@ -2763,7 +2867,7 @@
         "premium_peak": 10615.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
-        "history_max": 8258.0,
+        "history_max": 8269.0,
         "premium_peak": null
       },
       "Royal Brayka Beach Resort (ex Zee Brayka)": {
@@ -2843,7 +2947,7 @@
         "premium_peak": null
       },
       "Shams Lodge Resort": {
-        "history_max": 9515.0,
+        "history_max": 9527.0,
         "premium_peak": null
       },
       "Serry Beach Resort": {
@@ -2895,7 +2999,7 @@
         "premium_peak": null
       },
       "Dreams Vacation Sharm Resort": {
-        "history_max": 8257.0,
+        "history_max": 8437.0,
         "premium_peak": null
       },
       "El Kasr Red Sea": {
@@ -2923,7 +3027,7 @@
         "premium_peak": null
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
-        "history_max": 9015.0,
+        "history_max": 9025.0,
         "premium_peak": null
       },
       "Ghazala Alamein": {
@@ -2931,8 +3035,8 @@
         "premium_peak": 13023.0
       },
       "Beach Albatros Resort": {
-        "history_max": 11113.0,
-        "premium_peak": 11113.0
+        "history_max": 11126.0,
+        "premium_peak": 11126.0
       },
       "Gorgonia Beach": {
         "history_max": 8457.0,
@@ -2947,8 +3051,8 @@
         "premium_peak": 11817.0
       },
       "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
-        "history_max": 10663.0,
-        "premium_peak": 10663.0
+        "history_max": 10676.0,
+        "premium_peak": 10676.0
       },
       "Baron Palms": {
         "history_max": 12987.0,
@@ -2979,8 +3083,8 @@
         "premium_peak": null
       },
       "Cooee Prima Life Makadi Bay": {
-        "history_max": 9877.0,
-        "premium_peak": null
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Concorde El Salam Sport": {
         "history_max": 9163.0,
@@ -3111,8 +3215,8 @@
         "premium_peak": 10699.0
       },
       "Amarina Sapphire Resort": {
-        "history_max": 13683.0,
-        "premium_peak": 13683.0
+        "history_max": 13698.0,
+        "premium_peak": 13698.0
       },
       "Jaz Costa Mares": {
         "history_max": 18057.0,

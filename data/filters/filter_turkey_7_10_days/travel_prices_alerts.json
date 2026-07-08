@@ -3783,10 +3783,114 @@
       "created_at": "2026-07-08T02:01:09.288925+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Garden of Sun Spa & Wellness_2026-07-08_01-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 7393.0,
+      "new_price": 6608.0,
+      "price_change": -785.0,
+      "price_change_pct": -10.61815230623563,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T05:15:01.900035+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar_2026-07-08_05-13_-10.6"
+    },
+    {
+      "hotel_name": "Alaiye Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9865.0,
+      "new_price": 10534.0,
+      "price_change": 669.0,
+      "price_change_pct": 6.7815509376583885,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900097+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alaiye Resort & Spa_2026-07-08_05-13_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 8409.0,
+      "new_price": 8409.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900110+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa Turcja, Side, Colakli_2026-07-08_05-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hane Sun Elite (ex Noble Palace Side)",
+      "duration_bucket": "",
+      "old_price": 8618.0,
+      "new_price": 8618.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900119+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hane Sun Elite (ex Noble Palace Side)_2026-07-08_05-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Justiniano Club Park Conti",
+      "duration_bucket": "",
+      "old_price": 9933.0,
+      "new_price": 10601.0,
+      "price_change": 668.0,
+      "price_change_pct": 6.725057887848586,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900128+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Justiniano Club Park Conti_2026-07-08_05-13_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Sunland Resort (ex. Imperial Sunland Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 9863.0,
+      "new_price": 10030.0,
+      "price_change": 167.0,
+      "price_change_pct": 1.6931967961066612,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900137+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunland Resort (ex. Imperial Sunland Resort & Spa)_2026-07-08_05-13_zone_out_+1.7"
+    },
+    {
+      "hotel_name": "Victory Resort",
+      "duration_bucket": "",
+      "old_price": 9517.0,
+      "new_price": 10186.0,
+      "price_change": 669.0,
+      "price_change_pct": 7.029526111169486,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900146+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Victory Resort_2026-07-08_05-13_zone_out_+7.0"
+    },
+    {
+      "hotel_name": "Water Side Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9764.0,
+      "new_price": 10180.0,
+      "price_change": 416.0,
+      "price_change_pct": 4.260548955346169,
+      "timestamp": "2026-07-08 05:13:55.393332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T05:15:01.900154+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Water Side Resort & Spa_2026-07-08_05-13_zone_out_+4.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T01:59:57.952692+00:00",
+    "last_processed_run": "2026-07-08T05:13:55.393332+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -3921,8 +4025,8 @@
         "premium_peak": 11911.0
       },
       "Orange Palace": {
-        "history_max": 10578.0,
-        "premium_peak": 10578.0
+        "history_max": 10608.0,
+        "premium_peak": 10608.0
       },
       "Orange County Belek": {
         "history_max": 11518.0,
@@ -3941,12 +4045,12 @@
         "premium_peak": 11643.0
       },
       "OZ Incekum Beach Resort": {
-        "history_max": 11017.0,
-        "premium_peak": 11017.0
+        "history_max": 11036.0,
+        "premium_peak": 11036.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
-        "history_max": 11570.0,
-        "premium_peak": 11570.0
+        "history_max": 12238.0,
+        "premium_peak": 12238.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)": {
         "history_max": 8757.0,
@@ -3993,7 +4097,7 @@
         "premium_peak": 10509.0
       },
       "Holiday Park Resort (Okurcalar)": {
-        "history_max": 9052.0,
+        "history_max": 9624.0,
         "premium_peak": null
       },
       "Holiday Garden Resort (Okurcalar)": {
@@ -4065,16 +4169,16 @@
         "premium_peak": 10184.0
       },
       "Gold Island Selected": {
-        "history_max": 11667.0,
-        "premium_peak": 11667.0
+        "history_max": 11793.0,
+        "premium_peak": 11793.0
       },
       "Gold City": {
         "history_max": 8658.0,
         "premium_peak": null
       },
       "Hotel Su": {
-        "history_max": 11226.0,
-        "premium_peak": 11226.0
+        "history_max": 11895.0,
+        "premium_peak": 11895.0
       },
       "Palm Wings Ephesus": {
         "history_max": 12246.0,
@@ -4133,8 +4237,8 @@
         "premium_peak": 11719.0
       },
       "Karmir Resort (Kemer)": {
-        "history_max": 11293.0,
-        "premium_peak": 11293.0
+        "history_max": 11483.0,
+        "premium_peak": 11483.0
       },
       "Kamelya Selin": {
         "history_max": 11590.0,
@@ -4221,20 +4325,20 @@
         "premium_peak": 10889.0
       },
       "Sunrise Resort & SPA": {
-        "history_max": 11641.0,
-        "premium_peak": 11641.0
+        "history_max": 11656.0,
+        "premium_peak": 11656.0
       },
       "Sunmelia Beach Resort & Spa": {
         "history_max": 9896.0,
         "premium_peak": null
       },
       "Sunis Evren Beach & Spa": {
-        "history_max": 10837.0,
-        "premium_peak": 10837.0
+        "history_max": 11370.0,
+        "premium_peak": 11370.0
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
-        "history_max": 10068.0,
-        "premium_peak": 10068.0
+        "history_max": 10737.0,
+        "premium_peak": 10737.0
       },
       "Sun Star Resort Turcja, Alanya, Mahmutlar": {
         "history_max": 7854.0,
@@ -4245,20 +4349,20 @@
         "premium_peak": null
       },
       "Starlight Resort & Convention Center (Side)": {
-        "history_max": 11641.0,
-        "premium_peak": 11641.0
+        "history_max": 11656.0,
+        "premium_peak": 11656.0
       },
       "Signature Blue Resort (ex. Grand Ozcelik)": {
         "history_max": 8690.0,
         "premium_peak": null
       },
       "Side Star Park": {
-        "history_max": 11287.0,
-        "premium_peak": 11287.0
+        "history_max": 11385.0,
+        "premium_peak": 11385.0
       },
       "Side Prenses": {
-        "history_max": 10675.0,
-        "premium_peak": 10675.0
+        "history_max": 10947.0,
+        "premium_peak": 10947.0
       },
       "Side Premium by OZ Hotels": {
         "history_max": 11917.0,
@@ -4313,8 +4417,8 @@
         "premium_peak": 10836.0
       },
       "Water Side Resort & Spa": {
-        "history_max": 10054.0,
-        "premium_peak": 10054.0
+        "history_max": 10180.0,
+        "premium_peak": 10180.0
       },
       "Washington Resort": {
         "history_max": 8957.0,
@@ -4333,12 +4437,12 @@
         "premium_peak": null
       },
       "Victory Volare": {
-        "history_max": 11753.0,
-        "premium_peak": 11753.0
+        "history_max": 12020.0,
+        "premium_peak": 12020.0
       },
       "Victory Resort": {
-        "history_max": 9623.0,
-        "premium_peak": null
+        "history_max": 10186.0,
+        "premium_peak": 10186.0
       },
       "Venosa Beach Resort": {
         "history_max": 11914.0,
@@ -4377,7 +4481,7 @@
         "premium_peak": null
       },
       "Glamour Resort & Spa": {
-        "history_max": 9340.0,
+        "history_max": 9377.0,
         "premium_peak": null
       },
       "Side Aluna": {
@@ -4421,8 +4525,8 @@
         "premium_peak": 10746.0
       },
       "Queens Park Le Jardin Resort": {
-        "history_max": 11024.0,
-        "premium_peak": 11024.0
+        "history_max": 11191.0,
+        "premium_peak": 11191.0
       },
       "Queens Park Goynuk (Kemer)": {
         "history_max": 10536.0,
@@ -4453,8 +4557,8 @@
         "premium_peak": null
       },
       "Porto Bello": {
-        "history_max": 12077.0,
-        "premium_peak": 12077.0
+        "history_max": 12092.0,
+        "premium_peak": 12092.0
       },
       "Port Side Resort": {
         "history_max": 10888.0,
@@ -4465,8 +4569,8 @@
         "premium_peak": 10757.0
       },
       "Pirates Beach Club": {
-        "history_max": 11904.0,
-        "premium_peak": 11904.0
+        "history_max": 12029.0,
+        "premium_peak": 12029.0
       },
       "Pine Bay Holiday Resort": {
         "history_max": 12157.0,
@@ -4753,16 +4857,16 @@
         "premium_peak": 11205.0
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)": {
-        "history_max": 11761.0,
-        "premium_peak": 11761.0
+        "history_max": 11776.0,
+        "premium_peak": 11776.0
       },
       "Can Garden Resort (Side)": {
         "history_max": 10759.0,
         "premium_peak": 10759.0
       },
       "Azura World (ex. Wyndham Alanya)": {
-        "history_max": 11803.0,
-        "premium_peak": 11803.0
+        "history_max": 11969.0,
+        "premium_peak": 11969.0
       },
       "Casa Fora Beach Resort": {
         "history_max": 10297.0,
@@ -4813,8 +4917,8 @@
         "premium_peak": 11970.0
       },
       "Club Grand Aqua": {
-        "history_max": 11612.0,
-        "premium_peak": 11612.0
+        "history_max": 12035.0,
+        "premium_peak": 12035.0
       },
       "Asteria Family Resort Side": {
         "history_max": 9869.0,
@@ -4857,8 +4961,8 @@
         "premium_peak": 10913.0
       },
       "Aria Resort & SPA": {
-        "history_max": 10542.0,
-        "premium_peak": 10542.0
+        "history_max": 11211.0,
+        "premium_peak": 11211.0
       },
       "Berry Blue": {
         "history_max": 11032.0,
@@ -4877,8 +4981,8 @@
         "premium_peak": 11643.0
       },
       "Alaiye Resort & Spa": {
-        "history_max": 9865.0,
-        "premium_peak": null
+        "history_max": 10534.0,
+        "premium_peak": 10534.0
       },
       "Fame Residence (Kemer)": {
         "history_max": 11779.0,
@@ -4901,7 +5005,7 @@
         "premium_peak": null
       },
       "Drita Resort & Spa Turcja, Alanya, Kargicak": {
-        "history_max": 8395.0,
+        "history_max": 8404.0,
         "premium_peak": null
       },
       "Alba Queen": {
@@ -4965,8 +5069,8 @@
         "premium_peak": 10806.0
       },
       "Adalya Ocean Deluxe": {
-        "history_max": 11715.0,
-        "premium_peak": 11715.0
+        "history_max": 11996.0,
+        "premium_peak": 11996.0
       },
       "Dosso Dossi Golden Horn (ex. Hilton Garden Inn Golden Horn)": {
         "history_max": 12052.0,
@@ -5009,8 +5113,8 @@
         "premium_peak": 11598.0
       },
       "Charisma Deluxe (Kusadasi)": {
-        "history_max": 12210.0,
-        "premium_peak": 12210.0
+        "history_max": 12381.0,
+        "premium_peak": 12381.0
       },
       "Bieno Club Sunset (ex. Bone Club Sunset) Turcja, Side": {
         "history_max": 7897.0,
@@ -5029,7 +5133,7 @@
         "premium_peak": null
       },
       "Armas Bella Sun (ex.Club Bella Sun)": {
-        "history_max": 8887.0,
+        "history_max": 8937.0,
         "premium_peak": null
       },
       "Sultan of Dreams Turcja, Side, Manavgat": {
@@ -5085,8 +5189,8 @@
         "premium_peak": 11697.0
       },
       "Quattro Beach Spa": {
-        "history_max": 11916.0,
-        "premium_peak": 11916.0
+        "history_max": 12083.0,
+        "premium_peak": 12083.0
       },
       "Drita Resort & Spa": {
         "history_max": 8673.0,
@@ -5097,8 +5201,8 @@
         "premium_peak": null
       },
       "Club Turan Prince World": {
-        "history_max": 11797.0,
-        "premium_peak": 11797.0
+        "history_max": 12372.0,
+        "premium_peak": 12372.0
       },
       "Concordia Celes Beach": {
         "history_max": 8667.0,
@@ -5133,8 +5237,8 @@
         "premium_peak": null
       },
       "Sherwood Dreams Resort": {
-        "history_max": 11977.0,
-        "premium_peak": 11977.0
+        "history_max": 12297.0,
+        "premium_peak": 12297.0
       },
       "Korumar Ephesus Beach": {
         "history_max": 11957.0,
@@ -5157,8 +5261,8 @@
         "premium_peak": null
       },
       "Sunland Resort (ex. Imperial Sunland Resort & Spa)": {
-        "history_max": 9863.0,
-        "premium_peak": null
+        "history_max": 10030.0,
+        "premium_peak": 10030.0
       },
       "Oz Sui Resort Turcja, Alanya": {
         "history_max": 7926.0,
@@ -5173,8 +5277,8 @@
         "premium_peak": 12005.0
       },
       "Marvida Family Eco": {
-        "history_max": 12089.0,
-        "premium_peak": 12089.0
+        "history_max": 12340.0,
+        "premium_peak": 12340.0
       },
       "Solivia (Ex. Titan Select)": {
         "history_max": 8969.0,
@@ -5245,11 +5349,11 @@
         "premium_peak": null
       },
       "Cenger Beach Resort (Side)": {
-        "history_max": 8647.0,
+        "history_max": 8657.0,
         "premium_peak": null
       },
       "Avia Resort & Spa": {
-        "history_max": 8293.0,
+        "history_max": 8786.0,
         "premium_peak": null
       },
       "Aydinbey Gold Dreams Turcja, Alanya, Turkler": {
@@ -5359,6 +5463,14 @@
       "Orka Sunlife Resort & Spa": {
         "history_max": 12365.0,
         "premium_peak": 12365.0
+      },
+      "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli": {
+        "history_max": 8573.0,
+        "premium_peak": null
+      },
+      "Side Sunport (ex. Side Sungate)": {
+        "history_max": 12075.0,
+        "premium_peak": 12075.0
       }
     }
   }
