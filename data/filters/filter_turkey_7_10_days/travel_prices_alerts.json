@@ -5109,10 +5109,114 @@
       "created_at": "2026-07-08T19:23:16.735607+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ozkaymak Falez Turcja, Antalya_2026-07-08_19-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)",
+      "duration_bucket": "",
+      "old_price": 8615.0,
+      "new_price": 9714.0,
+      "price_change": 1099.0,
+      "price_change_pct": 12.756819500870575,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T21:14:50.656863+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)_2026-07-08_21-13_+12.8"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9861.0,
+      "new_price": 8815.0,
+      "price_change": -1046.0,
+      "price_change_pct": -10.607443464151709,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T21:14:50.656887+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-08_21-13_-10.6"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "",
+      "old_price": 8993.0,
+      "new_price": 8993.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T21:14:50.656908+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection_2026-07-08_21-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gold City",
+      "duration_bucket": "",
+      "old_price": 8568.0,
+      "new_price": 8568.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T21:14:50.656915+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gold City_2026-07-08_21-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Labranda Ephesus Princess Turcja, Kusadasi, Bayraklidede",
+      "duration_bucket": "",
+      "old_price": 8478.0,
+      "new_price": 8478.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T21:14:50.656921+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Ephesus Princess Turcja, Kusadasi, Bayraklidede_2026-07-08_21-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 7803.0,
+      "new_price": 7803.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T21:14:50.656926+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites Turcja, Marmaris_2026-07-08_21-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "OZ Incekum Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11040.0,
+      "new_price": 9913.0,
+      "price_change": -1127.0,
+      "price_change_pct": -10.208333333333334,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-08T21:14:50.656944+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "OZ Incekum Beach Resort_2026-07-08_21-13_comeback_10.2"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "",
+      "old_price": 10897.0,
+      "new_price": 9597.0,
+      "price_change": -1300.0,
+      "price_change_pct": -11.929888960264293,
+      "timestamp": "2026-07-08 21:13:44.786709+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-08T21:14:50.656959+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium_2026-07-08_21-13_comeback_11.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T19:22:00.044961+00:00",
+    "last_processed_run": "2026-07-08T21:13:44.786709+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -5583,8 +5687,8 @@
         "premium_peak": 11476.0
       },
       "Side Prenses": {
-        "history_max": 11042.0,
-        "premium_peak": 11042.0
+        "history_max": 11780.0,
+        "premium_peak": 11780.0
       },
       "Side Premium by OZ Hotels": {
         "history_max": 11917.0,
@@ -5727,7 +5831,7 @@
         "premium_peak": 10386.0
       },
       "Ring Beach (Kemer)": {
-        "history_max": 8960.0,
+        "history_max": 9018.0,
         "premium_peak": null
       },
       "Richmond Ephesus": {
@@ -6079,8 +6183,8 @@
         "premium_peak": 11205.0
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)": {
-        "history_max": 11776.0,
-        "premium_peak": 11776.0
+        "history_max": 11797.0,
+        "premium_peak": 11797.0
       },
       "Can Garden Resort (Side)": {
         "history_max": 10759.0,
@@ -6279,7 +6383,7 @@
         "premium_peak": 10754.0
       },
       "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı": {
-        "history_max": 7437.0,
+        "history_max": 7557.0,
         "premium_peak": null
       },
       "DoubleTree by Hilton Istanbul - Piyalepasa": {
@@ -6511,7 +6615,7 @@
         "premium_peak": 11976.0
       },
       "Cenger Blue Collection Turcja, Side, Kızılot": {
-        "history_max": 8279.0,
+        "history_max": 8399.0,
         "premium_peak": null
       },
       "Crystal Flora Pearl Collection": {
@@ -6587,8 +6691,8 @@
         "premium_peak": null
       },
       "Royal Alhambra Palace": {
-        "history_max": 11820.0,
-        "premium_peak": 11820.0
+        "history_max": 12189.0,
+        "premium_peak": 12189.0
       },
       "Mandarin Resort (Bodrum)": {
         "history_max": 8597.0,
@@ -6615,8 +6719,8 @@
         "premium_peak": null
       },
       "Aydinbey Kings Palace": {
-        "history_max": 11728.0,
-        "premium_peak": 11728.0
+        "history_max": 11899.0,
+        "premium_peak": 11899.0
       },
       "Rai Foresta Tekirova": {
         "history_max": 12011.0,
@@ -6627,16 +6731,16 @@
         "premium_peak": null
       },
       "Melas Lara": {
-        "history_max": 12042.0,
-        "premium_peak": 12042.0
+        "history_max": 12213.0,
+        "premium_peak": 12213.0
       },
       "Melas Resort": {
-        "history_max": 11874.0,
-        "premium_peak": 11874.0
+        "history_max": 12045.0,
+        "premium_peak": 12045.0
       },
       "Side Star Resort (ex Club)": {
-        "history_max": 12042.0,
-        "premium_peak": 12042.0
+        "history_max": 12233.0,
+        "premium_peak": 12233.0
       },
       "La Blanche Resort & Spa": {
         "history_max": 9970.0,
@@ -6757,6 +6861,10 @@
       "Elite World Kusadasi (ex Marina)": {
         "history_max": 12427.0,
         "premium_peak": 12427.0
+      },
+      "Diamond De Luxe ( Colakli)": {
+        "history_max": 12189.0,
+        "premium_peak": 12189.0
       }
     }
   }
