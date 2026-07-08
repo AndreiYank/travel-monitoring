@@ -1014,10 +1014,62 @@
       "created_at": "2026-07-08T00:03:09.593216+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort|7-9_2026-07-08_00-02_comeback_11.2"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 8326.0,
+      "new_price": 8326.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 02:00:39.934834+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T02:01:37.636516+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)|7-9_2026-07-08_02-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "9-11",
+      "old_price": 9416.0,
+      "new_price": 9416.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 02:00:39.934834+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T02:01:37.636544+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)|9-11_2026-07-08_02-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Misal (ex. Nox Inn Club)",
+      "duration_bucket": "9-11",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 02:00:39.934834+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T02:01:37.636555+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Misal (ex. Nox Inn Club)|9-11_2026-07-08_02-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Benata",
+      "duration_bucket": "7-9",
+      "old_price": 10497.0,
+      "new_price": 9497.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.52653138992093,
+      "timestamp": "2026-07-08 02:00:39.934834+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-08T02:01:37.636584+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Benata|7-9_2026-07-08_02-00_comeback_9.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T00:02:15.712266+00:00",
+    "last_processed_run": "2026-07-08T02:00:39.934834+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -1124,8 +1176,8 @@
         "premium_peak": null
       },
       "OZ Incekum Beach Resort|7-9": {
-        "history_max": 10797.0,
-        "premium_peak": 10797.0
+        "history_max": 11017.0,
+        "premium_peak": 11017.0
       },
       "The Nora Hotels Family Club (Kargicak)|7-9": {
         "history_max": 7491.0,
@@ -1872,8 +1924,8 @@
         "premium_peak": 15309.0
       },
       "Marti Myra|9-11": {
-        "history_max": 15746.0,
-        "premium_peak": 15746.0
+        "history_max": 16371.0,
+        "premium_peak": 16371.0
       },
       "Sensitive Premium Resort & Spa|9-11": {
         "history_max": 14297.0,
@@ -2772,8 +2824,8 @@
         "premium_peak": 16115.0
       },
       "Champion Holiday Village (Kemer)|7-9": {
-        "history_max": 10993.0,
-        "premium_peak": 10993.0
+        "history_max": 11244.0,
+        "premium_peak": 11244.0
       },
       "Seher Resort & Spa|7-9": {
         "history_max": 9412.0,
@@ -2926,6 +2978,22 @@
       "Glamour Resort & Spa|9-11": {
         "history_max": 10474.0,
         "premium_peak": 10474.0
+      },
+      "Side Star Park|7-9": {
+        "history_max": 11385.0,
+        "premium_peak": 11385.0
+      },
+      "Side Aluna|7-9": {
+        "history_max": 10971.0,
+        "premium_peak": 10971.0
+      },
+      "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|7-9": {
+        "history_max": 12717.0,
+        "premium_peak": 12717.0
+      },
+      "Kaya (Belek)|9-11": {
+        "history_max": 16367.0,
+        "premium_peak": 16367.0
       }
     }
   }
