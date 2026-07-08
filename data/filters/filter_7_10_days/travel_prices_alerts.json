@@ -2808,10 +2808,62 @@
       "created_at": "2026-07-08T15:25:18.022662+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-08_15-24_zone_out_+9.8"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 7695.0,
+      "new_price": 9356.0,
+      "price_change": 1661.0,
+      "price_change_pct": 21.58544509421702,
+      "timestamp": "2026-07-08 17:35:41.312910+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T17:36:23.004352+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-07-08_17-35_+21.6"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 7681.0,
+      "new_price": 8501.0,
+      "price_change": 820.0,
+      "price_change_pct": 10.675693269105585,
+      "timestamp": "2026-07-08 17:35:41.312910+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T17:36:23.004382+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-07-08_17-35_+10.7"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 7443.0,
+      "new_price": 8393.0,
+      "price_change": 950.0,
+      "price_change_pct": 12.763670562945048,
+      "timestamp": "2026-07-08 17:35:41.312910+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T17:36:23.004396+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-08_17-35_+12.8"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 8757.0,
+      "new_price": 10097.0,
+      "price_change": 1340.0,
+      "price_change_pct": 15.302044079022497,
+      "timestamp": "2026-07-08 17:35:41.312910+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T17:36:23.004420+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-07-08_17-35_zone_out_+15.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T15:24:42.738774+00:00",
+    "last_processed_run": "2026-07-08T17:35:41.312910+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8118.0,
@@ -2970,12 +3022,12 @@
         "premium_peak": 10719.0
       },
       "Jaz Makadi Oasis Resort": {
-        "history_max": 9833.0,
-        "premium_peak": null
+        "history_max": 10097.0,
+        "premium_peak": 10097.0
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
-        "history_max": 11577.0,
-        "premium_peak": 11577.0
+        "history_max": 11862.0,
+        "premium_peak": 11862.0
       },
       "Jaz Makadina": {
         "history_max": 12887.0,
@@ -3298,8 +3350,8 @@
         "premium_peak": 17220.0
       },
       "Jaz Elite Maraya": {
-        "history_max": 11354.0,
-        "premium_peak": 11354.0
+        "history_max": 11687.0,
+        "premium_peak": 11687.0
       },
       "Sentido Naga Bay": {
         "history_max": 10922.0,
@@ -3458,8 +3510,8 @@
         "premium_peak": 10676.0
       },
       "Baron Palms": {
-        "history_max": 12987.0,
-        "premium_peak": 12987.0
+        "history_max": 14307.0,
+        "premium_peak": 14307.0
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
         "history_max": 9388.0,
@@ -3602,7 +3654,7 @@
         "premium_peak": 10622.0
       },
       "Amarina Queen Resort": {
-        "history_max": 8339.0,
+        "history_max": 8501.0,
         "premium_peak": null
       },
       "Jasmine Palace": {
