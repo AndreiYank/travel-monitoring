@@ -5005,10 +5005,114 @@
       "created_at": "2026-07-08T17:36:51.863316+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aria Claros Beach and Spa Resort_2026-07-08_17-35_comeback_8.1"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 9767.0,
+      "new_price": 8965.0,
+      "price_change": -802.0,
+      "price_change_pct": -8.21132384560254,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-08T19:23:16.735496+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-07-08_19-22_-8.2"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "",
+      "old_price": 8910.0,
+      "new_price": 9822.0,
+      "price_change": 912.0,
+      "price_change_pct": 10.235690235690235,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-08T19:23:16.735530+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)_2026-07-08_19-22_+10.2"
+    },
+    {
+      "hotel_name": "Aria Claros Beach and Spa Resort",
+      "duration_bucket": "",
+      "old_price": 9928.0,
+      "new_price": 10680.0,
+      "price_change": 752.0,
+      "price_change_pct": 7.574536663980661,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T19:23:16.735564+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aria Claros Beach and Spa Resort_2026-07-08_19-22_zone_out_+7.6"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9928.0,
+      "new_price": 10168.0,
+      "price_change": 240.0,
+      "price_change_pct": 2.4174053182917,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T19:23:16.735575+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-07-08_19-22_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Asteria Ephesus Kusadasi",
+      "duration_bucket": "",
+      "old_price": 8627.0,
+      "new_price": 8627.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T19:23:16.735584+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Ephesus Kusadasi_2026-07-08_19-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 8836.0,
+      "new_price": 8836.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T19:23:16.735592+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-07-08_19-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa) Turcja, Alanya, Konakli",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 8157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T19:23:16.735599+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa) Turcja, Alanya, Konakli_2026-07-08_19-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez Turcja, Antalya",
+      "duration_bucket": "",
+      "old_price": 8417.0,
+      "new_price": 8417.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-08 19:22:00.044961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-08T19:23:16.735607+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez Turcja, Antalya_2026-07-08_19-22_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-08T17:35:41.450009+00:00",
+    "last_processed_run": "2026-07-08T19:22:00.044961+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -5091,8 +5195,8 @@
         "premium_peak": null
       },
       "Lonicera West (ex. Gold Island)": {
-        "history_max": 11583.0,
-        "premium_peak": 11583.0
+        "history_max": 11719.0,
+        "premium_peak": 11719.0
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
         "history_max": 9770.0,
@@ -5111,8 +5215,8 @@
         "premium_peak": 11911.0
       },
       "Palm Wings Beach Resort & SPA (Kusadasi)": {
-        "history_max": 10842.0,
-        "premium_peak": 10842.0
+        "history_max": 10959.0,
+        "premium_peak": 10959.0
       },
       "Palemon Resort & Spa": {
         "history_max": 9236.0,
@@ -5171,7 +5275,7 @@
         "premium_peak": 12238.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)": {
-        "history_max": 8757.0,
+        "history_max": 9697.0,
         "premium_peak": null
       },
       "Nox Inn Club (ex Limoncello Konakli Beach) Turcja, Alanya, Konaklı": {
@@ -5323,8 +5427,8 @@
         "premium_peak": null
       },
       "Labranda TMT Bodrum Resort": {
-        "history_max": 10157.0,
-        "premium_peak": 10157.0
+        "history_max": 10357.0,
+        "premium_peak": 10357.0
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
         "history_max": 9157.0,
@@ -5475,12 +5579,12 @@
         "premium_peak": null
       },
       "Side Star Park": {
-        "history_max": 11387.0,
-        "premium_peak": 11387.0
+        "history_max": 11476.0,
+        "premium_peak": 11476.0
       },
       "Side Prenses": {
-        "history_max": 10947.0,
-        "premium_peak": 10947.0
+        "history_max": 11042.0,
+        "premium_peak": 11042.0
       },
       "Side Premium by OZ Hotels": {
         "history_max": 11917.0,
@@ -5523,8 +5627,8 @@
         "premium_peak": null
       },
       "Wind of Lara": {
-        "history_max": 10680.0,
-        "premium_peak": 10680.0
+        "history_max": 10777.0,
+        "premium_peak": 10777.0
       },
       "White City Resort": {
         "history_max": 11015.0,
@@ -5571,8 +5675,8 @@
         "premium_peak": 11660.0
       },
       "Utopia Resort & Residence (ex Alara Park)": {
-        "history_max": 11609.0,
-        "premium_peak": 11609.0
+        "history_max": 12035.0,
+        "premium_peak": 12035.0
       },
       "Unique Residence Golf Spa": {
         "history_max": 8962.0,
@@ -6055,8 +6159,8 @@
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 11272.0,
-        "premium_peak": 11272.0
+        "history_max": 11407.0,
+        "premium_peak": 11407.0
       },
       "Avia Resort & Spa Turcja, Side, Colakli": {
         "history_max": 8481.0,
@@ -6127,8 +6231,8 @@
         "premium_peak": null
       },
       "Alba Queen": {
-        "history_max": 11428.0,
-        "premium_peak": 11428.0
+        "history_max": 11431.0,
+        "premium_peak": 11431.0
       },
       "Dream World Palace": {
         "history_max": 12357.0,
@@ -6343,8 +6447,8 @@
         "premium_peak": null
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
-        "history_max": 12189.0,
-        "premium_peak": 12189.0
+        "history_max": 12298.0,
+        "premium_peak": 12298.0
       },
       "Holiday Garden Resort (Okurcalar) Turcja, Alanya, Okurcalar": {
         "history_max": 8369.0,
