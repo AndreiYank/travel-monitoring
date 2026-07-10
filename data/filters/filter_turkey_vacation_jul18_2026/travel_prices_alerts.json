@@ -3250,10 +3250,36 @@
       "created_at": "2026-07-10T21:17:13.284673+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-10_21-16_comeback_30.1"
+    },
+    {
+      "hotel_name": "Asteria Ephesus Kusadasi",
+      "duration_bucket": "7-9",
+      "old_price": 8627.0,
+      "new_price": 8627.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 22:20:10.119408+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T22:21:21.137559+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Ephesus Kusadasi|7-9_2026-07-10_22-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 8173.0,
+      "new_price": 11700.0,
+      "price_change": 3527.0,
+      "price_change_pct": 43.15428851095069,
+      "timestamp": "2026-07-10 22:20:10.119408+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T22:21:21.137589+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-10_22-20_zone_out_+43.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T21:16:00.431681+00:00",
+    "last_processed_run": "2026-07-10T22:20:10.119408+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -5024,7 +5050,7 @@
         "premium_peak": 11185.0
       },
       "Glamour Resort & Spa|7-9": {
-        "history_max": 9327.0,
+        "history_max": 9419.0,
         "premium_peak": null
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)|9-11": {
