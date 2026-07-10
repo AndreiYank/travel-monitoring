@@ -4160,10 +4160,62 @@
       "created_at": "2026-07-10T06:11:40.046040+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-10_06-10_zone_out_gone"
+    },
+    {
+      "hotel_name": "Monte Carlo Resort Spa",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 10057.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.142073107590349,
+      "timestamp": "2026-07-10 09:33:59.764281+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T09:34:49.563261+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Monte Carlo Resort Spa_2026-07-10_09-33_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9921.0,
+      "new_price": 10249.0,
+      "price_change": 328.0,
+      "price_change_pct": 3.3061183348452774,
+      "timestamp": "2026-07-10 09:33:59.764281+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T09:34:49.563290+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-07-10_09-33_zone_out_+3.3"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 12183.0,
+      "new_price": 9379.0,
+      "price_change": -2804.0,
+      "price_change_pct": -23.01567758351802,
+      "timestamp": "2026-07-10 09:33:59.764281+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T09:34:49.563316+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-10_09-33_comeback_23.0"
+    },
+    {
+      "hotel_name": "Renaissance Golden View Beach Resort by Marriott",
+      "duration_bucket": "",
+      "old_price": 16407.0,
+      "new_price": 9863.0,
+      "price_change": -6544.0,
+      "price_change_pct": -39.88541476199183,
+      "timestamp": "2026-07-10 09:33:59.764281+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T09:34:49.563332+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Renaissance Golden View Beach Resort by Marriott_2026-07-10_09-33_comeback_39.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T06:10:47.843596+00:00",
+    "last_processed_run": "2026-07-10T09:33:59.764281+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8118.0,
@@ -4178,16 +4230,16 @@
         "premium_peak": 13420.0
       },
       "Pickalbatros Blu Spa Resort Hurghada": {
-        "history_max": 16527.0,
-        "premium_peak": 16527.0
+        "history_max": 16647.0,
+        "premium_peak": 16647.0
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
-        "history_max": 10872.0,
-        "premium_peak": 10872.0
+        "history_max": 11089.0,
+        "premium_peak": 11089.0
       },
       "Pickalbatros Dana Beach Resort": {
-        "history_max": 11597.0,
-        "premium_peak": 11597.0
+        "history_max": 11757.0,
+        "premium_peak": 11757.0
       },
       "Pickalbatros Golf Beach Resort": {
         "history_max": 12627.0,
@@ -4218,8 +4270,8 @@
         "premium_peak": 13425.0
       },
       "Pickalbatros Royal Moderna": {
-        "history_max": 10457.0,
-        "premium_peak": 10457.0
+        "history_max": 10657.0,
+        "premium_peak": 10657.0
       },
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
         "history_max": 10734.0,
@@ -4286,12 +4338,12 @@
         "premium_peak": 10292.0
       },
       "Premier Le Reve & Spa": {
-        "history_max": 13767.0,
-        "premium_peak": 13767.0
+        "history_max": 13917.0,
+        "premium_peak": 13917.0
       },
       "Pickalbatros White Beach Resort": {
-        "history_max": 11743.0,
-        "premium_peak": 11743.0
+        "history_max": 12017.0,
+        "premium_peak": 12017.0
       },
       "Reef Oasis Blue Bay Resort": {
         "history_max": 12777.0,
@@ -4306,8 +4358,8 @@
         "premium_peak": null
       },
       "Palm Royale Soma Bay": {
-        "history_max": 10926.0,
-        "premium_peak": 10926.0
+        "history_max": 11394.0,
+        "premium_peak": 11394.0
       },
       "Jaz Elite Riviera": {
         "history_max": 14295.0,
@@ -4418,8 +4470,8 @@
         "premium_peak": 10094.0
       },
       "Monte Carlo Resort Spa": {
-        "history_max": 9657.0,
-        "premium_peak": null
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
       },
       "Marriott Hurghada Beach Resort": {
         "history_max": 9140.0,
@@ -4546,8 +4598,8 @@
         "premium_peak": 11569.0
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 9999.0,
-        "premium_peak": null
+        "history_max": 10249.0,
+        "premium_peak": 10249.0
       },
       "Titanic Palace Resort": {
         "history_max": 12154.0,
@@ -4582,8 +4634,8 @@
         "premium_peak": null
       },
       "Steigenberger Resort Alaya": {
-        "history_max": 15747.0,
-        "premium_peak": 15747.0
+        "history_max": 15927.0,
+        "premium_peak": 15927.0
       },
       "Steigenberger Ras Soma": {
         "history_max": 14819.0,
@@ -4662,12 +4714,12 @@
         "premium_peak": 15665.0
       },
       "Steigenberger Golf Resort": {
-        "history_max": 10377.0,
-        "premium_peak": 10377.0
+        "history_max": 10427.0,
+        "premium_peak": 10427.0
       },
       "Steigenberger Coraya Beach": {
-        "history_max": 15357.0,
-        "premium_peak": 15357.0
+        "history_max": 15537.0,
+        "premium_peak": 15537.0
       },
       "Steigenberger Aqua Magic": {
         "history_max": 13001.0,
@@ -4686,8 +4738,8 @@
         "premium_peak": null
       },
       "Sentido Reef Oasis Senses Resort": {
-        "history_max": 18807.0,
-        "premium_peak": 18807.0
+        "history_max": 19017.0,
+        "premium_peak": 19017.0
       },
       "Sierra": {
         "history_max": 9631.0,
@@ -4710,7 +4762,7 @@
         "premium_peak": 13559.0
       },
       "Serenity Sky Arc": {
-        "history_max": 9697.0,
+        "history_max": 9777.0,
         "premium_peak": null
       },
       "Serenity Alpha Beach (ex. Serenity Makadi Beach)": {
@@ -4834,8 +4886,8 @@
         "premium_peak": 13477.0
       },
       "Continental (ex Movenpick Resort)": {
-        "history_max": 10100.0,
-        "premium_peak": 10100.0
+        "history_max": 10313.0,
+        "premium_peak": 10313.0
       },
       "Cooee Prima Life Makadi Bay": {
         "history_max": 10457.0,
@@ -4914,7 +4966,7 @@
         "premium_peak": null
       },
       "Charmillion Club Resort": {
-        "history_max": 9457.0,
+        "history_max": 9530.0,
         "premium_peak": null
       },
       "Caves Beach Resort": {
@@ -4946,8 +4998,8 @@
         "premium_peak": 13897.0
       },
       "Jaz Aquaviva": {
-        "history_max": 11075.0,
-        "premium_peak": 11075.0
+        "history_max": 11106.0,
+        "premium_peak": 11106.0
       },
       "Albatros Sea World Resort Marsa Alam": {
         "history_max": 10622.0,
@@ -4966,8 +5018,8 @@
         "premium_peak": 11057.0
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
-        "history_max": 10977.0,
-        "premium_peak": 10977.0
+        "history_max": 11216.0,
+        "premium_peak": 11216.0
       },
       "Amarina Sapphire Resort": {
         "history_max": 13737.0,
@@ -4990,15 +5042,15 @@
         "premium_peak": 13317.0
       },
       "Aldiana Club Naga Bay": {
-        "history_max": 10577.0,
-        "premium_peak": 10577.0
+        "history_max": 10657.0,
+        "premium_peak": 10657.0
       },
       "Ancient Sands Golf Resort": {
         "history_max": 9757.0,
         "premium_peak": null
       },
       "Amphoras Beach": {
-        "history_max": 9257.0,
+        "history_max": 9386.0,
         "premium_peak": null
       },
       "Hilton Plaza (Hurghada)": {
@@ -5014,8 +5066,8 @@
         "premium_peak": 12282.0
       },
       "Siva Golden Bay Makadi": {
-        "history_max": 10067.0,
-        "premium_peak": 10067.0
+        "history_max": 10165.0,
+        "premium_peak": 10165.0
       },
       "Jaz Elite Crystal": {
         "history_max": 15566.0,
