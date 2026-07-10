@@ -3003,10 +3003,75 @@
       "created_at": "2026-07-10T09:35:53.607585+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Marilis Hill Resort and Spa (Alanya)|9-11_2026-07-10_09-34_comeback_11.1"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "9-11",
+      "old_price": 8881.0,
+      "new_price": 8881.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 12:36:46.349483+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T12:37:44.564652+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|9-11_2026-07-10_12-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nova Life",
+      "duration_bucket": "7-9",
+      "old_price": 6854.0,
+      "new_price": 6854.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 12:36:46.349483+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T12:37:44.564682+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life|7-9_2026-07-10_12-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "9-11",
+      "old_price": 9953.0,
+      "new_price": 9953.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 12:36:46.349483+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T12:37:44.564693+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)|9-11_2026-07-10_12-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 8023.0,
+      "new_price": 8023.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 12:36:46.349483+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T12:37:44.564701+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-10_12-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 10457.0,
+      "new_price": 9457.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.56297217175098,
+      "timestamp": "2026-07-10 12:36:46.349483+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T12:37:44.564734+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-07-10_12-36_comeback_9.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T09:34:50.436241+00:00",
+    "last_processed_run": "2026-07-10T12:36:46.349483+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3245,8 +3310,8 @@
         "premium_peak": 12173.0
       },
       "Kaila Beach (ex Katya)|7-9": {
-        "history_max": 9837.0,
-        "premium_peak": null
+        "history_max": 10040.0,
+        "premium_peak": 10040.0
       },
       "Benata|7-9": {
         "history_max": 10497.0,
@@ -3317,8 +3382,8 @@
         "premium_peak": 11275.0
       },
       "Sunland Resort (ex. Imperial Sunland Resort & Spa)|7-9": {
-        "history_max": 10030.0,
-        "premium_peak": 10030.0
+        "history_max": 10240.0,
+        "premium_peak": 10240.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)|7-9": {
         "history_max": 12528.0,
@@ -4057,8 +4122,8 @@
         "premium_peak": 14851.0
       },
       "Can Garden Resort (Side)|9-11": {
-        "history_max": 13419.0,
-        "premium_peak": 13419.0
+        "history_max": 13508.0,
+        "premium_peak": 13508.0
       },
       "Aska Lara Resort & Spa|9-11": {
         "history_max": 15393.0,
@@ -4141,8 +4206,8 @@
         "premium_peak": 15354.0
       },
       "Villa Side Residence|9-11": {
-        "history_max": 14000.0,
-        "premium_peak": 14000.0
+        "history_max": 14014.0,
+        "premium_peak": 14014.0
       },
       "Club Sera|9-11": {
         "history_max": 16119.0,
@@ -4185,8 +4250,8 @@
         "premium_peak": 12610.0
       },
       "Avia Resort & Spa|9-11": {
-        "history_max": 11123.0,
-        "premium_peak": 11123.0
+        "history_max": 11272.0,
+        "premium_peak": 11272.0
       },
       "Akka Alinda|9-11": {
         "history_max": 15599.0,
@@ -5053,7 +5118,7 @@
         "premium_peak": 12719.0
       },
       "Sentido Lycus Beach (ex. Lti)|7-9": {
-        "history_max": 9057.0,
+        "history_max": 9157.0,
         "premium_peak": null
       },
       "Lonicera Premium|7-9": {
@@ -5251,6 +5316,10 @@
       "Arcanus Trendline Resort|9-11": {
         "history_max": 16479.0,
         "premium_peak": 16479.0
+      },
+      "Turunc Premium|7-9": {
+        "history_max": 10980.0,
+        "premium_peak": 10980.0
       }
     }
   }
