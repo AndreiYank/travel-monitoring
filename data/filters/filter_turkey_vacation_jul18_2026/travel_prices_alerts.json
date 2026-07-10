@@ -3107,10 +3107,75 @@
       "created_at": "2026-07-10T15:44:24.902169+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|7-9_2026-07-10_15-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9497.0,
+      "new_price": 9497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 17:57:37.691113+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T17:58:39.654219+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort|7-9_2026-07-10_17-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Ring",
+      "duration_bucket": "7-9",
+      "old_price": 9873.0,
+      "new_price": 10111.0,
+      "price_change": 238.0,
+      "price_change_pct": 2.4106148080623924,
+      "timestamp": "2026-07-10 17:57:37.691113+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T17:58:39.654254+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Ring|7-9_2026-07-10_17-57_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "7-9",
+      "old_price": 9731.0,
+      "new_price": 9731.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 17:57:37.691113+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T17:58:39.654265+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)|7-9_2026-07-10_17-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 10457.0,
+      "new_price": 9410.0,
+      "price_change": -1047.0,
+      "price_change_pct": -10.012431863823275,
+      "timestamp": "2026-07-10 17:57:37.691113+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T17:58:39.654294+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-07-10_17-57_comeback_10.0"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 11393.0,
+      "new_price": 8173.0,
+      "price_change": -3220.0,
+      "price_change_pct": -28.26296848942333,
+      "timestamp": "2026-07-10 17:57:37.691113+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T17:58:39.654306+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-10_17-57_comeback_28.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T15:43:20.615684+00:00",
+    "last_processed_run": "2026-07-10T17:57:37.691113+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3297,7 +3362,7 @@
         "premium_peak": 11697.0
       },
       "Cenger Beach Resort (Side)|7-9": {
-        "history_max": 8476.0,
+        "history_max": 8495.0,
         "premium_peak": null
       },
       "Lykia World & Links Golf Antalya|7-9": {
@@ -3653,16 +3718,16 @@
         "premium_peak": 14117.0
       },
       "Justiniano Club Park Conti|9-11": {
-        "history_max": 13141.0,
-        "premium_peak": 13141.0
+        "history_max": 14332.0,
+        "premium_peak": 14332.0
       },
       "Grand Pasa|9-11": {
         "history_max": 12595.0,
         "premium_peak": 12595.0
       },
       "Justiniano Deluxe Resort|9-11": {
-        "history_max": 12553.0,
-        "premium_peak": 12553.0
+        "history_max": 12765.0,
+        "premium_peak": 12765.0
       },
       "Side Star Resort (ex Club)|9-11": {
         "history_max": 15746.0,
@@ -3845,8 +3910,8 @@
         "premium_peak": 14522.0
       },
       "Ramada Resort Lara|9-11": {
-        "history_max": 14242.0,
-        "premium_peak": 14242.0
+        "history_max": 15823.0,
+        "premium_peak": 15823.0
       },
       "Queens Park Le Jardin Resort|9-11": {
         "history_max": 13682.0,
@@ -3901,8 +3966,8 @@
         "premium_peak": 13442.0
       },
       "Ma Biche Kemer by Werde Hotels|9-11": {
-        "history_max": 13541.0,
-        "premium_peak": 13541.0
+        "history_max": 13617.0,
+        "premium_peak": 13617.0
       },
       "Lykia World & Links Golf Antalya|9-11": {
         "history_max": 11912.0,
@@ -3985,8 +4050,8 @@
         "premium_peak": 15157.0
       },
       "My Home Resort|9-11": {
-        "history_max": 13949.0,
-        "premium_peak": 13949.0
+        "history_max": 14069.0,
+        "premium_peak": 14069.0
       },
       "Misal (ex. Nox Inn Club)|9-11": {
         "history_max": 9897.0,
@@ -4325,8 +4390,8 @@
         "premium_peak": 14499.0
       },
       "Alaiye Resort & Spa|9-11": {
-        "history_max": 11991.0,
-        "premium_peak": 11991.0
+        "history_max": 12869.0,
+        "premium_peak": 12869.0
       },
       "Victory Resort|9-11": {
         "history_max": 11507.0,
@@ -4821,8 +4886,8 @@
         "premium_peak": 11304.0
       },
       "Sidera Kirman Premium|9-11": {
-        "history_max": 16336.0,
-        "premium_peak": 16336.0
+        "history_max": 16556.0,
+        "premium_peak": 16556.0
       },
       "Side Star Elegance (ex. Asteria)|9-11": {
         "history_max": 16459.0,
@@ -4933,8 +4998,8 @@
         "premium_peak": null
       },
       "Dream Fun World|7-9": {
-        "history_max": 12497.0,
-        "premium_peak": 12497.0
+        "history_max": 12697.0,
+        "premium_peak": 12697.0
       },
       "Sealife Buket Resort & Beach|7-9": {
         "history_max": 10097.0,
@@ -4981,8 +5046,8 @@
         "premium_peak": 16315.0
       },
       "Alba Resort|9-11": {
-        "history_max": 13893.0,
-        "premium_peak": 13893.0
+        "history_max": 13996.0,
+        "premium_peak": 13996.0
       },
       "Aydinbey Famous|9-11": {
         "history_max": 15985.0,
@@ -5197,8 +5262,8 @@
         "premium_peak": null
       },
       "Saphir Resort|7-9": {
-        "history_max": 11582.0,
-        "premium_peak": 11582.0
+        "history_max": 11869.0,
+        "premium_peak": 11869.0
       },
       "Granada Luxury Beach Avsallar|9-11": {
         "history_max": 15792.0,
@@ -5209,8 +5274,8 @@
         "premium_peak": 11414.0
       },
       "Calido Maris|9-11": {
-        "history_max": 13786.0,
-        "premium_peak": 13786.0
+        "history_max": 14146.0,
+        "premium_peak": 14146.0
       },
       "Dream World Palace|9-11": {
         "history_max": 15897.0,
@@ -5375,6 +5440,10 @@
       "Club Atlantis Resort|7-9": {
         "history_max": 11729.0,
         "premium_peak": 11729.0
+      },
+      "Alba Resort|7-9": {
+        "history_max": 11223.0,
+        "premium_peak": 11223.0
       }
     }
   }
