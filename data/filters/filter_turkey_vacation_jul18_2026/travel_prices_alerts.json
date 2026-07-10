@@ -2470,10 +2470,49 @@
       "created_at": "2026-07-10T02:11:59.738711+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Royal Asarlik Beach|7-9_2026-07-10_02-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kaya Side (ex. Club Calimera Kaya Side)",
+      "duration_bucket": "7-9",
+      "old_price": 9684.0,
+      "new_price": 9684.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 06:11:40.951138+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:50.293921+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kaya Side (ex. Club Calimera Kaya Side)|7-9_2026-07-10_06-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)",
+      "duration_bucket": "7-9",
+      "old_price": 9788.0,
+      "new_price": 11295.0,
+      "price_change": 1507.0,
+      "price_change_pct": 15.396403759705763,
+      "timestamp": "2026-07-10 06:11:40.951138+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:50.293950+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)|7-9_2026-07-10_06-11_zone_out_+15.4"
+    },
+    {
+      "hotel_name": "Siam Elegance",
+      "duration_bucket": "7-9",
+      "old_price": 9734.0,
+      "new_price": 10238.0,
+      "price_change": 504.0,
+      "price_change_pct": 5.177727552907335,
+      "timestamp": "2026-07-10 06:11:40.951138+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:50.293963+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siam Elegance|7-9_2026-07-10_06-11_zone_out_+5.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T02:11:04.436702+00:00",
+    "last_processed_run": "2026-07-10T06:11:40.951138+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3148,12 +3187,12 @@
         "premium_peak": 13698.0
       },
       "Orange County Alanya|9-11": {
-        "history_max": 12767.0,
-        "premium_peak": 12767.0
+        "history_max": 13005.0,
+        "premium_peak": 13005.0
       },
       "Orange County (Kemer)|9-11": {
-        "history_max": 13928.0,
-        "premium_peak": 13928.0
+        "history_max": 14278.0,
+        "premium_peak": 14278.0
       },
       "OZ Incekum Beach Resort|9-11": {
         "history_max": 12746.0,
@@ -3752,8 +3791,8 @@
         "premium_peak": 15031.0
       },
       "Dream World Aqua|9-11": {
-        "history_max": 14295.0,
-        "premium_peak": 14295.0
+        "history_max": 14578.0,
+        "premium_peak": 14578.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)|9-11": {
         "history_max": 13464.0,
@@ -4636,16 +4675,16 @@
         "premium_peak": null
       },
       "Orange County (Kemer)|7-9": {
-        "history_max": 10008.0,
-        "premium_peak": 10008.0
+        "history_max": 10251.0,
+        "premium_peak": 10251.0
       },
       "Rubi Platinum Sign|7-9": {
         "history_max": 11327.0,
         "premium_peak": 11327.0
       },
       "Orange County Belek|7-9": {
-        "history_max": 10179.0,
-        "premium_peak": 10179.0
+        "history_max": 10409.0,
+        "premium_peak": 10409.0
       },
       "Azura Deluxe Resort & Spa|7-9": {
         "history_max": 11034.0,
@@ -4706,6 +4745,10 @@
       "Orka Lotus Beach|9-11": {
         "history_max": 16258.0,
         "premium_peak": 16258.0
+      },
+      "Baia Salima Kemer (ex Club Salima)|7-9": {
+        "history_max": 12159.0,
+        "premium_peak": 12159.0
       }
     }
   }

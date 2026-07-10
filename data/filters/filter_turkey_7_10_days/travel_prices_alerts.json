@@ -7618,10 +7618,101 @@
       "created_at": "2026-07-10T02:11:11.058162+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Orka Sunlife Resort & Spa_2026-07-10_02-10_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9900.0,
+      "new_price": 10060.0,
+      "price_change": 160.0,
+      "price_change_pct": 1.6161616161616161,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:03.995626+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-07-10_06-10_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Dream World Resort & Spa (Side)",
+      "duration_bucket": "",
+      "old_price": 9964.0,
+      "new_price": 10195.0,
+      "price_change": 231.0,
+      "price_change_pct": 2.318346045764753,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:03.995653+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream World Resort & Spa (Side)_2026-07-10_06-10_zone_out_+2.3"
+    },
+    {
+      "hotel_name": "Grand Belish",
+      "duration_bucket": "",
+      "old_price": 9840.0,
+      "new_price": 10340.0,
+      "price_change": 500.0,
+      "price_change_pct": 5.08130081300813,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:03.995665+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Belish_2026-07-10_06-10_zone_out_+5.1"
+    },
+    {
+      "hotel_name": "M. C. Arancia Resort",
+      "duration_bucket": "",
+      "old_price": 9916.0,
+      "new_price": 10040.0,
+      "price_change": 124.0,
+      "price_change_pct": 1.2505042355788625,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:03.995675+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "M. C. Arancia Resort_2026-07-10_06-10_zone_out_+1.3"
+    },
+    {
+      "hotel_name": "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)",
+      "duration_bucket": "",
+      "old_price": 9788.0,
+      "new_price": 11295.0,
+      "price_change": 1507.0,
+      "price_change_pct": 15.396403759705763,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:03.995684+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)_2026-07-10_06-10_zone_out_+15.4"
+    },
+    {
+      "hotel_name": "Siam Elegance",
+      "duration_bucket": "",
+      "old_price": 9734.0,
+      "new_price": 10238.0,
+      "price_change": 504.0,
+      "price_change_pct": 5.177727552907335,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:12:03.995693+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siam Elegance_2026-07-10_06-10_zone_out_+5.2"
+    },
+    {
+      "hotel_name": "Port Side Resort",
+      "duration_bucket": "",
+      "old_price": 11128.0,
+      "new_price": 9848.0,
+      "price_change": -1280.0,
+      "price_change_pct": -11.502516175413371,
+      "timestamp": "2026-07-10 06:10:47.702042+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T06:12:03.995717+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port Side Resort_2026-07-10_06-10_comeback_11.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T02:10:18.865252+00:00",
+    "last_processed_run": "2026-07-10T06:10:47.702042+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -8720,8 +8811,8 @@
         "premium_peak": 11779.0
       },
       "Dream World Hill": {
-        "history_max": 11113.0,
-        "premium_peak": 11113.0
+        "history_max": 11736.0,
+        "premium_peak": 11736.0
       },
       "Fore Resort & Spa": {
         "history_max": 11220.0,
@@ -8760,8 +8851,8 @@
         "premium_peak": 10557.0
       },
       "Dream World Resort & Spa (Side)": {
-        "history_max": 10011.0,
-        "premium_peak": 10011.0
+        "history_max": 10195.0,
+        "premium_peak": 10195.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)": {
         "history_max": 12366.0,
@@ -8796,8 +8887,8 @@
         "premium_peak": 11092.0
       },
       "Aria Claros Beach and Spa Resort": {
-        "history_max": 10806.0,
-        "premium_peak": 10806.0
+        "history_max": 11096.0,
+        "premium_peak": 11096.0
       },
       "Adalya Ocean Deluxe": {
         "history_max": 11997.0,
@@ -9300,8 +9391,8 @@
         "premium_peak": 11697.0
       },
       "Elegance (Marmaris)": {
-        "history_max": 11259.0,
-        "premium_peak": 11259.0
+        "history_max": 11993.0,
+        "premium_peak": 11993.0
       },
       "Fun & Sun Smart Hane Sun Turcja, Side, Colakli": {
         "history_max": 8496.0,
@@ -9394,6 +9485,10 @@
       "Rubi Platinum Sign": {
         "history_max": 11327.0,
         "premium_peak": 11327.0
+      },
+      "Baia Salima Kemer (ex Club Salima)": {
+        "history_max": 12159.0,
+        "premium_peak": 12159.0
       }
     }
   }

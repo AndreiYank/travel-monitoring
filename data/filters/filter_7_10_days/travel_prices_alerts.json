@@ -4121,10 +4121,49 @@
       "created_at": "2026-07-10T02:11:03.733348+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-10_02-10_comeback_23.7"
+    },
+    {
+      "hotel_name": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)",
+      "duration_bucket": "",
+      "old_price": 9926.0,
+      "new_price": 9012.0,
+      "price_change": -914.0,
+      "price_change_pct": -9.20814023775942,
+      "timestamp": "2026-07-10 06:10:47.843596+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-10T06:11:40.045960+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)_2026-07-10_06-10_-9.2"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9972.0,
+      "new_price": 10292.0,
+      "price_change": 320.0,
+      "price_change_pct": 3.2089851584436424,
+      "timestamp": "2026-07-10 06:10:47.843596+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:11:40.045999+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-10_06-10_zone_out_+3.2"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9292.0,
+      "new_price": 9292.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 06:10:47.843596+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T06:11:40.046040+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-07-10_06-10_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T02:10:18.894938+00:00",
+    "last_processed_run": "2026-07-10T06:10:47.843596+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8118.0,
@@ -4231,11 +4270,11 @@
         "premium_peak": null
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 9180.0,
+        "history_max": 9396.0,
         "premium_peak": null
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
-        "history_max": 9450.0,
+        "history_max": 9666.0,
         "premium_peak": null
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
@@ -4243,8 +4282,8 @@
         "premium_peak": 11161.0
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
-        "history_max": 10265.0,
-        "premium_peak": 10265.0
+        "history_max": 10292.0,
+        "premium_peak": 10292.0
       },
       "Premier Le Reve & Spa": {
         "history_max": 13767.0,
@@ -4283,8 +4322,8 @@
         "premium_peak": 10864.0
       },
       "Jaz Makadi Oasis Resort": {
-        "history_max": 10097.0,
-        "premium_peak": 10097.0
+        "history_max": 10177.0,
+        "premium_peak": 10177.0
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
         "history_max": 11862.0,
@@ -4651,7 +4690,7 @@
         "premium_peak": 18807.0
       },
       "Sierra": {
-        "history_max": 9512.0,
+        "history_max": 9631.0,
         "premium_peak": null
       },
       "Sheraton Miramar Resort (El Gouna)": {
@@ -4691,8 +4730,8 @@
         "premium_peak": 12542.0
       },
       "Jaz Elite Asteria (Hurghada)": {
-        "history_max": 12290.0,
-        "premium_peak": 12290.0
+        "history_max": 12434.0,
+        "premium_peak": 12434.0
       },
       "Casa Mare Resort (ex. Royal Tulip Beach Resort)": {
         "history_max": 8657.0,
@@ -4803,7 +4842,7 @@
         "premium_peak": 10457.0
       },
       "Concorde El Salam Sport": {
-        "history_max": 9489.0,
+        "history_max": 9531.0,
         "premium_peak": null
       },
       "Coral Sea Holiday Resort": {
