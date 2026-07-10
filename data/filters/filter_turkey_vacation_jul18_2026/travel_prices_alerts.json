@@ -3172,10 +3172,62 @@
       "created_at": "2026-07-10T17:58:39.654306+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-10_17-57_comeback_28.3"
+    },
+    {
+      "hotel_name": "Port River & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9497.0,
+      "new_price": 9497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 19:31:49.240300+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T19:33:01.469381+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River & Spa|7-9_2026-07-10_19-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "7-9",
+      "old_price": 7558.0,
+      "new_price": 7558.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-10 19:31:49.240300+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T19:33:01.469422+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|7-9_2026-07-10_19-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 8173.0,
+      "new_price": 11700.0,
+      "price_change": 3527.0,
+      "price_change_pct": 43.15428851095069,
+      "timestamp": "2026-07-10 19:31:49.240300+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-10T19:33:01.469449+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-10_19-31_zone_out_+43.2"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 10697.0,
+      "new_price": 9497.0,
+      "price_change": -1200.0,
+      "price_change_pct": -11.218098532298775,
+      "timestamp": "2026-07-10 19:31:49.240300+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-10T19:33:01.469497+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort|7-9_2026-07-10_19-31_comeback_11.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-10T17:57:37.691113+00:00",
+    "last_processed_run": "2026-07-10T19:31:49.240300+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3750,8 +3802,8 @@
         "premium_peak": 13497.0
       },
       "Kaila Beach (ex Katya)|9-11": {
-        "history_max": 10773.0,
-        "premium_peak": 10773.0
+        "history_max": 11246.0,
+        "premium_peak": 11246.0
       },
       "Kamelya Fulya|9-11": {
         "history_max": 15531.0,
@@ -4478,12 +4530,12 @@
         "premium_peak": 12697.0
       },
       "Dedeman Kemer Resort|9-11": {
-        "history_max": 11117.0,
-        "premium_peak": 11117.0
+        "history_max": 11182.0,
+        "premium_peak": 11182.0
       },
       "The Nora Hotels Family Club (Kargicak)|9-11": {
-        "history_max": 11393.0,
-        "premium_peak": 11393.0
+        "history_max": 11700.0,
+        "premium_peak": 11700.0
       },
       "Asteria Family Resort Side|9-11": {
         "history_max": 11930.0,
@@ -4762,8 +4814,8 @@
         "premium_peak": 10976.0
       },
       "Pirates Beach Club|7-9": {
-        "history_max": 11904.0,
-        "premium_peak": 11904.0
+        "history_max": 12177.0,
+        "premium_peak": 12177.0
       },
       "Beach Club Doganay|7-9": {
         "history_max": 9578.0,
@@ -4834,8 +4886,8 @@
         "premium_peak": null
       },
       "Alaiye Resort & Spa|7-9": {
-        "history_max": 10367.0,
-        "premium_peak": 10367.0
+        "history_max": 10871.0,
+        "premium_peak": 10871.0
       },
       "Crystal Family Comfort Collection|7-9": {
         "history_max": 12129.0,
@@ -4874,7 +4926,7 @@
         "premium_peak": 13328.0
       },
       "Cenger Blue Collection|7-9": {
-        "history_max": 8993.0,
+        "history_max": 9105.0,
         "premium_peak": null
       },
       "Side Sunport (ex. Side Sungate)|7-9": {
@@ -4934,7 +4986,7 @@
         "premium_peak": 11244.0
       },
       "Seher Resort & Spa|7-9": {
-        "history_max": 9493.0,
+        "history_max": 9609.0,
         "premium_peak": null
       },
       "Green Bay Resort|7-9": {
@@ -5014,8 +5066,8 @@
         "premium_peak": 15744.0
       },
       "Rubi Platinum (Alanya)|9-11": {
-        "history_max": 15858.0,
-        "premium_peak": 15858.0
+        "history_max": 15863.0,
+        "premium_peak": 15863.0
       },
       "Sealight Resort (ex Otium Sealight Beach Resort)|9-11": {
         "history_max": 16584.0,
@@ -5286,8 +5338,8 @@
         "premium_peak": 11718.0
       },
       "Sural Resort|7-9": {
-        "history_max": 12571.0,
-        "premium_peak": 12571.0
+        "history_max": 12687.0,
+        "premium_peak": 12687.0
       },
       "Dedeman Kemer Resort|7-9": {
         "history_max": 9432.0,
