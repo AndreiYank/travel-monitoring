@@ -1014,10 +1014,36 @@
       "created_at": "2026-07-11T13:13:19.979034+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki_2026-07-11_13-12_zone_out_+3.7"
+    },
+    {
+      "hotel_name": "Sitia Beach Grecja, Kreta Wschodnia, Sitia",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 9057.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.11605965303845,
+      "timestamp": "2026-07-11 14:36:14.991917+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-11T14:37:10.016015+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-07-11_14-36_-8.1"
+    },
+    {
+      "hotel_name": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki",
+      "duration_bucket": "",
+      "old_price": 11762.0,
+      "new_price": 9336.0,
+      "price_change": -2426.0,
+      "price_change_pct": -20.62574392110185,
+      "timestamp": "2026-07-11 14:36:14.991917+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-11T14:37:10.016069+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki_2026-07-11_14-36_comeback_20.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-11T13:12:17.658397+00:00",
+    "last_processed_run": "2026-07-11T14:36:14.991917+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17695.0,
@@ -1160,8 +1186,8 @@
         "premium_peak": 16396.0
       },
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
-        "history_max": 11605.0,
-        "premium_peak": 11605.0
+        "history_max": 11736.0,
+        "premium_peak": 11736.0
       },
       "Kakkos Bay Grecja, Kreta Wschodnia, Ierapetra": {
         "history_max": 11561.0,
