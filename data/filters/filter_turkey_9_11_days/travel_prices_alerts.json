@@ -1404,10 +1404,36 @@
       "created_at": "2026-07-11T13:12:16.679046+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cenger Beach Resort (Side)_2026-07-11_13-11_comeback_12.8"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 7767.0,
+      "new_price": 6602.0,
+      "price_change": -1165.0,
+      "price_change_pct": -14.999356250804684,
+      "timestamp": "2026-07-11 16:59:07.075620+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-11T17:00:21.574601+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-07-11_16-59_-15.0"
+    },
+    {
+      "hotel_name": "World Star Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11003.0,
+      "new_price": 9954.0,
+      "price_change": -1049.0,
+      "price_change_pct": -9.533763519040262,
+      "timestamp": "2026-07-11 16:59:07.075620+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-11T17:00:21.574647+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "World Star Beach Resort & Spa_2026-07-11_16-59_comeback_9.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-11T16:00:39.911392+00:00",
+    "last_processed_run": "2026-07-11T16:59:07.075620+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12922.0,
@@ -1870,8 +1896,8 @@
         "premium_peak": null
       },
       "Mira Meridia Beach Resort": {
-        "history_max": 11417.0,
-        "premium_peak": 11417.0
+        "history_max": 11708.0,
+        "premium_peak": 11708.0
       },
       "Q Premium Resort": {
         "history_max": 13897.0,
