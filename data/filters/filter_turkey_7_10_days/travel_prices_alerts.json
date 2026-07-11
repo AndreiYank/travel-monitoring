@@ -11895,10 +11895,88 @@
       "created_at": "2026-07-11T20:16:35.118370+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Timo Resort Turcja, Alanya, Konakli_2026-07-11_20-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Armas Green Fugla",
+      "duration_bucket": "",
+      "old_price": 8762.0,
+      "new_price": 8762.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-11 21:02:06.015468+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-11T21:03:41.953112+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Green Fugla_2026-07-11_21-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Concordia Celes Beach",
+      "duration_bucket": "",
+      "old_price": 8720.0,
+      "new_price": 8720.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-11 21:02:06.015468+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-11T21:03:41.953139+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concordia Celes Beach_2026-07-11_21-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Holiday Garden Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 9912.0,
+      "new_price": 10117.0,
+      "price_change": 205.0,
+      "price_change_pct": 2.0682001614205006,
+      "timestamp": "2026-07-11 21:02:06.015468+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-11T21:03:41.953153+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Garden Resort (Okurcalar)_2026-07-11_21-02_zone_out_+2.1"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum)",
+      "duration_bucket": "",
+      "old_price": 8727.0,
+      "new_price": 8727.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-11 21:02:06.015468+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-11T21:03:41.953163+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum)_2026-07-11_21-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "",
+      "old_price": 10445.0,
+      "new_price": 9168.0,
+      "price_change": -1277.0,
+      "price_change_pct": -12.225945428434658,
+      "timestamp": "2026-07-11 21:02:06.015468+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-11T21:03:41.953184+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)_2026-07-11_21-02_comeback_12.2"
+    },
+    {
+      "hotel_name": "Sunis Elita Beach Resort (ex Asteria Elita)",
+      "duration_bucket": "",
+      "old_price": 10737.0,
+      "new_price": 9645.0,
+      "price_change": -1092.0,
+      "price_change_pct": -10.170438670019559,
+      "timestamp": "2026-07-11 21:02:06.015468+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-11T21:03:41.953204+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunis Elita Beach Resort (ex Asteria Elita)_2026-07-11_21-02_comeback_10.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-11T20:14:58.688901+00:00",
+    "last_processed_run": "2026-07-11T21:02:06.015468+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -12109,8 +12187,8 @@
         "premium_peak": null
       },
       "Holiday Garden Resort (Okurcalar)": {
-        "history_max": 9958.0,
-        "premium_peak": null
+        "history_max": 10117.0,
+        "premium_peak": 10117.0
       },
       "Hillstone Bodrum (ex. Grand Yazici)": {
         "history_max": 12569.0,
@@ -13073,8 +13151,8 @@
         "premium_peak": 11092.0
       },
       "Aria Claros Beach and Spa Resort": {
-        "history_max": 11344.0,
-        "premium_peak": 11344.0
+        "history_max": 11478.0,
+        "premium_peak": 11478.0
       },
       "Adalya Ocean Deluxe": {
         "history_max": 12346.0,
