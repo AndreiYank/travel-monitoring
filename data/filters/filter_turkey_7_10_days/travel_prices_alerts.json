@@ -11973,10 +11973,49 @@
       "created_at": "2026-07-11T21:03:41.953204+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunis Elita Beach Resort (ex Asteria Elita)_2026-07-11_21-02_comeback_10.2"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 8529.0,
+      "new_price": 8529.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-11 21:55:42.580034+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-11T21:57:20.127201+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-07-11_21-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "",
+      "old_price": 8780.0,
+      "new_price": 8780.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-11 21:55:42.580034+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-11T21:57:20.127226+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort_2026-07-11_21-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 10817.0,
+      "new_price": 9124.0,
+      "price_change": -1693.0,
+      "price_change_pct": -15.651289636683,
+      "timestamp": "2026-07-11 21:55:42.580034+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-11T21:57:20.127255+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-07-11_21-55_comeback_15.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-11T21:02:06.015468+00:00",
+    "last_processed_run": "2026-07-11T21:55:42.580034+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -13103,8 +13142,8 @@
         "premium_peak": 12357.0
       },
       "Emelda Sun Club (ex. Simena Sun Club)": {
-        "history_max": 12296.0,
-        "premium_peak": 12296.0
+        "history_max": 12299.0,
+        "premium_peak": 12299.0
       },
       "Alarcha": {
         "history_max": 11757.0,
