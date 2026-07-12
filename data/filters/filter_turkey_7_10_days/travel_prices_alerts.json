@@ -13624,10 +13624,49 @@
       "created_at": "2026-07-12T19:10:51.696302+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ozkaymak Marina (Kemer)_2026-07-12_19-09_comeback_11.3"
+    },
+    {
+      "hotel_name": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)",
+      "duration_bucket": "",
+      "old_price": 8964.0,
+      "new_price": 9774.0,
+      "price_change": 810.0,
+      "price_change_pct": 9.036144578313253,
+      "timestamp": "2026-07-12 20:19:32.224414+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-12T20:21:10.414449+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)_2026-07-12_20-19_+9.0"
+    },
+    {
+      "hotel_name": "Grand Kaptan",
+      "duration_bucket": "",
+      "old_price": 9961.0,
+      "new_price": 10067.0,
+      "price_change": 106.0,
+      "price_change_pct": 1.0641501857243247,
+      "timestamp": "2026-07-12 20:19:32.224414+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T20:21:10.414505+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kaptan_2026-07-12_20-19_zone_out_+1.1"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9866.0,
+      "new_price": 10057.0,
+      "price_change": 191.0,
+      "price_change_pct": 1.9359416176768702,
+      "timestamp": "2026-07-12 20:19:32.224414+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T20:21:10.414518+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-07-12_20-19_zone_out_+1.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-12T19:09:24.300751+00:00",
+    "last_processed_run": "2026-07-12T20:19:32.224414+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -14346,8 +14385,8 @@
         "premium_peak": 11697.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 9967.0,
-        "premium_peak": null
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 9497.0,
@@ -14470,8 +14509,8 @@
         "premium_peak": 11588.0
       },
       "Crystal Tat Beach Pearl Collection": {
-        "history_max": 11757.0,
-        "premium_peak": 11757.0
+        "history_max": 11897.0,
+        "premium_peak": 11897.0
       },
       "Crystal Waterworld Aqua Collection": {
         "history_max": 12739.0,
