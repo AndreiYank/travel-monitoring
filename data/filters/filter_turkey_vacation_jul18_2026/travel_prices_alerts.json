@@ -3913,10 +3913,36 @@
       "created_at": "2026-07-12T08:18:09.944689+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gravel Select|7-9_2026-07-12_08-16_comeback_10.7"
+    },
+    {
+      "hotel_name": "Armella Hill",
+      "duration_bucket": "7-9",
+      "old_price": 9774.0,
+      "new_price": 9774.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-12 10:07:52.715106+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T10:09:21.596532+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armella Hill|7-9_2026-07-12_10-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "7-9",
+      "old_price": 10170.0,
+      "new_price": 9270.0,
+      "price_change": -900.0,
+      "price_change_pct": -8.849557522123893,
+      "timestamp": "2026-07-12 10:07:52.715106+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-12T10:09:21.596596+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)|7-9_2026-07-12_10-07_comeback_8.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-12T08:16:32.947461+00:00",
+    "last_processed_run": "2026-07-12T10:07:52.715106+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)|7-9": {
         "history_max": 10925.0,
@@ -3951,7 +3977,7 @@
         "premium_peak": 11097.0
       },
       "Avia Resort & Spa|7-9": {
-        "history_max": 8885.0,
+        "history_max": 9453.0,
         "premium_peak": null
       },
       "Innvista Belek (ex. Vera Verde)|7-9": {
