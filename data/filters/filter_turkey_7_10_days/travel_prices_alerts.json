@@ -12948,18 +12948,122 @@
       "created_at": "2026-07-12T11:22:44.337554+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Primasol Hane Family Resort_2026-07-12_11-21_comeback_11.0"
+    },
+    {
+      "hotel_name": "Palemon Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8841.0,
+      "new_price": 9613.0,
+      "price_change": 772.0,
+      "price_change_pct": 8.732043886438186,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-12T13:13:11.386388+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palemon Resort & Spa_2026-07-12_13-11_+8.7"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "",
+      "old_price": 8820.0,
+      "new_price": 9558.0,
+      "price_change": 738.0,
+      "price_change_pct": 8.36734693877551,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-12T13:13:11.386427+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)_2026-07-12_13-11_+8.4"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 8911.0,
+      "new_price": 8911.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T13:13:11.386462+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-07-12_13-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Meryan",
+      "duration_bucket": "",
+      "old_price": 9410.0,
+      "new_price": 10247.0,
+      "price_change": 837.0,
+      "price_change_pct": 8.89479277364506,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T13:13:11.386475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Meryan_2026-07-12_13-11_zone_out_+8.9"
+    },
+    {
+      "hotel_name": "Primasol Hane Family Resort",
+      "duration_bucket": "",
+      "old_price": 9770.0,
+      "new_price": 12029.0,
+      "price_change": 2259.0,
+      "price_change_pct": 23.121801432958033,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T13:13:11.386486+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Primasol Hane Family Resort_2026-07-12_13-11_zone_out_+23.1"
+    },
+    {
+      "hotel_name": "Turunc Premium",
+      "duration_bucket": "",
+      "old_price": 9710.0,
+      "new_price": 10633.0,
+      "price_change": 923.0,
+      "price_change_pct": 9.505664263645725,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T13:13:11.386496+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc Premium_2026-07-12_13-11_zone_out_+9.5"
+    },
+    {
+      "hotel_name": "World Star Beach Resort & Spa Turcja, Alanya, Kestel",
+      "duration_bucket": "",
+      "old_price": 8676.0,
+      "new_price": 8676.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T13:13:11.386506+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "World Star Beach Resort & Spa Turcja, Alanya, Kestel_2026-07-12_13-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "",
+      "old_price": 10803.0,
+      "new_price": 9802.0,
+      "price_change": -1001.0,
+      "price_change_pct": -9.265944645006016,
+      "timestamp": "2026-07-12 13:11:51.811992+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-12T13:13:11.386531+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection_2026-07-12_13-11_comeback_9.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-12T11:21:06.680121+00:00",
+    "last_processed_run": "2026-07-12T13:11:51.811992+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
         "premium_peak": 10925.0
       },
       "Mira Meridia Beach Resort": {
-        "history_max": 10179.0,
-        "premium_peak": 10179.0
+        "history_max": 10216.0,
+        "premium_peak": 10216.0
       },
       "Miarosa Incekum Beach (ex Alara Kum)": {
         "history_max": 10121.0,
@@ -13058,7 +13162,7 @@
         "premium_peak": 12239.0
       },
       "Palemon Resort & Spa": {
-        "history_max": 9317.0,
+        "history_max": 9613.0,
         "premium_peak": null
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)": {
@@ -13522,8 +13626,8 @@
         "premium_peak": null
       },
       "Tusan Beach Resort": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 10762.0,
+        "premium_peak": 10762.0
       },
       "Turunc Premium": {
         "history_max": 11217.0,
@@ -13606,8 +13710,8 @@
         "premium_peak": 12231.0
       },
       "Primasol Hane Family Resort": {
-        "history_max": 10980.0,
-        "premium_peak": 10980.0
+        "history_max": 12029.0,
+        "premium_peak": 12029.0
       },
       "PrimaSol Telatiye Resort": {
         "history_max": 10097.0,
@@ -14234,8 +14338,8 @@
         "premium_peak": 12293.0
       },
       "Laur Experience & Elegance": {
-        "history_max": 12218.0,
-        "premium_peak": 12218.0
+        "history_max": 12505.0,
+        "premium_peak": 12505.0
       },
       "Ring Beach Turcja, Kemer, Beldibi": {
         "history_max": 8541.0,
@@ -14776,6 +14880,10 @@
       "Ozkaymak Kemer Marina Turcja, Kemer": {
         "history_max": 8776.0,
         "premium_peak": null
+      },
+      "Sidemarin Kirman Premium": {
+        "history_max": 12591.0,
+        "premium_peak": 12591.0
       }
     }
   }
