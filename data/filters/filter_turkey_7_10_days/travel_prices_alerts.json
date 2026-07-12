@@ -13559,10 +13559,75 @@
       "created_at": "2026-07-12T18:09:34.470136+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Alegria (ex Holiday Point & Spa)_2026-07-12_18-07_comeback_13.9"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7978.0,
+      "new_price": 8640.0,
+      "price_change": 662.0,
+      "price_change_pct": 8.297819002256205,
+      "timestamp": "2026-07-12 19:09:24.300751+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-12T19:10:51.696220+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-07-12_19-09_+8.3"
+    },
+    {
+      "hotel_name": "Armas Green Fugla",
+      "duration_bucket": "",
+      "old_price": 8802.0,
+      "new_price": 8802.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-12 19:09:24.300751+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T19:10:51.696264+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Green Fugla_2026-07-12_19-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Ring",
+      "duration_bucket": "",
+      "old_price": 9873.0,
+      "new_price": 10111.0,
+      "price_change": 238.0,
+      "price_change_pct": 2.4106148080623924,
+      "timestamp": "2026-07-12 19:09:24.300751+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T19:10:51.696276+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Ring_2026-07-12_19-09_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Ozkaymak Kemer Marina Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 8776.0,
+      "new_price": 8776.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-12 19:09:24.300751+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T19:10:51.696282+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Kemer Marina Turcja, Kemer_2026-07-12_19-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Marina (Kemer)",
+      "duration_bucket": "",
+      "old_price": 10243.0,
+      "new_price": 9084.0,
+      "price_change": -1159.0,
+      "price_change_pct": -11.315044420579909,
+      "timestamp": "2026-07-12 19:09:24.300751+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-12T19:10:51.696302+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Marina (Kemer)_2026-07-12_19-09_comeback_11.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-12T18:07:43.337384+00:00",
+    "last_processed_run": "2026-07-12T19:09:24.300751+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10925.0,
@@ -13985,8 +14050,8 @@
         "premium_peak": 10430.0
       },
       "Terrace Beach Resort (Side)": {
-        "history_max": 11351.0,
-        "premium_peak": 11351.0
+        "history_max": 11355.0,
+        "premium_peak": 11355.0
       },
       "Sural Resort": {
         "history_max": 12498.0,
@@ -14569,7 +14634,7 @@
         "premium_peak": 10768.0
       },
       "Cenger Beach Resort Turcja, Side": {
-        "history_max": 8495.0,
+        "history_max": 8640.0,
         "premium_peak": null
       },
       "Club Side Coast Turcja, Side, Colakli": {
@@ -14589,8 +14654,8 @@
         "premium_peak": 11970.0
       },
       "Club Grand Aqua": {
-        "history_max": 12149.0,
-        "premium_peak": 12149.0
+        "history_max": 12160.0,
+        "premium_peak": 12160.0
       },
       "Asteria Family Resort Side": {
         "history_max": 10490.0,
