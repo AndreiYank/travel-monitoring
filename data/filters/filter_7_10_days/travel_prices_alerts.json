@@ -8619,10 +8619,62 @@
       "created_at": "2026-07-12T17:02:44.704293+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Continental (ex Movenpick Resort)_2026-07-12_17-01_comeback_10.8"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue)",
+      "duration_bucket": "",
+      "old_price": 9063.0,
+      "new_price": 9906.0,
+      "price_change": 843.0,
+      "price_change_pct": 9.301555776233036,
+      "timestamp": "2026-07-12 21:56:05.565612+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-12T21:57:17.883746+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue)_2026-07-12_21-56_+9.3"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9888.0,
+      "new_price": 10781.0,
+      "price_change": 893.0,
+      "price_change_pct": 9.031148867313917,
+      "timestamp": "2026-07-12 21:56:05.565612+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T21:57:17.883788+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-07-12_21-56_zone_out_+9.0"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 9257.0,
+      "new_price": 9257.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-12 21:56:05.565612+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T21:57:17.883800+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-07-12_21-56_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 9431.0,
+      "new_price": 10698.0,
+      "price_change": 1267.0,
+      "price_change_pct": 13.434418407379917,
+      "timestamp": "2026-07-12 21:56:05.565612+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-12T21:57:17.883811+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-07-12_21-56_zone_out_+13.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-12T20:19:32.314343+00:00",
+    "last_processed_run": "2026-07-12T21:56:05.565612+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8388.0,
@@ -8909,8 +8961,8 @@
         "premium_peak": 15993.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
-        "history_max": 10235.0,
-        "premium_peak": 10235.0
+        "history_max": 10698.0,
+        "premium_peak": 10698.0
       },
       "Sultan Gardens Resort": {
         "history_max": 13974.0,
@@ -9001,8 +9053,8 @@
         "premium_peak": null
       },
       "Stella Di Mare Beach & Spa": {
-        "history_max": 12200.0,
-        "premium_peak": 12200.0
+        "history_max": 13077.0,
+        "premium_peak": 13077.0
       },
       "Tropitel Sahl Hasheesh": {
         "history_max": 10249.0,
@@ -9201,7 +9253,7 @@
         "premium_peak": null
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 9313.0,
+        "history_max": 9373.0,
         "premium_peak": null
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
@@ -9229,7 +9281,7 @@
         "premium_peak": 10533.0
       },
       "Fantazia Resort": {
-        "history_max": 9693.0,
+        "history_max": 9773.0,
         "premium_peak": null
       },
       "Concorde Moreen Beach Resort & Spa": {
@@ -9265,8 +9317,8 @@
         "premium_peak": 14924.0
       },
       "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
-        "history_max": 10955.0,
-        "premium_peak": 10955.0
+        "history_max": 12726.0,
+        "premium_peak": 12726.0
       },
       "Baron Palms": {
         "history_max": 14307.0,
@@ -9349,16 +9401,16 @@
         "premium_peak": 10150.0
       },
       "Domina Coral Bay Bellavista": {
-        "history_max": 11279.0,
-        "premium_peak": 11279.0
+        "history_max": 12825.0,
+        "premium_peak": 12825.0
       },
       "Cleopatra Luxury Resort": {
-        "history_max": 15622.0,
-        "premium_peak": 15622.0
+        "history_max": 18348.0,
+        "premium_peak": 18348.0
       },
       "Domina Coral Bay Harem": {
-        "history_max": 11407.0,
-        "premium_peak": 11407.0
+        "history_max": 13014.0,
+        "premium_peak": 13014.0
       },
       "Domina Coral Bay King's Lake": {
         "history_max": 13625.0,
@@ -9409,8 +9461,8 @@
         "premium_peak": 11295.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 10622.0,
-        "premium_peak": 10622.0
+        "history_max": 10781.0,
+        "premium_peak": 10781.0
       },
       "Amarina Queen Resort": {
         "history_max": 8501.0,
@@ -9489,8 +9541,8 @@
         "premium_peak": 11789.0
       },
       "Xperience Kiroseiz Premier": {
-        "history_max": 10996.0,
-        "premium_peak": 10996.0
+        "history_max": 12486.0,
+        "premium_peak": 12486.0
       },
       "Invidia Coral Beach Tiran": {
         "history_max": 9306.0,
