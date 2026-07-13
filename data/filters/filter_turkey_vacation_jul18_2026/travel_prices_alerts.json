@@ -104,10 +104,114 @@
       "created_at": "2026-07-13T09:05:18.601026+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Marilis Hill Resort and Spa (Alanya)|7-9_2026-07-13_09-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9190.0,
+      "new_price": 9190.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142800+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa|7-9_2026-07-13_12-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fantasia De Luxe Kusadasi",
+      "duration_bucket": "7-9",
+      "old_price": 8658.0,
+      "new_price": 8658.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142848+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantasia De Luxe Kusadasi|7-9_2026-07-13_12-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gravel Select",
+      "duration_bucket": "7-9",
+      "old_price": 9997.0,
+      "new_price": 10197.0,
+      "price_change": 200.0,
+      "price_change_pct": 2.000600180054016,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142866+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravel Select|7-9_2026-07-13_12-09_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Holiday Park Resort (Okurcalar)",
+      "duration_bucket": "7-9",
+      "old_price": 9887.0,
+      "new_price": 10148.0,
+      "price_change": 261.0,
+      "price_change_pct": 2.639830079902903,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142877+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)|7-9_2026-07-13_12-09_zone_out_+2.6"
+    },
+    {
+      "hotel_name": "Kaila Beach (ex Katya)",
+      "duration_bucket": "7-9",
+      "old_price": 9781.0,
+      "new_price": 10078.0,
+      "price_change": 297.0,
+      "price_change_pct": 3.0364993354462735,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kaila Beach (ex Katya)|7-9_2026-07-13_12-09_zone_out_+3.0"
+    },
+    {
+      "hotel_name": "Laguna Beach Alya",
+      "duration_bucket": "7-9",
+      "old_price": 9897.0,
+      "new_price": 10757.0,
+      "price_change": 860.0,
+      "price_change_pct": 8.68950186925331,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142895+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Laguna Beach Alya|7-9_2026-07-13_12-09_zone_out_+8.7"
+    },
+    {
+      "hotel_name": "Q Premium Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9897.0,
+      "new_price": 10097.0,
+      "price_change": 200.0,
+      "price_change_pct": 2.0208143881984437,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Q Premium Resort|7-9_2026-07-13_12-09_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Sunland Resort (ex. Imperial Sunland Resort & Spa)",
+      "duration_bucket": "7-9",
+      "old_price": 9840.0,
+      "new_price": 10225.0,
+      "price_change": 385.0,
+      "price_change_pct": 3.9126016260162597,
+      "timestamp": "2026-07-13 12:09:02.108037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T12:09:53.142911+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunland Resort (ex. Imperial Sunland Resort & Spa)|7-9_2026-07-13_12-09_zone_out_+3.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-13T09:04:33.432176+00:00",
+    "last_processed_run": "2026-07-13T12:09:02.108037+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -122,8 +226,8 @@
         "premium_peak": 11673.0
       },
       "Grand Kaptan|7-9": {
-        "history_max": 10967.0,
-        "premium_peak": 10967.0
+        "history_max": 11367.0,
+        "premium_peak": 11367.0
       },
       "Grand Kolibri Prestige & Spa|7-9": {
         "history_max": 10490.0,
@@ -134,8 +238,8 @@
         "premium_peak": 10111.0
       },
       "Gravel Select|7-9": {
-        "history_max": 9997.0,
-        "premium_peak": null
+        "history_max": 10197.0,
+        "premium_peak": 10197.0
       },
       "Green Nature Diamond|7-9": {
         "history_max": 12957.0,
@@ -146,12 +250,12 @@
         "premium_peak": null
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)|7-9": {
-        "history_max": 11479.0,
-        "premium_peak": 11479.0
+        "history_max": 11485.0,
+        "premium_peak": 11485.0
       },
       "Holiday Park Resort (Okurcalar)|7-9": {
-        "history_max": 9887.0,
-        "premium_peak": null
+        "history_max": 10148.0,
+        "premium_peak": 10148.0
       },
       "Innvista Belek (ex. Vera Verde)|7-9": {
         "history_max": 12168.0,
@@ -166,8 +270,8 @@
         "premium_peak": 10957.0
       },
       "Kaila Beach (ex Katya)|7-9": {
-        "history_max": 9781.0,
-        "premium_peak": null
+        "history_max": 10078.0,
+        "premium_peak": 10078.0
       },
       "Kimeros Park Holiday Village|7-9": {
         "history_max": 13075.0,
@@ -178,7 +282,7 @@
         "premium_peak": 11757.0
       },
       "Labranda Alantur Resort|7-9": {
-        "history_max": 9497.0,
+        "history_max": 9697.0,
         "premium_peak": null
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)|7-9": {
@@ -186,20 +290,20 @@
         "premium_peak": 10957.0
       },
       "Laguna Beach Alya|7-9": {
-        "history_max": 9897.0,
-        "premium_peak": null
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       },
       "Fantasia De Luxe Kusadasi|7-9": {
         "history_max": 8658.0,
         "premium_peak": null
       },
       "Lake River Side Spa|7-9": {
-        "history_max": 8897.0,
+        "history_max": 9097.0,
         "premium_peak": null
       },
       "Dream World Palace|7-9": {
-        "history_max": 12497.0,
-        "premium_peak": 12497.0
+        "history_max": 12697.0,
+        "premium_peak": 12697.0
       },
       "Dream Water World|7-9": {
         "history_max": 12697.0,
@@ -218,15 +322,15 @@
         "premium_peak": null
       },
       "Cesars Resort (Side)|7-9": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 10897.0,
+        "premium_peak": 10897.0
       },
       "Club Grand Aqua|7-9": {
-        "history_max": 12383.0,
-        "premium_peak": 12383.0
+        "history_max": 12679.0,
+        "premium_peak": 12679.0
       },
       "Club Side Coast|7-9": {
-        "history_max": 8543.0,
+        "history_max": 8839.0,
         "premium_peak": null
       },
       "Club Turan Prince World|7-9": {
@@ -234,28 +338,28 @@
         "premium_peak": 12475.0
       },
       "Crystal Admiral Aqua Collection|7-9": {
-        "history_max": 12472.0,
-        "premium_peak": 12472.0
+        "history_max": 12769.0,
+        "premium_peak": 12769.0
       },
       "Crystal Aura Aqua Collection|7-9": {
-        "history_max": 10297.0,
-        "premium_peak": 10297.0
+        "history_max": 10497.0,
+        "premium_peak": 10497.0
       },
       "Crystal De Luxe Comfort Collection|7-9": {
         "history_max": 13017.0,
         "premium_peak": 13017.0
       },
       "Crystal Paraiso Aqua Collection|7-9": {
-        "history_max": 10097.0,
-        "premium_peak": 10097.0
+        "history_max": 10297.0,
+        "premium_peak": 10297.0
       },
       "Crystal Prestige Pearl Collection|7-9": {
         "history_max": 12557.0,
         "premium_peak": 12557.0
       },
       "Crystal Tat Beach Pearl Collection|7-9": {
-        "history_max": 11897.0,
-        "premium_peak": 11897.0
+        "history_max": 12097.0,
+        "premium_peak": 12097.0
       },
       "Crystal Waterworld Aqua Collection|7-9": {
         "history_max": 13104.0,
@@ -270,8 +374,8 @@
         "premium_peak": 10957.0
       },
       "Dizalya Palm Garden|7-9": {
-        "history_max": 10566.0,
-        "premium_peak": 10566.0
+        "history_max": 10964.0,
+        "premium_peak": 10964.0
       },
       "Dosinia Luxury Resort|7-9": {
         "history_max": 12709.0,
@@ -290,7 +394,7 @@
         "premium_peak": 12161.0
       },
       "Linda Resort (Side)|7-9": {
-        "history_max": 9368.0,
+        "history_max": 9665.0,
         "premium_peak": null
       },
       "Litore Resort & Spa|7-9": {
@@ -298,8 +402,8 @@
         "premium_peak": 12825.0
       },
       "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)|7-9": {
-        "history_max": 10497.0,
-        "premium_peak": 10497.0
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Sealife Buket Resort & Beach|7-9": {
         "history_max": 10097.0,
@@ -322,28 +426,28 @@
         "premium_peak": 10497.0
       },
       "Sentido Serra Family Resort|7-9": {
-        "history_max": 11897.0,
-        "premium_peak": 11897.0
+        "history_max": 12097.0,
+        "premium_peak": 12097.0
       },
       "Side Crown Palace (Side)|7-9": {
         "history_max": 9497.0,
         "premium_peak": null
       },
       "Side Crown Serenity|7-9": {
-        "history_max": 8697.0,
+        "history_max": 8897.0,
         "premium_peak": null
       },
       "Signature Blue Resort (ex. Grand Ozcelik)|7-9": {
-        "history_max": 8775.0,
+        "history_max": 8969.0,
         "premium_peak": null
       },
       "Sunland Resort (ex. Imperial Sunland Resort & Spa)|7-9": {
-        "history_max": 9840.0,
-        "premium_peak": null
+        "history_max": 10225.0,
+        "premium_peak": 10225.0
       },
       "Sural Resort|7-9": {
-        "history_max": 12197.0,
-        "premium_peak": 12197.0
+        "history_max": 12478.0,
+        "premium_peak": 12478.0
       },
       "The Sense Deluxe|7-9": {
         "history_max": 11370.0,
@@ -354,7 +458,7 @@
         "premium_peak": 11133.0
       },
       "Unique Residence Golf Spa|7-9": {
-        "history_max": 8951.0,
+        "history_max": 9113.0,
         "premium_peak": null
       },
       "Vikingen Infinity Resort & Spa|7-9": {
@@ -378,7 +482,7 @@
         "premium_peak": 12992.0
       },
       "Linda Sunny Beach|7-9": {
-        "history_max": 9097.0,
+        "history_max": 9297.0,
         "premium_peak": null
       },
       "Royal Garden Beach (ex Royal Garden Select & Suite)|7-9": {
@@ -402,59 +506,59 @@
         "premium_peak": 12534.0
       },
       "Master Family Club|7-9": {
-        "history_max": 10332.0,
-        "premium_peak": 10332.0
+        "history_max": 10563.0,
+        "premium_peak": 10563.0
       },
       "Meryan|7-9": {
         "history_max": 10247.0,
         "premium_peak": 10247.0
       },
       "Mirada Del Mar|7-9": {
-        "history_max": 12497.0,
-        "premium_peak": 12497.0
+        "history_max": 12697.0,
+        "premium_peak": 12697.0
       },
       "Mirage World|7-9": {
         "history_max": 11250.0,
         "premium_peak": 11250.0
       },
       "Miramare Queen|7-9": {
-        "history_max": 11097.0,
-        "premium_peak": 11097.0
+        "history_max": 11297.0,
+        "premium_peak": 11297.0
       },
       "Misal (ex. Nox Inn Club)|7-9": {
-        "history_max": 8297.0,
+        "history_max": 8497.0,
         "premium_peak": null
       },
       "My Home Resort|7-9": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 10897.0,
+        "premium_peak": 10897.0
       },
       "Narcia Resort Side|7-9": {
-        "history_max": 10297.0,
-        "premium_peak": 10297.0
+        "history_max": 10497.0,
+        "premium_peak": 10497.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)|7-9": {
-        "history_max": 9697.0,
+        "history_max": 9897.0,
         "premium_peak": null
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)|7-9": {
-        "history_max": 12534.0,
-        "premium_peak": 12534.0
+        "history_max": 12831.0,
+        "premium_peak": 12831.0
       },
       "Orka Lotus Beach|7-9": {
         "history_max": 11665.0,
         "premium_peak": 11665.0
       },
       "Palemon Resort & Spa|7-9": {
-        "history_max": 9613.0,
-        "premium_peak": null
+        "history_max": 10044.0,
+        "premium_peak": 10044.0
       },
       "Port River & Spa|7-9": {
         "history_max": 9497.0,
         "premium_peak": null
       },
       "Presa Di Finica (Finike)|7-9": {
-        "history_max": 8497.0,
+        "history_max": 8697.0,
         "premium_peak": null
       },
       "Prestige Alanya|7-9": {
@@ -462,15 +566,15 @@
         "premium_peak": null
       },
       "Q Premium Resort|7-9": {
-        "history_max": 9897.0,
-        "premium_peak": null
+        "history_max": 10097.0,
+        "premium_peak": 10097.0
       },
       "Royal Asarlik Beach|7-9": {
-        "history_max": 9684.0,
+        "history_max": 9846.0,
         "premium_peak": null
       },
       "Benata|7-9": {
-        "history_max": 9497.0,
+        "history_max": 9697.0,
         "premium_peak": null
       },
       "Labranda TMT Bodrum Resort|7-9": {
@@ -506,8 +610,8 @@
         "premium_peak": null
       },
       "Ali Bey Park Manavgat|7-9": {
-        "history_max": 12672.0,
-        "premium_peak": 12672.0
+        "history_max": 12968.0,
+        "premium_peak": 12968.0
       },
       "Alarcha|7-9": {
         "history_max": 11757.0,
@@ -530,11 +634,11 @@
         "premium_peak": 10757.0
       },
       "Aydinbey Famous|7-9": {
-        "history_max": 11478.0,
-        "premium_peak": 11478.0
+        "history_max": 12178.0,
+        "premium_peak": 12178.0
       },
       "Armella Hill|7-9": {
-        "history_max": 9546.0,
+        "history_max": 9585.0,
         "premium_peak": null
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)|7-9": {
@@ -558,8 +662,8 @@
         "premium_peak": 12427.0
       },
       "Ozkaymak Falez|9-11": {
-        "history_max": 10999.0,
-        "premium_peak": 10999.0
+        "history_max": 11846.0,
+        "premium_peak": 11846.0
       },
       "Mary Side (ex. Mary Palace)|9-11": {
         "history_max": 13753.0,
@@ -574,8 +678,8 @@
         "premium_peak": 16047.0
       },
       "Armas Bella Sun (ex.Club Bella Sun)|9-11": {
-        "history_max": 10886.0,
-        "premium_peak": 10886.0
+        "history_max": 11184.0,
+        "premium_peak": 11184.0
       },
       "Meryan|9-11": {
         "history_max": 12420.0,
@@ -650,8 +754,8 @@
         "premium_peak": 13209.0
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)|9-11": {
-        "history_max": 11442.0,
-        "premium_peak": 11442.0
+        "history_max": 12176.0,
+        "premium_peak": 12176.0
       },
       "Kaya Side (ex. Club Calimera Kaya Side)|9-11": {
         "history_max": 14630.0,
@@ -1098,8 +1202,8 @@
         "premium_peak": 15125.0
       },
       "Grand Kaptan|9-11": {
-        "history_max": 14241.0,
-        "premium_peak": 14241.0
+        "history_max": 14541.0,
+        "premium_peak": 14541.0
       },
       "Calido Maris|9-11": {
         "history_max": 14258.0,
@@ -1262,8 +1366,8 @@
         "premium_peak": 15975.0
       },
       "Aydinbey Famous|9-11": {
-        "history_max": 15667.0,
-        "premium_peak": 15667.0
+        "history_max": 15967.0,
+        "premium_peak": 15967.0
       },
       "Crystal Tat Beach Pearl Collection|9-11": {
         "history_max": 15097.0,
@@ -1326,8 +1430,8 @@
         "premium_peak": 10895.0
       },
       "Seashell Vega (ex. Side Crown Sunshine)|7-9": {
-        "history_max": 10497.0,
-        "premium_peak": 10497.0
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Ladonia Adakule|7-9": {
         "history_max": 9349.0,
@@ -1408,6 +1512,150 @@
       "Paloma Sencia|9-11": {
         "history_max": 17209.0,
         "premium_peak": 17209.0
+      },
+      "Side Star Resort (ex Club)|7-9": {
+        "history_max": 13064.0,
+        "premium_peak": 13064.0
+      },
+      "Solivia (Ex. Titan Select)|7-9": {
+        "history_max": 7214.0,
+        "premium_peak": null
+      },
+      "The Norm Oriental (ex. Asteria Kemer Resort)|7-9": {
+        "history_max": 11223.0,
+        "premium_peak": 11223.0
+      },
+      "Trendy Lara|7-9": {
+        "history_max": 13032.0,
+        "premium_peak": 13032.0
+      },
+      "Timo Deluxe Resort|7-9": {
+        "history_max": 9387.0,
+        "premium_peak": null
+      },
+      "Yasmin Resort|7-9": {
+        "history_max": 12866.0,
+        "premium_peak": 12866.0
+      },
+      "Viking Star|7-9": {
+        "history_max": 8775.0,
+        "premium_peak": null
+      },
+      "Mandarin Resort (Bodrum)|7-9": {
+        "history_max": 8825.0,
+        "premium_peak": null
+      },
+      "Mary Side (ex. Mary Palace)|7-9": {
+        "history_max": 11708.0,
+        "premium_peak": 11708.0
+      },
+      "Miarosa Beach (Kemer)|7-9": {
+        "history_max": 9653.0,
+        "premium_peak": null
+      },
+      "Baia Salima Kemer (ex Club Salima)|7-9": {
+        "history_max": 12906.0,
+        "premium_peak": 12906.0
+      },
+      "Corendon Playa Kemer|7-9": {
+        "history_max": 12996.0,
+        "premium_peak": 12996.0
+      },
+      "Kremlin Palace|7-9": {
+        "history_max": 12308.0,
+        "premium_peak": 12308.0
+      },
+      "First Class|7-9": {
+        "history_max": 6638.0,
+        "premium_peak": null
+      },
+      "Gold City|7-9": {
+        "history_max": 8334.0,
+        "premium_peak": null
+      },
+      "Grand Belish|7-9": {
+        "history_max": 10734.0,
+        "premium_peak": 10734.0
+      },
+      "Crystal World of Colours Comfort Collection|7-9": {
+        "history_max": 8469.0,
+        "premium_peak": null
+      },
+      "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)|7-9": {
+        "history_max": 12803.0,
+        "premium_peak": 12803.0
+      },
+      "Hane Sun Elite (ex Noble Palace Side)|7-9": {
+        "history_max": 8294.0,
+        "premium_peak": null
+      },
+      "L' Oceanica Beach Resort (Kemer)|7-9": {
+        "history_max": 10247.0,
+        "premium_peak": 10247.0
+      },
+      "Sealight Resort (ex Otium Sealight Beach Resort)|7-9": {
+        "history_max": 11968.0,
+        "premium_peak": 11968.0
+      },
+      "Palm Wings Ephesus|7-9": {
+        "history_max": 12822.0,
+        "premium_peak": 12822.0
+      },
+      "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)|7-9": {
+        "history_max": 12101.0,
+        "premium_peak": 12101.0
+      },
+      "Aydinbey Gold Dreams|7-9": {
+        "history_max": 10584.0,
+        "premium_peak": 10584.0
+      },
+      "Armas Beach|7-9": {
+        "history_max": 9536.0,
+        "premium_peak": null
+      },
+      "Alaiye Resort & Spa|7-9": {
+        "history_max": 10822.0,
+        "premium_peak": 10822.0
+      },
+      "Rox Royal (ex. Grand Haber)|7-9": {
+        "history_max": 8960.0,
+        "premium_peak": null
+      },
+      "Arcanus Trendline Resort|7-9": {
+        "history_max": 13046.0,
+        "premium_peak": 13046.0
+      },
+      "Ozkaymak Falez|7-9": {
+        "history_max": 9668.0,
+        "premium_peak": null
+      },
+      "Andriake Beach Club|7-9": {
+        "history_max": 9653.0,
+        "premium_peak": null
+      },
+      "Crystal Prestige Pearl Collection|9-11": {
+        "history_max": 15297.0,
+        "premium_peak": 15297.0
+      },
+      "Arycanda Kirman Premium|9-11": {
+        "history_max": 16967.0,
+        "premium_peak": 16967.0
+      },
+      "Club Nena (Side)|9-11": {
+        "history_max": 11226.0,
+        "premium_peak": 11226.0
+      },
+      "Orka Lotus Beach|9-11": {
+        "history_max": 16372.0,
+        "premium_peak": 16372.0
+      },
+      "Royal Dragon|9-11": {
+        "history_max": 16692.0,
+        "premium_peak": 16692.0
+      },
+      "Korumar Deluxe|9-11": {
+        "history_max": 15157.0,
+        "premium_peak": 15157.0
       }
     }
   }
