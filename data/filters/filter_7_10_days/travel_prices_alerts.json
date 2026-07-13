@@ -1053,10 +1053,88 @@
       "created_at": "2026-07-13T19:29:15.342005+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-13_19-28_comeback_13.4"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9323.0,
+      "new_price": 11129.0,
+      "price_change": 1806.0,
+      "price_change_pct": 19.371446959133326,
+      "timestamp": "2026-07-13 21:05:31.765903+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T21:06:07.933827+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-13_21-05_zone_out_+19.4"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 9693.0,
+      "new_price": 10273.0,
+      "price_change": 580.0,
+      "price_change_pct": 5.983699577014341,
+      "timestamp": "2026-07-13 21:05:31.765903+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T21:06:07.933854+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-07-13_21-05_zone_out_+6.0"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 9973.0,
+      "new_price": 10197.0,
+      "price_change": 224.0,
+      "price_change_pct": 2.246064373809285,
+      "timestamp": "2026-07-13 21:05:31.765903+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T21:06:07.933866+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-07-13_21-05_zone_out_+2.2"
+    },
+    {
+      "hotel_name": "Serenity Sky Arc",
+      "duration_bucket": "",
+      "old_price": 9937.0,
+      "new_price": 10179.0,
+      "price_change": 242.0,
+      "price_change_pct": 2.435342658750126,
+      "timestamp": "2026-07-13 21:05:31.765903+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T21:06:07.933875+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-07-13_21-05_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Steigenberger Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9468.0,
+      "new_price": 10746.0,
+      "price_change": 1278.0,
+      "price_change_pct": 13.498098859315588,
+      "timestamp": "2026-07-13 21:05:31.765903+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-13T21:06:07.933883+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Golf Resort_2026-07-13_21-05_zone_out_+13.5"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 10080.0,
+      "new_price": 9041.0,
+      "price_change": -1039.0,
+      "price_change_pct": -10.307539682539682,
+      "timestamp": "2026-07-13 21:05:31.765903+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-13T21:06:07.933902+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-07-13_21-05_comeback_10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-13T19:28:38.696889+00:00",
+    "last_processed_run": "2026-07-13T21:05:31.765903+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8219.0,
@@ -1211,8 +1289,8 @@
         "premium_peak": 12501.0
       },
       "Jaz Elite Crystal": {
-        "history_max": 15786.0,
-        "premium_peak": 15786.0
+        "history_max": 15942.0,
+        "premium_peak": 15942.0
       },
       "Steigenberger Alcazar": {
         "history_max": 15147.0,
@@ -1243,8 +1321,8 @@
         "premium_peak": 10418.0
       },
       "Movenpick Resort & Spa El Gouna": {
-        "history_max": 10217.0,
-        "premium_peak": 10217.0
+        "history_max": 10323.0,
+        "premium_peak": 10323.0
       },
       "Movenpick Resort El Quseir": {
         "history_max": 12317.0,
@@ -1295,11 +1373,11 @@
         "premium_peak": 17397.0
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
-        "history_max": 9322.0,
+        "history_max": 9666.0,
         "premium_peak": null
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 9008.0,
+        "history_max": 9396.0,
         "premium_peak": null
       },
       "Reef Oasis Blue Bay Resort": {
@@ -1327,7 +1405,7 @@
         "premium_peak": 13367.0
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
-        "history_max": 9557.0,
+        "history_max": 9657.0,
         "premium_peak": null
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
@@ -1379,8 +1457,8 @@
         "premium_peak": null
       },
       "Serenity Sky Arc": {
-        "history_max": 9937.0,
-        "premium_peak": null
+        "history_max": 10179.0,
+        "premium_peak": 10179.0
       },
       "Palm Royale Soma Bay": {
         "history_max": 10418.0,
@@ -1399,8 +1477,8 @@
         "premium_peak": 10692.0
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
-        "history_max": 10622.0,
-        "premium_peak": 10622.0
+        "history_max": 10857.0,
+        "premium_peak": 10857.0
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
         "history_max": 15014.0,
@@ -1431,8 +1509,8 @@
         "premium_peak": 10608.0
       },
       "Steigenberger Golf Resort": {
-        "history_max": 9468.0,
-        "premium_peak": null
+        "history_max": 10746.0,
+        "premium_peak": 10746.0
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
         "history_max": 9906.0,
@@ -1455,8 +1533,8 @@
         "premium_peak": 10458.0
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
-        "history_max": 10771.0,
-        "premium_peak": 10771.0
+        "history_max": 11129.0,
+        "premium_peak": 11129.0
       },
       "The V Luxury Resort": {
         "history_max": 10620.0,
@@ -1823,8 +1901,8 @@
         "premium_peak": 13967.0
       },
       "Calimera Blend Paradise Resort": {
-        "history_max": 11565.0,
-        "premium_peak": 11565.0
+        "history_max": 11961.0,
+        "premium_peak": 11961.0
       },
       "Cleopatra Luxury Resort": {
         "history_max": 18348.0,
