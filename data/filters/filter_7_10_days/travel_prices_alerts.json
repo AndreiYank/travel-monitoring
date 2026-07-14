@@ -2288,13 +2288,104 @@
       "created_at": "2026-07-14T10:17:27.256924+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-14_10-16_zone_out_+11.8"
+    },
+    {
+      "hotel_name": "Concorde Moreen Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8457.0,
+      "new_price": 9257.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.459619250325174,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T11:38:30.563287+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Moreen Beach Resort & Spa_2026-07-14_11-37_+9.5"
+    },
+    {
+      "hotel_name": "Gorgonia Beach",
+      "duration_bucket": "",
+      "old_price": 9923.0,
+      "new_price": 9084.0,
+      "price_change": -839.0,
+      "price_change_pct": -8.455104303134133,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-14T11:38:30.563319+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gorgonia Beach_2026-07-14_11-37_-8.5"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9837.0,
+      "new_price": 10804.0,
+      "price_change": 967.0,
+      "price_change_pct": 9.830232794551184,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T11:38:30.563342+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-14_11-37_zone_out_+9.8"
+    },
+    {
+      "hotel_name": "Serenity Sky Arc",
+      "duration_bucket": "",
+      "old_price": 9777.0,
+      "new_price": 10179.0,
+      "price_change": 402.0,
+      "price_change_pct": 4.111690702669531,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T11:38:30.563354+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-07-14_11-37_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Steigenberger Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9468.0,
+      "new_price": 11547.0,
+      "price_change": 2079.0,
+      "price_change_pct": 21.958174904942965,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T11:38:30.563363+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Golf Resort_2026-07-14_11-37_zone_out_+22.0"
+    },
+    {
+      "hotel_name": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 11177.0,
+      "new_price": 9468.0,
+      "price_change": -1709.0,
+      "price_change_pct": -15.290328352867496,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T11:38:30.563383+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)_2026-07-14_11-37_comeback_15.3"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 12816.0,
+      "new_price": 9390.0,
+      "price_change": -3426.0,
+      "price_change_pct": -26.732209737827716,
+      "timestamp": "2026-07-14 11:37:42.857284+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T11:38:30.563424+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-07-14_11-37_comeback_26.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T10:16:47.211007+00:00",
+    "last_processed_run": "2026-07-14T11:37:42.857284+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
-        "history_max": 8307.0,
+        "history_max": 8348.0,
         "premium_peak": null
       },
       "Jaz Mirabel Beach Resort": {
@@ -2442,8 +2533,8 @@
         "premium_peak": 14808.0
       },
       "Jaz Elite Asteria (Hurghada)": {
-        "history_max": 12501.0,
-        "premium_peak": 12501.0
+        "history_max": 12776.0,
+        "premium_peak": 12776.0
       },
       "Jaz Elite Crystal": {
         "history_max": 15942.0,
@@ -2574,8 +2665,8 @@
         "premium_peak": 15387.0
       },
       "Pickalbatros Laguna Vista Beach": {
-        "history_max": 12457.0,
-        "premium_peak": 12457.0
+        "history_max": 13247.0,
+        "premium_peak": 13247.0
       },
       "Movenpick Resort Sharm el Sheikh": {
         "history_max": 13362.0,
@@ -2666,8 +2757,8 @@
         "premium_peak": 10893.0
       },
       "Steigenberger Golf Resort": {
-        "history_max": 10746.0,
-        "premium_peak": 10746.0
+        "history_max": 11547.0,
+        "premium_peak": 11547.0
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
         "history_max": 12094.0,
@@ -2682,8 +2773,8 @@
         "premium_peak": 10807.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 10458.0,
-        "premium_peak": 10458.0
+        "history_max": 10553.0,
+        "premium_peak": 10553.0
       },
       "Charmillion Garden Aqua Park": {
         "history_max": 10458.0,
@@ -2710,7 +2801,7 @@
         "premium_peak": 12643.0
       },
       "Concorde Moreen Beach Resort & Spa": {
-        "history_max": 8457.0,
+        "history_max": 9257.0,
         "premium_peak": null
       },
       "Continental (ex Movenpick Resort)": {
@@ -2810,8 +2901,8 @@
         "premium_peak": 12131.0
       },
       "Ancient Sands Golf Resort": {
-        "history_max": 10504.0,
-        "premium_peak": 10504.0
+        "history_max": 10804.0,
+        "premium_peak": 10804.0
       },
       "Tropitel Sahl Hasheesh": {
         "history_max": 10213.0,
@@ -2886,8 +2977,8 @@
         "premium_peak": 11913.0
       },
       "Sunrise Holidays Resort": {
-        "history_max": 13007.0,
-        "premium_peak": 13007.0
+        "history_max": 13027.0,
+        "premium_peak": 13027.0
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
         "history_max": 11028.0,
@@ -2910,8 +3001,8 @@
         "premium_peak": 15167.0
       },
       "Sunrise Tucana Resort": {
-        "history_max": 14526.0,
-        "premium_peak": 14526.0
+        "history_max": 15217.0,
+        "premium_peak": 15217.0
       },
       "Sunrise Arabian Beach Resort": {
         "history_max": 14054.0,
@@ -2958,8 +3049,8 @@
         "premium_peak": 12209.0
       },
       "Rixos Sharm el Sheikh": {
-        "history_max": 17097.0,
-        "premium_peak": 17097.0
+        "history_max": 18627.0,
+        "premium_peak": 18627.0
       },
       "Sunrise Aqua Joy": {
         "history_max": 12037.0,
@@ -3110,8 +3201,8 @@
         "premium_peak": 19107.0
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
-        "history_max": 11817.0,
-        "premium_peak": 11817.0
+        "history_max": 11819.0,
+        "premium_peak": 11819.0
       },
       "Jaz Mirabel Park & Club": {
         "history_max": 11124.0,
@@ -3190,8 +3281,12 @@
         "premium_peak": 17165.0
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
-        "history_max": 12048.0,
-        "premium_peak": 12048.0
+        "history_max": 12064.0,
+        "premium_peak": 12064.0
+      },
+      "Stella Makadi Beach & Spa": {
+        "history_max": 10800.0,
+        "premium_peak": 10800.0
       }
     }
   }
