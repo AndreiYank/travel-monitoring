@@ -1066,10 +1066,75 @@
       "created_at": "2026-07-14T21:09:52.996994+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Master Family Club|7-9_2026-07-14_21-09_comeback_9.1"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "9-11",
+      "old_price": 7086.0,
+      "new_price": 7086.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-14 23:05:22.177411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T23:06:13.619411+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|9-11_2026-07-14_23-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9357.0,
+      "new_price": 9357.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-14 23:05:22.177411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T23:06:13.619443+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa|7-9_2026-07-14_23-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "7-9",
+      "old_price": 9355.0,
+      "new_price": 9355.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-14 23:05:22.177411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T23:06:13.619456+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule|7-9_2026-07-14_23-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Solivia (Ex. Titan Select)",
+      "duration_bucket": "9-11",
+      "old_price": 9347.0,
+      "new_price": 9347.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-14 23:05:22.177411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T23:06:13.619465+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solivia (Ex. Titan Select)|9-11_2026-07-14_23-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "7-9",
+      "old_price": 9783.0,
+      "new_price": 10049.0,
+      "price_change": 266.0,
+      "price_change_pct": 2.7190023510170707,
+      "timestamp": "2026-07-14 23:05:22.177411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T23:06:13.619477+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe|7-9_2026-07-14_23-05_zone_out_+2.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T21:09:01.404763+00:00",
+    "last_processed_run": "2026-07-14T23:05:22.177411+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -1332,8 +1397,8 @@
         "premium_peak": 10853.0
       },
       "Xoria Deluxe|7-9": {
-        "history_max": 10037.0,
-        "premium_peak": 10037.0
+        "history_max": 10049.0,
+        "premium_peak": 10049.0
       },
       "Rubi Platinum Sign|7-9": {
         "history_max": 12992.0,
@@ -1448,8 +1513,8 @@
         "premium_peak": 11691.0
       },
       "Armas Green Fugla|7-9": {
-        "history_max": 9068.0,
-        "premium_peak": null
+        "history_max": 10665.0,
+        "premium_peak": 10665.0
       },
       "Armas Gul Beach|7-9": {
         "history_max": 10854.0,
@@ -1544,8 +1609,8 @@
         "premium_peak": 12726.0
       },
       "Orange Palace|9-11": {
-        "history_max": 13996.0,
-        "premium_peak": 13996.0
+        "history_max": 15196.0,
+        "premium_peak": 15196.0
       },
       "Miarosa Beach (Kemer)|9-11": {
         "history_max": 12551.0,
@@ -1616,8 +1681,8 @@
         "premium_peak": 12176.0
       },
       "Kaya Side (ex. Club Calimera Kaya Side)|9-11": {
-        "history_max": 15908.0,
-        "premium_peak": 15908.0
+        "history_max": 16396.0,
+        "premium_peak": 16396.0
       },
       "Kaila Beach (ex Katya)|9-11": {
         "history_max": 16125.0,
@@ -1724,8 +1789,8 @@
         "premium_peak": 12297.0
       },
       "Armas Gul Beach|9-11": {
-        "history_max": 11525.0,
-        "premium_peak": 11525.0
+        "history_max": 12194.0,
+        "premium_peak": 12194.0
       },
       "Laguna Beach Alya|9-11": {
         "history_max": 13097.0,
@@ -1772,8 +1837,8 @@
         "premium_peak": 16515.0
       },
       "Timo Deluxe Resort|9-11": {
-        "history_max": 11619.0,
-        "premium_peak": 11619.0
+        "history_max": 11781.0,
+        "premium_peak": 11781.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)|9-11": {
         "history_max": 14247.0,
@@ -1928,8 +1993,8 @@
         "premium_peak": 16718.0
       },
       "Andriake Beach Club|9-11": {
-        "history_max": 11943.0,
-        "premium_peak": 11943.0
+        "history_max": 12659.0,
+        "premium_peak": 12659.0
       },
       "Rubi Platinum (Alanya)|9-11": {
         "history_max": 16190.0,
@@ -2072,8 +2137,8 @@
         "premium_peak": 17078.0
       },
       "Aydinbey Queens Palace & Spa|9-11": {
-        "history_max": 13721.0,
-        "premium_peak": 13721.0
+        "history_max": 13883.0,
+        "premium_peak": 13883.0
       },
       "Grand Belish|9-11": {
         "history_max": 15713.0,
@@ -2284,8 +2349,8 @@
         "premium_peak": 12003.0
       },
       "Orange County Alanya|7-9": {
-        "history_max": 11205.0,
-        "premium_peak": 11205.0
+        "history_max": 11367.0,
+        "premium_peak": 11367.0
       },
       "Seashell Vega (ex. Side Crown Sunshine)|7-9": {
         "history_max": 10897.0,
@@ -2328,8 +2393,8 @@
         "premium_peak": null
       },
       "Orange County (Kemer)|7-9": {
-        "history_max": 12195.0,
-        "premium_peak": 12195.0
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
       },
       "Club Paradiso|9-11": {
         "history_max": 15827.0,
@@ -2748,8 +2813,8 @@
         "premium_peak": 11059.0
       },
       "Club Grand Side|7-9": {
-        "history_max": 13069.0,
-        "premium_peak": 13069.0
+        "history_max": 13154.0,
+        "premium_peak": 13154.0
       },
       "Laur Experience & Elegance|7-9": {
         "history_max": 12589.0,
@@ -2908,12 +2973,16 @@
         "premium_peak": 11853.0
       },
       "Holiday Garden Resort (Okurcalar)|7-9": {
-        "history_max": 9700.0,
+        "history_max": 9853.0,
         "premium_peak": null
       },
       "Club Sera|9-11": {
         "history_max": 16164.0,
         "premium_peak": 16164.0
+      },
+      "Garden of Sun Spa & Wellness|9-11": {
+        "history_max": 13150.0,
+        "premium_peak": 13150.0
       }
     }
   }
