@@ -2496,10 +2496,88 @@
       "created_at": "2026-07-14T13:24:33.071350+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tropitel Sahl Hasheesh_2026-07-14_13-23_zone_out_+5.1"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 9932.0,
+      "new_price": 9041.0,
+      "price_change": -891.0,
+      "price_change_pct": -8.971002819170359,
+      "timestamp": "2026-07-14 17:19:40.025363+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-14T17:21:56.567977+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-07-14_17-19_-9.0"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 8699.0,
+      "new_price": 9554.0,
+      "price_change": 855.0,
+      "price_change_pct": 9.828715944361422,
+      "timestamp": "2026-07-14 17:19:40.025363+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T17:21:56.568008+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-07-14_17-19_+9.8"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8514.0,
+      "new_price": 9716.0,
+      "price_change": 1202.0,
+      "price_change_pct": 14.117923420249001,
+      "timestamp": "2026-07-14 17:19:40.025363+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T17:21:56.568024+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-14_17-19_+14.1"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 9818.0,
+      "new_price": 10631.0,
+      "price_change": 813.0,
+      "price_change_pct": 8.280708902016704,
+      "timestamp": "2026-07-14 17:19:40.025363+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T17:21:56.568042+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-07-14_17-19_zone_out_+8.3"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue)",
+      "duration_bucket": "",
+      "old_price": 9291.0,
+      "new_price": 10092.0,
+      "price_change": 801.0,
+      "price_change_pct": 8.621246367452374,
+      "timestamp": "2026-07-14 17:19:40.025363+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T17:21:56.568051+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue)_2026-07-14_17-19_zone_out_+8.6"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 11630.0,
+      "new_price": 9939.0,
+      "price_change": -1691.0,
+      "price_change_pct": -14.539982803095441,
+      "timestamp": "2026-07-14 17:19:40.025363+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T17:21:56.568073+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-07-14_17-19_comeback_14.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T13:23:49.821547+00:00",
+    "last_processed_run": "2026-07-14T17:19:40.025363+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8961.0,
@@ -2570,8 +2648,8 @@
         "premium_peak": 13284.0
       },
       "Shams Lodge Resort": {
-        "history_max": 10927.0,
-        "premium_peak": 10927.0
+        "history_max": 11296.0,
+        "premium_peak": 11296.0
       },
       "Marriott Hurghada Beach Resort": {
         "history_max": 9581.0,
@@ -2662,8 +2740,8 @@
         "premium_peak": 15147.0
       },
       "Jaz Elite Maraya": {
-        "history_max": 12177.0,
-        "premium_peak": 12177.0
+        "history_max": 12229.0,
+        "premium_peak": 12229.0
       },
       "Jaz Elite Riviera": {
         "history_max": 14771.0,
@@ -2706,8 +2784,8 @@
         "premium_peak": 11057.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
-        "history_max": 9906.0,
-        "premium_peak": null
+        "history_max": 10092.0,
+        "premium_peak": 10092.0
       },
       "Pickalbatros Vita Resort Portofino": {
         "history_max": 11977.0,
@@ -2730,8 +2808,8 @@
         "premium_peak": 10537.0
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
-        "history_max": 10937.0,
-        "premium_peak": 10937.0
+        "history_max": 11163.0,
+        "premium_peak": 11163.0
       },
       "Rixos Radamis Sharm El Sheikh": {
         "history_max": 17397.0,
@@ -2762,8 +2840,8 @@
         "premium_peak": null
       },
       "Rixos Premium Magawish Bay View": {
-        "history_max": 13505.0,
-        "premium_peak": 13505.0
+        "history_max": 14733.0,
+        "premium_peak": 14733.0
       },
       "Renaissance Golden View Beach Resort by Marriott": {
         "history_max": 13367.0,
@@ -2890,8 +2968,8 @@
         "premium_peak": 10807.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 10553.0,
-        "premium_peak": 10553.0
+        "history_max": 10703.0,
+        "premium_peak": 10703.0
       },
       "Charmillion Garden Aqua Park": {
         "history_max": 10458.0,
@@ -3022,8 +3100,8 @@
         "premium_peak": 10804.0
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 10338.0,
-        "premium_peak": 10338.0
+        "history_max": 10343.0,
+        "premium_peak": 10343.0
       },
       "Azur One Eleven": {
         "history_max": 14574.0,
@@ -3126,8 +3204,8 @@
         "premium_peak": 14054.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 10126.0,
-        "premium_peak": 10126.0
+        "history_max": 10147.0,
+        "premium_peak": 10147.0
       },
       "Sunrise Alora Aqua Park Resort": {
         "history_max": 11077.0,
@@ -3226,8 +3304,8 @@
         "premium_peak": 16953.0
       },
       "Steigenberger Aqua Magic": {
-        "history_max": 11408.0,
-        "premium_peak": 11408.0
+        "history_max": 12839.0,
+        "premium_peak": 12839.0
       },
       "Nubian Village": {
         "history_max": 15284.0,

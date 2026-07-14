@@ -377,14 +377,66 @@
       "created_at": "2026-07-14T13:25:57.994071+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-07-14_13-25_comeback_23.6"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 8049.0,
+      "new_price": 7030.0,
+      "price_change": -1019.0,
+      "price_change_pct": -12.659957758727792,
+      "timestamp": "2026-07-14 17:21:57.456176+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-14T17:22:42.016805+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-07-14_17-21_-12.7"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 9057.0,
+      "new_price": 10057.0,
+      "price_change": 1000.0,
+      "price_change_pct": 11.041183614883515,
+      "timestamp": "2026-07-14 17:21:57.456176+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T17:22:42.016838+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-07-14_17-21_zone_out_+11.0"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 11696.0,
+      "new_price": 9203.0,
+      "price_change": -2493.0,
+      "price_change_pct": -21.31497948016416,
+      "timestamp": "2026-07-14 17:21:57.456176+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T17:22:42.016860+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-07-14_17-21_comeback_21.3"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 11998.0,
+      "new_price": 9988.0,
+      "price_change": -2010.0,
+      "price_change_pct": -16.752792132022005,
+      "timestamp": "2026-07-14 17:21:57.456176+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T17:22:42.016873+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-07-14_17-21_comeback_16.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T13:25:08.073763+00:00",
+    "last_processed_run": "2026-07-14T17:21:57.456176+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
-        "history_max": 17576.0,
-        "premium_peak": 17576.0
+        "history_max": 18409.0,
+        "premium_peak": 18409.0
       },
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
         "history_max": 11925.0,
@@ -435,16 +487,16 @@
         "premium_peak": 11996.0
       },
       "Gouves Water Park Holiday Resort": {
-        "history_max": 17177.0,
-        "premium_peak": 17177.0
+        "history_max": 17513.0,
+        "premium_peak": 17513.0
       },
       "Kakkos Bay": {
         "history_max": 13131.0,
         "premium_peak": 13131.0
       },
       "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki": {
-        "history_max": 11146.0,
-        "premium_peak": 11146.0
+        "history_max": 11328.0,
+        "premium_peak": 11328.0
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
         "history_max": 11097.0,
@@ -663,8 +715,8 @@
         "premium_peak": 18827.0
       },
       "Santa Marina Pearl": {
-        "history_max": 14797.0,
-        "premium_peak": 14797.0
+        "history_max": 15057.0,
+        "premium_peak": 15057.0
       },
       "Aquila Rithymna Beach": {
         "history_max": 15425.0,
@@ -743,8 +795,8 @@
         "premium_peak": 11857.0
       },
       "Zeus Dolce Athens (ex Dolce Attica Riviera)": {
-        "history_max": 15419.0,
-        "premium_peak": 15419.0
+        "history_max": 15428.0,
+        "premium_peak": 15428.0
       },
       "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes": {
         "history_max": 9841.0,
@@ -791,8 +843,8 @@
         "premium_peak": 11577.0
       },
       "Costa Lindia Beach": {
-        "history_max": 16612.0,
-        "premium_peak": 16612.0
+        "history_max": 16969.0,
+        "premium_peak": 16969.0
       },
       "Blue Sea Beach (Stalida)": {
         "history_max": 15096.0,
@@ -891,20 +943,28 @@
         "premium_peak": 11857.0
       },
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
-        "history_max": 11726.0,
-        "premium_peak": 11726.0
+        "history_max": 11970.0,
+        "premium_peak": 11970.0
       },
       "Cabana Beach Grecja, Kos, Kardamena": {
         "history_max": 11963.0,
         "premium_peak": 11963.0
       },
       "Kiani Beach": {
-        "history_max": 12302.0,
-        "premium_peak": 12302.0
+        "history_max": 12961.0,
+        "premium_peak": 12961.0
       },
       "Porto Angeli Grecja, Rodos, Archangelos": {
         "history_max": 12010.0,
         "premium_peak": 12010.0
+      },
+      "Sunrise Grecja, Lesbos, Mithymna": {
+        "history_max": 12157.0,
+        "premium_peak": 12157.0
+      },
+      "Princess Andriana Resort & Spa": {
+        "history_max": 17889.0,
+        "premium_peak": 17889.0
       }
     }
   }
