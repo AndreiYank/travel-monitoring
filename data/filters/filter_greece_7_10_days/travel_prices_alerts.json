@@ -312,10 +312,75 @@
       "created_at": "2026-07-14T11:39:55.119889+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia_2026-07-14_11-39_zone_out_+20.7"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 7379.0,
+      "new_price": 8049.0,
+      "price_change": 670.0,
+      "price_change_pct": 9.079821113972084,
+      "timestamp": "2026-07-14 13:25:08.073763+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T13:25:57.993995+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-07-14_13-25_+9.1"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 10057.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.142073107590349,
+      "timestamp": "2026-07-14 13:25:08.073763+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T13:25:57.994028+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-07-14_13-25_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 9312.0,
+      "new_price": 10172.0,
+      "price_change": 860.0,
+      "price_change_pct": 9.235395189003437,
+      "timestamp": "2026-07-14 13:25:08.073763+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T13:25:57.994041+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-07-14_13-25_zone_out_+9.2"
+    },
+    {
+      "hotel_name": "Sitia Beach Grecja, Kreta Wschodnia, Sitia",
+      "duration_bucket": "",
+      "old_price": 9057.0,
+      "new_price": 11457.0,
+      "price_change": 2400.0,
+      "price_change_pct": 26.498840675720437,
+      "timestamp": "2026-07-14 13:25:08.073763+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T13:25:57.994051+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-07-14_13-25_zone_out_+26.5"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 11857.0,
+      "new_price": 9057.0,
+      "price_change": -2800.0,
+      "price_change_pct": -23.61474234629333,
+      "timestamp": "2026-07-14 13:25:08.073763+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T13:25:57.994071+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-07-14_13-25_comeback_23.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T11:39:06.735427+00:00",
+    "last_processed_run": "2026-07-14T13:25:08.073763+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 17576.0,
@@ -358,8 +423,8 @@
         "premium_peak": 16931.0
       },
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
-        "history_max": 11471.0,
-        "premium_peak": 11471.0
+        "history_max": 11567.0,
+        "premium_peak": 11567.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 14382.0,
@@ -382,8 +447,8 @@
         "premium_peak": 11146.0
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
-        "history_max": 10982.0,
-        "premium_peak": 10982.0
+        "history_max": 11097.0,
+        "premium_peak": 11097.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
         "history_max": 16347.0,
@@ -426,8 +491,8 @@
         "premium_peak": 14857.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 9712.0,
-        "premium_peak": null
+        "history_max": 10172.0,
+        "premium_peak": 10172.0
       },
       "Sandy Beach Resort": {
         "history_max": 13184.0,
@@ -462,8 +527,8 @@
         "premium_peak": 16521.0
       },
       "Mitsis Galini": {
-        "history_max": 14405.0,
-        "premium_peak": 14405.0
+        "history_max": 14976.0,
+        "premium_peak": 14976.0
       },
       "Mitsis Royal Mare": {
         "history_max": 16497.0,
@@ -538,8 +603,8 @@
         "premium_peak": 18442.0
       },
       "Kipriotis Panorama & Suites": {
-        "history_max": 14287.0,
-        "premium_peak": 14287.0
+        "history_max": 14333.0,
+        "premium_peak": 14333.0
       },
       "Natura Park Village": {
         "history_max": 15103.0,
@@ -606,7 +671,7 @@
         "premium_peak": 15425.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 7479.0,
+        "history_max": 8049.0,
         "premium_peak": null
       },
       "Aquila Porto Rethymno": {
@@ -654,7 +719,7 @@
         "premium_peak": 17149.0
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 9779.0,
+        "history_max": 9998.0,
         "premium_peak": null
       },
       "Ammos (Mastichari) Grecja, Kos, Mastichari": {
@@ -722,12 +787,12 @@
         "premium_peak": 12747.0
       },
       "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
-        "history_max": 11572.0,
-        "premium_peak": 11572.0
+        "history_max": 11577.0,
+        "premium_peak": 11577.0
       },
       "Costa Lindia Beach": {
-        "history_max": 16540.0,
-        "premium_peak": 16540.0
+        "history_max": 16612.0,
+        "premium_peak": 16612.0
       },
       "Blue Sea Beach (Stalida)": {
         "history_max": 15096.0,
@@ -742,8 +807,8 @@
         "premium_peak": 17069.0
       },
       "Sitia Beach Grecja, Kreta Wschodnia, Sitia": {
-        "history_max": 10657.0,
-        "premium_peak": 10657.0
+        "history_max": 11457.0,
+        "premium_peak": 11457.0
       },
       "Bella Beach Grecja, Kreta Wschodnia, Anissaras": {
         "history_max": 12178.0,
@@ -778,12 +843,12 @@
         "premium_peak": 12157.0
       },
       "Aldemar Olympian Village": {
-        "history_max": 13828.0,
-        "premium_peak": 13828.0
+        "history_max": 14135.0,
+        "premium_peak": 14135.0
       },
       "White Olive Elite": {
-        "history_max": 12349.0,
-        "premium_peak": 12349.0
+        "history_max": 12614.0,
+        "premium_peak": 12614.0
       },
       "Sunshine Crete Beach (ex Club Calimera) Grecja, Kreta Wschodnia, Koutsounari": {
         "history_max": 11702.0,
@@ -826,16 +891,20 @@
         "premium_peak": 11857.0
       },
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
-        "history_max": 11657.0,
-        "premium_peak": 11657.0
+        "history_max": 11726.0,
+        "premium_peak": 11726.0
       },
       "Cabana Beach Grecja, Kos, Kardamena": {
         "history_max": 11963.0,
         "premium_peak": 11963.0
       },
       "Kiani Beach": {
-        "history_max": 12293.0,
-        "premium_peak": 12293.0
+        "history_max": 12302.0,
+        "premium_peak": 12302.0
+      },
+      "Porto Angeli Grecja, Rodos, Archangelos": {
+        "history_max": 12010.0,
+        "premium_peak": 12010.0
       }
     }
   }
