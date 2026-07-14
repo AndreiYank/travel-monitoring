@@ -2197,10 +2197,101 @@
       "created_at": "2026-07-14T07:21:12.012346+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-07-14_07-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 7929.0,
+      "new_price": 8879.0,
+      "price_change": 950.0,
+      "price_change_pct": 11.981334342287804,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T10:17:27.256847+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-14_10-16_+12.0"
+    },
+    {
+      "hotel_name": "Serenity Sky Arc",
+      "duration_bucket": "",
+      "old_price": 8991.0,
+      "new_price": 9777.0,
+      "price_change": 786.0,
+      "price_change_pct": 8.742075408742075,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T10:17:27.256877+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-07-14_10-16_+8.7"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort",
+      "duration_bucket": "",
+      "old_price": 9907.0,
+      "new_price": 10507.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.056323811446452,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T10:17:27.256895+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort_2026-07-14_10-16_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 10224.0,
+      "price_change": 327.0,
+      "price_change_pct": 3.304031524704456,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T10:17:27.256903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-14_10-16_zone_out_+3.3"
+    },
+    {
+      "hotel_name": "Dreams Beach Sharm Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 9507.0,
+      "new_price": 9507.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T10:17:27.256910+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-07-14_10-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Makadi Saraya (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 9999.0,
+      "new_price": 10449.0,
+      "price_change": 450.0,
+      "price_change_pct": 4.5004500450045,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T10:17:27.256917+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Saraya (ex Iberotel)_2026-07-14_10-16_zone_out_+4.5"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 9135.0,
+      "new_price": 10217.0,
+      "price_change": 1082.0,
+      "price_change_pct": 11.84455391351943,
+      "timestamp": "2026-07-14 10:16:47.211007+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T10:17:27.256924+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-14_10-16_zone_out_+11.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T07:20:32.040202+00:00",
+    "last_processed_run": "2026-07-14T10:16:47.211007+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8307.0,
@@ -2395,8 +2486,8 @@
         "premium_peak": 12317.0
       },
       "Pickalbatros Palace Resort": {
-        "history_max": 11707.0,
-        "premium_peak": 11707.0
+        "history_max": 11763.0,
+        "premium_peak": 11763.0
       },
       "Pickalbatros Royal Grand Resort Sharm": {
         "history_max": 15051.0,
@@ -2471,12 +2562,12 @@
         "premium_peak": 13367.0
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
-        "history_max": 9657.0,
+        "history_max": 9857.0,
         "premium_peak": null
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 11067.0,
-        "premium_peak": 11067.0
+        "history_max": 11243.0,
+        "premium_peak": 11243.0
       },
       "Pickalbatros Luxury Suites": {
         "history_max": 15387.0,
@@ -2519,7 +2610,7 @@
         "premium_peak": 12502.0
       },
       "Old Palace Resort": {
-        "history_max": 9563.0,
+        "history_max": 9887.0,
         "premium_peak": null
       },
       "Serenity Sky Arc": {
@@ -2591,8 +2682,8 @@
         "premium_peak": 10807.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 10081.0,
-        "premium_peak": 10081.0
+        "history_max": 10458.0,
+        "premium_peak": 10458.0
       },
       "Charmillion Garden Aqua Park": {
         "history_max": 10458.0,
@@ -2735,8 +2826,8 @@
         "premium_peak": 12686.0
       },
       "Baron Palms": {
-        "history_max": 12567.0,
-        "premium_peak": 12567.0
+        "history_max": 13917.0,
+        "premium_peak": 13917.0
       },
       "Beach Albatros Resort": {
         "history_max": 13451.0,
@@ -2879,8 +2970,8 @@
         "premium_peak": 19197.0
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
-        "history_max": 16235.0,
-        "premium_peak": 16235.0
+        "history_max": 16391.0,
+        "premium_peak": 16391.0
       },
       "Xperience Kiroseiz Parkland": {
         "history_max": 12822.0,
@@ -2895,8 +2986,8 @@
         "premium_peak": 15927.0
       },
       "Rixos Radamis Beach": {
-        "history_max": 15827.0,
-        "premium_peak": 15827.0
+        "history_max": 18647.0,
+        "premium_peak": 18647.0
       },
       "Sunrise Anjum Resort": {
         "history_max": 11547.0,
@@ -2959,16 +3050,16 @@
         "premium_peak": 11723.0
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
-        "history_max": 11264.0,
-        "premium_peak": 11264.0
+        "history_max": 11511.0,
+        "premium_peak": 11511.0
       },
       "Baron Resort (Sharm El Sheikh)": {
         "history_max": 13967.0,
         "premium_peak": 13967.0
       },
       "Calimera Blend Paradise Resort": {
-        "history_max": 11961.0,
-        "premium_peak": 11961.0
+        "history_max": 12038.0,
+        "premium_peak": 12038.0
       },
       "Cleopatra Luxury Resort": {
         "history_max": 18348.0,
@@ -3015,12 +3106,12 @@
         "premium_peak": 15284.0
       },
       "Jaz Costa Mares": {
-        "history_max": 18267.0,
-        "premium_peak": 18267.0
+        "history_max": 19107.0,
+        "premium_peak": 19107.0
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
-        "history_max": 11807.0,
-        "premium_peak": 11807.0
+        "history_max": 11817.0,
+        "premium_peak": 11817.0
       },
       "Jaz Mirabel Park & Club": {
         "history_max": 11124.0,
@@ -3099,8 +3190,8 @@
         "premium_peak": 17165.0
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
-        "history_max": 10781.0,
-        "premium_peak": 10781.0
+        "history_max": 12048.0,
+        "premium_peak": 12048.0
       }
     }
   }
