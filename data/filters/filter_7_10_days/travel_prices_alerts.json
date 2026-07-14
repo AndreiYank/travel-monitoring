@@ -2574,13 +2574,78 @@
       "created_at": "2026-07-14T17:21:56.568073+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Viva Casa Maza_2026-07-14_17-19_comeback_14.5"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 9000.0,
+      "new_price": 9932.0,
+      "price_change": 932.0,
+      "price_change_pct": 10.355555555555556,
+      "timestamp": "2026-07-14 21:06:59.455646+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T21:09:17.315027+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-07-14_21-06_+10.4"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 8348.0,
+      "new_price": 9052.0,
+      "price_change": 704.0,
+      "price_change_pct": 8.433157642549114,
+      "timestamp": "2026-07-14 21:06:59.455646+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T21:09:17.315057+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-07-14_21-06_+8.4"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10125.0,
+      "price_change": 328.0,
+      "price_change_pct": 3.347963662345616,
+      "timestamp": "2026-07-14 21:06:59.455646+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T21:09:17.315080+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-07-14_21-06_zone_out_+3.3"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 9837.0,
+      "new_price": 10404.0,
+      "price_change": 567.0,
+      "price_change_pct": 5.763952424519671,
+      "timestamp": "2026-07-14 21:06:59.455646+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T21:09:17.315092+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-07-14_21-06_zone_out_+5.8"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9563.0,
+      "new_price": 10351.0,
+      "price_change": 788.0,
+      "price_change_pct": 8.240092021332218,
+      "timestamp": "2026-07-14 21:06:59.455646+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T21:09:17.315100+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-07-14_21-06_zone_out_+8.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T19:18:46.167701+00:00",
+    "last_processed_run": "2026-07-14T21:06:59.455646+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
-        "history_max": 8961.0,
+        "history_max": 9052.0,
         "premium_peak": null
       },
       "Jaz Mirabel Beach Resort": {
@@ -2772,8 +2837,8 @@
         "premium_peak": 12317.0
       },
       "Pickalbatros Palace Resort": {
-        "history_max": 12127.0,
-        "premium_peak": 12127.0
+        "history_max": 12263.0,
+        "premium_peak": 12263.0
       },
       "Pickalbatros Royal Grand Resort Sharm": {
         "history_max": 15051.0,
@@ -2804,8 +2869,8 @@
         "premium_peak": 13917.0
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
-        "history_max": 10537.0,
-        "premium_peak": 10537.0
+        "history_max": 10657.0,
+        "premium_peak": 10657.0
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
         "history_max": 11163.0,
@@ -2840,8 +2905,8 @@
         "premium_peak": null
       },
       "Rixos Premium Magawish Bay View": {
-        "history_max": 14733.0,
-        "premium_peak": 14733.0
+        "history_max": 14936.0,
+        "premium_peak": 14936.0
       },
       "Renaissance Golden View Beach Resort by Marriott": {
         "history_max": 13367.0,
@@ -3136,7 +3201,7 @@
         "premium_peak": 12825.0
       },
       "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": {
-        "history_max": 9648.0,
+        "history_max": 9797.0,
         "premium_peak": null
       },
       "Rewaya Luxury Resort": {
