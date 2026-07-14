@@ -1547,10 +1547,62 @@
       "created_at": "2026-07-13T23:03:10.923703+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Jannah Resort Aquapark_2026-07-13_23-02_comeback_26.8"
+    },
+    {
+      "hotel_name": "Double Tree by Hilton Mangroovy El Gouna Resort",
+      "duration_bucket": "",
+      "old_price": 8514.0,
+      "new_price": 9702.0,
+      "price_change": 1188.0,
+      "price_change_pct": 13.953488372093023,
+      "timestamp": "2026-07-13 23:59:58.463888+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-14T00:00:32.253342+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-07-13_23-59_+14.0"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 8379.0,
+      "new_price": 8379.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-13 23:59:58.463888+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T00:00:32.253385+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-07-13_23-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9563.0,
+      "new_price": 9563.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-13 23:59:58.463888+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-14T00:00:32.253405+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-07-13_23-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 11163.0,
+      "new_price": 8888.0,
+      "price_change": -2275.0,
+      "price_change_pct": -20.37982621159187,
+      "timestamp": "2026-07-13 23:59:58.463888+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-14T00:00:32.253437+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-07-13_23-59_comeback_20.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-13T23:02:28.177317+00:00",
+    "last_processed_run": "2026-07-13T23:59:58.463888+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 8219.0,
@@ -1921,8 +1973,8 @@
         "premium_peak": 10418.0
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 10608.0,
-        "premium_peak": 10608.0
+        "history_max": 10893.0,
+        "premium_peak": 10893.0
       },
       "Steigenberger Golf Resort": {
         "history_max": 10746.0,
@@ -2137,7 +2189,7 @@
         "premium_peak": 13458.0
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 9612.0,
+        "history_max": 9702.0,
         "premium_peak": null
       },
       "Domina Coral Bay Sultan": {
