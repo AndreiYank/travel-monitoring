@@ -5330,10 +5330,62 @@
       "created_at": "2026-07-15T10:09:57.276585+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-15_10-07_comeback_11.1"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 9052.0,
+      "new_price": 8252.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.837825894829871,
+      "timestamp": "2026-07-15 11:38:37.528214+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-15T11:40:56.627833+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-07-15_11-38_-8.8"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 7197.0,
+      "new_price": 7907.0,
+      "price_change": 710.0,
+      "price_change_pct": 9.865221620119494,
+      "timestamp": "2026-07-15 11:38:37.528214+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-15T11:40:56.627862+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-15_11-38_+9.9"
+    },
+    {
+      "hotel_name": "Novotel Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9578.0,
+      "new_price": 10057.0,
+      "price_change": 479.0,
+      "price_change_pct": 5.0010440593025685,
+      "timestamp": "2026-07-15 11:38:37.528214+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T11:40:56.627882+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Marsa Alam_2026-07-15_11-38_zone_out_+5.0"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 10804.0,
+      "new_price": 9837.0,
+      "price_change": -967.0,
+      "price_change_pct": -8.950388744909294,
+      "timestamp": "2026-07-15 11:38:37.528214+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T11:40:56.627909+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-15_11-38_comeback_9.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T10:07:31.688403+00:00",
+    "last_processed_run": "2026-07-15T11:38:37.528214+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9239.0,
@@ -5472,8 +5524,8 @@
         "premium_peak": 10457.0
       },
       "Jaz Aquaviva": {
-        "history_max": 11741.0,
-        "premium_peak": 11741.0
+        "history_max": 11917.0,
+        "premium_peak": 11917.0
       },
       "Steigenberger Coraya Beach": {
         "history_max": 15537.0,
@@ -5628,8 +5680,8 @@
         "premium_peak": null
       },
       "Novotel Marsa Alam": {
-        "history_max": 9578.0,
-        "premium_peak": null
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
       },
       "Serenity Alpha Beach (ex. Serenity Makadi Beach)": {
         "history_max": 10017.0,
@@ -5752,7 +5804,7 @@
         "premium_peak": 12643.0
       },
       "Concorde Moreen Beach Resort & Spa": {
-        "history_max": 9257.0,
+        "history_max": 9457.0,
         "premium_peak": null
       },
       "Continental (ex Movenpick Resort)": {
@@ -6044,8 +6096,8 @@
         "premium_peak": 13077.0
       },
       "Titanic Royal": {
-        "history_max": 12057.0,
-        "premium_peak": 12057.0
+        "history_max": 12857.0,
+        "premium_peak": 12857.0
       },
       "Sunrise Select Garden Beach Resort & Spa": {
         "history_max": 16200.0,
