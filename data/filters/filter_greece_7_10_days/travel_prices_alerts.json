@@ -481,10 +481,49 @@
       "created_at": "2026-07-15T00:03:22.141388+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-07-15_00-02_zone_out_+23.3"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 9941.0,
+      "new_price": 10088.0,
+      "price_change": 147.0,
+      "price_change_pct": 1.4787244743989538,
+      "timestamp": "2026-07-15 10:09:58.189104+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T10:10:54.061252+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-07-15_10-09_zone_out_+1.5"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 10857.0,
+      "new_price": 9457.0,
+      "price_change": -1400.0,
+      "price_change_pct": -12.89490651192779,
+      "timestamp": "2026-07-15 10:09:58.189104+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T10:10:54.061290+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-07-15_10-09_comeback_12.9"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 11857.0,
+      "new_price": 9657.0,
+      "price_change": -2200.0,
+      "price_change_pct": -18.554440414944757,
+      "timestamp": "2026-07-15 10:09:58.189104+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T10:10:54.061306+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-07-15_10-09_comeback_18.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T07:26:43.073067+00:00",
+    "last_processed_run": "2026-07-15T10:09:58.189104+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 18409.0,
@@ -519,12 +558,12 @@
         "premium_peak": 12222.0
       },
       "Porto Platanias Village": {
-        "history_max": 14697.0,
-        "premium_peak": 14697.0
+        "history_max": 15147.0,
+        "premium_peak": 15147.0
       },
       "High Beach": {
-        "history_max": 16931.0,
-        "premium_peak": 16931.0
+        "history_max": 17852.0,
+        "premium_peak": 17852.0
       },
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
         "history_max": 11567.0,
@@ -551,16 +590,16 @@
         "premium_peak": 11328.0
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
-        "history_max": 11097.0,
-        "premium_peak": 11097.0
+        "history_max": 11347.0,
+        "premium_peak": 11347.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
-        "history_max": 16347.0,
-        "premium_peak": 16347.0
+        "history_max": 16737.0,
+        "premium_peak": 16737.0
       },
       "Galini Palace Grecja, Kreta Zachodnia, Kolymvari": {
-        "history_max": 12083.0,
-        "premium_peak": 12083.0
+        "history_max": 12106.0,
+        "premium_peak": 12106.0
       },
       "Galaxy Beach Resort BW Premier Collection": {
         "history_max": 16097.0,
@@ -575,7 +614,7 @@
         "premium_peak": 11073.0
       },
       "Filion Suites Resort Grecja, Kreta Wschodnia, Bali": {
-        "history_max": 9367.0,
+        "history_max": 9384.0,
         "premium_peak": null
       },
       "Rethymno Palace": {
@@ -791,8 +830,8 @@
         "premium_peak": 19809.0
       },
       "Apollonion Asterias Resort & Spa": {
-        "history_max": 14116.0,
-        "premium_peak": 14116.0
+        "history_max": 14216.0,
+        "premium_peak": 14216.0
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
         "history_max": 10548.0,
@@ -931,8 +970,8 @@
         "premium_peak": 17487.0
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
-        "history_max": 12157.0,
-        "premium_peak": 12157.0
+        "history_max": 12557.0,
+        "premium_peak": 12557.0
       },
       "Solimar Aquamarine": {
         "history_max": 13057.0,
@@ -1025,6 +1064,10 @@
       "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki": {
         "history_max": 11360.0,
         "premium_peak": 11360.0
+      },
+      "Pegasos Beach (Faliraki)": {
+        "history_max": 14957.0,
+        "premium_peak": 14957.0
       }
     }
   }
