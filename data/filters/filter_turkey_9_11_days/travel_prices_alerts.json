@@ -156,10 +156,75 @@
       "created_at": "2026-07-15T15:40:56.068331+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cenger Beach Resort (Side)_2026-07-15_15-40_-8.9"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 9387.0,
+      "new_price": 8078.0,
+      "price_change": -1309.0,
+      "price_change_pct": -13.944817300521997,
+      "timestamp": "2026-07-15 19:13:07.687099+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-15T19:14:33.671291+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-07-15_19-13_-13.9"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 8020.0,
+      "new_price": 7119.0,
+      "price_change": -901.0,
+      "price_change_pct": -11.234413965087283,
+      "timestamp": "2026-07-15 19:13:07.687099+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-15T19:14:33.671319+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-07-15_19-13_-11.2"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11338.0,
+      "new_price": 9804.0,
+      "price_change": -1534.0,
+      "price_change_pct": -13.529723055212559,
+      "timestamp": "2026-07-15 19:13:07.687099+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T19:14:33.671345+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-07-15_19-13_comeback_13.5"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "",
+      "old_price": 15795.0,
+      "new_price": 9659.0,
+      "price_change": -6136.0,
+      "price_change_pct": -38.8477366255144,
+      "timestamp": "2026-07-15 19:13:07.687099+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T19:14:33.671358+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez_2026-07-15_19-13_comeback_38.8"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "",
+      "old_price": 17100.0,
+      "new_price": 9980.0,
+      "price_change": -7120.0,
+      "price_change_pct": -41.63742690058479,
+      "timestamp": "2026-07-15 19:13:07.687099+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T19:14:33.671369+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)_2026-07-15_19-13_comeback_41.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T17:23:37.719891+00:00",
+    "last_processed_run": "2026-07-15T19:13:07.687099+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12991.0,
@@ -1294,8 +1359,8 @@
         "premium_peak": 17618.0
       },
       "Emelda Sun Club (ex. Simena Sun Club)": {
-        "history_max": 15472.0,
-        "premium_peak": 15472.0
+        "history_max": 15663.0,
+        "premium_peak": 15663.0
       },
       "Alba Resort": {
         "history_max": 14227.0,
@@ -1508,6 +1573,14 @@
       "Vikingen Quality Resort": {
         "history_max": 15564.0,
         "premium_peak": 15564.0
+      },
+      "Seaden Quality Resort & Spa": {
+        "history_max": 17348.0,
+        "premium_peak": 17348.0
+      },
+      "Royal Seginus": {
+        "history_max": 17210.0,
+        "premium_peak": 17210.0
       }
     }
   }
