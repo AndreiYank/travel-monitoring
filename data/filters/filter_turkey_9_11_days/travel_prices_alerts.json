@@ -221,10 +221,49 @@
       "created_at": "2026-07-15T19:14:33.671369+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Nora Hotels Family Club (Kargicak)_2026-07-15_19-13_comeback_41.6"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 7119.0,
+      "new_price": 8020.0,
+      "price_change": 901.0,
+      "price_change_pct": 12.656271948307346,
+      "timestamp": "2026-07-15 20:20:34.206270+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-15T20:21:44.745848+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-07-15_20-20_+12.7"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "",
+      "old_price": 9659.0,
+      "new_price": 10902.0,
+      "price_change": 1243.0,
+      "price_change_pct": 12.868827000724714,
+      "timestamp": "2026-07-15 20:20:34.206270+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T20:21:44.745884+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez_2026-07-15_20-20_zone_out_+12.9"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "",
+      "old_price": 9980.0,
+      "new_price": 9980.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 20:20:34.206270+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T20:21:44.745895+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)_2026-07-15_20-20_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T19:13:07.687099+00:00",
+    "last_processed_run": "2026-07-15T20:20:34.206270+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12991.0,
@@ -275,8 +314,8 @@
         "premium_peak": 12159.0
       },
       "Mary Side (ex. Mary Palace)": {
-        "history_max": 13803.0,
-        "premium_peak": 13803.0
+        "history_max": 14399.0,
+        "premium_peak": 14399.0
       },
       "Mary Alanya (ex. Sirius Deluxe)": {
         "history_max": 16727.0,
@@ -711,8 +750,8 @@
         "premium_peak": 15974.0
       },
       "Solivia (Ex. Titan Select)": {
-        "history_max": 10386.0,
-        "premium_peak": 10386.0
+        "history_max": 10728.0,
+        "premium_peak": 10728.0
       },
       "Trendy Perge Resort & Suites": {
         "history_max": 16794.0,
@@ -943,8 +982,8 @@
         "premium_peak": 14685.0
       },
       "Side Premium by OZ Hotels": {
-        "history_max": 14845.0,
-        "premium_peak": 14845.0
+        "history_max": 17587.0,
+        "premium_peak": 17587.0
       },
       "Side Moon Palace": {
         "history_max": 13698.0,
@@ -1111,8 +1150,8 @@
         "premium_peak": 16443.0
       },
       "Armas Bella Sun (ex.Club Bella Sun)": {
-        "history_max": 12123.0,
-        "premium_peak": 12123.0
+        "history_max": 13496.0,
+        "premium_peak": 13496.0
       },
       "Crystal Tat Beach Pearl Collection": {
         "history_max": 15097.0,
@@ -1159,8 +1198,8 @@
         "premium_peak": 15282.0
       },
       "Club Sera": {
-        "history_max": 16927.0,
-        "premium_peak": 16927.0
+        "history_max": 17118.0,
+        "premium_peak": 17118.0
       },
       "Club Phaselis Rose": {
         "history_max": 17725.0,
@@ -1443,8 +1482,8 @@
         "premium_peak": 17645.0
       },
       "Beks Premium Resort & Spa": {
-        "history_max": 16746.0,
-        "premium_peak": 16746.0
+        "history_max": 17586.0,
+        "premium_peak": 17586.0
       },
       "Orka Lotus Beach": {
         "history_max": 16672.0,
@@ -1487,8 +1526,8 @@
         "premium_peak": 17451.0
       },
       "Paloma Perissia": {
-        "history_max": 17488.0,
-        "premium_peak": 17488.0
+        "history_max": 17716.0,
+        "premium_peak": 17716.0
       },
       "Ladonia Adakule": {
         "history_max": 11473.0,
@@ -1581,6 +1620,10 @@
       "Royal Seginus": {
         "history_max": 17210.0,
         "premium_peak": 17210.0
+      },
+      "Flora Garden Ephesus": {
+        "history_max": 16569.0,
+        "premium_peak": 16569.0
       }
     }
   }

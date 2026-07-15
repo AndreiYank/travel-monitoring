@@ -5941,10 +5941,62 @@
       "created_at": "2026-07-15T19:14:22.956922+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tropitel Sahl Hasheesh_2026-07-15_19-11_zone_out_+36.4"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 7197.0,
+      "new_price": 7907.0,
+      "price_change": 710.0,
+      "price_change_pct": 9.865221620119494,
+      "timestamp": "2026-07-15 20:19:22.426116+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-15T20:21:24.374980+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-15_20-19_+9.9"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 8253.0,
+      "new_price": 10530.0,
+      "price_change": 2277.0,
+      "price_change_pct": 27.589967284623775,
+      "timestamp": "2026-07-15 20:19:22.426116+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T20:21:24.375019+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-07-15_20-19_zone_out_+27.6"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 9818.0,
+      "new_price": 10089.0,
+      "price_change": 271.0,
+      "price_change_pct": 2.7602363006722346,
+      "timestamp": "2026-07-15 20:19:22.426116+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T20:21:24.375031+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-07-15_20-19_zone_out_+2.8"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 10657.0,
+      "new_price": 9473.0,
+      "price_change": -1184.0,
+      "price_change_pct": -11.110068499577743,
+      "timestamp": "2026-07-15 20:19:22.426116+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-15T20:21:24.375070+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-15_20-19_comeback_11.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T19:11:59.440204+00:00",
+    "last_processed_run": "2026-07-15T20:19:22.426116+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9239.0,
@@ -5971,8 +6023,8 @@
         "premium_peak": 13789.0
       },
       "Jaz Palmariva Beach": {
-        "history_max": 10404.0,
-        "premium_peak": 10404.0
+        "history_max": 10530.0,
+        "premium_peak": 10530.0
       },
       "Sheraton Soma Bay": {
         "history_max": 10746.0,
@@ -6099,8 +6151,8 @@
         "premium_peak": 12776.0
       },
       "Jaz Elite Crystal": {
-        "history_max": 15942.0,
-        "premium_peak": 15942.0
+        "history_max": 16245.0,
+        "premium_peak": 16245.0
       },
       "Steigenberger Alcazar": {
         "history_max": 15147.0,
@@ -6115,8 +6167,8 @@
         "premium_peak": 14771.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
-        "history_max": 11737.0,
-        "premium_peak": 11737.0
+        "history_max": 12237.0,
+        "premium_peak": 12237.0
       },
       "Steigenberger Al Dau Beach": {
         "history_max": 15199.0,
@@ -6295,8 +6347,8 @@
         "premium_peak": 15109.0
       },
       "Sea Star Beau Rivage": {
-        "history_max": 9818.0,
-        "premium_peak": null
+        "history_max": 10089.0,
+        "premium_peak": 10089.0
       },
       "Savoy (Sharm El Sheikh)": {
         "history_max": 14181.0,

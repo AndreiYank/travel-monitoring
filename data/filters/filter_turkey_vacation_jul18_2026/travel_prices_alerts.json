@@ -1443,10 +1443,36 @@
       "created_at": "2026-07-15T19:15:07.624851+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Nora Hotels Family Club (Kargicak)|7-9_2026-07-15_19-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Side Coast",
+      "duration_bucket": "7-9",
+      "old_price": 8277.0,
+      "new_price": 8277.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 20:21:25.430746+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T20:22:32.870823+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Side Coast|7-9_2026-07-15_20-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "7-9",
+      "old_price": 8829.0,
+      "new_price": 8829.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 20:21:25.430746+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T20:22:32.870858+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule|7-9_2026-07-15_20-21_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T19:13:47.213881+00:00",
+    "last_processed_run": "2026-07-15T20:21:25.430746+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -3363,6 +3389,14 @@
       "Beks Premium Resort & Spa|9-11": {
         "history_max": 17910.0,
         "premium_peak": 17910.0
+      },
+      "Miramare Beach (Side)|7-9": {
+        "history_max": 13557.0,
+        "premium_peak": 13557.0
+      },
+      "Crystal Centro Pearl Collection (ex. Amara Centro Resort)|9-11": {
+        "history_max": 17955.0,
+        "premium_peak": 17955.0
       }
     }
   }
