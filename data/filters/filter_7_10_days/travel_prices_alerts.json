@@ -5993,10 +5993,75 @@
       "created_at": "2026-07-15T20:21:24.375070+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-15_20-19_comeback_11.1"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10125.0,
+      "price_change": 328.0,
+      "price_change_pct": 3.347963662345616,
+      "timestamp": "2026-07-15 22:06:40.579622+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T22:09:11.059651+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-07-15_22-06_zone_out_+3.3"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8105.0,
+      "new_price": 10490.0,
+      "price_change": 2385.0,
+      "price_change_pct": 29.426280074028377,
+      "timestamp": "2026-07-15 22:06:40.579622+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T22:09:11.059683+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-07-15_22-06_zone_out_+29.4"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 9135.0,
+      "new_price": 10418.0,
+      "price_change": 1283.0,
+      "price_change_pct": 14.044882320744389,
+      "timestamp": "2026-07-15 22:06:40.579622+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T22:09:11.059697+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-15_22-06_zone_out_+14.0"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9473.0,
+      "new_price": 10057.0,
+      "price_change": 584.0,
+      "price_change_pct": 6.164889686477356,
+      "timestamp": "2026-07-15 22:06:40.579622+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T22:09:11.059707+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-15_22-06_zone_out_+6.2"
+    },
+    {
+      "hotel_name": "Steigenberger Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9468.0,
+      "new_price": 10637.0,
+      "price_change": 1169.0,
+      "price_change_pct": 12.346852555978032,
+      "timestamp": "2026-07-15 22:06:40.579622+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T22:09:11.059717+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Golf Resort_2026-07-15_22-06_zone_out_+12.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T20:19:22.426116+00:00",
+    "last_processed_run": "2026-07-15T22:06:40.579622+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9239.0,
@@ -6071,8 +6136,8 @@
         "premium_peak": 11296.0
       },
       "Marriott Hurghada Beach Resort": {
-        "history_max": 9743.0,
-        "premium_peak": null
+        "history_max": 10490.0,
+        "premium_peak": 10490.0
       },
       "Serry Beach Resort": {
         "history_max": 12600.0,
@@ -6183,8 +6248,8 @@
         "premium_peak": 10418.0
       },
       "Movenpick Resort & Spa El Gouna": {
-        "history_max": 10377.0,
-        "premium_peak": 10377.0
+        "history_max": 10418.0,
+        "premium_peak": 10418.0
       },
       "Movenpick Resort El Quseir": {
         "history_max": 12417.0,
