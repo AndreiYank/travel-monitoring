@@ -1131,10 +1131,62 @@
       "created_at": "2026-07-14T23:06:13.619477+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe|7-9_2026-07-14_23-05_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "7-9",
+      "old_price": 6903.0,
+      "new_price": 6903.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 00:02:10.590970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T00:03:03.895466+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|7-9_2026-07-15_00-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gold City",
+      "duration_bucket": "7-9",
+      "old_price": 9095.0,
+      "new_price": 9095.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 00:02:10.590970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T00:03:03.895493+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gold City|7-9_2026-07-15_00-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "7-9",
+      "old_price": 9218.0,
+      "new_price": 9218.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 00:02:10.590970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T00:03:03.895503+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez|7-9_2026-07-15_00-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "7-9",
+      "old_price": 9126.0,
+      "new_price": 9126.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-15 00:02:10.590970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T00:03:03.895511+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)|7-9_2026-07-15_00-02_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T23:05:22.177411+00:00",
+    "last_processed_run": "2026-07-15T00:02:10.590970+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -1397,8 +1449,8 @@
         "premium_peak": 10853.0
       },
       "Xoria Deluxe|7-9": {
-        "history_max": 10049.0,
-        "premium_peak": 10049.0
+        "history_max": 10166.0,
+        "premium_peak": 10166.0
       },
       "Rubi Platinum Sign|7-9": {
         "history_max": 12992.0,

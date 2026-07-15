@@ -442,10 +442,49 @@
       "created_at": "2026-07-14T21:10:10.033941+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-07-14_21-09_zone_out_+6.3"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 7030.0,
+      "new_price": 8424.0,
+      "price_change": 1394.0,
+      "price_change_pct": 19.829302987197725,
+      "timestamp": "2026-07-15 00:02:37.104430+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-15T00:03:22.141347+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-07-15_00-02_+19.8"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9203.0,
+      "new_price": 11906.0,
+      "price_change": 2703.0,
+      "price_change_pct": 29.370857329131805,
+      "timestamp": "2026-07-15 00:02:37.104430+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T00:03:22.141377+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-07-15_00-02_zone_out_+29.4"
+    },
+    {
+      "hotel_name": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria",
+      "duration_bucket": "",
+      "old_price": 8682.0,
+      "new_price": 10708.0,
+      "price_change": 2026.0,
+      "price_change_pct": 23.33563695001152,
+      "timestamp": "2026-07-15 00:02:37.104430+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-15T00:03:22.141388+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-07-15_00-02_zone_out_+23.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-14T23:05:41.791450+00:00",
+    "last_processed_run": "2026-07-15T00:02:37.104430+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 18409.0,
@@ -496,8 +535,8 @@
         "premium_peak": 14391.0
       },
       "Grand Blue Beach Grecja, kos, Kardamaina": {
-        "history_max": 11996.0,
-        "premium_peak": 11996.0
+        "history_max": 12245.0,
+        "premium_peak": 12245.0
       },
       "Gouves Water Park Holiday Resort": {
         "history_max": 17707.0,
@@ -520,8 +559,8 @@
         "premium_peak": 16347.0
       },
       "Galini Palace Grecja, Kreta Zachodnia, Kolymvari": {
-        "history_max": 11711.0,
-        "premium_peak": 11711.0
+        "history_max": 12083.0,
+        "premium_peak": 12083.0
       },
       "Galaxy Beach Resort BW Premier Collection": {
         "history_max": 16097.0,
@@ -604,8 +643,8 @@
         "premium_peak": 17772.0
       },
       "Minos Imperial": {
-        "history_max": 14756.0,
-        "premium_peak": 14756.0
+        "history_max": 14978.0,
+        "premium_peak": 14978.0
       },
       "Mitsis Selection Blue Domes": {
         "history_max": 18413.0,
@@ -664,8 +703,8 @@
         "premium_peak": 16802.0
       },
       "Knossos Beach": {
-        "history_max": 18442.0,
-        "premium_peak": 18442.0
+        "history_max": 18513.0,
+        "premium_peak": 18513.0
       },
       "Kipriotis Panorama & Suites": {
         "history_max": 14564.0,
@@ -696,16 +735,16 @@
         "premium_peak": 15504.0
       },
       "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
-        "history_max": 11696.0,
-        "premium_peak": 11696.0
+        "history_max": 11906.0,
+        "premium_peak": 11906.0
       },
       "Electra Palace (Ialyssos)": {
         "history_max": 19117.0,
         "premium_peak": 19117.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
-        "history_max": 9703.0,
-        "premium_peak": null
+        "history_max": 10708.0,
+        "premium_peak": 10708.0
       },
       "Eden Roc Resort": {
         "history_max": 15827.0,
@@ -736,7 +775,7 @@
         "premium_peak": 15425.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 8049.0,
+        "history_max": 8424.0,
         "premium_peak": null
       },
       "Aquila Porto Rethymno": {
@@ -916,8 +955,8 @@
         "premium_peak": 12614.0
       },
       "Sunshine Crete Beach (ex Club Calimera) Grecja, Kreta Wschodnia, Koutsounari": {
-        "history_max": 11702.0,
-        "premium_peak": 11702.0
+        "history_max": 12325.0,
+        "premium_peak": 12325.0
       },
       "Bella Beach": {
         "history_max": 13982.0,
@@ -978,6 +1017,10 @@
       "Princess Andriana Resort & Spa": {
         "history_max": 17889.0,
         "premium_peak": 17889.0
+      },
+      "Sandy Villas Resort (ex. Kairaba Sandy Villas)": {
+        "history_max": 13049.0,
+        "premium_peak": 13049.0
       }
     }
   }
