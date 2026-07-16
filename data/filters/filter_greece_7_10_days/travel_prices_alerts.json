@@ -624,10 +624,49 @@
       "created_at": "2026-07-16T07:38:19.814238+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-07-16_07-37_comeback_18.9"
+    },
+    {
+      "hotel_name": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara",
+      "duration_bucket": "",
+      "old_price": 9960.0,
+      "new_price": 10013.0,
+      "price_change": 53.0,
+      "price_change_pct": 0.5321285140562249,
+      "timestamp": "2026-07-16 10:16:16.359357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:17:09.105898+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara_2026-07-16_10-16_zone_out_+0.5"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 9806.0,
+      "new_price": 11177.0,
+      "price_change": 1371.0,
+      "price_change_pct": 13.98123597797267,
+      "timestamp": "2026-07-16 10:16:16.359357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:17:09.105927+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-07-16_10-16_zone_out_+14.0"
+    },
+    {
+      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 11073.0,
+      "new_price": 9426.0,
+      "price_change": -1647.0,
+      "price_change_pct": -14.874017881332971,
+      "timestamp": "2026-07-16 10:16:16.359357+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-16T10:17:09.105950+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-07-16_10-16_comeback_14.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-16T07:37:23.723266+00:00",
+    "last_processed_run": "2026-07-16T10:16:16.359357+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 18600.0,
@@ -814,8 +853,8 @@
         "premium_peak": 11601.0
       },
       "Lindos Royal (ex. COOEE)": {
-        "history_max": 13567.0,
-        "premium_peak": 13567.0
+        "history_max": 14317.0,
+        "premium_peak": 14317.0
       },
       "Mitsis Summer Palace": {
         "history_max": 13741.0,
@@ -1034,8 +1073,8 @@
         "premium_peak": 12747.0
       },
       "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
-        "history_max": 11577.0,
-        "premium_peak": 11577.0
+        "history_max": 11699.0,
+        "premium_peak": 11699.0
       },
       "Costa Lindia Beach": {
         "history_max": 17527.0,
@@ -1070,8 +1109,8 @@
         "premium_peak": 19774.0
       },
       "Domes Aulus Zante Autograph Collection": {
-        "history_max": 17487.0,
-        "premium_peak": 17487.0
+        "history_max": 17667.0,
+        "premium_peak": 17667.0
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
         "history_max": 12557.0,
@@ -1176,6 +1215,10 @@
       "ananea Rocrita Lifestyle Beach Resort (ex. Aldiana Kreta)": {
         "history_max": 19857.0,
         "premium_peak": 19857.0
+      },
+      "Porto Platanias Village Grecja, Kreta Zachodnia, Platanias": {
+        "history_max": 11777.0,
+        "premium_peak": 11777.0
       }
     }
   }

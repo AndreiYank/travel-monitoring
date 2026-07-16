@@ -1716,10 +1716,101 @@
       "created_at": "2026-07-16T07:37:29.629476+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ozkaymak Falez|9-11_2026-07-16_07-36_comeback_32.5"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "9-11",
+      "old_price": 7327.0,
+      "new_price": 8020.0,
+      "price_change": 693.0,
+      "price_change_pct": 9.458168418179337,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-16T10:16:54.717201+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|9-11_2026-07-16_10-15_+9.5"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "7-9",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:16:54.717236+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort|7-9_2026-07-16_10-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "7-9",
+      "old_price": 9738.0,
+      "new_price": 9738.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:16:54.717247+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule|7-9_2026-07-16_10-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "9-11",
+      "old_price": 9659.0,
+      "new_price": 10902.0,
+      "price_change": 1243.0,
+      "price_change_pct": 12.868827000724714,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:16:54.717257+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez|9-11_2026-07-16_10-15_zone_out_+12.9"
+    },
+    {
+      "hotel_name": "Side Crown Palace (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 9697.0,
+      "new_price": 9697.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:16:54.717265+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Crown Palace (Side)|7-9_2026-07-16_10-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 9980.0,
+      "new_price": 9980.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T10:16:54.717273+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-16_10-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "9-11",
+      "old_price": 11097.0,
+      "new_price": 9897.0,
+      "price_change": -1200.0,
+      "price_change_pct": -10.813733441470667,
+      "timestamp": "2026-07-16 10:15:52.990542+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-16T10:16:54.717300+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)|9-11_2026-07-16_10-15_comeback_10.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-16T07:36:17.294945+00:00",
+    "last_processed_run": "2026-07-16T10:15:52.990542+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -1738,8 +1829,8 @@
         "premium_peak": 12084.0
       },
       "Grand Kolibri Prestige & Spa|7-9": {
-        "history_max": 10658.0,
-        "premium_peak": 10658.0
+        "history_max": 11189.0,
+        "premium_peak": 11189.0
       },
       "Grand Ring|7-9": {
         "history_max": 10111.0,
@@ -1894,8 +1985,8 @@
         "premium_peak": 12757.0
       },
       "Dream World Aqua|7-9": {
-        "history_max": 12658.0,
-        "premium_peak": 12658.0
+        "history_max": 12815.0,
+        "premium_peak": 12815.0
       },
       "Bodrum Holiday Resort|7-9": {
         "history_max": 12161.0,
@@ -1910,12 +2001,12 @@
         "premium_peak": 12825.0
       },
       "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)|7-9": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 10897.0,
+        "premium_peak": 10897.0
       },
       "Sealife Buket Resort & Beach|7-9": {
-        "history_max": 10297.0,
-        "premium_peak": 10297.0
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Sealife Family Resort|7-9": {
         "history_max": 13001.0,
@@ -1962,8 +2053,8 @@
         "premium_peak": 11370.0
       },
       "Turunc Premium|7-9": {
-        "history_max": 12205.0,
-        "premium_peak": 12205.0
+        "history_max": 12258.0,
+        "premium_peak": 12258.0
       },
       "Unique Residence Golf Spa|7-9": {
         "history_max": 9545.0,
@@ -2050,8 +2141,8 @@
         "premium_peak": 10097.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)|7-9": {
-        "history_max": 12831.0,
-        "premium_peak": 12831.0
+        "history_max": 12923.0,
+        "premium_peak": 12923.0
       },
       "Orka Lotus Beach|7-9": {
         "history_max": 13362.0,
@@ -2074,8 +2165,8 @@
         "premium_peak": null
       },
       "Q Premium Resort|7-9": {
-        "history_max": 10297.0,
-        "premium_peak": 10297.0
+        "history_max": 10497.0,
+        "premium_peak": 10497.0
       },
       "Royal Asarlik Beach|7-9": {
         "history_max": 9846.0,
@@ -3338,8 +3429,8 @@
         "premium_peak": 12424.0
       },
       "Glamour Resort & Spa|9-11": {
-        "history_max": 12279.0,
-        "premium_peak": 12279.0
+        "history_max": 12386.0,
+        "premium_peak": 12386.0
       },
       "Side Moon Palace|7-9": {
         "history_max": 10587.0,
@@ -3478,8 +3569,8 @@
         "premium_peak": 12069.0
       },
       "Trendy Aspendos Beach|7-9": {
-        "history_max": 13297.0,
-        "premium_peak": 13297.0
+        "history_max": 13497.0,
+        "premium_peak": 13497.0
       },
       "Kustur Club Holiday Village|9-11": {
         "history_max": 17803.0,
@@ -3526,8 +3617,8 @@
         "premium_peak": 18295.0
       },
       "Mira Meridia Beach Resort|7-9": {
-        "history_max": 10183.0,
-        "premium_peak": 10183.0
+        "history_max": 10680.0,
+        "premium_peak": 10680.0
       },
       "Fore Resort & Spa|7-9": {
         "history_max": 11523.0,
@@ -3696,6 +3787,10 @@
       "Quattro Beach Spa|9-11": {
         "history_max": 15214.0,
         "premium_peak": 15214.0
+      },
+      "Ulusoy Kemer Holiday Club|7-9": {
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
       }
     }
   }
