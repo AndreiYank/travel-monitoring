@@ -1534,10 +1534,75 @@
       "created_at": "2026-07-15T22:09:49.910175+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Nora Hotels Family Club (Kargicak)|7-9_2026-07-15_22-08_comeback_12.4"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 7700.0,
+      "new_price": 7700.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 00:13:25.578781+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T00:14:21.386187+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)|7-9_2026-07-16_00-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Side Coast",
+      "duration_bucket": "9-11",
+      "old_price": 9852.0,
+      "new_price": 10382.0,
+      "price_change": 530.0,
+      "price_change_pct": 5.379618351603735,
+      "timestamp": "2026-07-16 00:13:25.578781+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T00:14:21.386221+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Side Coast|9-11_2026-07-16_00-13_zone_out_+5.4"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "9-11",
+      "old_price": 8020.0,
+      "new_price": 8020.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 00:13:25.578781+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T00:14:21.386232+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|9-11_2026-07-16_00-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Master Family Club",
+      "duration_bucket": "7-9",
+      "old_price": 9595.0,
+      "new_price": 9595.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 00:13:25.578781+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T00:14:21.386241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Master Family Club|7-9_2026-07-16_00-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Palemon Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9611.0,
+      "new_price": 9611.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 00:13:25.578781+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T00:14:21.386249+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palemon Resort & Spa|7-9_2026-07-16_00-13_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-15T22:08:47.866787+00:00",
+    "last_processed_run": "2026-07-16T00:13:25.578781+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -2668,8 +2733,8 @@
         "premium_peak": 14353.0
       },
       "Club Side Coast|9-11": {
-        "history_max": 9858.0,
-        "premium_peak": null
+        "history_max": 10382.0,
+        "premium_peak": 10382.0
       },
       "Crystal Admiral Aqua Collection|9-11": {
         "history_max": 15168.0,
@@ -2748,8 +2813,8 @@
         "premium_peak": 17269.0
       },
       "Club Atlantis Resort|7-9": {
-        "history_max": 12003.0,
-        "premium_peak": 12003.0
+        "history_max": 12060.0,
+        "premium_peak": 12060.0
       },
       "Orange County Alanya|7-9": {
         "history_max": 11367.0,
@@ -2924,8 +2989,8 @@
         "premium_peak": 12543.0
       },
       "Palm Wings Ephesus|7-9": {
-        "history_max": 13513.0,
-        "premium_peak": 13513.0
+        "history_max": 13745.0,
+        "premium_peak": 13745.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)|7-9": {
         "history_max": 12677.0,
@@ -2976,8 +3041,8 @@
         "premium_peak": 16672.0
       },
       "Royal Dragon|9-11": {
-        "history_max": 16763.0,
-        "premium_peak": 16763.0
+        "history_max": 17025.0,
+        "premium_peak": 17025.0
       },
       "Korumar Deluxe|9-11": {
         "history_max": 15157.0,
@@ -3088,8 +3153,8 @@
         "premium_peak": null
       },
       "Seher Resort & Spa|9-11": {
-        "history_max": 11784.0,
-        "premium_peak": 11784.0
+        "history_max": 11828.0,
+        "premium_peak": 11828.0
       },
       "Seher Sun Palace Resort & Spa|9-11": {
         "history_max": 10727.0,
@@ -3120,12 +3185,12 @@
         "premium_peak": 17464.0
       },
       "Royal Alhambra Palace|9-11": {
-        "history_max": 16221.0,
-        "premium_peak": 16221.0
+        "history_max": 16350.0,
+        "premium_peak": 16350.0
       },
       "Paloma Perissia|9-11": {
-        "history_max": 17716.0,
-        "premium_peak": 17716.0
+        "history_max": 18048.0,
+        "premium_peak": 18048.0
       },
       "The Lumos Deluxe Resort & Spa|9-11": {
         "history_max": 12934.0,
@@ -3148,8 +3213,8 @@
         "premium_peak": 12617.0
       },
       "Sidemarin Kirman Premium|9-11": {
-        "history_max": 17775.0,
-        "premium_peak": 17775.0
+        "history_max": 17870.0,
+        "premium_peak": 17870.0
       },
       "Sunmelia Beach Resort & Spa|9-11": {
         "history_max": 12424.0,
@@ -3240,12 +3305,12 @@
         "premium_peak": 10980.0
       },
       "Diamond Excellence Resort & Spa|7-9": {
-        "history_max": 13163.0,
-        "premium_peak": 13163.0
+        "history_max": 13428.0,
+        "premium_peak": 13428.0
       },
       "Trendy Perge Resort & Suites|7-9": {
-        "history_max": 13289.0,
-        "premium_peak": 13289.0
+        "history_max": 13554.0,
+        "premium_peak": 13554.0
       },
       "Dream World Palace|9-11": {
         "history_max": 15897.0,
@@ -3340,8 +3405,8 @@
         "premium_peak": 15128.0
       },
       "Dobedan Beach Resort Comfort (ex. Alva Donna Beach Resort)|9-11": {
-        "history_max": 17670.0,
-        "premium_peak": 17670.0
+        "history_max": 18295.0,
+        "premium_peak": 18295.0
       },
       "Mira Meridia Beach Resort|7-9": {
         "history_max": 10183.0,
@@ -3470,6 +3535,30 @@
       "Diamond of Bodrum|7-9": {
         "history_max": 11593.0,
         "premium_peak": 11593.0
+      },
+      "Crystal Flora Pearl Collection|7-9": {
+        "history_max": 13739.0,
+        "premium_peak": 13739.0
+      },
+      "Movenpick Resort Antalya Tekirova (ex. Royal Diwa Tekirova Resort)|7-9": {
+        "history_max": 13770.0,
+        "premium_peak": 13770.0
+      },
+      "Adalya Art Side (Ex. Grand Art Side)|9-11": {
+        "history_max": 14326.0,
+        "premium_peak": 14326.0
+      },
+      "Long Beach (Avsallar)|9-11": {
+        "history_max": 18255.0,
+        "premium_peak": 18255.0
+      },
+      "Trendy Aspendos Beach|9-11": {
+        "history_max": 17114.0,
+        "premium_peak": 17114.0
+      },
+      "FashionTV Luxe Resort|9-11": {
+        "history_max": 18374.0,
+        "premium_peak": 18374.0
       }
     }
   }
