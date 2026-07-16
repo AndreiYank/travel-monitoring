@@ -1859,10 +1859,36 @@
       "created_at": "2026-07-16T15:46:46.855785+00:00",
       "threshold_percent": 8.0,
       "unique_key": "First Class|9-11_2026-07-16_15-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8814.0,
+      "new_price": 8814.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 19:16:12.414846+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T19:17:24.488597+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa|7-9_2026-07-16_19-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Belish",
+      "duration_bucket": "7-9",
+      "old_price": 11323.0,
+      "new_price": 9598.0,
+      "price_change": -1725.0,
+      "price_change_pct": -15.234478495098472,
+      "timestamp": "2026-07-16 19:16:12.414846+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-16T19:17:24.488652+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Belish|7-9_2026-07-16_19-16_comeback_15.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-16T15:45:41.487658+00:00",
+    "last_processed_run": "2026-07-16T19:16:12.414846+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -1877,8 +1903,8 @@
         "premium_peak": 11673.0
       },
       "Grand Kaptan|7-9": {
-        "history_max": 12084.0,
-        "premium_peak": 12084.0
+        "history_max": 12200.0,
+        "premium_peak": 12200.0
       },
       "Grand Kolibri Prestige & Spa|7-9": {
         "history_max": 11189.0,
@@ -2273,8 +2299,8 @@
         "premium_peak": null
       },
       "Asia Beach Resort and Spa|7-9": {
-        "history_max": 12070.0,
-        "premium_peak": 12070.0
+        "history_max": 12145.0,
+        "premium_peak": 12145.0
       },
       "Aria Resort & SPA|7-9": {
         "history_max": 11544.0,
@@ -2369,16 +2395,16 @@
         "premium_peak": 17280.0
       },
       "My Home Resort|9-11": {
-        "history_max": 15107.0,
-        "premium_peak": 15107.0
+        "history_max": 15347.0,
+        "premium_peak": 15347.0
       },
       "Orange County (Kemer)|9-11": {
         "history_max": 14814.0,
         "premium_peak": 14814.0
       },
       "Aria Resort & SPA|9-11": {
-        "history_max": 13751.0,
-        "premium_peak": 13751.0
+        "history_max": 13985.0,
+        "premium_peak": 13985.0
       },
       "Narcia Resort Side|9-11": {
         "history_max": 13925.0,
@@ -2453,8 +2479,8 @@
         "premium_peak": 11645.0
       },
       "Holiday Garden Resort (Okurcalar)|9-11": {
-        "history_max": 11791.0,
-        "premium_peak": 11791.0
+        "history_max": 12051.0,
+        "premium_peak": 12051.0
       },
       "Hane Sun Elite (ex Noble Palace Side)|9-11": {
         "history_max": 10314.0,
@@ -2613,8 +2639,8 @@
         "premium_peak": 14904.0
       },
       "Terrace Beach Resort (Side)|9-11": {
-        "history_max": 14177.0,
-        "premium_peak": 14177.0
+        "history_max": 14437.0,
+        "premium_peak": 14437.0
       },
       "Turquoise Hotel|9-11": {
         "history_max": 16600.0,
@@ -2633,8 +2659,8 @@
         "premium_peak": 14636.0
       },
       "Xafira Deluxe Resort & Spa|9-11": {
-        "history_max": 11766.0,
-        "premium_peak": 11766.0
+        "history_max": 11887.0,
+        "premium_peak": 11887.0
       },
       "World Star Beach Resort & Spa|9-11": {
         "history_max": 11313.0,
@@ -2645,8 +2671,8 @@
         "premium_peak": 11822.0
       },
       "Water Side Resort & Spa|9-11": {
-        "history_max": 12601.0,
-        "premium_peak": 12601.0
+        "history_max": 12861.0,
+        "premium_peak": 12861.0
       },
       "Akka Alinda|9-11": {
         "history_max": 16078.0,
@@ -2949,8 +2975,8 @@
         "premium_peak": 11562.0
       },
       "Crystal De Luxe Comfort Collection|9-11": {
-        "history_max": 15611.0,
-        "premium_peak": 15611.0
+        "history_max": 15870.0,
+        "premium_peak": 15870.0
       },
       "Casa Fora Beach Resort|9-11": {
         "history_max": 12725.0,
@@ -3561,8 +3587,8 @@
         "premium_peak": 11121.0
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)|7-9": {
-        "history_max": 10980.0,
-        "premium_peak": 10980.0
+        "history_max": 11197.0,
+        "premium_peak": 11197.0
       },
       "Diamond Excellence Resort & Spa|7-9": {
         "history_max": 13428.0,
@@ -3589,8 +3615,8 @@
         "premium_peak": 17497.0
       },
       "VONResort Elite|7-9": {
-        "history_max": 13358.0,
-        "premium_peak": 13358.0
+        "history_max": 13610.0,
+        "premium_peak": 13610.0
       },
       "Asteria Collection Side|7-9": {
         "history_max": 10674.0,
@@ -3701,12 +3727,12 @@
         "premium_peak": 11853.0
       },
       "Holiday Garden Resort (Okurcalar)|7-9": {
-        "history_max": 9859.0,
-        "premium_peak": null
+        "history_max": 10552.0,
+        "premium_peak": 10552.0
       },
       "Club Sera|9-11": {
-        "history_max": 16223.0,
-        "premium_peak": 16223.0
+        "history_max": 17213.0,
+        "premium_peak": 17213.0
       },
       "Garden of Sun Spa & Wellness|9-11": {
         "history_max": 13150.0,
@@ -3749,8 +3775,8 @@
         "premium_peak": 16545.0
       },
       "Crystal Family Comfort Collection|7-9": {
-        "history_max": 13591.0,
-        "premium_peak": 13591.0
+        "history_max": 13764.0,
+        "premium_peak": 13764.0
       },
       "PrimaSol Telatiye Resort|9-11": {
         "history_max": 12157.0,
@@ -3855,6 +3881,14 @@
       "Royal Seginus|9-11": {
         "history_max": 18026.0,
         "premium_peak": 18026.0
+      },
+      "Sueno Golf Belek|9-11": {
+        "history_max": 18480.0,
+        "premium_peak": 18480.0
+      },
+      "Diamond of Bodrum|9-11": {
+        "history_max": 15227.0,
+        "premium_peak": 15227.0
       }
     }
   }
