@@ -7098,10 +7098,322 @@
       "created_at": "2026-07-16T10:16:15.323678+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Sea Breeze Resort_2026-07-16_10-13_comeback_29.1"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 8218.0,
+      "new_price": 7197.0,
+      "price_change": -1021.0,
+      "price_change_pct": -12.423947432465319,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-16T11:47:13.109928+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-16_11-44_-12.4"
+    },
+    {
+      "hotel_name": "Aurora Oriental Resort",
+      "duration_bucket": "",
+      "old_price": 9689.0,
+      "new_price": 11760.0,
+      "price_change": 2071.0,
+      "price_change_pct": 21.37475487666426,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.109967+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aurora Oriental Resort_2026-07-16_11-44_zone_out_+21.4"
+    },
+    {
+      "hotel_name": "Charmillion Club Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9468.0,
+      "new_price": 9468.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.109979+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Aqua Park_2026-07-16_11-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Concorde El Salam Sport",
+      "duration_bucket": "",
+      "old_price": 9410.0,
+      "new_price": 9410.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.109988+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde El Salam Sport_2026-07-16_11-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Bella Vista",
+      "duration_bucket": "",
+      "old_price": 9495.0,
+      "new_price": 11187.0,
+      "price_change": 1692.0,
+      "price_change_pct": 17.819905213270143,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.109997+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Bella Vista_2026-07-16_11-44_zone_out_+17.8"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Oasis",
+      "duration_bucket": "",
+      "old_price": 9495.0,
+      "new_price": 11187.0,
+      "price_change": 1692.0,
+      "price_change_pct": 17.819905213270143,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110006+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis_2026-07-16_11-44_zone_out_+17.8"
+    },
+    {
+      "hotel_name": "Gorgonia Beach",
+      "duration_bucket": "",
+      "old_price": 9653.0,
+      "new_price": 10143.0,
+      "price_change": 490.0,
+      "price_change_pct": 5.0761421319796955,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110014+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gorgonia Beach_2026-07-16_11-44_zone_out_+5.1"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 9563.0,
+      "new_price": 10357.0,
+      "price_change": 794.0,
+      "price_change_pct": 8.302833838753529,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110022+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-07-16_11-44_zone_out_+8.3"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 9752.0,
+      "new_price": 10530.0,
+      "price_change": 778.0,
+      "price_change_pct": 7.977850697292863,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110030+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-07-16_11-44_zone_out_+8.0"
+    },
+    {
+      "hotel_name": "Jaz Sharm Dreams Resort",
+      "duration_bucket": "",
+      "old_price": 9540.0,
+      "new_price": 12019.0,
+      "price_change": 2479.0,
+      "price_change_pct": 25.9853249475891,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110038+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Sharm Dreams Resort_2026-07-16_11-44_zone_out_+26.0"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9837.0,
+      "new_price": 10497.0,
+      "price_change": 660.0,
+      "price_change_pct": 6.709362610551997,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110046+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-07-16_11-44_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Naama Bay Hotel & Resort",
+      "duration_bucket": "",
+      "old_price": 9432.0,
+      "new_price": 11058.0,
+      "price_change": 1626.0,
+      "price_change_pct": 17.239185750636132,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110054+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Naama Bay Hotel & Resort_2026-07-16_11-44_zone_out_+17.2"
+    },
+    {
+      "hotel_name": "Naama Bay Promenade Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9432.0,
+      "new_price": 9432.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110061+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Naama Bay Promenade Beach Resort_2026-07-16_11-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Novotel Sharm Palm",
+      "duration_bucket": "",
+      "old_price": 9540.0,
+      "new_price": 13362.0,
+      "price_change": 3822.0,
+      "price_change_pct": 40.06289308176101,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110069+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Sharm Palm_2026-07-16_11-44_zone_out_+40.1"
+    },
+    {
+      "hotel_name": "Pickalbatros Golf Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9689.0,
+      "new_price": 9689.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110076+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Golf Beach Resort_2026-07-16_11-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rehana Royal Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9432.0,
+      "new_price": 11891.0,
+      "price_change": 2459.0,
+      "price_change_pct": 26.070822731128075,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110084+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rehana Royal Beach Resort & Spa_2026-07-16_11-44_zone_out_+26.1"
+    },
+    {
+      "hotel_name": "Renaissance Golden View Beach Resort by Marriott",
+      "duration_bucket": "",
+      "old_price": 9720.0,
+      "new_price": 12816.0,
+      "price_change": 3096.0,
+      "price_change_pct": 31.851851851851855,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110091+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Renaissance Golden View Beach Resort by Marriott_2026-07-16_11-44_zone_out_+31.9"
+    },
+    {
+      "hotel_name": "Royal Regency Club",
+      "duration_bucket": "",
+      "old_price": 9540.0,
+      "new_price": 12303.0,
+      "price_change": 2763.0,
+      "price_change_pct": 28.962264150943394,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110099+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Regency Club_2026-07-16_11-44_zone_out_+29.0"
+    },
+    {
+      "hotel_name": "Safir Dahab Resort",
+      "duration_bucket": "",
+      "old_price": 9531.0,
+      "new_price": 11563.0,
+      "price_change": 2032.0,
+      "price_change_pct": 21.319903472877975,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110107+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort_2026-07-16_11-44_zone_out_+21.3"
+    },
+    {
+      "hotel_name": "Serenity Alpha Beach (ex. Serenity Makadi Beach)",
+      "duration_bucket": "",
+      "old_price": 9302.0,
+      "new_price": 10317.0,
+      "price_change": 1015.0,
+      "price_change_pct": 10.91163190711675,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110115+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alpha Beach (ex. Serenity Makadi Beach)_2026-07-16_11-44_zone_out_+10.9"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9230.0,
+      "new_price": 10457.0,
+      "price_change": 1227.0,
+      "price_change_pct": 13.293607800650054,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110123+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-16_11-44_zone_out_+13.3"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9446.0,
+      "new_price": 10223.0,
+      "price_change": 777.0,
+      "price_change_pct": 8.225704001693838,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110130+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-07-16_11-44_zone_out_+8.2"
+    },
+    {
+      "hotel_name": "Xperience Sea Breeze Resort",
+      "duration_bucket": "",
+      "old_price": 9405.0,
+      "new_price": 9405.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-16T11:47:13.110137+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Sea Breeze Resort_2026-07-16_11-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 11151.0,
+      "new_price": 9997.0,
+      "price_change": -1154.0,
+      "price_change_pct": -10.34884763698323,
+      "timestamp": "2026-07-16 11:44:44.698296+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-16T11:47:13.110161+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-16_11-44_comeback_10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-16T10:13:51.699439+00:00",
+    "last_processed_run": "2026-07-16T11:44:44.698296+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9468.0,
@@ -7144,8 +7456,8 @@
         "premium_peak": 12019.0
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
-        "history_max": 13243.0,
-        "premium_peak": 13243.0
+        "history_max": 13629.0,
+        "premium_peak": 13629.0
       },
       "Sheraton Miramar Resort (El Gouna)": {
         "history_max": 12257.0,
@@ -7176,12 +7488,12 @@
         "premium_peak": 11296.0
       },
       "Marriott Hurghada Beach Resort": {
-        "history_max": 10490.0,
-        "premium_peak": 10490.0
+        "history_max": 10497.0,
+        "premium_peak": 10497.0
       },
       "Serry Beach Resort": {
-        "history_max": 14436.0,
-        "premium_peak": 14436.0
+        "history_max": 14598.0,
+        "premium_peak": 14598.0
       },
       "Jaz Makadina": {
         "history_max": 13177.0,
@@ -7228,8 +7540,8 @@
         "premium_peak": 14397.0
       },
       "Steigenberger Ras Soma": {
-        "history_max": 14576.0,
-        "premium_peak": 14576.0
+        "history_max": 14738.0,
+        "premium_peak": 14738.0
       },
       "Jaz Aquamarine Resort": {
         "history_max": 11088.0,
@@ -7364,8 +7676,8 @@
         "premium_peak": null
       },
       "Rixos Premium Magawish Bay View": {
-        "history_max": 15341.0,
-        "premium_peak": 15341.0
+        "history_max": 15503.0,
+        "premium_peak": 15503.0
       },
       "Renaissance Golden View Beach Resort by Marriott": {
         "history_max": 13367.0,
@@ -7652,7 +7964,7 @@
         "premium_peak": 10857.0
       },
       "Cardina Resort by Sunrise": {
-        "history_max": 8907.0,
+        "history_max": 9007.0,
         "premium_peak": null
       },
       "Domina Coral Bay Bellavista": {
@@ -7684,8 +7996,8 @@
         "premium_peak": 10143.0
       },
       "Ghazala Alamein": {
-        "history_max": 13458.0,
-        "premium_peak": 13458.0
+        "history_max": 13557.0,
+        "premium_peak": 13557.0
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
         "history_max": 10602.0,
