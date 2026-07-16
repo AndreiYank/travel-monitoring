@@ -1677,10 +1677,49 @@
       "created_at": "2026-07-16T05:13:34.348834+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Nora Hotels Family Club (Kargicak)|7-9_2026-07-16_05-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "9-11",
+      "old_price": 8020.0,
+      "new_price": 7327.0,
+      "price_change": -693.0,
+      "price_change_pct": -8.640897755610972,
+      "timestamp": "2026-07-16 07:36:17.294945+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-16T07:37:29.629392+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class|9-11_2026-07-16_07-36_-8.6"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 12524.0,
+      "new_price": 9980.0,
+      "price_change": -2544.0,
+      "price_change_pct": -20.312999041839667,
+      "timestamp": "2026-07-16 07:36:17.294945+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-16T07:37:29.629460+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-16_07-36_comeback_20.3"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "9-11",
+      "old_price": 14300.0,
+      "new_price": 9659.0,
+      "price_change": -4641.0,
+      "price_change_pct": -32.45454545454545,
+      "timestamp": "2026-07-16 07:36:17.294945+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-16T07:37:29.629476+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez|9-11_2026-07-16_07-36_comeback_32.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-16T05:12:25.961683+00:00",
+    "last_processed_run": "2026-07-16T07:36:17.294945+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -1723,8 +1762,8 @@
         "premium_peak": 11875.0
       },
       "Holiday Park Resort (Okurcalar)|7-9": {
-        "history_max": 10148.0,
-        "premium_peak": 10148.0
+        "history_max": 10271.0,
+        "premium_peak": 10271.0
       },
       "Innvista Belek (ex. Vera Verde)|7-9": {
         "history_max": 12237.0,
@@ -1955,8 +1994,8 @@
         "premium_peak": null
       },
       "Royal Garden Beach (ex Royal Garden Select & Suite)|7-9": {
-        "history_max": 13437.0,
-        "premium_peak": 13437.0
+        "history_max": 13543.0,
+        "premium_peak": 13543.0
       },
       "Quattro Family Club Dem|7-9": {
         "history_max": 13392.0,
@@ -2091,8 +2130,8 @@
         "premium_peak": null
       },
       "Asia Beach Resort and Spa|7-9": {
-        "history_max": 11690.0,
-        "premium_peak": 11690.0
+        "history_max": 12070.0,
+        "premium_peak": 12070.0
       },
       "Aria Resort & SPA|7-9": {
         "history_max": 11544.0,
@@ -2219,8 +2258,8 @@
         "premium_peak": 13757.0
       },
       "Mandarin Resort (Bodrum)|9-11": {
-        "history_max": 13209.0,
-        "premium_peak": 13209.0
+        "history_max": 13230.0,
+        "premium_peak": 13230.0
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)|9-11": {
         "history_max": 12176.0,
@@ -2551,8 +2590,8 @@
         "premium_peak": 14097.0
       },
       "Rox Royal (ex. Grand Haber)|9-11": {
-        "history_max": 11493.0,
-        "premium_peak": 11493.0
+        "history_max": 11669.0,
+        "premium_peak": 11669.0
       },
       "Prestige Alanya|9-11": {
         "history_max": 9491.0,
@@ -3087,7 +3126,7 @@
         "premium_peak": 10822.0
       },
       "Rox Royal (ex. Grand Haber)|7-9": {
-        "history_max": 9743.0,
+        "history_max": 9873.0,
         "premium_peak": null
       },
       "Arcanus Trendline Resort|7-9": {
@@ -3419,8 +3458,8 @@
         "premium_peak": null
       },
       "Infinity by Yelken|9-11": {
-        "history_max": 16613.0,
-        "premium_peak": 16613.0
+        "history_max": 17444.0,
+        "premium_peak": 17444.0
       },
       "Can Garden Resort (Side)|7-9": {
         "history_max": 12710.0,
@@ -3645,6 +3684,18 @@
       "Diamond Excellence Resort & Spa|9-11": {
         "history_max": 16209.0,
         "premium_peak": 16209.0
+      },
+      "Lalila Blue Suites|7-9": {
+        "history_max": 11134.0,
+        "premium_peak": 11134.0
+      },
+      "Turunc|7-9": {
+        "history_max": 13041.0,
+        "premium_peak": 13041.0
+      },
+      "Quattro Beach Spa|9-11": {
+        "history_max": 15214.0,
+        "premium_peak": 15214.0
       }
     }
   }
