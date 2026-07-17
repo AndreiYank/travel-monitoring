@@ -1911,10 +1911,62 @@
       "created_at": "2026-07-17T00:09:56.234026+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Presa Di Finica (Finike)|9-11_2026-07-17_00-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Holiday Park Resort (Okurcalar)",
+      "duration_bucket": "7-9",
+      "old_price": 9979.0,
+      "new_price": 10440.0,
+      "price_change": 461.0,
+      "price_change_pct": 4.619701372883054,
+      "timestamp": "2026-07-17 05:13:51.247328+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-17T05:15:06.231302+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)|7-9_2026-07-17_05-13_zone_out_+4.6"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "7-9",
+      "old_price": 9021.0,
+      "new_price": 9021.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-17 05:13:51.247328+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-17T05:15:06.231330+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez|7-9_2026-07-17_05-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "7-9",
+      "old_price": 10281.0,
+      "new_price": 7583.0,
+      "price_change": -2698.0,
+      "price_change_pct": -26.242583406283437,
+      "timestamp": "2026-07-17 05:13:51.247328+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-17T05:15:06.231358+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|7-9_2026-07-17_05-13_comeback_26.2"
+    },
+    {
+      "hotel_name": "The Nora Hotels Family Club (Kargicak)",
+      "duration_bucket": "9-11",
+      "old_price": 12524.0,
+      "new_price": 9115.0,
+      "price_change": -3409.0,
+      "price_change_pct": -27.219738102842545,
+      "timestamp": "2026-07-17 05:13:51.247328+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-17T05:15:06.231373+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Nora Hotels Family Club (Kargicak)|9-11_2026-07-17_05-13_comeback_27.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-17T02:04:43.197544+00:00",
+    "last_processed_run": "2026-07-17T05:13:51.247328+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -2413,8 +2465,8 @@
         "premium_peak": 15697.0
       },
       "Armas Beach|9-11": {
-        "history_max": 13238.0,
-        "premium_peak": 13238.0
+        "history_max": 13498.0,
+        "premium_peak": 13498.0
       },
       "Movenpick Resort Antalya Tekirova (ex. Royal Diwa Tekirova Resort)|9-11": {
         "history_max": 17280.0,
@@ -2445,8 +2497,8 @@
         "premium_peak": 11615.0
       },
       "Mira Meridia Beach Resort|9-11": {
-        "history_max": 11689.0,
-        "premium_peak": 11689.0
+        "history_max": 13588.0,
+        "premium_peak": 13588.0
       },
       "Maril Resort Beach & Spa|9-11": {
         "history_max": 13757.0,
@@ -2649,8 +2701,8 @@
         "premium_peak": 17482.0
       },
       "Sunrise Resort & SPA|9-11": {
-        "history_max": 15974.0,
-        "premium_peak": 15974.0
+        "history_max": 16776.0,
+        "premium_peak": 16776.0
       },
       "Sunland Resort (ex. Imperial Sunland Resort & Spa)|9-11": {
         "history_max": 11380.0,
@@ -2889,8 +2941,8 @@
         "premium_peak": 15453.0
       },
       "Starlight Resort & Convention Center (Side)|9-11": {
-        "history_max": 15974.0,
-        "premium_peak": 15974.0
+        "history_max": 16776.0,
+        "premium_peak": 16776.0
       },
       "Port River & Spa|9-11": {
         "history_max": 12497.0,
@@ -3621,8 +3673,8 @@
         "premium_peak": 13901.0
       },
       "Trendy Perge Resort & Suites|7-9": {
-        "history_max": 13554.0,
-        "premium_peak": 13554.0
+        "history_max": 14027.0,
+        "premium_peak": 14027.0
       },
       "Dream World Palace|9-11": {
         "history_max": 15897.0,
@@ -3693,16 +3745,16 @@
         "premium_peak": 10975.0
       },
       "Seher Resort & Spa|7-9": {
-        "history_max": 9652.0,
+        "history_max": 9972.0,
         "premium_peak": null
       },
       "Seher Sun Palace Resort & Spa|7-9": {
-        "history_max": 9484.0,
+        "history_max": 9810.0,
         "premium_peak": null
       },
       "Royal Alhambra Palace|7-9": {
-        "history_max": 13332.0,
-        "premium_peak": 13332.0
+        "history_max": 13499.0,
+        "premium_peak": 13499.0
       },
       "Turan Prince|7-9": {
         "history_max": 12962.0,
@@ -3935,6 +3987,14 @@
       "Calyptus Kirman Premium|7-9": {
         "history_max": 13969.0,
         "premium_peak": 13969.0
+      },
+      "Papillon Zeugma Reluxury|9-11": {
+        "history_max": 18891.0,
+        "premium_peak": 18891.0
+      },
+      "Baia Lara|9-11": {
+        "history_max": 18896.0,
+        "premium_peak": 18896.0
       }
     }
   }
