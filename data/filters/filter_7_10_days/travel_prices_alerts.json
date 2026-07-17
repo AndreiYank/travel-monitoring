@@ -8775,10 +8775,88 @@
       "created_at": "2026-07-17T10:07:07.819832+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Naama Bay Promenade Mountain Resort_2026-07-17_10-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 9447.0,
+      "new_price": 8647.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.468296813803324,
+      "timestamp": "2026-07-17 11:32:29.678845+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-17T11:35:00.837241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-07-17_11-32_-8.5"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue)",
+      "duration_bucket": "",
+      "old_price": 8616.0,
+      "new_price": 11737.0,
+      "price_change": 3121.0,
+      "price_change_pct": 36.22330547818013,
+      "timestamp": "2026-07-17 11:32:29.678845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-17T11:35:00.837280+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue)_2026-07-17_11-32_zone_out_+36.2"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 9659.0,
+      "new_price": 10447.0,
+      "price_change": 788.0,
+      "price_change_pct": 8.158194430065224,
+      "timestamp": "2026-07-17 11:32:29.678845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-17T11:35:00.837293+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-07-17_11-32_zone_out_+8.2"
+    },
+    {
+      "hotel_name": "Seven Seas Jolie Bay",
+      "duration_bucket": "",
+      "old_price": 9678.0,
+      "new_price": 9678.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-17 11:32:29.678845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-17T11:35:00.837301+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seven Seas Jolie Bay_2026-07-17_11-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10057.0,
+      "price_change": 200.0,
+      "price_change_pct": 2.0290149132596125,
+      "timestamp": "2026-07-17 11:32:29.678845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-17T11:35:00.837309+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-07-17_11-32_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 11163.0,
+      "new_price": 9867.0,
+      "price_change": -1296.0,
+      "price_change_pct": -11.609782316581564,
+      "timestamp": "2026-07-17 11:32:29.678845+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-17T11:35:00.837334+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-07-17_11-32_comeback_11.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-17T10:04:36.264772+00:00",
+    "last_processed_run": "2026-07-17T11:32:29.678845+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9468.0,
@@ -8805,8 +8883,8 @@
         "premium_peak": 13789.0
       },
       "Jaz Palmariva Beach": {
-        "history_max": 10530.0,
-        "premium_peak": 10530.0
+        "history_max": 12407.0,
+        "premium_peak": 12407.0
       },
       "Sheraton Soma Bay": {
         "history_max": 12416.0,
@@ -8825,8 +8903,8 @@
         "premium_peak": 13666.0
       },
       "Sheraton Miramar Resort (El Gouna)": {
-        "history_max": 12257.0,
-        "premium_peak": 12257.0
+        "history_max": 12307.0,
+        "premium_peak": 12307.0
       },
       "Jaz Villagio": {
         "history_max": 12000.0,
@@ -8857,16 +8935,16 @@
         "premium_peak": 11577.0
       },
       "Serry Beach Resort": {
-        "history_max": 14598.0,
-        "premium_peak": 14598.0
+        "history_max": 16047.0,
+        "premium_peak": 16047.0
       },
       "Jaz Makadina": {
-        "history_max": 13477.0,
-        "premium_peak": 13477.0
+        "history_max": 13814.0,
+        "premium_peak": 13814.0
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
-        "history_max": 12392.0,
-        "premium_peak": 12392.0
+        "history_max": 13334.0,
+        "premium_peak": 13334.0
       },
       "Siva Golden Bay Makadi": {
         "history_max": 10563.0,
@@ -8917,8 +8995,8 @@
         "premium_peak": 10657.0
       },
       "Jaz Aquaviva": {
-        "history_max": 12539.0,
-        "premium_peak": 12539.0
+        "history_max": 12902.0,
+        "premium_peak": 12902.0
       },
       "Steigenberger Coraya Beach": {
         "history_max": 15537.0,
@@ -8985,8 +9063,8 @@
         "premium_peak": 11857.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
-        "history_max": 10092.0,
-        "premium_peak": 10092.0
+        "history_max": 11737.0,
+        "premium_peak": 11737.0
       },
       "Pickalbatros Vita Resort Portofino": {
         "history_max": 11977.0,
@@ -9209,8 +9287,8 @@
         "premium_peak": 15244.0
       },
       "Cooee Prima Life Makadi Bay": {
-        "history_max": 10657.0,
-        "premium_peak": 10657.0
+        "history_max": 10857.0,
+        "premium_peak": 10857.0
       },
       "Coral Sea Holiday Resort": {
         "history_max": 12225.0,
@@ -9253,8 +9331,8 @@
         "premium_peak": 11997.0
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 10850.0,
-        "premium_peak": 10850.0
+        "history_max": 11031.0,
+        "premium_peak": 11031.0
       },
       "Xanadu Makadi Bay": {
         "history_max": 14238.0,
@@ -9465,8 +9543,8 @@
         "premium_peak": 12822.0
       },
       "Xanadu Club Makadi Bay": {
-        "history_max": 12893.0,
-        "premium_peak": 12893.0
+        "history_max": 13658.0,
+        "premium_peak": 13658.0
       },
       "Steigenberger Resort Alaya": {
         "history_max": 15927.0,
