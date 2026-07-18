@@ -10816,10 +10816,114 @@
       "created_at": "2026-07-18T13:12:00.038573+00:00",
       "threshold_percent": 8.0,
       "unique_key": "True Beach Resort_2026-07-18_13-09_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 9626.0,
+      "new_price": 8551.0,
+      "price_change": -1075.0,
+      "price_change_pct": -11.167670891335964,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-18T14:36:48.295710+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-18_14-34_-11.2"
+    },
+    {
+      "hotel_name": "Jasmine Palace",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 10057.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.3445067146029395,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T14:36:48.295762+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jasmine Palace_2026-07-18_14-34_zone_out_+6.3"
+    },
+    {
+      "hotel_name": "Movenpick Waterpark Resort & Spa Soma Bay",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10057.0,
+      "price_change": 200.0,
+      "price_change_pct": 2.0290149132596125,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T14:36:48.295784+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Waterpark Resort & Spa Soma Bay_2026-07-18_14-34_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10513.0,
+      "price_change": 656.0,
+      "price_change_pct": 6.655168915491529,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T14:36:48.295799+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-18_14-34_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 11891.0,
+      "new_price": 9533.0,
+      "price_change": -2358.0,
+      "price_change_pct": -19.830123622908083,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-18T14:36:48.295833+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-07-18_14-34_comeback_19.8"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 12933.0,
+      "new_price": 8993.0,
+      "price_change": -3940.0,
+      "price_change_pct": -30.464702698523155,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-18T14:36:48.295855+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-07-18_14-34_comeback_30.5"
+    },
+    {
+      "hotel_name": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)",
+      "duration_bucket": "",
+      "old_price": 11151.0,
+      "new_price": 9353.0,
+      "price_change": -1798.0,
+      "price_change_pct": -16.124114429199174,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-18T14:36:48.295901+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)_2026-07-18_14-34_comeback_16.1"
+    },
+    {
+      "hotel_name": "Serenity Alpha Beach (ex. Serenity Makadi Beach)",
+      "duration_bucket": "",
+      "old_price": 12377.0,
+      "new_price": 9993.0,
+      "price_change": -2384.0,
+      "price_change_pct": -19.261533489537044,
+      "timestamp": "2026-07-18 14:34:03.515779+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-18T14:36:48.295925+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alpha Beach (ex. Serenity Makadi Beach)_2026-07-18_14-34_comeback_19.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-18T13:09:19.027127+00:00",
+    "last_processed_run": "2026-07-18T14:34:03.515779+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9468.0,
@@ -10930,8 +11034,8 @@
         "premium_peak": 15279.0
       },
       "Stella Beach Resort & Spa": {
-        "history_max": 10457.0,
-        "premium_peak": 10457.0
+        "history_max": 10857.0,
+        "premium_peak": 10857.0
       },
       "Jasmine Palace": {
         "history_max": 10057.0,
@@ -10950,8 +11054,8 @@
         "premium_peak": 15207.0
       },
       "Jaz Aquamarine Resort": {
-        "history_max": 11257.0,
-        "premium_peak": 11257.0
+        "history_max": 12611.0,
+        "premium_peak": 12611.0
       },
       "Monte Carlo Resort Spa": {
         "history_max": 10657.0,
@@ -10982,8 +11086,8 @@
         "premium_peak": 15147.0
       },
       "Jaz Elite Maraya": {
-        "history_max": 12756.0,
-        "premium_peak": 12756.0
+        "history_max": 12897.0,
+        "premium_peak": 12897.0
       },
       "Jaz Elite Riviera": {
         "history_max": 14957.0,
@@ -11022,8 +11126,8 @@
         "premium_peak": 15051.0
       },
       "Pickalbatros Royal Moderna": {
-        "history_max": 12457.0,
-        "premium_peak": 12457.0
+        "history_max": 12957.0,
+        "premium_peak": 12957.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
         "history_max": 11737.0,
@@ -11110,8 +11214,8 @@
         "premium_peak": 13456.0
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
-        "history_max": 9857.0,
-        "premium_peak": null
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
       },
       "Novotel Marsa Alam": {
         "history_max": 10057.0,
@@ -11142,8 +11246,8 @@
         "premium_peak": 10823.0
       },
       "Serenity Sky Arc": {
-        "history_max": 10657.0,
-        "premium_peak": 10657.0
+        "history_max": 11257.0,
+        "premium_peak": 11257.0
       },
       "Palm Royale Soma Bay": {
         "history_max": 12484.0,
@@ -11302,8 +11406,8 @@
         "premium_peak": 14562.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 11413.0,
-        "premium_peak": 11413.0
+        "history_max": 11543.0,
+        "premium_peak": 11543.0
       },
       "V Hotel Sharm": {
         "history_max": 12772.0,
@@ -11330,8 +11434,8 @@
         "premium_peak": 14064.0
       },
       "True Beach Resort": {
-        "history_max": 10045.0,
-        "premium_peak": 10045.0
+        "history_max": 10231.0,
+        "premium_peak": 10231.0
       },
       "Amphoras Beach": {
         "history_max": 13250.0,
@@ -11430,8 +11534,8 @@
         "premium_peak": 11863.0
       },
       "Sunrise Remal Beach": {
-        "history_max": 14727.0,
-        "premium_peak": 14727.0
+        "history_max": 14896.0,
+        "premium_peak": 14896.0
       },
       "Sunrise White Hills Resort": {
         "history_max": 17339.0,
@@ -11446,8 +11550,8 @@
         "premium_peak": 15976.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 10147.0,
-        "premium_peak": 10147.0
+        "history_max": 10663.0,
+        "premium_peak": 10663.0
       },
       "Sunrise Alora Aqua Park Resort": {
         "history_max": 11077.0,
