@@ -7462,10 +7462,88 @@
       "created_at": "2026-07-18T22:01:16.329626+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-07-18_21-03_zone_out_+3.1"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6275.0,
+      "new_price": 7755.0,
+      "price_change": 1480.0,
+      "price_change_pct": 23.58565737051793,
+      "timestamp": "2026-07-18 22:57:12.583110+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-18T22:59:02.233237+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-07-18_22-57_+23.6"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 9803.0,
+      "new_price": 11035.0,
+      "price_change": 1232.0,
+      "price_change_pct": 12.567581352647148,
+      "timestamp": "2026-07-18 22:57:12.583110+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T22:59:02.233275+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-07-18_22-57_zone_out_+12.6"
+    },
+    {
+      "hotel_name": "Concordia Celes Beach",
+      "duration_bucket": "",
+      "old_price": 9573.0,
+      "new_price": 9573.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-18 22:57:12.583110+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T22:59:02.233292+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concordia Celes Beach_2026-07-18_22-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-18 22:57:12.583110+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T22:59:02.233307+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa Turcja, Marmaris_2026-07-18_22-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9565.0,
+      "new_price": 10347.0,
+      "price_change": 782.0,
+      "price_change_pct": 8.175640355462624,
+      "timestamp": "2026-07-18 22:57:12.583110+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T22:59:02.233317+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-07-18_22-57_zone_out_+8.2"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 9166.0,
+      "new_price": 9166.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-18 22:57:12.583110+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T22:59:02.233325+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa Turcja, Side, Colakli_2026-07-18_22-57_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-18T21:59:01.180066+00:00",
+    "last_processed_run": "2026-07-18T22:57:12.583110+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11282.0,
@@ -7492,8 +7570,8 @@
         "premium_peak": 12993.0
       },
       "Gypsophila Holiday Village": {
-        "history_max": 12088.0,
-        "premium_peak": 12088.0
+        "history_max": 12116.0,
+        "premium_peak": 12116.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
         "history_max": 12944.0,
@@ -7640,8 +7718,8 @@
         "premium_peak": 13157.0
       },
       "Saphir Resort": {
-        "history_max": 13284.0,
-        "premium_peak": 13284.0
+        "history_max": 13316.0,
+        "premium_peak": 13316.0
       },
       "Jadore Deluxe": {
         "history_max": 10857.0,
@@ -7692,7 +7770,7 @@
         "premium_peak": 10897.0
       },
       "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı": {
-        "history_max": 7695.0,
+        "history_max": 7755.0,
         "premium_peak": null
       },
       "Drita Resort & Spa": {
@@ -7824,8 +7902,8 @@
         "premium_peak": 10010.0
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 9843.0,
-        "premium_peak": null
+        "history_max": 10183.0,
+        "premium_peak": 10183.0
       },
       "Gold Island Selected": {
         "history_max": 12873.0,
@@ -8068,8 +8146,8 @@
         "premium_peak": 10273.0
       },
       "Orange County (Kemer)": {
-        "history_max": 12466.0,
-        "premium_peak": 12466.0
+        "history_max": 12587.0,
+        "premium_peak": 12587.0
       },
       "Omer Prime Holiday Resort": {
         "history_max": 12218.0,
@@ -8264,8 +8342,8 @@
         "premium_peak": 13097.0
       },
       "Ramada Plaza Antalya": {
-        "history_max": 11261.0,
-        "premium_peak": 11261.0
+        "history_max": 11363.0,
+        "premium_peak": 11363.0
       },
       "Maril Resort Beach & Spa": {
         "history_max": 10557.0,
@@ -8408,8 +8486,8 @@
         "premium_peak": 11606.0
       },
       "The Lumos Deluxe Resort & Spa": {
-        "history_max": 11988.0,
-        "premium_peak": 11988.0
+        "history_max": 12232.0,
+        "premium_peak": 12232.0
       },
       "Aydinbey Queens Palace & Spa": {
         "history_max": 12006.0,
@@ -8436,8 +8514,8 @@
         "premium_peak": 12097.0
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
-        "history_max": 12615.0,
-        "premium_peak": 12615.0
+        "history_max": 12675.0,
+        "premium_peak": 12675.0
       },
       "Crystal De Luxe Comfort Collection": {
         "history_max": 13313.0,
@@ -8656,7 +8734,7 @@
         "premium_peak": 13149.0
       },
       "Rox Royal (ex. Grand Haber) Turcja, Kemer": {
-        "history_max": 9126.0,
+        "history_max": 9549.0,
         "premium_peak": null
       },
       "Ozkaymak Incekum": {
