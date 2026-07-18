@@ -10920,10 +10920,101 @@
       "created_at": "2026-07-18T14:36:48.295925+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Serenity Alpha Beach (ex. Serenity Makadi Beach)_2026-07-18_14-34_comeback_19.3"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 8551.0,
+      "new_price": 9777.0,
+      "price_change": 1226.0,
+      "price_change_pct": 14.337504385451993,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-18T16:05:48.258143+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-18_16-03_+14.3"
+    },
+    {
+      "hotel_name": "Jaz Makadi Oasis Resort",
+      "duration_bucket": "",
+      "old_price": 9533.0,
+      "new_price": 11357.0,
+      "price_change": 1824.0,
+      "price_change_pct": 19.13353613762719,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T16:05:48.258178+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Oasis Resort_2026-07-18_16-03_zone_out_+19.1"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 8993.0,
+      "new_price": 11344.0,
+      "price_change": 2351.0,
+      "price_change_pct": 26.142555320805073,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T16:05:48.258190+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-07-18_16-03_zone_out_+26.1"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9393.0,
+      "new_price": 10488.0,
+      "price_change": 1095.0,
+      "price_change_pct": 11.65761737464069,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T16:05:48.258199+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-07-18_16-03_zone_out_+11.7"
+    },
+    {
+      "hotel_name": "Serenity Alpha Beach (ex. Serenity Makadi Beach)",
+      "duration_bucket": "",
+      "old_price": 9993.0,
+      "new_price": 11047.0,
+      "price_change": 1054.0,
+      "price_change_pct": 10.547383168217753,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T16:05:48.258208+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alpha Beach (ex. Serenity Makadi Beach)_2026-07-18_16-03_zone_out_+10.5"
+    },
+    {
+      "hotel_name": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)",
+      "duration_bucket": "",
+      "old_price": 9353.0,
+      "new_price": 10561.0,
+      "price_change": 1208.0,
+      "price_change_pct": 12.91564203998717,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T16:05:48.258216+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)_2026-07-18_16-03_zone_out_+12.9"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 9751.0,
+      "new_price": 10155.0,
+      "price_change": 404.0,
+      "price_change_pct": 4.143164803609886,
+      "timestamp": "2026-07-18 16:03:06.176789+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T16:05:48.258224+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-07-18_16-03_zone_out_+4.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-18T14:34:03.515779+00:00",
+    "last_processed_run": "2026-07-18T16:03:06.176789+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9468.0,
@@ -11826,8 +11917,8 @@
         "premium_peak": 12400.0
       },
       "Stella Makadi Beach & Spa": {
-        "history_max": 11134.0,
-        "premium_peak": 11134.0
+        "history_max": 11538.0,
+        "premium_peak": 11538.0
       },
       "Charmillion Club Aqua Park": {
         "history_max": 10077.0,
