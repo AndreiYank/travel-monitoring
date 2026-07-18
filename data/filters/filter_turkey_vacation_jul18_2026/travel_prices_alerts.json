@@ -2446,12 +2446,29 @@
       "unique_key": "First Class|7-9_2026-07-18_16-04_zone_out_gone"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "7-9",
+      "old_price": 9549.0,
+      "new_price": 9549.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-18 21:05:37.974209+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T21:07:27.594234+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)|7-9_2026-07-18_21-05_zone_out_gone"
+    },
+    {
+>>>>>>> Stashed changes
       "hotel_name": "Well Palace Side (ex. Side Crown Charm Palace)",
       "duration_bucket": "7-9",
       "old_price": 9419.0,
       "new_price": 9419.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-07-18 20:18:51.545005+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-07-18T20:20:57.876487+00:00",
@@ -2461,6 +2478,30 @@
   ],
   "meta": {
     "last_processed_run": "2026-07-18T20:18:51.545005+00:00",
+=======
+      "timestamp": "2026-07-18 21:05:37.974209+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T21:07:27.594263+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Well Palace Side (ex. Side Crown Charm Palace)|7-9_2026-07-18_21-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "World Star Beach Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8987.0,
+      "new_price": 8987.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-18 21:05:37.974209+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-18T21:07:27.594275+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "World Star Beach Resort & Spa|7-9_2026-07-18_21-05_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-07-18T21:05:37.974209+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)|7-9": {
         "history_max": 11802.0,
@@ -2519,8 +2560,8 @@
         "premium_peak": 10957.0
       },
       "Kaila Beach (ex Katya)|7-9": {
-        "history_max": 11919.0,
-        "premium_peak": 11919.0
+        "history_max": 12794.0,
+        "premium_peak": 12794.0
       },
       "Kimeros Park Holiday Village|7-9": {
         "history_max": 13842.0,
