@@ -7592,10 +7592,62 @@
       "created_at": "2026-07-19T05:31:56.960970+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Charisma Deluxe (Kusadasi)_2026-07-19_05-30_comeback_17.7"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum) Turcja, Bodrum",
+      "duration_bucket": "",
+      "old_price": 8767.0,
+      "new_price": 8767.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-19 10:07:51.993571+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-19T10:12:08.241660+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum) Turcja, Bodrum_2026-07-19_10-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "",
+      "old_price": 9711.0,
+      "new_price": 9711.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-19 10:07:51.993571+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-19T10:12:08.241688+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)_2026-07-19_10-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "",
+      "old_price": 9980.0,
+      "new_price": 10290.0,
+      "price_change": 310.0,
+      "price_change_pct": 3.106212424849699,
+      "timestamp": "2026-07-19 10:07:51.993571+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-19T10:12:08.241704+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-07-19_10-07_zone_out_+3.1"
+    },
+    {
+      "hotel_name": "Garden of Sun Spa & Wellness",
+      "duration_bucket": "",
+      "old_price": 10730.0,
+      "new_price": 9691.0,
+      "price_change": -1039.0,
+      "price_change_pct": -9.683131407269338,
+      "timestamp": "2026-07-19 10:07:51.993571+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-19T10:12:08.241728+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Garden of Sun Spa & Wellness_2026-07-19_10-07_comeback_9.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-19T08:16:51.207487+00:00",
+    "last_processed_run": "2026-07-19T10:07:51.993571+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11282.0,
@@ -7622,12 +7674,12 @@
         "premium_peak": 12993.0
       },
       "Gypsophila Holiday Village": {
-        "history_max": 12116.0,
-        "premium_peak": 12116.0
+        "history_max": 12287.0,
+        "premium_peak": 12287.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
-        "history_max": 12944.0,
-        "premium_peak": 12944.0
+        "history_max": 12969.0,
+        "premium_peak": 12969.0
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)": {
         "history_max": 13216.0,
@@ -7702,8 +7754,8 @@
         "premium_peak": 12510.0
       },
       "Seaden Sea World Resort & Spa": {
-        "history_max": 13277.0,
-        "premium_peak": 13277.0
+        "history_max": 13289.0,
+        "premium_peak": 13289.0
       },
       "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar": {
         "history_max": 9544.0,
@@ -7730,8 +7782,8 @@
         "premium_peak": 13469.0
       },
       "Karmir Resort (Kemer)": {
-        "history_max": 11839.0,
-        "premium_peak": 11839.0
+        "history_max": 11872.0,
+        "premium_peak": 11872.0
       },
       "Victory Be Mine": {
         "history_max": 13046.0,
@@ -7842,8 +7894,8 @@
         "premium_peak": 12697.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 10802.0,
-        "premium_peak": 10802.0
+        "history_max": 10808.0,
+        "premium_peak": 10808.0
       },
       "Dream World Hill": {
         "history_max": 12515.0,
@@ -8110,8 +8162,8 @@
         "premium_peak": 10760.0
       },
       "Antique Roman Palace": {
-        "history_max": 11928.0,
-        "premium_peak": 11928.0
+        "history_max": 12135.0,
+        "premium_peak": 12135.0
       },
       "Meryan": {
         "history_max": 12321.0,
@@ -8566,8 +8618,8 @@
         "premium_peak": 12097.0
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
-        "history_max": 12675.0,
-        "premium_peak": 12675.0
+        "history_max": 12795.0,
+        "premium_peak": 12795.0
       },
       "Crystal De Luxe Comfort Collection": {
         "history_max": 13313.0,
@@ -9340,6 +9392,10 @@
       "Ramada Resort Kusadasi": {
         "history_max": 11890.0,
         "premium_peak": 11890.0
+      },
+      "Mandarin Resort (Bodrum)": {
+        "history_max": 9576.0,
+        "premium_peak": null
       }
     }
   }
