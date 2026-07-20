@@ -325,10 +325,88 @@
       "created_at": "2026-07-20T09:03:59.384076+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-07-20_09-01_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 8312.0,
+      "price_change": -1145.0,
+      "price_change_pct": -12.107433647033943,
+      "timestamp": "2026-07-20 11:55:17.845276+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-20T11:57:56.001961+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-20_11-55_-12.1"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 9983.0,
+      "new_price": 10243.0,
+      "price_change": 260.0,
+      "price_change_pct": 2.6044275267955523,
+      "timestamp": "2026-07-20 11:55:17.845276+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T11:57:56.001994+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-07-20_11-55_zone_out_+2.6"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 10787.0,
+      "new_price": 9446.0,
+      "price_change": -1341.0,
+      "price_change_pct": -12.431630666543061,
+      "timestamp": "2026-07-20 11:55:17.845276+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-20T11:57:56.002017+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-20_11-55_comeback_12.4"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10217.0,
+      "new_price": 9113.0,
+      "price_change": -1104.0,
+      "price_change_pct": -10.805520211412352,
+      "timestamp": "2026-07-20 11:55:17.845276+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-20T11:57:56.002030+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-20_11-55_comeback_10.8"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 11057.0,
+      "new_price": 9648.0,
+      "price_change": -1409.0,
+      "price_change_pct": -12.743058695848783,
+      "timestamp": "2026-07-20 11:55:17.845276+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-20T11:57:56.002040+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-20_11-55_comeback_12.7"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 10580.0,
+      "new_price": 8973.0,
+      "price_change": -1607.0,
+      "price_change_pct": -15.189035916824198,
+      "timestamp": "2026-07-20 11:55:17.845276+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-20T11:57:56.002049+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-07-20_11-55_comeback_15.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-20T09:01:33.106885+00:00",
+    "last_processed_run": "2026-07-20T11:55:17.845276+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9423.0,
@@ -439,7 +517,7 @@
         "premium_peak": 11621.0
       },
       "Parrotel Lagoon Resort": {
-        "history_max": 8657.0,
+        "history_max": 8857.0,
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
@@ -459,8 +537,8 @@
         "premium_peak": 11541.0
       },
       "Jaz Oriental Resort": {
-        "history_max": 13583.0,
-        "premium_peak": 13583.0
+        "history_max": 13671.0,
+        "premium_peak": 13671.0
       },
       "Jaz Sharm Dreams Resort": {
         "history_max": 12007.0,
@@ -483,8 +561,8 @@
         "premium_peak": 18687.0
       },
       "Lazuli (Marsa Alam)": {
-        "history_max": 10257.0,
-        "premium_peak": 10257.0
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Monte Carlo Resort Spa": {
         "history_max": 10657.0,
@@ -619,12 +697,12 @@
         "premium_peak": null
       },
       "Titanic Beach Spa & Aqua Park": {
-        "history_max": 10857.0,
-        "premium_peak": 10857.0
+        "history_max": 11057.0,
+        "premium_peak": 11057.0
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 10896.0,
-        "premium_peak": 10896.0
+        "history_max": 11894.0,
+        "premium_peak": 11894.0
       },
       "Utopia Blue Resort": {
         "history_max": 11137.0,
@@ -663,8 +741,8 @@
         "premium_peak": 11775.0
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
-        "history_max": 10657.0,
-        "premium_peak": 10657.0
+        "history_max": 10857.0,
+        "premium_peak": 10857.0
       },
       "Savoy (Sharm El Sheikh)": {
         "history_max": 14389.0,
@@ -759,8 +837,8 @@
         "premium_peak": 12897.0
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
-        "history_max": 15821.0,
-        "premium_peak": 15821.0
+        "history_max": 16630.0,
+        "premium_peak": 16630.0
       },
       "Jaz Elite Crystal": {
         "history_max": 15942.0,
@@ -783,8 +861,8 @@
         "premium_peak": 11597.0
       },
       "Fantazia Resort": {
-        "history_max": 9983.0,
-        "premium_peak": null
+        "history_max": 10243.0,
+        "premium_peak": 10243.0
       },
       "Baron Palace Resort (Sahl Hasheesh)": {
         "history_max": 14767.0,
@@ -863,7 +941,7 @@
         "premium_peak": 11175.0
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 9017.0,
+        "history_max": 9457.0,
         "premium_peak": null
       },
       "Concorde El Salam Sport": {
@@ -915,8 +993,8 @@
         "premium_peak": 11797.0
       },
       "Jaz Belvedere": {
-        "history_max": 11057.0,
-        "premium_peak": 11057.0
+        "history_max": 11257.0,
+        "premium_peak": 11257.0
       },
       "Aldiana Club Naga Bay": {
         "history_max": 11227.0,
@@ -1007,8 +1085,8 @@
         "premium_peak": null
       },
       "Marriott Hurghada Beach Resort": {
-        "history_max": 10257.0,
-        "premium_peak": 10257.0
+        "history_max": 10382.0,
+        "premium_peak": 10382.0
       },
       "Iberotel Makadi Beach": {
         "history_max": 13077.0,
@@ -1079,8 +1157,8 @@
         "premium_peak": 10057.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 10136.0,
-        "premium_peak": 10136.0
+        "history_max": 10300.0,
+        "premium_peak": 10300.0
       },
       "Renaissance Golden View Beach Resort by Marriott": {
         "history_max": 12802.0,
