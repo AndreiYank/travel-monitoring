@@ -1,8 +1,35 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Garden of Sun Spa & Wellness",
+      "duration_bucket": "7-9",
+      "old_price": 9691.0,
+      "new_price": 9691.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-20 09:03:03.185269+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T09:04:37.540958+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Garden of Sun Spa & Wellness|7-9_2026-07-20_09-03_zone_out_gone"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 9957.0,
+      "new_price": 10557.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.025911419102139,
+      "timestamp": "2026-07-20 09:03:03.185269+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T09:04:37.540990+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa|7-9_2026-07-20_09-03_zone_out_+6.0"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-07-20T05:59:33.235321+00:00",
+    "last_processed_run": "2026-07-20T09:03:03.185269+00:00",
     "premium_state": {
       "Trendy Perge Resort & Suites|7-9": {
         "history_max": 13716.0,
@@ -17,16 +44,16 @@
         "premium_peak": 10757.0
       },
       "Crystal Paraiso Aqua Collection|7-9": {
-        "history_max": 10557.0,
-        "premium_peak": 10557.0
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       },
       "Delta by Marriott Bodrum|7-9": {
-        "history_max": 10157.0,
-        "premium_peak": 10157.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Design Plus Seya Beach|7-9": {
-        "history_max": 10157.0,
-        "premium_peak": 10157.0
+        "history_max": 11557.0,
+        "premium_peak": 11557.0
       },
       "Diamond of Bodrum|7-9": {
         "history_max": 10944.0,
@@ -65,16 +92,16 @@
         "premium_peak": 13550.0
       },
       "Kadikale Resort Spa & Wellness|7-9": {
-        "history_max": 10357.0,
-        "premium_peak": 10357.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Mandarin Resort (Bodrum)|7-9": {
-        "history_max": 8767.0,
+        "history_max": 9252.0,
         "premium_peak": null
       },
       "Maril Resort Beach & Spa|7-9": {
-        "history_max": 9957.0,
-        "premium_peak": null
+        "history_max": 10557.0,
+        "premium_peak": 10557.0
       },
       "Mirage World|7-9": {
         "history_max": 11561.0,
@@ -97,8 +124,8 @@
         "premium_peak": 13572.0
       },
       "Grand Kolibri Prestige & Spa|7-9": {
-        "history_max": 10812.0,
-        "premium_peak": 10812.0
+        "history_max": 11790.0,
+        "premium_peak": 11790.0
       },
       "Azura Deluxe Resort & Spa|7-9": {
         "history_max": 13343.0,
@@ -113,8 +140,8 @@
         "premium_peak": 13297.0
       },
       "Anadolu Hotels Didim Club (ex. Palm Wings Didim)|7-9": {
-        "history_max": 10557.0,
-        "premium_peak": 10557.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Asia Beach Resort and Spa|7-9": {
         "history_max": 12097.0,
@@ -173,8 +200,8 @@
         "premium_peak": 16794.0
       },
       "Zena Resort|9-11": {
-        "history_max": 14005.0,
-        "premium_peak": 14005.0
+        "history_max": 14395.0,
+        "premium_peak": 14395.0
       },
       "Movenpick Resort Antalya Tekirova (ex. Royal Diwa Tekirova Resort)|9-11": {
         "history_max": 17870.0,
@@ -315,6 +342,54 @@
       "Club Turan Prince World|7-9": {
         "history_max": 13291.0,
         "premium_peak": 13291.0
+      },
+      "Labranda Alantur Resort|7-9": {
+        "history_max": 9957.0,
+        "premium_peak": null
+      },
+      "Alarcha|7-9": {
+        "history_max": 11057.0,
+        "premium_peak": 11057.0
+      },
+      "Lake River Side Spa|7-9": {
+        "history_max": 9957.0,
+        "premium_peak": null
+      },
+      "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)|7-9": {
+        "history_max": 10357.0,
+        "premium_peak": 10357.0
+      },
+      "Marine Family Club Beach (ex. Otium Family Club Marine Beach)|7-9": {
+        "history_max": 11448.0,
+        "premium_peak": 11448.0
+      },
+      "Laur Experience & Elegance|7-9": {
+        "history_max": 11551.0,
+        "premium_peak": 11551.0
+      },
+      "Benata|7-9": {
+        "history_max": 10157.0,
+        "premium_peak": 10157.0
+      },
+      "Sensitive Premium Resort & Spa|7-9": {
+        "history_max": 10957.0,
+        "premium_peak": 10957.0
+      },
+      "Aydinbey Queens Palace & Spa|7-9": {
+        "history_max": 11304.0,
+        "premium_peak": 11304.0
+      },
+      "Asteria Bloom Side|9-11": {
+        "history_max": 11606.0,
+        "premium_peak": 11606.0
+      },
+      "Calimera Hane Garden (ex. PrimaSol Hane Garden)|9-11": {
+        "history_max": 14427.0,
+        "premium_peak": 14427.0
+      },
+      "Laur Experience & Elegance|9-11": {
+        "history_max": 14443.0,
+        "premium_peak": 14443.0
       }
     }
   }
