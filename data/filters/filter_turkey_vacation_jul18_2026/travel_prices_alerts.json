@@ -65,10 +65,23 @@
       "created_at": "2026-07-20T14:05:01.180006+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lake River Side Spa|7-9_2026-07-20_14-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "7-9",
+      "old_price": 9309.0,
+      "new_price": 9309.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-20 16:06:13.692220+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:07:06.662094+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)|7-9_2026-07-20_16-06_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-20T14:04:12.664520+00:00",
+    "last_processed_run": "2026-07-20T16:06:13.692220+00:00",
     "premium_state": {
       "Trendy Perge Resort & Suites|7-9": {
         "history_max": 13716.0,
@@ -505,6 +518,18 @@
       "Royal Alhambra Palace|9-11": {
         "history_max": 15999.0,
         "premium_peak": 15999.0
+      },
+      "Royal Asarlik Beach|7-9": {
+        "history_max": 9909.0,
+        "premium_peak": null
+      },
+      "Cenger Beach Resort (Side)|9-11": {
+        "history_max": 9685.0,
+        "premium_peak": null
+      },
+      "Royal Asarlik Beach|9-11": {
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
       }
     }
   }

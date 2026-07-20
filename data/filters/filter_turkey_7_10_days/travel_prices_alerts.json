@@ -364,10 +364,114 @@
       "created_at": "2026-07-20T14:03:48.681740+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Well Palace Side (ex. Side Crown Charm Palace)_2026-07-20_14-02_zone_out_+2.2"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9987.0,
+      "new_price": 9987.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:05:33.587921+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-07-20_16-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Golden Tulip Bayrampasa Turcja, Istambuł, Stambuł",
+      "duration_bucket": "",
+      "old_price": 9410.0,
+      "new_price": 9410.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:05:33.587948+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Golden Tulip Bayrampasa Turcja, Istambuł, Stambuł_2026-07-20_16-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Pasa Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 9386.0,
+      "new_price": 9386.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:05:33.587959+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Pasa Turcja, Marmaris_2026-07-20_16-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Incekum Turcja, Alanya, Incekum",
+      "duration_bucket": "",
+      "old_price": 9314.0,
+      "new_price": 9314.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:05:33.587968+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Incekum Turcja, Alanya, Incekum_2026-07-20_16-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "PrimaSol Telatiye Resort",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 10297.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.0416287763968874,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:05:33.587980+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "PrimaSol Telatiye Resort_2026-07-20_16-04_zone_out_+4.0"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "",
+      "old_price": 9873.0,
+      "new_price": 10022.0,
+      "price_change": 149.0,
+      "price_change_pct": 1.5091664134508254,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T16:05:33.587989+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)_2026-07-20_16-04_zone_out_+1.5"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 10988.0,
+      "new_price": 9850.0,
+      "price_change": -1138.0,
+      "price_change_pct": -10.356752821259557,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-20T16:05:33.588014+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-20_16-04_comeback_10.4"
+    },
+    {
+      "hotel_name": "The Lumos Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10928.0,
+      "new_price": 9997.0,
+      "price_change": -931.0,
+      "price_change_pct": -8.519399707174232,
+      "timestamp": "2026-07-20 16:04:33.298415+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-20T16:05:33.588031+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Lumos Deluxe Resort & Spa_2026-07-20_16-04_comeback_8.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-20T14:02:47.232842+00:00",
+    "last_processed_run": "2026-07-20T16:04:33.298415+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -382,20 +486,20 @@
         "premium_peak": 10053.0
       },
       "Selectum Family Comfort Side (ex. Lyra Resort)": {
-        "history_max": 12573.0,
-        "premium_peak": 12573.0
+        "history_max": 13311.0,
+        "premium_peak": 13311.0
       },
       "Innvista Belek (ex. Vera Verde)": {
         "history_max": 12403.0,
         "premium_peak": 12403.0
       },
       "Infinity by Yelken": {
-        "history_max": 11769.0,
-        "premium_peak": 11769.0
+        "history_max": 11869.0,
+        "premium_peak": 11869.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
-        "history_max": 13019.0,
-        "premium_peak": 13019.0
+        "history_max": 13167.0,
+        "premium_peak": 13167.0
       },
       "Hotel Su": {
         "history_max": 12287.0,
@@ -414,8 +518,8 @@
         "premium_peak": 10774.0
       },
       "Holiday Garden Resort (Okurcalar)": {
-        "history_max": 10346.0,
-        "premium_peak": 10346.0
+        "history_max": 10554.0,
+        "premium_peak": 10554.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 11097.0,
@@ -426,8 +530,8 @@
         "premium_peak": 11723.0
       },
       "Hane Sun Elite (ex Noble Palace Side)": {
-        "history_max": 10247.0,
-        "premium_peak": 10247.0
+        "history_max": 10395.0,
+        "premium_peak": 10395.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
         "history_max": 11009.0,
@@ -490,12 +594,12 @@
         "premium_peak": 12231.0
       },
       "Sentido Serra Family Resort": {
-        "history_max": 11897.0,
-        "premium_peak": 11897.0
+        "history_max": 11957.0,
+        "premium_peak": 11957.0
       },
       "Kremlin Palace": {
-        "history_max": 13127.0,
-        "premium_peak": 13127.0
+        "history_max": 13275.0,
+        "premium_peak": 13275.0
       },
       "Korumar Deluxe": {
         "history_max": 12357.0,
@@ -550,7 +654,7 @@
         "premium_peak": 12972.0
       },
       "Gold City Turcja, Alanya, Kargicak": {
-        "history_max": 9522.0,
+        "history_max": 9671.0,
         "premium_peak": null
       },
       "Side Crown Palace (Side)": {
@@ -582,19 +686,19 @@
         "premium_peak": 10644.0
       },
       "Fun & Sun Smart Hane Sun": {
-        "history_max": 10499.0,
-        "premium_peak": 10499.0
+        "history_max": 10661.0,
+        "premium_peak": 10661.0
       },
       "Fore Resort & Spa": {
         "history_max": 12050.0,
         "premium_peak": 12050.0
       },
       "Side Premium by OZ Hotels": {
-        "history_max": 12877.0,
-        "premium_peak": 12877.0
+        "history_max": 13243.0,
+        "premium_peak": 13243.0
       },
       "First Class Turcja, Alanya, Mahmutlar": {
-        "history_max": 7376.0,
+        "history_max": 7538.0,
         "premium_peak": null
       },
       "Fantasia De Luxe Kusadasi Turcja, Kusadasi": {
@@ -606,8 +710,8 @@
         "premium_peak": 12136.0
       },
       "Fame Residence (Göynük)": {
-        "history_max": 11565.0,
-        "premium_peak": 11565.0
+        "history_max": 12909.0,
+        "premium_peak": 12909.0
       },
       "Elite World Kusadasi (ex Marina)": {
         "history_max": 11001.0,
@@ -626,8 +730,8 @@
         "premium_peak": 12443.0
       },
       "Grand Belish": {
-        "history_max": 11145.0,
-        "premium_peak": 11145.0
+        "history_max": 11444.0,
+        "premium_peak": 11444.0
       },
       "Green Nature Diamond": {
         "history_max": 13157.0,
@@ -666,8 +770,8 @@
         "premium_peak": null
       },
       "Sheraton Istanbul Levent": {
-        "history_max": 11038.0,
-        "premium_peak": 11038.0
+        "history_max": 11388.0,
+        "premium_peak": 11388.0
       },
       "Grand Park Lara": {
         "history_max": 12227.0,
@@ -790,8 +894,8 @@
         "premium_peak": 12870.0
       },
       "PrimaSol Telatiye Resort": {
-        "history_max": 9897.0,
-        "premium_peak": null
+        "history_max": 10297.0,
+        "premium_peak": 10297.0
       },
       "OZ Incekum Beach Resort": {
         "history_max": 11383.0,
@@ -822,7 +926,7 @@
         "premium_peak": null
       },
       "Perre Delta Turcja, Alanya, Okurcalar": {
-        "history_max": 9248.0,
+        "history_max": 9307.0,
         "premium_peak": null
       },
       "Ozcelik": {
@@ -834,7 +938,7 @@
         "premium_peak": 10988.0
       },
       "Miarosa Incekum Beach (ex Alara Kum) Turcja, Alanya, Avsallar": {
-        "history_max": 9378.0,
+        "history_max": 9540.0,
         "premium_peak": null
       },
       "Pine Bay Holiday Resort": {
@@ -862,8 +966,8 @@
         "premium_peak": 12864.0
       },
       "Orange County Alanya": {
-        "history_max": 12029.0,
-        "premium_peak": 12029.0
+        "history_max": 12110.0,
+        "premium_peak": 12110.0
       },
       "Orange County (Kemer)": {
         "history_max": 12587.0,
@@ -878,12 +982,12 @@
         "premium_peak": 13335.0
       },
       "Laguna Beach Alya": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       },
       "Miarosa Beach (Kemer)": {
-        "history_max": 10922.0,
-        "premium_peak": 10922.0
+        "history_max": 11070.0,
+        "premium_peak": 11070.0
       },
       "Meryan": {
         "history_max": 12321.0,
@@ -910,11 +1014,11 @@
         "premium_peak": 10957.0
       },
       "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar": {
-        "history_max": 8316.0,
+        "history_max": 8465.0,
         "premium_peak": null
       },
       "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar": {
-        "history_max": 8084.0,
+        "history_max": 8085.0,
         "premium_peak": null
       },
       "Lonicera West (ex. Gold Island)": {
@@ -1014,8 +1118,8 @@
         "premium_peak": 11854.0
       },
       "Rox Royal (ex. Grand Haber)": {
-        "history_max": 9873.0,
-        "premium_peak": null
+        "history_max": 10022.0,
+        "premium_peak": 10022.0
       },
       "Marvida Family Eco": {
         "history_max": 13220.0,
@@ -1078,8 +1182,8 @@
         "premium_peak": 12954.0
       },
       "Victory Be Mine": {
-        "history_max": 12870.0,
-        "premium_peak": 12870.0
+        "history_max": 12999.0,
+        "premium_peak": 12999.0
       },
       "Benata": {
         "history_max": 10297.0,
@@ -1110,16 +1214,16 @@
         "premium_peak": 11682.0
       },
       "Aydinbey Gold Dreams": {
-        "history_max": 11378.0,
-        "premium_peak": 11378.0
+        "history_max": 11680.0,
+        "premium_peak": 11680.0
       },
       "Viking Star": {
-        "history_max": 10737.0,
-        "premium_peak": 10737.0
+        "history_max": 10886.0,
+        "premium_peak": 10886.0
       },
       "Aydinbey Famous": {
-        "history_max": 12797.0,
-        "premium_peak": 12797.0
+        "history_max": 12874.0,
+        "premium_peak": 12874.0
       },
       "Aventura Park Turcja, Alanya": {
         "history_max": 9097.0,
@@ -1226,11 +1330,11 @@
         "premium_peak": 11935.0
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)": {
-        "history_max": 13167.0,
-        "premium_peak": 13167.0
+        "history_max": 13329.0,
+        "premium_peak": 13329.0
       },
       "World Star Beach Resort & Spa Turcja, Alanya, Kestel": {
-        "history_max": 9297.0,
+        "history_max": 9459.0,
         "premium_peak": null
       },
       "Aqua Marmaris": {
@@ -1246,8 +1350,8 @@
         "premium_peak": null
       },
       "Andriake Beach Club": {
-        "history_max": 10940.0,
-        "premium_peak": 10940.0
+        "history_max": 11102.0,
+        "premium_peak": 11102.0
       },
       "Wind of Lara": {
         "history_max": 12433.0,
@@ -1346,16 +1450,16 @@
         "premium_peak": 11871.0
       },
       "Water Side Resort & Spa": {
-        "history_max": 10977.0,
-        "premium_peak": 10977.0
+        "history_max": 11190.0,
+        "premium_peak": 11190.0
       },
       "Armas Gul Beach": {
-        "history_max": 10576.0,
-        "premium_peak": 10576.0
+        "history_max": 10636.0,
+        "premium_peak": 10636.0
       },
       "Armas Green Fugla": {
-        "history_max": 10665.0,
-        "premium_peak": 10665.0
+        "history_max": 10814.0,
+        "premium_peak": 10814.0
       },
       "Well Palace Side (ex. Side Crown Charm Palace)": {
         "history_max": 10188.0,
@@ -1370,7 +1474,7 @@
         "premium_peak": 11385.0
       },
       "Club Side Coast Turcja, Side, Colakli": {
-        "history_max": 8977.0,
+        "history_max": 9246.0,
         "premium_peak": null
       },
       "Club Turan Prince World": {
@@ -1378,8 +1482,8 @@
         "premium_peak": 13162.0
       },
       "Utopia Resort & Residence (ex Alara Park)": {
-        "history_max": 10773.0,
-        "premium_peak": 10773.0
+        "history_max": 10922.0,
+        "premium_peak": 10922.0
       },
       "Club Yali Hotels & Resort": {
         "history_max": 11278.0,
@@ -1422,8 +1526,8 @@
         "premium_peak": 13097.0
       },
       "DoubleTree by Hilton Istanbul - Piyalepasa": {
-        "history_max": 10242.0,
-        "premium_peak": 10242.0
+        "history_max": 10592.0,
+        "premium_peak": 10592.0
       },
       "Crystal Tat Beach Pearl Collection": {
         "history_max": 11897.0,
@@ -1434,8 +1538,8 @@
         "premium_peak": 11097.0
       },
       "Dream World Aqua": {
-        "history_max": 12955.0,
-        "premium_peak": 12955.0
+        "history_max": 13344.0,
+        "premium_peak": 13344.0
       },
       "Crystal Waterworld Aqua Collection": {
         "history_max": 13400.0,
@@ -1446,8 +1550,8 @@
         "premium_peak": 12320.0
       },
       "Daima Biz (Kemer)": {
-        "history_max": 10456.0,
-        "premium_peak": 10456.0
+        "history_max": 10535.0,
+        "premium_peak": 10535.0
       },
       "Terrace Beach Resort (Side)": {
         "history_max": 12307.0,
@@ -1462,11 +1566,11 @@
         "premium_peak": 11093.0
       },
       "Dedeman Istanbul": {
-        "history_max": 10310.0,
-        "premium_peak": 10310.0
+        "history_max": 10660.0,
+        "premium_peak": 10660.0
       },
       "Titan Select Turcja, Alanya, Konakli": {
-        "history_max": 9405.0,
+        "history_max": 9486.0,
         "premium_peak": null
       },
       "Dedeman Kemer Resort": {
@@ -1494,8 +1598,8 @@
         "premium_peak": 11981.0
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
-        "history_max": 11489.0,
-        "premium_peak": 11489.0
+        "history_max": 11728.0,
+        "premium_peak": 11728.0
       },
       "Crystal Paraiso Aqua Collection": {
         "history_max": 10897.0,
@@ -1518,16 +1622,16 @@
         "premium_peak": null
       },
       "Timo Deluxe Resort": {
-        "history_max": 10125.0,
-        "premium_peak": 10125.0
+        "history_max": 10287.0,
+        "premium_peak": 10287.0
       },
       "Crowne Plaza Istanbul Harbiye": {
-        "history_max": 11852.0,
-        "premium_peak": 11852.0
+        "history_max": 12152.0,
+        "premium_peak": 12152.0
       },
       "Dream World Resort & Spa (Side)": {
-        "history_max": 11150.0,
-        "premium_peak": 11150.0
+        "history_max": 11449.0,
+        "premium_peak": 11449.0
       },
       "Crowne Plaza Istanbul Old City": {
         "history_max": 11847.0,
@@ -1538,7 +1642,7 @@
         "premium_peak": null
       },
       "Sun Star Resort Turcja, Alanya, Mahmutlar": {
-        "history_max": 9016.0,
+        "history_max": 9160.0,
         "premium_peak": null
       },
       "The Sense Deluxe": {
@@ -1570,7 +1674,7 @@
         "premium_peak": 13196.0
       },
       "Lycus Beach (ex. Lti) Turcja, Alanya, Okurcalar": {
-        "history_max": 9429.0,
+        "history_max": 9437.0,
         "premium_peak": null
       },
       "Green Nature Resort & Spa": {
@@ -1578,8 +1682,8 @@
         "premium_peak": null
       },
       "Royal Alhambra Palace": {
-        "history_max": 12848.0,
-        "premium_peak": 12848.0
+        "history_max": 12856.0,
+        "premium_peak": 12856.0
       },
       "Ramada Resort Lara": {
         "history_max": 13284.0,
@@ -1632,6 +1736,46 @@
       "Charisma Deluxe Turcja, Kusadasi": {
         "history_max": 9541.0,
         "premium_peak": null
+      },
+      "Barut Goia (ex. Barut Sunwing Side Beach)": {
+        "history_max": 12615.0,
+        "premium_peak": 12615.0
+      },
+      "Aydinbey Kings Palace": {
+        "history_max": 13339.0,
+        "premium_peak": 13339.0
+      },
+      "Sherwood Dreams Resort": {
+        "history_max": 12502.0,
+        "premium_peak": 12502.0
+      },
+      "Melas Resort": {
+        "history_max": 13178.0,
+        "premium_peak": 13178.0
+      },
+      "Seher Sun Palace Resort & Spa Turcja, Side, Colakli": {
+        "history_max": 9558.0,
+        "premium_peak": null
+      },
+      "Golden Tulip Bayrampasa": {
+        "history_max": 9760.0,
+        "premium_peak": null
+      },
+      "Glamour Resort & Spa Turcja, Side": {
+        "history_max": 9093.0,
+        "premium_peak": null
+      },
+      "Kaya Side (ex. Club Calimera Kaya Side)": {
+        "history_max": 13000.0,
+        "premium_peak": 13000.0
+      },
+      "Side Star Elegance (ex. Asteria)": {
+        "history_max": 12836.0,
+        "premium_peak": 12836.0
+      },
+      "Kamelya Aishen Club (ex. Kamelya Aishen K Club)": {
+        "history_max": 12990.0,
+        "premium_peak": 12990.0
       }
     }
   }
