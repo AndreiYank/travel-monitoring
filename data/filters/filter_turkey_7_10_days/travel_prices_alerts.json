@@ -1,12 +1,26 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "",
+      "old_price": 9980.0,
+      "new_price": 10290.0,
+      "price_change": 310.0,
+      "price_change_pct": 3.106212424849699,
+      "timestamp": "2026-07-20 05:57:35.653316+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T05:58:36.802939+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-07-20_05-57_zone_out_+3.1"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-07-20T02:17:54.005772+00:00",
+    "last_processed_run": "2026-07-20T05:57:35.653316+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
-        "history_max": 10883.0,
-        "premium_peak": 10883.0
+        "history_max": 11492.0,
+        "premium_peak": 11492.0
       },
       "Jadore Deluxe": {
         "history_max": 10857.0,
@@ -65,8 +79,8 @@
         "premium_peak": 10085.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 10373.0,
-        "premium_peak": 10373.0
+        "history_max": 10808.0,
+        "premium_peak": 10808.0
       },
       "Gypsophila Holiday Village": {
         "history_max": 12193.0,
@@ -973,8 +987,8 @@
         "premium_peak": 10757.0
       },
       "Armas Labada": {
-        "history_max": 11773.0,
-        "premium_peak": 11773.0
+        "history_max": 12313.0,
+        "premium_peak": 12313.0
       },
       "Armas Kaplan Paradise": {
         "history_max": 11723.0,
@@ -1025,8 +1039,8 @@
         "premium_peak": 13313.0
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
-        "history_max": 9980.0,
-        "premium_peak": null
+        "history_max": 10290.0,
+        "premium_peak": 10290.0
       },
       "Dream Water World": {
         "history_max": 13097.0,

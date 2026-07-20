@@ -1,8 +1,35 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 7633.0,
+      "new_price": 8698.0,
+      "price_change": 1065.0,
+      "price_change_pct": 13.952574348224815,
+      "timestamp": "2026-07-20 05:59:47.973165+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-20T06:00:38.882657+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-07-20_05-59_+14.0"
+    },
+    {
+      "hotel_name": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara",
+      "duration_bucket": "",
+      "old_price": 9582.0,
+      "new_price": 10179.0,
+      "price_change": 597.0,
+      "price_change_pct": 6.230432060112712,
+      "timestamp": "2026-07-20 05:59:47.973165+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-20T06:00:38.882688+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara_2026-07-20_05-59_zone_out_+6.2"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-07-20T02:20:12.613924+00:00",
+    "last_processed_run": "2026-07-20T05:59:47.973165+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 18189.0,
@@ -81,8 +108,8 @@
         "premium_peak": 11107.0
       },
       "Galini Palace Grecja, Kreta Zachodnia, Kolymvari": {
-        "history_max": 11029.0,
-        "premium_peak": 11029.0
+        "history_max": 11133.0,
+        "premium_peak": 11133.0
       },
       "Rethymno Palace": {
         "history_max": 13042.0,
@@ -153,8 +180,8 @@
         "premium_peak": 16688.0
       },
       "Mitsis Summer Palace": {
-        "history_max": 13485.0,
-        "premium_peak": 13485.0
+        "history_max": 13615.0,
+        "premium_peak": 13615.0
       },
       "Mitsis Galini": {
         "history_max": 15068.0,
@@ -181,8 +208,8 @@
         "premium_peak": 17107.0
       },
       "Lydia Maris Resort & Spa Grecja, Rodos, Kolymbia": {
-        "history_max": 11151.0,
-        "premium_peak": 11151.0
+        "history_max": 11310.0,
+        "premium_peak": 11310.0
       },
       "Elios Hill": {
         "history_max": 14257.0,
@@ -257,8 +284,8 @@
         "premium_peak": 11563.0
       },
       "Mitsis Royal Mare": {
-        "history_max": 16316.0,
-        "premium_peak": 16316.0
+        "history_max": 16321.0,
+        "premium_peak": 16321.0
       },
       "Almyros Beach (ex Cyprotel Almyros)": {
         "history_max": 15530.0,
@@ -301,7 +328,7 @@
         "premium_peak": 13557.0
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 8993.0,
+        "history_max": 9595.0,
         "premium_peak": null
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
@@ -317,7 +344,7 @@
         "premium_peak": 16732.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 7633.0,
+        "history_max": 8698.0,
         "premium_peak": null
       },
       "Aquila Rithymna Beach": {
@@ -341,8 +368,8 @@
         "premium_peak": 18276.0
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
-        "history_max": 9582.0,
-        "premium_peak": null
+        "history_max": 10179.0,
+        "premium_peak": 10179.0
       },
       "Apollo Blue": {
         "history_max": 19365.0,
@@ -377,8 +404,8 @@
         "premium_peak": 19234.0
       },
       "Akti Coast Club": {
-        "history_max": 13631.0,
-        "premium_peak": 13631.0
+        "history_max": 13668.0,
+        "premium_peak": 13668.0
       },
       "Eden Roc Resort": {
         "history_max": 15480.0,
