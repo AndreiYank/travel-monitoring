@@ -182,14 +182,66 @@
       "created_at": "2026-07-21T16:38:51.037092+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xafira Deluxe Resort & Spa|7-9_2026-07-21_16-36_zone_out_+7.3"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "7-9",
+      "old_price": 9651.0,
+      "new_price": 10352.0,
+      "price_change": 701.0,
+      "price_change_pct": 7.263496010776086,
+      "timestamp": "2026-07-21 22:15:25.423914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T22:17:47.448960+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum|7-9_2026-07-21_22-15_zone_out_+7.3"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "9-11",
+      "old_price": 9651.0,
+      "new_price": 10814.0,
+      "price_change": 1163.0,
+      "price_change_pct": 12.050564708320382,
+      "timestamp": "2026-07-21 22:15:25.423914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T22:17:47.448988+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum|9-11_2026-07-21_22-15_zone_out_+12.1"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "7-9",
+      "old_price": 11448.0,
+      "new_price": 9783.0,
+      "price_change": -1665.0,
+      "price_change_pct": -14.544025157232705,
+      "timestamp": "2026-07-21 22:15:25.423914+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T22:17:47.449010+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)|7-9_2026-07-21_22-15_comeback_14.5"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 10922.0,
+      "new_price": 8475.0,
+      "price_change": -2447.0,
+      "price_change_pct": -22.404321552829153,
+      "timestamp": "2026-07-21 22:15:25.423914+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T22:17:47.449024+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa|7-9_2026-07-21_22-15_comeback_22.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T20:35:01.812318+00:00",
+    "last_processed_run": "2026-07-21T22:15:25.423914+00:00",
     "premium_state": {
       "Trendy Perge Resort & Suites|7-9": {
-        "history_max": 13716.0,
-        "premium_peak": 13716.0
+        "history_max": 13865.0,
+        "premium_peak": 13865.0
       },
       "Castival (ex. La Grande Resort & Spa)|7-9": {
         "history_max": 10557.0,
@@ -360,8 +412,8 @@
         "premium_peak": 14395.0
       },
       "Movenpick Resort Antalya Tekirova (ex. Royal Diwa Tekirova Resort)|9-11": {
-        "history_max": 17870.0,
-        "premium_peak": 17870.0
+        "history_max": 18266.0,
+        "premium_peak": 18266.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)|9-11": {
         "history_max": 15453.0,
@@ -764,8 +816,8 @@
         "premium_peak": 13128.0
       },
       "VONResort Elite|7-9": {
-        "history_max": 13869.0,
-        "premium_peak": 13869.0
+        "history_max": 13999.0,
+        "premium_peak": 13999.0
       },
       "Club Grand Aqua|9-11": {
         "history_max": 16443.0,
@@ -988,8 +1040,8 @@
         "premium_peak": 19969.0
       },
       "Side Kum|7-9": {
-        "history_max": 9651.0,
-        "premium_peak": null
+        "history_max": 10352.0,
+        "premium_peak": 10352.0
       },
       "Bosphorus Sorgun|7-9": {
         "history_max": 14003.0,
@@ -1008,12 +1060,44 @@
         "premium_peak": 13734.0
       },
       "Side Kum|9-11": {
-        "history_max": 9651.0,
-        "premium_peak": null
+        "history_max": 10814.0,
+        "premium_peak": 10814.0
       },
       "Porto Bello|7-9": {
         "history_max": 13993.0,
         "premium_peak": 13993.0
+      },
+      "Rox Royal (ex. Grand Haber)|7-9": {
+        "history_max": 9873.0,
+        "premium_peak": null
+      },
+      "Orange County (Kemer)|7-9": {
+        "history_max": 12857.0,
+        "premium_peak": 12857.0
+      },
+      "Crystal Centro Pearl Collection (ex. Amara Centro Resort)|9-11": {
+        "history_max": 16421.0,
+        "premium_peak": 16421.0
+      },
+      "Selectum Family Resort Side (ex. Silence Beach Resort)|9-11": {
+        "history_max": 15467.0,
+        "premium_peak": 15467.0
+      },
+      "Trendy Aspendos Beach|9-11": {
+        "history_max": 16893.0,
+        "premium_peak": 16893.0
+      },
+      "Royal Wings|9-11": {
+        "history_max": 19481.0,
+        "premium_peak": 19481.0
+      },
+      "Diamond Excellence Resort & Spa|9-11": {
+        "history_max": 17798.0,
+        "premium_peak": 17798.0
+      },
+      "Rox Royal (ex. Grand Haber)|9-11": {
+        "history_max": 10886.0,
+        "premium_peak": 10886.0
       }
     }
   }

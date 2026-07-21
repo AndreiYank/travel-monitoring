@@ -1521,10 +1521,62 @@
       "created_at": "2026-07-21T20:34:11.549263+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Marilis Hill Resort and Spa Turcja, Alanya_2026-07-21_20-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6995.0,
+      "new_price": 7943.0,
+      "price_change": 948.0,
+      "price_change_pct": 13.552537526804862,
+      "timestamp": "2026-07-21 22:13:57.797589+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-21T22:15:04.499189+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-07-21_22-13_+13.6"
+    },
+    {
+      "hotel_name": "Charisma Deluxe Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 9483.0,
+      "new_price": 9483.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 22:13:57.797589+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T22:15:04.499229+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe Turcja, Kusadasi_2026-07-21_22-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "",
+      "old_price": 9651.0,
+      "new_price": 10352.0,
+      "price_change": 701.0,
+      "price_change_pct": 7.263496010776086,
+      "timestamp": "2026-07-21 22:13:57.797589+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T22:15:04.499242+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum_2026-07-21_22-13_zone_out_+7.3"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 11038.0,
+      "new_price": 9994.0,
+      "price_change": -1044.0,
+      "price_change_pct": -9.458235187533974,
+      "timestamp": "2026-07-21 22:13:57.797589+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T22:15:04.499264+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-21_22-13_comeback_9.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T20:33:07.401696+00:00",
+    "last_processed_run": "2026-07-21T22:13:57.797589+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -1555,8 +1607,8 @@
         "premium_peak": 13217.0
       },
       "Hotel Su": {
-        "history_max": 12380.0,
-        "premium_peak": 12380.0
+        "history_max": 12417.0,
+        "premium_peak": 12417.0
       },
       "Horus Paradise Luxury Resort": {
         "history_max": 12775.0,
@@ -2071,7 +2123,7 @@
         "premium_peak": null
       },
       "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar": {
-        "history_max": 8511.0,
+        "history_max": 8810.0,
         "premium_peak": null
       },
       "Lonicera West (ex. Gold Island)": {
@@ -2207,7 +2259,7 @@
         "premium_peak": 13394.0
       },
       "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı": {
-        "history_max": 7875.0,
+        "history_max": 7943.0,
         "premium_peak": null
       },
       "Palemon Resort & Spa": {
@@ -2283,8 +2335,8 @@
         "premium_peak": null
       },
       "Azura World (ex. Wyndham Alanya)": {
-        "history_max": 12695.0,
-        "premium_peak": 12695.0
+        "history_max": 12874.0,
+        "premium_peak": 12874.0
       },
       "Vikingen Infinity Resort & Spa": {
         "history_max": 11697.0,
@@ -2331,8 +2383,8 @@
         "premium_peak": 13275.0
       },
       "Charisma Deluxe (Kusadasi)": {
-        "history_max": 10435.0,
-        "premium_peak": 10435.0
+        "history_max": 10583.0,
+        "premium_peak": 10583.0
       },
       "Tusan Beach Resort": {
         "history_max": 11627.0,
@@ -2963,8 +3015,8 @@
         "premium_peak": 13244.0
       },
       "Side Kum": {
-        "history_max": 9651.0,
-        "premium_peak": null
+        "history_max": 10352.0,
+        "premium_peak": 10352.0
       },
       "Maril Resort Turcja, Bodrum, Didim": {
         "history_max": 9557.0,
@@ -2981,6 +3033,18 @@
       "Club Melas Prive (ex. Melas Holiday Village)": {
         "history_max": 13264.0,
         "premium_peak": 13264.0
+      },
+      "Arin Resort Bodrum": {
+        "history_max": 13145.0,
+        "premium_peak": 13145.0
+      },
+      "Royal Atlantis Icon": {
+        "history_max": 12350.0,
+        "premium_peak": 12350.0
+      },
+      "Sunis Kumkoy Beach Resort & Spa": {
+        "history_max": 12439.0,
+        "premium_peak": 12439.0
       }
     }
   }
