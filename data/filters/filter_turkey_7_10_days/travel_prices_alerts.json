@@ -1430,10 +1430,101 @@
       "created_at": "2026-07-21T18:26:35.400743+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Oz Sui Resort_2026-07-21_18-25_comeback_13.2"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6475.0,
+      "new_price": 6995.0,
+      "price_change": 520.0,
+      "price_change_pct": 8.03088803088803,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-21T20:34:11.549179+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-07-21_20-33_+8.0"
+    },
+    {
+      "hotel_name": "Dedeman Kemer Resort",
+      "duration_bucket": "",
+      "old_price": 9827.0,
+      "new_price": 10367.0,
+      "price_change": 540.0,
+      "price_change_pct": 5.495064617889488,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T20:34:11.549220+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dedeman Kemer Resort_2026-07-21_20-33_zone_out_+5.5"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 9396.0,
+      "new_price": 9396.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T20:34:11.549231+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa Turcja, Side_2026-07-21_20-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler)",
+      "duration_bucket": "",
+      "old_price": 9567.0,
+      "new_price": 9567.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T20:34:11.549239+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler)_2026-07-21_20-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9578.0,
+      "new_price": 11038.0,
+      "price_change": 1460.0,
+      "price_change_pct": 15.243265817498433,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T20:34:11.549248+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-21_20-33_zone_out_+15.2"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9978.0,
+      "new_price": 9978.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T20:34:11.549256+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-07-21_20-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 9128.0,
+      "new_price": 9128.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 20:33:07.401696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T20:34:11.549263+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa Turcja, Alanya_2026-07-21_20-33_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T18:25:35.272419+00:00",
+    "last_processed_run": "2026-07-21T20:33:07.401696+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -1572,8 +1663,8 @@
         "premium_peak": null
       },
       "Seashell Vega (ex. Side Crown Sunshine)": {
-        "history_max": 11297.0,
-        "premium_peak": 11297.0
+        "history_max": 11897.0,
+        "premium_peak": 11897.0
       },
       "Kaya Izmir Thermal & Convention": {
         "history_max": 10310.0,
@@ -1796,8 +1887,8 @@
         "premium_peak": null
       },
       "Nova Park": {
-        "history_max": 11562.0,
-        "premium_peak": 11562.0
+        "history_max": 11691.0,
+        "premium_peak": 11691.0
       },
       "Prime Beach": {
         "history_max": 12565.0,
@@ -2128,8 +2219,8 @@
         "premium_peak": 13271.0
       },
       "VONResort Golden Beach": {
-        "history_max": 13222.0,
-        "premium_peak": 13222.0
+        "history_max": 13350.0,
+        "premium_peak": 13350.0
       },
       "Calido Sol (Alanya)": {
         "history_max": 10663.0,
@@ -2232,8 +2323,8 @@
         "premium_peak": 12068.0
       },
       "Turunc Premium": {
-        "history_max": 12698.0,
-        "premium_peak": 12698.0
+        "history_max": 12767.0,
+        "premium_peak": 12767.0
       },
       "Utopia World": {
         "history_max": 13275.0,
@@ -2280,8 +2371,8 @@
         "premium_peak": 11583.0
       },
       "Asteria Family Belek": {
-        "history_max": 12038.0,
-        "premium_peak": 12038.0
+        "history_max": 12200.0,
+        "premium_peak": 12200.0
       },
       "Vikingen Quality Resort": {
         "history_max": 11825.0,
@@ -2464,8 +2555,8 @@
         "premium_peak": 13157.0
       },
       "Sural Resort": {
-        "history_max": 13228.0,
-        "premium_peak": 13228.0
+        "history_max": 13286.0,
+        "premium_peak": 13286.0
       },
       "Sunis Evren Beach & Spa": {
         "history_max": 12756.0,
@@ -2480,8 +2571,8 @@
         "premium_peak": 11397.0
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
-        "history_max": 11880.0,
-        "premium_peak": 11880.0
+        "history_max": 12632.0,
+        "premium_peak": 12632.0
       },
       "Dream Fun World": {
         "history_max": 13097.0,
@@ -2878,6 +2969,18 @@
       "Maril Resort Turcja, Bodrum, Didim": {
         "history_max": 9557.0,
         "premium_peak": null
+      },
+      "Royal Dragon": {
+        "history_max": 13278.0,
+        "premium_peak": 13278.0
+      },
+      "Diamond De Luxe ( Colakli)": {
+        "history_max": 12664.0,
+        "premium_peak": 12664.0
+      },
+      "Club Melas Prive (ex. Melas Holiday Village)": {
+        "history_max": 13264.0,
+        "premium_peak": 13264.0
       }
     }
   }
