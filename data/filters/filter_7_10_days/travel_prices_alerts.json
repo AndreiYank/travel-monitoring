@@ -507,13 +507,65 @@
       "created_at": "2026-07-20T21:21:58.856512+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-07-20_21-19_zone_out_+8.7"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 9759.0,
+      "new_price": 8312.0,
+      "price_change": -1447.0,
+      "price_change_pct": -14.827338866687162,
+      "timestamp": "2026-07-21 01:59:46.157003+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-21T02:01:55.706525+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-21_01-59_-14.8"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 10787.0,
+      "new_price": 9446.0,
+      "price_change": -1341.0,
+      "price_change_pct": -12.431630666543061,
+      "timestamp": "2026-07-21 01:59:46.157003+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T02:01:55.706554+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-21_01-59_comeback_12.4"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10701.0,
+      "new_price": 9662.0,
+      "price_change": -1039.0,
+      "price_change_pct": -9.709372955798523,
+      "timestamp": "2026-07-21 01:59:46.157003+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T02:01:55.706562+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-21_01-59_comeback_9.7"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 11057.0,
+      "new_price": 9648.0,
+      "price_change": -1409.0,
+      "price_change_pct": -12.743058695848783,
+      "timestamp": "2026-07-21 01:59:46.157003+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T02:01:55.706569+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-21_01-59_comeback_12.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-20T21:19:44.692198+00:00",
+    "last_processed_run": "2026-07-21T01:59:46.157003+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
-        "history_max": 9423.0,
+        "history_max": 9491.0,
         "premium_peak": null
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
@@ -521,8 +573,8 @@
         "premium_peak": 12047.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 11563.0,
-        "premium_peak": 11563.0
+        "history_max": 12243.0,
+        "premium_peak": 12243.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
         "history_max": 11577.0,
@@ -765,8 +817,8 @@
         "premium_peak": 15167.0
       },
       "Sunrise Royal Makadi Aqua Resort": {
-        "history_max": 13975.0,
-        "premium_peak": 13975.0
+        "history_max": 15054.0,
+        "premium_peak": 15054.0
       },
       "Sunrise Select Garden Beach Resort & Spa": {
         "history_max": 17888.0,
@@ -1303,6 +1355,26 @@
       "Desert Rose Resort": {
         "history_max": 10083.0,
         "premium_peak": 10083.0
+      },
+      "Titanic Palace Resort": {
+        "history_max": 11057.0,
+        "premium_peak": 11057.0
+      },
+      "Xanadu Makadi Bay": {
+        "history_max": 13987.0,
+        "premium_peak": 13987.0
+      },
+      "Calimera Blend Paradise Resort": {
+        "history_max": 12641.0,
+        "premium_peak": 12641.0
+      },
+      "Sentido Reef Oasis Senses Resort": {
+        "history_max": 13865.0,
+        "premium_peak": 13865.0
+      },
+      "Serenity Alma Heights (ex. Serenity Fun City)": {
+        "history_max": 11347.0,
+        "premium_peak": 11347.0
       }
     }
   }
