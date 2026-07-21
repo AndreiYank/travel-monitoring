@@ -1573,10 +1573,75 @@
       "created_at": "2026-07-21T22:15:04.499264+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Oz Sui Resort_2026-07-21_22-13_comeback_9.5"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9994.0,
+      "new_price": 10822.0,
+      "price_change": 828.0,
+      "price_change_pct": 8.284970982589554,
+      "timestamp": "2026-07-21 23:04:12.490047+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T23:05:21.557282+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-07-21_23-04_zone_out_+8.3"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 9570.0,
+      "new_price": 9570.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 23:04:12.490047+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T23:05:21.557311+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa Turcja, Side, Colakli_2026-07-21_23-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "",
+      "old_price": 9668.0,
+      "new_price": 9668.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 23:04:12.490047+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T23:05:21.557322+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-07-21_23-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11047.0,
+      "new_price": 9802.0,
+      "price_change": -1245.0,
+      "price_change_pct": -11.270028061917262,
+      "timestamp": "2026-07-21 23:04:12.490047+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T23:05:21.557345+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-07-21_23-04_comeback_11.3"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 13251.0,
+      "new_price": 9881.0,
+      "price_change": -3370.0,
+      "price_change_pct": -25.432042864689457,
+      "timestamp": "2026-07-21 23:04:12.490047+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T23:05:21.557360+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-07-21_23-04_comeback_25.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T22:13:57.797589+00:00",
+    "last_processed_run": "2026-07-21T23:04:12.490047+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -2059,8 +2124,8 @@
         "premium_peak": 10497.0
       },
       "Orange Palace": {
-        "history_max": 12495.0,
-        "premium_peak": 12495.0
+        "history_max": 12555.0,
+        "premium_peak": 12555.0
       },
       "Orange County Belek": {
         "history_max": 12662.0,
@@ -2939,7 +3004,7 @@
         "premium_peak": 12033.0
       },
       "The Marilis Hill Resort and Spa Turcja, Alanya": {
-        "history_max": 9128.0,
+        "history_max": 9668.0,
         "premium_peak": null
       },
       "Trendy Lara": {
@@ -3045,6 +3110,10 @@
       "Sunis Kumkoy Beach Resort & Spa": {
         "history_max": 12439.0,
         "premium_peak": 12439.0
+      },
+      "Limak Limra": {
+        "history_max": 13194.0,
+        "premium_peak": 13194.0
       }
     }
   }

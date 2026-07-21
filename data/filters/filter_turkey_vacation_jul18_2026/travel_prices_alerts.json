@@ -234,10 +234,49 @@
       "created_at": "2026-07-21T22:17:47.449024+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xafira Deluxe Resort & Spa|7-9_2026-07-21_22-15_comeback_22.4"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "7-9",
+      "old_price": 9783.0,
+      "new_price": 11088.0,
+      "price_change": 1305.0,
+      "price_change_pct": 13.339466421343147,
+      "timestamp": "2026-07-21 23:06:11.521287+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T23:08:39.747052+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)|7-9_2026-07-21_23-06_zone_out_+13.3"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "7-9",
+      "old_price": 9873.0,
+      "new_price": 9873.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 23:06:11.521287+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T23:08:39.747080+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)|7-9_2026-07-21_23-06_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "7-9",
+      "old_price": 8475.0,
+      "new_price": 8475.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 23:06:11.521287+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T23:08:39.747092+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa|7-9_2026-07-21_23-06_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T22:15:25.423914+00:00",
+    "last_processed_run": "2026-07-21T23:06:11.521287+00:00",
     "premium_state": {
       "Trendy Perge Resort & Suites|7-9": {
         "history_max": 13865.0,
@@ -688,8 +727,8 @@
         "premium_peak": 12357.0
       },
       "Innvista Belek (ex. Vera Verde)|7-9": {
-        "history_max": 12568.0,
-        "premium_peak": 12568.0
+        "history_max": 13072.0,
+        "premium_peak": 13072.0
       },
       "Water Side Resort & Spa|7-9": {
         "history_max": 11193.0,
@@ -968,8 +1007,8 @@
         "premium_peak": 17933.0
       },
       "Trendy Perge Resort & Suites|9-11": {
-        "history_max": 15273.0,
-        "premium_peak": 15273.0
+        "history_max": 16794.0,
+        "premium_peak": 16794.0
       },
       "Marti Myra|9-11": {
         "history_max": 16794.0,
@@ -1098,6 +1137,34 @@
       "Rox Royal (ex. Grand Haber)|9-11": {
         "history_max": 10886.0,
         "premium_peak": 10886.0
+      },
+      "Viking Star|7-9": {
+        "history_max": 10737.0,
+        "premium_peak": 10737.0
+      },
+      "Pine Beach Belek (ex. Maritim Pine Beach Resort)|7-9": {
+        "history_max": 13662.0,
+        "premium_peak": 13662.0
+      },
+      "Trendy Aspendos Beach|7-9": {
+        "history_max": 13829.0,
+        "premium_peak": 13829.0
+      },
+      "Paloma Perissia|7-9": {
+        "history_max": 13861.0,
+        "premium_peak": 13861.0
+      },
+      "Xanadu Resort|7-9": {
+        "history_max": 14532.0,
+        "premium_peak": 14532.0
+      },
+      "Diamond Excellence Resort & Spa|7-9": {
+        "history_max": 14468.0,
+        "premium_peak": 14468.0
+      },
+      "Siam Elegance|7-9": {
+        "history_max": 11300.0,
+        "premium_peak": 11300.0
       }
     }
   }
