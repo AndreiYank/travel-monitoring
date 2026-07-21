@@ -1287,10 +1287,166 @@
       "created_at": "2026-07-21T07:53:52.721638+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-07-21_07-51_comeback_11.8"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 9104.0,
+      "new_price": 9860.0,
+      "price_change": 756.0,
+      "price_change_pct": 8.304042179261863,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-21T10:35:57.090382+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-07-21_10-33_+8.3"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 8582.0,
+      "price_change": -875.0,
+      "price_change_pct": -9.25240562546262,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-21T10:35:57.090410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-07-21_10-33_-9.3"
+    },
+    {
+      "hotel_name": "Double Tree by Hilton Mangroovy El Gouna Resort",
+      "duration_bucket": "",
+      "old_price": 9923.0,
+      "new_price": 8928.0,
+      "price_change": -995.0,
+      "price_change_pct": -10.027209513252041,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-21T10:35:57.090426+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-07-21_10-33_-10.0"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 9779.0,
+      "new_price": 8820.0,
+      "price_change": -959.0,
+      "price_change_pct": -9.806728704366499,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-21T10:35:57.090435+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-07-21_10-33_-9.8"
+    },
+    {
+      "hotel_name": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)",
+      "duration_bucket": "",
+      "old_price": 9972.0,
+      "new_price": 9972.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T10:35:57.090449+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)_2026-07-21_10-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)",
+      "duration_bucket": "",
+      "old_price": 9247.0,
+      "new_price": 14397.0,
+      "price_change": 5150.0,
+      "price_change_pct": 55.69373850978696,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T10:35:57.090459+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)_2026-07-21_10-33_zone_out_+55.7"
+    },
+    {
+      "hotel_name": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)",
+      "duration_bucket": "",
+      "old_price": 9218.0,
+      "new_price": 9218.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T10:35:57.090466+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-07-21_10-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 10488.0,
+      "new_price": 9383.0,
+      "price_change": -1105.0,
+      "price_change_pct": -10.535850495804729,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T10:35:57.090485+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-07-21_10-33_comeback_10.5"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 10922.0,
+      "new_price": 9477.0,
+      "price_change": -1445.0,
+      "price_change_pct": -13.230177623145945,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T10:35:57.090498+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-21_10-33_comeback_13.2"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10701.0,
+      "new_price": 9225.0,
+      "price_change": -1476.0,
+      "price_change_pct": -13.793103448275861,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T10:35:57.090508+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-07-21_10-33_comeback_13.8"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 10787.0,
+      "new_price": 9770.0,
+      "price_change": -1017.0,
+      "price_change_pct": -9.428015203485678,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T10:35:57.090518+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-21_10-33_comeback_9.4"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10382.0,
+      "new_price": 8937.0,
+      "price_change": -1445.0,
+      "price_change_pct": -13.918320169524176,
+      "timestamp": "2026-07-21 10:33:47.354452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T10:35:57.090529+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-07-21_10-33_comeback_13.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T07:51:29.165122+00:00",
+    "last_processed_run": "2026-07-21T10:33:47.354452+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -1341,8 +1497,8 @@
         "premium_peak": 12057.0
       },
       "Reef Oasis Suakin Resort": {
-        "history_max": 10457.0,
-        "premium_peak": 10457.0
+        "history_max": 10657.0,
+        "premium_peak": 10657.0
       },
       "Regency Plaza Aqua Park Spa": {
         "history_max": 9857.0,
@@ -1377,8 +1533,8 @@
         "premium_peak": 15784.0
       },
       "Rixos Premium Magawish Suites & Villas": {
-        "history_max": 15649.0,
-        "premium_peak": 15649.0
+        "history_max": 16110.0,
+        "premium_peak": 16110.0
       },
       "Rixos Premium Seagate": {
         "history_max": 19591.0,
@@ -1521,8 +1677,8 @@
         "premium_peak": 11077.0
       },
       "Sunrise Anjum Resort": {
-        "history_max": 12091.0,
-        "premium_peak": 12091.0
+        "history_max": 12223.0,
+        "premium_peak": 12223.0
       },
       "Sunrise Aqua Joy": {
         "history_max": 12297.0,
@@ -1573,11 +1729,11 @@
         "premium_peak": 12407.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 10703.0,
-        "premium_peak": 10703.0
+        "history_max": 11123.0,
+        "premium_peak": 11123.0
       },
       "Time Marina": {
-        "history_max": 8373.0,
+        "history_max": 8406.0,
         "premium_peak": null
       },
       "Titanic Beach Spa & Aqua Park": {
@@ -1633,7 +1789,7 @@
         "premium_peak": 14389.0
       },
       "Sea Star Beau Rivage": {
-        "history_max": 9104.0,
+        "history_max": 9860.0,
         "premium_peak": null
       },
       "Sentido Akassia Beach (ex. LTI Akassia Beach)": {
@@ -1681,16 +1837,16 @@
         "premium_peak": 10844.0
       },
       "Steigenberger Al Dau Beach": {
-        "history_max": 14760.0,
-        "premium_peak": 14760.0
+        "history_max": 14777.0,
+        "premium_peak": 14777.0
       },
       "Steigenberger Alcazar": {
         "history_max": 14776.0,
         "premium_peak": 14776.0
       },
       "Steigenberger Aqua Magic": {
-        "history_max": 11943.0,
-        "premium_peak": 11943.0
+        "history_max": 13337.0,
+        "premium_peak": 13337.0
       },
       "Steigenberger Coraya Beach": {
         "history_max": 15087.0,
@@ -1729,8 +1885,8 @@
         "premium_peak": 15942.0
       },
       "El Kasr Red Sea": {
-        "history_max": 13737.0,
-        "premium_peak": 13737.0
+        "history_max": 14397.0,
+        "premium_peak": 14397.0
       },
       "Cardina Resort by Sunrise": {
         "history_max": 10527.0,
@@ -1957,8 +2113,8 @@
         "premium_peak": 10057.0
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
-        "history_max": 9517.0,
-        "premium_peak": null
+        "history_max": 14397.0,
+        "premium_peak": 14397.0
       },
       "Strand Taba Heights Resort (ex. InterContinental)": {
         "history_max": 12959.0,
@@ -2049,7 +2205,7 @@
         "premium_peak": 12802.0
       },
       "Rewaya Luxury Resort": {
-        "history_max": 9766.0,
+        "history_max": 9932.0,
         "premium_peak": null
       },
       "Coral Sea Water World Resort": {
