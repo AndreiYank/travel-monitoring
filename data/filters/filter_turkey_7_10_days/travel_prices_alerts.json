@@ -1326,10 +1326,49 @@
       "created_at": "2026-07-21T15:16:14.585832+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rixos Elysium Suites_2026-07-21_15-14_comeback_14.6"
+    },
+    {
+      "hotel_name": "Kadikale Resort Spa & Wellness",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 16:34:51.330754+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T16:36:02.358131+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kadikale Resort Spa & Wellness_2026-07-21_16-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 9352.0,
+      "new_price": 9352.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-21 16:34:51.330754+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T16:36:02.358155+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum Turcja, Side_2026-07-21_16-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9750.0,
+      "new_price": 10345.0,
+      "price_change": 595.0,
+      "price_change_pct": 6.102564102564102,
+      "timestamp": "2026-07-21 16:34:51.330754+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T16:36:02.358170+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa_2026-07-21_16-34_zone_out_+6.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T15:14:59.264468+00:00",
+    "last_processed_run": "2026-07-21T16:34:51.330754+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -1544,8 +1583,8 @@
         "premium_peak": 11246.0
       },
       "Fun & Sun Smart Hane Sun": {
-        "history_max": 10809.0,
-        "premium_peak": 10809.0
+        "history_max": 10971.0,
+        "premium_peak": 10971.0
       },
       "Fore Resort & Spa": {
         "history_max": 12314.0,
@@ -1748,8 +1787,8 @@
         "premium_peak": 11648.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
-        "history_max": 12960.0,
-        "premium_peak": 12960.0
+        "history_max": 13083.0,
+        "premium_peak": 13083.0
       },
       "PrimaSol Telatiye Resort": {
         "history_max": 10297.0,
@@ -2220,8 +2259,8 @@
         "premium_peak": 11757.0
       },
       "Ali Bey Park Manavgat": {
-        "history_max": 13090.0,
-        "premium_peak": 13090.0
+        "history_max": 13159.0,
+        "premium_peak": 13159.0
       },
       "Alarcha": {
         "history_max": 11097.0,
@@ -2524,8 +2563,8 @@
         "premium_peak": 11097.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)": {
-        "history_max": 12902.0,
-        "premium_peak": 12902.0
+        "history_max": 13145.0,
+        "premium_peak": 13145.0
       },
       "Side Star Resort (ex Club)": {
         "history_max": 13196.0,
@@ -2766,6 +2805,14 @@
       "Palm Wings Ephesus": {
         "history_max": 13244.0,
         "premium_peak": 13244.0
+      },
+      "Side Kum": {
+        "history_max": 9651.0,
+        "premium_peak": null
+      },
+      "Maril Resort Turcja, Bodrum, Didim": {
+        "history_max": 9557.0,
+        "premium_peak": null
       }
     }
   }
