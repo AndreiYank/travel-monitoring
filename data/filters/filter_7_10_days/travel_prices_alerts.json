@@ -1443,10 +1443,75 @@
       "created_at": "2026-07-21T10:35:57.090529+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Marriott Hurghada Beach Resort_2026-07-21_10-33_comeback_13.9"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 9932.0,
+      "new_price": 9133.0,
+      "price_change": -799.0,
+      "price_change_pct": -8.044703987112364,
+      "timestamp": "2026-07-21 12:38:10.864204+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-21T12:40:18.917836+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-07-21_12-38_-8.0"
+    },
+    {
+      "hotel_name": "Double Tree by Hilton Mangroovy El Gouna Resort",
+      "duration_bucket": "",
+      "old_price": 8928.0,
+      "new_price": 10373.0,
+      "price_change": 1445.0,
+      "price_change_pct": 16.185035842293907,
+      "timestamp": "2026-07-21 12:38:10.864204+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-21T12:40:18.917877+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-07-21_12-38_zone_out_+16.2"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)",
+      "duration_bucket": "",
+      "old_price": 14397.0,
+      "new_price": 8884.0,
+      "price_change": -5513.0,
+      "price_change_pct": -38.292699868028066,
+      "timestamp": "2026-07-21 12:38:10.864204+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T12:40:18.917904+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)_2026-07-21_12-38_comeback_38.3"
+    },
+    {
+      "hotel_name": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)",
+      "duration_bucket": "",
+      "old_price": 10296.0,
+      "new_price": 8813.0,
+      "price_change": -1483.0,
+      "price_change_pct": -14.403651903651904,
+      "timestamp": "2026-07-21 12:38:10.864204+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T12:40:18.917918+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-07-21_12-38_comeback_14.4"
+    },
+    {
+      "hotel_name": "Serenity Sky Arc",
+      "duration_bucket": "",
+      "old_price": 10827.0,
+      "new_price": 9867.0,
+      "price_change": -960.0,
+      "price_change_pct": -8.86672208367969,
+      "timestamp": "2026-07-21 12:38:10.864204+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-21T12:40:18.917929+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-07-21_12-38_comeback_8.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-21T10:33:47.354452+00:00",
+    "last_processed_run": "2026-07-21T12:38:10.864204+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -1689,16 +1754,16 @@
         "premium_peak": 17585.0
       },
       "Sunrise Diamond Beach Resort Grand Select": {
-        "history_max": 16245.0,
-        "premium_peak": 16245.0
+        "history_max": 17420.0,
+        "premium_peak": 17420.0
       },
       "Sunrise Montemare Resort": {
         "history_max": 15890.0,
         "premium_peak": 15890.0
       },
       "Sunrise Remal Beach": {
-        "history_max": 15167.0,
-        "premium_peak": 15167.0
+        "history_max": 16315.0,
+        "premium_peak": 16315.0
       },
       "Sunrise Royal Makadi Aqua Resort": {
         "history_max": 15054.0,
@@ -1729,8 +1794,8 @@
         "premium_peak": 12407.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 11123.0,
-        "premium_peak": 11123.0
+        "history_max": 11403.0,
+        "premium_peak": 11403.0
       },
       "Time Marina": {
         "history_max": 8406.0,
@@ -1897,8 +1962,8 @@
         "premium_peak": 12183.0
       },
       "Caesar Bay Resort": {
-        "history_max": 11797.0,
-        "premium_peak": 11797.0
+        "history_max": 11997.0,
+        "premium_peak": 11997.0
       },
       "Fantazia Resort": {
         "history_max": 10543.0,
@@ -2189,12 +2254,12 @@
         "premium_peak": 12657.0
       },
       "Jaz Almaza Beach": {
-        "history_max": 13097.0,
-        "premium_peak": 13097.0
+        "history_max": 14497.0,
+        "premium_peak": 14497.0
       },
       "Jasmine Palace": {
-        "history_max": 10057.0,
-        "premium_peak": 10057.0
+        "history_max": 10257.0,
+        "premium_peak": 10257.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
         "history_max": 10509.0,
@@ -2245,8 +2310,8 @@
         "premium_peak": 11057.0
       },
       "Xanadu Makadi Bay": {
-        "history_max": 13987.0,
-        "premium_peak": 13987.0
+        "history_max": 14487.0,
+        "premium_peak": 14487.0
       },
       "Calimera Blend Paradise Resort": {
         "history_max": 12641.0,
