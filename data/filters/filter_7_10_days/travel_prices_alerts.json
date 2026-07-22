@@ -2418,10 +2418,36 @@
       "created_at": "2026-07-22T00:09:34.773172+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ancient Sands Golf Resort_2026-07-22_00-07_comeback_13.2"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9648.0,
+      "new_price": 11057.0,
+      "price_change": 1409.0,
+      "price_change_pct": 14.604063018242122,
+      "timestamp": "2026-07-22 01:50:25.872048+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-22T01:52:35.988747+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-07-22_01-50_zone_out_+14.6"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 10846.0,
+      "new_price": 9590.0,
+      "price_change": -1256.0,
+      "price_change_pct": -11.580306103632676,
+      "timestamp": "2026-07-22 01:50:25.872048+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-22T01:52:35.988789+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-22_01-50_comeback_11.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-22T00:07:15.038812+00:00",
+    "last_processed_run": "2026-07-22T01:50:25.872048+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -2636,8 +2662,8 @@
         "premium_peak": 14717.0
       },
       "Rixos Radamis Tirana Sharm": {
-        "history_max": 15913.0,
-        "premium_peak": 15913.0
+        "history_max": 16007.0,
+        "premium_peak": 16007.0
       },
       "Safir Dahab Resort": {
         "history_max": 11551.0,
@@ -2700,8 +2726,8 @@
         "premium_peak": 16114.0
       },
       "The V Luxury Resort": {
-        "history_max": 12407.0,
-        "premium_peak": 12407.0
+        "history_max": 12740.0,
+        "premium_peak": 12740.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
         "history_max": 11403.0,
@@ -3258,6 +3284,10 @@
       "Pickalbatros Laguna Vista Beach": {
         "history_max": 13608.0,
         "premium_peak": 13608.0
+      },
+      "Charmillion Club Aqua Park": {
+        "history_max": 9540.0,
+        "premium_peak": null
       }
     }
   }
