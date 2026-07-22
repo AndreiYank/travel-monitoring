@@ -2496,10 +2496,49 @@
       "created_at": "2026-07-22T07:55:33.591954+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Stella Beach Resort & Spa_2026-07-22_07-53_zone_out_+10.0"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 8663.0,
+      "new_price": 9946.0,
+      "price_change": 1283.0,
+      "price_change_pct": 14.810111970449036,
+      "timestamp": "2026-07-22 10:33:33.544883+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-22T10:35:54.800404+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-07-22_10-33_+14.8"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 9459.0,
+      "new_price": 10397.0,
+      "price_change": 938.0,
+      "price_change_pct": 9.916481657680515,
+      "timestamp": "2026-07-22 10:33:33.544883+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-22T10:35:54.800443+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-07-22_10-33_zone_out_+9.9"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9477.0,
+      "new_price": 10707.0,
+      "price_change": 1230.0,
+      "price_change_pct": 12.978790756568534,
+      "timestamp": "2026-07-22 10:33:33.544883+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-22T10:35:54.800457+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-22_10-33_zone_out_+13.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-22T07:53:24.544068+00:00",
+    "last_processed_run": "2026-07-22T10:33:33.544883+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -2510,8 +2549,8 @@
         "premium_peak": 12047.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 12243.0,
-        "premium_peak": 12243.0
+        "history_max": 15663.0,
+        "premium_peak": 15663.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
         "history_max": 11577.0,
@@ -2666,8 +2705,8 @@
         "premium_peak": 11087.0
       },
       "Movenpick Resort El Quseir": {
-        "history_max": 12047.0,
-        "premium_peak": 12047.0
+        "history_max": 13057.0,
+        "premium_peak": 13057.0
       },
       "Naama Bay Hotel & Resort": {
         "history_max": 15190.0,
@@ -2678,7 +2717,7 @@
         "premium_peak": null
       },
       "Novotel Marsa Alam": {
-        "history_max": 9563.0,
+        "history_max": 9581.0,
         "premium_peak": null
       },
       "Nubian Island": {
@@ -2770,7 +2809,7 @@
         "premium_peak": 11841.0
       },
       "Swissotel Resort El Quseir": {
-        "history_max": 9518.0,
+        "history_max": 9623.0,
         "premium_peak": null
       },
       "Swissotel Sharm El Sheikh": {
@@ -3026,7 +3065,7 @@
         "premium_peak": 11623.0
       },
       "Concorde Moreen Beach Resort & Spa": {
-        "history_max": 9909.0,
+        "history_max": 9983.0,
         "premium_peak": null
       },
       "Domina Coral Bay Bella Vista": {
@@ -3102,8 +3141,8 @@
         "premium_peak": 13197.0
       },
       "Amarina Jannah Resort Aquapark": {
-        "history_max": 9851.0,
-        "premium_peak": null
+        "history_max": 10397.0,
+        "premium_peak": 10397.0
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
         "history_max": 11504.0,
