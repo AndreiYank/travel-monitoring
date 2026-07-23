@@ -312,14 +312,53 @@
       "created_at": "2026-07-23T12:47:47.106590+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-07-23_12-46_comeback_11.0"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 9631.0,
+      "new_price": 10131.0,
+      "price_change": 500.0,
+      "price_change_pct": 5.191568892119198,
+      "timestamp": "2026-07-23 15:23:38.261069+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-23T15:24:48.304231+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-07-23_15-23_zone_out_+5.2"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 9860.0,
+      "new_price": 10531.0,
+      "price_change": 671.0,
+      "price_change_pct": 6.805273833671399,
+      "timestamp": "2026-07-23 15:23:38.261069+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-23T15:24:48.304258+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-07-23_15-23_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 10657.0,
+      "new_price": 9397.0,
+      "price_change": -1260.0,
+      "price_change_pct": -11.82321478840199,
+      "timestamp": "2026-07-23 15:23:38.261069+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-23T15:24:48.304281+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-07-23_15-23_comeback_11.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-23T12:46:59.694799+00:00",
+    "last_processed_run": "2026-07-23T15:23:38.261069+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
-        "history_max": 18359.0,
-        "premium_peak": 18359.0
+        "history_max": 18362.0,
+        "premium_peak": 18362.0
       },
       "Kakkos Bay": {
         "history_max": 14263.0,
@@ -694,20 +733,20 @@
         "premium_peak": 13668.0
       },
       "Eden Roc Resort": {
-        "history_max": 16762.0,
-        "premium_peak": 16762.0
+        "history_max": 17362.0,
+        "premium_peak": 17362.0
       },
       "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
-        "history_max": 12536.0,
-        "premium_peak": 12536.0
+        "history_max": 12589.0,
+        "premium_peak": 12589.0
       },
       "Domes Aulus Zante Autograph Collection": {
         "history_max": 19647.0,
         "premium_peak": 19647.0
       },
       "Zeus Eleva Mirabello Bay": {
-        "history_max": 16195.0,
-        "premium_peak": 16195.0
+        "history_max": 16504.0,
+        "premium_peak": 16504.0
       },
       "Aldemar Olympian Village": {
         "history_max": 14176.0,
@@ -782,8 +821,8 @@
         "premium_peak": 13057.0
       },
       "White Olive Elite": {
-        "history_max": 13013.0,
-        "premium_peak": 13013.0
+        "history_max": 13028.0,
+        "premium_peak": 13028.0
       },
       "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti": {
         "history_max": 12701.0,
@@ -838,8 +877,20 @@
         "premium_peak": 14310.0
       },
       "Natura Park Village Grecja, Kos, Psalidi": {
-        "history_max": 12159.0,
-        "premium_peak": 12159.0
+        "history_max": 12276.0,
+        "premium_peak": 12276.0
+      },
+      "Kipriotis Panorama & Suites Grecja, Kos, Psalidi": {
+        "history_max": 12652.0,
+        "premium_peak": 12652.0
+      },
+      "Grand Blue Beach": {
+        "history_max": 13417.0,
+        "premium_peak": 13417.0
+      },
+      "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
+        "history_max": 12989.0,
+        "premium_peak": 12989.0
       }
     }
   }
