@@ -2691,10 +2691,88 @@
       "created_at": "2026-07-23T08:32:21.134711+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Crown Serenity Turcja, Side, Colakli_2026-07-23_08-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 9570.0,
+      "new_price": 8680.0,
+      "price_change": -890.0,
+      "price_change_pct": -9.299895506792058,
+      "timestamp": "2026-07-23 11:26:12.860055+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-23T11:27:41.408472+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-07-23_11-26_-9.3"
+    },
+    {
+      "hotel_name": "Bieno Club Sunset (ex. Bone Club Sunset) Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-23 11:26:12.860055+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-23T11:27:41.408508+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bieno Club Sunset (ex. Bone Club Sunset) Turcja, Side_2026-07-23_11-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Meridia Beach Turcja, Alanya, Okurcalar",
+      "duration_bucket": "",
+      "old_price": 9981.0,
+      "new_price": 9981.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-23 11:26:12.860055+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-23T11:27:41.408520+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Meridia Beach Turcja, Alanya, Okurcalar_2026-07-23_11-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rixos Elysium Suites Turcja, Istambuł, Stambuł",
+      "duration_bucket": "",
+      "old_price": 9984.0,
+      "new_price": 9984.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-23 11:26:12.860055+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-23T11:27:41.408530+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rixos Elysium Suites Turcja, Istambuł, Stambuł_2026-07-23_11-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11815.0,
+      "new_price": 9981.0,
+      "price_change": -1834.0,
+      "price_change_pct": -15.522640710960644,
+      "timestamp": "2026-07-23 11:26:12.860055+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-23T11:27:41.408556+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort_2026-07-23_11-26_comeback_15.5"
+    },
+    {
+      "hotel_name": "Rixos Elysium Suites",
+      "duration_bucket": "",
+      "old_price": 11686.0,
+      "new_price": 9984.0,
+      "price_change": -1702.0,
+      "price_change_pct": -14.56443607735752,
+      "timestamp": "2026-07-23 11:26:12.860055+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-23T11:27:41.408568+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rixos Elysium Suites_2026-07-23_11-26_comeback_14.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-23T08:30:37.052803+00:00",
+    "last_processed_run": "2026-07-23T11:26:12.860055+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -2745,8 +2823,8 @@
         "premium_peak": 11277.0
       },
       "Sensitive Premium Resort & Spa": {
-        "history_max": 11097.0,
-        "premium_peak": 11097.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Hillstone Bodrum (ex. Grand Yazici)": {
         "history_max": 12761.0,
@@ -3073,8 +3151,8 @@
         "premium_peak": 11097.0
       },
       "Q Premium Resort": {
-        "history_max": 11297.0,
-        "premium_peak": 11297.0
+        "history_max": 11357.0,
+        "premium_peak": 11357.0
       },
       "My Home Resort": {
         "history_max": 11697.0,
@@ -3109,8 +3187,8 @@
         "premium_peak": 11815.0
       },
       "Ramada Plaza Antalya": {
-        "history_max": 11648.0,
-        "premium_peak": 11648.0
+        "history_max": 11787.0,
+        "premium_peak": 11787.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
         "history_max": 13250.0,
@@ -3205,8 +3283,8 @@
         "premium_peak": 13335.0
       },
       "Laguna Beach Alya": {
-        "history_max": 10897.0,
-        "premium_peak": 10897.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Miarosa Beach (Kemer)": {
         "history_max": 11592.0,
@@ -3257,8 +3335,8 @@
         "premium_peak": 12418.0
       },
       "Linda Sunny Beach": {
-        "history_max": 9897.0,
-        "premium_peak": null
+        "history_max": 10097.0,
+        "premium_peak": 10097.0
       },
       "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)": {
         "history_max": 11297.0,
@@ -3569,7 +3647,7 @@
         "premium_peak": 12648.0
       },
       "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi": {
-        "history_max": 9140.0,
+        "history_max": 9234.0,
         "premium_peak": null
       },
       "Andriake Beach Club": {
@@ -3649,8 +3727,8 @@
         "premium_peak": 12477.0
       },
       "Vita Silva": {
-        "history_max": 10633.0,
-        "premium_peak": 10633.0
+        "history_max": 10651.0,
+        "premium_peak": 10651.0
       },
       "Armonia Holiday Village": {
         "history_max": 11213.0,
@@ -3921,7 +3999,7 @@
         "premium_peak": null
       },
       "Grand Pasa Turcja, Marmaris": {
-        "history_max": 9386.0,
+        "history_max": 9501.0,
         "premium_peak": null
       },
       "Concordia Celes Beach Turcja, Alanya, Okurcalar": {
@@ -3961,8 +4039,8 @@
         "premium_peak": null
       },
       "Barut Goia (ex. Barut Sunwing Side Beach)": {
-        "history_max": 13244.0,
-        "premium_peak": 13244.0
+        "history_max": 13344.0,
+        "premium_peak": 13344.0
       },
       "Aydinbey Kings Palace": {
         "history_max": 13339.0,
@@ -4061,8 +4139,8 @@
         "premium_peak": null
       },
       "Trendy Lara": {
-        "history_max": 12164.0,
-        "premium_peak": 12164.0
+        "history_max": 13298.0,
+        "premium_peak": 13298.0
       },
       "Trendy Perge Resort & Suites": {
         "history_max": 12506.0,
@@ -4225,7 +4303,7 @@
         "premium_peak": 13465.0
       },
       "Nova Life Turcja, Alanya, Konaklı": {
-        "history_max": 9921.0,
+        "history_max": 9932.0,
         "premium_peak": null
       },
       "Rixos Elysium Suites Turcja, Istambuł, Stambuł": {
@@ -4235,6 +4313,10 @@
       "Side Crown Serenity": {
         "history_max": 10097.0,
         "premium_peak": 10097.0
+      },
+      "Serenity Queen": {
+        "history_max": 13344.0,
+        "premium_peak": 13344.0
       }
     }
   }
