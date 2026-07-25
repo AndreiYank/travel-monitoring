@@ -5915,10 +5915,75 @@
       "created_at": "2026-07-24T22:17:07.211025+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-07-24_22-14_comeback_12.1"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 8709.0,
+      "new_price": 8709.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-25 06:14:46.281417+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-25T06:17:12.061952+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-07-25_06-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "True Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9909.0,
+      "new_price": 9909.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-25 06:14:46.281417+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-25T06:17:12.061980+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "True Beach Resort_2026-07-25_06-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Red Sea Grand Makadi (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 11800.0,
+      "new_price": 9512.0,
+      "price_change": -2288.0,
+      "price_change_pct": -19.389830508474574,
+      "timestamp": "2026-07-25 06:14:46.281417+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-25T06:17:12.062009+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-07-25_06-14_comeback_19.4"
+    },
+    {
+      "hotel_name": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)",
+      "duration_bucket": "",
+      "old_price": 12406.0,
+      "new_price": 9552.0,
+      "price_change": -2854.0,
+      "price_change_pct": -23.00499758181525,
+      "timestamp": "2026-07-25 06:14:46.281417+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-25T06:17:12.062022+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)_2026-07-25_06-14_comeback_23.0"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 10287.0,
+      "new_price": 9017.0,
+      "price_change": -1270.0,
+      "price_change_pct": -12.345679012345679,
+      "timestamp": "2026-07-25 06:14:46.281417+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-25T06:17:12.062032+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-07-25_06-14_comeback_12.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-24T22:14:43.073024+00:00",
+    "last_processed_run": "2026-07-25T06:14:46.281417+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -5997,16 +6062,16 @@
         "premium_peak": 19397.0
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
-        "history_max": 17529.0,
-        "premium_peak": 17529.0
+        "history_max": 17797.0,
+        "premium_peak": 17797.0
       },
       "Rixos Premium Magawish Bay View": {
-        "history_max": 15784.0,
-        "premium_peak": 15784.0
+        "history_max": 16759.0,
+        "premium_peak": 16759.0
       },
       "Rixos Premium Magawish Suites & Villas": {
-        "history_max": 16110.0,
-        "premium_peak": 16110.0
+        "history_max": 16759.0,
+        "premium_peak": 16759.0
       },
       "Rixos Premium Seagate": {
         "history_max": 19780.0,
@@ -6281,8 +6346,8 @@
         "premium_peak": 10827.0
       },
       "Serry Beach Resort": {
-        "history_max": 14737.0,
-        "premium_peak": 14737.0
+        "history_max": 14990.0,
+        "premium_peak": 14990.0
       },
       "Shams Lodge Resort": {
         "history_max": 10703.0,
@@ -6385,8 +6450,8 @@
         "premium_peak": 11372.0
       },
       "Ghazala Alamein": {
-        "history_max": 13978.0,
-        "premium_peak": 13978.0
+        "history_max": 16597.0,
+        "premium_peak": 16597.0
       },
       "Azur One Eleven": {
         "history_max": 10852.0,
@@ -6401,8 +6466,8 @@
         "premium_peak": 11911.0
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 10576.0,
-        "premium_peak": 10576.0
+        "history_max": 11467.0,
+        "premium_peak": 11467.0
       },
       "Ancient Sands Golf Resort": {
         "history_max": 10922.0,
@@ -6677,7 +6742,7 @@
         "premium_peak": 12871.0
       },
       "Rewaya Luxury Resort": {
-        "history_max": 9932.0,
+        "history_max": 9957.0,
         "premium_peak": null
       },
       "Coral Sea Water World Resort": {
@@ -6701,8 +6766,8 @@
         "premium_peak": 12657.0
       },
       "Pickalbatros White Beach Resort": {
-        "history_max": 13158.0,
-        "premium_peak": 13158.0
+        "history_max": 13433.0,
+        "premium_peak": 13433.0
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
         "history_max": 11057.0,
