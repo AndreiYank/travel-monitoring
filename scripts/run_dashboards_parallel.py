@@ -12,6 +12,9 @@ from concurrent.futures import ProcessPoolExecutor, as_completed
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
+
+from filter_trip import should_skip_monitor_config, skip_monitor_reason, load_config_json
 
 DEFAULT_DASHBOARDS = [
     {
@@ -74,8 +77,16 @@ DEFAULT_DASHBOARDS = [
 ]
 
 
-def _run_one(spec: dict, log_dir: Path) -> tuple[str, int, float]:
+def _run_one(spec: dict, log_dir: Path) -> tuple[str, int, float, str]:
     output = spec["output"]
+    config_path = str(spec.get("config") or "").strip()
+    if config_path and should_skip_monitor_config(str(ROOT / config_path)):
+        try:
+            reason = skip_monitor_reason(load_config_json(str(ROOT / config_path))) or "пропуск"
+        except Exception:
+            reason = "пропуск"
+        return output, 0, 0.0, f"skip:{reason}"
+
     log_dir.mkdir(parents=True, exist_ok=True)
     log_path = log_dir / f"{Path(output).stem}.log"
     cmd = [
@@ -109,7 +120,7 @@ def _run_one(spec: dict, log_dir: Path) -> tuple[str, int, float]:
             stderr=subprocess.STDOUT,
             env=os.environ.copy(),
         )
-    return output, proc.returncode, time.monotonic() - t0
+    return output, proc.returncode, time.monotonic() - t0, ""
 
 
 def main() -> int:
@@ -135,7 +146,19 @@ def main() -> int:
     jobs = max(1, args.jobs)
     log_dir = Path(args.log_dir)
 
-    print(f"Parallel dashboards: {len(DEFAULT_DASHBOARDS)} filters, jobs={jobs}")
+    active_specs = []
+    for spec in DEFAULT_DASHBOARDS:
+        config_path = str(spec.get("config") or "").strip()
+        if config_path and should_skip_monitor_config(str(ROOT / config_path)):
+            try:
+                reason = skip_monitor_reason(load_config_json(str(ROOT / config_path))) or "пропуск"
+            except Exception:
+                reason = "пропуск"
+            print(f"  ⏭ {spec['output']} ({reason})")
+            continue
+        active_specs.append(spec)
+
+    print(f"Parallel dashboards: {len(active_specs)}/{len(DEFAULT_DASHBOARDS)} filters, jobs={jobs}")
     print(f"Logs: {log_dir}")
     t0 = time.monotonic()
     failed: list[str] = []
@@ -143,12 +166,15 @@ def main() -> int:
     with ProcessPoolExecutor(max_workers=jobs) as pool:
         futures = {
             pool.submit(_run_one, spec, log_dir): spec["output"]
-            for spec in DEFAULT_DASHBOARDS
+            for spec in active_specs
         }
         for fut in as_completed(futures):
-            output, code, elapsed = fut.result()
+            output, code, elapsed, note = fut.result()
             if code == 0:
-                print(f"  ✓ {output} ({elapsed:.0f}s)")
+                if note.startswith("skip:"):
+                    print(f"  ⏭ {output} ({note[5:]})")
+                else:
+                    print(f"  ✓ {output} ({elapsed:.0f}s)")
             else:
                 print(f"  ✗ {output} exit={code} ({elapsed:.0f}s)")
                 failed.append(output)

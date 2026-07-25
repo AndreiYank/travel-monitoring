@@ -44,7 +44,7 @@ from departure_airports import (
     hub_regions_subtitle,
     should_group_by_arrival_airport,
 )
-from filter_registry import FILTER_GROUPS, active_filter_id, filter_href_by_charts_subdir
+from filter_registry import active_filter_groups, active_filter_id, filter_href_by_charts_subdir
 from filter_params import (
     DATA_DIR_CONFIG_FILES,
     load_filter_config,
@@ -3725,7 +3725,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         '<span class="flag">🏠</span>'
         '<span class="country-name">Главная</span></a>'
     ]
-    for group in FILTER_GROUPS:
+    for group in active_filter_groups():
         _sidebar_nav_parts.append(
             f'<div class="nav-group-label"><span>{group["icon"]}</span>{group["label"]}</div>'
         )

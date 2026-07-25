@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 import datetime
 
-from filter_registry import FILTER_GROUPS
+from filter_registry import active_filter_groups
 
 
 def generate_landing(tiles=None, output_file='index.html'):
     now = datetime.datetime.now().strftime('%d.%m.%Y %H:%M')
     if tiles is None:
-        tiles = FILTER_GROUPS
+        tiles = active_filter_groups()
 
     cards_count = sum(len(g['filters']) for g in tiles)
     sections_html = []
@@ -212,4 +212,4 @@ def generate_landing(tiles=None, output_file='index.html'):
 
 
 if __name__ == '__main__':
-    generate_landing(FILTER_GROUPS, 'index.html')
+    generate_landing(None, 'index.html')
