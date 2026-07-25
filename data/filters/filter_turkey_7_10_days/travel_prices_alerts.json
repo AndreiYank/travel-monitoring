@@ -3874,10 +3874,88 @@
       "created_at": "2026-07-25T19:14:12.213523+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ring Beach (Kemer)_2026-07-25_19-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 9310.0,
+      "new_price": 9310.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-25 20:25:44.967451+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-25T20:27:16.919315+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites Turcja, Marmaris_2026-07-25_20-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez Turcja, Antalya",
+      "duration_bucket": "",
+      "old_price": 9875.0,
+      "new_price": 9875.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-25 20:25:44.967451+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-25T20:27:16.919348+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez Turcja, Antalya_2026-07-25_20-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach Turcja, Kemer, Beldibi",
+      "duration_bucket": "",
+      "old_price": 9963.0,
+      "new_price": 9963.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-25 20:25:44.967451+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-25T20:27:16.919359+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach Turcja, Kemer, Beldibi_2026-07-25_20-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Insula Resort",
+      "duration_bucket": "",
+      "old_price": 12041.0,
+      "new_price": 9897.0,
+      "price_change": -2144.0,
+      "price_change_pct": -17.805830080558096,
+      "timestamp": "2026-07-25 20:25:44.967451+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-25T20:27:16.919389+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort_2026-07-25_20-25_comeback_17.8"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "",
+      "old_price": 10862.0,
+      "new_price": 9875.0,
+      "price_change": -987.0,
+      "price_change_pct": -9.086724360154667,
+      "timestamp": "2026-07-25 20:25:44.967451+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-25T20:27:16.919401+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez_2026-07-25_20-25_comeback_9.1"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11523.0,
+      "new_price": 9958.0,
+      "price_change": -1565.0,
+      "price_change_pct": -13.581532586999915,
+      "timestamp": "2026-07-25 20:25:44.967451+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-25T20:27:16.919413+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa_2026-07-25_20-25_comeback_13.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-25T19:12:43.634916+00:00",
+    "last_processed_run": "2026-07-25T20:25:44.967451+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11492.0,
@@ -4384,8 +4462,8 @@
         "premium_peak": 11686.0
       },
       "Linda Resort (Side)": {
-        "history_max": 10310.0,
-        "premium_peak": 10310.0
+        "history_max": 10343.0,
+        "premium_peak": 10343.0
       },
       "Laur Experience & Elegance": {
         "history_max": 13284.0,
@@ -4696,8 +4774,8 @@
         "premium_peak": 11157.0
       },
       "Kaila Beach (ex Katya)": {
-        "history_max": 11026.0,
-        "premium_peak": 11026.0
+        "history_max": 11279.0,
+        "premium_peak": 11279.0
       },
       "Karmir Resort (Kemer)": {
         "history_max": 12196.0,
@@ -4872,8 +4950,8 @@
         "premium_peak": 12339.0
       },
       "Green Max (ex Chervo Club Sirena)": {
-        "history_max": 13212.0,
-        "premium_peak": 13212.0
+        "history_max": 13370.0,
+        "premium_peak": 13370.0
       },
       "Green Nature Diamond": {
         "history_max": 13157.0,
@@ -5602,6 +5680,10 @@
       "Grand Kaptan Turcja, Alanya": {
         "history_max": 9089.0,
         "premium_peak": null
+      },
+      "Armella Hill": {
+        "history_max": 13500.0,
+        "premium_peak": 13500.0
       }
     }
   }
