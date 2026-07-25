@@ -30,8 +30,10 @@ from filter_params import fly_query_param, resolve_config_url, should_use_dynami
 from filter_trip import (
     has_multiple_trip_duration_buckets,
     is_fixed_trip_config,
+    is_trip_window_expired,
     parse_trip_duration_buckets,
     select_trip_offers,
+    skip_monitor_reason,
     trip_scrape_passes,
 )
 from hotel_deal_score import extract_tripadvisor_from_card_html
@@ -2047,12 +2049,22 @@ class TravelPriceMonitor:
         """Запускает полный цикл мониторинга"""
         run_t0 = time.monotonic()
         logger.info(f"🚀 Начинаем мониторинг ({self.config_file}, data_dir={self.config.get('data_dir')})...")
+
+        skip_reason = skip_monitor_reason(self.config)
+        if skip_reason:
+            logger.info("⏭ Пропуск мониторинга: %s", skip_reason)
+            return True
         
         try:
             multi_bucket_trip = has_multiple_trip_duration_buckets(self.config)
             offers = await self._collect_virtual_filter_offers()
 
             if not offers:
+                if is_fixed_trip_config(self.config) and is_trip_window_expired(self.config):
+                    logger.warning(
+                        "⚠️ Нет офферов — окно fixed-trip закрыто, считаем run успешным"
+                    )
+                    return True
                 logger.error("❌ Не удалось собрать данные после всех попыток")
                 return False
 
@@ -2069,6 +2081,13 @@ class TravelPriceMonitor:
                     self.config.get("trip_anchor_date", "—"),
                 )
                 if not offers:
+                    # fly.pl may still return later dates outside anchor±slip after the window closes.
+                    if is_trip_window_expired(self.config):
+                        logger.warning(
+                            "⚠️ После trip-фильтра 0 офферов (из %s) — окно вылета закрыто, skip",
+                            raw_count,
+                        )
+                        return True
                     logger.warning("⚠️ После trip-фильтра не осталось офферов с подходящим вылетом")
                     return False
                 raw_count = len(offers)
@@ -2082,6 +2101,11 @@ class TravelPriceMonitor:
                     raw_count,
                     ", ".join(f"{k}={v}" for k, v in sorted(per_bucket.items())),
                 )
+                if not offers and is_trip_window_expired(self.config):
+                    logger.warning(
+                        "⚠️ Virtual filters пустые — окно fixed-trip закрыто, skip"
+                    )
+                    return True
 
             t0 = time.monotonic()
             self.save_departure_offers_append(offers)

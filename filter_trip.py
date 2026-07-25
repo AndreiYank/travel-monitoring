@@ -139,7 +139,44 @@ def is_filter_retired(config: Dict[str, Any], *, today: Optional[date] = None) -
     if retire is None:
         return False
     ref = today or date.today()
-    return ref > retire
+    return ref >= retire
+
+
+def trip_window_end_date(config: Dict[str, Any]) -> Optional[date]:
+    """Last calendar day when a departure can still match trip_anchor ± slip."""
+    if not is_fixed_trip_config(config):
+        return None
+    anchor = parse_trip_anchor_date(config)
+    if anchor is None:
+        return None
+    slip_days = int(config.get("trip_departure_slip_days", 7))
+    from datetime import timedelta
+
+    return anchor + timedelta(days=max(0, slip_days))
+
+
+def is_trip_window_expired(config: Dict[str, Any], *, today: Optional[date] = None) -> bool:
+    """True when the fixed-trip departure window is no longer bookable/useful."""
+    end = trip_window_end_date(config)
+    if end is None:
+        return False
+    ref = today or date.today()
+    # On the last day of the window fly.pl usually has nothing left near the anchor.
+    return ref >= end
+
+
+def skip_monitor_reason(config: Dict[str, Any], *, today: Optional[date] = None) -> str:
+    """Human-readable reason to skip scraping, or empty string."""
+    if is_filter_retired(config, today=today):
+        return "retire_after прошёл"
+    if is_trip_window_expired(config, today=today):
+        end = trip_window_end_date(config)
+        return (
+            f"окно вылета закрыто "
+            f"(anchor {config.get('trip_anchor_date')} ± "
+            f"{config.get('trip_departure_slip_days', 7)} дн., до {end})"
+        )
+    return ""
 
 
 def offer_departure_iso(offer: Dict[str, Any]) -> str:
@@ -221,4 +258,4 @@ def should_skip_monitor_config(config_path: str, *, today: Optional[date] = None
         cfg = load_config_json(config_path)
     except (OSError, json.JSONDecodeError):
         return False
-    return is_filter_retired(cfg, today=today)
+    return bool(skip_monitor_reason(cfg, today=today))

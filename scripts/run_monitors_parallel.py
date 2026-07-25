@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT))
 
-from filter_trip import should_skip_monitor_config
+from filter_trip import load_config_json, should_skip_monitor_config, skip_monitor_reason
 
 DEFAULT_CONFIGS = [
     "config_ci_filter_7_10.json",
@@ -33,7 +33,11 @@ def _run_one(config_name: str, log_dir: Path) -> tuple[str, int, float]:
     if not config_path.is_file():
         return config_name, 127, 0.0
     if should_skip_monitor_config(str(config_path)):
-        print(f"  ⏭ {config_name} (retire_after прошёл, пропуск)")
+        try:
+            reason = skip_monitor_reason(load_config_json(str(config_path))) or "пропуск"
+        except Exception:
+            reason = "пропуск"
+        print(f"  ⏭ {config_name} ({reason})")
         return config_name, 0, 0.0
 
     log_dir.mkdir(parents=True, exist_ok=True)
