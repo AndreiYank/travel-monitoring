@@ -38,8 +38,8 @@ DEFAULT_DASHBOARDS = [
         "charts": "hotel-charts/filter_egypt_autumn_2026_7_10_days",
         "alerts": "data/filters/filter_egypt_autumn_2026_7_10_days/travel_prices_alerts.json",
         "config": "config_ci_filter_egypt_autumn_7_10.json",
-        "display_price_ceiling": "15000",
-        "history_price_ceiling": "30000",
+        "display_price_ceiling": "11000",
+        "history_price_ceiling": "11000",
     },
     {
         "data": "data/filters/filter_egypt_autumn_2026_13_16_days/travel_prices.csv",
@@ -48,8 +48,8 @@ DEFAULT_DASHBOARDS = [
         "charts": "hotel-charts/filter_egypt_autumn_2026_13_16_days",
         "alerts": "data/filters/filter_egypt_autumn_2026_13_16_days/travel_prices_alerts.json",
         "config": "config_ci_filter_egypt_autumn_13_16.json",
-        "display_price_ceiling": "15000",
-        "history_price_ceiling": "30000",
+        "display_price_ceiling": "11000",
+        "history_price_ceiling": "11000",
     },
     {
         "data": "data/filters/filter_turkey_7_10_days/travel_prices.csv",
