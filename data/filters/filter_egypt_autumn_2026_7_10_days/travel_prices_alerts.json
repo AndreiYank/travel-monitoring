@@ -1430,10 +1430,62 @@
       "created_at": "2026-07-27T09:50:30.014341+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Naama Bay Promenade Beach Resort_2026-07-27_09-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 8155.0,
+      "new_price": 7483.0,
+      "price_change": -672.0,
+      "price_change_pct": -8.240343347639485,
+      "timestamp": "2026-07-27 15:57:47.660061+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-27T15:58:33.263266+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-07-27_15-57_-8.2"
+    },
+    {
+      "hotel_name": "Sataya Resort (ex. Labranda Sataya Marsa Alam) Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 8508.0,
+      "new_price": 7708.0,
+      "price_change": -800.0,
+      "price_change_pct": -9.402914903620124,
+      "timestamp": "2026-07-27 15:57:47.660061+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-27T15:58:33.263300+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sataya Resort (ex. Labranda Sataya Marsa Alam) Egipt, Marsa Alam_2026-07-27_15-57_-9.4"
+    },
+    {
+      "hotel_name": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)",
+      "duration_bucket": "",
+      "old_price": 9128.0,
+      "new_price": 9128.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-27 15:57:47.660061+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-27T15:58:33.263355+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)_2026-07-27_15-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8534.0,
+      "new_price": 8534.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-27 15:57:47.660061+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-27T15:58:33.263364+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-07-27_15-57_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-27T13:10:58.719098+00:00",
+    "last_processed_run": "2026-07-27T15:57:47.660061+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7484.0,
@@ -2036,7 +2088,7 @@
         "premium_peak": null
       },
       "Coral Sea Holiday Resort": {
-        "history_max": 10180.0,
+        "history_max": 10430.0,
         "premium_peak": null
       },
       "Coral Sea Sensatori (ex Coral Sea Imperial)": {
@@ -2044,7 +2096,7 @@
         "premium_peak": 11642.0
       },
       "Coral Sea Water World Resort": {
-        "history_max": 10180.0,
+        "history_max": 10430.0,
         "premium_peak": null
       },
       "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna": {
@@ -2080,7 +2132,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Sultan": {
-        "history_max": 7937.0,
+        "history_max": 10496.0,
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
@@ -2352,7 +2404,7 @@
         "premium_peak": null
       },
       "Jaz Elite Amara": {
-        "history_max": 10527.0,
+        "history_max": 10649.0,
         "premium_peak": null
       },
       "Jaz Elite Riviera": {
@@ -2364,7 +2416,7 @@
         "premium_peak": null
       },
       "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay": {
-        "history_max": 8325.0,
+        "history_max": 8425.0,
         "premium_peak": null
       },
       "Jaz Aquaviva Egipt, Hurghada, Makadi Bay": {
@@ -2521,6 +2573,14 @@
       },
       "Xperience Sea Breeze Resort": {
         "history_max": 9218.0,
+        "premium_peak": null
+      },
+      "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
+        "history_max": 8534.0,
+        "premium_peak": null
+      },
+      "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 8456.0,
         "premium_peak": null
       }
     }
