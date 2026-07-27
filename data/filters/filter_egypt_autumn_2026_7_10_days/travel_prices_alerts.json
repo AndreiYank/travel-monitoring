@@ -1482,10 +1482,75 @@
       "created_at": "2026-07-27T15:58:33.263364+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-07-27_15-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Naama Bay Hotel & Resort",
+      "duration_bucket": "",
+      "old_price": 8880.0,
+      "new_price": 10161.0,
+      "price_change": 1281.0,
+      "price_change_pct": 14.425675675675675,
+      "timestamp": "2026-07-27 17:52:25.139845+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-27T17:53:09.732937+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Naama Bay Hotel & Resort_2026-07-27_17-52_+14.4"
+    },
+    {
+      "hotel_name": "Jaz Elite Amara",
+      "duration_bucket": "",
+      "old_price": 10649.0,
+      "new_price": 10649.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-27 17:52:25.139845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-27T17:53:09.733012+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Amara_2026-07-27_17-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Naama Bay Promenade Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10127.0,
+      "new_price": 10127.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-27 17:52:25.139845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-27T17:53:09.733025+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Naama Bay Promenade Beach Resort_2026-07-27_17-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 8425.0,
+      "new_price": 8425.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-27 17:52:25.139845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-27T17:53:09.733034+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay_2026-07-27_17-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xperience Kiroseiz Parkland",
+      "duration_bucket": "",
+      "old_price": 9036.0,
+      "new_price": 9036.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-27 17:52:25.139845+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-27T17:53:09.733042+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Kiroseiz Parkland_2026-07-27_17-52_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-27T15:57:47.660061+00:00",
+    "last_processed_run": "2026-07-27T17:52:25.139845+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7484.0,
@@ -1524,7 +1589,7 @@
         "premium_peak": null
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 10123.0,
+        "history_max": 10227.0,
         "premium_peak": null
       },
       "Pickalbatros Luxury Suites": {
@@ -1752,7 +1817,7 @@
         "premium_peak": null
       },
       "Naama Bay Hotel & Resort": {
-        "history_max": 9552.0,
+        "history_max": 10161.0,
         "premium_peak": null
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
@@ -2452,7 +2517,7 @@
         "premium_peak": null
       },
       "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 7884.0,
+        "history_max": 7965.0,
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel) Egipt, Marsa Alam, Madinat Coraya": {
@@ -2581,6 +2646,10 @@
       },
       "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk": {
         "history_max": 8456.0,
+        "premium_peak": null
+      },
+      "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh": {
+        "history_max": 8508.0,
         "premium_peak": null
       }
     }
