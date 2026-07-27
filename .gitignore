@@ -77,6 +77,12 @@ data/filters/filter_greece_7_10_days/*
 data/filters/filter_greece_13_16_days/*
 !data/filters/filter_greece_13_16_days/archive/
 
+# Local scrape for Egypt autumn 2026 seasonal filters
+data/filters/filter_egypt_autumn_2026_7_10_days/*
+!data/filters/filter_egypt_autumn_2026_7_10_days/archive/
+data/filters/filter_egypt_autumn_2026_13_16_days/*
+!data/filters/filter_egypt_autumn_2026_13_16_days/archive/
+
 
 # Price alerts history — not needed in git (rebuilt each run from CSV)
 # Per-filter alerts (travel_prices_alerts.json) ARE committed — only the legacy global file is excluded

@@ -32,6 +32,26 @@ DEFAULT_DASHBOARDS = [
         "alerts": "data/filters/filter_13_16_days/travel_prices_alerts.json",
     },
     {
+        "data": "data/filters/filter_egypt_autumn_2026_7_10_days/travel_prices.csv",
+        "output": "index_filter_egypt_autumn_2026_7_10_days.html",
+        "title": "Мониторинг цен • Египет • осень 2026 • 7–10 дней",
+        "charts": "hotel-charts/filter_egypt_autumn_2026_7_10_days",
+        "alerts": "data/filters/filter_egypt_autumn_2026_7_10_days/travel_prices_alerts.json",
+        "config": "config_ci_filter_egypt_autumn_7_10.json",
+        "display_price_ceiling": "15000",
+        "history_price_ceiling": "30000",
+    },
+    {
+        "data": "data/filters/filter_egypt_autumn_2026_13_16_days/travel_prices.csv",
+        "output": "index_filter_egypt_autumn_2026_13_16_days.html",
+        "title": "Мониторинг цен • Египет • осень 2026 • 13–16 дней",
+        "charts": "hotel-charts/filter_egypt_autumn_2026_13_16_days",
+        "alerts": "data/filters/filter_egypt_autumn_2026_13_16_days/travel_prices_alerts.json",
+        "config": "config_ci_filter_egypt_autumn_13_16.json",
+        "display_price_ceiling": "15000",
+        "history_price_ceiling": "30000",
+    },
+    {
         "data": "data/filters/filter_turkey_7_10_days/travel_prices.csv",
         "output": "index_filter_turkey_7_10_days.html",
         "title": "Мониторинг цен • Турция • 7–10 дней",
@@ -103,9 +123,9 @@ def _run_one(spec: dict, log_dir: Path) -> tuple[str, int, float, str]:
         "--alerts-file",
         spec["alerts"],
         "--display-price-ceiling",
-        "10000",
+        str(spec.get("display_price_ceiling", "10000")),
         "--history-price-ceiling",
-        "20000",
+        str(spec.get("history_price_ceiling", "20000")),
     ]
     if spec.get("config"):
         cmd.extend(["--config-file", spec["config"]])
