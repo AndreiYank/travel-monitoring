@@ -19,6 +19,8 @@ from filter_trip import load_config_json, should_skip_monitor_config, skip_monit
 DEFAULT_CONFIGS = [
     "config_ci_filter_7_10.json",
     "config_ci_filter_13_16.json",
+    "config_ci_filter_egypt_autumn_7_10.json",
+    "config_ci_filter_egypt_autumn_13_16.json",
     "config_ci_filter_turkey_7_10.json",
     "config_ci_filter_turkey_9_11.json",
     "config_ci_filter_turkey_vacation_jul18.json",
