@@ -2197,10 +2197,62 @@
       "created_at": "2026-07-28T00:18:11.422939+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Kiroseiz Premier_2026-07-28_00-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 12063.0,
+      "new_price": 9738.0,
+      "price_change": -2325.0,
+      "price_change_pct": -19.273812484456602,
+      "timestamp": "2026-07-28 05:15:42.254791+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-28T05:18:02.929712+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-07-28_05-15_comeback_19.3"
+    },
+    {
+      "hotel_name": "Royal Regency Club",
+      "duration_bucket": "",
+      "old_price": 11261.0,
+      "new_price": 9797.0,
+      "price_change": -1464.0,
+      "price_change_pct": -13.000621614421453,
+      "timestamp": "2026-07-28 05:15:42.254791+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-28T05:18:02.929745+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Regency Club_2026-07-28_05-15_comeback_13.0"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11343.0,
+      "new_price": 9680.0,
+      "price_change": -1663.0,
+      "price_change_pct": -14.661024420347351,
+      "timestamp": "2026-07-28 05:15:42.254791+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-28T05:18:02.929759+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-07-28_05-15_comeback_14.7"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Aquamarine",
+      "duration_bucket": "",
+      "old_price": 12709.0,
+      "new_price": 9810.0,
+      "price_change": -2899.0,
+      "price_change_pct": -22.810606656699978,
+      "timestamp": "2026-07-28 05:15:42.254791+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-28T05:18:02.929776+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Aquamarine_2026-07-28_05-15_comeback_22.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-28T01:50:45.585873+00:00",
+    "last_processed_run": "2026-07-28T05:15:42.254791+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -3041,6 +3093,14 @@
       "Naama Bay Promenade Beach Resort": {
         "history_max": 11592.0,
         "premium_peak": 11592.0
+      },
+      "Titanic Palace Resort": {
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
+      },
+      "Baron Palms": {
+        "history_max": 14337.0,
+        "premium_peak": 14337.0
       }
     }
   }
