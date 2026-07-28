@@ -39,10 +39,62 @@
       "created_at": "2026-07-28T10:47:48.348094+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-07-28_10-46_comeback_14.5"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 8802.0,
+      "new_price": 8050.0,
+      "price_change": -752.0,
+      "price_change_pct": -8.543512837991365,
+      "timestamp": "2026-07-28 12:53:56.622437+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-28T12:54:44.557840+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-07-28_12-53_-8.5"
+    },
+    {
+      "hotel_name": "Sitia Beach Grecja, Kreta Wschodnia, Sitia",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 10157.0,
+      "price_change": 700.0,
+      "price_change_pct": 7.401924500370097,
+      "timestamp": "2026-07-28 12:53:56.622437+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-28T12:54:44.557874+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-07-28_12-53_zone_out_+7.4"
+    },
+    {
+      "hotel_name": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria",
+      "duration_bucket": "",
+      "old_price": 10572.0,
+      "new_price": 9700.0,
+      "price_change": -872.0,
+      "price_change_pct": -8.248202799848658,
+      "timestamp": "2026-07-28 12:53:56.622437+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-28T12:54:44.557899+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-07-28_12-53_comeback_8.2"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 11185.0,
+      "new_price": 9985.0,
+      "price_change": -1200.0,
+      "price_change_pct": -10.728654447921324,
+      "timestamp": "2026-07-28 12:53:56.622437+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-28T12:54:44.557911+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-07-28_12-53_comeback_10.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-28T10:46:57.528509+00:00",
+    "last_processed_run": "2026-07-28T12:53:56.622437+00:00",
     "premium_state": {
       "Akasha Beach (ex Armava)": {
         "history_max": 18742.0,
@@ -77,8 +129,8 @@
         "premium_peak": 14376.0
       },
       "Santa Marina Pearl": {
-        "history_max": 13657.0,
-        "premium_peak": 13657.0
+        "history_max": 14857.0,
+        "premium_peak": 14857.0
       },
       "Istion Club": {
         "history_max": 16553.0,
@@ -101,8 +153,8 @@
         "premium_peak": 16095.0
       },
       "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti": {
-        "history_max": 11808.0,
-        "premium_peak": 11808.0
+        "history_max": 11815.0,
+        "premium_peak": 11815.0
       },
       "Ibiscus Corfu Grecja, Korfu, Roda": {
         "history_max": 10979.0,
@@ -113,8 +165,8 @@
         "premium_peak": 14264.0
       },
       "Gouves Water Park Holiday Resort": {
-        "history_max": 16197.0,
-        "premium_peak": 16197.0
+        "history_max": 16257.0,
+        "premium_peak": 16257.0
       },
       "Sitia Beach Grecja, Kreta Wschodnia, Sitia": {
         "history_max": 11057.0,
@@ -289,8 +341,8 @@
         "premium_peak": 14757.0
       },
       "Lindos Imperial Resort & Spa": {
-        "history_max": 19717.0,
-        "premium_peak": 19717.0
+        "history_max": 19867.0,
+        "premium_peak": 19867.0
       },
       "Lindos Royal (ex. COOEE)": {
         "history_max": 15070.0,
@@ -357,8 +409,8 @@
         "premium_peak": 11657.0
       },
       "Apollo Blue": {
-        "history_max": 19038.0,
-        "premium_peak": 19038.0
+        "history_max": 19378.0,
+        "premium_peak": 19378.0
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
         "history_max": 13557.0,
@@ -421,8 +473,8 @@
         "premium_peak": 14445.0
       },
       "Blue Marine Resort & SPA": {
-        "history_max": 14894.0,
-        "premium_peak": 14894.0
+        "history_max": 14943.0,
+        "premium_peak": 14943.0
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
         "history_max": 10684.0,
@@ -527,6 +579,14 @@
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
         "history_max": 12804.0,
         "premium_peak": 12804.0
+      },
+      "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
+        "history_max": 12699.0,
+        "premium_peak": 12699.0
+      },
+      "Porto Angeli Grecja, Rodos, Archangelos": {
+        "history_max": 12739.0,
+        "premium_peak": 12739.0
       }
     }
   }
