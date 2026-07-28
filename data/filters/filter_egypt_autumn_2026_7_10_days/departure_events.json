@@ -1,3 +1,24 @@
 {
-  "events": []
+  "events": [
+    {
+      "event_time": "2026-07-28T10:44:39+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-10-11|2026-10-18|7|Warszawa - Radom|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-10-11",
+      "return_date": "2026-10-18",
+      "nights": 7,
+      "days_to_departure": 75,
+      "old_min_price": "",
+      "new_min_price": 7639.0,
+      "min_drop_pct": -6.33,
+      "p10_drop_pct": -5.83,
+      "median_drop_pct": -5.29,
+      "hotel_count": 14,
+      "hotel_delta": 2,
+      "hot_score": 0
+    }
+  ]
 }

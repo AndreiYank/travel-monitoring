@@ -2392,10 +2392,62 @@
       "created_at": "2026-07-28T07:54:32.601825+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Kiroseiz Premier_2026-07-28_07-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Brayka Beach Resort (ex Zee Brayka)",
+      "duration_bucket": "",
+      "old_price": 9257.0,
+      "new_price": 8457.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.642108674516583,
+      "timestamp": "2026-07-28 10:44:39.557976+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-28T10:46:56.691236+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-07-28_10-44_-8.6"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9477.0,
+      "new_price": 10707.0,
+      "price_change": 1230.0,
+      "price_change_pct": 12.978790756568534,
+      "timestamp": "2026-07-28 10:44:39.557976+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-28T10:46:56.691272+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-28_10-44_zone_out_+13.0"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 9770.0,
+      "new_price": 10787.0,
+      "price_change": 1017.0,
+      "price_change_pct": 10.409416581371547,
+      "timestamp": "2026-07-28 10:44:39.557976+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-28T10:46:56.691284+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-28_10-44_zone_out_+10.4"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 8820.0,
+      "new_price": 10066.0,
+      "price_change": 1246.0,
+      "price_change_pct": 14.126984126984127,
+      "timestamp": "2026-07-28 10:44:39.557976+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-28T10:46:56.691293+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-07-28_10-44_zone_out_+14.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-28T07:52:12.331896+00:00",
+    "last_processed_run": "2026-07-28T10:44:39.557976+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -2622,8 +2674,8 @@
         "premium_peak": 12893.0
       },
       "Movenpick Resort El Quseir": {
-        "history_max": 15587.0,
-        "premium_peak": 15587.0
+        "history_max": 17344.0,
+        "premium_peak": 17344.0
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
         "history_max": 12627.0,
@@ -3034,8 +3086,8 @@
         "premium_peak": 12551.0
       },
       "Steigenberger Alcazar": {
-        "history_max": 14144.0,
-        "premium_peak": 14144.0
+        "history_max": 14166.0,
+        "premium_peak": 14166.0
       },
       "Coral Sea Water World Resort": {
         "history_max": 11504.0,
@@ -3058,8 +3110,8 @@
         "premium_peak": 15537.0
       },
       "Continental (ex Movenpick Resort)": {
-        "history_max": 11052.0,
-        "premium_peak": 11052.0
+        "history_max": 11080.0,
+        "premium_peak": 11080.0
       },
       "Steigenberger Ras Soma": {
         "history_max": 13307.0,
@@ -3070,8 +3122,8 @@
         "premium_peak": 11683.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 11563.0,
-        "premium_peak": 11563.0
+        "history_max": 11803.0,
+        "premium_peak": 11803.0
       },
       "Steigenberger Aqua Magic": {
         "history_max": 12167.0,
@@ -3244,6 +3296,14 @@
       "Baron Palms": {
         "history_max": 14337.0,
         "premium_peak": 14337.0
+      },
+      "Movenpick Resort Sharm el Sheikh": {
+        "history_max": 12231.0,
+        "premium_peak": 12231.0
+      },
+      "Domina Coral Bay King's Lake": {
+        "history_max": 12002.0,
+        "premium_peak": 12002.0
       }
     }
   }
