@@ -4043,10 +4043,36 @@
       "created_at": "2026-07-29T13:18:17.421359+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Kiroseiz Premier_2026-07-29_13-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "True Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9909.0,
+      "new_price": 10292.0,
+      "price_change": 383.0,
+      "price_change_pct": 3.8651730749823394,
+      "timestamp": "2026-07-29 15:26:22.907500+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-29T15:28:49.810350+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "True Beach Resort_2026-07-29_15-26_zone_out_+3.9"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 10707.0,
+      "new_price": 9726.0,
+      "price_change": -981.0,
+      "price_change_pct": -9.162230316615299,
+      "timestamp": "2026-07-29 15:26:22.907500+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-29T15:28:49.810394+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-07-29_15-26_comeback_9.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-29T13:16:00.536073+00:00",
+    "last_processed_run": "2026-07-29T15:26:22.907500+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -4153,8 +4179,8 @@
         "premium_peak": 10507.0
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 9863.0,
-        "premium_peak": null
+        "history_max": 10273.0,
+        "premium_peak": 10273.0
       },
       "Sheraton Miramar Resort (El Gouna)": {
         "history_max": 11714.0,
@@ -4165,8 +4191,8 @@
         "premium_peak": 10275.0
       },
       "Sharm Grand Plaza Resort": {
-        "history_max": 10357.0,
-        "premium_peak": 10357.0
+        "history_max": 11316.0,
+        "premium_peak": 11316.0
       },
       "El Kasr Red Sea": {
         "history_max": 14397.0,
@@ -4289,8 +4315,8 @@
         "premium_peak": 18457.0
       },
       "Naama Bay Hotel & Resort": {
-        "history_max": 14192.0,
-        "premium_peak": 14192.0
+        "history_max": 14327.0,
+        "premium_peak": 14327.0
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
         "history_max": 19082.0,
@@ -4405,8 +4431,8 @@
         "premium_peak": 14817.0
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
-        "history_max": 11679.0,
-        "premium_peak": 11679.0
+        "history_max": 11770.0,
+        "premium_peak": 11770.0
       },
       "Pickalbatros White Beach Resort": {
         "history_max": 13357.0,
@@ -4573,8 +4599,8 @@
         "premium_peak": 12527.0
       },
       "True Beach Resort": {
-        "history_max": 9909.0,
-        "premium_peak": null
+        "history_max": 10292.0,
+        "premium_peak": 10292.0
       },
       "Tropitel Sahl Hasheesh": {
         "history_max": 11450.0,
@@ -4717,8 +4743,8 @@
         "premium_peak": 14112.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 12249.0,
-        "premium_peak": 12249.0
+        "history_max": 12257.0,
+        "premium_peak": 12257.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
         "history_max": 12593.0,
@@ -4921,7 +4947,7 @@
         "premium_peak": 13456.0
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
-        "history_max": 9691.0,
+        "history_max": 9904.0,
         "premium_peak": null
       }
     }
