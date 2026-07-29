@@ -819,10 +819,23 @@
       "created_at": "2026-07-29T00:19:25.641516+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-07-29_00-17_comeback_40.7"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 8649.0,
+      "new_price": 14597.0,
+      "price_change": 5948.0,
+      "price_change_pct": 68.7709561799052,
+      "timestamp": "2026-07-29 05:20:33.172233+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-29T05:22:34.207405+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-07-29_05-20_zone_out_+68.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-29T01:51:30.077351+00:00",
+    "last_processed_run": "2026-07-29T05:20:33.172233+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 16048.0,
@@ -1013,8 +1026,8 @@
         "premium_peak": 16330.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 14577.0,
-        "premium_peak": 14577.0
+        "history_max": 14597.0,
+        "premium_peak": 14597.0
       },
       "Grand Rotana Resort & Spa": {
         "history_max": 18457.0,
