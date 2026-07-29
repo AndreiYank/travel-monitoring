@@ -4121,10 +4121,49 @@
       "created_at": "2026-07-29T19:21:34.935536+00:00",
       "threshold_percent": 8.0,
       "unique_key": "True Beach Resort_2026-07-29_19-19_zone_out_+3.7"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 9617.0,
+      "new_price": 8820.0,
+      "price_change": -797.0,
+      "price_change_pct": -8.287407715503797,
+      "timestamp": "2026-07-29 23:10:35.658199+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-29T23:12:56.519528+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-07-29_23-10_-8.3"
+    },
+    {
+      "hotel_name": "Double Tree by Hilton Mangroovy El Gouna Resort",
+      "duration_bucket": "",
+      "old_price": 10881.0,
+      "new_price": 9981.0,
+      "price_change": -900.0,
+      "price_change_pct": -8.271298593879239,
+      "timestamp": "2026-07-29 23:10:35.658199+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-29T23:12:56.519577+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-07-29_23-10_comeback_8.3"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 11052.0,
+      "new_price": 9770.0,
+      "price_change": -1282.0,
+      "price_change_pct": -11.599710459645312,
+      "timestamp": "2026-07-29 23:10:35.658199+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-29T23:12:56.519591+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-07-29_23-10_comeback_11.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-29T22:09:50.685291+00:00",
+    "last_processed_run": "2026-07-29T23:10:35.658199+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -4643,8 +4682,8 @@
         "premium_peak": 12407.0
       },
       "V Hotel Sharm": {
-        "history_max": 13005.0,
-        "premium_peak": 13005.0
+        "history_max": 13213.0,
+        "premium_peak": 13213.0
       },
       "Utopia Blue Resort": {
         "history_max": 12527.0,
@@ -4687,8 +4726,8 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 10723.0,
-        "premium_peak": 10723.0
+        "history_max": 10887.0,
+        "premium_peak": 10887.0
       },
       "Amphoras Beach": {
         "history_max": 11840.0,
@@ -4975,8 +5014,8 @@
         "premium_peak": 14967.0
       },
       "Movenpick Resort Sharm el Sheikh": {
-        "history_max": 12231.0,
-        "premium_peak": 12231.0
+        "history_max": 13284.0,
+        "premium_peak": 13284.0
       },
       "Domina Coral Bay King's Lake": {
         "history_max": 12002.0,
