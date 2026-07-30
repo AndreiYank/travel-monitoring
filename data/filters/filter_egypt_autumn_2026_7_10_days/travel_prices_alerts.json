@@ -3263,10 +3263,62 @@
       "created_at": "2026-07-30T01:45:13.442840+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Kiroseiz Parkland_2026-07-30_01-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 8888.0,
+      "new_price": 9684.0,
+      "price_change": 796.0,
+      "price_change_pct": 8.955895589558956,
+      "timestamp": "2026-07-30 05:08:52.502190+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-30T05:09:35.998593+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-07-30_05-08_+9.0"
+    },
+    {
+      "hotel_name": "Jaz Aquaviva",
+      "duration_bucket": "",
+      "old_price": 8477.0,
+      "new_price": 8477.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 05:08:52.502190+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T05:09:35.998668+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquaviva_2026-07-30_05-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sharm Dreams Vacation Club",
+      "duration_bucket": "",
+      "old_price": 8699.0,
+      "new_price": 8699.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 05:08:52.502190+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T05:09:35.998680+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sharm Dreams Vacation Club_2026-07-30_05-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 8515.0,
+      "new_price": 8515.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 05:08:52.502190+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T05:09:35.998688+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-07-30_05-08_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-30T01:44:26.768690+00:00",
+    "last_processed_run": "2026-07-30T05:08:52.502190+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7484.0,
@@ -3541,7 +3593,7 @@
         "premium_peak": null
       },
       "Movenpick Resort Sharm el Sheikh": {
-        "history_max": 10006.0,
+        "history_max": 10572.0,
         "premium_peak": null
       },
       "Movenpick Resort El Quseir": {
