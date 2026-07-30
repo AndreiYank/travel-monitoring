@@ -5057,10 +5057,36 @@
       "created_at": "2026-07-30T12:46:03.590683+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hilton Marsa Alam Nubian Resort_2026-07-30_12-45_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "Red Sea Grand Makadi (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9900.0,
+      "new_price": 9900.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 15:23:54.634952+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T15:24:51.119493+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-07-30_15-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 11538.0,
+      "new_price": 9407.0,
+      "price_change": -2131.0,
+      "price_change_pct": -18.469405442884383,
+      "timestamp": "2026-07-30 15:23:54.634952+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-30T15:24:51.119535+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-07-30_15-23_comeback_18.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-30T12:45:06.251879+00:00",
+    "last_processed_run": "2026-07-30T15:23:54.634952+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -5379,8 +5405,8 @@
         "premium_peak": 11257.0
       },
       "Reef Oasis Blue Bay Resort": {
-        "history_max": 12057.0,
-        "premium_peak": 12057.0
+        "history_max": 12257.0,
+        "premium_peak": 12257.0
       },
       "Jaz Mirabel Park": {
         "history_max": 10558.0,
@@ -5463,8 +5489,8 @@
         "premium_peak": 10881.0
       },
       "Grand Rotana Resort & Spa": {
-        "history_max": 12657.0,
-        "premium_peak": 12657.0
+        "history_max": 13057.0,
+        "premium_peak": 13057.0
       },
       "Siva Golden Bay Makadi": {
         "history_max": 9347.0,
@@ -5511,7 +5537,7 @@
         "premium_peak": 16797.0
       },
       "Casa Mare Resort (ex. Royal Tulip Beach Resort)": {
-        "history_max": 9657.0,
+        "history_max": 9857.0,
         "premium_peak": null
       },
       "Caves Beach Resort": {
@@ -5531,8 +5557,8 @@
         "premium_peak": 10787.0
       },
       "Cleopatra Luxury Resort": {
-        "history_max": 14579.0,
-        "premium_peak": 14579.0
+        "history_max": 14659.0,
+        "premium_peak": 14659.0
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
         "history_max": 10767.0,
@@ -5675,8 +5701,8 @@
         "premium_peak": 12266.0
       },
       "Coral Sea Sensatori (ex Coral Sea Imperial)": {
-        "history_max": 12465.0,
-        "premium_peak": 12465.0
+        "history_max": 12481.0,
+        "premium_peak": 12481.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
         "history_max": 11424.0,
@@ -5695,8 +5721,8 @@
         "premium_peak": 12202.0
       },
       "Sultan Gardens Resort": {
-        "history_max": 12551.0,
-        "premium_peak": 12551.0
+        "history_max": 12631.0,
+        "premium_peak": 12631.0
       },
       "Steigenberger Alcazar": {
         "history_max": 14166.0,
