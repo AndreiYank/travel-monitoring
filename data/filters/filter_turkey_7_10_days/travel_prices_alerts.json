@@ -4966,10 +4966,114 @@
       "created_at": "2026-07-30T00:16:24.714161+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Narcia Resort Side_2026-07-30_00-15_comeback_15.4"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 8012.0,
+      "new_price": 8755.0,
+      "price_change": 743.0,
+      "price_change_pct": 9.273589615576636,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-07-30T01:46:50.580355+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-07-30_01-45_+9.3"
+    },
+    {
+      "hotel_name": "Benata Turcja, Side, Manavgat",
+      "duration_bucket": "",
+      "old_price": 8557.0,
+      "new_price": 8557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580388+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Benata Turcja, Side, Manavgat_2026-07-30_01-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Castival (ex. La Grande Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580401+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Castival (ex. La Grande Resort & Spa)_2026-07-30_01-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Blue Collection",
+      "duration_bucket": "",
+      "old_price": 9826.0,
+      "new_price": 10659.0,
+      "price_change": 833.0,
+      "price_change_pct": 8.477508650519031,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580412+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Blue Collection_2026-07-30_01-45_zone_out_+8.5"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 9256.0,
+      "new_price": 9256.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580421+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa Turcja, Side_2026-07-30_01-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9579.0,
+      "new_price": 10432.0,
+      "price_change": 853.0,
+      "price_change_pct": 8.904896126944358,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580430+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-07-30_01-45_zone_out_+8.9"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9555.0,
+      "new_price": 10487.0,
+      "price_change": 932.0,
+      "price_change_pct": 9.754055468341182,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580438+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-07-30_01-45_zone_out_+9.8"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9866.0,
+      "new_price": 10772.0,
+      "price_change": 906.0,
+      "price_change_pct": 9.183052908980336,
+      "timestamp": "2026-07-30 01:45:30.733940+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-30T01:46:50.580447+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-07-30_01-45_zone_out_+9.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-30T00:15:04.643664+00:00",
+    "last_processed_run": "2026-07-30T01:45:30.733940+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11636.0,
@@ -4992,8 +5096,8 @@
         "premium_peak": 12010.0
       },
       "Side Premium by OZ Hotels": {
-        "history_max": 12778.0,
-        "premium_peak": 12778.0
+        "history_max": 13170.0,
+        "premium_peak": 13170.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
         "history_max": 13025.0,
@@ -5204,8 +5308,8 @@
         "premium_peak": 12541.0
       },
       "Diamond Premium": {
-        "history_max": 11879.0,
-        "premium_peak": 11879.0
+        "history_max": 11970.0,
+        "premium_peak": 11970.0
       },
       "Diamond De Luxe ( Colakli)": {
         "history_max": 13287.0,
@@ -5564,8 +5668,8 @@
         "premium_peak": 12843.0
       },
       "Pirates Beach Club": {
-        "history_max": 12909.0,
-        "premium_peak": 12909.0
+        "history_max": 13279.0,
+        "premium_peak": 13279.0
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
         "history_max": 10696.0,
@@ -5764,8 +5868,8 @@
         "premium_peak": 10873.0
       },
       "Mary Side (ex. Mary Palace)": {
-        "history_max": 12324.0,
-        "premium_peak": 12324.0
+        "history_max": 12576.0,
+        "premium_peak": 12576.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
         "history_max": 13203.0,
@@ -5980,8 +6084,8 @@
         "premium_peak": 12038.0
       },
       "Cenger Blue Collection": {
-        "history_max": 10522.0,
-        "premium_peak": 10522.0
+        "history_max": 10659.0,
+        "premium_peak": 10659.0
       },
       "Calido Maris": {
         "history_max": 10431.0,
@@ -6324,8 +6428,8 @@
         "premium_peak": 12947.0
       },
       "Aydinbey Kings Palace": {
-        "history_max": 13073.0,
-        "premium_peak": 13073.0
+        "history_max": 13105.0,
+        "premium_peak": 13105.0
       },
       "Nova Life Turcja, Alanya, Konaklı": {
         "history_max": 9441.0,
@@ -6376,7 +6480,7 @@
         "premium_peak": 13069.0
       },
       "Oz Sui Resort Turcja, Alanya": {
-        "history_max": 9427.0,
+        "history_max": 9490.0,
         "premium_peak": null
       },
       "Ring Beach Turcja, Kemer, Beldibi": {
@@ -6440,7 +6544,7 @@
         "premium_peak": 11945.0
       },
       "Castival (ex. La Grande Resort & Spa) Turcja, Side": {
-        "history_max": 9297.0,
+        "history_max": 9557.0,
         "premium_peak": null
       },
       "Kirbiyik Resort (ex. Dinler)": {
@@ -6632,8 +6736,8 @@
         "premium_peak": null
       },
       "Eftalia Aqua": {
-        "history_max": 11482.0,
-        "premium_peak": 11482.0
+        "history_max": 12335.0,
+        "premium_peak": 12335.0
       },
       "VONResort Golden Beach": {
         "history_max": 12888.0,

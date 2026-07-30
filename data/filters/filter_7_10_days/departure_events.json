@@ -3801,6 +3801,26 @@
       "hot_score": 79.0
     },
     {
+      "event_time": "2026-07-30T01:44:26+0000",
+      "departure_key": "egipt|dolny-egipt|2026-07-31|2026-08-07|7|Warszawa - Modlin|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "dolny-egipt",
+      "departure_date": "2026-07-31",
+      "return_date": "2026-08-07",
+      "nights": 7.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 7281.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 7.0,
+      "hotel_delta": 1,
+      "hot_score": 89.0
+    },
+    {
       "event_time": "2026-06-03T02:49:11+0000",
       "departure_key": "egipt|hurghada|2026-06-04|2026-06-11|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_price_dump",
@@ -22761,6 +22781,26 @@
       "hot_score": 0.0
     },
     {
+      "event_time": "2026-07-30T01:44:26+0000",
+      "departure_key": "egipt|marsa-alam|2026-08-22|2026-08-30|7|Warszawa - Modlin|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-08-22",
+      "return_date": "2026-08-30",
+      "nights": 7.0,
+      "days_to_departure": 23.0,
+      "old_min_price": "",
+      "new_min_price": 8297.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 12.0,
+      "hotel_delta": 0,
+      "hot_score": 0.0
+    },
+    {
       "event_time": "2026-06-04T10:57:44+0000",
       "departure_key": "egipt|sharm-el-sheikh|2026-06-06|2026-06-13|7|Warszawa - Modlin,Warszawa - Radom,Warszawa|2+1",
       "event_type": "late_price_dump",
@@ -33918,6 +33958,26 @@
       "median_drop_pct": 0.0,
       "hotel_count": 4.0,
       "hotel_delta": -4,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-07-30T01:44:26+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-08-20|2026-08-27|7|Warszawa - Modlin|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-08-20",
+      "return_date": "2026-08-27",
+      "nights": 7.0,
+      "days_to_departure": 21.0,
+      "old_min_price": "",
+      "new_min_price": 10971.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": -12,
       "hot_score": 0.0
     }
   ]
