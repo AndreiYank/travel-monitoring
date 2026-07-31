@@ -5616,10 +5616,49 @@
       "created_at": "2026-07-31T16:20:36.336664+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-07-31_16-19_zone_out_+4.2"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 9963.0,
+      "new_price": 9963.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-31 17:48:10.766296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T17:49:06.666839+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-07-31_17-48_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9988.0,
+      "new_price": 10537.0,
+      "price_change": 549.0,
+      "price_change_pct": 5.496595915098118,
+      "timestamp": "2026-07-31 17:48:10.766296+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T17:49:06.666871+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)_2026-07-31_17-48_zone_out_+5.5"
+    },
+    {
+      "hotel_name": "Caesar Bay Resort",
+      "duration_bucket": "",
+      "old_price": 12397.0,
+      "new_price": 9397.0,
+      "price_change": -3000.0,
+      "price_change_pct": -24.199403081390656,
+      "timestamp": "2026-07-31 17:48:10.766296+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T17:49:06.666895+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caesar Bay Resort_2026-07-31_17-48_comeback_24.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-31T16:19:37.233202+00:00",
+    "last_processed_run": "2026-07-31T17:48:10.766296+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -6298,8 +6337,8 @@
         "premium_peak": 12593.0
       },
       "Steigenberger Aqua Magic": {
-        "history_max": 12515.0,
-        "premium_peak": 12515.0
+        "history_max": 12638.0,
+        "premium_peak": 12638.0
       },
       "Xperience Kiroseiz Premier": {
         "history_max": 10348.0,
