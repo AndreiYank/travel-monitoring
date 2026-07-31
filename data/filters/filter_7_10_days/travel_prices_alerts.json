@@ -5174,10 +5174,101 @@
       "created_at": "2026-07-31T02:10:23.515886+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Serenity Alma Heights (ex. Serenity Fun City)_2026-07-31_02-09_comeback_29.9"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 9870.0,
+      "new_price": 9047.0,
+      "price_change": -823.0,
+      "price_change_pct": -8.338399189463019,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-07-31T05:47:47.193608+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-07-31_05-46_-8.3"
+    },
+    {
+      "hotel_name": "Casa Mare Resort (ex. Royal Tulip Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 9857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T05:47:47.193645+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-07-31_05-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 9987.0,
+      "new_price": 11057.0,
+      "price_change": 1070.0,
+      "price_change_pct": 10.7139281065385,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T05:47:47.193659+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-07-31_05-46_zone_out_+10.7"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 11538.0,
+      "new_price": 9407.0,
+      "price_change": -2131.0,
+      "price_change_pct": -18.469405442884383,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T05:47:47.193681+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-07-31_05-46_comeback_18.5"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 11457.0,
+      "new_price": 9707.0,
+      "price_change": -1750.0,
+      "price_change_pct": -15.274504669634284,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T05:47:47.193694+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-07-31_05-46_comeback_15.3"
+    },
+    {
+      "hotel_name": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)",
+      "duration_bucket": "",
+      "old_price": 13504.0,
+      "new_price": 9552.0,
+      "price_change": -3952.0,
+      "price_change_pct": -29.265402843601894,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T05:47:47.193706+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)_2026-07-31_05-46_comeback_29.3"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa",
+      "duration_bucket": "",
+      "old_price": 11307.0,
+      "new_price": 8897.0,
+      "price_change": -2410.0,
+      "price_change_pct": -21.314230122932695,
+      "timestamp": "2026-07-31 05:46:45.951432+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T05:47:47.193717+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa_2026-07-31_05-46_comeback_21.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-31T02:09:33.404961+00:00",
+    "last_processed_run": "2026-07-31T05:46:45.951432+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -5212,8 +5303,8 @@
         "premium_peak": 11880.0
       },
       "Jaz Belvedere": {
-        "history_max": 11457.0,
-        "premium_peak": 11457.0
+        "history_max": 11532.0,
+        "premium_peak": 11532.0
       },
       "Rixos Premium Seagate": {
         "history_max": 19170.0,
@@ -5856,8 +5947,8 @@
         "premium_peak": 12593.0
       },
       "Steigenberger Aqua Magic": {
-        "history_max": 12167.0,
-        "premium_peak": 12167.0
+        "history_max": 12515.0,
+        "premium_peak": 12515.0
       },
       "Xperience Kiroseiz Premier": {
         "history_max": 10348.0,
