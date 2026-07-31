@@ -6734,10 +6734,114 @@
       "created_at": "2026-07-31T11:44:28.490860+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seven For Life Thermal_2026-07-31_11-43_comeback_23.7"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T13:55:08.639778+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa Turcja, Marmaris_2026-07-31_13-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Maril Resort Turcja, Bodrum, Didim",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T13:55:08.639818+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Turcja, Bodrum, Didim_2026-07-31_13-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach Turcja, Kemer, Beldibi",
+      "duration_bucket": "",
+      "old_price": 9450.0,
+      "new_price": 9450.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T13:55:08.639840+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach Turcja, Kemer, Beldibi_2026-07-31_13-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seven For Life Thermal",
+      "duration_bucket": "",
+      "old_price": 9945.0,
+      "new_price": 10256.0,
+      "price_change": 311.0,
+      "price_change_pct": 3.127199597787833,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T13:55:08.639864+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seven For Life Thermal_2026-07-31_13-53_zone_out_+3.1"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 9736.0,
+      "new_price": 9736.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-07-31T13:55:08.639884+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-07-31_13-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 11933.0,
+      "new_price": 9938.0,
+      "price_change": -1995.0,
+      "price_change_pct": -16.718344087823684,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T13:55:08.639923+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-07-31_13-53_comeback_16.7"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 10557.0,
+      "new_price": 9557.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.472387989012029,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T13:55:08.639957+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-07-31_13-53_comeback_9.5"
+    },
+    {
+      "hotel_name": "Grand Seker",
+      "duration_bucket": "",
+      "old_price": 11141.0,
+      "new_price": 9701.0,
+      "price_change": -1440.0,
+      "price_change_pct": -12.925231128264967,
+      "timestamp": "2026-07-31 13:53:36.586628+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-07-31T13:55:08.639990+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Seker_2026-07-31_13-53_comeback_12.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-31T11:43:02.757033+00:00",
+    "last_processed_run": "2026-07-31T13:53:36.586628+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11636.0,
@@ -7160,8 +7264,8 @@
         "premium_peak": 11697.0
       },
       "Palemon Resort & Spa": {
-        "history_max": 11431.0,
-        "premium_peak": 11431.0
+        "history_max": 11469.0,
+        "premium_peak": 11469.0
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)": {
         "history_max": 11174.0,
@@ -7740,8 +7844,8 @@
         "premium_peak": 11099.0
       },
       "Armas Life Belek": {
-        "history_max": 10904.0,
-        "premium_peak": 10904.0
+        "history_max": 10926.0,
+        "premium_peak": 10926.0
       },
       "Arin Resort Bodrum": {
         "history_max": 12038.0,
@@ -8276,8 +8380,8 @@
         "premium_peak": 13163.0
       },
       "Golden Rock Beach": {
-        "history_max": 11384.0,
-        "premium_peak": 11384.0
+        "history_max": 11684.0,
+        "premium_peak": 11684.0
       },
       "Raxeria (Side)": {
         "history_max": 11390.0,
