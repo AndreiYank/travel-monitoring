@@ -8086,10 +8086,114 @@
       "created_at": "2026-08-01T12:20:55.522489+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-08-01_12-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asteria Bloom Side",
+      "duration_bucket": "",
+      "old_price": 9801.0,
+      "new_price": 9801.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649497+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Bloom Side_2026-08-01_13-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bieno Club Sunset (ex. Bone Club Sunset) Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 9697.0,
+      "new_price": 9697.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649535+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bieno Club Sunset (ex. Bone Club Sunset) Turcja, Side_2026-08-01_13-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Insula Resort",
+      "duration_bucket": "",
+      "old_price": 9820.0,
+      "new_price": 9820.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649558+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort_2026-08-01_13-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lycus Beach (ex. Lti) Turcja, Alanya, Okurcalar",
+      "duration_bucket": "",
+      "old_price": 9708.0,
+      "new_price": 9708.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649576+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lycus Beach (ex. Lti) Turcja, Alanya, Okurcalar_2026-08-01_13-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9815.0,
+      "new_price": 9815.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649593+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-08-01_13-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 9447.0,
+      "new_price": 9447.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649608+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa Turcja, Alanya_2026-08-01_13-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9801.0,
+      "new_price": 10034.0,
+      "price_change": 233.0,
+      "price_change_pct": 2.3773084379144986,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T13:20:01.649629+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-01_13-18_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 11234.0,
+      "new_price": 9989.0,
+      "price_change": -1245.0,
+      "price_change_pct": -11.0824283425316,
+      "timestamp": "2026-08-01 13:18:20.766452+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T13:20:01.649674+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-01_13-18_comeback_11.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-01T12:19:00.606991+00:00",
+    "last_processed_run": "2026-08-01T13:18:20.766452+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11636.0,
@@ -8264,7 +8368,7 @@
         "premium_peak": 11397.0
       },
       "Insula Resort Turcja, Alanya, Konakli": {
-        "history_max": 9710.0,
+        "history_max": 9820.0,
         "premium_peak": null
       },
       "Side Crown Serenity": {
@@ -9376,8 +9480,8 @@
         "premium_peak": null
       },
       "Marti Myra": {
-        "history_max": 13403.0,
-        "premium_peak": 13403.0
+        "history_max": 13478.0,
+        "premium_peak": 13478.0
       },
       "Side Star Elegance (ex. Asteria)": {
         "history_max": 13292.0,
@@ -9432,8 +9536,8 @@
         "premium_peak": 13090.0
       },
       "Bodrum Holiday Resort": {
-        "history_max": 13154.0,
-        "premium_peak": 13154.0
+        "history_max": 13408.0,
+        "premium_peak": 13408.0
       },
       "Kaila Beach (ex Katya) Turcja, Alanya": {
         "history_max": 8954.0,
@@ -9500,7 +9604,7 @@
         "premium_peak": null
       },
       "Ring Beach Turcja, Kemer, Beldibi": {
-        "history_max": 9716.0,
+        "history_max": 9815.0,
         "premium_peak": null
       },
       "Club Sera": {
@@ -9842,6 +9946,10 @@
       "Beks Premium Resort & Spa": {
         "history_max": 12704.0,
         "premium_peak": 12704.0
+      },
+      "Selectum For Two Side (ex. Heaven Beach Resort & Spa) Turcja, Side, Kizilagac": {
+        "history_max": 9801.0,
+        "premium_peak": null
       }
     }
   }
