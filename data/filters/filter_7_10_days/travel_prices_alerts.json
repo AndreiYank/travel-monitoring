@@ -5668,10 +5668,114 @@
       "created_at": "2026-07-31T21:15:57.399050+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Continental (ex Movenpick Resort)_2026-07-31_21-14_comeback_14.0"
+    },
+    {
+      "hotel_name": "Ancient Sands Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9963.0,
+      "new_price": 8681.0,
+      "price_change": -1282.0,
+      "price_change_pct": -12.867610157583057,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-01T00:17:12.023006+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ancient Sands Golf Resort_2026-08-01_00-16_-12.9"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 9617.0,
+      "new_price": 8024.0,
+      "price_change": -1593.0,
+      "price_change_pct": -16.56441717791411,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-01T00:17:12.023033+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-01_00-16_-16.6"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10769.0,
+      "new_price": 9707.0,
+      "price_change": -1062.0,
+      "price_change_pct": -9.861639892283407,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T00:17:12.023069+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-08-01_00-16_comeback_9.9"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 11052.0,
+      "new_price": 8973.0,
+      "price_change": -2079.0,
+      "price_change_pct": -18.811074918566774,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T00:17:12.023083+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-01_00-16_comeback_18.8"
+    },
+    {
+      "hotel_name": "Jaz Aquaviva",
+      "duration_bucket": "",
+      "old_price": 11880.0,
+      "new_price": 9630.0,
+      "price_change": -2250.0,
+      "price_change_pct": -18.939393939393938,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T00:17:12.023095+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquaviva_2026-08-01_00-16_comeback_18.9"
+    },
+    {
+      "hotel_name": "Steigenberger Golf Resort",
+      "duration_bucket": "",
+      "old_price": 11547.0,
+      "new_price": 9306.0,
+      "price_change": -2241.0,
+      "price_change_pct": -19.40763834762276,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T00:17:12.023105+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Golf Resort_2026-08-01_00-16_comeback_19.4"
+    },
+    {
+      "hotel_name": "Pyramisa Beach Resort Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 11057.0,
+      "new_price": 9509.0,
+      "price_change": -1548.0,
+      "price_change_pct": -14.000180880889934,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T00:17:12.023115+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pyramisa Beach Resort Sahl Hasheesh_2026-08-01_00-16_comeback_14.0"
+    },
+    {
+      "hotel_name": "Dreams Beach Sharm Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 10989.0,
+      "new_price": 9830.0,
+      "price_change": -1159.0,
+      "price_change_pct": -10.546910546910548,
+      "timestamp": "2026-08-01 00:16:10.518771+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T00:17:12.023125+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-08-01_00-16_comeback_10.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-07-31T23:16:05.456446+00:00",
+    "last_processed_run": "2026-08-01T00:16:10.518771+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9491.0,
@@ -6374,8 +6478,8 @@
         "premium_peak": 11615.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
-        "history_max": 13047.0,
-        "premium_peak": 13047.0
+        "history_max": 13817.0,
+        "premium_peak": 13817.0
       },
       "Strand Taba Heights Resort (ex. InterContinental)": {
         "history_max": 12025.0,
