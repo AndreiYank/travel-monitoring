@@ -8307,10 +8307,49 @@
       "created_at": "2026-08-01T16:17:03.656659+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Club Nena (Side)_2026-08-01_16-15_comeback_20.2"
+    },
+    {
+      "hotel_name": "Charisma Deluxe Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 9809.0,
+      "new_price": 9809.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 17:11:18.034853+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T17:13:22.447934+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe Turcja, Kusadasi_2026-08-01_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9815.0,
+      "new_price": 9815.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 17:11:18.034853+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T17:13:22.447965+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-08-01_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 10949.0,
+      "new_price": 9849.0,
+      "price_change": -1100.0,
+      "price_change_pct": -10.046579596310165,
+      "timestamp": "2026-08-01 17:11:18.034853+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T17:13:22.447995+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-08-01_17-11_comeback_10.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-01T16:15:20.296481+00:00",
+    "last_processed_run": "2026-08-01T17:11:18.034853+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11636.0,
@@ -10071,6 +10110,10 @@
       "Club Nena Turcja, Side, Kizilagac": {
         "history_max": 9627.0,
         "premium_peak": null
+      },
+      "La Blanche Resort & Spa": {
+        "history_max": 13014.0,
+        "premium_peak": 13014.0
       }
     }
   }
