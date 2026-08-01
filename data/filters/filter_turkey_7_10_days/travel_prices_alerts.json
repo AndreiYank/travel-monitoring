@@ -8190,10 +8190,75 @@
       "created_at": "2026-08-01T13:20:01.649674+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-01_13-18_comeback_11.1"
+    },
+    {
+      "hotel_name": "Insula Resort Turcja, Alanya, Konakli",
+      "duration_bucket": "",
+      "old_price": 9820.0,
+      "new_price": 9820.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 14:47:06.918434+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T14:49:50.577182+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort Turcja, Alanya, Konakli_2026-08-01_14-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kadikale Resort Spa & Wellness",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10357.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.017274279401426,
+      "timestamp": "2026-08-01 14:47:06.918434+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T14:49:50.577214+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kadikale Resort Spa & Wellness_2026-08-01_14-47_zone_out_+4.0"
+    },
+    {
+      "hotel_name": "Ring Beach Turcja, Kemer, Beldibi",
+      "duration_bucket": "",
+      "old_price": 9815.0,
+      "new_price": 9815.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-01 14:47:06.918434+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T14:49:50.577224+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach Turcja, Kemer, Beldibi_2026-08-01_14-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9989.0,
+      "new_price": 10925.0,
+      "price_change": 936.0,
+      "price_change_pct": 9.370307338071878,
+      "timestamp": "2026-08-01 14:47:06.918434+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-01T14:49:50.577233+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-01_14-47_zone_out_+9.4"
+    },
+    {
+      "hotel_name": "Insula Resort",
+      "duration_bucket": "",
+      "old_price": 11008.0,
+      "new_price": 9820.0,
+      "price_change": -1188.0,
+      "price_change_pct": -10.792151162790697,
+      "timestamp": "2026-08-01 14:47:06.918434+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-01T14:49:50.577253+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort_2026-08-01_14-47_comeback_10.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-01T13:18:20.766452+00:00",
+    "last_processed_run": "2026-08-01T14:47:06.918434+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11636.0,
@@ -8936,8 +9001,8 @@
         "premium_peak": 12557.0
       },
       "Mirage World": {
-        "history_max": 11381.0,
-        "premium_peak": 11381.0
+        "history_max": 11484.0,
+        "premium_peak": 11484.0
       },
       "Mirada Del Mar": {
         "history_max": 13297.0,
@@ -9420,7 +9485,7 @@
         "premium_peak": 12957.0
       },
       "Charisma Deluxe Turcja, Kusadasi": {
-        "history_max": 9529.0,
+        "history_max": 9809.0,
         "premium_peak": null
       },
       "Presa Di Finica (Finike)": {
@@ -9949,6 +10014,10 @@
       },
       "Selectum For Two Side (ex. Heaven Beach Resort & Spa) Turcja, Side, Kizilagac": {
         "history_max": 9801.0,
+        "premium_peak": null
+      },
+      "Club Nena Turcja, Side, Kizilagac": {
+        "history_max": 9627.0,
         "premium_peak": null
       }
     }
