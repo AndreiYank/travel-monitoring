@@ -6968,10 +6968,62 @@
       "created_at": "2026-08-02T08:24:51.592204+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Steigenberger Golf Resort_2026-08-02_08-23_zone_out_+13.7"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 8352.0,
+      "new_price": 9306.0,
+      "price_change": 954.0,
+      "price_change_pct": 11.422413793103448,
+      "timestamp": "2026-08-02 10:47:41.976712+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-02T10:48:58.533276+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-02_10-47_+11.4"
+    },
+    {
+      "hotel_name": "Caesar Bay Resort",
+      "duration_bucket": "",
+      "old_price": 9997.0,
+      "new_price": 10197.0,
+      "price_change": 200.0,
+      "price_change_pct": 2.000600180054016,
+      "timestamp": "2026-08-02 10:47:41.976712+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-02T10:48:58.533309+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caesar Bay Resort_2026-08-02_10-47_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Dreams Beach Sharm Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 9830.0,
+      "new_price": 10097.0,
+      "price_change": 267.0,
+      "price_change_pct": 2.7161749745676502,
+      "timestamp": "2026-08-02 10:47:41.976712+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-02T10:48:58.533322+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-08-02_10-47_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9999.0,
+      "new_price": 10386.0,
+      "price_change": 387.0,
+      "price_change_pct": 3.87038703870387,
+      "timestamp": "2026-08-02 10:47:41.976712+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-02T10:48:58.533332+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-08-02_10-47_zone_out_+3.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-02T08:23:57.431373+00:00",
+    "last_processed_run": "2026-08-02T10:47:41.976712+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 9673.0,
@@ -7438,8 +7490,8 @@
         "premium_peak": 16977.0
       },
       "Charmillion Garden Aqua Park": {
-        "history_max": 11363.0,
-        "premium_peak": 11363.0
+        "history_max": 13035.0,
+        "premium_peak": 13035.0
       },
       "Cleopatra Luxury Resort": {
         "history_max": 14659.0,
