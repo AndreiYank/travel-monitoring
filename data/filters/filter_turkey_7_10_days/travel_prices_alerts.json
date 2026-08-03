@@ -312,10 +312,36 @@
       "created_at": "2026-08-03T19:44:03.179560+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Wind of Lara_2026-08-03_19-43_comeback_8.0"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites",
+      "duration_bucket": "",
+      "old_price": 9984.0,
+      "new_price": 10484.0,
+      "price_change": 500.0,
+      "price_change_pct": 5.008012820512821,
+      "timestamp": "2026-08-03 21:19:03.408062+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T21:19:50.230313+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites_2026-08-03_21-19_zone_out_+5.0"
+    },
+    {
+      "hotel_name": "Nova Park",
+      "duration_bucket": "",
+      "old_price": 9851.0,
+      "new_price": 10300.0,
+      "price_change": 449.0,
+      "price_change_pct": 4.5579129022434275,
+      "timestamp": "2026-08-03 21:19:03.408062+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T21:19:50.230333+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Park_2026-08-03_21-19_zone_out_+4.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-03T19:43:08.849974+00:00",
+    "last_processed_run": "2026-08-03T21:19:03.408062+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -354,8 +380,8 @@
         "premium_peak": 11196.0
       },
       "Gypsophila Holiday Village": {
-        "history_max": 10817.0,
-        "premium_peak": 10817.0
+        "history_max": 10899.0,
+        "premium_peak": 10899.0
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)": {
         "history_max": 11039.0,
@@ -582,7 +608,7 @@
         "premium_peak": 11957.0
       },
       "Grand Ozcelik Turcja, Kusadasi": {
-        "history_max": 8582.0,
+        "history_max": 8627.0,
         "premium_peak": null
       },
       "Grand Kolibri Prestige & Spa": {
@@ -1230,8 +1256,8 @@
         "premium_peak": null
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
-        "history_max": 11629.0,
-        "premium_peak": 11629.0
+        "history_max": 12049.0,
+        "premium_peak": 12049.0
       },
       "World Star Beach Resort & Spa Turcja, Alanya, Kestel": {
         "history_max": 8190.0,
@@ -1592,6 +1618,14 @@
       "Royal Dragon": {
         "history_max": 12406.0,
         "premium_peak": 12406.0
+      },
+      "Calyptus Kirman Premium": {
+        "history_max": 12478.0,
+        "premium_peak": 12478.0
+      },
+      "Aqua Marmaris": {
+        "history_max": 12477.0,
+        "premium_peak": 12477.0
       }
     }
   }
