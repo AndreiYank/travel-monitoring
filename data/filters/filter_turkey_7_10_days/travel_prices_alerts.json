@@ -260,10 +260,49 @@
       "created_at": "2026-08-03T16:02:07.408672+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-03_16-01_comeback_10.0"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9938.0,
+      "new_price": 10385.0,
+      "price_change": 447.0,
+      "price_change_pct": 4.497886898772388,
+      "timestamp": "2026-08-03 18:11:14.265368+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T18:12:10.773648+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-03_18-11_zone_out_+4.5"
+    },
+    {
+      "hotel_name": "Tusan Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9739.0,
+      "new_price": 12017.0,
+      "price_change": 2278.0,
+      "price_change_pct": 23.390491836944243,
+      "timestamp": "2026-08-03 18:11:14.265368+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T18:12:10.773681+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tusan Beach Resort_2026-08-03_18-11_zone_out_+23.4"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 10716.0,
+      "new_price": 9716.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.33184023889511,
+      "timestamp": "2026-08-03 18:11:14.265368+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-03T18:12:10.773708+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-03_18-11_comeback_9.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-03T16:01:12.707178+00:00",
+    "last_processed_run": "2026-08-03T18:11:14.265368+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -546,8 +585,8 @@
         "premium_peak": 11052.0
       },
       "Grand Belish": {
-        "history_max": 11586.0,
-        "premium_peak": 11586.0
+        "history_max": 11822.0,
+        "premium_peak": 11822.0
       },
       "Seven For Life Thermal": {
         "history_max": 8910.0,
@@ -686,7 +725,7 @@
         "premium_peak": 10297.0
       },
       "Presa Di Finica (Finike)": {
-        "history_max": 9097.0,
+        "history_max": 9297.0,
         "premium_peak": null
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
@@ -858,7 +897,7 @@
         "premium_peak": 11344.0
       },
       "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar": {
-        "history_max": 7529.0,
+        "history_max": 7700.0,
         "premium_peak": null
       },
       "Rox Royal (ex. Grand Haber) Turcja, Kemer": {
@@ -902,7 +941,7 @@
         "premium_peak": 11724.0
       },
       "Mandarin Resort (Bodrum)": {
-        "history_max": 9827.0,
+        "history_max": 9949.0,
         "premium_peak": null
       },
       "Ma Biche Kemer by Werde Hotels": {
@@ -986,8 +1025,8 @@
         "premium_peak": 11912.0
       },
       "Tusan Beach Resort": {
-        "history_max": 9739.0,
-        "premium_peak": null
+        "history_max": 12017.0,
+        "premium_peak": 12017.0
       },
       "Aventura Park Turcja, Alanya": {
         "history_max": 8557.0,
@@ -1094,8 +1133,8 @@
         "premium_peak": null
       },
       "Bella Resort": {
-        "history_max": 12251.0,
-        "premium_peak": 12251.0
+        "history_max": 12334.0,
+        "premium_peak": 12334.0
       },
       "Timo Deluxe Resort": {
         "history_max": 8955.0,
@@ -1518,7 +1557,7 @@
         "premium_peak": 12372.0
       },
       "Ladonia Adakule": {
-        "history_max": 9668.0,
+        "history_max": 9798.0,
         "premium_peak": null
       },
       "Long Beach (Avsallar)": {
