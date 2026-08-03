@@ -1,8 +1,87 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Diamond Hill Resort Turcja, Alanya, Incekum",
+      "duration_bucket": "",
+      "old_price": 8663.0,
+      "new_price": 8663.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-03 05:55:48.052629+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:56:34.530597+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Hill Resort Turcja, Alanya, Incekum_2026-08-03_05-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber) Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 8631.0,
+      "new_price": 8631.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-03 05:55:48.052629+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:56:34.530624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber) Turcja, Kemer_2026-08-03_05-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8942.0,
+      "new_price": 8942.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-03 05:55:48.052629+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:56:34.530634+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-03_05-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunmelia Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9927.0,
+      "new_price": 9927.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-03 05:55:48.052629+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:56:34.530642+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunmelia Beach Resort & Spa_2026-08-03_05-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9598.0,
+      "new_price": 9598.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-03 05:55:48.052629+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:56:34.530649+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-03_05-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 10716.0,
+      "new_price": 9716.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.33184023889511,
+      "timestamp": "2026-08-03 05:55:48.052629+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-03T05:56:34.530674+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-03_05-55_comeback_9.3"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-03T02:13:57.657140+00:00",
+    "last_processed_run": "2026-08-03T05:55:48.052629+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -169,8 +248,8 @@
         "premium_peak": null
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 10487.0,
-        "premium_peak": 10487.0
+        "history_max": 10771.0,
+        "premium_peak": 10771.0
       },
       "Grand Pasa": {
         "history_max": 10013.0,
@@ -1195,6 +1274,34 @@
       "Cesars Resort (Side)": {
         "history_max": 11357.0,
         "premium_peak": 11357.0
+      },
+      "Diamond Hill Resort": {
+        "history_max": 8663.0,
+        "premium_peak": null
+      },
+      "Xoria Deluxe Turcja, Alanya, Payallar": {
+        "history_max": 8444.0,
+        "premium_peak": null
+      },
+      "Eftalia Marin": {
+        "history_max": 11977.0,
+        "premium_peak": 11977.0
+      },
+      "Marti Myra": {
+        "history_max": 12228.0,
+        "premium_peak": 12228.0
+      },
+      "Seher Sun Palace Resort & Spa Turcja, Side, Colakli": {
+        "history_max": 7994.0,
+        "premium_peak": null
+      },
+      "Rox Royal (ex. Grand Haber)": {
+        "history_max": 8631.0,
+        "premium_peak": null
+      },
+      "Pine Bay Holiday Resort": {
+        "history_max": 11957.0,
+        "premium_peak": 11957.0
       }
     }
   }

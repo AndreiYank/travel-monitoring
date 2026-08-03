@@ -1,16 +1,43 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara",
+      "duration_bucket": "",
+      "old_price": 9176.0,
+      "new_price": 11567.0,
+      "price_change": 2391.0,
+      "price_change_pct": 26.05710549258936,
+      "timestamp": "2026-08-03 05:56:30.386607+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:57:10.731451+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara_2026-08-03_05-56_zone_out_+26.1"
+    },
+    {
+      "hotel_name": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali",
+      "duration_bucket": "",
+      "old_price": 9176.0,
+      "new_price": 9176.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-03 05:56:30.386607+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T05:57:10.731475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-08-03_05-56_zone_out_gone"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-03T02:14:45.111635+00:00",
+    "last_processed_run": "2026-08-03T05:56:30.386607+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 12399.0,
         "premium_peak": 12399.0
       },
       "Kakkos Bay": {
-        "history_max": 13737.0,
-        "premium_peak": 13737.0
+        "history_max": 13772.0,
+        "premium_peak": 13772.0
       },
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
         "history_max": 12490.0,
@@ -49,8 +76,8 @@
         "premium_peak": 16887.0
       },
       "Hersonissos Palace": {
-        "history_max": 12581.0,
-        "premium_peak": 12581.0
+        "history_max": 13597.0,
+        "premium_peak": 13597.0
       },
       "Princess Andriana Resort & Spa": {
         "history_max": 17787.0,
@@ -65,8 +92,8 @@
         "premium_peak": 19423.0
       },
       "Porto Angeli": {
-        "history_max": 14273.0,
-        "premium_peak": 14273.0
+        "history_max": 14363.0,
+        "premium_peak": 14363.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 14095.0,
@@ -173,8 +200,8 @@
         "premium_peak": 13867.0
       },
       "Mitsis Faliraki": {
-        "history_max": 17396.0,
-        "premium_peak": 17396.0
+        "history_max": 17402.0,
+        "premium_peak": 17402.0
       },
       "Mitsis Summer Palace": {
         "history_max": 14572.0,
@@ -221,8 +248,8 @@
         "premium_peak": 15932.0
       },
       "Zeus Eleva Mirabello Bay": {
-        "history_max": 15114.0,
-        "premium_peak": 15114.0
+        "history_max": 15352.0,
+        "premium_peak": 15352.0
       },
       "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi": {
         "history_max": 11033.0,
@@ -329,8 +356,8 @@
         "premium_peak": 11457.0
       },
       "White Olive Elite": {
-        "history_max": 12747.0,
-        "premium_peak": 12747.0
+        "history_max": 12924.0,
+        "premium_peak": 12924.0
       },
       "Almyros Beach (ex Cyprotel Almyros)": {
         "history_max": 14239.0,
@@ -361,8 +388,8 @@
         "premium_peak": null
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
-        "history_max": 9176.0,
-        "premium_peak": null
+        "history_max": 11567.0,
+        "premium_peak": 11567.0
       },
       "Apollo Blue": {
         "history_max": 17442.0,
@@ -385,7 +412,7 @@
         "premium_peak": 16278.0
       },
       "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes": {
-        "history_max": 8962.0,
+        "history_max": 8977.0,
         "premium_peak": null
       },
       "Avra Imperial Beach Resort & Spa": {
@@ -457,8 +484,8 @@
         "premium_peak": 13157.0
       },
       "Aldemar Olympian Village Grecja, Peloponez, Skafidia": {
-        "history_max": 11995.0,
-        "premium_peak": 11995.0
+        "history_max": 12475.0,
+        "premium_peak": 12475.0
       },
       "Blue Sea Beach (Stalida)": {
         "history_max": 15277.0,
@@ -483,6 +510,14 @@
       "Alia Palace": {
         "history_max": 18867.0,
         "premium_peak": 18867.0
+      },
+      "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
+        "history_max": 12657.0,
+        "premium_peak": 12657.0
+      },
+      "Filion Suites Resort": {
+        "history_max": 12768.0,
+        "premium_peak": 12768.0
       }
     }
   }
