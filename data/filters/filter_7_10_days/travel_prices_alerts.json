@@ -507,10 +507,23 @@
       "created_at": "2026-08-03T18:11:19.102962+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)_2026-08-03_18-10_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 10747.0,
+      "price_change": 1090.0,
+      "price_change_pct": 11.2871492181837,
+      "timestamp": "2026-08-03 19:42:34.617664+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-03T19:43:18.549749+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-08-03_19-42_zone_out_+11.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-03T18:10:39.852410+00:00",
+    "last_processed_run": "2026-08-03T19:42:34.617664+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -1009,8 +1022,8 @@
         "premium_peak": 10256.0
       },
       "Jaz Aquaviva": {
-        "history_max": 12164.0,
-        "premium_peak": 12164.0
+        "history_max": 12209.0,
+        "premium_peak": 12209.0
       },
       "True Beach Resort": {
         "history_max": 9676.0,
@@ -1201,8 +1214,8 @@
         "premium_peak": 12299.0
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 9657.0,
-        "premium_peak": null
+        "history_max": 10747.0,
+        "premium_peak": 10747.0
       },
       "Ghazala Alamein": {
         "history_max": 14642.0,
@@ -1315,6 +1328,10 @@
       "Amarina Jannah Resort Aquapark": {
         "history_max": 9897.0,
         "premium_peak": null
+      },
+      "Sunrise Crystal Bay Resort": {
+        "history_max": 16672.0,
+        "premium_peak": 16672.0
       }
     }
   }
