@@ -2249,10 +2249,75 @@
       "created_at": "2026-08-04T18:48:55.944454+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gypsophila Holiday Village_2026-08-04_18-47_comeback_12.2"
+    },
+    {
+      "hotel_name": "Sultan of Side Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 6868.0,
+      "new_price": 7970.0,
+      "price_change": 1102.0,
+      "price_change_pct": 16.045428072218986,
+      "timestamp": "2026-08-04 20:43:15.652738+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-04T20:44:26.599948+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side Turcja, Side, Colakli_2026-08-04_20-43_+16.0"
+    },
+    {
+      "hotel_name": "Gypsophila Holiday Village",
+      "duration_bucket": "",
+      "old_price": 9568.0,
+      "new_price": 10143.0,
+      "price_change": 575.0,
+      "price_change_pct": 6.009615384615385,
+      "timestamp": "2026-08-04 20:43:15.652738+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T20:44:26.600016+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gypsophila Holiday Village_2026-08-04_20-43_zone_out_+6.0"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 9394.0,
+      "new_price": 10344.0,
+      "price_change": 950.0,
+      "price_change_pct": 10.112837981690442,
+      "timestamp": "2026-08-04 20:43:15.652738+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T20:44:26.600030+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-04_20-43_zone_out_+10.1"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "",
+      "old_price": 8343.0,
+      "new_price": 8343.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-04 20:43:15.652738+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T20:44:26.600039+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-08-04_20-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe Turcja, Alanya, Payallar",
+      "duration_bucket": "",
+      "old_price": 8244.0,
+      "new_price": 8244.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-04 20:43:15.652738+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T20:44:26.600048+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe Turcja, Alanya, Payallar_2026-08-04_20-43_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T18:47:44.137609+00:00",
+    "last_processed_run": "2026-08-04T20:43:15.652738+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -3567,7 +3632,7 @@
         "premium_peak": null
       },
       "M. C. Arancia Resort": {
-        "history_max": 8521.0,
+        "history_max": 8527.0,
         "premium_peak": null
       },
       "Delphin Botanik (Alanya)": {
