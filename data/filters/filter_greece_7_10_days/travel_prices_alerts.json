@@ -117,10 +117,49 @@
       "created_at": "2026-08-04T12:22:01.442214+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-08-04_12-21_zone_out_+1.0"
+    },
+    {
+      "hotel_name": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki",
+      "duration_bucket": "",
+      "old_price": 9305.0,
+      "new_price": 10005.0,
+      "price_change": 700.0,
+      "price_change_pct": 7.522837184309511,
+      "timestamp": "2026-08-04 14:12:18.055342+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T14:13:13.454194+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki_2026-08-04_14-12_zone_out_+7.5"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 10049.0,
+      "new_price": 9194.0,
+      "price_change": -855.0,
+      "price_change_pct": -8.508309284505922,
+      "timestamp": "2026-08-04 14:12:18.055342+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-04T14:13:13.454231+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-08-04_14-12_comeback_8.5"
+    },
+    {
+      "hotel_name": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari",
+      "duration_bucket": "",
+      "old_price": 11285.0,
+      "new_price": 9651.0,
+      "price_change": -1634.0,
+      "price_change_pct": -14.479397430217103,
+      "timestamp": "2026-08-04 14:12:18.055342+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-04T14:13:13.454246+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-04_14-12_comeback_14.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T12:21:14.657302+00:00",
+    "last_processed_run": "2026-08-04T14:12:18.055342+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 12399.0,
@@ -263,12 +302,12 @@
         "premium_peak": 15857.0
       },
       "Mitsis Rodos Village": {
-        "history_max": 15391.0,
-        "premium_peak": 15391.0
+        "history_max": 16241.0,
+        "premium_peak": 16241.0
       },
       "Mitsis Rodos Maris": {
-        "history_max": 14177.0,
-        "premium_peak": 14177.0
+        "history_max": 14242.0,
+        "premium_peak": 14242.0
       },
       "Mitsis Selection Laguna": {
         "history_max": 18043.0,
@@ -551,8 +590,8 @@
         "premium_peak": 17582.0
       },
       "Akti Coast Club": {
-        "history_max": 13254.0,
-        "premium_peak": 13254.0
+        "history_max": 13282.0,
+        "premium_peak": 13282.0
       },
       "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos": {
         "history_max": 11297.0,
@@ -661,6 +700,10 @@
       "Zeus Eleva Ajul (Ayios Nikolaos)": {
         "history_max": 12263.0,
         "premium_peak": 12263.0
+      },
+      "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia": {
+        "history_max": 12057.0,
+        "premium_peak": 12057.0
       }
     }
   }

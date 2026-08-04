@@ -1625,10 +1625,49 @@
       "created_at": "2026-08-04T12:19:51.980961+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Old Palace Resort_2026-08-04_12-19_zone_out_+3.3"
+    },
+    {
+      "hotel_name": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)",
+      "duration_bucket": "",
+      "old_price": 9913.0,
+      "new_price": 11383.0,
+      "price_change": 1470.0,
+      "price_change_pct": 14.829012407949158,
+      "timestamp": "2026-08-04 14:10:25.817371+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T14:11:09.972081+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-08-04_14-10_zone_out_+14.8"
+    },
+    {
+      "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
+      "duration_bucket": "",
+      "old_price": 9865.0,
+      "new_price": 10239.0,
+      "price_change": 374.0,
+      "price_change_pct": 3.791180942726812,
+      "timestamp": "2026-08-04 14:10:25.817371+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T14:11:09.972109+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-08-04_14-10_zone_out_+3.8"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 11228.0,
+      "new_price": 9878.0,
+      "price_change": -1350.0,
+      "price_change_pct": -12.023512646954043,
+      "timestamp": "2026-08-04 14:10:25.817371+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-04T14:11:09.972138+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-08-04_14-10_comeback_12.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T12:19:07.774613+00:00",
+    "last_processed_run": "2026-08-04T14:10:25.817371+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -2063,8 +2102,8 @@
         "premium_peak": 12217.0
       },
       "Coral Sea Holiday Resort": {
-        "history_max": 10998.0,
-        "premium_peak": 10998.0
+        "history_max": 11562.0,
+        "premium_peak": 11562.0
       },
       "Swissotel Sharm El Sheikh": {
         "history_max": 14672.0,
@@ -2327,8 +2366,8 @@
         "premium_peak": 14642.0
       },
       "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)": {
-        "history_max": 10213.0,
-        "premium_peak": 10213.0
+        "history_max": 11383.0,
+        "premium_peak": 11383.0
       },
       "Sunrise Royal Makadi Aqua Resort": {
         "history_max": 13143.0,
@@ -2399,8 +2438,8 @@
         "premium_peak": 10747.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 10613.0,
-        "premium_peak": 10613.0
+        "history_max": 11253.0,
+        "premium_peak": 11253.0
       },
       "Pickalbatros Royal Moderna": {
         "history_max": 10657.0,
