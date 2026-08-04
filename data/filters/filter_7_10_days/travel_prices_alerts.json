@@ -1599,10 +1599,36 @@
       "created_at": "2026-08-04T10:02:12.251370+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-04_10-01_comeback_35.3"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 7191.0,
+      "new_price": 9381.0,
+      "price_change": 2190.0,
+      "price_change_pct": 30.45473508552357,
+      "timestamp": "2026-08-04 12:19:07.774613+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-04T12:19:51.980921+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-08-04_12-19_+30.5"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9945.0,
+      "new_price": 10274.0,
+      "price_change": 329.0,
+      "price_change_pct": 3.3081950729009555,
+      "timestamp": "2026-08-04 12:19:07.774613+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T12:19:51.980961+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-08-04_12-19_zone_out_+3.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T10:01:26.547069+00:00",
+    "last_processed_run": "2026-08-04T12:19:07.774613+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -1749,8 +1775,8 @@
         "premium_peak": 10263.0
       },
       "Sultan Gardens Resort": {
-        "history_max": 12534.0,
-        "premium_peak": 12534.0
+        "history_max": 14213.0,
+        "premium_peak": 14213.0
       },
       "Steigenberger Resort Alaya": {
         "history_max": 14937.0,
@@ -1813,8 +1839,8 @@
         "premium_peak": 12496.0
       },
       "Old Palace Resort": {
-        "history_max": 9945.0,
-        "premium_peak": null
+        "history_max": 10274.0,
+        "premium_peak": 10274.0
       },
       "Premier Le Reve & Spa": {
         "history_max": 14817.0,
