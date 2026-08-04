@@ -117,10 +117,62 @@
       "created_at": "2026-08-04T12:21:27.757894+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams_2026-08-04_12-19_zone_out_+8.5"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 8888.0,
+      "new_price": 7832.0,
+      "price_change": -1056.0,
+      "price_change_pct": -11.881188118811881,
+      "timestamp": "2026-08-04 18:47:44.737399+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-04T18:48:56.674247+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-08-04_18-47_-11.9"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 11081.0,
+      "new_price": 9380.0,
+      "price_change": -1701.0,
+      "price_change_pct": -15.350600126342387,
+      "timestamp": "2026-08-04 18:47:44.737399+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-04T18:48:56.674295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-04_18-47_comeback_15.4"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10872.0,
+      "new_price": 9632.0,
+      "price_change": -1240.0,
+      "price_change_pct": -11.405445180279617,
+      "timestamp": "2026-08-04 18:47:44.737399+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-04T18:48:56.674311+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-04_18-47_comeback_11.4"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11831.0,
+      "new_price": 9838.0,
+      "price_change": -1993.0,
+      "price_change_pct": -16.845575183839067,
+      "timestamp": "2026-08-04 18:47:44.737399+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-04T18:48:56.674323+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-04_18-47_comeback_16.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T16:31:22.778480+00:00",
+    "last_processed_run": "2026-08-04T18:47:44.737399+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12404.0,
@@ -1119,8 +1171,8 @@
         "premium_peak": null
       },
       "Crystal De Luxe Comfort Collection": {
-        "history_max": 14267.0,
-        "premium_peak": 14267.0
+        "history_max": 14324.0,
+        "premium_peak": 14324.0
       },
       "Sunmelia Beach Resort & Spa": {
         "history_max": 12136.0,
@@ -1417,6 +1469,10 @@
       "Calido Maris": {
         "history_max": 14395.0,
         "premium_peak": 14395.0
+      },
+      "Siu Collection by Aydinbey": {
+        "history_max": 16114.0,
+        "premium_peak": 16114.0
       }
     }
   }
