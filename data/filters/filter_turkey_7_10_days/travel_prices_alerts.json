@@ -1209,10 +1209,88 @@
       "created_at": "2026-08-04T00:28:38.601817+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asteria Family Belek_2026-08-04_00-27_comeback_11.2"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 7240.0,
+      "new_price": 7917.0,
+      "price_change": 677.0,
+      "price_change_pct": 9.35082872928177,
+      "timestamp": "2026-08-04 04:23:11.003111+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-04T04:24:09.078571+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa Turcja, Alanya_2026-08-04_04-23_+9.4"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7520.0,
+      "new_price": 7520.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-04 04:23:11.003111+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T04:24:09.078625+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-08-04_04-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 9314.0,
+      "new_price": 9314.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-04 04:23:11.003111+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T04:24:09.078635+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-04_04-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nova Park",
+      "duration_bucket": "",
+      "old_price": 9202.0,
+      "new_price": 10300.0,
+      "price_change": 1098.0,
+      "price_change_pct": 11.932188654640296,
+      "timestamp": "2026-08-04 04:23:11.003111+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T04:24:09.078644+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Park_2026-08-04_04-23_zone_out_+11.9"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8181.0,
+      "new_price": 8181.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-04 04:23:11.003111+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T04:24:09.078651+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-04_04-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Tusan Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9739.0,
+      "new_price": 12017.0,
+      "price_change": 2278.0,
+      "price_change_pct": 23.390491836944243,
+      "timestamp": "2026-08-04 04:23:11.003111+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-04T04:24:09.078659+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tusan Beach Resort_2026-08-04_04-23_zone_out_+23.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T00:27:44.238552+00:00",
+    "last_processed_run": "2026-08-04T04:23:11.003111+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -1527,7 +1605,7 @@
         "premium_peak": 12009.0
       },
       "Glamour Resort & Spa": {
-        "history_max": 9117.0,
+        "history_max": 9225.0,
         "premium_peak": null
       },
       "Garden of Sun Spa & Wellness": {
@@ -1975,7 +2053,7 @@
         "premium_peak": 11382.0
       },
       "Beach Club Doganay": {
-        "history_max": 9175.0,
+        "history_max": 9196.0,
         "premium_peak": null
       },
       "Beks Premium Resort & Spa": {
@@ -2147,8 +2225,8 @@
         "premium_peak": null
       },
       "Arnor De Luxe & SPA": {
-        "history_max": 10153.0,
-        "premium_peak": 10153.0
+        "history_max": 10559.0,
+        "premium_peak": 10559.0
       },
       "Armonia Holiday Village": {
         "history_max": 11598.0,
@@ -2423,7 +2501,7 @@
         "premium_peak": 12393.0
       },
       "Seher Sun Palace Resort & Spa Turcja, Side, Colakli": {
-        "history_max": 7994.0,
+        "history_max": 8181.0,
         "premium_peak": null
       },
       "Rox Royal (ex. Grand Haber)": {
@@ -2605,6 +2683,14 @@
       "Ring Beach Turcja, Kemer, Beldibi": {
         "history_max": 7961.0,
         "premium_peak": null
+      },
+      "Salmakis Beach Resort": {
+        "history_max": 12029.0,
+        "premium_peak": 12029.0
+      },
+      "Side Star Elegance (ex. Asteria)": {
+        "history_max": 12020.0,
+        "premium_peak": 12020.0
       }
     }
   }
