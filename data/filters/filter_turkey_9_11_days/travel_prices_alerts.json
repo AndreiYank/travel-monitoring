@@ -182,10 +182,62 @@
       "created_at": "2026-08-04T20:44:23.879854+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Campus Hill_2026-08-04_20-43_+9.9"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 8122.0,
+      "new_price": 7275.0,
+      "price_change": -847.0,
+      "price_change_pct": -10.42846589509973,
+      "timestamp": "2026-08-05 00:20:05.865902+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-05T00:21:05.014284+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-05_00-20_-10.4"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 14395.0,
+      "new_price": 9760.0,
+      "price_change": -4635.0,
+      "price_change_pct": -32.198680097255995,
+      "timestamp": "2026-08-05 00:20:05.865902+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T00:21:05.014335+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-05_00-20_comeback_32.2"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 11314.0,
+      "new_price": 9255.0,
+      "price_change": -2059.0,
+      "price_change_pct": -18.19869188615874,
+      "timestamp": "2026-08-05 00:20:05.865902+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T00:21:05.014352+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-08-05_00-20_comeback_18.2"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 11511.0,
+      "new_price": 9934.0,
+      "price_change": -1577.0,
+      "price_change_pct": -13.699939188602206,
+      "timestamp": "2026-08-05 00:20:05.865902+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T00:21:05.014365+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-05_00-20_comeback_13.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-04T20:43:16.917856+00:00",
+    "last_processed_run": "2026-08-05T00:20:05.865902+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12404.0,
@@ -264,8 +316,8 @@
         "premium_peak": 16329.0
       },
       "Selectum Family Resort (ex Letoonia Golf Resort)": {
-        "history_max": 15633.0,
-        "premium_peak": 15633.0
+        "history_max": 15908.0,
+        "premium_peak": 15908.0
       },
       "Innvista Belek (ex. Vera Verde)": {
         "history_max": 12895.0,
@@ -992,8 +1044,8 @@
         "premium_peak": 12838.0
       },
       "Can Garden Resort (Side)": {
-        "history_max": 12882.0,
-        "premium_peak": 12882.0
+        "history_max": 13807.0,
+        "premium_peak": 13807.0
       },
       "Trendy Aspendos Beach": {
         "history_max": 15300.0,
@@ -1036,8 +1088,8 @@
         "premium_peak": 13158.0
       },
       "Armella Hill": {
-        "history_max": 10932.0,
-        "premium_peak": 10932.0
+        "history_max": 11177.0,
+        "premium_peak": 11177.0
       },
       "Asteria Collection Side": {
         "history_max": 11826.0,
@@ -1224,8 +1276,8 @@
         "premium_peak": 16124.0
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
-        "history_max": 15584.0,
-        "premium_peak": 15584.0
+        "history_max": 16047.0,
+        "premium_peak": 16047.0
       },
       "Crystal Tat Beach Pearl Collection": {
         "history_max": 14897.0,
@@ -1324,8 +1376,8 @@
         "premium_peak": null
       },
       "Club Grand Aqua": {
-        "history_max": 14368.0,
-        "premium_peak": 14368.0
+        "history_max": 14609.0,
+        "premium_peak": 14609.0
       },
       "Anadolu Hotels Didim Club (ex. Palm Wings Didim)": {
         "history_max": 15357.0,
@@ -1436,8 +1488,8 @@
         "premium_peak": 14580.0
       },
       "Bodrum Holiday Resort": {
-        "history_max": 15256.0,
-        "premium_peak": 15256.0
+        "history_max": 15386.0,
+        "premium_peak": 15386.0
       },
       "Infinity by Yelken": {
         "history_max": 16161.0,
@@ -1486,6 +1538,18 @@
       "Siu Collection by Aydinbey": {
         "history_max": 16114.0,
         "premium_peak": 16114.0
+      },
+      "Orange Palace": {
+        "history_max": 14167.0,
+        "premium_peak": 14167.0
+      },
+      "Richmond Ephesus": {
+        "history_max": 14663.0,
+        "premium_peak": 14663.0
+      },
+      "Kustur Club Holiday Village": {
+        "history_max": 15080.0,
+        "premium_peak": 15080.0
       }
     }
   }
