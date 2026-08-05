@@ -2015,10 +2015,36 @@
       "created_at": "2026-08-05T01:55:50.815167+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-08-05_01-55_comeback_8.3"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 7191.0,
+      "new_price": 8566.0,
+      "price_change": 1375.0,
+      "price_change_pct": 19.12112362675567,
+      "timestamp": "2026-08-05 05:19:22.032018+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T05:20:07.011155+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-08-05_05-19_+19.1"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9047.0,
+      "new_price": 12527.0,
+      "price_change": 3480.0,
+      "price_change_pct": 38.46578976456284,
+      "timestamp": "2026-08-05 05:19:22.032018+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T05:20:07.011194+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-05_05-19_zone_out_+38.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T01:55:06.018300+00:00",
+    "last_processed_run": "2026-08-05T05:19:22.032018+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -2449,8 +2475,8 @@
         "premium_peak": 13262.0
       },
       "Utopia Blue Resort": {
-        "history_max": 12217.0,
-        "premium_peak": 12217.0
+        "history_max": 12527.0,
+        "premium_peak": 12527.0
       },
       "Coral Sea Holiday Resort": {
         "history_max": 11562.0,
