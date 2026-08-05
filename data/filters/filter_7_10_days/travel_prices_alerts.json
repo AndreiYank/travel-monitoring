@@ -2041,10 +2041,114 @@
       "created_at": "2026-08-05T05:20:07.011194+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-05_05-19_zone_out_+38.5"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 8597.0,
+      "new_price": 9617.0,
+      "price_change": 1020.0,
+      "price_change_pct": 11.864603931604048,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T07:58:09.157967+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-05_07-57_+11.9"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 9047.0,
+      "new_price": 9995.0,
+      "price_change": 948.0,
+      "price_change_pct": 10.478611694484359,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T07:58:09.158000+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-08-05_07-57_+10.5"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 8566.0,
+      "new_price": 6891.0,
+      "price_change": -1675.0,
+      "price_change_pct": -19.554050898902638,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-05T07:58:09.158020+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-08-05_07-57_-19.6"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 9635.0,
+      "new_price": 10593.0,
+      "price_change": 958.0,
+      "price_change_pct": 9.9429164504411,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:58:09.158045+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-08-05_07-57_zone_out_+9.9"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 9753.0,
+      "new_price": 10259.0,
+      "price_change": 506.0,
+      "price_change_pct": 5.1881472367476675,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:58:09.158057+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-08-05_07-57_zone_out_+5.2"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 9707.0,
+      "new_price": 10512.0,
+      "price_change": 805.0,
+      "price_change_pct": 8.292984444215515,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:58:09.158066+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-05_07-57_zone_out_+8.3"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 9707.0,
+      "new_price": 10047.0,
+      "price_change": 340.0,
+      "price_change_pct": 3.502626970227671,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:58:09.158075+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-08-05_07-57_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Steigenberger Golf Resort",
+      "duration_bucket": "",
+      "old_price": 9306.0,
+      "new_price": 10457.0,
+      "price_change": 1151.0,
+      "price_change_pct": 12.36836449602407,
+      "timestamp": "2026-08-05 07:57:22.913346+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:58:09.158084+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Golf Resort_2026-08-05_07-57_zone_out_+12.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T05:19:22.032018+00:00",
+    "last_processed_run": "2026-08-05T07:57:22.913346+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -2103,8 +2207,8 @@
         "premium_peak": 14471.0
       },
       "Movenpick Resort El Quseir": {
-        "history_max": 16202.0,
-        "premium_peak": 16202.0
+        "history_max": 16353.0,
+        "premium_peak": 16353.0
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
         "history_max": 10257.0,
@@ -2175,8 +2279,8 @@
         "premium_peak": 11697.0
       },
       "Jaz Elite Maraya": {
-        "history_max": 12825.0,
-        "premium_peak": 12825.0
+        "history_max": 12976.0,
+        "premium_peak": 12976.0
       },
       "Jaz Elite Riviera": {
         "history_max": 14940.0,
@@ -2435,8 +2539,8 @@
         "premium_peak": 11831.0
       },
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
-        "history_max": 11714.0,
-        "premium_peak": 11714.0
+        "history_max": 11864.0,
+        "premium_peak": 11864.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
         "history_max": 12957.0,
@@ -2499,7 +2603,7 @@
         "premium_peak": null
       },
       "Swissotel Resort El Quseir": {
-        "history_max": 9542.0,
+        "history_max": 9630.0,
         "premium_peak": null
       },
       "Desert Rose Resort": {
@@ -2547,7 +2651,7 @@
         "premium_peak": 12209.0
       },
       "True Beach Resort": {
-        "history_max": 9676.0,
+        "history_max": 9827.0,
         "premium_peak": null
       },
       "Charmillion Club Aqua Park": {
@@ -2691,8 +2795,8 @@
         "premium_peak": 15820.0
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 10888.0,
-        "premium_peak": 10888.0
+        "history_max": 11039.0,
+        "premium_peak": 11039.0
       },
       "Jaz Almaza Blu": {
         "history_max": 13597.0,
@@ -2767,16 +2871,16 @@
         "premium_peak": 14702.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 9753.0,
-        "premium_peak": null
+        "history_max": 10259.0,
+        "premium_peak": 10259.0
       },
       "Fantazia Resort": {
-        "history_max": 10204.0,
-        "premium_peak": 10204.0
+        "history_max": 10264.0,
+        "premium_peak": 10264.0
       },
       "Sunrise Anjum Resort": {
-        "history_max": 11537.0,
-        "premium_peak": 11537.0
+        "history_max": 11746.0,
+        "premium_peak": 11746.0
       },
       "Serenity Alpha Beach (ex. Serenity Makadi Beach)": {
         "history_max": 10899.0,
@@ -2815,8 +2919,8 @@
         "premium_peak": 10747.0
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
-        "history_max": 11494.0,
-        "premium_peak": 11494.0
+        "history_max": 11543.0,
+        "premium_peak": 11543.0
       },
       "Pickalbatros Royal Moderna": {
         "history_max": 10657.0,
@@ -2839,8 +2943,8 @@
         "premium_peak": 10112.0
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 10355.0,
-        "premium_peak": 10355.0
+        "history_max": 10512.0,
+        "premium_peak": 10512.0
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
         "history_max": 10133.0,

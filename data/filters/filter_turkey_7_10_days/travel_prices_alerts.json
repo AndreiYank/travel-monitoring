@@ -2756,10 +2756,114 @@
       "created_at": "2026-08-05T05:21:03.794229+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asteria Family Resort Side_2026-08-05_05-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8806.0,
+      "new_price": 8806.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:59:12.740859+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-05_07-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fun & Sun Smart Hane Sun Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 8339.0,
+      "new_price": 8339.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:59:12.740889+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fun & Sun Smart Hane Sun Turcja, Side, Colakli_2026-08-05_07-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Holiday Garden Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 9401.0,
+      "new_price": 9401.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:59:12.740901+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Garden Resort (Okurcalar)_2026-08-05_07-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7520.0,
+      "new_price": 7520.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:59:12.740909+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-08-05_07-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8420.0,
+      "new_price": 8420.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:59:12.740917+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-05_07-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Tusan Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9739.0,
+      "new_price": 11061.0,
+      "price_change": 1322.0,
+      "price_change_pct": 13.57428894136975,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T07:59:12.740935+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tusan Beach Resort_2026-08-05_07-58_zone_out_+13.6"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 10716.0,
+      "new_price": 9194.0,
+      "price_change": -1522.0,
+      "price_change_pct": -14.203060843598358,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T07:59:12.740962+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-05_07-58_comeback_14.2"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 11714.0,
+      "new_price": 9437.0,
+      "price_change": -2277.0,
+      "price_change_pct": -19.438278982414207,
+      "timestamp": "2026-08-05 07:58:08.731925+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T07:59:12.740990+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-08-05_07-58_comeback_19.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T05:20:03.900774+00:00",
+    "last_processed_run": "2026-08-05T07:58:08.731925+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -3902,8 +4006,8 @@
         "premium_peak": 12214.0
       },
       "Club Atlantis Resort": {
-        "history_max": 10458.0,
-        "premium_peak": 10458.0
+        "history_max": 11613.0,
+        "premium_peak": 11613.0
       },
       "Diamond Hill Resort Turcja, Alanya, Incekum": {
         "history_max": 8663.0,
@@ -4062,8 +4166,8 @@
         "premium_peak": null
       },
       "Yasmin Resort": {
-        "history_max": 11701.0,
-        "premium_peak": 11701.0
+        "history_max": 11937.0,
+        "premium_peak": 11937.0
       },
       "Xafira Deluxe Resort & Spa": {
         "history_max": 9063.0,
@@ -4126,8 +4230,8 @@
         "premium_peak": 12006.0
       },
       "Alba Queen": {
-        "history_max": 10954.0,
-        "premium_peak": 10954.0
+        "history_max": 11039.0,
+        "premium_peak": 11039.0
       },
       "Signature Blue Resort (ex. Grand Ozcelik)": {
         "history_max": 8883.0,
@@ -4244,6 +4348,14 @@
       "Sun Star Resort Turcja, Alanya, Mahmutlar": {
         "history_max": 7172.0,
         "premium_peak": null
+      },
+      "Turan Prince": {
+        "history_max": 11931.0,
+        "premium_peak": 11931.0
+      },
+      "Prime Beach": {
+        "history_max": 11466.0,
+        "premium_peak": 11466.0
       }
     }
   }
