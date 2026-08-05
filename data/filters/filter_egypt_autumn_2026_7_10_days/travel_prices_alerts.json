@@ -1170,10 +1170,36 @@
       "created_at": "2026-08-05T07:58:10.985453+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tropitel Sahl Hasheesh_2026-08-05_07-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7380.0,
+      "new_price": 8087.0,
+      "price_change": 707.0,
+      "price_change_pct": 9.579945799457995,
+      "timestamp": "2026-08-05 10:50:19.166374+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T10:51:08.908356+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-08-05_10-50_+9.6"
+    },
+    {
+      "hotel_name": "Sataya Resort (ex. Labranda Sataya Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 8804.0,
+      "new_price": 10097.0,
+      "price_change": 1293.0,
+      "price_change_pct": 14.686506133575646,
+      "timestamp": "2026-08-05 10:50:19.166374+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T10:51:08.908407+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sataya Resort (ex. Labranda Sataya Marsa Alam)_2026-08-05_10-50_+14.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T07:57:22.814745+00:00",
+    "last_processed_run": "2026-08-05T10:50:19.166374+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7295.0,
@@ -1648,7 +1674,7 @@
         "premium_peak": null
       },
       "Amarina Queen Resort Egipt, Marsa Alam": {
-        "history_max": 7272.0,
+        "history_max": 7565.0,
         "premium_peak": null
       },
       "V Hotel Sharm": {
@@ -1824,7 +1850,7 @@
         "premium_peak": null
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
-        "history_max": 9214.0,
+        "history_max": 10097.0,
         "premium_peak": null
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
