@@ -390,10 +390,49 @@
       "created_at": "2026-08-05T10:52:09.162520+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams_2026-08-05_10-51_comeback_13.8"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9981.0,
+      "new_price": 10103.0,
+      "price_change": 122.0,
+      "price_change_pct": 1.2223224125839094,
+      "timestamp": "2026-08-05 13:13:38.439562+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T13:14:34.520025+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-08-05_13-13_zone_out_+1.2"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11831.0,
+      "new_price": 9838.0,
+      "price_change": -1993.0,
+      "price_change_pct": -16.845575183839067,
+      "timestamp": "2026-08-05 13:13:38.439562+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T13:14:34.520060+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-05_13-13_comeback_16.8"
+    },
+    {
+      "hotel_name": "Armas Green Fugla",
+      "duration_bucket": "",
+      "old_price": 10809.0,
+      "new_price": 9720.0,
+      "price_change": -1089.0,
+      "price_change_pct": -10.074937552039968,
+      "timestamp": "2026-08-05 13:13:38.439562+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T13:14:34.520076+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Green Fugla_2026-08-05_13-13_comeback_10.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T10:51:09.847818+00:00",
+    "last_processed_run": "2026-08-05T13:13:38.439562+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12404.0,
@@ -1564,8 +1603,8 @@
         "premium_peak": 15086.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)": {
-        "history_max": 15453.0,
-        "premium_peak": 15453.0
+        "history_max": 15872.0,
+        "premium_peak": 15872.0
       },
       "Club Yali Hotels & Resort": {
         "history_max": 14558.0,

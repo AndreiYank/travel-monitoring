@@ -2184,10 +2184,49 @@
       "created_at": "2026-08-05T10:51:10.260199+00:00",
       "threshold_percent": 8.0,
       "unique_key": "True Beach Resort_2026-08-05_10-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Time Marina",
+      "duration_bucket": "",
+      "old_price": 6891.0,
+      "new_price": 5982.0,
+      "price_change": -909.0,
+      "price_change_pct": -13.191118850674794,
+      "timestamp": "2026-08-05 13:12:48.394303+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-05T13:13:39.615475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Time Marina_2026-08-05_13-12_-13.2"
+    },
+    {
+      "hotel_name": "Concorde Sport",
+      "duration_bucket": "",
+      "old_price": 9958.0,
+      "new_price": 10211.0,
+      "price_change": 253.0,
+      "price_change_pct": 2.5406708174332193,
+      "timestamp": "2026-08-05 13:12:48.394303+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T13:13:39.615512+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Sport_2026-08-05_13-12_zone_out_+2.5"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 10532.0,
+      "new_price": 9623.0,
+      "price_change": -909.0,
+      "price_change_pct": -8.630839346752754,
+      "timestamp": "2026-08-05 13:12:48.394303+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T13:13:39.615535+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-05_13-12_comeback_8.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T10:50:19.164460+00:00",
+    "last_processed_run": "2026-08-05T13:12:48.394303+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -2350,8 +2389,8 @@
         "premium_peak": 11877.0
       },
       "Jaz Makadina": {
-        "history_max": 12778.0,
-        "premium_peak": 12778.0
+        "history_max": 13797.0,
+        "premium_peak": 13797.0
       },
       "Jaz Mirabel Beach Resort": {
         "history_max": 10457.0,
@@ -2834,8 +2873,8 @@
         "premium_peak": 15820.0
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 11516.0,
-        "premium_peak": 11516.0
+        "history_max": 11750.0,
+        "premium_peak": 11750.0
       },
       "Jaz Almaza Blu": {
         "history_max": 13597.0,
