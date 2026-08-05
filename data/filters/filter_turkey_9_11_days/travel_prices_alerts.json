@@ -234,10 +234,101 @@
       "created_at": "2026-08-05T00:21:05.014365+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe_2026-08-05_00-20_comeback_13.7"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7275.0,
+      "new_price": 8275.0,
+      "price_change": 1000.0,
+      "price_change_pct": 13.745704467353953,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T01:56:45.661369+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-05_01-55_+13.7"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 7734.0,
+      "new_price": 8838.0,
+      "price_change": 1104.0,
+      "price_change_pct": 14.274631497284718,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T01:56:45.661399+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-08-05_01-55_+14.3"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9760.0,
+      "new_price": 10760.0,
+      "price_change": 1000.0,
+      "price_change_pct": 10.245901639344263,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T01:56:45.661421+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-05_01-55_zone_out_+10.2"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9838.0,
+      "new_price": 10772.0,
+      "price_change": 934.0,
+      "price_change_pct": 9.493799552754625,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T01:56:45.661433+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-05_01-55_zone_out_+9.5"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9402.0,
+      "new_price": 10337.0,
+      "price_change": 935.0,
+      "price_change_pct": 9.944692618591787,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T01:56:45.661442+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-05_01-55_zone_out_+9.9"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 9340.0,
+      "new_price": 10444.0,
+      "price_change": 1104.0,
+      "price_change_pct": 11.820128479657388,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T01:56:45.661450+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-05_01-55_zone_out_+11.8"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9934.0,
+      "new_price": 10778.0,
+      "price_change": 844.0,
+      "price_change_pct": 8.496074088987317,
+      "timestamp": "2026-08-05 01:55:51.814570+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T01:56:45.661459+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-05_01-55_zone_out_+8.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T00:20:05.865902+00:00",
+    "last_processed_run": "2026-08-05T01:55:51.814570+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12404.0,
@@ -1540,8 +1631,8 @@
         "premium_peak": 16114.0
       },
       "Orange Palace": {
-        "history_max": 14167.0,
-        "premium_peak": 14167.0
+        "history_max": 16167.0,
+        "premium_peak": 16167.0
       },
       "Richmond Ephesus": {
         "history_max": 14663.0,
@@ -1550,6 +1641,14 @@
       "Kustur Club Holiday Village": {
         "history_max": 15080.0,
         "premium_peak": 15080.0
+      },
+      "Turunc": {
+        "history_max": 16077.0,
+        "premium_peak": 16077.0
+      },
+      "Sultan of Side": {
+        "history_max": 9226.0,
+        "premium_peak": null
       }
     }
   }
