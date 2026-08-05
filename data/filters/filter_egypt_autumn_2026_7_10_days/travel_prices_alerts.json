@@ -1274,10 +1274,101 @@
       "created_at": "2026-08-05T19:16:23.744541+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Elite Asteria (Hurghada)_2026-08-05_19-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9326.0,
+      "new_price": 10541.0,
+      "price_change": 1215.0,
+      "price_change_pct": 13.028093502037317,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T21:00:29.950794+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Palace Resort_2026-08-05_20-59_+13.0"
+    },
+    {
+      "hotel_name": "Albatros Makadi Resort (ex Royal Pharaohs Makadi)",
+      "duration_bucket": "",
+      "old_price": 8931.0,
+      "new_price": 10854.0,
+      "price_change": 1923.0,
+      "price_change_pct": 21.531743365804502,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T21:00:29.950828+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Makadi Resort (ex Royal Pharaohs Makadi)_2026-08-05_20-59_+21.5"
+    },
+    {
+      "hotel_name": "Old Palace Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7327.0,
+      "new_price": 7327.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T21:00:29.950878+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort Egipt, Hurghada_2026-08-05_20-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Serenity Alpha Beach (ex. Serenity Makadi Beach)",
+      "duration_bucket": "",
+      "old_price": 9144.0,
+      "new_price": 9144.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T21:00:29.950889+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alpha Beach (ex. Serenity Makadi Beach)_2026-08-05_20-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 10279.0,
+      "new_price": 10279.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T21:00:29.950898+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-05_20-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9806.0,
+      "new_price": 9806.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T21:00:29.950905+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-08-05_20-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8011.0,
+      "new_price": 8011.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 20:59:17.968349+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T21:00:29.950936+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh Egipt, Hurghada_2026-08-05_20-59_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T19:15:34.665020+00:00",
+    "last_processed_run": "2026-08-05T20:59:17.968349+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7295.0,
@@ -1508,7 +1599,7 @@
         "premium_peak": null
       },
       "Pickalbatros Palace Resort": {
-        "history_max": 10053.0,
+        "history_max": 10541.0,
         "premium_peak": null
       },
       "Pickalbatros Royal Moderna": {
@@ -1736,7 +1827,7 @@
         "premium_peak": null
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
-        "history_max": 9705.0,
+        "history_max": 10854.0,
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam": {
@@ -1985,6 +2076,18 @@
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
         "history_max": 10669.0,
+        "premium_peak": null
+      },
+      "Serenity Makadi Beach (ex. Heights) Egipt, Hurghada, Makadi Bay": {
+        "history_max": 8369.0,
+        "premium_peak": null
+      },
+      "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam": {
+        "history_max": 7634.0,
+        "premium_peak": null
+      },
+      "Old Palace Resort": {
+        "history_max": 8811.0,
         "premium_peak": null
       }
     }
