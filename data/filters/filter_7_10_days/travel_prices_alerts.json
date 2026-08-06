@@ -2340,10 +2340,62 @@
       "created_at": "2026-08-05T21:00:41.945705+00:00",
       "threshold_percent": 8.0,
       "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-08-05_20-59_comeback_12.9"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 8597.0,
+      "new_price": 9617.0,
+      "price_change": 1020.0,
+      "price_change_pct": 11.864603931604048,
+      "timestamp": "2026-08-05 23:50:39.835604+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T23:51:41.650020+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-05_23-50_+11.9"
+    },
+    {
+      "hotel_name": "Xperience Sea Breeze Resort",
+      "duration_bucket": "",
+      "old_price": 9816.0,
+      "new_price": 10006.0,
+      "price_change": 190.0,
+      "price_change_pct": 1.9356153219233903,
+      "timestamp": "2026-08-05 23:50:39.835604+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T23:51:41.650062+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Sea Breeze Resort_2026-08-05_23-50_zone_out_+1.9"
+    },
+    {
+      "hotel_name": "Steigenberger Golf Resort",
+      "duration_bucket": "",
+      "old_price": 10899.0,
+      "new_price": 9306.0,
+      "price_change": -1593.0,
+      "price_change_pct": -14.616019818331957,
+      "timestamp": "2026-08-05 23:50:39.835604+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T23:51:41.650087+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Golf Resort_2026-08-05_23-50_comeback_14.6"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 10904.0,
+      "new_price": 9635.0,
+      "price_change": -1269.0,
+      "price_change_pct": -11.637931034482758,
+      "timestamp": "2026-08-05 23:50:39.835604+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T23:51:41.650104+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-08-05_23-50_comeback_11.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T22:09:36.938845+00:00",
+    "last_processed_run": "2026-08-05T23:50:39.835604+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -2478,8 +2530,8 @@
         "premium_peak": 16067.0
       },
       "Jaz Elite Riviera": {
-        "history_max": 16427.0,
-        "premium_peak": 16427.0
+        "history_max": 18633.0,
+        "premium_peak": 18633.0
       },
       "Sunrise (Sharm El Sheikh)": {
         "history_max": 14524.0,
@@ -2846,8 +2898,8 @@
         "premium_peak": 12209.0
       },
       "True Beach Resort": {
-        "history_max": 9827.0,
-        "premium_peak": null
+        "history_max": 13490.0,
+        "premium_peak": 13490.0
       },
       "Charmillion Club Aqua Park": {
         "history_max": 10310.0,

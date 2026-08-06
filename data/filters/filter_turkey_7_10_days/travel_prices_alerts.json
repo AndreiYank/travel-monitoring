@@ -3445,10 +3445,88 @@
       "created_at": "2026-08-05T22:11:31.672132+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams Turcja, Side, Manavgat_2026-08-05_22-10_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8707.0,
+      "new_price": 9428.0,
+      "price_change": 721.0,
+      "price_change_pct": 8.28069369472838,
+      "timestamp": "2026-08-05 23:51:30.976176+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-05T23:52:44.516960+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-08-05_23-51_+8.3"
+    },
+    {
+      "hotel_name": "Calido Maris Turcja, Side, Cengerkoy",
+      "duration_bucket": "",
+      "old_price": 8045.0,
+      "new_price": 8045.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 23:51:30.976176+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T23:52:44.517052+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris Turcja, Side, Cengerkoy_2026-08-05_23-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fun & Sun Smart Hane Sun",
+      "duration_bucket": "",
+      "old_price": 9990.0,
+      "new_price": 9990.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 23:51:30.976176+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T23:52:44.517069+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fun & Sun Smart Hane Sun_2026-08-05_23-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Insula Resort",
+      "duration_bucket": "",
+      "old_price": 8330.0,
+      "new_price": 8330.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 23:51:30.976176+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T23:52:44.517082+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort_2026-08-05_23-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 7905.0,
+      "new_price": 7905.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-05 23:51:30.976176+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-05T23:52:44.517095+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa Turcja, Side, Colakli_2026-08-05_23-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Armas Pemar Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10944.0,
+      "new_price": 9077.0,
+      "price_change": -1867.0,
+      "price_change_pct": -17.059576023391813,
+      "timestamp": "2026-08-05 23:51:30.976176+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-05T23:52:44.517132+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Pemar Beach Resort_2026-08-05_23-51_comeback_17.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T22:10:24.266875+00:00",
+    "last_processed_run": "2026-08-05T23:51:30.976176+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -4591,8 +4669,8 @@
         "premium_peak": 12214.0
       },
       "Club Atlantis Resort": {
-        "history_max": 11613.0,
-        "premium_peak": 11613.0
+        "history_max": 12016.0,
+        "premium_peak": 12016.0
       },
       "Diamond Hill Resort Turcja, Alanya, Incekum": {
         "history_max": 8663.0,
@@ -4953,6 +5031,10 @@
       "Trendy Lara": {
         "history_max": 11907.0,
         "premium_peak": 11907.0
+      },
+      "Calimera Hane Garden (ex. PrimaSol Hane Garden)": {
+        "history_max": 11840.0,
+        "premium_peak": 11840.0
       }
     }
   }
