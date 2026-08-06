@@ -507,10 +507,62 @@
       "created_at": "2026-08-05T21:02:12.541533+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Dreams_2026-08-05_21-00_comeback_13.1"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 8626.0,
+      "new_price": 9382.0,
+      "price_change": 756.0,
+      "price_change_pct": 8.76420125202875,
+      "timestamp": "2026-08-06 01:31:07.080447+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-06T01:32:01.885008+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-08-06_01-31_+8.8"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9906.0,
+      "new_price": 10274.0,
+      "price_change": 368.0,
+      "price_change_pct": 3.7149202503533214,
+      "timestamp": "2026-08-06 01:31:07.080447+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-06T01:32:01.885047+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-06_01-31_zone_out_+3.7"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 9844.0,
+      "new_price": 10424.0,
+      "price_change": 580.0,
+      "price_change_pct": 5.891913856156035,
+      "timestamp": "2026-08-06 01:31:07.080447+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-06T01:32:01.885060+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-06_01-31_zone_out_+5.9"
+    },
+    {
+      "hotel_name": "Aventura Park",
+      "duration_bucket": "",
+      "old_price": 11097.0,
+      "new_price": 9957.0,
+      "price_change": -1140.0,
+      "price_change_pct": -10.273046769397135,
+      "timestamp": "2026-08-06 01:31:07.080447+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-06T01:32:01.885081+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aventura Park_2026-08-06_01-31_comeback_10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-05T23:51:37.075763+00:00",
+    "last_processed_run": "2026-08-06T01:31:07.080447+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12404.0,
@@ -1829,8 +1881,20 @@
         "premium_peak": 16077.0
       },
       "Sultan of Side": {
-        "history_max": 9226.0,
+        "history_max": 9382.0,
         "premium_peak": null
+      },
+      "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
+        "history_max": 12407.0,
+        "premium_peak": 12407.0
+      },
+      "Fun & Sun Smart Hane Sun": {
+        "history_max": 11367.0,
+        "premium_peak": 11367.0
+      },
+      "Alba Queen": {
+        "history_max": 13214.0,
+        "premium_peak": 13214.0
       }
     }
   }
