@@ -3705,10 +3705,101 @@
       "created_at": "2026-08-06T04:59:47.352826+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi_2026-08-06_04-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris Turcja, Side, Cengerkoy",
+      "duration_bucket": "",
+      "old_price": 8255.0,
+      "new_price": 7415.0,
+      "price_change": -840.0,
+      "price_change_pct": -10.175651120533011,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-06T07:36:50.599448+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris Turcja, Side, Cengerkoy_2026-08-06_07-35_-10.2"
+    },
+    {
+      "hotel_name": "Alaiye Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9912.0,
+      "new_price": 10350.0,
+      "price_change": 438.0,
+      "price_change_pct": 4.418886198547216,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-06T07:36:50.599508+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alaiye Resort & Spa_2026-08-06_07-35_zone_out_+4.4"
+    },
+    {
+      "hotel_name": "Grand Kolibri Prestige & Spa Turcja, Alanya, Konakli",
+      "duration_bucket": "",
+      "old_price": 8102.0,
+      "new_price": 8102.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-06T07:36:50.599519+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kolibri Prestige & Spa Turcja, Alanya, Konakli_2026-08-06_07-35_zone_out_gone"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 11256.0,
+      "price_change": 1459.0,
+      "price_change_pct": 14.892313973665408,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-06T07:36:50.599528+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites_2026-08-06_07-35_zone_out_+14.9"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8654.0,
+      "new_price": 8654.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-06T07:36:50.599536+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-08-06_07-35_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eftalia Aqua",
+      "duration_bucket": "",
+      "old_price": 10563.0,
+      "new_price": 9521.0,
+      "price_change": -1042.0,
+      "price_change_pct": -9.864621793051215,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-06T07:36:50.599564+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Aqua_2026-08-06_07-35_comeback_9.9"
+    },
+    {
+      "hotel_name": "Grand Kolibri Prestige & Spa",
+      "duration_bucket": "",
+      "old_price": 10190.0,
+      "new_price": 8867.0,
+      "price_change": -1323.0,
+      "price_change_pct": -12.983316977428853,
+      "timestamp": "2026-08-06 07:35:35.132501+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-06T07:36:50.599576+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kolibri Prestige & Spa_2026-08-06_07-35_comeback_13.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-06T04:58:33.969947+00:00",
+    "last_processed_run": "2026-08-06T07:35:35.132501+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -3743,8 +3834,8 @@
         "premium_peak": null
       },
       "Selectum Family Comfort Side (ex. Lyra Resort)": {
-        "history_max": 11196.0,
-        "premium_peak": 11196.0
+        "history_max": 11489.0,
+        "premium_peak": 11489.0
       },
       "Gypsophila Holiday Village": {
         "history_max": 10899.0,
@@ -4251,8 +4342,8 @@
         "premium_peak": 10539.0
       },
       "Lalila Blue Suites": {
-        "history_max": 10952.0,
-        "premium_peak": 10952.0
+        "history_max": 11256.0,
+        "premium_peak": 11256.0
       },
       "Lake River Side Spa": {
         "history_max": 9897.0,
@@ -4459,7 +4550,7 @@
         "premium_peak": null
       },
       "Asteria Bloom Side": {
-        "history_max": 9950.0,
+        "history_max": 9977.0,
         "premium_peak": null
       },
       "Avia Resort & Spa": {
@@ -4611,8 +4702,8 @@
         "premium_peak": null
       },
       "Alaiye Resort & Spa": {
-        "history_max": 9912.0,
-        "premium_peak": null
+        "history_max": 10350.0,
+        "premium_peak": 10350.0
       },
       "Adora Hotel & Resort (ex. Adora Golf)": {
         "history_max": 12318.0,
@@ -5223,15 +5314,15 @@
         "premium_peak": null
       },
       "Serenity Queen": {
-        "history_max": 11524.0,
-        "premium_peak": 11524.0
+        "history_max": 11594.0,
+        "premium_peak": 11594.0
       },
       "Lonicera Resort & Spa": {
         "history_max": 11519.0,
         "premium_peak": 11519.0
       },
       "Unique Residence Golf Spa": {
-        "history_max": 8451.0,
+        "history_max": 8469.0,
         "premium_peak": null
       }
     }
