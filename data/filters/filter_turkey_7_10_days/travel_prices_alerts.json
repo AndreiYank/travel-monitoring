@@ -5850,10 +5850,36 @@
       "created_at": "2026-08-07T19:48:38.197432+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tusan Beach Resort_2026-08-07_19-46_zone_out_+10.9"
+    },
+    {
+      "hotel_name": "Kaya Izmir Thermal & Convention",
+      "duration_bucket": "",
+      "old_price": 9743.0,
+      "new_price": 9743.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 21:31:11.348332+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T21:32:24.273148+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kaya Izmir Thermal & Convention_2026-08-07_21-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Selectum Colours Side",
+      "duration_bucket": "",
+      "old_price": 11610.0,
+      "new_price": 9653.0,
+      "price_change": -1957.0,
+      "price_change_pct": -16.85615848406546,
+      "timestamp": "2026-08-07 21:31:11.348332+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-07T21:32:24.273210+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum Colours Side_2026-08-07_21-31_comeback_16.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T20:32:10.862349+00:00",
+    "last_processed_run": "2026-08-07T21:31:11.348332+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -7040,8 +7066,8 @@
         "premium_peak": 11730.0
       },
       "Side Star Park": {
-        "history_max": 11419.0,
-        "premium_peak": 11419.0
+        "history_max": 11523.0,
+        "premium_peak": 11523.0
       },
       "Cesars Resort (Side)": {
         "history_max": 11357.0,
