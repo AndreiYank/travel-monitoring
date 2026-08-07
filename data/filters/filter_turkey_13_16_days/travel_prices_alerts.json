@@ -117,10 +117,36 @@
       "created_at": "2026-08-07T14:09:34.652526+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-07_14-08_-9.7"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 7771.0,
+      "new_price": 8611.0,
+      "price_change": 840.0,
+      "price_change_pct": 10.809419637112342,
+      "timestamp": "2026-08-07 15:47:04.924725+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-07T15:48:27.282423+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-07_15-47_+10.8"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 9918.0,
+      "new_price": 10055.0,
+      "price_change": 137.0,
+      "price_change_pct": 1.3813268804194394,
+      "timestamp": "2026-08-07 15:47:04.924725+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T15:48:27.282453+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-07_15-47_zone_out_+1.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T14:08:21.066238+00:00",
+    "last_processed_run": "2026-08-07T15:47:04.924725+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 15968.0,
@@ -139,8 +165,8 @@
         "premium_peak": 17708.0
       },
       "Sealight Resort (ex Otium Sealight Beach Resort)": {
-        "history_max": 19644.0,
-        "premium_peak": 19644.0
+        "history_max": 19858.0,
+        "premium_peak": 19858.0
       },
       "Hane Sun Elite (ex Noble Palace Side)": {
         "history_max": 15984.0,
@@ -855,8 +881,8 @@
         "premium_peak": 20000.0
       },
       "Unique Residence Golf Spa": {
-        "history_max": 15813.0,
-        "premium_peak": 15813.0
+        "history_max": 17231.0,
+        "premium_peak": 17231.0
       },
       "Tusan Beach Resort": {
         "history_max": 18975.0,
@@ -1279,8 +1305,8 @@
         "premium_peak": 13893.0
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 14442.0,
-        "premium_peak": 14442.0
+        "history_max": 14496.0,
+        "premium_peak": 14496.0
       },
       "Master Family Club Turcja, Side": {
         "history_max": 13854.0,
@@ -1393,6 +1419,14 @@
       "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli": {
         "history_max": 13914.0,
         "premium_peak": 13914.0
+      },
+      "Doganay Beach Club Turcja, Alanya, Konakli": {
+        "history_max": 13935.0,
+        "premium_peak": 13935.0
+      },
+      "Club Turan Prince World": {
+        "history_max": 19701.0,
+        "premium_peak": 19701.0
       }
     }
   }

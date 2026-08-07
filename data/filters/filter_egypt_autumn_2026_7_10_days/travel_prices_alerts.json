@@ -1742,10 +1742,75 @@
       "created_at": "2026-08-07T12:42:39.300984+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-07_12-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6725.0,
+      "new_price": 7325.0,
+      "price_change": 600.0,
+      "price_change_pct": 8.921933085501859,
+      "timestamp": "2026-08-07 15:45:55.436701+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-07T15:46:53.970256+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-08-07_15-45_+8.9"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Oasis",
+      "duration_bucket": "",
+      "old_price": 9607.0,
+      "new_price": 9607.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 15:45:55.436701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T15:46:53.970304+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis_2026-08-07_15-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
+      "duration_bucket": "",
+      "old_price": 8486.0,
+      "new_price": 8486.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 15:45:55.436701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T15:46:53.970317+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-08-07_15-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 9592.0,
+      "new_price": 9592.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 15:45:55.436701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T15:46:53.970349+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-07_15-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort) Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 8371.0,
+      "new_price": 8371.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 15:45:55.436701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T15:46:53.970361+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort) Egipt, Marsa Alam, Port Ghalib_2026-08-07_15-45_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T14:07:23.796462+00:00",
+    "last_processed_run": "2026-08-07T15:45:55.436701+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7295.0,
@@ -2056,7 +2121,7 @@
         "premium_peak": null
       },
       "Rewaya Majestic Resort Egipt, Hurghada": {
-        "history_max": 6875.0,
+        "history_max": 7325.0,
         "premium_peak": null
       },
       "Nubian Island": {
