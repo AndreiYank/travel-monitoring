@@ -78,10 +78,36 @@
       "created_at": "2026-08-07T04:52:09.509241+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Campus Hill Turcja, Alanya_2026-08-07_04-50_+11.2"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 7899.0,
+      "new_price": 8606.0,
+      "price_change": 707.0,
+      "price_change_pct": 8.950500063299152,
+      "timestamp": "2026-08-07 12:42:50.720660+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-07T12:44:01.530638+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-07_12-42_+9.0"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 9175.0,
+      "new_price": 9918.0,
+      "price_change": 743.0,
+      "price_change_pct": 8.098092643051771,
+      "timestamp": "2026-08-07 12:42:50.720660+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-07T12:44:01.530669+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-07_12-42_+8.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T11:40:34.872623+00:00",
+    "last_processed_run": "2026-08-07T12:42:50.720660+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 15968.0,
@@ -340,8 +366,8 @@
         "premium_peak": 16966.0
       },
       "OZ Incekum Beach Resort": {
-        "history_max": 16773.0,
-        "premium_peak": 16773.0
+        "history_max": 16943.0,
+        "premium_peak": 16943.0
       },
       "Orange County Alanya": {
         "history_max": 18321.0,
@@ -1350,6 +1376,10 @@
       "Side Kum": {
         "history_max": 14742.0,
         "premium_peak": 14742.0
+      },
+      "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli": {
+        "history_max": 13914.0,
+        "premium_peak": 13914.0
       }
     }
   }
