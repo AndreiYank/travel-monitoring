@@ -3432,10 +3432,36 @@
       "created_at": "2026-08-07T15:47:04.023544+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Mirabel Park_2026-08-07_15-45_zone_out_+45.3"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8867.0,
+      "new_price": 11779.0,
+      "price_change": 2912.0,
+      "price_change_pct": 32.84087064396075,
+      "timestamp": "2026-08-07 20:31:14.758829+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T20:32:09.500875+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-07_20-31_zone_out_+32.8"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 12462.0,
+      "new_price": 8891.0,
+      "price_change": -3571.0,
+      "price_change_pct": -28.6551115390788,
+      "timestamp": "2026-08-07 20:31:14.758829+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-07T20:32:09.500931+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-07_20-31_comeback_28.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T19:46:01.433787+00:00",
+    "last_processed_run": "2026-08-07T20:31:14.758829+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
