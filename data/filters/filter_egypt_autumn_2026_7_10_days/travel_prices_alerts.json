@@ -1651,10 +1651,36 @@
       "created_at": "2026-08-07T08:09:06.211332+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sheraton Miramar Resort (El Gouna)_2026-08-07_08-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8201.0,
+      "new_price": 8201.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 09:52:58.308880+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T09:53:50.329827+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada_2026-08-07_09-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 8371.0,
+      "new_price": 8371.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-07 09:52:58.308880+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-07T09:53:50.329854+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-07_09-52_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T08:08:18.408048+00:00",
+    "last_processed_run": "2026-08-07T09:52:58.308880+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7295.0,
@@ -1809,7 +1835,7 @@
         "premium_peak": null
       },
       "Jaz Elite Asteria (Hurghada)": {
-        "history_max": 10531.0,
+        "history_max": 10597.0,
         "premium_peak": null
       },
       "Serenity Sky Arc": {
@@ -2390,6 +2416,10 @@
       },
       "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam": {
         "history_max": 8364.0,
+        "premium_peak": null
+      },
+      "Jaz Aquamarine Resort": {
+        "history_max": 8401.0,
         "premium_peak": null
       }
     }
