@@ -6396,10 +6396,114 @@
       "created_at": "2026-08-08T14:27:16.018666+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ramada Resort Kusadasi_2026-08-08_14-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Daima Biz Resort Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 8134.0,
+      "new_price": 8134.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T15:24:07.460815+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz Resort Turcja, Kemer_2026-08-08_15-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 8199.0,
+      "new_price": 8199.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T15:24:07.460842+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hane Sun Elite (ex Noble Palace Side) Turcja, Side, Colakli_2026-08-08_15-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 8720.0,
+      "new_price": 8720.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T15:24:07.460851+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-08-08_15-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8305.0,
+      "new_price": 8305.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T15:24:07.460858+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-08_15-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8854.0,
+      "new_price": 8854.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T15:24:07.460864+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa_2026-08-08_15-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Palm Wings Beach Resort & SPA (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 12372.0,
+      "new_price": 9530.0,
+      "price_change": -2842.0,
+      "price_change_pct": -22.971225347559006,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T15:24:07.460889+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palm Wings Beach Resort & SPA (Kusadasi)_2026-08-08_15-22_comeback_23.0"
+    },
+    {
+      "hotel_name": "Sealight Resort (ex Otium Sealight Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 12338.0,
+      "new_price": 9963.0,
+      "price_change": -2375.0,
+      "price_change_pct": -19.249473172313177,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T15:24:07.460900+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-08-08_15-22_comeback_19.2"
+    },
+    {
+      "hotel_name": "Tusan Beach Resort",
+      "duration_bucket": "",
+      "old_price": 12017.0,
+      "new_price": 9739.0,
+      "price_change": -2278.0,
+      "price_change_pct": -18.956478322376633,
+      "timestamp": "2026-08-08 15:22:29.584878+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T15:24:07.460911+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tusan Beach Resort_2026-08-08_15-22_comeback_19.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-08T14:25:27.418876+00:00",
+    "last_processed_run": "2026-08-08T15:22:29.584878+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -7254,8 +7358,8 @@
         "premium_peak": 10241.0
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)": {
-        "history_max": 11700.0,
-        "premium_peak": 11700.0
+        "history_max": 11795.0,
+        "premium_peak": 11795.0
       },
       "Antique Roman Palace": {
         "history_max": 11386.0,
