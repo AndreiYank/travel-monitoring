@@ -429,10 +429,23 @@
       "created_at": "2026-08-08T14:27:18.193899+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-08-08_14-26_-8.9"
+    },
+    {
+      "hotel_name": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali",
+      "duration_bucket": "",
+      "old_price": 7455.0,
+      "new_price": 8205.0,
+      "price_change": 750.0,
+      "price_change_pct": 10.06036217303823,
+      "timestamp": "2026-08-08 18:26:18.737100+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-08T18:27:16.992528+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-08-08_18-26_+10.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-08T17:24:40.867243+00:00",
+    "last_processed_run": "2026-08-08T18:26:18.737100+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 12399.0,
@@ -1073,6 +1086,10 @@
       "Serita Beach": {
         "history_max": 11655.0,
         "premium_peak": 11655.0
+      },
+      "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos": {
+        "history_max": 10131.0,
+        "premium_peak": 10131.0
       }
     }
   }
