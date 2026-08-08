@@ -3666,10 +3666,62 @@
       "created_at": "2026-08-08T17:23:40.057368+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)_2026-08-08_17-22_zone_out_+1.0"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 8723.0,
+      "new_price": 7637.0,
+      "price_change": -1086.0,
+      "price_change_pct": -12.449845236730482,
+      "timestamp": "2026-08-08 22:19:25.430859+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-08T22:20:50.348870+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-08_22-19_-12.4"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9357.0,
+      "new_price": 10617.0,
+      "price_change": 1260.0,
+      "price_change_pct": 13.46585444052581,
+      "timestamp": "2026-08-08 22:19:25.430859+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T22:20:50.348930+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-08_22-19_zone_out_+13.5"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 11057.0,
+      "new_price": 9017.0,
+      "price_change": -2040.0,
+      "price_change_pct": -18.449850773265805,
+      "timestamp": "2026-08-08 22:19:25.430859+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T22:20:50.348958+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-08-08_22-19_comeback_18.4"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 11363.0,
+      "new_price": 8797.0,
+      "price_change": -2566.0,
+      "price_change_pct": -22.582064595617354,
+      "timestamp": "2026-08-08 22:19:25.430859+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T22:20:50.348975+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-08_22-19_comeback_22.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-08T21:21:48.184996+00:00",
+    "last_processed_run": "2026-08-08T22:19:25.430859+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
