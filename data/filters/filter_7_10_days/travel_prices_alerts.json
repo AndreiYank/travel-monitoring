@@ -3458,10 +3458,75 @@
       "created_at": "2026-08-07T20:32:09.500931+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Mirabel Park_2026-08-07_20-31_comeback_28.7"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 8723.0,
+      "new_price": 7637.0,
+      "price_change": -1086.0,
+      "price_change_pct": -12.449845236730482,
+      "timestamp": "2026-08-08 00:53:41.181430+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-08T00:54:51.424692+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-08_00-53_-12.4"
+    },
+    {
+      "hotel_name": "Double Tree by Hilton Mangroovy El Gouna Resort",
+      "duration_bucket": "",
+      "old_price": 9432.0,
+      "new_price": 10238.0,
+      "price_change": 806.0,
+      "price_change_pct": 8.54537743850721,
+      "timestamp": "2026-08-08 00:53:41.181430+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T00:54:51.424733+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Double Tree by Hilton Mangroovy El Gouna Resort_2026-08-08_00-53_zone_out_+8.5"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 11363.0,
+      "new_price": 8797.0,
+      "price_change": -2566.0,
+      "price_change_pct": -22.582064595617354,
+      "timestamp": "2026-08-08 00:53:41.181430+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T00:54:51.424760+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-08_00-53_comeback_22.6"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 12248.0,
+      "new_price": 9893.0,
+      "price_change": -2355.0,
+      "price_change_pct": -19.227629000653167,
+      "timestamp": "2026-08-08 00:53:41.181430+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T00:54:51.424782+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-08-08_00-53_comeback_19.2"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 11057.0,
+      "new_price": 9017.0,
+      "price_change": -2040.0,
+      "price_change_pct": -18.449850773265805,
+      "timestamp": "2026-08-08 00:53:41.181430+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T00:54:51.424794+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-08-08_00-53_comeback_18.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-07T22:27:02.366755+00:00",
+    "last_processed_run": "2026-08-08T00:53:41.181430+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -4144,8 +4209,8 @@
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 10220.0,
-        "premium_peak": 10220.0
+        "history_max": 10238.0,
+        "premium_peak": 10238.0
       },
       "Sunrise Select Garden Beach Resort & Spa": {
         "history_max": 12299.0,
