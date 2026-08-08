@@ -6175,10 +6175,62 @@
       "created_at": "2026-08-08T06:38:23.842659+00:00",
       "threshold_percent": 8.0,
       "unique_key": "World Star Beach Resort & Spa Turcja, Alanya, Kestel_2026-08-08_06-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Signature Blue Resort (ex. Grand Ozcelik)",
+      "duration_bucket": "",
+      "old_price": 8586.0,
+      "new_price": 9311.0,
+      "price_change": 725.0,
+      "price_change_pct": 8.443978569764733,
+      "timestamp": "2026-08-08 07:43:29.499021+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-08T07:44:51.527180+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-08-08_07-43_+8.4"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9671.0,
+      "new_price": 10015.0,
+      "price_change": 344.0,
+      "price_change_pct": 3.557026160686589,
+      "timestamp": "2026-08-08 07:43:29.499021+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T07:44:51.527242+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-08-08_07-43_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "Club Paradiso",
+      "duration_bucket": "",
+      "old_price": 9918.0,
+      "new_price": 10116.0,
+      "price_change": 198.0,
+      "price_change_pct": 1.9963702359346642,
+      "timestamp": "2026-08-08 07:43:29.499021+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-08T07:44:51.527261+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Paradiso_2026-08-08_07-43_zone_out_+2.0"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites",
+      "duration_bucket": "",
+      "old_price": 11424.0,
+      "new_price": 9918.0,
+      "price_change": -1506.0,
+      "price_change_pct": -13.182773109243698,
+      "timestamp": "2026-08-08 07:43:29.499021+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-08T07:44:51.527297+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites_2026-08-08_07-43_comeback_13.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-08T06:36:55.017252+00:00",
+    "last_processed_run": "2026-08-08T07:43:29.499021+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10128.0,
@@ -6469,8 +6521,8 @@
         "premium_peak": 11624.0
       },
       "Kustur Club Holiday Village": {
-        "history_max": 11002.0,
-        "premium_peak": 11002.0
+        "history_max": 11237.0,
+        "premium_peak": 11237.0
       },
       "Golden Tulip Bayrampasa": {
         "history_max": 9110.0,
@@ -7121,8 +7173,8 @@
         "premium_peak": 11598.0
       },
       "Viking Star": {
-        "history_max": 10301.0,
-        "premium_peak": 10301.0
+        "history_max": 10548.0,
+        "premium_peak": 10548.0
       },
       "Armella Hill": {
         "history_max": 9475.0,
@@ -7509,7 +7561,7 @@
         "premium_peak": null
       },
       "Mandarin Resort (Bodrum) Turcja, Bodrum": {
-        "history_max": 7734.0,
+        "history_max": 8034.0,
         "premium_peak": null
       },
       "La Mer (Goynuk) Turcja, Kemer, Goynuk": {
@@ -7549,7 +7601,7 @@
         "premium_peak": 11039.0
       },
       "Signature Blue Resort (ex. Grand Ozcelik)": {
-        "history_max": 8883.0,
+        "history_max": 9311.0,
         "premium_peak": null
       },
       "Belconti Resort (Belek)": {
@@ -7557,8 +7609,8 @@
         "premium_peak": 12015.0
       },
       "Ozcelik": {
-        "history_max": 11404.0,
-        "premium_peak": 11404.0
+        "history_max": 11704.0,
+        "premium_peak": 11704.0
       },
       "Concordia Celes Beach": {
         "history_max": 8448.0,
@@ -7733,8 +7785,8 @@
         "premium_peak": 11607.0
       },
       "Royal Garden Beach (ex Royal Garden Select & Suite)": {
-        "history_max": 11118.0,
-        "premium_peak": 11118.0
+        "history_max": 11518.0,
+        "premium_peak": 11518.0
       },
       "Aventura Park": {
         "history_max": 9097.0,
