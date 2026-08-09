@@ -169,10 +169,36 @@
       "created_at": "2026-08-07T16:46:35.936912+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Campus Hill Turcja, Alanya_2026-08-07_16-45_comeback_18.4"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 7699.0,
+      "new_price": 9043.0,
+      "price_change": 1344.0,
+      "price_change_pct": 17.456812573061438,
+      "timestamp": "2026-08-09 23:23:59.388452+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-09T23:26:01.735886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-09_23-23_+17.5"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 8553.0,
+      "new_price": 10193.0,
+      "price_change": 1640.0,
+      "price_change_pct": 19.174558634397286,
+      "timestamp": "2026-08-09 23:23:59.388452+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-09T23:26:01.735916+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-09_23-23_zone_out_+19.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-09T22:23:02.507586+00:00",
+    "last_processed_run": "2026-08-09T23:23:59.388452+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 15968.0,
@@ -335,8 +361,8 @@
         "premium_peak": 17615.0
       },
       "Seher Resort & Spa": {
-        "history_max": 16852.0,
-        "premium_peak": 16852.0
+        "history_max": 16963.0,
+        "premium_peak": 16963.0
       },
       "Gold City Turcja, Alanya, Kargicak": {
         "history_max": 14985.0,
@@ -355,8 +381,8 @@
         "premium_peak": 18173.0
       },
       "Fantasia De Luxe Kusadasi": {
-        "history_max": 16817.0,
-        "premium_peak": 16817.0
+        "history_max": 19539.0,
+        "premium_peak": 19539.0
       },
       "Diamond Premium": {
         "history_max": 18224.0,
@@ -407,8 +433,8 @@
         "premium_peak": 17806.0
       },
       "Port Side Resort": {
-        "history_max": 18682.0,
-        "premium_peak": 18682.0
+        "history_max": 18766.0,
+        "premium_peak": 18766.0
       },
       "Nova Life Turcja, Alanya, Konaklı": {
         "history_max": 15068.0,
@@ -1331,8 +1357,8 @@
         "premium_peak": 13893.0
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 14496.0,
-        "premium_peak": 14496.0
+        "history_max": 14770.0,
+        "premium_peak": 14770.0
       },
       "Master Family Club Turcja, Side": {
         "history_max": 13972.0,
@@ -1483,8 +1509,12 @@
         "premium_peak": 13949.0
       },
       "Ma Biche Kemer by Werde Hotels": {
-        "history_max": 18157.0,
-        "premium_peak": 18157.0
+        "history_max": 18450.0,
+        "premium_peak": 18450.0
+      },
+      "Rox Royal (ex. Grand Haber) Turcja, Kemer": {
+        "history_max": 13725.0,
+        "premium_peak": 13725.0
       }
     }
   }
