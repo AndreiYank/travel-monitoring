@@ -3718,10 +3718,101 @@
       "created_at": "2026-08-08T22:20:50.348975+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Abu Soma Resort_2026-08-08_22-19_comeback_22.6"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 9008.0,
+      "new_price": 7915.0,
+      "price_change": -1093.0,
+      "price_change_pct": -12.13365896980462,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T00:57:31.243737+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-09_00-56_-12.1"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 8546.0,
+      "new_price": 7839.0,
+      "price_change": -707.0,
+      "price_change_pct": -8.272876199391527,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T00:57:31.243773+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-08-09_00-56_-8.3"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 8465.0,
+      "new_price": 7662.0,
+      "price_change": -803.0,
+      "price_change_pct": -9.486119314825753,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T00:57:31.243788+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-08-09_00-56_-9.5"
+    },
+    {
+      "hotel_name": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)",
+      "duration_bucket": "",
+      "old_price": 7978.0,
+      "new_price": 7224.0,
+      "price_change": -754.0,
+      "price_change_pct": -9.450990223113562,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T00:57:31.243808+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-08-09_00-56_-9.5"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 9878.0,
+      "new_price": 10269.0,
+      "price_change": 391.0,
+      "price_change_pct": 3.958291152055072,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-09T00:57:31.243834+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-08-09_00-56_zone_out_+4.0"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 12527.0,
+      "new_price": 9177.0,
+      "price_change": -3350.0,
+      "price_change_pct": -26.74223676857987,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-09T00:57:31.243859+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-09_00-56_comeback_26.7"
+    },
+    {
+      "hotel_name": "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)",
+      "duration_bucket": "",
+      "old_price": 11457.0,
+      "new_price": 9716.0,
+      "price_change": -1741.0,
+      "price_change_pct": -15.195950074190451,
+      "timestamp": "2026-08-09 00:56:10.156961+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-09T00:57:31.243904+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)_2026-08-09_00-56_comeback_15.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-08T23:19:59.869622+00:00",
+    "last_processed_run": "2026-08-09T00:56:10.156961+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -4404,8 +4495,8 @@
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 10238.0,
-        "premium_peak": 10238.0
+        "history_max": 10629.0,
+        "premium_peak": 10629.0
       },
       "Sunrise Select Garden Beach Resort & Spa": {
         "history_max": 12299.0,

@@ -1560,10 +1560,49 @@
       "created_at": "2026-08-08T20:21:40.012244+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)_2026-08-08_20-20_zone_out_+1.1"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 9255.0,
+      "new_price": 8091.0,
+      "price_change": -1164.0,
+      "price_change_pct": -12.576985413290112,
+      "timestamp": "2026-08-09 00:57:23.571687+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T00:59:23.997051+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-08-09_00-57_-12.6"
+    },
+    {
+      "hotel_name": "Hane Sun Elite (ex Noble Palace Side)",
+      "duration_bucket": "",
+      "old_price": 9887.0,
+      "new_price": 10044.0,
+      "price_change": 157.0,
+      "price_change_pct": 1.587943764539294,
+      "timestamp": "2026-08-09 00:57:23.571687+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-09T00:59:23.997090+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hane Sun Elite (ex Noble Palace Side)_2026-08-09_00-57_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 13839.0,
+      "new_price": 9851.0,
+      "price_change": -3988.0,
+      "price_change_pct": -28.81711106293807,
+      "timestamp": "2026-08-09 00:57:23.571687+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-09T00:59:23.997117+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-09_00-57_comeback_28.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-08T23:21:16.078474+00:00",
+    "last_processed_run": "2026-08-09T00:57:23.571687+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12404.0,
@@ -2010,8 +2049,8 @@
         "premium_peak": 14342.0
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
-        "history_max": 10746.0,
-        "premium_peak": 10746.0
+        "history_max": 10949.0,
+        "premium_peak": 10949.0
       },
       "Perre Delta": {
         "history_max": 8631.0,
@@ -2964,6 +3003,22 @@
       "Swandor Kemer (ex. Pgs Kiris Resort)": {
         "history_max": 15832.0,
         "premium_peak": 15832.0
+      },
+      "Signature Blue Resort (ex. Grand Ozcelik)": {
+        "history_max": 10795.0,
+        "premium_peak": 10795.0
+      },
+      "Beks Premium Resort & Spa": {
+        "history_max": 15301.0,
+        "premium_peak": 15301.0
+      },
+      "Lonicera Resort & Spa": {
+        "history_max": 13544.0,
+        "premium_peak": 13544.0
+      },
+      "Long Beach Club Nature": {
+        "history_max": 15611.0,
+        "premium_peak": 15611.0
       }
     }
   }
