@@ -442,10 +442,23 @@
       "created_at": "2026-08-08T18:27:16.992528+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-08-08_18-26_+10.1"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 9866.0,
+      "new_price": 9866.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-09 07:49:40.544584+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-09T07:50:56.233480+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-08-09_07-49_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-09T06:42:51.455053+00:00",
+    "last_processed_run": "2026-08-09T07:49:40.544584+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 12399.0,
@@ -468,8 +481,8 @@
         "premium_peak": 15918.0
       },
       "Ibiscus Corfu Grecja, Korfu, Roda": {
-        "history_max": 11369.0,
-        "premium_peak": 11369.0
+        "history_max": 11386.0,
+        "premium_peak": 11386.0
       },
       "Porto Platanias Beach (Chania)": {
         "history_max": 15217.0,
@@ -736,7 +749,7 @@
         "premium_peak": 15657.0
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 9160.0,
+        "history_max": 9686.0,
         "premium_peak": null
       },
       "Atlantica Caldera Palace Resort & Spa (ex Atlantica Sensatori)": {
@@ -1106,6 +1119,10 @@
       "Ibiscus Corfu": {
         "history_max": 11386.0,
         "premium_peak": 11386.0
+      },
+      "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)": {
+        "history_max": 12292.0,
+        "premium_peak": 12292.0
       }
     }
   }
