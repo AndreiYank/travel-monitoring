@@ -3874,10 +3874,75 @@
       "created_at": "2026-08-09T10:25:54.617350+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Aquamarine Resort_2026-08-09_10-24_comeback_17.7"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 9617.0,
+      "new_price": 8797.0,
+      "price_change": -820.0,
+      "price_change_pct": -8.526567536653843,
+      "timestamp": "2026-08-09 22:21:36.242327+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T22:23:01.633960+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-09_22-21_-8.5"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 6502.0,
+      "new_price": 7406.0,
+      "price_change": 904.0,
+      "price_change_pct": 13.903414334051062,
+      "timestamp": "2026-08-09 22:21:36.242327+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-09T22:23:01.633994+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-08-09_22-21_+13.9"
+    },
+    {
+      "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
+      "duration_bucket": "",
+      "old_price": 9815.0,
+      "new_price": 10415.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.113092205807438,
+      "timestamp": "2026-08-09 22:21:36.242327+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-09T22:23:01.634029+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-08-09_22-21_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 10566.0,
+      "new_price": 9597.0,
+      "price_change": -969.0,
+      "price_change_pct": -9.17092561044861,
+      "timestamp": "2026-08-09 22:21:36.242327+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-09T22:23:01.634052+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-09_22-21_comeback_9.2"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 11057.0,
+      "new_price": 9017.0,
+      "price_change": -2040.0,
+      "price_change_pct": -18.449850773265805,
+      "timestamp": "2026-08-09 22:21:36.242327+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-09T22:23:01.634065+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-08-09_22-21_comeback_18.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-09T19:26:32.095576+00:00",
+    "last_processed_run": "2026-08-09T22:21:36.242327+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
@@ -4080,8 +4145,8 @@
         "premium_peak": 11984.0
       },
       "Jaz Elite Amara": {
-        "history_max": 12494.0,
-        "premium_peak": 12494.0
+        "history_max": 12671.0,
+        "premium_peak": 12671.0
       },
       "Sheraton Soma Bay": {
         "history_max": 12496.0,
