@@ -3835,10 +3835,49 @@
       "created_at": "2026-08-09T09:32:12.537594+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-09_09-30_zone_out_+7.6"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 7662.0,
+      "new_price": 6502.0,
+      "price_change": -1160.0,
+      "price_change_pct": -15.139650221874184,
+      "timestamp": "2026-08-09 10:24:34.175992+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-09T10:25:54.617264+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-08-09_10-24_-15.1"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 8811.0,
+      "new_price": 9716.0,
+      "price_change": 905.0,
+      "price_change_pct": 10.271251844285551,
+      "timestamp": "2026-08-09 10:24:34.175992+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-09T10:25:54.617300+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-09_10-24_+10.3"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 11750.0,
+      "new_price": 9671.0,
+      "price_change": -2079.0,
+      "price_change_pct": -17.693617021276594,
+      "timestamp": "2026-08-09 10:24:34.175992+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-09T10:25:54.617350+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-09_10-24_comeback_17.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-09T09:30:45.280547+00:00",
+    "last_processed_run": "2026-08-09T10:24:34.175992+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11306.0,
