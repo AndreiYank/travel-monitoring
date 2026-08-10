@@ -104,10 +104,36 @@
       "created_at": "2026-08-10T09:09:16.755269+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Beach Resort (ex. Radisson Blu)_2026-08-10_09-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay Egipt, Hurghada, Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8167.0,
+      "new_price": 8167.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 10:59:40.709151+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T11:00:15.342894+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay Egipt, Hurghada, Soma Bay_2026-08-10_10-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 8542.0,
+      "new_price": 8542.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 10:59:40.709151+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T11:00:15.342919+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-10_10-59_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-10T09:08:41.086996+00:00",
+    "last_processed_run": "2026-08-10T10:59:40.709151+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7092.0,
@@ -739,6 +765,14 @@
       },
       "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh": {
         "history_max": 8423.0,
+        "premium_peak": null
+      },
+      "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam": {
+        "history_max": 8542.0,
+        "premium_peak": null
+      },
+      "Caribbean World Soma Bay": {
+        "history_max": 10217.0,
         "premium_peak": null
       }
     }
