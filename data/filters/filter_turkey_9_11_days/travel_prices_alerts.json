@@ -52,10 +52,36 @@
       "created_at": "2026-08-10T12:47:28.573105+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aventura Park_2026-08-10_12-46_-8.6"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 9473.0,
+      "new_price": 10697.0,
+      "price_change": 1224.0,
+      "price_change_pct": 12.920933178507338,
+      "timestamp": "2026-08-10 15:53:16.652985+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T15:54:05.267020+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-08-10_15-53_zone_out_+12.9"
+    },
+    {
+      "hotel_name": "Aventura Park",
+      "duration_bucket": "",
+      "old_price": 9097.0,
+      "new_price": 9097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 15:53:16.652985+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T15:54:05.267047+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aventura Park_2026-08-10_15-53_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-10T14:16:26.055910+00:00",
+    "last_processed_run": "2026-08-10T15:53:16.652985+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11424.0,
@@ -378,8 +404,8 @@
         "premium_peak": 12297.0
       },
       "Galeri Resort": {
-        "history_max": 10435.0,
-        "premium_peak": 10435.0
+        "history_max": 10710.0,
+        "premium_peak": 10710.0
       },
       "Fore Resort & Spa": {
         "history_max": 14067.0,
@@ -554,7 +580,7 @@
         "premium_peak": 12687.0
       },
       "Prestige Alanya": {
-        "history_max": 9050.0,
+        "history_max": 9198.0,
         "premium_peak": null
       },
       "OZ Incekum Beach Resort": {
@@ -722,8 +748,8 @@
         "premium_peak": 10081.0
       },
       "Royal Asarlik Beach": {
-        "history_max": 12806.0,
-        "premium_peak": 12806.0
+        "history_max": 13725.0,
+        "premium_peak": 13725.0
       },
       "Lykia World & Links Golf Antalya": {
         "history_max": 12672.0,
@@ -894,8 +920,8 @@
         "premium_peak": 14985.0
       },
       "Berry Blue": {
-        "history_max": 14324.0,
-        "premium_peak": 14324.0
+        "history_max": 14796.0,
+        "premium_peak": 14796.0
       },
       "Asia Beach Resort and Spa": {
         "history_max": 14688.0,
@@ -1030,8 +1056,8 @@
         "premium_peak": 11102.0
       },
       "Armas Gul Beach": {
-        "history_max": 9473.0,
-        "premium_peak": null
+        "history_max": 10697.0,
+        "premium_peak": 10697.0
       },
       "Viking Star": {
         "history_max": 12906.0,
@@ -1246,8 +1272,8 @@
         "premium_peak": 13757.0
       },
       "Crystal World of Colours Comfort Collection": {
-        "history_max": 15471.0,
-        "premium_peak": 15471.0
+        "history_max": 15944.0,
+        "premium_peak": 15944.0
       },
       "Club Sera": {
         "history_max": 14633.0,
@@ -1286,8 +1312,8 @@
         "premium_peak": 15647.0
       },
       "Infinity by Yelken": {
-        "history_max": 15398.0,
-        "premium_peak": 15398.0
+        "history_max": 15898.0,
+        "premium_peak": 15898.0
       },
       "Aska Lara Resort & Spa": {
         "history_max": 15744.0,
@@ -1304,6 +1330,18 @@
       "Litore Resort & Spa": {
         "history_max": 15777.0,
         "premium_peak": 15777.0
+      },
+      "Adora Hotel & Resort (ex. Adora Golf)": {
+        "history_max": 15866.0,
+        "premium_peak": 15866.0
+      },
+      "Seven Seas Life": {
+        "history_max": 15970.0,
+        "premium_peak": 15970.0
+      },
+      "Swandor Kemer (ex. Pgs Kiris Resort)": {
+        "history_max": 15832.0,
+        "premium_peak": 15832.0
       }
     }
   }
