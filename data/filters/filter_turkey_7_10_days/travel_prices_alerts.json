@@ -923,10 +923,49 @@
       "created_at": "2026-08-10T18:45:47.422976+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-08-10_18-45_zone_out_+2.9"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6273.0,
+      "new_price": 5305.0,
+      "price_change": -968.0,
+      "price_change_pct": -15.431213135660768,
+      "timestamp": "2026-08-10 19:50:38.771393+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-10T19:51:40.595732+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-10_19-50_-15.4"
+    },
+    {
+      "hotel_name": "Holiday Park Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 8717.0,
+      "new_price": 8717.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 19:50:38.771393+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T19:51:40.595780+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)_2026-08-10_19-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eftalia Aqua",
+      "duration_bucket": "",
+      "old_price": 10516.0,
+      "new_price": 9641.0,
+      "price_change": -875.0,
+      "price_change_pct": -8.320654241156333,
+      "timestamp": "2026-08-10 19:50:38.771393+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-10T19:51:40.595830+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Aqua_2026-08-10_19-50_comeback_8.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-10T18:45:02.319629+00:00",
+    "last_processed_run": "2026-08-10T19:50:38.771393+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -2207,6 +2246,14 @@
       "Club Grand Aqua": {
         "history_max": 11710.0,
         "premium_peak": 11710.0
+      },
+      "Side Mare Resort": {
+        "history_max": 11717.0,
+        "premium_peak": 11717.0
+      },
+      "Crowne Plaza Istanbul Old City": {
+        "history_max": 11737.0,
+        "premium_peak": 11737.0
       }
     }
   }

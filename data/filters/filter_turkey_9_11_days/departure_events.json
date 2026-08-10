@@ -9619,6 +9619,26 @@
       "hotel_count": 8.0,
       "hotel_delta": -50,
       "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-08-10T19:50:43+0000",
+      "departure_key": "turcja|side|2026-08-31|2026-09-09|9|Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "turcja",
+      "region": "side",
+      "departure_date": "2026-08-31",
+      "return_date": "2026-09-09",
+      "nights": 9.0,
+      "days_to_departure": 21.0,
+      "old_min_price": "",
+      "new_min_price": 9708.0,
+      "min_drop_pct": -11.97,
+      "p10_drop_pct": -4.16,
+      "median_drop_pct": 0.0,
+      "hotel_count": 12.0,
+      "hotel_delta": -2,
+      "hot_score": 0.0
     }
   ]
 }
