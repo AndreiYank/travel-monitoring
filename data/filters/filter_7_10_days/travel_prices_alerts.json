@@ -78,10 +78,62 @@
       "created_at": "2026-08-10T11:00:18.456733+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tropitel Sahl Hasheesh_2026-08-10_10-59_zone_out_+0.2"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 9077.0,
+      "new_price": 8276.0,
+      "price_change": -801.0,
+      "price_change_pct": -8.824501487275532,
+      "timestamp": "2026-08-10 12:45:43.512515+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-10T12:46:34.032486+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-08-10_12-45_-8.8"
+    },
+    {
+      "hotel_name": "Parrotel Lagoon Resort",
+      "duration_bucket": "",
+      "old_price": 6850.0,
+      "new_price": 6049.0,
+      "price_change": -801.0,
+      "price_change_pct": -11.693430656934305,
+      "timestamp": "2026-08-10 12:45:43.512515+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-10T12:46:34.032524+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort_2026-08-10_12-45_-11.7"
+    },
+    {
+      "hotel_name": "Parrotel Beach Resort (ex. Radisson Blu)",
+      "duration_bucket": "",
+      "old_price": 7918.0,
+      "new_price": 7117.0,
+      "price_change": -801.0,
+      "price_change_pct": -10.116190957312453,
+      "timestamp": "2026-08-10 12:45:43.512515+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-10T12:46:34.032536+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Beach Resort (ex. Radisson Blu)_2026-08-10_12-45_-10.1"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 9716.0,
+      "new_price": 9716.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 12:45:43.512515+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T12:46:34.032566+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-10_12-45_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-10T10:59:40.601648+00:00",
+    "last_processed_run": "2026-08-10T12:45:43.512515+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -424,7 +476,7 @@
         "premium_peak": 15839.0
       },
       "Rewaya Majestic Resort": {
-        "history_max": 7988.0,
+        "history_max": 8523.0,
         "premium_peak": null
       },
       "Rixos Montaza Alexandria": {
@@ -500,7 +552,7 @@
         "premium_peak": null
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
-        "history_max": 8317.0,
+        "history_max": 8360.0,
         "premium_peak": null
       },
       "Serenity Alma Heights (ex. Serenity Fun City)": {
@@ -560,8 +612,8 @@
         "premium_peak": 11077.0
       },
       "Savoy (Sharm El Sheikh)": {
-        "history_max": 11735.0,
-        "premium_peak": 11735.0
+        "history_max": 12341.0,
+        "premium_peak": 12341.0
       },
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
         "history_max": 10312.0,
@@ -888,8 +940,8 @@
         "premium_peak": 13017.0
       },
       "Ghazala Alamein": {
-        "history_max": 13674.0,
-        "premium_peak": 13674.0
+        "history_max": 13690.0,
+        "premium_peak": 13690.0
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
         "history_max": 10629.0,
