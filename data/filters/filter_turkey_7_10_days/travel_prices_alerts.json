@@ -975,10 +975,75 @@
       "created_at": "2026-08-10T22:30:45.086919+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Holiday Park Resort (Okurcalar)_2026-08-10_22-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ozkaymak Incekum",
+      "duration_bucket": "",
+      "old_price": 7910.0,
+      "new_price": 9060.0,
+      "price_change": 1150.0,
+      "price_change_pct": 14.538558786346398,
+      "timestamp": "2026-08-10 23:28:35.489660+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-10T23:29:36.096972+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Incekum_2026-08-10_23-28_+14.5"
+    },
+    {
+      "hotel_name": "Ozkaymak Falez",
+      "duration_bucket": "",
+      "old_price": 8837.0,
+      "new_price": 9750.0,
+      "price_change": 913.0,
+      "price_change_pct": 10.33156048432726,
+      "timestamp": "2026-08-10 23:28:35.489660+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-10T23:29:36.097039+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Falez_2026-08-10_23-28_+10.3"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 7921.0,
+      "new_price": 7921.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 23:28:35.489660+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T23:29:36.097085+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-08-10_23-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Garden of Sun Spa & Wellness Turcja, Bodrum, Didim",
+      "duration_bucket": "",
+      "old_price": 7810.0,
+      "new_price": 7810.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-10 23:28:35.489660+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-10T23:29:36.097096+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Garden of Sun Spa & Wellness Turcja, Bodrum, Didim_2026-08-10_23-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Yali Hotels & Resort",
+      "duration_bucket": "",
+      "old_price": 10703.0,
+      "new_price": 8896.0,
+      "price_change": -1807.0,
+      "price_change_pct": -16.883116883116884,
+      "timestamp": "2026-08-10 23:28:35.489660+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-10T23:29:36.097128+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Yali Hotels & Resort_2026-08-10_23-28_comeback_16.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-10T22:29:39.093171+00:00",
+    "last_processed_run": "2026-08-10T23:28:35.489660+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -1085,7 +1150,7 @@
         "premium_peak": 10750.0
       },
       "Orange County Alanya": {
-        "history_max": 9639.0,
+        "history_max": 9862.0,
         "premium_peak": null
       },
       "Orange County (Kemer)": {
@@ -1369,7 +1434,7 @@
         "premium_peak": null
       },
       "Ozkaymak Falez": {
-        "history_max": 8837.0,
+        "history_max": 9750.0,
         "premium_peak": null
       },
       "Ozkaymak Incekum Turcja, Alanya, Incekum": {
@@ -1377,7 +1442,7 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 9840.0,
+        "history_max": 9939.0,
         "premium_peak": null
       },
       "The Marilis Hill Resort and Spa Turcja, Alanya": {
@@ -1581,7 +1646,7 @@
         "premium_peak": 10097.0
       },
       "Richmond Ephesus": {
-        "history_max": 9765.0,
+        "history_max": 9957.0,
         "premium_peak": null
       },
       "Raxeria (Side)": {
@@ -2073,8 +2138,8 @@
         "premium_peak": 11214.0
       },
       "Flora Garden Ephesus": {
-        "history_max": 10208.0,
-        "premium_peak": 10208.0
+        "history_max": 10338.0,
+        "premium_peak": 10338.0
       },
       "Alaiye Resort & Spa": {
         "history_max": 10620.0,
@@ -2205,7 +2270,7 @@
         "premium_peak": null
       },
       "Ozkaymak Incekum": {
-        "history_max": 7910.0,
+        "history_max": 9060.0,
         "premium_peak": null
       },
       "Orange Palace": {
@@ -2267,6 +2332,18 @@
       "Crowne Plaza Istanbul Old City": {
         "history_max": 11737.0,
         "premium_peak": 11737.0
+      },
+      "Prime Beach": {
+        "history_max": 11411.0,
+        "premium_peak": 11411.0
+      },
+      "Garden of Sun Spa & Wellness": {
+        "history_max": 7940.0,
+        "premium_peak": null
+      },
+      "Grand Cettia": {
+        "history_max": 9399.0,
+        "premium_peak": null
       }
     }
   }
