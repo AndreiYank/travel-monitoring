@@ -1820,10 +1820,114 @@
       "created_at": "2026-08-11T08:06:45.989018+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe Turcja, Alanya, Payallar_2026-08-11_08-05_zone_out_gone"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8109.0,
+      "new_price": 8869.0,
+      "price_change": 760.0,
+      "price_change_pct": 9.372302380071526,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-11T09:54:29.320131+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-11_09-53_+9.4"
+    },
+    {
+      "hotel_name": "Calido Sol (Alanya)",
+      "duration_bucket": "",
+      "old_price": 8340.0,
+      "new_price": 11600.0,
+      "price_change": 3260.0,
+      "price_change_pct": 39.08872901678657,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320184+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Sol (Alanya)_2026-08-11_09-53_zone_out_+39.1"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "",
+      "old_price": 9581.0,
+      "new_price": 10543.0,
+      "price_change": 962.0,
+      "price_change_pct": 10.040705563093622,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320192+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)_2026-08-11_09-53_zone_out_+10.0"
+    },
+    {
+      "hotel_name": "Eftalia Aqua",
+      "duration_bucket": "",
+      "old_price": 9895.0,
+      "new_price": 10126.0,
+      "price_change": 231.0,
+      "price_change_pct": 2.334512379989894,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320197+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Aqua_2026-08-11_09-53_zone_out_+2.3"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 9717.0,
+      "new_price": 10164.0,
+      "price_change": 447.0,
+      "price_change_pct": 4.600185242358753,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320202+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-11_09-53_zone_out_+4.6"
+    },
+    {
+      "hotel_name": "Elite World Kusadasi (ex Marina)",
+      "duration_bucket": "",
+      "old_price": 9955.0,
+      "new_price": 11041.0,
+      "price_change": 1086.0,
+      "price_change_pct": 10.909090909090908,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320206+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite World Kusadasi (ex Marina)_2026-08-11_09-53_zone_out_+10.9"
+    },
+    {
+      "hotel_name": "Kadikale Resort Spa & Wellness",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10357.0,
+      "price_change": 400.0,
+      "price_change_pct": 4.017274279401426,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320211+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kadikale Resort Spa & Wellness_2026-08-11_09-53_zone_out_+4.0"
+    },
+    {
+      "hotel_name": "L' Oceanica Beach Resort (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9942.0,
+      "new_price": 10051.0,
+      "price_change": 109.0,
+      "price_change_pct": 1.096358881512774,
+      "timestamp": "2026-08-11 09:53:38.308232+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T09:54:29.320224+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "L' Oceanica Beach Resort (Kemer)_2026-08-11_09-53_zone_out_+1.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T08:05:46.904973+00:00",
+    "last_processed_run": "2026-08-11T09:53:38.308232+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -2146,8 +2250,8 @@
         "premium_peak": null
       },
       "L' Oceanica Beach Resort (Kemer)": {
-        "history_max": 9942.0,
-        "premium_peak": null
+        "history_max": 10051.0,
+        "premium_peak": 10051.0
       },
       "Kustur Club Holiday Village": {
         "history_max": 10319.0,
@@ -2182,8 +2286,8 @@
         "premium_peak": null
       },
       "Kadikale Resort Spa & Wellness": {
-        "history_max": 10157.0,
-        "premium_peak": 10157.0
+        "history_max": 10357.0,
+        "premium_peak": 10357.0
       },
       "Justiniano Deluxe Resort": {
         "history_max": 9656.0,
@@ -2322,7 +2426,7 @@
         "premium_peak": 11501.0
       },
       "Timo Deluxe Resort": {
-        "history_max": 8280.0,
+        "history_max": 8631.0,
         "premium_peak": null
       },
       "Xoria Deluxe": {
@@ -2558,8 +2662,8 @@
         "premium_peak": 11213.0
       },
       "Sealight Resort (ex Otium Sealight Beach Resort)": {
-        "history_max": 10433.0,
-        "premium_peak": 10433.0
+        "history_max": 10563.0,
+        "premium_peak": 10563.0
       },
       "Sealife Family Resort": {
         "history_max": 10864.0,
@@ -2650,8 +2754,8 @@
         "premium_peak": null
       },
       "Design Plus Seya Beach": {
-        "history_max": 10357.0,
-        "premium_peak": 10357.0
+        "history_max": 10557.0,
+        "premium_peak": 10557.0
       },
       "Armas Gul Beach (ex Otium Gul Beach Resort) Turcja, Kemer": {
         "history_max": 8014.0,
@@ -2670,7 +2774,7 @@
         "premium_peak": null
       },
       "Diamond Hill Resort": {
-        "history_max": 8403.0,
+        "history_max": 8663.0,
         "premium_peak": null
       },
       "Armas Green Fugla": {
@@ -2798,8 +2902,8 @@
         "premium_peak": null
       },
       "Club Nena (Side)": {
-        "history_max": 9679.0,
-        "premium_peak": null
+        "history_max": 10543.0,
+        "premium_peak": 10543.0
       },
       "Armonia Holiday Village": {
         "history_max": 9655.0,
@@ -2878,8 +2982,8 @@
         "premium_peak": 10741.0
       },
       "Elite World Kusadasi (ex Marina)": {
-        "history_max": 9955.0,
-        "premium_peak": null
+        "history_max": 11041.0,
+        "premium_peak": 11041.0
       },
       "Fantasia De Luxe Kusadasi": {
         "history_max": 9126.0,
@@ -3144,6 +3248,10 @@
       "Misal (ex. Nox Inn Club)": {
         "history_max": 7897.0,
         "premium_peak": null
+      },
+      "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)": {
+        "history_max": 11592.0,
+        "premium_peak": 11592.0
       }
     }
   }
