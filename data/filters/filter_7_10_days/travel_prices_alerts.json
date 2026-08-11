@@ -1157,10 +1157,62 @@
       "created_at": "2026-08-11T18:49:15.167492+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-11_18-48_zone_out_gone"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 8323.0,
+      "new_price": 7237.0,
+      "price_change": -1086.0,
+      "price_change_pct": -13.048179742881171,
+      "timestamp": "2026-08-11 23:31:29.225864+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T23:32:14.829969+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-11_23-31_-13.0"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9439.0,
+      "new_price": 8179.0,
+      "price_change": -1260.0,
+      "price_change_pct": -13.34887170251086,
+      "timestamp": "2026-08-11 23:31:29.225864+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T23:32:14.830022+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-11_23-31_-13.3"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 10703.0,
+      "new_price": 8617.0,
+      "price_change": -2086.0,
+      "price_change_pct": -19.48986265533028,
+      "timestamp": "2026-08-11 23:31:29.225864+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T23:32:14.830100+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-08-11_23-31_comeback_19.5"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 11363.0,
+      "new_price": 8197.0,
+      "price_change": -3166.0,
+      "price_change_pct": -27.862360292176362,
+      "timestamp": "2026-08-11 23:31:29.225864+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T23:32:14.830129+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-11_23-31_comeback_27.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T22:34:20.767038+00:00",
+    "last_processed_run": "2026-08-11T23:31:29.225864+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -1579,7 +1631,7 @@
         "premium_peak": null
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
-        "history_max": 8360.0,
+        "history_max": 8836.0,
         "premium_peak": null
       },
       "Serenity Alma Heights (ex. Serenity Fun City)": {
@@ -1735,7 +1787,7 @@
         "premium_peak": 11148.0
       },
       "Swissotel Resort El Quseir": {
-        "history_max": 8780.0,
+        "history_max": 9023.0,
         "premium_peak": null
       },
       "Coral Sea Water World Resort": {
