@@ -1326,10 +1326,75 @@
       "created_at": "2026-08-11T00:59:50.930998+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Ocean (Alanya)_2026-08-11_00-59_comeback_9.7"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6625.0,
+      "new_price": 6017.0,
+      "price_change": -608.0,
+      "price_change_pct": -9.177358490566037,
+      "timestamp": "2026-08-11 03:02:31.787359+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T03:03:33.270290+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-11_03-02_-9.2"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8224.0,
+      "new_price": 8224.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 03:02:31.787359+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T03:03:33.270337+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-11_03-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eftalia Ocean (Alanya)",
+      "duration_bucket": "",
+      "old_price": 9899.0,
+      "new_price": 10670.0,
+      "price_change": 771.0,
+      "price_change_pct": 7.788665521769876,
+      "timestamp": "2026-08-11 03:02:31.787359+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T03:03:33.270350+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Ocean (Alanya)_2026-08-11_03-02_zone_out_+7.8"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum) Turcja, Bodrum",
+      "duration_bucket": "",
+      "old_price": 8034.0,
+      "new_price": 8034.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 03:02:31.787359+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T03:03:33.270359+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum) Turcja, Bodrum_2026-08-11_03-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 10494.0,
+      "new_price": 9550.0,
+      "price_change": -944.0,
+      "price_change_pct": -8.995616542786355,
+      "timestamp": "2026-08-11 03:02:31.787359+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T03:03:33.270390+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-11_03-02_comeback_9.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T00:59:00.663576+00:00",
+    "last_processed_run": "2026-08-11T03:02:31.787359+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -2476,7 +2541,7 @@
         "premium_peak": 11169.0
       },
       "Drita Resort & Spa Turcja, Alanya, Kargicak": {
-        "history_max": 7274.0,
+        "history_max": 7337.0,
         "premium_peak": null
       },
       "Baia Salima Kemer (ex Club Salima)": {
