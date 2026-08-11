@@ -2119,10 +2119,101 @@
       "created_at": "2026-08-11T11:41:23.104974+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Infinity by Yelken_2026-08-11_11-40_comeback_10.8"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9098.0,
+      "new_price": 8295.0,
+      "price_change": -803.0,
+      "price_change_pct": -8.826115629808749,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T12:44:36.990542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-11_12-43_-8.8"
+    },
+    {
+      "hotel_name": "Side Premium by OZ Hotels",
+      "duration_bucket": "",
+      "old_price": 9937.0,
+      "new_price": 9054.0,
+      "price_change": -883.0,
+      "price_change_pct": -8.885981684613062,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T12:44:36.990581+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Premium by OZ Hotels_2026-08-11_12-43_-8.9"
+    },
+    {
+      "hotel_name": "Kaila Beach (ex Katya)",
+      "duration_bucket": "",
+      "old_price": 8262.0,
+      "new_price": 9175.0,
+      "price_change": 913.0,
+      "price_change_pct": 11.050593076736867,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-11T12:44:36.990596+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kaila Beach (ex Katya)_2026-08-11_12-43_+11.1"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9013.0,
+      "new_price": 8096.0,
+      "price_change": -917.0,
+      "price_change_pct": -10.17419283257517,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T12:44:36.990614+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-08-11_12-43_-10.2"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9000.0,
+      "new_price": 8030.0,
+      "price_change": -970.0,
+      "price_change_pct": -10.777777777777779,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T12:44:36.990625+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-11_12-43_-10.8"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 9450.0,
+      "new_price": 10250.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.465608465608465,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T12:44:36.990662+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-11_12-43_zone_out_+8.5"
+    },
+    {
+      "hotel_name": "Kamelya Aishen Club (ex. Kamelya Aishen K Club)",
+      "duration_bucket": "",
+      "old_price": 10777.0,
+      "new_price": 9898.0,
+      "price_change": -879.0,
+      "price_change_pct": -8.156258699081377,
+      "timestamp": "2026-08-11 12:43:30.857221+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T12:44:36.990689+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kamelya Aishen Club (ex. Kamelya Aishen K Club)_2026-08-11_12-43_comeback_8.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T11:40:08.013650+00:00",
+    "last_processed_run": "2026-08-11T12:43:30.857221+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -3389,8 +3480,8 @@
         "premium_peak": 11741.0
       },
       "Sherwood Dreams Resort": {
-        "history_max": 11581.0,
-        "premium_peak": 11581.0
+        "history_max": 11651.0,
+        "premium_peak": 11651.0
       },
       "Side Star Elegance (ex. Asteria)": {
         "history_max": 11652.0,
