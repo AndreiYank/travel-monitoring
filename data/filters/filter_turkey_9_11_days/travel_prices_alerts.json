@@ -117,10 +117,49 @@
       "created_at": "2026-08-10T19:51:48.724987+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-10_19-50_comeback_12.0"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9709.0,
+      "new_price": 10803.0,
+      "price_change": 1094.0,
+      "price_change_pct": 11.267895766814295,
+      "timestamp": "2026-08-11 00:59:04.589118+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T00:59:46.812211+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-11_00-59_zone_out_+11.3"
+    },
+    {
+      "hotel_name": "Prestige Alanya",
+      "duration_bucket": "",
+      "old_price": 9198.0,
+      "new_price": 12222.0,
+      "price_change": 3024.0,
+      "price_change_pct": 32.87671232876712,
+      "timestamp": "2026-08-11 00:59:04.589118+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T00:59:46.812234+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Prestige Alanya_2026-08-11_00-59_zone_out_+32.9"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10768.0,
+      "new_price": 9466.0,
+      "price_change": -1302.0,
+      "price_change_pct": -12.091381872213967,
+      "timestamp": "2026-08-11 00:59:04.589118+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T00:59:46.812252+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-11_00-59_comeback_12.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-10T23:28:37.992974+00:00",
+    "last_processed_run": "2026-08-11T00:59:04.589118+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11424.0,
@@ -147,8 +186,8 @@
         "premium_peak": 11254.0
       },
       "Selectum Colours Side": {
-        "history_max": 11754.0,
-        "premium_peak": 11754.0
+        "history_max": 15048.0,
+        "premium_peak": 15048.0
       },
       "Holiday Park Resort (Okurcalar)": {
         "history_max": 9937.0,
@@ -215,8 +254,8 @@
         "premium_peak": 12883.0
       },
       "L' Oceanica Beach Resort (Kemer)": {
-        "history_max": 12299.0,
-        "premium_peak": 12299.0
+        "history_max": 12512.0,
+        "premium_peak": 12512.0
       },
       "Kustur Club Holiday Village": {
         "history_max": 14496.0,
@@ -595,8 +634,8 @@
         "premium_peak": 10522.0
       },
       "Porto Bello": {
-        "history_max": 12674.0,
-        "premium_peak": 12674.0
+        "history_max": 13295.0,
+        "premium_peak": 13295.0
       },
       "Oz Sui Resort": {
         "history_max": 10134.0,
@@ -619,8 +658,8 @@
         "premium_peak": 12687.0
       },
       "Prestige Alanya": {
-        "history_max": 9198.0,
-        "premium_peak": null
+        "history_max": 12222.0,
+        "premium_peak": 12222.0
       },
       "OZ Incekum Beach Resort": {
         "history_max": 11214.0,
@@ -843,8 +882,8 @@
         "premium_peak": null
       },
       "Azura Deluxe Resort & Spa": {
-        "history_max": 12998.0,
-        "premium_peak": 12998.0
+        "history_max": 13162.0,
+        "premium_peak": 13162.0
       },
       "Turunc Premium": {
         "history_max": 15647.0,
@@ -859,8 +898,8 @@
         "premium_peak": 11751.0
       },
       "Asteria Family Belek": {
-        "history_max": 12542.0,
-        "premium_peak": 12542.0
+        "history_max": 15831.0,
+        "premium_peak": 15831.0
       },
       "Asteria Collection Side": {
         "history_max": 12843.0,
@@ -1387,12 +1426,12 @@
         "premium_peak": 15722.0
       },
       "Siu Collection by Aydinbey": {
-        "history_max": 15674.0,
-        "premium_peak": 15674.0
+        "history_max": 15912.0,
+        "premium_peak": 15912.0
       },
       "Limak Lara De Luxe": {
-        "history_max": 15465.0,
-        "premium_peak": 15465.0
+        "history_max": 15773.0,
+        "premium_peak": 15773.0
       },
       "Sherwood Exclusive Lara (ex Sherwood Breezes)": {
         "history_max": 15558.0,
@@ -1401,6 +1440,34 @@
       "Green Bay Resort": {
         "history_max": 15929.0,
         "premium_peak": 15929.0
+      },
+      "Numa Club (Side)": {
+        "history_max": 14306.0,
+        "premium_peak": 14306.0
+      },
+      "Orange Palace": {
+        "history_max": 15074.0,
+        "premium_peak": 15074.0
+      },
+      "Diamond of Bodrum": {
+        "history_max": 12871.0,
+        "premium_peak": 12871.0
+      },
+      "Delphin Botanik Platinum (Alanya)": {
+        "history_max": 15746.0,
+        "premium_peak": 15746.0
+      },
+      "Seven Seas Palmeras Bay": {
+        "history_max": 13040.0,
+        "premium_peak": 13040.0
+      },
+      "IC Green Palace": {
+        "history_max": 16010.0,
+        "premium_peak": 16010.0
+      },
+      "Baia Lara": {
+        "history_max": 15962.0,
+        "premium_peak": 15962.0
       }
     }
   }
