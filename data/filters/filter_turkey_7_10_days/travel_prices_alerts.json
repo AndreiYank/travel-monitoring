@@ -1651,10 +1651,75 @@
       "created_at": "2026-08-11T05:51:43.236561+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Unique Residence Golf Spa_2026-08-11_05-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 7920.0,
+      "new_price": 7920.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 06:49:28.732376+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T06:50:41.106852+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-08-11_06-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nova Life Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 7875.0,
+      "new_price": 7875.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 06:49:28.732376+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T06:50:41.106886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life Turcja, Alanya, Konaklı_2026-08-11_06-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nox Inn Club (ex Limoncello Konakli Beach) Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 7897.0,
+      "new_price": 7897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 06:49:28.732376+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T06:50:41.106903+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nox Inn Club (ex Limoncello Konakli Beach) Turcja, Alanya, Konaklı_2026-08-11_06-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 8211.0,
+      "new_price": 8211.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 06:49:28.732376+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T06:50:41.106918+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-11_06-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Flora Garden Ephesus",
+      "duration_bucket": "",
+      "old_price": 10338.0,
+      "new_price": 9402.0,
+      "price_change": -936.0,
+      "price_change_pct": -9.053975623911782,
+      "timestamp": "2026-08-11 06:49:28.732376+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T06:50:41.106971+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Flora Garden Ephesus_2026-08-11_06-49_comeback_9.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T05:50:35.104097+00:00",
+    "last_processed_run": "2026-08-11T06:49:28.732376+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -2745,8 +2810,8 @@
         "premium_peak": null
       },
       "Belconti Resort (Belek)": {
-        "history_max": 11214.0,
-        "premium_peak": 11214.0
+        "history_max": 11367.0,
+        "premium_peak": 11367.0
       },
       "Flora Garden Ephesus": {
         "history_max": 10338.0,
@@ -2966,6 +3031,14 @@
       },
       "Prestige Alanya": {
         "history_max": 8312.0,
+        "premium_peak": null
+      },
+      "Nova Life": {
+        "history_max": 7875.0,
+        "premium_peak": null
+      },
+      "Misal (ex. Nox Inn Club)": {
+        "history_max": 7897.0,
         "premium_peak": null
       }
     }
