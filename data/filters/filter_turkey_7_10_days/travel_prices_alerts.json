@@ -2678,10 +2678,36 @@
       "created_at": "2026-08-11T17:53:48.363355+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Saphir Hotel & Villas_2026-08-11_17-52_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Maril Resort Turcja, Bodrum, Didim",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 8157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 20:37:34.242968+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T20:38:44.076354+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Turcja, Bodrum, Didim_2026-08-11_20-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8246.0,
+      "new_price": 8246.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 20:37:34.242968+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T20:38:44.076384+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-11_20-37_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T19:58:12.384508+00:00",
+    "last_processed_run": "2026-08-11T20:37:34.242968+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -2932,7 +2958,7 @@
         "premium_peak": null
       },
       "Grand Pasa": {
-        "history_max": 8479.0,
+        "history_max": 8779.0,
         "premium_peak": null
       },
       "Grand Park Lara": {
@@ -4034,6 +4060,10 @@
       "Miramare Queen": {
         "history_max": 11757.0,
         "premium_peak": 11757.0
+      },
+      "Amelia Beach Resort & Spa Turcja, Side, Kizilot": {
+        "history_max": 8093.0,
+        "premium_peak": null
       }
     }
   }
