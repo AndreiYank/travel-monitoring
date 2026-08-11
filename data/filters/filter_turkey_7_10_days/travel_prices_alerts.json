@@ -2379,10 +2379,114 @@
       "created_at": "2026-08-11T15:54:58.276763+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Mary Side (ex. Mary Palace)_2026-08-11_15-53_comeback_8.5"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7150.0,
+      "new_price": 6468.0,
+      "price_change": -682.0,
+      "price_change_pct": -9.538461538461538,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-11T16:50:58.786487+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-08-11_16-49_-9.5"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8395.0,
+      "new_price": 8395.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T16:50:58.786542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-11_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Garden of Sun Spa & Wellness",
+      "duration_bucket": "",
+      "old_price": 7940.0,
+      "new_price": 7940.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T16:50:58.786553+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Garden of Sun Spa & Wellness_2026-08-11_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8101.0,
+      "new_price": 8101.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T16:50:58.786561+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-11_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 7781.0,
+      "new_price": 7781.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T16:50:58.786568+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar_2026-08-11_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum) Turcja, Bodrum",
+      "duration_bucket": "",
+      "old_price": 7634.0,
+      "new_price": 7634.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T16:50:58.786575+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum) Turcja, Bodrum_2026-08-11_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Meridia Beach Turcja, Alanya, Okurcalar",
+      "duration_bucket": "",
+      "old_price": 7860.0,
+      "new_price": 7860.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-11T16:50:58.786582+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Meridia Beach Turcja, Alanya, Okurcalar_2026-08-11_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kamelya Aishen Club (ex. Kamelya Aishen K Club)",
+      "duration_bucket": "",
+      "old_price": 10777.0,
+      "new_price": 9902.0,
+      "price_change": -875.0,
+      "price_change_pct": -8.119142618539483,
+      "timestamp": "2026-08-11 16:49:24.223701+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-11T16:50:58.786609+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kamelya Aishen Club (ex. Kamelya Aishen K Club)_2026-08-11_16-49_comeback_8.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-11T15:53:35.512419+00:00",
+    "last_processed_run": "2026-08-11T16:49:24.223701+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -2597,8 +2701,8 @@
         "premium_peak": 10823.0
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)": {
-        "history_max": 10629.0,
-        "premium_peak": 10629.0
+        "history_max": 10929.0,
+        "premium_peak": 10929.0
       },
       "Green Nature Resort & Spa": {
         "history_max": 8757.0,
@@ -2825,12 +2929,12 @@
         "premium_peak": 11645.0
       },
       "Side Star Resort (ex Club)": {
-        "history_max": 11587.0,
-        "premium_peak": 11587.0
+        "history_max": 11696.0,
+        "premium_peak": 11696.0
       },
       "Side Star Park": {
-        "history_max": 11523.0,
-        "premium_peak": 11523.0
+        "history_max": 11544.0,
+        "premium_peak": 11544.0
       },
       "Side Prenses": {
         "history_max": 10705.0,
@@ -3153,8 +3257,8 @@
         "premium_peak": 10386.0
       },
       "Salmakis Beach Resort": {
-        "history_max": 11175.0,
-        "premium_peak": 11175.0
+        "history_max": 11435.0,
+        "premium_peak": 11435.0
       },
       "Royal Garden Beach (ex Royal Garden Select & Suite)": {
         "history_max": 11518.0,
@@ -3653,8 +3757,8 @@
         "premium_peak": 11651.0
       },
       "Side Star Elegance (ex. Asteria)": {
-        "history_max": 11652.0,
-        "premium_peak": 11652.0
+        "history_max": 11656.0,
+        "premium_peak": 11656.0
       },
       "Aydinbey Kings Palace": {
         "history_max": 11580.0,
@@ -3723,6 +3827,10 @@
       "Vogue Supreme Istanbul (ex Old City Istanbul Hagia Sophia)": {
         "history_max": 11616.0,
         "premium_peak": 11616.0
+      },
+      "Glamour Resort & Spa Turcja, Side": {
+        "history_max": 7934.0,
+        "premium_peak": null
       }
     }
   }
