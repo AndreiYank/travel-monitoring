@@ -637,10 +637,114 @@
       "created_at": "2026-08-12T15:53:36.151519+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunrise Anjum Resort_2026-08-12_15-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 10897.0,
+      "new_price": 8937.0,
+      "price_change": -1960.0,
+      "price_change_pct": -17.986601817013856,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-12T16:48:47.583505+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-12_16-47_-18.0"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7794.0,
+      "new_price": 7035.0,
+      "price_change": -759.0,
+      "price_change_pct": -9.738260200153965,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-12T16:48:47.583542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-08-12_16-47_-9.7"
+    },
+    {
+      "hotel_name": "Calimera Blend Paradise Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8523.0,
+      "new_price": 8523.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T16:48:47.583580+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calimera Blend Paradise Egipt, Hurghada_2026-08-12_16-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 9131.0,
+      "new_price": 9131.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T16:48:47.583591+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-12_16-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nubian Island Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 8576.0,
+      "new_price": 8576.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T16:48:47.583599+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nubian Island Egipt, Sharm El Sheikh_2026-08-12_16-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9023.0,
+      "new_price": 9023.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T16:48:47.583607+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-08-12_16-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 8572.0,
+      "new_price": 8572.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T16:48:47.583614+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-12_16-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9247.0,
+      "new_price": 9247.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 16:47:49.428339+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T16:48:47.583621+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-08-12_16-47_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T15:52:46.782873+00:00",
+    "last_processed_run": "2026-08-12T16:47:49.428339+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -795,7 +899,7 @@
         "premium_peak": null
       },
       "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada": {
-        "history_max": 8401.0,
+        "history_max": 8519.0,
         "premium_peak": null
       },
       "Jaz Aquaviva Egipt, Hurghada, Makadi Bay": {
@@ -851,7 +955,7 @@
         "premium_peak": null
       },
       "Pickalbatros Dana Beach Resort": {
-        "history_max": 10818.0,
+        "history_max": 10860.0,
         "premium_peak": null
       },
       "Parrotel Beach Resort (ex. Radisson Blu)": {
@@ -983,7 +1087,7 @@
         "premium_peak": null
       },
       "Old Palace Resort Egipt, Hurghada": {
-        "history_max": 7615.0,
+        "history_max": 8223.0,
         "premium_peak": null
       },
       "Sol Y Mar Naama Bay Egipt, Sharm El Sheikh": {
@@ -995,7 +1099,7 @@
         "premium_peak": null
       },
       "Sheraton Miramar Resort (El Gouna)": {
-        "history_max": 10841.0,
+        "history_max": 10883.0,
         "premium_peak": null
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
@@ -1295,7 +1399,7 @@
         "premium_peak": null
       },
       "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay": {
-        "history_max": 7651.0,
+        "history_max": 8447.0,
         "premium_peak": null
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort) Egipt, Marsa Alam": {
@@ -1340,6 +1444,10 @@
       },
       "Nubian Island Egipt, Sharm El Sheikh": {
         "history_max": 8576.0,
+        "premium_peak": null
+      },
+      "Calimera Blend Paradise Resort": {
+        "history_max": 8523.0,
         "premium_peak": null
       }
     }
