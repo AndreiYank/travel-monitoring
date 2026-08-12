@@ -1,8 +1,48 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Parrotel Lagoon Resort",
+      "duration_bucket": "",
+      "old_price": 9027.0,
+      "new_price": 8226.0,
+      "price_change": -801.0,
+      "price_change_pct": -8.873379860418744,
+      "timestamp": "2026-08-12 12:46:00.199546+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-12T12:46:51.012447+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort_2026-08-12_12-46_-8.9"
+    },
+    {
+      "hotel_name": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)",
+      "duration_bucket": "",
+      "old_price": 9496.0,
+      "new_price": 8677.0,
+      "price_change": -819.0,
+      "price_change_pct": -8.624684077506318,
+      "timestamp": "2026-08-12 12:46:00.199546+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-12T12:46:51.012476+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)_2026-08-12_12-46_-8.6"
+    },
+    {
+      "hotel_name": "Amarina Star Resort & Aqua Park (ex. Raouf Star)",
+      "duration_bucket": "",
+      "old_price": 10661.0,
+      "new_price": 9326.0,
+      "price_change": -1335.0,
+      "price_change_pct": -12.522277459900572,
+      "timestamp": "2026-08-12 12:46:00.199546+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-12T12:46:51.012502+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Star Resort & Aqua Park (ex. Raouf Star)_2026-08-12_12-46_comeback_12.5"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-12T11:41:04.390033+00:00",
+    "last_processed_run": "2026-08-12T12:46:00.199546+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 12063.0,
@@ -537,8 +577,8 @@
         "premium_peak": 14305.0
       },
       "Baron Palace Resort (Sahl Hasheesh)": {
-        "history_max": 18709.0,
-        "premium_peak": 18709.0
+        "history_max": 19343.0,
+        "premium_peak": 19343.0
       },
       "Creek Hotel and Residences": {
         "history_max": 11930.0,
@@ -591,6 +631,18 @@
       "Coral Sea Sensatori (ex Coral Sea Imperial)": {
         "history_max": 19817.0,
         "premium_peak": 19817.0
+      },
+      "Sultan Gardens Resort": {
+        "history_max": 19324.0,
+        "premium_peak": 19324.0
+      },
+      "Xanadu Club Makadi Bay": {
+        "history_max": 19878.0,
+        "premium_peak": 19878.0
+      },
+      "Steigenberger Alcazar": {
+        "history_max": 19776.0,
+        "premium_peak": 19776.0
       }
     }
   }
