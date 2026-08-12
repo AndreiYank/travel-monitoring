@@ -1248,10 +1248,49 @@
       "created_at": "2026-08-12T07:10:42.826080+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-08-12_07-09_zone_out_+7.4"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9877.0,
+      "new_price": 10219.0,
+      "price_change": 342.0,
+      "price_change_pct": 3.4625898552191963,
+      "timestamp": "2026-08-12 10:53:23.764011+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T10:54:22.973478+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-08-12_10-53_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 10436.0,
+      "new_price": 9359.0,
+      "price_change": -1077.0,
+      "price_change_pct": -10.32004599463396,
+      "timestamp": "2026-08-12 10:53:23.764011+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-12T10:54:22.973526+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-08-12_10-53_comeback_10.3"
+    },
+    {
+      "hotel_name": "Movenpick Resort Sharm el Sheikh",
+      "duration_bucket": "",
+      "old_price": 10739.0,
+      "new_price": 9671.0,
+      "price_change": -1068.0,
+      "price_change_pct": -9.945060061458236,
+      "timestamp": "2026-08-12 10:53:23.764011+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-12T10:54:22.973543+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort Sharm el Sheikh_2026-08-12_10-53_comeback_9.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T07:09:48.305224+00:00",
+    "last_processed_run": "2026-08-12T10:53:23.764011+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -1262,24 +1301,24 @@
         "premium_peak": 10436.0
       },
       "Steigenberger Al Dau Beach": {
-        "history_max": 13131.0,
-        "premium_peak": 13131.0
+        "history_max": 13227.0,
+        "premium_peak": 13227.0
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
         "history_max": 11564.0,
         "premium_peak": 11564.0
       },
       "Jaz Villagio": {
-        "history_max": 10461.0,
-        "premium_peak": 10461.0
+        "history_max": 10521.0,
+        "premium_peak": 10521.0
       },
       "Siva Golden Bay Makadi": {
         "history_max": 8723.0,
         "premium_peak": null
       },
       "Jaz Viva Casa Maza": {
-        "history_max": 10170.0,
-        "premium_peak": 10170.0
+        "history_max": 10231.0,
+        "premium_peak": 10231.0
       },
       "KaiSol Romance Resort (ex. Sunrise Romance Resort)": {
         "history_max": 18417.0,
@@ -1394,8 +1433,8 @@
         "premium_peak": null
       },
       "Jaz Elite Amara": {
-        "history_max": 12671.0,
-        "premium_peak": 12671.0
+        "history_max": 13294.0,
+        "premium_peak": 13294.0
       },
       "Strand Taba Heights Resort (ex. InterContinental)": {
         "history_max": 9813.0,
@@ -1602,8 +1641,8 @@
         "premium_peak": 15797.0
       },
       "Rixos Premium Magawish Suites & Villas": {
-        "history_max": 14035.0,
-        "premium_peak": 14035.0
+        "history_max": 14302.0,
+        "premium_peak": 14302.0
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
         "history_max": 14836.0,
@@ -1722,7 +1761,7 @@
         "premium_peak": 10313.0
       },
       "Sea Star Beau Rivage": {
-        "history_max": 6968.0,
+        "history_max": 6994.0,
         "premium_peak": null
       },
       "Pickalbatros Palace Resort": {
@@ -1774,12 +1813,12 @@
         "premium_peak": null
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
-        "history_max": 9877.0,
-        "premium_peak": null
+        "history_max": 10219.0,
+        "premium_peak": 10219.0
       },
       "Cleopatra Sidi Heneish": {
-        "history_max": 14135.0,
-        "premium_peak": 14135.0
+        "history_max": 14196.0,
+        "premium_peak": 14196.0
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
         "history_max": 9633.0,
@@ -1934,7 +1973,7 @@
         "premium_peak": 11257.0
       },
       "Azur One Eleven": {
-        "history_max": 9623.0,
+        "history_max": 9683.0,
         "premium_peak": null
       },
       "Baron Palace Resort (Sahl Hasheesh)": {
@@ -1990,8 +2029,8 @@
         "premium_peak": null
       },
       "Sunrise Crystal Bay Resort": {
-        "history_max": 15115.0,
-        "premium_peak": 15115.0
+        "history_max": 15382.0,
+        "premium_peak": 15382.0
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
         "history_max": 7907.0,
@@ -2014,8 +2053,8 @@
         "premium_peak": null
       },
       "El Kasr Red Sea": {
-        "history_max": 14397.0,
-        "premium_peak": 14397.0
+        "history_max": 17247.0,
+        "premium_peak": 17247.0
       },
       "Hilton Marsa Alam Nubian Resort": {
         "history_max": 10421.0,
@@ -2054,8 +2093,8 @@
         "premium_peak": 13176.0
       },
       "Iberotel Makadi Beach": {
-        "history_max": 13017.0,
-        "premium_peak": 13017.0
+        "history_max": 13325.0,
+        "premium_peak": 13325.0
       },
       "Ghazala Alamein": {
         "history_max": 13690.0,
