@@ -2938,10 +2938,75 @@
       "created_at": "2026-08-12T10:56:14.945526+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Marin_2026-08-12_10-54_comeback_8.4"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum)",
+      "duration_bucket": "",
+      "old_price": 8034.0,
+      "new_price": 8034.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 11:41:57.992835+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T11:43:47.389654+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum)_2026-08-12_11-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber) Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 8024.0,
+      "new_price": 8024.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 11:41:57.992835+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T11:43:47.389678+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber) Turcja, Kemer_2026-08-12_11-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "The X Belek",
+      "duration_bucket": "",
+      "old_price": 9997.0,
+      "new_price": 10813.0,
+      "price_change": 816.0,
+      "price_change_pct": 8.162448734620387,
+      "timestamp": "2026-08-12 11:41:57.992835+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T11:43:47.389694+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The X Belek_2026-08-12_11-41_zone_out_+8.2"
+    },
+    {
+      "hotel_name": "Washington Resort",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 11:41:57.992835+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T11:43:47.389703+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Washington Resort_2026-08-12_11-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Infinity by Yelken",
+      "duration_bucket": "",
+      "old_price": 11059.0,
+      "new_price": 9768.0,
+      "price_change": -1291.0,
+      "price_change_pct": -11.673749886969889,
+      "timestamp": "2026-08-12 11:41:57.992835+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-12T11:43:47.389738+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Infinity by Yelken_2026-08-12_11-41_comeback_11.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T10:54:21.553394+00:00",
+    "last_processed_run": "2026-08-12T11:41:57.992835+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9679.0,
@@ -3528,8 +3593,8 @@
         "premium_peak": null
       },
       "The X Belek": {
-        "history_max": 9997.0,
-        "premium_peak": null
+        "history_max": 10813.0,
+        "premium_peak": 10813.0
       },
       "Glamour Resort & Spa": {
         "history_max": 9280.0,
@@ -3984,7 +4049,7 @@
         "premium_peak": 11570.0
       },
       "Beach Club Doganay": {
-        "history_max": 8594.0,
+        "history_max": 8797.0,
         "premium_peak": null
       },
       "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı": {
@@ -4140,7 +4205,7 @@
         "premium_peak": null
       },
       "Armas Gul Beach": {
-        "history_max": 8527.0,
+        "history_max": 8593.0,
         "premium_peak": null
       },
       "Orka Lotus Beach": {
@@ -4272,8 +4337,8 @@
         "premium_peak": 11506.0
       },
       "Serenity Queen": {
-        "history_max": 11387.0,
-        "premium_peak": 11387.0
+        "history_max": 11639.0,
+        "premium_peak": 11639.0
       },
       "Aqua Marmaris": {
         "history_max": 11382.0,
@@ -4314,6 +4379,10 @@
       "Rox Royal (ex. Grand Haber) Turcja, Kemer": {
         "history_max": 8024.0,
         "premium_peak": null
+      },
+      "Arcanus Hotels Sorgun (ex. Asteria Sorgun)": {
+        "history_max": 11696.0,
+        "premium_peak": 11696.0
       }
     }
   }
