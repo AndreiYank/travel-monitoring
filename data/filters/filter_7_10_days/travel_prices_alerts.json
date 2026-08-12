@@ -1365,10 +1365,36 @@
       "created_at": "2026-08-12T14:16:39.352927+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-12_14-15_+15.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8697.0,
+      "new_price": 11442.0,
+      "price_change": 2745.0,
+      "price_change_pct": 31.562607795791653,
+      "timestamp": "2026-08-12 15:52:46.664180+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T15:53:39.657272+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-12_15-52_zone_out_+31.6"
+    },
+    {
+      "hotel_name": "Sentido Naga Bay",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 10206.0,
+      "price_change": 649.0,
+      "price_change_pct": 6.790833943706184,
+      "timestamp": "2026-08-12 15:52:46.664180+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T15:53:39.657299+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Naga Bay_2026-08-12_15-52_zone_out_+6.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T14:15:43.868075+00:00",
+    "last_processed_run": "2026-08-12T15:52:46.664180+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -1815,16 +1841,16 @@
         "premium_peak": 11217.0
       },
       "Sentido Naga Bay": {
-        "history_max": 9957.0,
-        "premium_peak": null
+        "history_max": 10206.0,
+        "premium_peak": 10206.0
       },
       "Pickalbatros Golf Beach Resort": {
         "history_max": 9795.0,
         "premium_peak": null
       },
       "Pickalbatros Laguna Vista Beach": {
-        "history_max": 12657.0,
-        "premium_peak": 12657.0
+        "history_max": 12857.0,
+        "premium_peak": 12857.0
       },
       "Sentido Akassia Beach (ex. LTI Akassia Beach)": {
         "history_max": 11021.0,
@@ -1891,8 +1917,8 @@
         "premium_peak": null
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
-        "history_max": 10219.0,
-        "premium_peak": 10219.0
+        "history_max": 10269.0,
+        "premium_peak": 10269.0
       },
       "Cleopatra Sidi Heneish": {
         "history_max": 14196.0,

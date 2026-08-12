@@ -585,10 +585,62 @@
       "created_at": "2026-08-12T14:16:37.449412+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-12_14-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 8937.0,
+      "new_price": 10897.0,
+      "price_change": 1960.0,
+      "price_change_pct": 21.931296855768153,
+      "timestamp": "2026-08-12 15:52:46.782873+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-12T15:53:36.151443+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-12_15-52_+21.9"
+    },
+    {
+      "hotel_name": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort) Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 8462.0,
+      "new_price": 8462.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 15:52:46.782873+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T15:53:36.151500+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort) Egipt, Marsa Alam_2026-08-12_15-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nubian Island",
+      "duration_bucket": "",
+      "old_price": 8576.0,
+      "new_price": 8576.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 15:52:46.782873+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T15:53:36.151511+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nubian Island_2026-08-12_15-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunrise Anjum Resort",
+      "duration_bucket": "",
+      "old_price": 10965.0,
+      "new_price": 10965.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-12 15:52:46.782873+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T15:53:36.151519+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Anjum Resort_2026-08-12_15-52_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T14:15:43.965697+00:00",
+    "last_processed_run": "2026-08-12T15:52:46.782873+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -643,7 +695,7 @@
         "premium_peak": null
       },
       "Jaz Viva Casa Maza": {
-        "history_max": 10363.0,
+        "history_max": 10880.0,
         "premium_peak": null
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
@@ -1023,7 +1075,7 @@
         "premium_peak": null
       },
       "Calimera Blend Paradise Egipt, Hurghada": {
-        "history_max": 8361.0,
+        "history_max": 8523.0,
         "premium_peak": null
       },
       "Titanic Royal": {
@@ -1095,7 +1147,7 @@
         "premium_peak": null
       },
       "Azur One Eleven": {
-        "history_max": 8937.0,
+        "history_max": 10897.0,
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
@@ -1284,6 +1336,10 @@
       },
       "Old Palace Resort": {
         "history_max": 9023.0,
+        "premium_peak": null
+      },
+      "Nubian Island Egipt, Sharm El Sheikh": {
+        "history_max": 8576.0,
         "premium_peak": null
       }
     }
