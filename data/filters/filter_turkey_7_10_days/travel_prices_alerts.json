@@ -3523,10 +3523,36 @@
       "created_at": "2026-08-12T18:51:34.601377+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Mary Side (ex. Mary Palace)_2026-08-12_18-49_zone_out_+8.6"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8229.0,
+      "new_price": 9049.0,
+      "price_change": 820.0,
+      "price_change_pct": 9.964758779924656,
+      "timestamp": "2026-08-12 19:59:01.648402+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-12T20:00:06.411091+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-12_19-59_+10.0"
+    },
+    {
+      "hotel_name": "Gypsophila Holiday Village",
+      "duration_bucket": "",
+      "old_price": 9432.0,
+      "new_price": 10071.0,
+      "price_change": 639.0,
+      "price_change_pct": 6.7748091603053435,
+      "timestamp": "2026-08-12 19:59:01.648402+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-12T20:00:06.411128+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gypsophila Holiday Village_2026-08-12_19-59_zone_out_+6.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T18:49:58.139214+00:00",
+    "last_processed_run": "2026-08-12T19:59:01.648402+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9773.0,
@@ -3733,8 +3759,8 @@
         "premium_peak": null
       },
       "Gypsophila Holiday Village": {
-        "history_max": 10004.0,
-        "premium_peak": 10004.0
+        "history_max": 10071.0,
+        "premium_peak": 10071.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
         "history_max": 10823.0,
@@ -4573,7 +4599,7 @@
         "premium_peak": null
       },
       "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı": {
-        "history_max": 6673.0,
+        "history_max": 6773.0,
         "premium_peak": null
       },
       "Alba Resort": {
