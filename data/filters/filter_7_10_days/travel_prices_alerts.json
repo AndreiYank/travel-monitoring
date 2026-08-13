@@ -1495,10 +1495,49 @@
       "created_at": "2026-08-13T01:07:25.294647+00:00",
       "threshold_percent": 8.0,
       "unique_key": "True Beach Resort_2026-08-13_01-06_comeback_23.8"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 8633.0,
+      "new_price": 9683.0,
+      "price_change": 1050.0,
+      "price_change_pct": 12.162631761844086,
+      "timestamp": "2026-08-13 05:42:24.856419+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-13T05:43:33.306722+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-13_05-42_+12.2"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 8179.0,
+      "new_price": 9439.0,
+      "price_change": 1260.0,
+      "price_change_pct": 15.40530627216041,
+      "timestamp": "2026-08-13 05:42:24.856419+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-13T05:43:33.306773+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-13_05-42_+15.4"
+    },
+    {
+      "hotel_name": "Serenity Sky Arc",
+      "duration_bucket": "",
+      "old_price": 9878.0,
+      "new_price": 10499.0,
+      "price_change": 621.0,
+      "price_change_pct": 6.286697712087467,
+      "timestamp": "2026-08-13 05:42:24.856419+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T05:43:33.306808+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-08-13_05-42_zone_out_+6.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-13T04:02:19.184804+00:00",
+    "last_processed_run": "2026-08-13T05:42:24.856419+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -1877,8 +1916,8 @@
         "premium_peak": 11602.0
       },
       "Serenity Sky Arc": {
-        "history_max": 10454.0,
-        "premium_peak": 10454.0
+        "history_max": 10499.0,
+        "premium_peak": 10499.0
       },
       "Nubian Village": {
         "history_max": 11602.0,
