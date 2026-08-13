@@ -4875,10 +4875,88 @@
       "created_at": "2026-08-13T20:35:39.154600+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Premium by OZ Hotels_2026-08-13_20-34_zone_out_+19.1"
+    },
+    {
+      "hotel_name": "Perre La Mer Resort & Spa (ex. La Mer)",
+      "duration_bucket": "",
+      "old_price": 9153.0,
+      "new_price": 8404.0,
+      "price_change": -749.0,
+      "price_change_pct": -8.183109363050365,
+      "timestamp": "2026-08-13 21:37:55.192088+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-13T21:39:58.444540+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Perre La Mer Resort & Spa (ex. La Mer)_2026-08-13_21-37_-8.2"
+    },
+    {
+      "hotel_name": "Gold City Turcja, Alanya, Kargicak",
+      "duration_bucket": "",
+      "old_price": 7862.0,
+      "new_price": 7862.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 21:37:55.192088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T21:39:58.444595+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gold City Turcja, Alanya, Kargicak_2026-08-13_21-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Labranda Alantur Resort",
+      "duration_bucket": "",
+      "old_price": 9157.0,
+      "new_price": 9157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 21:37:55.192088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T21:39:58.444608+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Alantur Resort_2026-08-13_21-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 7948.0,
+      "new_price": 7948.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 21:37:55.192088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T21:39:58.444617+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-13_21-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seaden Sea World Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11032.0,
+      "new_price": 9720.0,
+      "price_change": -1312.0,
+      "price_change_pct": -11.892675852066716,
+      "timestamp": "2026-08-13 21:37:55.192088+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T21:39:58.444651+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaden Sea World Resort & Spa_2026-08-13_21-37_comeback_11.9"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10410.0,
+      "new_price": 9568.0,
+      "price_change": -842.0,
+      "price_change_pct": -8.08837656099904,
+      "timestamp": "2026-08-13 21:37:55.192088+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T21:39:58.444667+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-08-13_21-37_comeback_8.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-13T20:34:03.636224+00:00",
+    "last_processed_run": "2026-08-13T21:37:55.192088+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -6241,8 +6319,8 @@
         "premium_peak": 10782.0
       },
       "Arcanus Trendline Resort": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 10845.0,
+        "premium_peak": 10845.0
       },
       "Rox Royal (ex. Grand Haber) Turcja, Kemer": {
         "history_max": 8024.0,
@@ -6269,8 +6347,8 @@
         "premium_peak": null
       },
       "Club Sera": {
-        "history_max": 11657.0,
-        "premium_peak": 11657.0
+        "history_max": 11711.0,
+        "premium_peak": 11711.0
       },
       "Rai Foresta Tekirova": {
         "history_max": 11741.0,
