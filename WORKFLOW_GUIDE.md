@@ -38,7 +38,7 @@
 - `data/charts/` - графики и визуализации
 
 ### **Дашборд:**
-- **URL**: https://andreiYank.github.io/travel-monitoring/
+- **URL**: https://Jancker2a.github.io/travel-monitoring/
 - **Обновление**: Каждый час
 - **Функции**: Поиск, фильтры, интерактивные графики
 
@@ -63,8 +63,8 @@
 ## 📈 **Мониторинг:**
 
 ### **Проверка статуса:**
-- **Actions**: https://github.com/AndreiYank/travel-monitoring/actions
-- **Дашборд**: https://andreiYank.github.io/travel-monitoring/
+- **Actions**: https://github.com/Jancker2a/travel-monitoring/actions
+- **Дашборд**: https://Jancker2a.github.io/travel-monitoring/
 - **Логи**: В каждом запуске workflow
 
 ### **Уведомления:**

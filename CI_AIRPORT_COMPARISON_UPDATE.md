@@ -36,10 +36,10 @@
 
 ### 🌐 Результат:
 
-- **https://andreiyank.github.io/travel-monitoring/index_greece.html** - Греция с сравнением аэропортов
-- **https://andreiyank.github.io/travel-monitoring/index_egypt.html** - Египет с сравнением аэропортов  
-- **https://andreiyank.github.io/travel-monitoring/index_turkey.html** - Турция с сравнением аэропортов
-- **https://andreiyank.github.io/travel-monitoring/** - главная страница
+- **https://Jancker2a.github.io/travel-monitoring/index_greece.html** - Греция с сравнением аэропортов
+- **https://Jancker2a.github.io/travel-monitoring/index_egypt.html** - Египет с сравнением аэропортов  
+- **https://Jancker2a.github.io/travel-monitoring/index_turkey.html** - Турция с сравнением аэропортов
+- **https://Jancker2a.github.io/travel-monitoring/** - главная страница
 
 ### 🚀 Готово к деплою!
 
