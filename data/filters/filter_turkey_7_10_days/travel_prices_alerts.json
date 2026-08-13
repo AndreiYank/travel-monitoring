@@ -4836,10 +4836,49 @@
       "created_at": "2026-08-13T19:56:49.751571+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Premium by OZ Hotels_2026-08-13_19-55_comeback_9.5"
+    },
+    {
+      "hotel_name": "Gypsophila Holiday Village",
+      "duration_bucket": "",
+      "old_price": 9814.0,
+      "new_price": 10602.0,
+      "price_change": 788.0,
+      "price_change_pct": 8.029345832484207,
+      "timestamp": "2026-08-13 20:34:03.636224+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T20:35:39.154560+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gypsophila Holiday Village_2026-08-13_20-34_zone_out_+8.0"
+    },
+    {
+      "hotel_name": "Laguna Beach Alya",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 20:34:03.636224+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T20:35:39.154588+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Laguna Beach Alya_2026-08-13_20-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Premium by OZ Hotels",
+      "duration_bucket": "",
+      "old_price": 9194.0,
+      "new_price": 10949.0,
+      "price_change": 1755.0,
+      "price_change_pct": 19.088536001740266,
+      "timestamp": "2026-08-13 20:34:03.636224+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T20:35:39.154600+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Premium by OZ Hotels_2026-08-13_20-34_zone_out_+19.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-13T19:55:08.900776+00:00",
+    "last_processed_run": "2026-08-13T20:34:03.636224+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -4990,8 +5029,8 @@
         "premium_peak": 10722.0
       },
       "Side Premium by OZ Hotels": {
-        "history_max": 10159.0,
-        "premium_peak": 10159.0
+        "history_max": 10949.0,
+        "premium_peak": 10949.0
       },
       "Gypsophila Club Marine (ex. Amara Club Marine Nature)": {
         "history_max": 10823.0,
