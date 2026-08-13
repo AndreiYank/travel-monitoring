@@ -91,10 +91,49 @@
       "created_at": "2026-08-12T16:48:27.030200+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Lagoon Resort_2026-08-12_16-47_zone_out_+8.5"
+    },
+    {
+      "hotel_name": "IL Mercato Splash Aqua Park",
+      "duration_bucket": "",
+      "old_price": 11689.0,
+      "new_price": 9747.0,
+      "price_change": -1942.0,
+      "price_change_pct": -16.61391051415861,
+      "timestamp": "2026-08-13 01:06:13.778567+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T01:07:08.554197+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "IL Mercato Splash Aqua Park_2026-08-13_01-06_comeback_16.6"
+    },
+    {
+      "hotel_name": "Retac Qunay Dahab Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11882.0,
+      "new_price": 9818.0,
+      "price_change": -2064.0,
+      "price_change_pct": -17.370812994445377,
+      "timestamp": "2026-08-13 01:06:13.778567+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T01:07:08.554240+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Retac Qunay Dahab Resort & Spa_2026-08-13_01-06_comeback_17.4"
+    },
+    {
+      "hotel_name": "Dreams Beach Sharm Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 12644.0,
+      "new_price": 9955.0,
+      "price_change": -2689.0,
+      "price_change_pct": -21.267004112622587,
+      "timestamp": "2026-08-13 01:06:13.778567+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T01:07:08.554259+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-08-13_01-06_comeback_21.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-12T23:31:59.991997+00:00",
+    "last_processed_run": "2026-08-13T01:06:13.778567+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 12063.0,
@@ -421,8 +460,8 @@
         "premium_peak": 10661.0
       },
       "Swissotel Resort El Quseir": {
-        "history_max": 14911.0,
-        "premium_peak": 14911.0
+        "history_max": 17433.0,
+        "premium_peak": 17433.0
       },
       "Continental (ex Movenpick Resort)": {
         "history_max": 15377.0,
@@ -703,6 +742,98 @@
       "Jaz Mirabel Park": {
         "history_max": 13020.0,
         "premium_peak": 13020.0
+      },
+      "Charmillion Club Aqua Park": {
+        "history_max": 11496.0,
+        "premium_peak": 11496.0
+      },
+      "Naama Bay Promenade Mountain Resort": {
+        "history_max": 11267.0,
+        "premium_peak": 11267.0
+      },
+      "Naama Bay Promenade Beach Resort": {
+        "history_max": 13615.0,
+        "premium_peak": 13615.0
+      },
+      "Maritim Jolie Ville Resort and Casino": {
+        "history_max": 16810.0,
+        "premium_peak": 16810.0
+      },
+      "Sunrise Diamond Beach Resort Grand Select": {
+        "history_max": 19323.0,
+        "premium_peak": 19323.0
+      },
+      "Sunrise Montemare Resort": {
+        "history_max": 18264.0,
+        "premium_peak": 18264.0
+      },
+      "Jaz Makadina": {
+        "history_max": 17042.0,
+        "premium_peak": 17042.0
+      },
+      "Jaz Mirabel Beach Resort": {
+        "history_max": 15287.0,
+        "premium_peak": 15287.0
+      },
+      "Jaz Neo Naama Bay": {
+        "history_max": 9591.0,
+        "premium_peak": null
+      },
+      "Movenpick Resort Sharm el Sheikh": {
+        "history_max": 14555.0,
+        "premium_peak": 14555.0
+      },
+      "Baron Resort (Sharm El Sheikh)": {
+        "history_max": 16345.0,
+        "premium_peak": 16345.0
+      },
+      "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
+        "history_max": 9633.0,
+        "premium_peak": null
+      },
+      "Invidia Coral Beach Tiran": {
+        "history_max": 13268.0,
+        "premium_peak": 13268.0
+      },
+      "Ecotel Dahab Bay View Resort": {
+        "history_max": 9229.0,
+        "premium_peak": null
+      },
+      "Domina Coral Bay Resort": {
+        "history_max": 11619.0,
+        "premium_peak": 11619.0
+      },
+      "Pickalbatros Luxury Suites": {
+        "history_max": 13165.0,
+        "premium_peak": 13165.0
+      },
+      "Pickalbatros Golf Beach Resort": {
+        "history_max": 12818.0,
+        "premium_peak": 12818.0
+      },
+      "Concorde El Salam Sport": {
+        "history_max": 11314.0,
+        "premium_peak": 11314.0
+      },
+      "Seven Seas Jolie Bay": {
+        "history_max": 11690.0,
+        "premium_peak": 11690.0
+      },
+      "Sharm Grand Plaza Resort": {
+        "history_max": 10379.0,
+        "premium_peak": 10379.0
+      },
+      "Savoy (Sharm El Sheikh)": {
+        "history_max": 17788.0,
+        "premium_peak": 17788.0
+      },
+      "Xanadu Makadi Bay": {
+        "history_max": 19429.0,
+        "premium_peak": 19429.0
+      },
+      "Rixos Radamis Sharm El Sheikh": {
+        "history_max": 19657.0,
+        "premium_peak": 19657.0
       }
     }
   }
