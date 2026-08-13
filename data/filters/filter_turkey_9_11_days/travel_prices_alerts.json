@@ -702,10 +702,114 @@
       "created_at": "2026-08-13T11:43:36.979524+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-13_11-42_zone_out_+8.9"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "",
+      "old_price": 8497.0,
+      "new_price": 9497.0,
+      "price_change": 1000.0,
+      "price_change_pct": 11.768859597505003,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-13T14:20:55.626788+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)_2026-08-13_14-19_+11.8"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7581.0,
+      "new_price": 6935.0,
+      "price_change": -646.0,
+      "price_change_pct": -8.521303258145362,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-13T14:20:55.626816+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-13_14-19_-8.5"
+    },
+    {
+      "hotel_name": "Lake River Side Spa",
+      "duration_bucket": "",
+      "old_price": 9697.0,
+      "new_price": 10697.0,
+      "price_change": 1000.0,
+      "price_change_pct": 10.312467773538208,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T14:20:55.626840+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lake River Side Spa_2026-08-13_14-19_zone_out_+10.3"
+    },
+    {
+      "hotel_name": "Side Crown Serenity",
+      "duration_bucket": "",
+      "old_price": 9697.0,
+      "new_price": 10697.0,
+      "price_change": 1000.0,
+      "price_change_pct": 10.312467773538208,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T14:20:55.626850+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Crown Serenity_2026-08-13_14-19_zone_out_+10.3"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11029.0,
+      "new_price": 9969.0,
+      "price_change": -1060.0,
+      "price_change_pct": -9.611025478284523,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T14:20:55.626874+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-13_14-19_comeback_9.6"
+    },
+    {
+      "hotel_name": "Eftalia Village",
+      "duration_bucket": "",
+      "old_price": 11187.0,
+      "new_price": 9901.0,
+      "price_change": -1286.0,
+      "price_change_pct": -11.495485831769017,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T14:20:55.626887+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Village_2026-08-13_14-19_comeback_11.5"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11519.0,
+      "new_price": 9568.0,
+      "price_change": -1951.0,
+      "price_change_pct": -16.937234134907545,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T14:20:55.626898+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-13_14-19_comeback_16.9"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 11321.0,
+      "new_price": 9637.0,
+      "price_change": -1684.0,
+      "price_change_pct": -14.875011041427436,
+      "timestamp": "2026-08-13 14:19:09.663220+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T14:20:55.626908+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-13_14-19_comeback_14.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-13T12:47:42.399322+00:00",
+    "last_processed_run": "2026-08-13T14:19:09.663220+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1424,7 +1528,7 @@
         "premium_peak": 15085.0
       },
       "Avia Resort & Spa": {
-        "history_max": 9380.0,
+        "history_max": 9489.0,
         "premium_peak": null
       },
       "Azura Deluxe Resort & Spa": {
@@ -1780,7 +1884,7 @@
         "premium_peak": 14957.0
       },
       "Club Side Coast": {
-        "history_max": 7604.0,
+        "history_max": 7781.0,
         "premium_peak": null
       },
       "Club Nena (Side)": {
@@ -2070,6 +2174,18 @@
       "Gravel Select": {
         "history_max": 12985.0,
         "premium_peak": 12985.0
+      },
+      "Ducale Lara": {
+        "history_max": 15994.0,
+        "premium_peak": 15994.0
+      },
+      "Papillon Ayscha": {
+        "history_max": 15950.0,
+        "premium_peak": 15950.0
+      },
+      "Royal Taj Mahal": {
+        "history_max": 16060.0,
+        "premium_peak": 16060.0
       }
     }
   }
