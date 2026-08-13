@@ -3835,14 +3835,131 @@
       "created_at": "2026-08-13T09:07:56.050858+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Resort & Spa_2026-08-13_09-05_zone_out_+0.4"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8109.0,
+      "new_price": 9049.0,
+      "price_change": 940.0,
+      "price_change_pct": 11.59205820693057,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-13T11:43:24.398868+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-13_11-41_+11.6"
+    },
+    {
+      "hotel_name": "Aydinbey Gold Dreams",
+      "duration_bucket": "",
+      "old_price": 9715.0,
+      "new_price": 8915.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.234688625836336,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-13T11:43:24.398905+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Gold Dreams_2026-08-13_11-41_-8.2"
+    },
+    {
+      "hotel_name": "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)",
+      "duration_bucket": "",
+      "old_price": 9773.0,
+      "new_price": 10029.0,
+      "price_change": 256.0,
+      "price_change_pct": 2.619461782461885,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T11:43:24.398962+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)_2026-08-13_11-41_zone_out_+2.6"
+    },
+    {
+      "hotel_name": "Diamond Hill Resort",
+      "duration_bucket": "",
+      "old_price": 8533.0,
+      "new_price": 8533.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T11:43:24.398972+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Hill Resort_2026-08-13_11-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 9717.0,
+      "new_price": 10311.0,
+      "price_change": 594.0,
+      "price_change_pct": 6.112997838839148,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T11:43:24.398981+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-13_11-41_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Gold City Turcja, Alanya, Kargicak",
+      "duration_bucket": "",
+      "old_price": 7907.0,
+      "new_price": 7907.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T11:43:24.398988+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gold City Turcja, Alanya, Kargicak_2026-08-13_11-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum)",
+      "duration_bucket": "",
+      "old_price": 8034.0,
+      "new_price": 8034.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-13T11:43:24.398995+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum)_2026-08-13_11-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Green Garden Suite",
+      "duration_bucket": "",
+      "old_price": 11169.0,
+      "new_price": 9665.0,
+      "price_change": -1504.0,
+      "price_change_pct": -13.46584295818784,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T11:43:24.399027+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Garden Suite_2026-08-13_11-41_comeback_13.5"
+    },
+    {
+      "hotel_name": "Infinity by Yelken",
+      "duration_bucket": "",
+      "old_price": 11059.0,
+      "new_price": 9868.0,
+      "price_change": -1191.0,
+      "price_change_pct": -10.769508997196853,
+      "timestamp": "2026-08-13 11:41:55.231608+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-13T11:43:24.399039+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Infinity by Yelken_2026-08-13_11-41_comeback_10.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-13T09:05:58.127801+00:00",
+    "last_processed_run": "2026-08-13T11:41:55.231608+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
-        "history_max": 9773.0,
-        "premium_peak": null
+        "history_max": 10029.0,
+        "premium_peak": 10029.0
       },
       "Mary Alanya (ex. Sirius Deluxe)": {
         "history_max": 11517.0,
@@ -4245,7 +4362,7 @@
         "premium_peak": null
       },
       "The Lumos Deluxe Resort & Spa": {
-        "history_max": 8956.0,
+        "history_max": 9383.0,
         "premium_peak": null
       },
       "Terrace Elite Resort": {
@@ -4373,8 +4490,8 @@
         "premium_peak": 10697.0
       },
       "Viking Star": {
-        "history_max": 10746.0,
-        "premium_peak": 10746.0
+        "history_max": 10854.0,
+        "premium_peak": 10854.0
       },
       "Victory Resort": {
         "history_max": 9708.0,
@@ -4429,7 +4546,7 @@
         "premium_peak": 10813.0
       },
       "Glamour Resort & Spa": {
-        "history_max": 9280.0,
+        "history_max": 9303.0,
         "premium_peak": null
       },
       "Sentido Serra Family Resort": {
