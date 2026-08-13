@@ -75,7 +75,17 @@ jobs:
           echo "🚀 Starting monitoring at $(date)"
           if [ "${MONITOR_PARALLEL_ENABLED}" = "true" ]; then
             echo "Mode: parallel (jobs=${MONITOR_PARALLEL_JOBS})"
-            python scripts/run_monitors_parallel.py -j "${MONITOR_PARALLEL_JOBS}"
+            if ! python scripts/run_monitors_parallel.py -j "${MONITOR_PARALLEL_JOBS}"; then
+              echo "❌ Parallel monitoring failed. Printing last 100 lines of each log:"
+              for f in logs/parallel/*.log; do
+                if [ -f "$f" ]; then
+                  echo "=== LOG: $f ==="
+                  tail -n 100 "$f"
+                  echo "================"
+                fi
+              done
+              exit 1
+            fi
           else
             echo "Mode: sequential (rollback)"
             python travel_monitor.py --config config_ci_filter_7_10.json
