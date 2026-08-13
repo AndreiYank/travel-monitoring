@@ -130,7 +130,7 @@ permissions:
 ## 📱 Доступ к результатам
 
 ### Публичный дашборд
-- **URL**: `https://andreiYank.github.io/travel-monitoring/`
+- **URL**: `https://Jancker2a.github.io/travel-monitoring/`
 - **Обновление**: Каждый час
 - **Мобильная версия**: Да
 
