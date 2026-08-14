@@ -1833,10 +1833,49 @@
       "created_at": "2026-08-14T09:01:56.153826+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-14_09-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 9183.0,
+      "new_price": 8397.0,
+      "price_change": -786.0,
+      "price_change_pct": -8.559294348252205,
+      "timestamp": "2026-08-14 09:57:57.118292+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T09:59:18.051902+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-14_09-57_-8.6"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 10857.0,
+      "new_price": 9957.0,
+      "price_change": -900.0,
+      "price_change_pct": -8.289582757667864,
+      "timestamp": "2026-08-14 09:57:57.118292+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T09:59:18.052120+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-08-14_09-57_comeback_8.3"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 11363.0,
+      "new_price": 9517.0,
+      "price_change": -1846.0,
+      "price_change_pct": -16.245709759746546,
+      "timestamp": "2026-08-14 09:57:57.118292+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T09:59:18.052137+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-14_09-57_comeback_16.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T09:00:31.054486+00:00",
+    "last_processed_run": "2026-08-14T09:57:57.118292+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -2139,7 +2178,7 @@
         "premium_peak": 12552.0
       },
       "Sea Star Beau Rivage": {
-        "history_max": 7127.0,
+        "history_max": 7402.0,
         "premium_peak": null
       },
       "Sentido Akassia Beach (ex. LTI Akassia Beach)": {
@@ -2583,8 +2622,8 @@
         "premium_peak": 16167.0
       },
       "Cleopatra Sidi Heneish": {
-        "history_max": 14196.0,
-        "premium_peak": 14196.0
+        "history_max": 14650.0,
+        "premium_peak": 14650.0
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
         "history_max": 9613.0,
