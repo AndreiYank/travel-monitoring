@@ -6201,10 +6201,36 @@
       "created_at": "2026-08-14T16:46:51.686157+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Ocean (Alanya)_2026-08-14_16-44_comeback_9.6"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9305.0,
+      "new_price": 8185.0,
+      "price_change": -1120.0,
+      "price_change_pct": -12.036539494895218,
+      "timestamp": "2026-08-14 17:48:08.006863+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T17:49:53.264469+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-14_17-48_-12.0"
+    },
+    {
+      "hotel_name": "Azura World (ex. Wyndham Alanya)",
+      "duration_bucket": "",
+      "old_price": 9981.0,
+      "new_price": 10069.0,
+      "price_change": 88.0,
+      "price_change_pct": 0.8816751828474101,
+      "timestamp": "2026-08-14 17:48:08.006863+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T17:49:53.264518+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azura World (ex. Wyndham Alanya)_2026-08-14_17-48_zone_out_+0.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T16:44:26.860331+00:00",
+    "last_processed_run": "2026-08-14T17:48:08.006863+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
