@@ -1521,10 +1521,36 @@
       "created_at": "2026-08-14T21:22:15.504476+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Maril Resort Beach & Spa_2026-08-14_21-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aventura Park",
+      "duration_bucket": "",
+      "old_price": 9757.0,
+      "new_price": 9757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 22:16:15.554520+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T22:18:14.800487+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aventura Park_2026-08-14_22-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 12157.0,
+      "new_price": 9757.0,
+      "price_change": -2400.0,
+      "price_change_pct": -19.74171259356749,
+      "timestamp": "2026-08-14 22:16:15.554520+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T22:18:14.800533+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-14_22-16_comeback_19.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T21:20:01.884151+00:00",
+    "last_processed_run": "2026-08-14T22:16:15.554520+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1935,8 +1961,8 @@
         "premium_peak": 14763.0
       },
       "Mary Side (ex. Mary Palace)": {
-        "history_max": 12677.0,
-        "premium_peak": 12677.0
+        "history_max": 12719.0,
+        "premium_peak": 12719.0
       },
       "Cenger Blue Collection": {
         "history_max": 10622.0,
