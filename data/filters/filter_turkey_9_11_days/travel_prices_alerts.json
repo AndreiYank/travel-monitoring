@@ -1443,10 +1443,62 @@
       "created_at": "2026-08-14T16:46:18.227677+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Village_2026-08-14_16-44_comeback_11.5"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9040.0,
+      "new_price": 9965.0,
+      "price_change": 925.0,
+      "price_change_pct": 10.232300884955754,
+      "timestamp": "2026-08-14 18:44:37.946125+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-14T18:46:08.507487+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-14_18-44_+10.2"
+    },
+    {
+      "hotel_name": "Eftalia Village",
+      "duration_bucket": "",
+      "old_price": 9901.0,
+      "new_price": 10595.0,
+      "price_change": 694.0,
+      "price_change_pct": 7.009392990607009,
+      "timestamp": "2026-08-14 18:44:37.946125+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T18:46:08.507530+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Village_2026-08-14_18-44_zone_out_+7.0"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9550.0,
+      "new_price": 10134.0,
+      "price_change": 584.0,
+      "price_change_pct": 6.115183246073299,
+      "timestamp": "2026-08-14 18:44:37.946125+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T18:46:08.507542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-08-14_18-44_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9637.0,
+      "new_price": 10571.0,
+      "price_change": 934.0,
+      "price_change_pct": 9.691812804814777,
+      "timestamp": "2026-08-14 18:44:37.946125+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T18:46:08.507551+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-14_18-44_zone_out_+9.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T17:48:17.652531+00:00",
+    "last_processed_run": "2026-08-14T18:44:37.946125+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1589,8 +1641,8 @@
         "premium_peak": null
       },
       "Lonicera Premium": {
-        "history_max": 11983.0,
-        "premium_peak": 11983.0
+        "history_max": 12133.0,
+        "premium_peak": 12133.0
       },
       "Juju Premier Palace (ex. Amara Premier Palace)": {
         "history_max": 15390.0,
@@ -1725,8 +1777,8 @@
         "premium_peak": 13953.0
       },
       "Side Star Resort (ex Club)": {
-        "history_max": 14814.0,
-        "premium_peak": 14814.0
+        "history_max": 14816.0,
+        "premium_peak": 14816.0
       },
       "Maxeria Blue Didyma": {
         "history_max": 13557.0,
@@ -2149,8 +2201,8 @@
         "premium_peak": 12969.0
       },
       "Sherwood Dreams Resort": {
-        "history_max": 15572.0,
-        "premium_peak": 15572.0
+        "history_max": 15573.0,
+        "premium_peak": 15573.0
       },
       "Dream Fun World": {
         "history_max": 14557.0,
@@ -2875,6 +2927,10 @@
       "Sural Resort": {
         "history_max": 15500.0,
         "premium_peak": 15500.0
+      },
+      "Rubi Platinum (Alanya)": {
+        "history_max": 15998.0,
+        "premium_peak": 15998.0
       }
     }
   }
