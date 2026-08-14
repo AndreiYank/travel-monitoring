@@ -1261,10 +1261,62 @@
       "created_at": "2026-08-14T10:54:25.003044+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Linda Sunny Beach_2026-08-14_10-52_comeback_13.8"
+    },
+    {
+      "hotel_name": "Insula Resort",
+      "duration_bucket": "",
+      "old_price": 8518.0,
+      "new_price": 9504.0,
+      "price_change": 986.0,
+      "price_change_pct": 11.575487203568912,
+      "timestamp": "2026-08-14 11:40:33.184426+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-14T11:41:52.393684+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort_2026-08-14_11-40_+11.6"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9692.0,
+      "new_price": 10692.0,
+      "price_change": 1000.0,
+      "price_change_pct": 10.317787866281469,
+      "timestamp": "2026-08-14 11:40:33.184426+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T11:41:52.393720+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-14_11-40_zone_out_+10.3"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9519.0,
+      "new_price": 10359.0,
+      "price_change": 840.0,
+      "price_change_pct": 8.824456350456982,
+      "timestamp": "2026-08-14 11:40:33.184426+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T11:41:52.393729+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-14_11-40_zone_out_+8.8"
+    },
+    {
+      "hotel_name": "PrimaSol Telatiye Resort",
+      "duration_bucket": "",
+      "old_price": 9757.0,
+      "new_price": 9757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 11:40:33.184426+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T11:41:52.393734+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "PrimaSol Telatiye Resort_2026-08-14_11-40_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T10:52:43.859628+00:00",
+    "last_processed_run": "2026-08-14T11:40:33.184426+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1915,7 +1967,7 @@
         "premium_peak": 12897.0
       },
       "Insula Resort": {
-        "history_max": 8518.0,
+        "history_max": 9504.0,
         "premium_peak": null
       },
       "Nova Park": {
@@ -1991,8 +2043,8 @@
         "premium_peak": 12883.0
       },
       "Pirates Beach Club": {
-        "history_max": 15397.0,
-        "premium_peak": 15397.0
+        "history_max": 15768.0,
+        "premium_peak": 15768.0
       },
       "Queens Park Goynuk (Kemer)": {
         "history_max": 11276.0,
@@ -2175,8 +2227,8 @@
         "premium_peak": 13243.0
       },
       "Limak Limra": {
-        "history_max": 13190.0,
-        "premium_peak": 13190.0
+        "history_max": 13425.0,
+        "premium_peak": 13425.0
       },
       "Sueno Beach Side": {
         "history_max": 13970.0,
