@@ -1755,10 +1755,36 @@
       "created_at": "2026-08-13T23:35:04.667494+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-13_23-33_-13.9"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 9599.0,
+      "new_price": 8654.0,
+      "price_change": -945.0,
+      "price_change_pct": -9.844775497447651,
+      "timestamp": "2026-08-14 01:05:35.359199+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T01:06:36.949897+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-08-14_01-05_-9.8"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 12027.0,
+      "new_price": 8985.0,
+      "price_change": -3042.0,
+      "price_change_pct": -25.29309054627089,
+      "timestamp": "2026-08-14 01:05:35.359199+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T01:06:36.949960+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-14_01-05_comeback_25.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-13T23:33:51.499282+00:00",
+    "last_processed_run": "2026-08-14T01:05:35.359199+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
