@@ -5655,10 +5655,75 @@
       "created_at": "2026-08-14T10:01:07.579125+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Q Premium Resort_2026-08-14_09-59_comeback_9.3"
+    },
+    {
+      "hotel_name": "Armas Gul Beach (ex Otium Gul Beach Resort) Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 7938.0,
+      "new_price": 7938.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 10:52:39.342805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T10:54:53.059781+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach (ex Otium Gul Beach Resort) Turcja, Kemer_2026-08-14_10-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Garden of Sun Spa & Wellness Turcja, Bodrum, Didim",
+      "duration_bucket": "",
+      "old_price": 7940.0,
+      "new_price": 7940.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 10:52:39.342805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T10:54:53.059806+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Garden of Sun Spa & Wellness Turcja, Bodrum, Didim_2026-08-14_10-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Presa Di Finica (Finike)",
+      "duration_bucket": "",
+      "old_price": 8097.0,
+      "new_price": 8097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 10:52:39.342805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T10:54:53.059817+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Presa Di Finica (Finike)_2026-08-14_10-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Solivia (Ex. Titan Select)",
+      "duration_bucket": "",
+      "old_price": 8294.0,
+      "new_price": 8294.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 10:52:39.342805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T10:54:53.059825+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solivia (Ex. Titan Select)_2026-08-14_10-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seashell Vega (ex. Side Crown Sunshine)",
+      "duration_bucket": "",
+      "old_price": 10697.0,
+      "new_price": 9697.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.348415443582313,
+      "timestamp": "2026-08-14 10:52:39.342805+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T10:54:53.059851+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seashell Vega (ex. Side Crown Sunshine)_2026-08-14_10-52_comeback_9.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T09:59:03.502943+00:00",
+    "last_processed_run": "2026-08-14T10:52:39.342805+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -7111,6 +7176,14 @@
       "Trendy Aspendos Beach": {
         "history_max": 11718.0,
         "premium_peak": 11718.0
+      },
+      "Presa Di Finica (Finike) Turcja, Kemer, Finike": {
+        "history_max": 7697.0,
+        "premium_peak": null
+      },
+      "Mirada Del Mar": {
+        "history_max": 11697.0,
+        "premium_peak": 11697.0
       }
     }
   }
