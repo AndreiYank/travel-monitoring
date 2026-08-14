@@ -1365,10 +1365,36 @@
       "created_at": "2026-08-14T12:45:14.604312+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-14_12-43_comeback_12.0"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9707.0,
+      "new_price": 10359.0,
+      "price_change": 652.0,
+      "price_change_pct": 6.7168023076130625,
+      "timestamp": "2026-08-14 14:12:21.005542+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T14:13:48.742265+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-14_14-12_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "PrimaSol Telatiye Resort",
+      "duration_bucket": "",
+      "old_price": 11157.0,
+      "new_price": 9757.0,
+      "price_change": -1400.0,
+      "price_change_pct": -12.548176032983777,
+      "timestamp": "2026-08-14 14:12:21.005542+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T14:13:48.742310+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "PrimaSol Telatiye Resort_2026-08-14_14-12_comeback_12.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T12:43:40.181619+00:00",
+    "last_processed_run": "2026-08-14T14:12:21.005542+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1551,8 +1577,8 @@
         "premium_peak": 11448.0
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
-        "history_max": 10978.0,
-        "premium_peak": 10978.0
+        "history_max": 11012.0,
+        "premium_peak": 11012.0
       },
       "Justiniano Club Park Conti": {
         "history_max": 12076.0,
@@ -2793,6 +2819,10 @@
       "Arcanus Trendline Resort": {
         "history_max": 12857.0,
         "premium_peak": 12857.0
+      },
+      "Sural Resort": {
+        "history_max": 15367.0,
+        "premium_peak": 15367.0
       }
     }
   }
