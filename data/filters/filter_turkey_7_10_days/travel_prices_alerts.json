@@ -6006,10 +6006,101 @@
       "created_at": "2026-08-14T14:14:11.766414+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seher Resort & Spa_2026-08-14_14-12_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8185.0,
+      "new_price": 9305.0,
+      "price_change": 1120.0,
+      "price_change_pct": 13.683567501527182,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-14T15:47:36.870485+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-14_15-45_+13.7"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 8973.0,
+      "new_price": 7989.0,
+      "price_change": -984.0,
+      "price_change_pct": -10.966232029421597,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T15:47:36.870524+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-14_15-45_-11.0"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9183.0,
+      "new_price": 8297.0,
+      "price_change": -886.0,
+      "price_change_pct": -9.64826309484918,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T15:47:36.870539+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-14_15-45_-9.6"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9022.0,
+      "new_price": 8204.0,
+      "price_change": -818.0,
+      "price_change_pct": -9.066725781423187,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T15:47:36.870555+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-08-14_15-45_-9.1"
+    },
+    {
+      "hotel_name": "Seaden Sea World Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11032.0,
+      "new_price": 9889.0,
+      "price_change": -1143.0,
+      "price_change_pct": -10.360768672951414,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T15:47:36.870603+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaden Sea World Resort & Spa_2026-08-14_15-45_comeback_10.4"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 10609.0,
+      "new_price": 9432.0,
+      "price_change": -1177.0,
+      "price_change_pct": -11.09435385050429,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T15:47:36.870616+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-14_15-45_comeback_11.1"
+    },
+    {
+      "hotel_name": "Alba Queen",
+      "duration_bucket": "",
+      "old_price": 11187.0,
+      "new_price": 9878.0,
+      "price_change": -1309.0,
+      "price_change_pct": -11.701081612586037,
+      "timestamp": "2026-08-14 15:45:13.212717+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T15:47:36.870629+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alba Queen_2026-08-14_15-45_comeback_11.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T14:12:02.841572+00:00",
+    "last_processed_run": "2026-08-14T15:45:13.212717+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -7164,7 +7255,7 @@
         "premium_peak": 11357.0
       },
       "Calido Maris": {
-        "history_max": 9195.0,
+        "history_max": 9305.0,
         "premium_peak": null
       },
       "Justiniano Club Park Conti": {

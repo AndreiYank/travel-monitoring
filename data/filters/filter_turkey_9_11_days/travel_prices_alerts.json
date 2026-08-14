@@ -1391,10 +1391,36 @@
       "created_at": "2026-08-14T14:13:48.742310+00:00",
       "threshold_percent": 8.0,
       "unique_key": "PrimaSol Telatiye Resort_2026-08-14_14-12_comeback_12.5"
+    },
+    {
+      "hotel_name": "Insula Resort",
+      "duration_bucket": "",
+      "old_price": 9504.0,
+      "new_price": 9504.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 15:45:23.707803+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T15:47:26.051956+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Insula Resort_2026-08-14_15-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 11321.0,
+      "new_price": 9806.0,
+      "price_change": -1515.0,
+      "price_change_pct": -13.382210052115537,
+      "timestamp": "2026-08-14 15:45:23.707803+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T15:47:26.052000+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-14_15-45_comeback_13.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T14:12:21.005542+00:00",
+    "last_processed_run": "2026-08-14T15:45:23.707803+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1937,8 +1963,8 @@
         "premium_peak": null
       },
       "Villa Side Residence": {
-        "history_max": 13372.0,
-        "premium_peak": 13372.0
+        "history_max": 14153.0,
+        "premium_peak": 14153.0
       },
       "Turan Prince": {
         "history_max": 13483.0,
@@ -2229,8 +2255,8 @@
         "premium_peak": null
       },
       "Royal Atlantis Resort": {
-        "history_max": 12483.0,
-        "premium_peak": 12483.0
+        "history_max": 13260.0,
+        "premium_peak": 13260.0
       },
       "Dedeman Kemer Resort": {
         "history_max": 9994.0,
@@ -2533,8 +2559,8 @@
         "premium_peak": 14529.0
       },
       "Azura World (ex. Wyndham Alanya)": {
-        "history_max": 11628.0,
-        "premium_peak": 11628.0
+        "history_max": 12186.0,
+        "premium_peak": 12186.0
       },
       "Granada Luxury Okurcalar": {
         "history_max": 16195.0,
@@ -2821,8 +2847,8 @@
         "premium_peak": 12857.0
       },
       "Sural Resort": {
-        "history_max": 15367.0,
-        "premium_peak": 15367.0
+        "history_max": 15500.0,
+        "premium_peak": 15500.0
       }
     }
   }
