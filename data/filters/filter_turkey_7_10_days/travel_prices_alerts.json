@@ -5863,10 +5863,75 @@
       "created_at": "2026-08-14T11:42:06.229484+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aydinbey Famous_2026-08-14_11-40_comeback_11.1"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8185.0,
+      "new_price": 9195.0,
+      "price_change": 1010.0,
+      "price_change_pct": 12.339645693341478,
+      "timestamp": "2026-08-14 12:43:39.210473+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-14T12:45:43.510418+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-14_12-43_+12.3"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9137.0,
+      "new_price": 8303.0,
+      "price_change": -834.0,
+      "price_change_pct": -9.127722447192733,
+      "timestamp": "2026-08-14 12:43:39.210473+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-14T12:45:43.510456+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-14_12-43_-9.1"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 7848.0,
+      "new_price": 7848.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 12:43:39.210473+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T12:45:43.510493+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-08-14_12-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gold City Turcja, Alanya, Kargicak",
+      "duration_bucket": "",
+      "old_price": 7682.0,
+      "new_price": 7682.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-14 12:43:39.210473+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T12:45:43.510502+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gold City Turcja, Alanya, Kargicak_2026-08-14_12-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Adalya Art Side (Ex. Grand Art Side)",
+      "duration_bucket": "",
+      "old_price": 11572.0,
+      "new_price": 9929.0,
+      "price_change": -1643.0,
+      "price_change_pct": -14.198064293121327,
+      "timestamp": "2026-08-14 12:43:39.210473+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-14T12:45:43.510525+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Adalya Art Side (Ex. Grand Art Side)_2026-08-14_12-43_comeback_14.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T11:40:31.045406+00:00",
+    "last_processed_run": "2026-08-14T12:43:39.210473+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -6881,8 +6946,8 @@
         "premium_peak": null
       },
       "Dream Fun World": {
-        "history_max": 11097.0,
-        "premium_peak": 11097.0
+        "history_max": 11357.0,
+        "premium_peak": 11357.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)": {
         "history_max": 11628.0,
@@ -7017,11 +7082,11 @@
         "premium_peak": null
       },
       "Dream Water World": {
-        "history_max": 11097.0,
-        "premium_peak": 11097.0
+        "history_max": 11357.0,
+        "premium_peak": 11357.0
       },
       "Calido Maris": {
-        "history_max": 9015.0,
+        "history_max": 9195.0,
         "premium_peak": null
       },
       "Justiniano Club Park Conti": {
@@ -7041,7 +7106,7 @@
         "premium_peak": null
       },
       "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi": {
-        "history_max": 7204.0,
+        "history_max": 7422.0,
         "premium_peak": null
       },
       "Armas Bella Sun (ex.Club Bella Sun)": {
@@ -7105,7 +7170,7 @@
         "premium_peak": null
       },
       "Gold City": {
-        "history_max": 7992.0,
+        "history_max": 8838.0,
         "premium_peak": null
       },
       "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi": {
