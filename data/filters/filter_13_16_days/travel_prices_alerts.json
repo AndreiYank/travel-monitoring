@@ -143,10 +143,23 @@
       "created_at": "2026-08-14T14:12:01.873548+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-14_14-10_comeback_41.3"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9943.0,
+      "new_price": 10093.0,
+      "price_change": 150.0,
+      "price_change_pct": 1.5085990143819772,
+      "timestamp": "2026-08-14 20:24:06.449198+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-14T20:25:01.584009+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-14_20-24_zone_out_+1.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T19:44:26.956706+00:00",
+    "last_processed_run": "2026-08-14T20:24:06.449198+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 12063.0,
@@ -501,8 +514,8 @@
         "premium_peak": 15005.0
       },
       "Jaz Palmariva Beach": {
-        "history_max": 12898.0,
-        "premium_peak": 12898.0
+        "history_max": 12977.0,
+        "premium_peak": 12977.0
       },
       "Jaz Belvedere": {
         "history_max": 14457.0,
