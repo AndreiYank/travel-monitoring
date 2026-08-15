@@ -7137,10 +7137,88 @@
       "created_at": "2026-08-15T14:18:38.492874+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ring Beach (Kemer)_2026-08-15_14-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8465.0,
+      "new_price": 9725.0,
+      "price_change": 1260.0,
+      "price_change_pct": 14.884819846426462,
+      "timestamp": "2026-08-15 15:14:22.748820+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T15:16:34.306999+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-15_15-14_+14.9"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 5977.0,
+      "new_price": 6625.0,
+      "price_change": 648.0,
+      "price_change_pct": 10.841559310690982,
+      "timestamp": "2026-08-15 15:14:22.748820+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T15:16:34.307054+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-15_15-14_+10.8"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 6055.0,
+      "new_price": 6631.0,
+      "price_change": 576.0,
+      "price_change_pct": 9.512799339388934,
+      "timestamp": "2026-08-15 15:14:22.748820+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T15:16:34.307087+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-15_15-14_+9.5"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 9837.0,
+      "new_price": 10367.0,
+      "price_change": 530.0,
+      "price_change_pct": 5.387821490291755,
+      "timestamp": "2026-08-15 15:14:22.748820+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T15:16:34.307139+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-15_15-14_zone_out_+5.4"
+    },
+    {
+      "hotel_name": "Eftalia Village",
+      "duration_bucket": "",
+      "old_price": 9133.0,
+      "new_price": 9133.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 15:14:22.748820+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T15:16:34.307152+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Village_2026-08-15_15-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Terrace Elite Resort",
+      "duration_bucket": "",
+      "old_price": 9885.0,
+      "new_price": 10251.0,
+      "price_change": 366.0,
+      "price_change_pct": 3.7025796661608497,
+      "timestamp": "2026-08-15 15:14:22.748820+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T15:16:34.307165+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Terrace Elite Resort_2026-08-15_15-14_zone_out_+3.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T14:16:22.717927+00:00",
+    "last_processed_run": "2026-08-15T15:14:22.748820+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -7955,7 +8033,7 @@
         "premium_peak": 10051.0
       },
       "Tusan Beach Resort": {
-        "history_max": 9503.0,
+        "history_max": 9579.0,
         "premium_peak": null
       },
       "Charisma Deluxe (Kusadasi)": {
@@ -8657,6 +8735,10 @@
       "Ladonia Adakule": {
         "history_max": 7986.0,
         "premium_peak": null
+      },
+      "Dedeman Istanbul": {
+        "history_max": 11860.0,
+        "premium_peak": 11860.0
       }
     }
   }
