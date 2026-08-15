@@ -1963,10 +1963,114 @@
       "created_at": "2026-08-15T07:26:06.943993+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Viva Casa Maza_2026-08-15_07-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9172.0,
+      "new_price": 10523.0,
+      "price_change": 1351.0,
+      "price_change_pct": 14.729611862189271,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T08:20:25.760828+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-15_08-18_+14.7"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7835.0,
+      "new_price": 7025.0,
+      "price_change": -810.0,
+      "price_change_pct": -10.338225909380983,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T08:20:25.760878+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-08-15_08-18_-10.3"
+    },
+    {
+      "hotel_name": "Movenpick Resort Sharm el Sheikh",
+      "duration_bucket": "",
+      "old_price": 10604.0,
+      "new_price": 10604.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T08:20:25.760914+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort Sharm el Sheikh_2026-08-15_08-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Novotel Marsa Alam Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 8587.0,
+      "new_price": 8587.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T08:20:25.760924+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Marsa Alam Egipt, Marsa Alam_2026-08-15_08-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nubian Village",
+      "duration_bucket": "",
+      "old_price": 10845.0,
+      "new_price": 10845.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T08:20:25.760933+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nubian Village_2026-08-15_08-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9012.0,
+      "new_price": 9012.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T08:20:25.760940+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-08-15_08-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 8590.0,
+      "new_price": 8590.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T08:20:25.760947+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-15_08-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9235.0,
+      "new_price": 9235.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 08:18:58.250595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T08:20:25.760955+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-08-15_08-18_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T07:24:41.450725+00:00",
+    "last_processed_run": "2026-08-15T08:18:58.250595+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -2429,7 +2533,7 @@
         "premium_peak": null
       },
       "Desert Rose Resort": {
-        "history_max": 9828.0,
+        "history_max": 10523.0,
         "premium_peak": null
       },
       "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk": {
@@ -2701,7 +2805,7 @@
         "premium_peak": null
       },
       "Monte Carlo (ex. Ritz Carlton ) Egipt, Sharm El Sheikh": {
-        "history_max": 8447.0,
+        "history_max": 8497.0,
         "premium_peak": null
       }
     }
