@@ -1547,10 +1547,62 @@
       "created_at": "2026-08-14T22:18:14.800533+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Maril Resort Beach & Spa_2026-08-14_22-16_comeback_19.7"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 8931.0,
+      "new_price": 8115.0,
+      "price_change": -816.0,
+      "price_change_pct": -9.136714813570709,
+      "timestamp": "2026-08-15 00:41:53.845455+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T00:43:39.203606+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-08-15_00-41_-9.1"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa (Alanya)",
+      "duration_bucket": "",
+      "old_price": 9480.0,
+      "new_price": 8571.0,
+      "price_change": -909.0,
+      "price_change_pct": -9.58860759493671,
+      "timestamp": "2026-08-15 00:41:53.845455+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T00:43:39.203638+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa (Alanya)_2026-08-15_00-41_-9.6"
+    },
+    {
+      "hotel_name": "Prestige Alanya",
+      "duration_bucket": "",
+      "old_price": 9396.0,
+      "new_price": 11034.0,
+      "price_change": 1638.0,
+      "price_change_pct": 17.43295019157088,
+      "timestamp": "2026-08-15 00:41:53.845455+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T00:43:39.203660+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Prestige Alanya_2026-08-15_00-41_zone_out_+17.4"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10389.0,
+      "new_price": 9477.0,
+      "price_change": -912.0,
+      "price_change_pct": -8.778515737799596,
+      "timestamp": "2026-08-15 00:41:53.845455+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-15T00:43:39.203683+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort_2026-08-15_00-41_comeback_8.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-14T23:16:12.694319+00:00",
+    "last_processed_run": "2026-08-15T00:41:53.845455+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11489.0,
@@ -1657,8 +1709,8 @@
         "premium_peak": 12479.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)": {
-        "history_max": 14337.0,
-        "premium_peak": 14337.0
+        "history_max": 15701.0,
+        "premium_peak": 15701.0
       },
       "The Sense Deluxe": {
         "history_max": 14298.0,
@@ -1885,8 +1937,8 @@
         "premium_peak": 12175.0
       },
       "Laguna Beach Alya": {
-        "history_max": 12557.0,
-        "premium_peak": 12557.0
+        "history_max": 12757.0,
+        "premium_peak": 12757.0
       },
       "Kaila Beach (ex Katya)": {
         "history_max": 10833.0,
@@ -2097,8 +2149,8 @@
         "premium_peak": 14153.0
       },
       "Turan Prince": {
-        "history_max": 13483.0,
-        "premium_peak": 13483.0
+        "history_max": 13862.0,
+        "premium_peak": 13862.0
       },
       "Antique Roman Palace": {
         "history_max": 14553.0,
@@ -2477,7 +2529,7 @@
         "premium_peak": 15691.0
       },
       "Ladonia Adakule": {
-        "history_max": 8480.0,
+        "history_max": 9107.0,
         "premium_peak": null
       },
       "Oz Sui Resort": {
@@ -2949,8 +3001,8 @@
         "premium_peak": 16370.0
       },
       "Agaya Didim Resort (ex. Prive Didim)": {
-        "history_max": 15548.0,
-        "premium_peak": 15548.0
+        "history_max": 15807.0,
+        "premium_peak": 15807.0
       },
       "Palm Wings Beach Resort & SPA (Kusadasi)": {
         "history_max": 13849.0,
@@ -2983,6 +3035,14 @@
       "Rubi Platinum (Alanya)": {
         "history_max": 15998.0,
         "premium_peak": 15998.0
+      },
+      "Papillon Zeugma Reluxury": {
+        "history_max": 15930.0,
+        "premium_peak": 15930.0
+      },
+      "Sailors Beach Club": {
+        "history_max": 15393.0,
+        "premium_peak": 15393.0
       }
     }
   }
