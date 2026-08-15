@@ -6942,10 +6942,75 @@
       "created_at": "2026-08-15T10:18:36.783914+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Marin_2026-08-15_10-16_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8465.0,
+      "new_price": 9721.0,
+      "price_change": 1256.0,
+      "price_change_pct": 14.837566450088598,
+      "timestamp": "2026-08-15 11:14:40.535696+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T11:16:50.140812+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-15_11-14_+14.8"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 6915.0,
+      "new_price": 6101.0,
+      "price_change": -814.0,
+      "price_change_pct": -11.771511207519884,
+      "timestamp": "2026-08-15 11:14:40.535696+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T11:16:50.140847+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-15_11-14_-11.8"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 9581.0,
+      "new_price": 10337.0,
+      "price_change": 756.0,
+      "price_change_pct": 7.890616845840727,
+      "timestamp": "2026-08-15 11:14:40.535696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T11:16:50.140880+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-08-15_11-14_zone_out_+7.9"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "",
+      "old_price": 7947.0,
+      "new_price": 7947.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 11:14:40.535696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T11:16:50.140891+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)_2026-08-15_11-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe Turcja, Alanya, Payallar",
+      "duration_bucket": "",
+      "old_price": 7944.0,
+      "new_price": 7944.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 11:14:40.535696+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T11:16:50.140899+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe Turcja, Alanya, Payallar_2026-08-15_11-14_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T10:16:31.764454+00:00",
+    "last_processed_run": "2026-08-15T11:14:40.535696+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -6972,8 +7037,8 @@
         "premium_peak": null
       },
       "Sy Belek Boutique Luxury": {
-        "history_max": 11615.0,
-        "premium_peak": 11615.0
+        "history_max": 11763.0,
+        "premium_peak": 11763.0
       },
       "Belconti Resort (Belek)": {
         "history_max": 11367.0,
@@ -7596,7 +7661,7 @@
         "premium_peak": 10889.0
       },
       "Golden Tulip Bayrampasa": {
-        "history_max": 8910.0,
+        "history_max": 9010.0,
         "premium_peak": null
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
@@ -7764,8 +7829,8 @@
         "premium_peak": null
       },
       "Charisma Deluxe (Kusadasi)": {
-        "history_max": 10289.0,
-        "premium_peak": 10289.0
+        "history_max": 10337.0,
+        "premium_peak": 10337.0
       },
       "Ozkaymak Falez": {
         "history_max": 9750.0,
@@ -7944,8 +8009,8 @@
         "premium_peak": null
       },
       "Rixos Elysium Suites": {
-        "history_max": 10400.0,
-        "premium_peak": 10400.0
+        "history_max": 10500.0,
+        "premium_peak": 10500.0
       },
       "Movenpick": {
         "history_max": 10069.0,
@@ -8100,7 +8165,7 @@
         "premium_peak": 11357.0
       },
       "Calido Maris": {
-        "history_max": 9305.0,
+        "history_max": 9721.0,
         "premium_peak": null
       },
       "Justiniano Club Park Conti": {
@@ -8128,8 +8193,8 @@
         "premium_peak": null
       },
       "Catch Sultanahmet": {
-        "history_max": 11802.0,
-        "premium_peak": 11802.0
+        "history_max": 11853.0,
+        "premium_peak": 11853.0
       },
       "Palm Wings Beach Resort & SPA (Kusadasi)": {
         "history_max": 11312.0,
@@ -8442,6 +8507,14 @@
       "Primasol Hane Family Resort": {
         "history_max": 10440.0,
         "premium_peak": 10440.0
+      },
+      "Club Grand Side": {
+        "history_max": 11848.0,
+        "premium_peak": 11848.0
+      },
+      "Victory Volare": {
+        "history_max": 11855.0,
+        "premium_peak": 11855.0
       }
     }
   }
