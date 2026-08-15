@@ -7059,10 +7059,62 @@
       "created_at": "2026-08-15T12:24:17.433711+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Perre La Mer Resort & Spa (ex. La Mer)_2026-08-15_12-21_zone_out_+38.9"
+    },
+    {
+      "hotel_name": "Eftalia Village",
+      "duration_bucket": "",
+      "old_price": 8593.0,
+      "new_price": 9355.0,
+      "price_change": 762.0,
+      "price_change_pct": 8.867682997788897,
+      "timestamp": "2026-08-15 13:27:03.778011+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T13:29:21.062337+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Village_2026-08-15_13-27_+8.9"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9725.0,
+      "new_price": 8465.0,
+      "price_change": -1260.0,
+      "price_change_pct": -12.956298200514137,
+      "timestamp": "2026-08-15 13:27:03.778011+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T13:29:21.062387+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-15_13-27_-13.0"
+    },
+    {
+      "hotel_name": "Grand Cettia",
+      "duration_bucket": "",
+      "old_price": 9269.0,
+      "new_price": 9269.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 13:27:03.778011+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T13:29:21.062477+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Cettia_2026-08-15_13-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sealight Resort (ex Otium Sealight Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9944.0,
+      "new_price": 10065.0,
+      "price_change": 121.0,
+      "price_change_pct": 1.2168141592920354,
+      "timestamp": "2026-08-15 13:27:03.778011+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T13:29:21.062506+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-08-15_13-27_zone_out_+1.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T12:21:50.701289+00:00",
+    "last_processed_run": "2026-08-15T13:27:03.778011+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -7357,7 +7409,7 @@
         "premium_peak": null
       },
       "Linda Resort (Side)": {
-        "history_max": 8941.0,
+        "history_max": 9013.0,
         "premium_peak": null
       },
       "Sentido Serra Family Resort": {
@@ -7409,8 +7461,8 @@
         "premium_peak": null
       },
       "Villa Side Residence": {
-        "history_max": 10800.0,
-        "premium_peak": 10800.0
+        "history_max": 11095.0,
+        "premium_peak": 11095.0
       },
       "Daima Biz Resort Turcja, Kemer": {
         "history_max": 7833.0,
