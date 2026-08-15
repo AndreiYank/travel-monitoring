@@ -1573,10 +1573,49 @@
       "created_at": "2026-08-14T23:16:11.848967+00:00",
       "threshold_percent": 8.0,
       "unique_key": "True Beach Resort_2026-08-14_23-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nubian Island",
+      "duration_bucket": "",
+      "old_price": 10845.0,
+      "new_price": 9699.0,
+      "price_change": -1146.0,
+      "price_change_pct": -10.567081604426003,
+      "timestamp": "2026-08-15 03:32:34.495831+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T03:33:30.028646+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nubian Island_2026-08-15_03-32_-10.6"
+    },
+    {
+      "hotel_name": "Coral Sea Holiday Resort",
+      "duration_bucket": "",
+      "old_price": 10517.0,
+      "new_price": 10517.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 03:32:34.495831+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T03:33:30.028696+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Coral Sea Holiday Resort_2026-08-15_03-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)",
+      "duration_bucket": "",
+      "old_price": 10363.0,
+      "new_price": 10363.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 03:32:34.495831+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T03:33:30.028703+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-08-15_03-32_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T00:40:30.952002+00:00",
+    "last_processed_run": "2026-08-15T03:32:34.495831+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -1795,7 +1834,7 @@
         "premium_peak": null
       },
       "Concorde Sport": {
-        "history_max": 9882.0,
+        "history_max": 9903.0,
         "premium_peak": null
       },
       "Amphoras Beach": {
@@ -1855,7 +1894,7 @@
         "premium_peak": null
       },
       "Stella Di Mare Beach & Spa": {
-        "history_max": 10751.0,
+        "history_max": 10773.0,
         "premium_peak": null
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
@@ -2043,7 +2082,7 @@
         "premium_peak": null
       },
       "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk": {
-        "history_max": 7800.0,
+        "history_max": 7816.0,
         "premium_peak": null
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
@@ -2063,7 +2102,7 @@
         "premium_peak": null
       },
       "Coral Sea Water World Resort": {
-        "history_max": 10639.0,
+        "history_max": 10662.0,
         "premium_peak": null
       },
       "Pickalbatros Dana Beach Resort": {
