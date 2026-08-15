@@ -2366,10 +2366,36 @@
       "created_at": "2026-08-15T11:14:56.726562+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Park Regency Resort (ex. Hyatt)_2026-08-15_11-13_zone_out_+6.3"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 8197.0,
+      "new_price": 9217.0,
+      "price_change": 1020.0,
+      "price_change_pct": 12.443576918384775,
+      "timestamp": "2026-08-15 12:20:15.812955+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-15T12:21:49.758775+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-15_12-20_+12.4"
+    },
+    {
+      "hotel_name": "True Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8794.0,
+      "new_price": 12091.0,
+      "price_change": 3297.0,
+      "price_change_pct": 37.49147145781214,
+      "timestamp": "2026-08-15 12:20:15.812955+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T12:21:49.758859+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "True Beach Resort_2026-08-15_12-20_zone_out_+37.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T11:13:11.672764+00:00",
+    "last_processed_run": "2026-08-15T12:20:15.812955+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
