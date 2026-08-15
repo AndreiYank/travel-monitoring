@@ -2574,10 +2574,36 @@
       "created_at": "2026-08-15T20:14:58.631513+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Azur One Eleven_2026-08-15_20-13_+21.9"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 10897.0,
+      "new_price": 8937.0,
+      "price_change": -1960.0,
+      "price_change_pct": -17.986601817013856,
+      "timestamp": "2026-08-15 22:13:21.417880+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-15T22:15:09.159182+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-15_22-13_-18.0"
+    },
+    {
+      "hotel_name": "Jaz Villagio",
+      "duration_bucket": "",
+      "old_price": 10363.0,
+      "new_price": 10363.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 22:13:21.417880+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T22:15:09.159236+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Villagio_2026-08-15_22-13_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T21:14:34.113819+00:00",
+    "last_processed_run": "2026-08-15T22:13:21.417880+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
