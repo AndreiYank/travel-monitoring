@@ -7111,10 +7111,36 @@
       "created_at": "2026-08-15T13:29:21.062506+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-08-15_13-27_zone_out_+1.2"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7903.0,
+      "new_price": 7903.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 14:16:22.717927+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T14:18:38.492849+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-08-15_14-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 7970.0,
+      "new_price": 7970.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-15 14:16:22.717927+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T14:18:38.492874+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-08-15_14-16_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T13:27:03.778011+00:00",
+    "last_processed_run": "2026-08-15T14:16:22.717927+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10029.0,
@@ -8619,6 +8645,18 @@
       "Victory Volare": {
         "history_max": 11855.0,
         "premium_peak": 11855.0
+      },
+      "Ring Beach Turcja, Kemer, Beldibi": {
+        "history_max": 7970.0,
+        "premium_peak": null
+      },
+      "Victory Be Mine": {
+        "history_max": 11855.0,
+        "premium_peak": 11855.0
+      },
+      "Ladonia Adakule": {
+        "history_max": 7986.0,
+        "premium_peak": null
       }
     }
   }

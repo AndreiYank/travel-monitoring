@@ -2405,10 +2405,23 @@
       "created_at": "2026-08-15T13:27:23.356618+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-15_13-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 9238.0,
+      "new_price": 10283.0,
+      "price_change": 1045.0,
+      "price_change_pct": 11.311972288374108,
+      "timestamp": "2026-08-15 14:14:57.878488+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-15T14:16:50.490783+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-15_14-14_zone_out_+11.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-15T13:25:39.758340+00:00",
+    "last_processed_run": "2026-08-15T14:14:57.878488+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -2855,8 +2868,8 @@
         "premium_peak": 11597.0
       },
       "Jaz Aquamarine Resort": {
-        "history_max": 10025.0,
-        "premium_peak": 10025.0
+        "history_max": 10283.0,
+        "premium_peak": 10283.0
       },
       "Jaz Aquaviva": {
         "history_max": 10078.0,
