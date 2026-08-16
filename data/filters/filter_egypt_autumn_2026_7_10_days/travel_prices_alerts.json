@@ -2665,10 +2665,36 @@
       "created_at": "2026-08-16T08:20:53.825654+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Beach Resort (ex. Radisson Blu)_2026-08-16_08-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6285.0,
+      "new_price": 7548.0,
+      "price_change": 1263.0,
+      "price_change_pct": 20.095465393794747,
+      "timestamp": "2026-08-16 09:20:24.211259+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-16T09:21:56.367661+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada_2026-08-16_09-20_+20.1"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 10363.0,
+      "new_price": 10363.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-16 09:20:24.211259+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-16T09:21:56.367733+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-08-16_09-20_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-16T08:19:27.382666+00:00",
+    "last_processed_run": "2026-08-16T09:20:24.211259+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -3019,7 +3045,7 @@
         "premium_peak": null
       },
       "Le Meridien Dahab Resort Egipt, Dahab": {
-        "history_max": 8504.0,
+        "history_max": 8610.0,
         "premium_peak": null
       },
       "Maritim Jolie Ville Resort and Casino": {
