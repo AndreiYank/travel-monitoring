@@ -2704,10 +2704,36 @@
       "created_at": "2026-08-16T11:15:29.331404+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Aquamarine Resort_2026-08-16_11-14_zone_out_+6.5"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 9217.0,
+      "new_price": 8197.0,
+      "price_change": -1020.0,
+      "price_change_pct": -11.06650754041445,
+      "timestamp": "2026-08-16 12:20:55.047831+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-16T12:22:36.914197+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-16_12-20_-11.1"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 10299.0,
+      "new_price": 9473.0,
+      "price_change": -826.0,
+      "price_change_pct": -8.02019613554714,
+      "timestamp": "2026-08-16 12:20:55.047831+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-16T12:22:36.914253+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-08-16_12-20_comeback_8.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-16T11:14:10.945663+00:00",
+    "last_processed_run": "2026-08-16T12:20:55.047831+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -3414,7 +3440,7 @@
         "premium_peak": 12027.0
       },
       "Jaz Neo Naama Bay": {
-        "history_max": 8488.0,
+        "history_max": 8575.0,
         "premium_peak": null
       },
       "Jaz Oriental Resort": {
@@ -3438,8 +3464,8 @@
         "premium_peak": 10436.0
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
-        "history_max": 11564.0,
-        "premium_peak": 11564.0
+        "history_max": 12597.0,
+        "premium_peak": 12597.0
       },
       "Calimera Blend Paradise Resort": {
         "history_max": 8897.0,
