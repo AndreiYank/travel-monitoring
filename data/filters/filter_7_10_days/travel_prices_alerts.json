@@ -2743,10 +2743,23 @@
       "created_at": "2026-08-16T14:17:33.328925+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-16_14-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 6902.0,
+      "new_price": 7652.0,
+      "price_change": 750.0,
+      "price_change_pct": 10.866415531729935,
+      "timestamp": "2026-08-16 15:14:23.256986+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-16T15:16:19.755762+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-08-16_15-14_+10.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-16T14:15:41.879330+00:00",
+    "last_processed_run": "2026-08-16T15:14:23.256986+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -3049,7 +3062,7 @@
         "premium_peak": 12552.0
       },
       "Sea Star Beau Rivage": {
-        "history_max": 7402.0,
+        "history_max": 7652.0,
         "premium_peak": null
       },
       "Sentido Akassia Beach (ex. LTI Akassia Beach)": {
