@@ -2652,10 +2652,62 @@
       "created_at": "2026-08-16T09:22:33.103165+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Luxury Suites_2026-08-16_09-20_zone_out_+5.4"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 7927.0,
+      "new_price": 7179.0,
+      "price_change": -748.0,
+      "price_change_pct": -9.436104453134856,
+      "timestamp": "2026-08-16 11:14:10.945663+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-16T11:15:29.331342+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-08-16_11-14_-9.4"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 8507.0,
+      "new_price": 9515.0,
+      "price_change": 1008.0,
+      "price_change_pct": 11.849065475490772,
+      "timestamp": "2026-08-16 11:14:10.945663+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-16T11:15:29.331367+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-08-16_11-14_+11.8"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 9945.0,
+      "new_price": 9945.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-16 11:14:10.945663+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-16T11:15:29.331396+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-08-16_11-14_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 9684.0,
+      "new_price": 10317.0,
+      "price_change": 633.0,
+      "price_change_pct": 6.536555142503097,
+      "timestamp": "2026-08-16 11:14:10.945663+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-16T11:15:29.331404+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-16_11-14_zone_out_+6.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-16T09:20:24.057890+00:00",
+    "last_processed_run": "2026-08-16T11:14:10.945663+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -3102,8 +3154,8 @@
         "premium_peak": 11597.0
       },
       "Jaz Aquamarine Resort": {
-        "history_max": 10311.0,
-        "premium_peak": 10311.0
+        "history_max": 10317.0,
+        "premium_peak": 10317.0
       },
       "Jaz Aquaviva": {
         "history_max": 10078.0,
