@@ -2535,10 +2535,75 @@
       "created_at": "2026-08-16T07:27:40.445841+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Abu Soma Resort_2026-08-16_07-25_+12.4"
+    },
+    {
+      "hotel_name": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)",
+      "duration_bucket": "",
+      "old_price": 8516.0,
+      "new_price": 9293.0,
+      "price_change": 777.0,
+      "price_change_pct": 9.124001878816346,
+      "timestamp": "2026-08-16 08:19:27.555574+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-16T08:21:28.293623+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)_2026-08-16_08-19_+9.1"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 9486.0,
+      "new_price": 8507.0,
+      "price_change": -979.0,
+      "price_change_pct": -10.320472274931477,
+      "timestamp": "2026-08-16 08:19:27.555574+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-16T08:21:28.293658+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-08-16_08-19_-10.3"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10072.0,
+      "price_change": 275.0,
+      "price_change_pct": 2.806981729100745,
+      "timestamp": "2026-08-16 08:19:27.555574+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-16T08:21:28.293694+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-08-16_08-19_zone_out_+2.8"
+    },
+    {
+      "hotel_name": "Movenpick Resort Sharm el Sheikh",
+      "duration_bucket": "",
+      "old_price": 9825.0,
+      "new_price": 10357.0,
+      "price_change": 532.0,
+      "price_change_pct": 5.414758269720102,
+      "timestamp": "2026-08-16 08:19:27.555574+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-16T08:21:28.293706+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort Sharm el Sheikh_2026-08-16_08-19_zone_out_+5.4"
+    },
+    {
+      "hotel_name": "Invidia Coral Beach Tiran",
+      "duration_bucket": "",
+      "old_price": 10437.0,
+      "new_price": 8946.0,
+      "price_change": -1491.0,
+      "price_change_pct": -14.285714285714285,
+      "timestamp": "2026-08-16 08:19:27.555574+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-16T08:21:28.293731+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Invidia Coral Beach Tiran_2026-08-16_08-19_comeback_14.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-16T07:25:51.869098+00:00",
+    "last_processed_run": "2026-08-16T08:19:27.555574+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7677.0,
@@ -2933,8 +2998,8 @@
         "premium_peak": null
       },
       "Ghazala Alamein": {
-        "history_max": 14958.0,
-        "premium_peak": 14958.0
+        "history_max": 16062.0,
+        "premium_peak": 16062.0
       },
       "Gorgonia Beach": {
         "history_max": 9126.0,
@@ -3317,7 +3382,7 @@
         "premium_peak": null
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)": {
-        "history_max": 9032.0,
+        "history_max": 9293.0,
         "premium_peak": null
       },
       "Xperience Kiroseiz Parkland": {
@@ -3361,8 +3426,8 @@
         "premium_peak": 10168.0
       },
       "True Beach Resort": {
-        "history_max": 12091.0,
-        "premium_peak": 12091.0
+        "history_max": 12134.0,
+        "premium_peak": 12134.0
       },
       "Sunrise Montemare Resort": {
         "history_max": 12144.0,
