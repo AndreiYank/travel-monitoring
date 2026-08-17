@@ -403,10 +403,75 @@
       "created_at": "2026-08-17T12:26:55.776634+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Marin_2026-08-17_12-25_comeback_8.6"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8555.0,
+      "new_price": 9735.0,
+      "price_change": 1180.0,
+      "price_change_pct": 13.793103448275861,
+      "timestamp": "2026-08-17 13:35:26.000805+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-17T13:36:27.666713+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-17_13-35_+13.8"
+    },
+    {
+      "hotel_name": "Adalya Art Side (Ex. Grand Art Side)",
+      "duration_bucket": "",
+      "old_price": 9965.0,
+      "new_price": 10049.0,
+      "price_change": 84.0,
+      "price_change_pct": 0.8429503261414952,
+      "timestamp": "2026-08-17 13:35:26.000805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T13:36:27.666776+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Adalya Art Side (Ex. Grand Art Side)_2026-08-17_13-35_zone_out_+0.8"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7813.0,
+      "new_price": 7813.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 13:35:26.000805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T13:36:27.666787+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa_2026-08-17_13-35_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 8366.0,
+      "new_price": 8366.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 13:35:26.000805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T13:36:27.666795+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-17_13-35_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7673.0,
+      "new_price": 7673.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 13:35:26.000805+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T13:36:27.666803+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum Turcja, Side_2026-08-17_13-35_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T12:25:30.759066+00:00",
+    "last_processed_run": "2026-08-17T13:35:26.000805+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -565,7 +630,7 @@
         "premium_peak": 10290.0
       },
       "Kaila Beach (ex Katya)": {
-        "history_max": 8833.0,
+        "history_max": 9271.0,
         "premium_peak": null
       },
       "Korumar Deluxe": {
@@ -697,7 +762,7 @@
         "premium_peak": null
       },
       "Grand Pasa": {
-        "history_max": 9611.0,
+        "history_max": 9885.0,
         "premium_peak": null
       },
       "Green Nature Diamond": {
@@ -1053,7 +1118,7 @@
         "premium_peak": null
       },
       "Mandarin Resort (Bodrum)": {
-        "history_max": 8320.0,
+        "history_max": 8364.0,
         "premium_peak": null
       },
       "Ma Biche Kemer by Werde Hotels": {
@@ -1185,7 +1250,7 @@
         "premium_peak": 11595.0
       },
       "Aria Claros Beach and Spa Resort": {
-        "history_max": 8800.0,
+        "history_max": 9193.0,
         "premium_peak": null
       },
       "Club Grand Aqua": {
@@ -1509,8 +1574,8 @@
         "premium_peak": 11628.0
       },
       "Crystal Waterworld Aqua Collection": {
-        "history_max": 11109.0,
-        "premium_peak": 11109.0
+        "history_max": 11587.0,
+        "premium_peak": 11587.0
       },
       "Asia Beach Resort and Spa": {
         "history_max": 9467.0,
@@ -1663,6 +1728,10 @@
       "Sural": {
         "history_max": 11212.0,
         "premium_peak": 11212.0
+      },
+      "Side Kum": {
+        "history_max": 8015.0,
+        "premium_peak": null
       }
     }
   }
