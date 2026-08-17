@@ -39,10 +39,36 @@
       "created_at": "2026-08-17T03:44:52.203422+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Mary Side (ex. Mary Palace)_2026-08-17_03-44_comeback_8.3"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9915.0,
+      "new_price": 8715.0,
+      "price_change": -1200.0,
+      "price_change_pct": -12.102874432677762,
+      "timestamp": "2026-08-17 05:29:02.548735+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T05:29:42.994607+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-17_05-29_-12.1"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 10397.0,
+      "new_price": 9237.0,
+      "price_change": -1160.0,
+      "price_change_pct": -11.157064537847456,
+      "timestamp": "2026-08-17 05:29:02.548735+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T05:29:42.994668+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-08-17_05-29_comeback_11.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T04:34:56.208153+00:00",
+    "last_processed_run": "2026-08-17T05:29:02.548735+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -1247,6 +1273,10 @@
       "Ring Beach (Kemer)": {
         "history_max": 7970.0,
         "premium_peak": null
+      },
+      "Orange Palace": {
+        "history_max": 11275.0,
+        "premium_peak": 11275.0
       }
     }
   }
