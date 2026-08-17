@@ -1,8 +1,48 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8007.0,
+      "new_price": 8007.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 03:44:00.872826+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T03:44:52.203363+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa_2026-08-17_03-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach Turcja, Kemer, Beldibi",
+      "duration_bucket": "",
+      "old_price": 7970.0,
+      "new_price": 7970.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 03:44:00.872826+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T03:44:52.203390+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach Turcja, Kemer, Beldibi_2026-08-17_03-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 10842.0,
+      "new_price": 9942.0,
+      "price_change": -900.0,
+      "price_change_pct": -8.301051466519093,
+      "timestamp": "2026-08-17 03:44:00.872826+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T03:44:52.203422+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-17_03-44_comeback_8.3"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-17T02:16:37.018457+00:00",
+    "last_processed_run": "2026-08-17T03:44:00.872826+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -221,7 +261,7 @@
         "premium_peak": 11286.0
       },
       "Fantasia De Luxe Kusadasi": {
-        "history_max": 8096.0,
+        "history_max": 8699.0,
         "premium_peak": null
       },
       "Side Aluna": {
@@ -801,8 +841,8 @@
         "premium_peak": 10580.0
       },
       "Charisma Deluxe (Kusadasi)": {
-        "history_max": 10337.0,
-        "premium_peak": 10337.0
+        "history_max": 10397.0,
+        "premium_peak": 10397.0
       },
       "Aria Resort & SPA": {
         "history_max": 10212.0,
@@ -1199,6 +1239,14 @@
       "Sunis Evren Beach & Spa": {
         "history_max": 11526.0,
         "premium_peak": 11526.0
+      },
+      "Avia Resort & Spa Turcja, Side, Colakli": {
+        "history_max": 7960.0,
+        "premium_peak": null
+      },
+      "Ring Beach (Kemer)": {
+        "history_max": 7970.0,
+        "premium_peak": null
       }
     }
   }
