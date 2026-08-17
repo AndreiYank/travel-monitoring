@@ -52,10 +52,49 @@
       "created_at": "2026-08-17T16:18:41.467216+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-17_16-18_comeback_9.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8594.0,
+      "new_price": 13934.0,
+      "price_change": 5340.0,
+      "price_change_pct": 62.1363742145683,
+      "timestamp": "2026-08-17 17:21:07.863250+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T17:21:58.105548+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-17_17-21_zone_out_+62.1"
+    },
+    {
+      "hotel_name": "Jaz Neo Naama Bay",
+      "duration_bucket": "",
+      "old_price": 9678.0,
+      "new_price": 10890.0,
+      "price_change": 1212.0,
+      "price_change_pct": 12.523248605083696,
+      "timestamp": "2026-08-17 17:21:07.863250+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T17:21:58.105599+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Neo Naama Bay_2026-08-17_17-21_zone_out_+12.5"
+    },
+    {
+      "hotel_name": "Concorde Moreen Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11173.0,
+      "new_price": 9820.0,
+      "price_change": -1353.0,
+      "price_change_pct": -12.109549807571824,
+      "timestamp": "2026-08-17 17:21:07.863250+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T17:21:58.105625+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Moreen Beach Resort & Spa_2026-08-17_17-21_comeback_12.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T16:18:00.733539+00:00",
+    "last_processed_run": "2026-08-17T17:21:07.863250+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11755.0,
@@ -202,8 +241,8 @@
         "premium_peak": 15287.0
       },
       "Jaz Neo Naama Bay": {
-        "history_max": 9678.0,
-        "premium_peak": null
+        "history_max": 10890.0,
+        "premium_peak": 10890.0
       },
       "Jaz Palmariva Beach": {
         "history_max": 11986.0,
