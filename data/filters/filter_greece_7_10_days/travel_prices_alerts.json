@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 9963.0,
+      "new_price": 10138.0,
+      "price_change": 175.0,
+      "price_change_pct": 1.7564990464719463,
+      "timestamp": "2026-08-17 06:36:47.151898+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T06:37:37.767218+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-17_06-36_zone_out_+1.8"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-17T05:29:43.710545+00:00",
+    "last_processed_run": "2026-08-17T06:36:47.151898+00:00",
     "premium_state": {
       "Akti Coast Club": {
         "history_max": 12125.0,
@@ -73,8 +87,8 @@
         "premium_peak": 12192.0
       },
       "Grand Blue Beach Grecja, kos, Kardamaina": {
-        "history_max": 11164.0,
-        "premium_peak": 11164.0
+        "history_max": 11315.0,
+        "premium_peak": 11315.0
       },
       "Filion Suites Resort Grecja, Kreta Wschodnia, Bali": {
         "history_max": 8328.0,
@@ -89,8 +103,8 @@
         "premium_peak": 14646.0
       },
       "Gaia Palace Grecja, Kos, Mastichari": {
-        "history_max": 9963.0,
-        "premium_peak": null
+        "history_max": 10138.0,
+        "premium_peak": 10138.0
       },
       "Sandy Beach Resort": {
         "history_max": 11767.0,
@@ -133,7 +147,7 @@
         "premium_peak": 12468.0
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
-        "history_max": 9228.0,
+        "history_max": 9378.0,
         "premium_peak": null
       },
       "King Minos Retreat (ex. King Minos Palace)": {
@@ -345,7 +359,7 @@
         "premium_peak": 10457.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 7833.0,
+        "history_max": 7889.0,
         "premium_peak": null
       },
       "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)": {
@@ -381,7 +395,7 @@
         "premium_peak": 15705.0
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 7800.0,
+        "history_max": 8200.0,
         "premium_peak": null
       },
       "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
