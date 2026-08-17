@@ -104,10 +104,36 @@
       "created_at": "2026-08-17T08:34:41.290749+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Queen Resort_2026-08-17_08-33_-10.7"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 8074.0,
+      "new_price": 8774.0,
+      "price_change": 700.0,
+      "price_change_pct": 8.669804310131285,
+      "timestamp": "2026-08-17 09:32:42.258927+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-17T09:33:28.239486+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-17_09-32_+8.7"
+    },
+    {
+      "hotel_name": "Serenity Alma Heights Ross Park Collection",
+      "duration_bucket": "",
+      "old_price": 9902.0,
+      "new_price": 9030.0,
+      "price_change": -872.0,
+      "price_change_pct": -8.806301757220764,
+      "timestamp": "2026-08-17 09:32:42.258927+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T09:33:28.239519+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alma Heights Ross Park Collection_2026-08-17_09-32_-8.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T08:33:52.882641+00:00",
+    "last_processed_run": "2026-08-17T09:32:42.258927+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6498.0,
@@ -178,7 +204,7 @@
         "premium_peak": 11237.0
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
-        "history_max": 8074.0,
+        "history_max": 8774.0,
         "premium_peak": null
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
@@ -514,7 +540,7 @@
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 8469.0,
+        "history_max": 8714.0,
         "premium_peak": null
       },
       "Jaz Makadi Oasis Resort": {
@@ -750,7 +776,7 @@
         "premium_peak": 10208.0
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
-        "history_max": 8712.0,
+        "history_max": 9312.0,
         "premium_peak": null
       },
       "Jasmine Palace": {
