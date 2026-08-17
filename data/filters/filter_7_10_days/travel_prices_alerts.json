@@ -130,10 +130,36 @@
       "created_at": "2026-08-17T09:33:28.239519+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Serenity Alma Heights Ross Park Collection_2026-08-17_09-32_-8.8"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 7652.0,
+      "new_price": 6886.0,
+      "price_change": -766.0,
+      "price_change_pct": -10.01045478306325,
+      "timestamp": "2026-08-17 11:18:26.329926+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T11:19:10.259891+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-08-17_11-18_-10.0"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 12052.0,
+      "new_price": 8452.0,
+      "price_change": -3600.0,
+      "price_change_pct": -29.87056090275473,
+      "timestamp": "2026-08-17 11:18:26.329926+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T11:19:10.259964+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-17_11-18_comeback_29.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T10:24:10.385801+00:00",
+    "last_processed_run": "2026-08-17T11:18:26.329926+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6498.0,
@@ -292,7 +318,7 @@
         "premium_peak": 12052.0
       },
       "Jaz Neo Naama Bay": {
-        "history_max": 8575.0,
+        "history_max": 9181.0,
         "premium_peak": null
       },
       "Jaz Oriental Resort": {

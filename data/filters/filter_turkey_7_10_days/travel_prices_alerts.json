@@ -351,10 +351,49 @@
       "created_at": "2026-08-17T10:25:29.861101+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Water Side Resort & Spa_2026-08-17_10-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9735.0,
+      "new_price": 8555.0,
+      "price_change": -1180.0,
+      "price_change_pct": -12.121212121212121,
+      "timestamp": "2026-08-17 11:19:08.712390+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T11:20:19.300163+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-17_11-19_-12.1"
+    },
+    {
+      "hotel_name": "Aventura Park",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 8157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 11:19:08.712390+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T11:20:19.300215+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aventura Park_2026-08-17_11-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 9097.0,
+      "new_price": 9097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 11:19:08.712390+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T11:20:19.300227+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)_2026-08-17_11-19_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T10:24:44.169043+00:00",
+    "last_processed_run": "2026-08-17T11:19:08.712390+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -745,7 +784,7 @@
         "premium_peak": 10844.0
       },
       "My Home Resort": {
-        "history_max": 9897.0,
+        "history_max": 9957.0,
         "premium_peak": null
       },
       "Movenpick": {
@@ -1317,8 +1356,8 @@
         "premium_peak": null
       },
       "Arcanus Trendline Resort": {
-        "history_max": 10944.0,
-        "premium_peak": 10944.0
+        "history_max": 10962.0,
+        "premium_peak": 10962.0
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
         "history_max": 8084.0,
@@ -1607,6 +1646,10 @@
       "Nova Life": {
         "history_max": 7826.0,
         "premium_peak": null
+      },
+      "Sural": {
+        "history_max": 11212.0,
+        "premium_peak": 11212.0
       }
     }
   }

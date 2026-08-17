@@ -13,10 +13,36 @@
       "created_at": "2026-08-17T02:16:36.640114+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunrise Anjum Resort_2026-08-17_02-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 8590.0,
+      "new_price": 8590.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 11:18:26.130541+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T11:19:07.811400+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-17_11-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)",
+      "duration_bucket": "",
+      "old_price": 8963.0,
+      "new_price": 8963.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 11:18:26.130541+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T11:19:07.811427+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)_2026-08-17_11-18_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T10:24:10.327296+00:00",
+    "last_processed_run": "2026-08-17T11:18:26.130541+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -608,6 +634,14 @@
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
         "history_max": 10501.0,
+        "premium_peak": null
+      },
+      "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
+        "history_max": 8590.0,
+        "premium_peak": null
+      },
+      "Hawaii Paradise Aqua Park Resort Egipt, Hurghada": {
+        "history_max": 8218.0,
         "premium_peak": null
       }
     }
