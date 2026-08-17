@@ -338,10 +338,36 @@
       "created_at": "2026-08-17T17:22:07.204845+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-17_17-21_zone_out_+20.6"
+    },
+    {
+      "hotel_name": "Jaz Sharm Dreams Resort",
+      "duration_bucket": "",
+      "old_price": 9334.0,
+      "new_price": 9334.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-17 18:25:08.363611+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-17T18:26:02.682765+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Sharm Dreams Resort_2026-08-17_18-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 12048.0,
+      "new_price": 6897.0,
+      "price_change": -5151.0,
+      "price_change_pct": -42.75398406374502,
+      "timestamp": "2026-08-17 18:25:08.363611+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T18:26:02.682807+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-17_18-25_comeback_42.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T17:21:07.884431+00:00",
+    "last_processed_run": "2026-08-17T18:25:08.363611+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -388,7 +414,7 @@
         "premium_peak": null
       },
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
-        "history_max": 9706.0,
+        "history_max": 9755.0,
         "premium_peak": null
       },
       "Pickalbatros Villaggio Resort Portofino": {
@@ -424,8 +450,8 @@
         "premium_peak": null
       },
       "Reef Oasis Blue Bay Resort": {
-        "history_max": 10972.0,
-        "premium_peak": 10972.0
+        "history_max": 11275.0,
+        "premium_peak": 11275.0
       },
       "Reef Oasis Suakin Resort": {
         "history_max": 9857.0,
@@ -708,7 +734,7 @@
         "premium_peak": 12082.0
       },
       "V Hotel Sharm": {
-        "history_max": 9028.0,
+        "history_max": 9252.0,
         "premium_peak": null
       },
       "Utopia Blue Resort": {
@@ -756,7 +782,7 @@
         "premium_peak": 10058.0
       },
       "Stella Makadi Beach & Spa": {
-        "history_max": 9486.0,
+        "history_max": 9619.0,
         "premium_peak": null
       },
       "Stella Di Mare Beach & Spa": {
@@ -1164,7 +1190,7 @@
         "premium_peak": null
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
-        "history_max": 6863.0,
+        "history_max": 6940.0,
         "premium_peak": null
       },
       "Amarina Abu Soma Resort": {
