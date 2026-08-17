@@ -1,8 +1,48 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 11037.0,
+      "new_price": 9837.0,
+      "price_change": -1200.0,
+      "price_change_pct": -10.872519706441967,
+      "timestamp": "2026-08-17 12:24:49.271258+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T12:25:27.335733+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-08-17_12-24_comeback_10.9"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 11013.0,
+      "new_price": 9960.0,
+      "price_change": -1053.0,
+      "price_change_pct": -9.561427403977119,
+      "timestamp": "2026-08-17 12:24:49.271258+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T12:25:27.335762+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-17_12-24_comeback_9.6"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 16559.0,
+      "new_price": 8894.0,
+      "price_change": -7665.0,
+      "price_change_pct": -46.28902711516396,
+      "timestamp": "2026-08-17 12:24:49.271258+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T12:25:27.335776+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-17_12-24_comeback_46.3"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-17T11:18:26.220249+00:00",
+    "last_processed_run": "2026-08-17T12:24:49.271258+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11755.0,
@@ -365,8 +405,8 @@
         "premium_peak": 17788.0
       },
       "Sea Star Beau Rivage": {
-        "history_max": 10797.0,
-        "premium_peak": 10797.0
+        "history_max": 13077.0,
+        "premium_peak": 13077.0
       },
       "Sentido Naga Bay": {
         "history_max": 14155.0,
