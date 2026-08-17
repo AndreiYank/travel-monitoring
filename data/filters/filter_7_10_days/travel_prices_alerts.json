@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 9217.0,
+      "new_price": 8197.0,
+      "price_change": -1020.0,
+      "price_change_pct": -11.06650754041445,
+      "timestamp": "2026-08-17 04:34:09.652978+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T04:34:55.691611+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-17_04-34_-11.1"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-17T03:43:26.521104+00:00",
+    "last_processed_run": "2026-08-17T04:34:09.652978+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6498.0,
@@ -545,7 +559,7 @@
         "premium_peak": null
       },
       "Seven Seas Jolie Bay": {
-        "history_max": 8800.0,
+        "history_max": 8888.0,
         "premium_peak": null
       },
       "Sirena Beach Resort & Spa": {
@@ -821,7 +835,7 @@
         "premium_peak": 16797.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
-        "history_max": 8617.0,
+        "history_max": 8977.0,
         "premium_peak": null
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
