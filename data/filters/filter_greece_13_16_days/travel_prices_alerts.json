@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Olimpion Melathron Grecja, Riwiera Olimpijska, Platamonas",
+      "duration_bucket": "",
+      "old_price": 12170.0,
+      "new_price": 9448.0,
+      "price_change": -2722.0,
+      "price_change_pct": -22.36647493837305,
+      "timestamp": "2026-08-17 07:47:47.048107+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-17T07:48:46.126828+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Olimpion Melathron Grecja, Riwiera Olimpijska, Platamonas_2026-08-17_07-47_comeback_22.4"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-17T06:36:49.414157+00:00",
+    "last_processed_run": "2026-08-17T07:47:47.048107+00:00",
     "premium_state": {
       "Acharavi Mare by Wyndham (ex. Beis Beach)": {
         "history_max": 17457.0,
@@ -41,8 +55,8 @@
         "premium_peak": 14316.0
       },
       "Filion Suites Resort": {
-        "history_max": 13683.0,
-        "premium_peak": 13683.0
+        "history_max": 13784.0,
+        "premium_peak": 13784.0
       },
       "Gemini (Messonghi)": {
         "history_max": 16357.0,
@@ -165,8 +179,8 @@
         "premium_peak": 12974.0
       },
       "Smy Kos Beach & Splash (ex. Princess of Kos)": {
-        "history_max": 16457.0,
-        "premium_peak": 16457.0
+        "history_max": 16657.0,
+        "premium_peak": 16657.0
       },
       "Evripides Village": {
         "history_max": 17417.0,
@@ -293,16 +307,16 @@
         "premium_peak": 11546.0
       },
       "Hydramis Palace Beach Resort": {
-        "history_max": 18897.0,
-        "premium_peak": 18897.0
+        "history_max": 19077.0,
+        "premium_peak": 19077.0
       },
       "Zoe": {
         "history_max": 17157.0,
         "premium_peak": 17157.0
       },
       "Ilyssion Grecja, Rodos, Pefki": {
-        "history_max": 10604.0,
-        "premium_peak": 10604.0
+        "history_max": 11220.0,
+        "premium_peak": 11220.0
       },
       "Ionian Sea & Aquapark": {
         "history_max": 13202.0,
@@ -441,8 +455,8 @@
         "premium_peak": 19728.0
       },
       "Aristoteles Holiday Resort & SPA": {
-        "history_max": 13679.0,
-        "premium_peak": 13679.0
+        "history_max": 13785.0,
+        "premium_peak": 13785.0
       },
       "Argile Resort & SPA (ex. Cephalonia Palace) Grecja, Kefalonia, Kounopetra": {
         "history_max": 11891.0,
@@ -513,8 +527,8 @@
         "premium_peak": 17357.0
       },
       "Almyrida Village & Water Park (ex. Langley Resort Almirida Bay)": {
-        "history_max": 12757.0,
-        "premium_peak": 12757.0
+        "history_max": 12957.0,
+        "premium_peak": 12957.0
       },
       "Amour Holiday Resort": {
         "history_max": 13157.0,
@@ -621,8 +635,8 @@
         "premium_peak": 17225.0
       },
       "Cretan Seaside Boutique": {
-        "history_max": 17957.0,
-        "premium_peak": 17957.0
+        "history_max": 18087.0,
+        "premium_peak": 18087.0
       },
       "Tsilivi Beach": {
         "history_max": 17474.0,
@@ -655,6 +669,10 @@
       "Olive Garden Grecja, Rodos, Lardos": {
         "history_max": 12641.0,
         "premium_peak": 12641.0
+      },
+      "Out of the Blue Resort": {
+        "history_max": 19457.0,
+        "premium_peak": 19457.0
       }
     }
   }
