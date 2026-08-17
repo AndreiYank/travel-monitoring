@@ -962,10 +962,36 @@
       "created_at": "2026-08-17T18:27:21.065899+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Green Garden Resort_2026-08-17_18-25_comeback_9.1"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9315.0,
+      "new_price": 8275.0,
+      "price_change": -1040.0,
+      "price_change_pct": -11.16478797638218,
+      "timestamp": "2026-08-17 19:24:08.719429+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T19:25:19.851352+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-17_19-24_-11.2"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9175.0,
+      "new_price": 8366.0,
+      "price_change": -809.0,
+      "price_change_pct": -8.817438692098092,
+      "timestamp": "2026-08-17 19:24:08.719429+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-17T19:25:19.851406+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-17_19-24_-8.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T18:25:54.690089+00:00",
+    "last_processed_run": "2026-08-17T19:24:08.719429+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -1808,8 +1834,8 @@
         "premium_peak": null
       },
       "Venosa Beach Resort": {
-        "history_max": 11013.0,
-        "premium_peak": 11013.0
+        "history_max": 11090.0,
+        "premium_peak": 11090.0
       },
       "Asteria Bloom Side": {
         "history_max": 8496.0,
@@ -2250,6 +2276,10 @@
       "Green Garden Suite": {
         "history_max": 11667.0,
         "premium_peak": 11667.0
+      },
+      "Grand Cettia": {
+        "history_max": 10109.0,
+        "premium_peak": 10109.0
       }
     }
   }
