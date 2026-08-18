@@ -117,10 +117,36 @@
       "created_at": "2026-08-17T20:18:32.053551+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Neo Naama Bay_2026-08-17_20-17_comeback_11.1"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8594.0,
+      "new_price": 15060.0,
+      "price_change": 6466.0,
+      "price_change_pct": 75.23853851524319,
+      "timestamp": "2026-08-18 08:26:22.155464+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:27:14.855470+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_08-26_zone_out_+75.2"
+    },
+    {
+      "hotel_name": "Parrotel Lagoon Resort",
+      "duration_bucket": "",
+      "old_price": 10057.0,
+      "new_price": 8057.0,
+      "price_change": -2000.0,
+      "price_change_pct": -19.886646117132344,
+      "timestamp": "2026-08-18 08:26:22.155464+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T08:27:14.855529+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort_2026-08-18_08-26_comeback_19.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T07:32:07.434240+00:00",
+    "last_processed_run": "2026-08-18T08:26:22.155464+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11755.0,
@@ -183,8 +209,8 @@
         "premium_peak": 15242.0
       },
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
-        "history_max": 13673.0,
-        "premium_peak": 13673.0
+        "history_max": 14235.0,
+        "premium_peak": 14235.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
         "history_max": 12973.0,
@@ -307,8 +333,8 @@
         "premium_peak": 13211.0
       },
       "Movenpick Resort & Spa El Gouna": {
-        "history_max": 15358.0,
-        "premium_peak": 15358.0
+        "history_max": 16637.0,
+        "premium_peak": 16637.0
       },
       "Movenpick Resort El Quseir": {
         "history_max": 18877.0,
@@ -603,8 +629,8 @@
         "premium_peak": 10145.0
       },
       "Amphoras Beach": {
-        "history_max": 17657.0,
-        "premium_peak": 17657.0
+        "history_max": 18657.0,
+        "premium_peak": 18657.0
       },
       "Ecotel Dahab Bay View Resort": {
         "history_max": 9229.0,

@@ -611,10 +611,36 @@
       "created_at": "2026-08-18T07:32:31.834755+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Titanic Royal_2026-08-18_07-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9172.0,
+      "new_price": 10523.0,
+      "price_change": 1351.0,
+      "price_change_pct": 14.729611862189271,
+      "timestamp": "2026-08-18 08:26:21.991173+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T08:27:17.530573+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_08-26_+14.7"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7153.0,
+      "new_price": 7794.0,
+      "price_change": 641.0,
+      "price_change_pct": 8.961274989514889,
+      "timestamp": "2026-08-18 08:26:21.991173+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T08:27:17.530606+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-08-18_08-26_+9.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T07:32:07.315578+00:00",
+    "last_processed_run": "2026-08-18T08:26:21.991173+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -901,7 +927,7 @@
         "premium_peak": null
       },
       "Rewaya Majestic Resort Egipt, Hurghada": {
-        "history_max": 7453.0,
+        "history_max": 7794.0,
         "premium_peak": null
       },
       "Sirena Beach Resort & Spa": {

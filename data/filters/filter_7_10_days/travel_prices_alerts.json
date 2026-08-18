@@ -871,10 +871,49 @@
       "created_at": "2026-08-18T07:32:54.559704+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Tropitel Sahl Hasheesh_2026-08-18_07-32_+8.2"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 8197.0,
+      "new_price": 9217.0,
+      "price_change": 1020.0,
+      "price_change_pct": 12.443576918384775,
+      "timestamp": "2026-08-18 08:26:21.995258+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T08:27:15.968782+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-18_08-26_+12.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 6897.0,
+      "new_price": 11494.0,
+      "price_change": 4597.0,
+      "price_change_pct": 66.6521676091054,
+      "timestamp": "2026-08-18 08:26:21.995258+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:27:15.968828+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_08-26_zone_out_+66.7"
+    },
+    {
+      "hotel_name": "Movenpick Waterpark Resort & Spa Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8271.0,
+      "new_price": 8271.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-18 08:26:21.995258+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:27:15.968841+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Waterpark Resort & Spa Soma Bay_2026-08-18_08-26_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T07:32:07.281565+00:00",
+    "last_processed_run": "2026-08-18T08:26:21.995258+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1617,7 +1656,7 @@
         "premium_peak": null
       },
       "Amphoras Beach": {
-        "history_max": 9257.0,
+        "history_max": 9361.0,
         "premium_peak": null
       },
       "Gorgonia Beach": {

@@ -1534,10 +1534,62 @@
       "created_at": "2026-08-18T07:33:55.121780+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Turunc_2026-08-18_07-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 8487.0,
+      "new_price": 8487.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-18 08:27:16.893950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:28:29.821207+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-08-18_08-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ramada Plaza Antalya",
+      "duration_bucket": "",
+      "old_price": 9689.0,
+      "new_price": 10339.0,
+      "price_change": 650.0,
+      "price_change_pct": 6.708638662400661,
+      "timestamp": "2026-08-18 08:27:16.893950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:28:29.821243+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada Plaza Antalya_2026-08-18_08-27_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 7884.0,
+      "new_price": 7884.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-18 08:27:16.893950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:28:29.821255+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-08-18_08-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7673.0,
+      "new_price": 7673.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-18 08:27:16.893950+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T08:28:29.821263+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum Turcja, Side_2026-08-18_08-27_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T07:32:44.333626+00:00",
+    "last_processed_run": "2026-08-18T08:27:16.893950+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -2052,8 +2104,8 @@
         "premium_peak": null
       },
       "Ramada Plaza Antalya": {
-        "history_max": 9912.0,
-        "premium_peak": null
+        "history_max": 10339.0,
+        "premium_peak": 10339.0
       },
       "Meryan": {
         "history_max": 9765.0,
@@ -2112,7 +2164,7 @@
         "premium_peak": 11159.0
       },
       "Saphir Hotel & Villas": {
-        "history_max": 9910.0,
+        "history_max": 9941.0,
         "premium_peak": null
       },
       "Lalila Blue Suites": {
