@@ -156,10 +156,36 @@
       "created_at": "2026-08-18T11:22:17.491838+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-18_11-21_-10.6"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 7225.0,
+      "new_price": 8084.0,
+      "price_change": 859.0,
+      "price_change_pct": 11.889273356401384,
+      "timestamp": "2026-08-18 12:27:49.565036+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T12:28:43.825276+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-18_12-27_+11.9"
+    },
+    {
+      "hotel_name": "Ibiscus Corfu Grecja, Korfu, Roda",
+      "duration_bucket": "",
+      "old_price": 9832.0,
+      "new_price": 11148.0,
+      "price_change": 1316.0,
+      "price_change_pct": 13.38486574450773,
+      "timestamp": "2026-08-18 12:27:49.565036+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T12:28:43.825299+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ibiscus Corfu Grecja, Korfu, Roda_2026-08-18_12-27_zone_out_+13.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T11:21:22.585661+00:00",
+    "last_processed_run": "2026-08-18T12:27:49.565036+00:00",
     "premium_state": {
       "Akti Coast Club": {
         "history_max": 12125.0,
@@ -194,8 +220,8 @@
         "premium_peak": 13012.0
       },
       "Ibiscus Corfu Grecja, Korfu, Roda": {
-        "history_max": 11098.0,
-        "premium_peak": 11098.0
+        "history_max": 11148.0,
+        "premium_peak": 11148.0
       },
       "Iberostar Selection Creta Marine": {
         "history_max": 15594.0,
@@ -242,8 +268,8 @@
         "premium_peak": 12601.0
       },
       "Fodele Beach & Water Park Holiday Resort": {
-        "history_max": 14646.0,
-        "premium_peak": 14646.0
+        "history_max": 14683.0,
+        "premium_peak": 14683.0
       },
       "Gaia Palace Grecja, Kos, Mastichari": {
         "history_max": 10138.0,
@@ -708,6 +734,10 @@
       "Lindian Village": {
         "history_max": 19667.0,
         "premium_peak": 19667.0
+      },
+      "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
+        "history_max": 11073.0,
+        "premium_peak": 11073.0
       }
     }
   }

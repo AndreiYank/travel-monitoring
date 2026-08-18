@@ -949,10 +949,62 @@
       "created_at": "2026-08-18T11:20:16.695261+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-18_11-19_comeback_42.8"
+    },
+    {
+      "hotel_name": "Serenity Alma Heights Ross Park Collection",
+      "duration_bucket": "",
+      "old_price": 9602.0,
+      "new_price": 8430.0,
+      "price_change": -1172.0,
+      "price_change_pct": -12.205790460320767,
+      "timestamp": "2026-08-18 12:25:53.397113+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-18T12:26:44.850911+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alma Heights Ross Park Collection_2026-08-18_12-25_-12.2"
+    },
+    {
+      "hotel_name": "Park Regency Resort (ex. Hyatt)",
+      "duration_bucket": "",
+      "old_price": 9984.0,
+      "new_price": 10059.0,
+      "price_change": 75.0,
+      "price_change_pct": 0.7512019230769231,
+      "timestamp": "2026-08-18 12:25:53.397113+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T12:26:44.850962+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Park Regency Resort (ex. Hyatt)_2026-08-18_12-25_zone_out_+0.8"
+    },
+    {
+      "hotel_name": "Invidia Coral Beach Tiran",
+      "duration_bucket": "",
+      "old_price": 10208.0,
+      "new_price": 8946.0,
+      "price_change": -1262.0,
+      "price_change_pct": -12.362852664576803,
+      "timestamp": "2026-08-18 12:25:53.397113+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T12:26:44.850984+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Invidia Coral Beach Tiran_2026-08-18_12-25_comeback_12.4"
+    },
+    {
+      "hotel_name": "Jasmine Palace",
+      "duration_bucket": "",
+      "old_price": 10467.0,
+      "new_price": 9457.0,
+      "price_change": -1010.0,
+      "price_change_pct": -9.649374223750835,
+      "timestamp": "2026-08-18 12:25:53.397113+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T12:26:44.850993+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jasmine Palace_2026-08-18_12-25_comeback_9.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T11:19:13.259068+00:00",
+    "last_processed_run": "2026-08-18T12:25:53.397113+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1127,7 +1179,7 @@
         "premium_peak": 12327.0
       },
       "Jaz Sharm Dreams Resort": {
-        "history_max": 9334.0,
+        "history_max": 9710.0,
         "premium_peak": null
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
@@ -1695,7 +1747,7 @@
         "premium_peak": null
       },
       "Amphoras Beach": {
-        "history_max": 9361.0,
+        "history_max": 9521.0,
         "premium_peak": null
       },
       "Gorgonia Beach": {
