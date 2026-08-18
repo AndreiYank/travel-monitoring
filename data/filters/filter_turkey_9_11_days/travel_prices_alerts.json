@@ -546,10 +546,23 @@
       "created_at": "2026-08-18T17:23:35.510666+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Maril Resort Beach & Spa_2026-08-18_17-22_zone_out_+36.5"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 8874.0,
+      "new_price": 10028.0,
+      "price_change": 1154.0,
+      "price_change_pct": 13.00428217263917,
+      "timestamp": "2026-08-18 18:25:33.445046+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T18:26:54.439484+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-18_18-25_zone_out_+13.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T17:22:01.634187+00:00",
+    "last_processed_run": "2026-08-18T18:25:33.445046+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11437.0,
@@ -1620,8 +1633,8 @@
         "premium_peak": 11052.0
       },
       "Xoria Deluxe": {
-        "history_max": 9866.0,
-        "premium_peak": null
+        "history_max": 10028.0,
+        "premium_peak": 10028.0
       },
       "Sueno Beach Side": {
         "history_max": 12993.0,
