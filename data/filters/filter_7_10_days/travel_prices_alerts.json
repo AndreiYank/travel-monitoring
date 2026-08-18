@@ -1001,10 +1001,36 @@
       "created_at": "2026-08-18T12:26:44.850993+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jasmine Palace_2026-08-18_12-25_comeback_9.6"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 6586.0,
+      "new_price": 7920.0,
+      "price_change": 1334.0,
+      "price_change_pct": 20.255086547221378,
+      "timestamp": "2026-08-18 13:38:35.699422+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T13:40:16.423349+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-08-18_13-38_+20.3"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 6897.0,
+      "new_price": 11142.0,
+      "price_change": 4245.0,
+      "price_change_pct": 61.5484993475424,
+      "timestamp": "2026-08-18 13:38:35.699422+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T13:40:16.423410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_13-38_zone_out_+61.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T12:25:53.397113+00:00",
+    "last_processed_run": "2026-08-18T13:38:35.699422+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1039,7 +1065,7 @@
         "premium_peak": 10153.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 9637.0,
+        "history_max": 9733.0,
         "premium_peak": null
       },
       "Pickalbatros Palace Resort": {
@@ -1075,7 +1101,7 @@
         "premium_peak": 11237.0
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
-        "history_max": 8774.0,
+        "history_max": 8932.0,
         "premium_peak": null
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
@@ -1419,7 +1445,7 @@
         "premium_peak": 10058.0
       },
       "Stella Makadi Beach & Spa": {
-        "history_max": 9619.0,
+        "history_max": 9753.0,
         "premium_peak": null
       },
       "Stella Di Mare Beach & Spa": {
@@ -1843,8 +1869,8 @@
         "premium_peak": 13352.0
       },
       "Maritim Jolie Ville Resort and Casino": {
-        "history_max": 11052.0,
-        "premium_peak": 11052.0
+        "history_max": 11787.0,
+        "premium_peak": 11787.0
       },
       "Aurora Oriental Resort": {
         "history_max": 9191.0,
