@@ -754,10 +754,49 @@
       "created_at": "2026-08-17T23:16:50.401847+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rewaya Luxury Resort_2026-08-17_23-15_+15.7"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 7920.0,
+      "new_price": 6586.0,
+      "price_change": -1334.0,
+      "price_change_pct": -16.843434343434343,
+      "timestamp": "2026-08-18 00:40:22.010597+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-18T00:41:00.137625+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-08-18_00-40_-16.8"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 12048.0,
+      "new_price": 6897.0,
+      "price_change": -5151.0,
+      "price_change_pct": -42.75398406374502,
+      "timestamp": "2026-08-18 00:40:22.010597+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T00:41:00.137675+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_00-40_comeback_42.8"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 11887.0,
+      "new_price": 9857.0,
+      "price_change": -2030.0,
+      "price_change_pct": -17.077479599562547,
+      "timestamp": "2026-08-18 00:40:22.010597+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T00:41:00.137688+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-18_00-40_comeback_17.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-17T23:15:56.946175+00:00",
+    "last_processed_run": "2026-08-18T00:40:22.010597+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1610,6 +1649,10 @@
       "Aldiana Club Naga Bay": {
         "history_max": 11237.0,
         "premium_peak": 11237.0
+      },
+      "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
+        "history_max": 10300.0,
+        "premium_peak": 10300.0
       }
     }
   }
