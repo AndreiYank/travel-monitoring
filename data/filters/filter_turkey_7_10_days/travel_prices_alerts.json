@@ -1586,10 +1586,62 @@
       "created_at": "2026-08-18T08:28:29.821263+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Kum Turcja, Side_2026-08-18_08-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 6575.0,
+      "new_price": 7115.0,
+      "price_change": 540.0,
+      "price_change_pct": 8.212927756653993,
+      "timestamp": "2026-08-18 09:25:49.295350+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T09:27:23.303200+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi_2026-08-18_09-25_+8.2"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9361.0,
+      "new_price": 10701.0,
+      "price_change": 1340.0,
+      "price_change_pct": 14.314709966883878,
+      "timestamp": "2026-08-18 09:25:49.295350+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T09:27:23.303256+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-18_09-25_zone_out_+14.3"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10319.0,
+      "price_change": 522.0,
+      "price_change_pct": 5.328161682147596,
+      "timestamp": "2026-08-18 09:25:49.295350+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T09:27:23.303269+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-18_09-25_zone_out_+5.3"
+    },
+    {
+      "hotel_name": "Seashell Vega (ex. Side Crown Sunshine)",
+      "duration_bucket": "",
+      "old_price": 9697.0,
+      "new_price": 9697.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-18 09:25:49.295350+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T09:27:23.303278+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seashell Vega (ex. Side Crown Sunshine)_2026-08-18_09-25_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T08:27:16.893950+00:00",
+    "last_processed_run": "2026-08-18T09:25:49.295350+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -1704,7 +1756,7 @@
         "premium_peak": null
       },
       "Kustur Club Holiday Village": {
-        "history_max": 9846.0,
+        "history_max": 9999.0,
         "premium_peak": null
       },
       "Seaden Sea World Resort & Spa": {
@@ -2016,7 +2068,7 @@
         "premium_peak": null
       },
       "PrimaSol Telatiye Resort": {
-        "history_max": 8557.0,
+        "history_max": 9157.0,
         "premium_peak": null
       },
       "Orange County (Kemer)": {
@@ -2128,12 +2180,12 @@
         "premium_peak": 10287.0
       },
       "Long Beach (Avsallar)": {
-        "history_max": 11510.0,
-        "premium_peak": 11510.0
+        "history_max": 11693.0,
+        "premium_peak": 11693.0
       },
       "Royal Garden Beach (ex Royal Garden Select & Suite)": {
-        "history_max": 10975.0,
-        "premium_peak": 10975.0
+        "history_max": 11599.0,
+        "premium_peak": 11599.0
       },
       "Linda Sunny Beach": {
         "history_max": 8497.0,
@@ -2288,8 +2340,8 @@
         "premium_peak": 11557.0
       },
       "Calido Maris": {
-        "history_max": 9975.0,
-        "premium_peak": null
+        "history_max": 10701.0,
+        "premium_peak": 10701.0
       },
       "Armas Gul Beach (ex Otium Gul Beach Resort) Turcja, Kemer": {
         "history_max": 7947.0,
@@ -2600,8 +2652,8 @@
         "premium_peak": null
       },
       "Sueno Beach Side": {
-        "history_max": 10836.0,
-        "premium_peak": 10836.0
+        "history_max": 10837.0,
+        "premium_peak": 10837.0
       },
       "Delphin Botanik (Alanya)": {
         "history_max": 11660.0,
@@ -2832,7 +2884,7 @@
         "premium_peak": null
       },
       "Royal Asarlik Beach Turcja, Bodrum, Gumbet": {
-        "history_max": 7511.0,
+        "history_max": 7907.0,
         "premium_peak": null
       },
       "Side Star Resort (ex Club)": {
