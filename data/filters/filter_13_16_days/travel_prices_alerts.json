@@ -169,10 +169,36 @@
       "created_at": "2026-08-18T10:22:00.895056+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Lagoon Resort_2026-08-18_10-21_zone_out_+78.7"
+    },
+    {
+      "hotel_name": "Royal Brayka Beach Resort (ex Zee Brayka)",
+      "duration_bucket": "",
+      "old_price": 11457.0,
+      "new_price": 9857.0,
+      "price_change": -1600.0,
+      "price_change_pct": -13.965261412237059,
+      "timestamp": "2026-08-18 11:19:13.339601+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T11:19:58.205906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-08-18_11-19_comeback_14.0"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 16559.0,
+      "new_price": 8594.0,
+      "price_change": -7965.0,
+      "price_change_pct": -48.10073072045413,
+      "timestamp": "2026-08-18 11:19:13.339601+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T11:19:58.205935+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_11-19_comeback_48.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T10:21:18.334386+00:00",
+    "last_processed_run": "2026-08-18T11:19:13.339601+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11755.0,
@@ -275,8 +301,8 @@
         "premium_peak": 14847.0
       },
       "Reef Oasis Suakin Resort": {
-        "history_max": 14657.0,
-        "premium_peak": 14657.0
+        "history_max": 17057.0,
+        "premium_peak": 17057.0
       },
       "Novotel Sharm Palm": {
         "history_max": 14270.0,

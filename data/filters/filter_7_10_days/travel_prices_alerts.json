@@ -923,10 +923,36 @@
       "created_at": "2026-08-18T09:25:47.049587+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Concorde Moreen Beach Resort & Spa_2026-08-18_09-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Serenity Alma Heights Ross Park Collection",
+      "duration_bucket": "",
+      "old_price": 8430.0,
+      "new_price": 9602.0,
+      "price_change": 1172.0,
+      "price_change_pct": 13.902728351126928,
+      "timestamp": "2026-08-18 11:19:13.259068+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T11:20:16.695179+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alma Heights Ross Park Collection_2026-08-18_11-19_+13.9"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 12048.0,
+      "new_price": 6897.0,
+      "price_change": -5151.0,
+      "price_change_pct": -42.75398406374502,
+      "timestamp": "2026-08-18 11:19:13.259068+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-18T11:20:16.695261+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_11-19_comeback_42.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T10:21:18.353338+00:00",
+    "last_processed_run": "2026-08-18T11:19:13.259068+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1517,7 +1543,7 @@
         "premium_peak": null
       },
       "Calimera Blend Paradise Resort": {
-        "history_max": 8163.0,
+        "history_max": 8244.0,
         "premium_peak": null
       },
       "Cooee Prima Life Makadi Bay": {

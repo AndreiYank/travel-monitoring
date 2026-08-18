@@ -637,10 +637,36 @@
       "created_at": "2026-08-18T08:27:17.530606+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-08-18_08-26_+9.0"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 10523.0,
+      "new_price": 9172.0,
+      "price_change": -1351.0,
+      "price_change_pct": -12.838544141404542,
+      "timestamp": "2026-08-18 11:19:13.441464+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-18T11:19:59.640906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-18_11-19_-12.8"
+    },
+    {
+      "hotel_name": "Novotel Sharm Palm",
+      "duration_bucket": "",
+      "old_price": 10904.0,
+      "new_price": 10904.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-18 11:19:13.441464+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T11:19:59.640965+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Sharm Palm_2026-08-18_11-19_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T10:21:18.490711+00:00",
+    "last_processed_run": "2026-08-18T11:19:13.441464+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -807,7 +833,7 @@
         "premium_peak": null
       },
       "Mercure Dahab Bay View Egipt, Dahab": {
-        "history_max": 7803.0,
+        "history_max": 8247.0,
         "premium_peak": null
       },
       "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada": {
