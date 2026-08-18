@@ -806,10 +806,36 @@
       "created_at": "2026-08-18T03:40:17.511998+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Aquamarine Resort_2026-08-18_03-39_zone_out_+3.8"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 7779.0,
+      "new_price": 9039.0,
+      "price_change": 1260.0,
+      "price_change_pct": 16.197454685692247,
+      "timestamp": "2026-08-18 04:28:10.186808+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T04:28:59.905028+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-18_04-28_+16.2"
+    },
+    {
+      "hotel_name": "Novotel Sharm Palm",
+      "duration_bucket": "",
+      "old_price": 9859.0,
+      "new_price": 10054.0,
+      "price_change": 195.0,
+      "price_change_pct": 1.9778882239578048,
+      "timestamp": "2026-08-18 04:28:10.186808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T04:28:59.905070+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Sharm Palm_2026-08-18_04-28_zone_out_+2.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T03:39:22.771135+00:00",
+    "last_processed_run": "2026-08-18T04:28:10.186808+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1032,8 +1058,8 @@
         "premium_peak": null
       },
       "Novotel Sharm Palm": {
-        "history_max": 9859.0,
-        "premium_peak": null
+        "history_max": 10054.0,
+        "premium_peak": 10054.0
       },
       "Novotel Sharm Beach": {
         "history_max": 10054.0,
@@ -1500,7 +1526,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Aquamarine": {
-        "history_max": 9246.0,
+        "history_max": 9691.0,
         "premium_peak": null
       },
       "Charmillion Club Resort": {
@@ -1508,11 +1534,11 @@
         "premium_peak": null
       },
       "Domina Coral Bay Bella Vista": {
-        "history_max": 8433.0,
+        "history_max": 8932.0,
         "premium_peak": null
       },
       "Domina Coral Bay Harem": {
-        "history_max": 8614.0,
+        "history_max": 9059.0,
         "premium_peak": null
       },
       "Club Magic Life Kalawy": {
@@ -1532,7 +1558,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Sultan": {
-        "history_max": 9120.0,
+        "history_max": 9565.0,
         "premium_peak": null
       },
       "Cleopatra Luxury Resort": {
