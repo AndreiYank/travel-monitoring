@@ -1,8 +1,35 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 9119.0,
+      "new_price": 8179.0,
+      "price_change": -940.0,
+      "price_change_pct": -10.30814782322623,
+      "timestamp": "2026-08-18 16:23:23.675869+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-18T16:25:13.538026+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-18_16-23_-10.3"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 9695.0,
+      "new_price": 8755.0,
+      "price_change": -940.0,
+      "price_change_pct": -9.695719443011862,
+      "timestamp": "2026-08-18 16:23:23.675869+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-18T16:25:13.538051+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-18_16-23_-9.7"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-18T15:25:04.998322+00:00",
+    "last_processed_run": "2026-08-18T16:23:23.675869+00:00",
     "premium_state": {
       "Adalya Art Side (Ex. Grand Art Side)": {
         "history_max": 17466.0,
@@ -1087,6 +1114,10 @@
       "Lycus Beach (ex. Lti) Turcja, Alanya, Okurcalar": {
         "history_max": 12919.0,
         "premium_peak": 12919.0
+      },
+      "Rox Royal (ex. Grand Haber)": {
+        "history_max": 13077.0,
+        "premium_peak": 13077.0
       }
     }
   }

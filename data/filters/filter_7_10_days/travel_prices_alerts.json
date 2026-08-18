@@ -1079,10 +1079,36 @@
       "created_at": "2026-08-18T15:25:04.086372+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Reef Oasis Suakin Resort_2026-08-18_15-23_zone_out_+21.6"
+    },
+    {
+      "hotel_name": "Serenity Alma Heights Ross Park Collection",
+      "duration_bucket": "",
+      "old_price": 8430.0,
+      "new_price": 9602.0,
+      "price_change": 1172.0,
+      "price_change_pct": 13.902728351126928,
+      "timestamp": "2026-08-18 16:22:26.724089+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-18T16:23:22.259228+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alma Heights Ross Park Collection_2026-08-18_16-22_+13.9"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 9479.0,
+      "new_price": 10026.0,
+      "price_change": 547.0,
+      "price_change_pct": 5.770650912543517,
+      "timestamp": "2026-08-18 16:22:26.724089+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-18T16:23:22.259284+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-08-18_16-22_zone_out_+5.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T15:23:49.987397+00:00",
+    "last_processed_run": "2026-08-18T16:22:26.724089+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -1221,7 +1247,7 @@
         "premium_peak": null
       },
       "Parrotel Beach Resort (ex. Radisson Blu)": {
-        "history_max": 7492.0,
+        "history_max": 7698.0,
         "premium_peak": null
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
@@ -1249,7 +1275,7 @@
         "premium_peak": 13398.0
       },
       "Jaz Palmariva Beach": {
-        "history_max": 8613.0,
+        "history_max": 8654.0,
         "premium_peak": null
       },
       "Jaz Royal Palmariva": {
@@ -1409,16 +1435,16 @@
         "premium_peak": 11048.0
       },
       "Sunrise Select Garden Beach Resort & Spa": {
-        "history_max": 11348.0,
-        "premium_peak": 11348.0
+        "history_max": 12031.0,
+        "premium_peak": 12031.0
       },
       "Sunrise Tucana Resort": {
         "history_max": 13163.0,
         "premium_peak": 13163.0
       },
       "Sunrise White Hills Resort": {
-        "history_max": 13987.0,
-        "premium_peak": 13987.0
+        "history_max": 14467.0,
+        "premium_peak": 14467.0
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)": {
         "history_max": 9446.0,
@@ -1565,8 +1591,8 @@
         "premium_peak": null
       },
       "Serenity Sky Arc": {
-        "history_max": 10418.0,
-        "premium_peak": 10418.0
+        "history_max": 10728.0,
+        "premium_peak": 10728.0
       },
       "Serry Beach Resort": {
         "history_max": 12987.0,
@@ -1873,7 +1899,7 @@
         "premium_peak": null
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 9521.0,
+        "history_max": 9910.0,
         "premium_peak": null
       },
       "Jaz Elite Riviera": {
@@ -1939,6 +1965,10 @@
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
         "history_max": 10300.0,
         "premium_peak": 10300.0
+      },
+      "Sakhra & Spa by Jaz": {
+        "history_max": 14593.0,
+        "premium_peak": 14593.0
       }
     }
   }
