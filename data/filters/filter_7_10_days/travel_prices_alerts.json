@@ -1339,10 +1339,36 @@
       "created_at": "2026-08-19T08:27:15.894573+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-19_08-26_comeback_31.4"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9679.0,
+      "new_price": 9679.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 09:25:36.115004+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T09:26:50.715181+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-19_09-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Continental (ex Movenpick Resort)",
+      "duration_bucket": "",
+      "old_price": 10661.0,
+      "new_price": 9702.0,
+      "price_change": -959.0,
+      "price_change_pct": -8.995403808273144,
+      "timestamp": "2026-08-19 09:25:36.115004+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-19T09:26:50.715224+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Continental (ex Movenpick Resort)_2026-08-19_09-25_comeback_9.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-19T08:26:25.270829+00:00",
+    "last_processed_run": "2026-08-19T09:25:36.115004+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -2097,7 +2123,7 @@
         "premium_peak": null
       },
       "Amarina Queen Resort": {
-        "history_max": 7556.0,
+        "history_max": 7799.0,
         "premium_peak": null
       },
       "Jaz Elite Asteria (Hurghada)": {
