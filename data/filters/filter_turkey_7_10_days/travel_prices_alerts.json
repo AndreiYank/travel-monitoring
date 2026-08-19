@@ -2691,10 +2691,101 @@
       "created_at": "2026-08-18T23:17:57.651360+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kadikale Resort Spa & Wellness_2026-08-18_23-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9941.0,
+      "new_price": 8888.0,
+      "price_change": -1053.0,
+      "price_change_pct": -10.59249572477618,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-19T00:43:47.410335+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-19_00-42_-10.6"
+    },
+    {
+      "hotel_name": "Grand Pasa",
+      "duration_bucket": "",
+      "old_price": 9885.0,
+      "new_price": 10638.0,
+      "price_change": 753.0,
+      "price_change_pct": 7.617602427921093,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T00:43:47.410392+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Pasa_2026-08-19_00-42_zone_out_+7.6"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 8157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T00:43:47.410405+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-19_00-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach Turcja, Kemer, Beldibi",
+      "duration_bucket": "",
+      "old_price": 7884.0,
+      "new_price": 7884.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T00:43:47.410415+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach Turcja, Kemer, Beldibi_2026-08-19_00-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Asarlik Beach Turcja, Bodrum, Gumbet",
+      "duration_bucket": "",
+      "old_price": 7907.0,
+      "new_price": 7907.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T00:43:47.410428+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Asarlik Beach Turcja, Bodrum, Gumbet_2026-08-19_00-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7115.0,
+      "new_price": 7115.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T00:43:47.410435+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi_2026-08-19_00-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 7951.0,
+      "new_price": 7951.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 00:42:17.671383+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T00:43:47.410443+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-19_00-42_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-18T23:16:28.369657+00:00",
+    "last_processed_run": "2026-08-19T00:42:17.671383+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -2985,8 +3076,8 @@
         "premium_peak": null
       },
       "Grand Pasa": {
-        "history_max": 9885.0,
-        "premium_peak": null
+        "history_max": 10638.0,
+        "premium_peak": 10638.0
       },
       "Green Nature Diamond": {
         "history_max": 11157.0,
@@ -3157,8 +3248,8 @@
         "premium_peak": null
       },
       "Pirates Beach Club": {
-        "history_max": 11225.0,
-        "premium_peak": 11225.0
+        "history_max": 11270.0,
+        "premium_peak": 11270.0
       },
       "Miarosa Incekum Beach (ex Alara Kum) Turcja, Alanya, Avsallar": {
         "history_max": 6957.0,
@@ -3297,7 +3388,7 @@
         "premium_peak": null
       },
       "Rox Royal (ex. Grand Haber)": {
-        "history_max": 8064.0,
+        "history_max": 8181.0,
         "premium_peak": null
       },
       "Ramada Resort Kusadasi": {
@@ -3305,8 +3396,8 @@
         "premium_peak": 10358.0
       },
       "Mercure Istanbul Bomonti": {
-        "history_max": 11487.0,
-        "premium_peak": 11487.0
+        "history_max": 11547.0,
+        "premium_peak": 11547.0
       },
       "Master Family Club": {
         "history_max": 8498.0,
@@ -3497,8 +3588,8 @@
         "premium_peak": 10397.0
       },
       "Aria Resort & SPA": {
-        "history_max": 10212.0,
-        "premium_peak": 10212.0
+        "history_max": 10408.0,
+        "premium_peak": 10408.0
       },
       "Champion Holiday Village (Kemer)": {
         "history_max": 9296.0,
@@ -3569,8 +3660,8 @@
         "premium_peak": null
       },
       "Utopia World": {
-        "history_max": 10584.0,
-        "premium_peak": 10584.0
+        "history_max": 10692.0,
+        "premium_peak": 10692.0
       },
       "Armella Hill": {
         "history_max": 8637.0,
@@ -3945,7 +4036,7 @@
         "premium_peak": 11876.0
       },
       "Nova Life": {
-        "history_max": 8302.0,
+        "history_max": 8416.0,
         "premium_peak": null
       },
       "Sural": {
@@ -4087,6 +4178,22 @@
       "Oz Sui Resort Turcja, Alanya": {
         "history_max": 7876.0,
         "premium_peak": null
+      },
+      "Sultan of Side": {
+        "history_max": 8496.0,
+        "premium_peak": null
+      },
+      "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar": {
+        "history_max": 7843.0,
+        "premium_peak": null
+      },
+      "Unique Residence Golf Spa": {
+        "history_max": 8457.0,
+        "premium_peak": null
+      },
+      "Golden Rock Beach": {
+        "history_max": 10881.0,
+        "premium_peak": 10881.0
       }
     }
   }
