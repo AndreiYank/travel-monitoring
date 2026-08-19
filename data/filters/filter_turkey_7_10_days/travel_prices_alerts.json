@@ -3484,10 +3484,49 @@
       "created_at": "2026-08-19T11:20:22.996595+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Timo Resort Turcja, Alanya, Konakli_2026-08-19_11-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aventura Park",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 8157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 13:40:25.854858+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T13:42:22.693374+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aventura Park_2026-08-19_13-40_zone_out_gone"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 7957.0,
+      "new_price": 7957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 13:40:25.854858+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T13:42:22.693401+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa Turcja, Marmaris_2026-08-19_13-40_zone_out_gone"
+    },
+    {
+      "hotel_name": "Selectum Family Resort Side (ex. Silence Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 10728.0,
+      "new_price": 9770.0,
+      "price_change": -958.0,
+      "price_change_pct": -8.929903057419835,
+      "timestamp": "2026-08-19 13:40:25.854858+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-19T13:42:22.693433+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum Family Resort Side (ex. Silence Beach Resort)_2026-08-19_13-40_comeback_8.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-19T12:26:55.565525+00:00",
+    "last_processed_run": "2026-08-19T13:40:25.854858+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 9671.0,
@@ -4920,6 +4959,10 @@
       "Wind of Lara": {
         "history_max": 11345.0,
         "premium_peak": 11345.0
+      },
+      "Aventura Park Turcja, Alanya": {
+        "history_max": 7557.0,
+        "premium_peak": null
       }
     }
   }
