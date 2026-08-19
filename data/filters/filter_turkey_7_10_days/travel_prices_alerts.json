@@ -3523,14 +3523,53 @@
       "created_at": "2026-08-19T13:42:22.693433+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Selectum Family Resort Side (ex. Silence Beach Resort)_2026-08-19_13-40_comeback_8.9"
+    },
+    {
+      "hotel_name": "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)",
+      "duration_bucket": "",
+      "old_price": 9645.0,
+      "new_price": 10039.0,
+      "price_change": 394.0,
+      "price_change_pct": 4.085018144116122,
+      "timestamp": "2026-08-19 14:27:17.142378+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T14:28:50.670856+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)_2026-08-19_14-27_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Duja Didim",
+      "duration_bucket": "",
+      "old_price": 9895.0,
+      "new_price": 9895.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-19 14:27:17.142378+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T14:28:50.670880+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Duja Didim_2026-08-19_14-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sealight Resort (ex Otium Sealight Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 10564.0,
+      "new_price": 9136.0,
+      "price_change": -1428.0,
+      "price_change_pct": -13.517606967057933,
+      "timestamp": "2026-08-19 14:27:17.142378+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-19T14:28:50.670906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-08-19_14-27_comeback_13.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-19T13:40:25.854858+00:00",
+    "last_processed_run": "2026-08-19T14:27:17.142378+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
-        "history_max": 9671.0,
-        "premium_peak": null
+        "history_max": 10039.0,
+        "premium_peak": 10039.0
       },
       "Seaphoria Beach Resort": {
         "history_max": 10070.0,
@@ -3881,8 +3920,8 @@
         "premium_peak": 10440.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
-        "history_max": 10769.0,
-        "premium_peak": 10769.0
+        "history_max": 11482.0,
+        "premium_peak": 11482.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)": {
         "history_max": 9097.0,
@@ -4145,8 +4184,8 @@
         "premium_peak": null
       },
       "Ramada Resort Lara": {
-        "history_max": 10368.0,
-        "premium_peak": 10368.0
+        "history_max": 10530.0,
+        "premium_peak": 10530.0
       },
       "Mary Side (ex. Mary Palace)": {
         "history_max": 10842.0,
@@ -4593,8 +4632,8 @@
         "premium_peak": null
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
-        "history_max": 10974.0,
-        "premium_peak": 10974.0
+        "history_max": 11104.0,
+        "premium_peak": 11104.0
       },
       "Dream World Palace": {
         "history_max": 10497.0,
@@ -4645,8 +4684,8 @@
         "premium_peak": null
       },
       "Crystal Admiral Aqua Collection": {
-        "history_max": 10532.0,
-        "premium_peak": 10532.0
+        "history_max": 10678.0,
+        "premium_peak": 10678.0
       },
       "Antique Roman Palace": {
         "history_max": 11129.0,
@@ -4921,7 +4960,7 @@
         "premium_peak": null
       },
       "Sultan of Side": {
-        "history_max": 8496.0,
+        "history_max": 8674.0,
         "premium_peak": null
       },
       "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar": {
