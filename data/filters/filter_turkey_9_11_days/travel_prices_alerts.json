@@ -871,10 +871,36 @@
       "created_at": "2026-08-19T15:27:32.197499+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Crown Serenity_2026-08-19_15-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Holiday Garden Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 9651.0,
+      "new_price": 10021.0,
+      "price_change": 370.0,
+      "price_change_pct": 3.8337996062584185,
+      "timestamp": "2026-08-19 18:22:24.399914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T18:24:24.513966+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Garden Resort (Okurcalar)_2026-08-19_18-22_zone_out_+3.8"
+    },
+    {
+      "hotel_name": "Linda Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 9483.0,
+      "new_price": 10002.0,
+      "price_change": 519.0,
+      "price_change_pct": 5.4729515975956975,
+      "timestamp": "2026-08-19 18:22:24.399914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T18:24:24.513994+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Linda Resort (Side)_2026-08-19_18-22_zone_out_+5.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-19T17:22:16.034016+00:00",
+    "last_processed_run": "2026-08-19T18:22:24.399914+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11853.0,
@@ -905,8 +931,8 @@
         "premium_peak": 11309.0
       },
       "Horus Paradise Luxury Resort": {
-        "history_max": 11148.0,
-        "premium_peak": 11148.0
+        "history_max": 11331.0,
+        "premium_peak": 11331.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 11757.0,
@@ -917,8 +943,8 @@
         "premium_peak": null
       },
       "Holiday Garden Resort (Okurcalar)": {
-        "history_max": 9651.0,
-        "premium_peak": null
+        "history_max": 10021.0,
+        "premium_peak": 10021.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
         "history_max": 10744.0,
@@ -1421,8 +1447,8 @@
         "premium_peak": 13863.0
       },
       "Seaden Sea Planet Resort & Spa": {
-        "history_max": 13274.0,
-        "premium_peak": 13274.0
+        "history_max": 13281.0,
+        "premium_peak": 13281.0
       },
       "Litore Resort & Spa": {
         "history_max": 15476.0,
@@ -1501,8 +1527,8 @@
         "premium_peak": 13786.0
       },
       "Marvida Family Eco": {
-        "history_max": 12040.0,
-        "premium_peak": 12040.0
+        "history_max": 12512.0,
+        "premium_peak": 12512.0
       },
       "Marti Myra": {
         "history_max": 14962.0,
@@ -1881,16 +1907,16 @@
         "premium_peak": 14845.0
       },
       "Akka Alinda": {
-        "history_max": 15682.0,
-        "premium_peak": 15682.0
+        "history_max": 16047.0,
+        "premium_peak": 16047.0
       },
       "Crystal De Luxe Comfort Collection": {
         "history_max": 13337.0,
         "premium_peak": 13337.0
       },
       "Crystal Family Comfort Collection": {
-        "history_max": 13874.0,
-        "premium_peak": 13874.0
+        "history_max": 14708.0,
+        "premium_peak": 14708.0
       },
       "Agaya Didim Resort (ex. Prive Didim)": {
         "history_max": 15637.0,
@@ -1949,8 +1975,8 @@
         "premium_peak": 10171.0
       },
       "Sueno Beach Side": {
-        "history_max": 12993.0,
-        "premium_peak": 12993.0
+        "history_max": 13083.0,
+        "premium_peak": 13083.0
       },
       "Daima Biz (Kemer)": {
         "history_max": 8798.0,
@@ -1969,8 +1995,8 @@
         "premium_peak": 14845.0
       },
       "Delphin Botanik (Alanya)": {
-        "history_max": 13964.0,
-        "premium_peak": 13964.0
+        "history_max": 14483.0,
+        "premium_peak": 14483.0
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
         "history_max": 12287.0,
@@ -2219,6 +2245,10 @@
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
         "history_max": 13537.0,
         "premium_peak": 13537.0
+      },
+      "Alaiye Resort & Spa": {
+        "history_max": 11681.0,
+        "premium_peak": 11681.0
       }
     }
   }
