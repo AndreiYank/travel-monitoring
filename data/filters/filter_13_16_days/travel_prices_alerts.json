@@ -234,10 +234,36 @@
       "created_at": "2026-08-19T08:27:05.510337+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-19_08-26_comeback_48.1"
+    },
+    {
+      "hotel_name": "Ecotel Dahab Bay View Resort",
+      "duration_bucket": "",
+      "old_price": 9229.0,
+      "new_price": 18421.0,
+      "price_change": 9192.0,
+      "price_change_pct": 99.5990898255499,
+      "timestamp": "2026-08-19 16:22:09.522319+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T16:23:16.192850+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ecotel Dahab Bay View Resort_2026-08-19_16-22_zone_out_+99.6"
+    },
+    {
+      "hotel_name": "Retac Qunay Dahab Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9818.0,
+      "new_price": 11029.0,
+      "price_change": 1211.0,
+      "price_change_pct": 12.334487675697698,
+      "timestamp": "2026-08-19 16:22:09.522319+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-19T16:23:16.192883+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Retac Qunay Dahab Resort & Spa_2026-08-19_16-22_zone_out_+12.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-19T15:24:19.502826+00:00",
+    "last_processed_run": "2026-08-19T16:22:09.522319+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 11755.0,
@@ -568,8 +594,8 @@
         "premium_peak": 17522.0
       },
       "Retac Qunay Dahab Resort & Spa": {
-        "history_max": 9818.0,
-        "premium_peak": null
+        "history_max": 11029.0,
+        "premium_peak": 11029.0
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
         "history_max": 14443.0,
@@ -588,8 +614,8 @@
         "premium_peak": 14307.0
       },
       "Safir Dahab Resort": {
-        "history_max": 10493.0,
-        "premium_peak": 10493.0
+        "history_max": 11705.0,
+        "premium_peak": 11705.0
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
         "history_max": 13057.0,
@@ -724,8 +750,8 @@
         "premium_peak": 19835.0
       },
       "Ecotel Dahab Bay View Resort": {
-        "history_max": 9229.0,
-        "premium_peak": null
+        "history_max": 18421.0,
+        "premium_peak": 18421.0
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
         "history_max": 15263.0,
