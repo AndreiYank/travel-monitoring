@@ -1144,14 +1144,53 @@
       "created_at": "2026-08-20T12:31:08.482957+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-20_12-29_comeback_8.8"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 6391.0,
+      "new_price": 7291.0,
+      "price_change": 900.0,
+      "price_change_pct": 14.082303238929745,
+      "timestamp": "2026-08-20 13:42:53.417497+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T13:44:39.549413+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-20_13-42_+14.1"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9603.0,
+      "new_price": 10325.0,
+      "price_change": 722.0,
+      "price_change_pct": 7.5184838071436015,
+      "timestamp": "2026-08-20 13:42:53.417497+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T13:44:39.549450+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-20_13-42_zone_out_+7.5"
+    },
+    {
+      "hotel_name": "The Lumos Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9995.0,
+      "new_price": 10055.0,
+      "price_change": 60.0,
+      "price_change_pct": 0.6003001500750376,
+      "timestamp": "2026-08-20 13:42:53.417497+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T13:44:39.549460+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Lumos Deluxe Resort & Spa_2026-08-20_13-42_zone_out_+0.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T12:29:28.367704+00:00",
+    "last_processed_run": "2026-08-20T13:42:53.417497+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
-        "history_max": 11925.0,
-        "premium_peak": 11925.0
+        "history_max": 12066.0,
+        "premium_peak": 12066.0
       },
       "Juju Premier Palace (ex. Amara Premier Palace)": {
         "history_max": 16501.0,
@@ -1542,8 +1581,8 @@
         "premium_peak": null
       },
       "My Home Resort": {
-        "history_max": 12849.0,
-        "premium_peak": 12849.0
+        "history_max": 13089.0,
+        "premium_peak": 13089.0
       },
       "Monachus Family Resort Sorgun": {
         "history_max": 14618.0,
@@ -1638,8 +1677,8 @@
         "premium_peak": 12955.0
       },
       "Rai Foresta Tekirova": {
-        "history_max": 14446.0,
-        "premium_peak": 14446.0
+        "history_max": 14589.0,
+        "premium_peak": 14589.0
       },
       "Ozkaymak Incekum": {
         "history_max": 10028.0,
@@ -2134,8 +2173,8 @@
         "premium_peak": 12726.0
       },
       "Sural Resort": {
-        "history_max": 16047.0,
-        "premium_peak": 16047.0
+        "history_max": 16128.0,
+        "premium_peak": 16128.0
       },
       "Vita Silva": {
         "history_max": 10034.0,
@@ -2518,8 +2557,8 @@
         "premium_peak": 12456.0
       },
       "Royal Atlantis Resort": {
-        "history_max": 12587.0,
-        "premium_peak": 12587.0
+        "history_max": 12852.0,
+        "premium_peak": 12852.0
       },
       "Bosphorus Sorgun": {
         "history_max": 15887.0,
