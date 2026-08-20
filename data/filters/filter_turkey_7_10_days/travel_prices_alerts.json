@@ -4173,10 +4173,101 @@
       "created_at": "2026-08-20T09:29:35.623154+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-08-20_09-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 8094.0,
+      "new_price": 8957.0,
+      "price_change": 863.0,
+      "price_change_pct": 10.662218927600692,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T10:24:11.425602+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-20_10-22_+10.7"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7596.0,
+      "new_price": 7596.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T10:24:11.425640+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-08-20_10-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7957.0,
+      "new_price": 7957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T10:24:11.425646+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa_2026-08-20_10-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ring Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 7943.0,
+      "new_price": 7943.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T10:24:11.425651+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ring Beach (Kemer)_2026-08-20_10-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Saphir Hotel & Villas",
+      "duration_bucket": "",
+      "old_price": 9673.0,
+      "new_price": 10716.0,
+      "price_change": 1043.0,
+      "price_change_pct": 10.782590716427167,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T10:24:11.425656+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Saphir Hotel & Villas_2026-08-20_10-22_zone_out_+10.8"
+    },
+    {
+      "hotel_name": "The Marilis Hill Resort and Spa Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 6727.0,
+      "new_price": 6727.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T10:24:11.425661+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Marilis Hill Resort and Spa Turcja, Alanya_2026-08-20_10-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Korumar Deluxe",
+      "duration_bucket": "",
+      "old_price": 11557.0,
+      "new_price": 9557.0,
+      "price_change": -2000.0,
+      "price_change_pct": -17.30552911655274,
+      "timestamp": "2026-08-20 10:22:50.915882+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-20T10:24:11.425683+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Korumar Deluxe_2026-08-20_10-22_comeback_17.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T09:27:13.976022+00:00",
+    "last_processed_run": "2026-08-20T10:22:50.915882+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -4371,8 +4462,8 @@
         "premium_peak": null
       },
       "Fore Resort & Spa": {
-        "history_max": 10614.0,
-        "premium_peak": 10614.0
+        "history_max": 10744.0,
+        "premium_peak": 10744.0
       },
       "Sheraton Istanbul Levent": {
         "history_max": 10338.0,
@@ -4487,8 +4578,8 @@
         "premium_peak": null
       },
       "Sentido Serra Family Resort": {
-        "history_max": 10897.0,
-        "premium_peak": 10897.0
+        "history_max": 11157.0,
+        "premium_peak": 11157.0
       },
       "Grand Kaptan": {
         "history_max": 10008.0,
@@ -4511,7 +4602,7 @@
         "premium_peak": 11583.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 9253.0,
+        "history_max": 9263.0,
         "premium_peak": null
       },
       "Side Crown Serenity": {
@@ -4691,11 +4782,11 @@
         "premium_peak": null
       },
       "Ramada Plaza Antalya": {
-        "history_max": 10395.0,
-        "premium_peak": 10395.0
+        "history_max": 11417.0,
+        "premium_peak": 11417.0
       },
       "Meryan": {
-        "history_max": 9788.0,
+        "history_max": 9828.0,
         "premium_peak": null
       },
       "Lonicera West (ex. Gold Island)": {
@@ -4751,8 +4842,8 @@
         "premium_peak": 11618.0
       },
       "Saphir Hotel & Villas": {
-        "history_max": 10166.0,
-        "premium_peak": 10166.0
+        "history_max": 10716.0,
+        "premium_peak": 10716.0
       },
       "Lalila Blue Suites": {
         "history_max": 10361.0,
@@ -4763,8 +4854,8 @@
         "premium_peak": null
       },
       "Saphir Resort": {
-        "history_max": 11036.0,
-        "premium_peak": 11036.0
+        "history_max": 11530.0,
+        "premium_peak": 11530.0
       },
       "Royal Alhambra Palace": {
         "history_max": 11435.0,
@@ -5167,7 +5258,7 @@
         "premium_peak": 11310.0
       },
       "Sultan of Dreams": {
-        "history_max": 8825.0,
+        "history_max": 8957.0,
         "premium_peak": null
       },
       "Dedeman Istanbul": {
@@ -5575,7 +5666,7 @@
         "premium_peak": null
       },
       "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar": {
-        "history_max": 7843.0,
+        "history_max": 7928.0,
         "premium_peak": null
       },
       "Unique Residence Golf Spa": {
