@@ -429,10 +429,62 @@
       "created_at": "2026-08-20T14:29:18.911001+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Siva Golden Bay Makadi_2026-08-20_14-28_comeback_22.1"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 9093.0,
+      "new_price": 9993.0,
+      "price_change": 900.0,
+      "price_change_pct": 9.897723523589574,
+      "timestamp": "2026-08-20 15:26:44.302078+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T15:27:41.533010+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-08-20_15-26_+9.9"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 8791.0,
+      "new_price": 9951.0,
+      "price_change": 1160.0,
+      "price_change_pct": 13.19531338869298,
+      "timestamp": "2026-08-20 15:26:44.302078+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T15:27:41.533038+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-20_15-26_+13.2"
+    },
+    {
+      "hotel_name": "Gemma Resort (ex. Labranda Gemma Premium Resort)",
+      "duration_bucket": "",
+      "old_price": 8190.0,
+      "new_price": 12095.0,
+      "price_change": 3905.0,
+      "price_change_pct": 47.68009768009768,
+      "timestamp": "2026-08-20 15:26:44.302078+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T15:27:41.533056+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gemma Resort (ex. Labranda Gemma Premium Resort)_2026-08-20_15-26_zone_out_+47.7"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10457.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.087044739778837,
+      "timestamp": "2026-08-20 15:26:44.302078+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T15:27:41.533067+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-08-20_15-26_zone_out_+6.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T14:28:23.950029+00:00",
+    "last_processed_run": "2026-08-20T15:26:44.302078+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 13281.0,
@@ -1023,8 +1075,8 @@
         "premium_peak": 15257.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 10443.0,
-        "premium_peak": 10443.0
+        "history_max": 12095.0,
+        "premium_peak": 12095.0
       },
       "IL Mercato Splash Aqua Park": {
         "history_max": 16182.0,

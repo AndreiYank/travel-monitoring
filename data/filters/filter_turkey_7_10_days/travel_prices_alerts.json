@@ -4654,10 +4654,36 @@
       "created_at": "2026-08-20T14:31:39.166770+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Maril Resort Beach & Spa_2026-08-20_14-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Armas Beach",
+      "duration_bucket": "",
+      "old_price": 9090.0,
+      "new_price": 8347.0,
+      "price_change": -743.0,
+      "price_change_pct": -8.173817381738175,
+      "timestamp": "2026-08-20 15:28:03.146024+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-20T15:30:25.746038+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Beach_2026-08-20_15-28_-8.2"
+    },
+    {
+      "hotel_name": "Azura World (ex. Wyndham Alanya)",
+      "duration_bucket": "",
+      "old_price": 9797.0,
+      "new_price": 10125.0,
+      "price_change": 328.0,
+      "price_change_pct": 3.347963662345616,
+      "timestamp": "2026-08-20 15:28:03.146024+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T15:30:25.746084+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azura World (ex. Wyndham Alanya)_2026-08-20_15-28_zone_out_+3.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T14:29:39.492164+00:00",
+    "last_processed_run": "2026-08-20T15:28:03.146024+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -5668,8 +5694,8 @@
         "premium_peak": null
       },
       "Sueno Beach Side": {
-        "history_max": 10837.0,
-        "premium_peak": 10837.0
+        "history_max": 10972.0,
+        "premium_peak": 10972.0
       },
       "Delphin Botanik (Alanya)": {
         "history_max": 11660.0,
