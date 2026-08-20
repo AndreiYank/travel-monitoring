@@ -1222,10 +1222,36 @@
       "created_at": "2026-08-20T15:29:52.189436+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-20_15-28_comeback_8.8"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9403.0,
+      "new_price": 10029.0,
+      "price_change": 626.0,
+      "price_change_pct": 6.6574497500797625,
+      "timestamp": "2026-08-20 18:26:24.974060+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T18:28:28.432366+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-20_18-26_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Signature Blue Resort (ex. Grand Ozcelik)",
+      "duration_bucket": "",
+      "old_price": 10665.0,
+      "new_price": 9706.0,
+      "price_change": -959.0,
+      "price_change_pct": -8.992030004688232,
+      "timestamp": "2026-08-20 18:26:24.974060+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-20T18:28:28.432405+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-08-20_18-26_comeback_9.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T17:23:24.600821+00:00",
+    "last_processed_run": "2026-08-20T18:26:24.974060+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
@@ -1736,8 +1762,8 @@
         "premium_peak": null
       },
       "Laur Experience & Elegance": {
-        "history_max": 14920.0,
-        "premium_peak": 14920.0
+        "history_max": 15080.0,
+        "premium_peak": 15080.0
       },
       "Miarosa Incekum Beach (ex Alara Kum)": {
         "history_max": 8523.0,
