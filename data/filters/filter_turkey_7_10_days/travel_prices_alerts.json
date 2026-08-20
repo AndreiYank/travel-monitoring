@@ -5096,10 +5096,114 @@
       "created_at": "2026-08-20T20:23:20.719027+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-08-20_20-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8620.0,
+      "new_price": 9638.0,
+      "price_change": 1018.0,
+      "price_change_pct": 11.809744779582367,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T22:22:43.011645+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-08-20_22-20_+11.8"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 8103.0,
+      "new_price": 9259.0,
+      "price_change": 1156.0,
+      "price_change_pct": 14.266321115636185,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T22:22:43.011674+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-20_22-20_+14.3"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "",
+      "old_price": 9923.0,
+      "new_price": 8099.0,
+      "price_change": -1824.0,
+      "price_change_pct": -18.381537841378616,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-20T22:22:43.011693+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum_2026-08-20_22-20_-18.4"
+    },
+    {
+      "hotel_name": "Diamond Premium",
+      "duration_bucket": "",
+      "old_price": 9652.0,
+      "new_price": 10269.0,
+      "price_change": 617.0,
+      "price_change_pct": 6.392457521757149,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T22:22:43.011723+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Premium_2026-08-20_22-20_zone_out_+6.4"
+    },
+    {
+      "hotel_name": "Eftalia Ocean (Alanya)",
+      "duration_bucket": "",
+      "old_price": 9909.0,
+      "new_price": 10431.0,
+      "price_change": 522.0,
+      "price_change_pct": 5.267938237965486,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T22:22:43.011732+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Ocean (Alanya)_2026-08-20_22-20_zone_out_+5.3"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 7903.0,
+      "new_price": 7903.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T22:22:43.011740+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-08-20_22-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xoria Deluxe Turcja, Alanya, Payallar",
+      "duration_bucket": "",
+      "old_price": 7746.0,
+      "new_price": 7746.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T22:22:43.011747+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe Turcja, Alanya, Payallar_2026-08-20_22-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Prenses",
+      "duration_bucket": "",
+      "old_price": 10941.0,
+      "new_price": 9613.0,
+      "price_change": -1328.0,
+      "price_change_pct": -12.137830180056667,
+      "timestamp": "2026-08-20 22:20:29.404892+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-20T22:22:43.011777+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Prenses_2026-08-20_22-20_comeback_12.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T21:22:45.096293+00:00",
+    "last_processed_run": "2026-08-20T22:20:29.404892+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -5142,7 +5246,7 @@
         "premium_peak": null
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 9196.0,
+        "history_max": 9221.0,
         "premium_peak": null
       },
       "Holiday Garden Resort (Okurcalar)": {
@@ -5690,8 +5794,8 @@
         "premium_peak": 11530.0
       },
       "Royal Alhambra Palace": {
-        "history_max": 11522.0,
-        "premium_peak": 11522.0
+        "history_max": 11538.0,
+        "premium_peak": 11538.0
       },
       "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar": {
         "history_max": 7007.0,
@@ -6086,8 +6190,8 @@
         "premium_peak": null
       },
       "Ali Bey Park Manavgat": {
-        "history_max": 11310.0,
-        "premium_peak": 11310.0
+        "history_max": 11830.0,
+        "premium_peak": 11830.0
       },
       "Sultan of Dreams": {
         "history_max": 8957.0,
@@ -6250,8 +6354,8 @@
         "premium_peak": null
       },
       "Crystal De Luxe Comfort Collection": {
-        "history_max": 11603.0,
-        "premium_peak": 11603.0
+        "history_max": 11826.0,
+        "premium_peak": 11826.0
       },
       "Club Yali Hotels & Resort": {
         "history_max": 11289.0,
