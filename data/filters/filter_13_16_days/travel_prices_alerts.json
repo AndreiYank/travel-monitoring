@@ -325,10 +325,36 @@
       "created_at": "2026-08-20T08:28:46.222039+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-20_08-28_zone_out_+72.7"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 9653.0,
+      "new_price": 10597.0,
+      "price_change": 944.0,
+      "price_change_pct": 9.779343209364963,
+      "timestamp": "2026-08-20 09:26:02.497396+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T09:27:09.211105+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-08-20_09-26_zone_out_+9.8"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 9011.0,
+      "new_price": 11287.0,
+      "price_change": 2276.0,
+      "price_change_pct": 25.25801797802686,
+      "timestamp": "2026-08-20 09:26:02.497396+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T09:27:09.211147+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-20_09-26_zone_out_+25.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T08:28:09.421500+00:00",
+    "last_processed_run": "2026-08-20T09:26:02.497396+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 13277.0,
@@ -743,8 +769,8 @@
         "premium_peak": 11797.0
       },
       "Siva Golden Bay Makadi": {
-        "history_max": 9811.0,
-        "premium_peak": null
+        "history_max": 11287.0,
+        "premium_peak": 11287.0
       },
       "Steigenberger Alcazar": {
         "history_max": 19493.0,
@@ -947,8 +973,8 @@
         "premium_peak": 18696.0
       },
       "Amarina Jannah Resort Aquapark": {
-        "history_max": 10153.0,
-        "premium_peak": 10153.0
+        "history_max": 10597.0,
+        "premium_peak": 10597.0
       },
       "Hilton Marsa Alam Nubian Resort": {
         "history_max": 13673.0,
