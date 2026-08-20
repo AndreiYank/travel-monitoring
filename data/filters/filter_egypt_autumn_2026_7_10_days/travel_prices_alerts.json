@@ -1534,10 +1534,88 @@
       "created_at": "2026-08-20T02:14:14.415693+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Kiroseiz Premier_2026-08-20_02-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 8937.0,
+      "new_price": 10897.0,
+      "price_change": 1960.0,
+      "price_change_pct": 21.931296855768153,
+      "timestamp": "2026-08-20 06:29:06.730416+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T06:30:26.613449+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-20_06-29_+21.9"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 8988.0,
+      "new_price": 9987.0,
+      "price_change": 999.0,
+      "price_change_pct": 11.114819759679573,
+      "timestamp": "2026-08-20 06:29:06.730416+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T06:30:26.613495+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-20_06-29_+11.1"
+    },
+    {
+      "hotel_name": "Steigenberger Aqua Magic",
+      "duration_bucket": "",
+      "old_price": 9216.0,
+      "new_price": 10481.0,
+      "price_change": 1265.0,
+      "price_change_pct": 13.726128472222221,
+      "timestamp": "2026-08-20 06:29:06.730416+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T06:30:26.613515+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Aqua Magic_2026-08-20_06-29_+13.7"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)",
+      "duration_bucket": "",
+      "old_price": 8295.0,
+      "new_price": 8295.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 06:29:06.730416+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T06:30:26.613547+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)_2026-08-20_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Elite Asteria (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 10564.0,
+      "new_price": 10564.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 06:29:06.730416+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T06:30:26.613557+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Asteria (Hurghada)_2026-08-20_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 8223.0,
+      "new_price": 8223.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 06:29:06.730416+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T06:30:26.613565+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay_2026-08-20_06-29_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T05:24:00.237949+00:00",
+    "last_processed_run": "2026-08-20T06:29:06.730416+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -2124,7 +2202,7 @@
         "premium_peak": null
       },
       "Stella Beach Resort & Spa": {
-        "history_max": 9257.0,
+        "history_max": 9307.0,
         "premium_peak": null
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
@@ -2216,7 +2294,7 @@
         "premium_peak": null
       },
       "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 7277.0,
+        "history_max": 7577.0,
         "premium_peak": null
       },
       "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay": {
@@ -2224,7 +2302,7 @@
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr": {
-        "history_max": 6977.0,
+        "history_max": 7277.0,
         "premium_peak": null
       },
       "Jaz Aquaviva": {
@@ -2236,7 +2314,7 @@
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
-        "history_max": 7097.0,
+        "history_max": 7397.0,
         "premium_peak": null
       },
       "Pickalbatros White Beach Resort": {
