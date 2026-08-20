@@ -1846,10 +1846,49 @@
       "created_at": "2026-08-20T11:21:03.538292+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-20_11-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9472.0,
+      "new_price": 10869.0,
+      "price_change": 1397.0,
+      "price_change_pct": 14.748733108108109,
+      "timestamp": "2026-08-20 12:28:20.016922+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T12:29:25.871735+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-20_12-28_+14.7"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9360.0,
+      "new_price": 9360.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 12:28:20.016922+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T12:29:25.871771+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-08-20_12-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8295.0,
+      "new_price": 8295.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 12:28:20.016922+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T12:29:25.871779+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-08-20_12-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T11:19:53.752991+00:00",
+    "last_processed_run": "2026-08-20T12:28:20.016922+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -2456,7 +2495,7 @@
         "premium_peak": null
       },
       "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh": {
-        "history_max": 6792.0,
+        "history_max": 6834.0,
         "premium_peak": null
       },
       "Jaz Makadi Oasis Resort": {
@@ -2528,7 +2567,7 @@
         "premium_peak": null
       },
       "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 7577.0,
+        "history_max": 7687.0,
         "premium_peak": null
       },
       "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay": {
@@ -2556,7 +2595,7 @@
         "premium_peak": null
       },
       "Xperience Kiroseiz Premier Egipt, Sharm El Sheikh": {
-        "history_max": 7822.0,
+        "history_max": 7922.0,
         "premium_peak": null
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
@@ -2568,7 +2607,7 @@
         "premium_peak": null
       },
       "Xperience Kiroseiz Parkland Egipt, Sharm El Sheikh": {
-        "history_max": 8123.0,
+        "history_max": 8223.0,
         "premium_peak": null
       }
     }
