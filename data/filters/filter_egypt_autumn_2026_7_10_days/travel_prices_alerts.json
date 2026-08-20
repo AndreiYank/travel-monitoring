@@ -1638,10 +1638,62 @@
       "created_at": "2026-08-20T07:36:42.834776+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Charmillion Club Aqua Park_2026-08-20_07-35_-8.5"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9172.0,
+      "new_price": 10869.0,
+      "price_change": 1697.0,
+      "price_change_pct": 18.501962494548625,
+      "timestamp": "2026-08-20 08:28:09.534126+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T08:29:04.188410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-20_08-28_+18.5"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 10897.0,
+      "new_price": 9099.0,
+      "price_change": -1798.0,
+      "price_change_pct": -16.49995411581169,
+      "timestamp": "2026-08-20 08:28:09.534126+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-20T08:29:04.188450+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-20_08-28_-16.5"
+    },
+    {
+      "hotel_name": "Jaz Tamerina (ex. Jaz Oriental Club)",
+      "duration_bucket": "",
+      "old_price": 10969.0,
+      "new_price": 10969.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 08:28:09.534126+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T08:29:04.188475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Tamerina (ex. Jaz Oriental Club)_2026-08-20_08-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Villagio",
+      "duration_bucket": "",
+      "old_price": 10880.0,
+      "new_price": 10880.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 08:28:09.534126+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T08:29:04.188482+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Villagio_2026-08-20_08-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T07:35:30.917903+00:00",
+    "last_processed_run": "2026-08-20T08:28:09.534126+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -2188,7 +2240,7 @@
         "premium_peak": null
       },
       "Desert Rose Resort": {
-        "history_max": 10523.0,
+        "history_max": 10869.0,
         "premium_peak": null
       },
       "Domina Coral Bay Resort": {
