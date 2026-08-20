@@ -5031,10 +5031,75 @@
       "created_at": "2026-08-20T19:30:46.497560+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe_2026-08-20_19-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "",
+      "old_price": 8099.0,
+      "new_price": 9923.0,
+      "price_change": 1824.0,
+      "price_change_pct": 22.521298925793307,
+      "timestamp": "2026-08-20 20:21:11.584850+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T20:23:20.718939+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum_2026-08-20_20-21_+22.5"
+    },
+    {
+      "hotel_name": "Asteria Family Belek",
+      "duration_bucket": "",
+      "old_price": 9702.0,
+      "new_price": 9702.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 20:21:11.584850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T20:23:20.718994+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Belek_2026-08-20_20-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 7862.0,
+      "new_price": 7862.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 20:21:11.584850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T20:23:20.719007+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-08-20_20-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Cettia",
+      "duration_bucket": "",
+      "old_price": 9590.0,
+      "new_price": 10109.0,
+      "price_change": 519.0,
+      "price_change_pct": 5.411887382690303,
+      "timestamp": "2026-08-20 20:21:11.584850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T20:23:20.719019+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Cettia_2026-08-20_20-21_zone_out_+5.4"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7520.0,
+      "new_price": 7520.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 20:21:11.584850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T20:23:20.719027+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-08-20_20-21_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T19:28:02.761634+00:00",
+    "last_processed_run": "2026-08-20T20:21:11.584850+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -6213,7 +6278,7 @@
         "premium_peak": 11673.0
       },
       "Club Side Coast Turcja, Side, Colakli": {
-        "history_max": 7169.0,
+        "history_max": 7366.0,
         "premium_peak": null
       },
       "Crystal Prestige Pearl Collection": {
@@ -6285,7 +6350,7 @@
         "premium_peak": 11876.0
       },
       "Nova Life": {
-        "history_max": 8509.0,
+        "history_max": 8518.0,
         "premium_peak": null
       },
       "Sural": {
@@ -6519,6 +6584,10 @@
       "Aqua Marmaris": {
         "history_max": 11301.0,
         "premium_peak": 11301.0
+      },
+      "Diamond Excellence Resort & Spa": {
+        "history_max": 11822.0,
+        "premium_peak": 11822.0
       }
     }
   }
