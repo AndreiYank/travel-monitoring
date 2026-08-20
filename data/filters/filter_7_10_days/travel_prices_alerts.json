@@ -1781,10 +1781,36 @@
       "created_at": "2026-08-20T06:30:22.375785+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Sea Breeze Resort_2026-08-20_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Coral Sea Holiday Resort",
+      "duration_bucket": "",
+      "old_price": 8811.0,
+      "new_price": 8071.0,
+      "price_change": -740.0,
+      "price_change_pct": -8.398592668255588,
+      "timestamp": "2026-08-20 07:35:30.774904+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-20T07:36:55.061330+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Coral Sea Holiday Resort_2026-08-20_07-35_-8.4"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 6674.0,
+      "new_price": 7884.0,
+      "price_change": 1210.0,
+      "price_change_pct": 18.130056937368895,
+      "timestamp": "2026-08-20 07:35:30.774904+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-20T07:36:55.061362+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-08-20_07-35_+18.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T06:29:06.771061+00:00",
+    "last_processed_run": "2026-08-20T07:35:30.774904+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6867.0,
@@ -2559,7 +2585,7 @@
         "premium_peak": 11209.0
       },
       "Amarina Jannah Resort Aquapark": {
-        "history_max": 7639.0,
+        "history_max": 7884.0,
         "premium_peak": null
       },
       "Jaz Aquamarine Resort": {

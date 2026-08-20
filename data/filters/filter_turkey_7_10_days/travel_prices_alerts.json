@@ -3939,10 +3939,101 @@
       "created_at": "2026-08-20T06:32:42.746619+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Maril Resort Turcja, Bodrum, Didim_2026-08-20_06-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Kolibri Prestige & Spa",
+      "duration_bucket": "",
+      "old_price": 9871.0,
+      "new_price": 8922.0,
+      "price_change": -949.0,
+      "price_change_pct": -9.614020869212846,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-20T07:38:57.825397+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kolibri Prestige & Spa_2026-08-20_07-36_-9.6"
+    },
+    {
+      "hotel_name": "Grand Park Lara",
+      "duration_bucket": "",
+      "old_price": 9878.0,
+      "new_price": 10022.0,
+      "price_change": 144.0,
+      "price_change_pct": 1.4577849767159343,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T07:38:57.825462+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Park Lara_2026-08-20_07-36_zone_out_+1.5"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 7957.0,
+      "new_price": 7957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T07:38:57.825475+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa Turcja, Marmaris_2026-08-20_07-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Karmir Resort (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9613.0,
+      "new_price": 10170.0,
+      "price_change": 557.0,
+      "price_change_pct": 5.79423697076875,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T07:38:57.825485+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Karmir Resort (Kemer)_2026-08-20_07-36_zone_out_+5.8"
+    },
+    {
+      "hotel_name": "Utopia Resort & Residence (ex Alara Park)",
+      "duration_bucket": "",
+      "old_price": 9945.0,
+      "new_price": 10269.0,
+      "price_change": 324.0,
+      "price_change_pct": 3.2579185520361995,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T07:38:57.825495+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Resort & Residence (ex Alara Park)_2026-08-20_07-36_zone_out_+3.3"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8065.0,
+      "new_price": 8065.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-20T07:38:57.825503+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-20_07-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "",
+      "old_price": 10483.0,
+      "new_price": 9445.0,
+      "price_change": -1038.0,
+      "price_change_pct": -9.901745683487553,
+      "timestamp": "2026-08-20 07:36:42.922088+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-20T07:38:57.825525+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum_2026-08-20_07-36_comeback_9.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T06:30:23.300207+00:00",
+    "last_processed_run": "2026-08-20T07:36:42.922088+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -4089,8 +4180,8 @@
         "premium_peak": 10604.0
       },
       "Karmir Resort (Kemer)": {
-        "history_max": 10134.0,
-        "premium_peak": 10134.0
+        "history_max": 10170.0,
+        "premium_peak": 10170.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)": {
         "history_max": 11777.0,
@@ -4241,8 +4332,8 @@
         "premium_peak": 11157.0
       },
       "Grand Park Lara": {
-        "history_max": 9878.0,
-        "premium_peak": null
+        "history_max": 10022.0,
+        "premium_peak": 10022.0
       },
       "Grand Ozcelik Turcja, Kusadasi": {
         "history_max": 7511.0,
@@ -4817,8 +4908,8 @@
         "premium_peak": null
       },
       "Utopia World": {
-        "history_max": 10692.0,
-        "premium_peak": 10692.0
+        "history_max": 10706.0,
+        "premium_peak": 10706.0
       },
       "Armella Hill": {
         "history_max": 8637.0,
@@ -4833,12 +4924,12 @@
         "premium_peak": null
       },
       "Utopia Resort & Residence (ex Alara Park)": {
-        "history_max": 9945.0,
-        "premium_peak": null
+        "history_max": 10269.0,
+        "premium_peak": 10269.0
       },
       "Aydinbey Famous": {
-        "history_max": 10489.0,
-        "premium_peak": 10489.0
+        "history_max": 10680.0,
+        "premium_peak": 10680.0
       },
       "Armas Pemar Beach Resort": {
         "history_max": 8721.0,
@@ -4905,8 +4996,8 @@
         "premium_peak": 11424.0
       },
       "Arcanus Trendline Resort": {
-        "history_max": 10962.0,
-        "premium_peak": 10962.0
+        "history_max": 11028.0,
+        "premium_peak": 11028.0
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
         "history_max": 8084.0,
@@ -5394,6 +5485,10 @@
       },
       "Well Palace Side (ex. Side Crown Charm Palace)": {
         "history_max": 9126.0,
+        "premium_peak": null
+      },
+      "Amelia Beach Resort & Spa Turcja, Side, Kizilot": {
+        "history_max": 7931.0,
         "premium_peak": null
       }
     }
