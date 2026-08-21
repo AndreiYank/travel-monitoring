@@ -5954,10 +5954,36 @@
       "created_at": "2026-08-21T14:29:35.637449+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sensitive Premium Resort & Spa_2026-08-21_14-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Kaptan",
+      "duration_bucket": "",
+      "old_price": 8955.0,
+      "new_price": 9728.0,
+      "price_change": 773.0,
+      "price_change_pct": 8.632049134561697,
+      "timestamp": "2026-08-21 15:26:44.039981+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-21T15:28:13.370208+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Kaptan_2026-08-21_15-26_+8.6"
+    },
+    {
+      "hotel_name": "Korumar Deluxe",
+      "duration_bucket": "",
+      "old_price": 11557.0,
+      "new_price": 9557.0,
+      "price_change": -2000.0,
+      "price_change_pct": -17.30552911655274,
+      "timestamp": "2026-08-21 15:26:44.039981+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T15:28:13.370270+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Korumar Deluxe_2026-08-21_15-26_comeback_17.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T14:27:52.070714+00:00",
+    "last_processed_run": "2026-08-21T15:26:44.039981+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -7020,7 +7046,7 @@
         "premium_peak": 11091.0
       },
       "Side Moon Palace": {
-        "history_max": 8999.0,
+        "history_max": 9133.0,
         "premium_peak": null
       },
       "Sunis Elita Beach Resort (ex Asteria Elita)": {
