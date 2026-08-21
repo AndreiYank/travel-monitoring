@@ -5616,10 +5616,62 @@
       "created_at": "2026-08-21T08:34:14.137225+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Transatlantik (Kemer)_2026-08-21_08-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Kum",
+      "duration_bucket": "",
+      "old_price": 8099.0,
+      "new_price": 9923.0,
+      "price_change": 1824.0,
+      "price_change_pct": 22.521298925793307,
+      "timestamp": "2026-08-21 09:30:00.491758+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-21T09:32:17.167442+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Kum_2026-08-21_09-30_+22.5"
+    },
+    {
+      "hotel_name": "Club Paradiso",
+      "duration_bucket": "",
+      "old_price": 9941.0,
+      "new_price": 10058.0,
+      "price_change": 117.0,
+      "price_change_pct": 1.1769439694195754,
+      "timestamp": "2026-08-21 09:30:00.491758+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T09:32:17.167521+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Paradiso_2026-08-21_09-30_zone_out_+1.2"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 7884.0,
+      "new_price": 7884.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 09:30:00.491758+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T09:32:17.167535+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar_2026-08-21_09-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 7903.0,
+      "new_price": 7903.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 09:30:00.491758+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T09:32:17.167544+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-08-21_09-30_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T08:31:25.618288+00:00",
+    "last_processed_run": "2026-08-21T09:30:00.491758+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -5874,7 +5926,7 @@
         "premium_peak": null
       },
       "Gold City": {
-        "history_max": 8739.0,
+        "history_max": 8789.0,
         "premium_peak": null
       },
       "Serenity Queen": {
@@ -5918,8 +5970,8 @@
         "premium_peak": 11357.0
       },
       "Grand Park Lara": {
-        "history_max": 10665.0,
-        "premium_peak": 10665.0
+        "history_max": 10706.0,
+        "premium_peak": 10706.0
       },
       "Grand Ozcelik Turcja, Kusadasi": {
         "history_max": 7646.0,
@@ -6102,7 +6154,7 @@
         "premium_peak": 10923.0
       },
       "Oz Sui Resort": {
-        "history_max": 8888.0,
+        "history_max": 8955.0,
         "premium_peak": null
       },
       "Porto Bello": {
