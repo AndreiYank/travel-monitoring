@@ -2145,10 +2145,49 @@
       "created_at": "2026-08-21T06:31:42.914723+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Makadi Saraya (ex Iberotel)_2026-08-21_06-30_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8887.0,
+      "new_price": 8887.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 07:37:49.431294+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T07:39:16.750863+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-21_07-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Makadi Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 9245.0,
+      "new_price": 10748.0,
+      "price_change": 1503.0,
+      "price_change_pct": 16.25743645213629,
+      "timestamp": "2026-08-21 07:37:49.431294+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T07:39:16.750893+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Makadi Beach & Spa_2026-08-21_07-37_zone_out_+16.3"
+    },
+    {
+      "hotel_name": "Swissotel Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 11272.0,
+      "new_price": 9491.0,
+      "price_change": -1781.0,
+      "price_change_pct": -15.800212916962384,
+      "timestamp": "2026-08-21 07:37:49.431294+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T07:39:16.750920+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swissotel Sharm El Sheikh_2026-08-21_07-37_comeback_15.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T06:30:41.467850+00:00",
+    "last_processed_run": "2026-08-21T07:37:49.431294+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -2735,7 +2774,7 @@
         "premium_peak": null
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 8779.0,
+        "history_max": 9283.0,
         "premium_peak": null
       },
       "Calimera Blend Paradise Resort": {
