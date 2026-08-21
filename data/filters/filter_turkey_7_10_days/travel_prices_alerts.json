@@ -5395,10 +5395,75 @@
       "created_at": "2026-08-21T05:30:03.616468+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Washington Resort_2026-08-21_05-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 8213.0,
+      "new_price": 8213.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 06:31:38.620850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T06:33:20.832888+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-08-21_06-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7903.0,
+      "new_price": 7903.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 06:31:38.620850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T06:33:20.832914+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi_2026-08-21_06-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Titan Select Turcja, Alanya, Konakli",
+      "duration_bucket": "",
+      "old_price": 7362.0,
+      "new_price": 7362.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 06:31:38.620850+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T06:33:20.832920+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titan Select Turcja, Alanya, Konakli_2026-08-21_06-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sealight Resort (ex Otium Sealight Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 10564.0,
+      "new_price": 9500.0,
+      "price_change": -1064.0,
+      "price_change_pct": -10.071942446043165,
+      "timestamp": "2026-08-21 06:31:38.620850+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T06:33:20.832944+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-08-21_06-31_comeback_10.1"
+    },
+    {
+      "hotel_name": "Club Paradiso",
+      "duration_bucket": "",
+      "old_price": 11178.0,
+      "new_price": 9941.0,
+      "price_change": -1237.0,
+      "price_change_pct": -11.066380390051886,
+      "timestamp": "2026-08-21 06:31:38.620850+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T06:33:20.832961+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Paradiso_2026-08-21_06-31_comeback_11.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T05:27:17.628726+00:00",
+    "last_processed_run": "2026-08-21T06:31:38.620850+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -5441,7 +5506,7 @@
         "premium_peak": null
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 9230.0,
+        "history_max": 9360.0,
         "premium_peak": null
       },
       "Holiday Garden Resort (Okurcalar)": {
@@ -5881,7 +5946,7 @@
         "premium_peak": 10923.0
       },
       "Oz Sui Resort": {
-        "history_max": 8856.0,
+        "history_max": 8888.0,
         "premium_peak": null
       },
       "Porto Bello": {
@@ -5965,8 +6030,8 @@
         "premium_peak": 11305.0
       },
       "Liberty Kusadasi (ex. Seven Seas Sealight Elite)": {
-        "history_max": 11093.0,
-        "premium_peak": 11093.0
+        "history_max": 11255.0,
+        "premium_peak": 11255.0
       },
       "Laur Experience & Elegance": {
         "history_max": 11618.0,
@@ -6895,6 +6960,10 @@
       "Side Premium by OZ Hotels": {
         "history_max": 11117.0,
         "premium_peak": 11117.0
+      },
+      "Solivia (Ex. Titan Select)": {
+        "history_max": 8334.0,
+        "premium_peak": null
       }
     }
   }
