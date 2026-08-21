@@ -2236,10 +2236,49 @@
       "created_at": "2026-08-21T10:23:28.606210+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Viva Casa Maza_2026-08-21_10-22_zone_out_+5.2"
+    },
+    {
+      "hotel_name": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)",
+      "duration_bucket": "",
+      "old_price": 7515.0,
+      "new_price": 8150.0,
+      "price_change": 635.0,
+      "price_change_pct": 8.449767132401863,
+      "timestamp": "2026-08-21 11:19:34.496270+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-21T11:20:49.094446+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-21_11-19_+8.4"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 7619.0,
+      "new_price": 7619.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 11:19:34.496270+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T11:20:49.094489+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-21_11-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 11257.0,
+      "new_price": 9057.0,
+      "price_change": -2200.0,
+      "price_change_pct": -19.543395220751535,
+      "timestamp": "2026-08-21 11:19:34.496270+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T11:20:49.094512+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-08-21_11-19_comeback_19.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T10:22:17.064507+00:00",
+    "last_processed_run": "2026-08-21T11:19:34.496270+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -2538,8 +2577,8 @@
         "premium_peak": 11817.0
       },
       "Sunrise Arabian Beach Resort": {
-        "history_max": 12634.0,
-        "premium_peak": 12634.0
+        "history_max": 13886.0,
+        "premium_peak": 13886.0
       },
       "Sunrise Crystal Bay Resort": {
         "history_max": 15709.0,
@@ -2642,7 +2681,7 @@
         "premium_peak": 10292.0
       },
       "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": {
-        "history_max": 8024.0,
+        "history_max": 8150.0,
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
