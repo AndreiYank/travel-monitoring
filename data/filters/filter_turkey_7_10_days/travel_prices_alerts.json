@@ -5239,10 +5239,114 @@
       "created_at": "2026-08-20T23:21:47.006078+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Marin_2026-08-20_23-19_zone_out_+6.3"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 7970.0,
+      "new_price": 7970.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846565+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-08-21_00-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Club Paradiso",
+      "duration_bucket": "",
+      "old_price": 9941.0,
+      "new_price": 10220.0,
+      "price_change": 279.0,
+      "price_change_pct": 2.8065586963082185,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846612+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Paradiso_2026-08-21_00-44_zone_out_+2.8"
+    },
+    {
+      "hotel_name": "Club Yali Hotels & Resort",
+      "duration_bucket": "",
+      "old_price": 9920.0,
+      "new_price": 10312.0,
+      "price_change": 392.0,
+      "price_change_pct": 3.951612903225806,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846640+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Yali Hotels & Resort_2026-08-21_00-44_zone_out_+4.0"
+    },
+    {
+      "hotel_name": "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac",
+      "duration_bucket": "",
+      "old_price": 7862.0,
+      "new_price": 7862.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846660+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac_2026-08-21_00-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler)",
+      "duration_bucket": "",
+      "old_price": 7928.0,
+      "new_price": 7928.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846677+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler)_2026-08-21_00-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Labranda Ephesus Princess Turcja, Kusadasi, Bayraklidede",
+      "duration_bucket": "",
+      "old_price": 6764.0,
+      "new_price": 6764.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846695+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Ephesus Princess Turcja, Kusadasi, Bayraklidede_2026-08-21_00-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Selectum Family Comfort Side (ex. Lyra Resort)",
+      "duration_bucket": "",
+      "old_price": 9779.0,
+      "new_price": 10058.0,
+      "price_change": 279.0,
+      "price_change_pct": 2.853052459351672,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:46:40.846715+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum Family Comfort Side (ex. Lyra Resort)_2026-08-21_00-44_zone_out_+2.9"
+    },
+    {
+      "hotel_name": "Siam Elegance",
+      "duration_bucket": "",
+      "old_price": 10852.0,
+      "new_price": 9905.0,
+      "price_change": -947.0,
+      "price_change_pct": -8.726502027276078,
+      "timestamp": "2026-08-21 00:44:09.590461+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T00:46:40.846770+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siam Elegance_2026-08-21_00-44_comeback_8.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T23:19:53.502832+00:00",
+    "last_processed_run": "2026-08-21T00:44:09.590461+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -5653,8 +5757,8 @@
         "premium_peak": null
       },
       "Queens Park Le Jardin Resort": {
-        "history_max": 11568.0,
-        "premium_peak": 11568.0
+        "history_max": 11807.0,
+        "premium_peak": 11807.0
       },
       "Mira Meridia Beach Resort": {
         "history_max": 10988.0,
@@ -5853,16 +5957,16 @@
         "premium_peak": 11186.0
       },
       "Mercure Istanbul Bomonti": {
-        "history_max": 11547.0,
-        "premium_peak": 11547.0
+        "history_max": 11607.0,
+        "premium_peak": 11607.0
       },
       "Master Family Club": {
         "history_max": 8679.0,
         "premium_peak": null
       },
       "Ramada Resort Lara": {
-        "history_max": 10679.0,
-        "premium_peak": 10679.0
+        "history_max": 11620.0,
+        "premium_peak": 11620.0
       },
       "Mary Side (ex. Mary Palace)": {
         "history_max": 11473.0,
@@ -5933,8 +6037,8 @@
         "premium_peak": null
       },
       "Eftalia Blue": {
-        "history_max": 11114.0,
-        "premium_peak": 11114.0
+        "history_max": 11633.0,
+        "premium_peak": 11633.0
       },
       "Turan Prince": {
         "history_max": 11557.0,
@@ -6253,8 +6357,8 @@
         "premium_peak": null
       },
       "Sueno Beach Side": {
-        "history_max": 10972.0,
-        "premium_peak": 10972.0
+        "history_max": 11009.0,
+        "premium_peak": 11009.0
       },
       "Delphin Botanik (Alanya)": {
         "history_max": 11660.0,
@@ -6437,8 +6541,8 @@
         "premium_peak": null
       },
       "Sunis Evren Beach & Spa": {
-        "history_max": 11526.0,
-        "premium_peak": 11526.0
+        "history_max": 11786.0,
+        "premium_peak": 11786.0
       },
       "Avia Resort & Spa Turcja, Side, Colakli": {
         "history_max": 7960.0,
@@ -6731,6 +6835,14 @@
       "Diamond Excellence Resort & Spa": {
         "history_max": 11822.0,
         "premium_peak": 11822.0
+      },
+      "Monachus Family Resort Sorgun": {
+        "history_max": 11800.0,
+        "premium_peak": 11800.0
+      },
+      "Side Premium by OZ Hotels": {
+        "history_max": 11117.0,
+        "premium_peak": 11117.0
       }
     }
   }

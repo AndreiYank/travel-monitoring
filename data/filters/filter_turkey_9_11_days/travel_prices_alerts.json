@@ -1313,10 +1313,62 @@
       "created_at": "2026-08-20T23:21:37.132565+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-20_23-19_zone_out_+7.5"
+    },
+    {
+      "hotel_name": "Prestige Alanya",
+      "duration_bucket": "",
+      "old_price": 8082.0,
+      "new_price": 9059.0,
+      "price_change": 977.0,
+      "price_change_pct": 12.088591932689928,
+      "timestamp": "2026-08-21 00:44:23.092744+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-21T00:47:04.868930+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Prestige Alanya_2026-08-21_00-44_+12.1"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 9468.0,
+      "new_price": 12911.0,
+      "price_change": 3443.0,
+      "price_change_pct": 36.36459653569919,
+      "timestamp": "2026-08-21 00:44:23.092744+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:47:04.868973+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-08-21_00-44_zone_out_+36.4"
+    },
+    {
+      "hotel_name": "Solivia (Ex. Titan Select)",
+      "duration_bucket": "",
+      "old_price": 8807.0,
+      "new_price": 11772.0,
+      "price_change": 2965.0,
+      "price_change_pct": 33.66640172589985,
+      "timestamp": "2026-08-21 00:44:23.092744+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T00:47:04.868987+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solivia (Ex. Titan Select)_2026-08-21_00-44_zone_out_+33.7"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 11957.0,
+      "new_price": 9243.0,
+      "price_change": -2714.0,
+      "price_change_pct": -22.698001170862256,
+      "timestamp": "2026-08-21 00:44:23.092744+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T00:47:04.869011+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-21_00-44_comeback_22.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-20T23:19:57.693712+00:00",
+    "last_processed_run": "2026-08-21T00:44:23.092744+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
@@ -1327,8 +1379,8 @@
         "premium_peak": 16501.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
-        "history_max": 15512.0,
-        "premium_peak": 15512.0
+        "history_max": 15908.0,
+        "premium_peak": 15908.0
       },
       "Jadore Deluxe": {
         "history_max": 11585.0,
@@ -1339,8 +1391,8 @@
         "premium_peak": null
       },
       "Selectum Noa": {
-        "history_max": 12740.0,
-        "premium_peak": 12740.0
+        "history_max": 16295.0,
+        "premium_peak": 16295.0
       },
       "Innvista Belek (ex. Vera Verde)": {
         "history_max": 11569.0,
@@ -1475,8 +1527,8 @@
         "premium_peak": 11860.0
       },
       "Selectum Family Comfort Side (ex. Lyra Resort)": {
-        "history_max": 14531.0,
-        "premium_peak": 14531.0
+        "history_max": 15629.0,
+        "premium_peak": 15629.0
       },
       "Kustur Club Holiday Village": {
         "history_max": 14419.0,
@@ -1607,8 +1659,8 @@
         "premium_peak": 14434.0
       },
       "Side Aluna": {
-        "history_max": 11003.0,
-        "premium_peak": 11003.0
+        "history_max": 11286.0,
+        "premium_peak": 11286.0
       },
       "Seven Seas Palmeras Bay": {
         "history_max": 12317.0,
@@ -1663,16 +1715,16 @@
         "premium_peak": 10157.0
       },
       "Sealife Family Resort": {
-        "history_max": 12875.0,
-        "premium_peak": 12875.0
+        "history_max": 14418.0,
+        "premium_peak": 14418.0
       },
       "Orange County (Kemer)": {
         "history_max": 13144.0,
         "premium_peak": 13144.0
       },
       "Ramada Resort Lara": {
-        "history_max": 13122.0,
-        "premium_peak": 13122.0
+        "history_max": 14132.0,
+        "premium_peak": 14132.0
       },
       "OZ Incekum Beach Resort": {
         "history_max": 11187.0,
@@ -1719,8 +1771,8 @@
         "premium_peak": 14618.0
       },
       "Rox Royal (ex. Grand Haber)": {
-        "history_max": 10548.0,
-        "premium_peak": 10548.0
+        "history_max": 13631.0,
+        "premium_peak": 13631.0
       },
       "Misal (ex. Nox Inn Club)": {
         "history_max": 8557.0,
@@ -1971,8 +2023,8 @@
         "premium_peak": 13178.0
       },
       "Ma Biche Kemer by Werde Hotels": {
-        "history_max": 12663.0,
-        "premium_peak": 12663.0
+        "history_max": 14823.0,
+        "premium_peak": 14823.0
       },
       "Royal Taj Mahal": {
         "history_max": 15732.0,
@@ -1983,8 +2035,8 @@
         "premium_peak": null
       },
       "M. C. Arancia Resort": {
-        "history_max": 10081.0,
-        "premium_peak": 10081.0
+        "history_max": 10793.0,
+        "premium_peak": 10793.0
       },
       "Sailors Beach Club": {
         "history_max": 15393.0,
@@ -1999,8 +2051,8 @@
         "premium_peak": 11957.0
       },
       "Solivia (Ex. Titan Select)": {
-        "history_max": 8969.0,
-        "premium_peak": null
+        "history_max": 11772.0,
+        "premium_peak": 11772.0
       },
       "Side Moon Palace": {
         "history_max": 12633.0,
@@ -2039,8 +2091,8 @@
         "premium_peak": 15172.0
       },
       "Armas Beach": {
-        "history_max": 11350.0,
-        "premium_peak": 11350.0
+        "history_max": 11534.0,
+        "premium_peak": 11534.0
       },
       "Belek Beach Resort": {
         "history_max": 15966.0,
@@ -2175,8 +2227,8 @@
         "premium_peak": 13178.0
       },
       "Asteria Family Belek": {
-        "history_max": 12272.0,
-        "premium_peak": 12272.0
+        "history_max": 15611.0,
+        "premium_peak": 15611.0
       },
       "Unique Residence Golf Spa": {
         "history_max": 12882.0,
@@ -2247,8 +2299,8 @@
         "premium_peak": 10269.0
       },
       "Asteria Family Resort Side": {
-        "history_max": 9860.0,
-        "premium_peak": null
+        "history_max": 12911.0,
+        "premium_peak": 12911.0
       },
       "Armas Gul Beach": {
         "history_max": 10350.0,
@@ -2431,8 +2483,8 @@
         "premium_peak": 11950.0
       },
       "Club Paradiso": {
-        "history_max": 14027.0,
-        "premium_peak": 14027.0
+        "history_max": 15606.0,
+        "premium_peak": 15606.0
       },
       "Washington Resort": {
         "history_max": 11557.0,
@@ -2531,8 +2583,8 @@
         "premium_peak": 16100.0
       },
       "Papillon Zeugma Reluxury": {
-        "history_max": 15939.0,
-        "premium_peak": 15939.0
+        "history_max": 16092.0,
+        "premium_peak": 16092.0
       },
       "Side Kum": {
         "history_max": 10572.0,
@@ -2591,8 +2643,8 @@
         "premium_peak": 16479.0
       },
       "Kaya (Belek)": {
-        "history_max": 15818.0,
-        "premium_peak": 15818.0
+        "history_max": 16455.0,
+        "premium_peak": 16455.0
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
         "history_max": 11984.0,
@@ -2701,6 +2753,34 @@
       "Club Melas Prive (ex. Melas Holiday Village)": {
         "history_max": 16637.0,
         "premium_peak": 16637.0
+      },
+      "Fore Resort & Spa": {
+        "history_max": 15805.0,
+        "premium_peak": 15805.0
+      },
+      "Palm Wings Ephesus": {
+        "history_max": 14819.0,
+        "premium_peak": 14819.0
+      },
+      "Diamond of Bodrum": {
+        "history_max": 14859.0,
+        "premium_peak": 14859.0
+      },
+      "Crystal Flora Pearl Collection": {
+        "history_max": 15802.0,
+        "premium_peak": 15802.0
+      },
+      "Sultan of Side": {
+        "history_max": 10054.0,
+        "premium_peak": 10054.0
+      },
+      "La Blanche Resort & Spa": {
+        "history_max": 16373.0,
+        "premium_peak": 16373.0
+      },
+      "Kirbiyik Resort (ex. Dinler)": {
+        "history_max": 9448.0,
+        "premium_peak": null
       }
     }
   }
