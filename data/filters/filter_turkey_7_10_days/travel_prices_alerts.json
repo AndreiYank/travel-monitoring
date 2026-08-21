@@ -5889,10 +5889,75 @@
       "created_at": "2026-08-21T13:43:23.597037+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ozkaymak Marina (Kemer)_2026-08-21_13-41_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 8894.0,
+      "new_price": 10525.0,
+      "price_change": 1631.0,
+      "price_change_pct": 18.338205531819206,
+      "timestamp": "2026-08-21 14:27:52.070714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T14:29:35.637405+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-21_14-27_zone_out_+18.3"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 9921.0,
+      "new_price": 10001.0,
+      "price_change": 80.0,
+      "price_change_pct": 0.806370325572019,
+      "timestamp": "2026-08-21 14:27:52.070714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T14:29:35.637428+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-08-21_14-27_zone_out_+0.8"
+    },
+    {
+      "hotel_name": "Korumar Deluxe",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 14:27:52.070714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T14:29:35.637437+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Korumar Deluxe_2026-08-21_14-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sealife Buket Resort & Beach",
+      "duration_bucket": "",
+      "old_price": 8757.0,
+      "new_price": 8757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 14:27:52.070714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T14:29:35.637443+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealife Buket Resort & Beach_2026-08-21_14-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sensitive Premium Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9157.0,
+      "new_price": 9157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 14:27:52.070714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T14:29:35.637449+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sensitive Premium Resort & Spa_2026-08-21_14-27_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T13:41:31.961194+00:00",
+    "last_processed_run": "2026-08-21T14:27:52.070714+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -6143,7 +6208,7 @@
         "premium_peak": 10269.0
       },
       "Glamour Resort & Spa": {
-        "history_max": 9647.0,
+        "history_max": 9682.0,
         "premium_peak": null
       },
       "Gold City": {
@@ -7409,6 +7474,10 @@
       "Ozkaymak Kemer Marina Turcja, Kemer": {
         "history_max": 7862.0,
         "premium_peak": null
+      },
+      "Selectum Family Resort (ex Letoonia Golf Resort)": {
+        "history_max": 11844.0,
+        "premium_peak": 11844.0
       }
     }
   }
