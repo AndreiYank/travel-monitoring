@@ -6292,10 +6292,36 @@
       "created_at": "2026-08-21T20:21:03.884375+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kadikale Resort Spa & Wellness_2026-08-21_20-18_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9007.0,
+      "new_price": 10148.0,
+      "price_change": 1141.0,
+      "price_change_pct": 12.66792494726324,
+      "timestamp": "2026-08-21 21:17:53.387525+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T21:20:07.009836+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-08-21_21-17_zone_out_+12.7"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 10593.0,
+      "new_price": 9537.0,
+      "price_change": -1056.0,
+      "price_change_pct": -9.968847352024921,
+      "timestamp": "2026-08-21 21:17:53.387525+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-21T21:20:07.009913+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-21_21-17_comeback_10.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T20:18:37.362199+00:00",
+    "last_processed_run": "2026-08-21T21:17:53.387525+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -7402,8 +7428,8 @@
         "premium_peak": 11624.0
       },
       "Asia Beach Resort and Spa": {
-        "history_max": 10089.0,
-        "premium_peak": 10089.0
+        "history_max": 10148.0,
+        "premium_peak": 10148.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)": {
         "history_max": 10197.0,
