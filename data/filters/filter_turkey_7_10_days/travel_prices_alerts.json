@@ -6266,10 +6266,36 @@
       "created_at": "2026-08-21T19:25:58.862976+00:00",
       "threshold_percent": 8.0,
       "unique_key": "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)_2026-08-21_19-23_comeback_9.3"
+    },
+    {
+      "hotel_name": "Grand Cettia",
+      "duration_bucket": "",
+      "old_price": 9590.0,
+      "new_price": 10109.0,
+      "price_change": 519.0,
+      "price_change_pct": 5.411887382690303,
+      "timestamp": "2026-08-21 20:18:37.362199+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T20:21:03.884346+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Cettia_2026-08-21_20-18_zone_out_+5.4"
+    },
+    {
+      "hotel_name": "Kadikale Resort Spa & Wellness",
+      "duration_bucket": "",
+      "old_price": 8757.0,
+      "new_price": 8757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 20:18:37.362199+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T20:21:03.884375+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kadikale Resort Spa & Wellness_2026-08-21_20-18_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T19:23:30.177771+00:00",
+    "last_processed_run": "2026-08-21T20:18:37.362199+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -6332,8 +6358,8 @@
         "premium_peak": null
       },
       "Gypsophila Holiday Village": {
-        "history_max": 10427.0,
-        "premium_peak": 10427.0
+        "history_max": 11570.0,
+        "premium_peak": 11570.0
       },
       "Selectum Colours Side": {
         "history_max": 9207.0,

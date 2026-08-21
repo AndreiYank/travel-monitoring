@@ -3120,10 +3120,88 @@
       "created_at": "2026-08-21T19:23:32.795607+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr_2026-08-21_19-22_-11.2"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr",
+      "duration_bucket": "",
+      "old_price": 6737.0,
+      "new_price": 7590.0,
+      "price_change": 853.0,
+      "price_change_pct": 12.661421997921924,
+      "timestamp": "2026-08-21 20:17:16.609544+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-21T20:18:33.864444+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr_2026-08-21_20-17_+12.7"
+    },
+    {
+      "hotel_name": "Jaz Sharm Dreams Resort",
+      "duration_bucket": "",
+      "old_price": 10840.0,
+      "new_price": 9368.0,
+      "price_change": -1472.0,
+      "price_change_pct": -13.579335793357933,
+      "timestamp": "2026-08-21 20:17:16.609544+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-21T20:18:33.864472+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Sharm Dreams Resort_2026-08-21_20-17_-13.6"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 9625.0,
+      "new_price": 8371.0,
+      "price_change": -1254.0,
+      "price_change_pct": -13.028571428571428,
+      "timestamp": "2026-08-21 20:17:16.609544+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-21T20:18:33.864496+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-21_20-17_-13.0"
+    },
+    {
+      "hotel_name": "Retac Qunay Dahab Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9382.0,
+      "new_price": 8504.0,
+      "price_change": -878.0,
+      "price_change_pct": -9.358345768492859,
+      "timestamp": "2026-08-21 20:17:16.609544+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-21T20:18:33.864513+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Retac Qunay Dahab Resort & Spa_2026-08-21_20-17_-9.4"
+    },
+    {
+      "hotel_name": "IL Mercato Splash Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9134.0,
+      "new_price": 9134.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 20:17:16.609544+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T20:18:33.864545+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "IL Mercato Splash Aqua Park_2026-08-21_20-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8302.0,
+      "new_price": 8302.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-21 20:17:16.609544+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-21T20:18:33.864553+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort Egipt, Hurghada_2026-08-21_20-17_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T19:22:04.331598+00:00",
+    "last_processed_run": "2026-08-21T20:17:16.609544+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7322.0,
@@ -3354,7 +3432,7 @@
         "premium_peak": null
       },
       "Pickalbatros Sands Port Ghalib (ex. Red Sea Siva Sands)": {
-        "history_max": 9703.0,
+        "history_max": 10245.0,
         "premium_peak": null
       },
       "Radisson Blu Resort (El Quseir) Egipt, Marsa Alam, Al-Kusajr": {
@@ -3430,7 +3508,7 @@
         "premium_peak": null
       },
       "Nubian Island": {
-        "history_max": 10498.0,
+        "history_max": 10499.0,
         "premium_peak": null
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
@@ -3550,7 +3628,7 @@
         "premium_peak": null
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 9171.0,
+        "history_max": 9215.0,
         "premium_peak": null
       },
       "Xperience Kiroseiz Premier": {
@@ -3862,7 +3940,7 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam": {
-        "history_max": 7812.0,
+        "history_max": 7862.0,
         "premium_peak": null
       },
       "Movenpick Resort Sharm el Sheikh": {
