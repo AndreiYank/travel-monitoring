@@ -1924,10 +1924,36 @@
       "created_at": "2026-08-22T15:18:13.375410+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Maril Resort Beach & Spa_2026-08-22_15-15_zone_out_+29.0"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9025.0,
+      "new_price": 9813.0,
+      "price_change": 788.0,
+      "price_change_pct": 8.731301939058172,
+      "timestamp": "2026-08-22 16:17:12.056720+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-22T16:19:16.299199+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa_2026-08-22_16-17_+8.7"
+    },
+    {
+      "hotel_name": "Linda Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 9613.0,
+      "new_price": 9613.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 16:17:12.056720+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T16:19:16.299251+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Linda Resort (Side)_2026-08-22_16-17_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T15:15:45.686148+00:00",
+    "last_processed_run": "2026-08-22T16:17:12.056720+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
@@ -2286,8 +2312,8 @@
         "premium_peak": 14132.0
       },
       "OZ Incekum Beach Resort": {
-        "history_max": 11187.0,
-        "premium_peak": 11187.0
+        "history_max": 11790.0,
+        "premium_peak": 11790.0
       },
       "Numa Club (Side)": {
         "history_max": 13958.0,
@@ -2558,8 +2584,8 @@
         "premium_peak": 12512.0
       },
       "Marti Myra": {
-        "history_max": 14962.0,
-        "premium_peak": 14962.0
+        "history_max": 15056.0,
+        "premium_peak": 15056.0
       },
       "Royal Holiday Palace": {
         "history_max": 16272.0,
@@ -2886,7 +2912,7 @@
         "premium_peak": 13694.0
       },
       "Avia Resort & Spa": {
-        "history_max": 9592.0,
+        "history_max": 9813.0,
         "premium_peak": null
       },
       "Aydinbey Kings Palace": {
@@ -3154,8 +3180,8 @@
         "premium_peak": 16877.0
       },
       "Sherwood Exclusive Lara (ex Sherwood Breezes)": {
-        "history_max": 16610.0,
-        "premium_peak": 16610.0
+        "history_max": 16767.0,
+        "premium_peak": 16767.0
       },
       "Infinity by Yelken": {
         "history_max": 15998.0,
@@ -3356,6 +3382,10 @@
       "Well Palace Side (ex. Side Crown Charm Palace)": {
         "history_max": 10022.0,
         "premium_peak": 10022.0
+      },
+      "Side Sunport (ex. Side Sungate)": {
+        "history_max": 16640.0,
+        "premium_peak": 16640.0
       }
     }
   }
