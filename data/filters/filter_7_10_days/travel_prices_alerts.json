@@ -4888,10 +4888,114 @@
       "created_at": "2026-08-22T09:21:49.610783+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Sea Breeze Resort_2026-08-22_09-20_zone_out_gone"
+    },
+    {
+      "hotel_name": "Azur One Eleven",
+      "duration_bucket": "",
+      "old_price": 7758.0,
+      "new_price": 6568.0,
+      "price_change": -1190.0,
+      "price_change_pct": -15.33900489816963,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T10:17:07.432709+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azur One Eleven_2026-08-22_10-15_-15.3"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 12052.0,
+      "new_price": 8880.0,
+      "price_change": -3172.0,
+      "price_change_pct": -26.319283106538332,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432762+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-22_10-15_comeback_26.3"
+    },
+    {
+      "hotel_name": "Jaz Tamerina (ex. Jaz Oriental Club)",
+      "duration_bucket": "",
+      "old_price": 12597.0,
+      "new_price": 9397.0,
+      "price_change": -3200.0,
+      "price_change_pct": -25.402873700087326,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432788+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Tamerina (ex. Jaz Oriental Club)_2026-08-22_10-15_comeback_25.4"
+    },
+    {
+      "hotel_name": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)",
+      "duration_bucket": "",
+      "old_price": 10153.0,
+      "new_price": 9266.0,
+      "price_change": -887.0,
+      "price_change_pct": -8.736334088446766,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432829+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)_2026-08-22_10-15_comeback_8.7"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 11887.0,
+      "new_price": 9857.0,
+      "price_change": -2030.0,
+      "price_change_pct": -17.077479599562547,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432844+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-22_10-15_comeback_17.1"
+    },
+    {
+      "hotel_name": "Jaz Lamaya Resort (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 10628.0,
+      "new_price": 9246.0,
+      "price_change": -1382.0,
+      "price_change_pct": -13.003387278885961,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432864+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Lamaya Resort (ex Iberotel)_2026-08-22_10-15_comeback_13.0"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 11257.0,
+      "new_price": 9057.0,
+      "price_change": -2200.0,
+      "price_change_pct": -19.543395220751535,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432890+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-08-22_10-15_comeback_19.5"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 11607.0,
+      "new_price": 9117.0,
+      "price_change": -2490.0,
+      "price_change_pct": -21.45257172395968,
+      "timestamp": "2026-08-22 10:15:13.958146+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T10:17:07.432906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-22_10-15_comeback_21.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T09:20:37.013905+00:00",
+    "last_processed_run": "2026-08-22T10:15:13.958146+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7016.0,
@@ -5026,8 +5130,8 @@
         "premium_peak": null
       },
       "Xperience Sea Breeze Resort": {
-        "history_max": 9552.0,
-        "premium_peak": null
+        "history_max": 10044.0,
+        "premium_peak": 10044.0
       },
       "Parrotel Beach Resort (ex. Radisson Blu)": {
         "history_max": 8491.0,
