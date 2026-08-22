@@ -1963,10 +1963,36 @@
       "created_at": "2026-08-22T20:19:23.234128+00:00",
       "threshold_percent": 8.0,
       "unique_key": "M. C. Arancia Resort_2026-08-22_20-16_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 6437.0,
+      "new_price": 7277.0,
+      "price_change": 840.0,
+      "price_change_pct": 13.049557247164827,
+      "timestamp": "2026-08-22 21:16:54.302480+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-22T21:19:44.312748+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-22_21-16_+13.0"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9603.0,
+      "new_price": 10125.0,
+      "price_change": 522.0,
+      "price_change_pct": 5.435801312089971,
+      "timestamp": "2026-08-22 21:16:54.302480+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T21:19:44.312801+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-22_21-16_zone_out_+5.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T20:16:20.313908+00:00",
+    "last_processed_run": "2026-08-22T21:16:54.302480+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
@@ -1985,8 +2011,8 @@
         "premium_peak": null
       },
       "Ma Biche Kemer by Werde Hotels": {
-        "history_max": 15011.0,
-        "premium_peak": 15011.0
+        "history_max": 15041.0,
+        "premium_peak": 15041.0
       },
       "Mandarin Resort (Bodrum)": {
         "history_max": 13178.0,
