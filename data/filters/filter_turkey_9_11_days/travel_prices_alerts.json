@@ -1716,10 +1716,101 @@
       "created_at": "2026-08-21T22:19:51.427918+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-21_22-17_comeback_8.5"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 7164.0,
+      "new_price": 8869.0,
+      "price_change": 1705.0,
+      "price_change_pct": 23.799553322166386,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-22T00:43:33.625205+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-08-22_00-41_+23.8"
+    },
+    {
+      "hotel_name": "Aydinbey Queens Palace & Spa",
+      "duration_bucket": "",
+      "old_price": 9977.0,
+      "new_price": 10359.0,
+      "price_change": 382.0,
+      "price_change_pct": 3.8288062543850856,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T00:43:33.625245+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aydinbey Queens Palace & Spa_2026-08-22_00-41_zone_out_+3.8"
+    },
+    {
+      "hotel_name": "Oz Sui Resort",
+      "duration_bucket": "",
+      "old_price": 9990.0,
+      "new_price": 10336.0,
+      "price_change": 346.0,
+      "price_change_pct": 3.4634634634634636,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T00:43:33.625257+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Oz Sui Resort_2026-08-22_00-41_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 9843.0,
+      "new_price": 10749.0,
+      "price_change": 906.0,
+      "price_change_pct": 9.20451081987199,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T00:43:33.625266+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-22_00-41_zone_out_+9.2"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 9690.0,
+      "new_price": 10030.0,
+      "price_change": 340.0,
+      "price_change_pct": 3.508771929824561,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T00:43:33.625274+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-22_00-41_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9702.0,
+      "new_price": 10311.0,
+      "price_change": 609.0,
+      "price_change_pct": 6.277056277056277,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T00:43:33.625282+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-22_00-41_zone_out_+6.3"
+    },
+    {
+      "hotel_name": "Concordia Celes Beach",
+      "duration_bucket": "",
+      "old_price": 11722.0,
+      "new_price": 9607.0,
+      "price_change": -2115.0,
+      "price_change_pct": -18.042996075754992,
+      "timestamp": "2026-08-22 00:41:42.170840+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T00:43:33.625303+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concordia Celes Beach_2026-08-22_00-41_comeback_18.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-21T23:18:15.662466+00:00",
+    "last_processed_run": "2026-08-22T00:41:42.170840+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
@@ -1978,7 +2069,7 @@
         "premium_peak": 10357.0
       },
       "First Class": {
-        "history_max": 8177.0,
+        "history_max": 8869.0,
         "premium_peak": null
       },
       "Grand Seker": {
@@ -2002,8 +2093,8 @@
         "premium_peak": 13100.0
       },
       "Grand Kaptan": {
-        "history_max": 13589.0,
-        "premium_peak": 13589.0
+        "history_max": 13981.0,
+        "premium_peak": 13981.0
       },
       "Grand Belish": {
         "history_max": 14434.0,
@@ -2646,8 +2737,8 @@
         "premium_peak": 10674.0
       },
       "Aydinbey Queens Palace & Spa": {
-        "history_max": 10269.0,
-        "premium_peak": 10269.0
+        "history_max": 10359.0,
+        "premium_peak": 10359.0
       },
       "Asteria Family Resort Side": {
         "history_max": 12911.0,
@@ -2666,8 +2757,8 @@
         "premium_peak": 13059.0
       },
       "Aydinbey Famous": {
-        "history_max": 15200.0,
-        "premium_peak": 15200.0
+        "history_max": 15534.0,
+        "premium_peak": 15534.0
       },
       "Turunc Premium": {
         "history_max": 14831.0,
@@ -2998,8 +3089,8 @@
         "premium_peak": 16455.0
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
-        "history_max": 11984.0,
-        "premium_peak": 11984.0
+        "history_max": 12638.0,
+        "premium_peak": 12638.0
       },
       "Sealight Resort (ex Otium Sealight Beach Resort)": {
         "history_max": 14525.0,
@@ -3140,6 +3231,14 @@
       "Calido Maris": {
         "history_max": 12120.0,
         "premium_peak": 12120.0
+      },
+      "White City Resort": {
+        "history_max": 13229.0,
+        "premium_peak": 13229.0
+      },
+      "Well Palace Side (ex. Side Crown Charm Palace)": {
+        "history_max": 10022.0,
+        "premium_peak": 10022.0
       }
     }
   }
