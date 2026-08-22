@@ -1898,10 +1898,36 @@
       "created_at": "2026-08-22T12:25:03.170843+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Viking Star_2026-08-22_12-22_comeback_21.9"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8270.0,
+      "new_price": 9025.0,
+      "price_change": 755.0,
+      "price_change_pct": 9.12938331318017,
+      "timestamp": "2026-08-22 15:15:45.686148+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-22T15:18:13.375354+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa_2026-08-22_15-15_+9.1"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 8957.0,
+      "new_price": 11557.0,
+      "price_change": 2600.0,
+      "price_change_pct": 29.027576197387518,
+      "timestamp": "2026-08-22 15:15:45.686148+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T15:18:13.375410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-22_15-15_zone_out_+29.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T14:16:37.324730+00:00",
+    "last_processed_run": "2026-08-22T15:15:45.686148+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
@@ -2332,8 +2358,8 @@
         "premium_peak": 13072.0
       },
       "Oz Sui Resort": {
-        "history_max": 13168.0,
-        "premium_peak": 13168.0
+        "history_max": 13813.0,
+        "premium_peak": 13813.0
       },
       "Presa Di Finica (Finike)": {
         "history_max": 8957.0,
@@ -2912,8 +2938,8 @@
         "premium_peak": 16047.0
       },
       "Crystal De Luxe Comfort Collection": {
-        "history_max": 13467.0,
-        "premium_peak": 13467.0
+        "history_max": 13727.0,
+        "premium_peak": 13727.0
       },
       "Crystal Family Comfort Collection": {
         "history_max": 14708.0,
