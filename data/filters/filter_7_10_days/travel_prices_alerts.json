@@ -2730,10 +2730,75 @@
       "created_at": "2026-08-22T03:39:05.189147+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-22_03-37_+24.2"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9459.0,
+      "new_price": 7619.0,
+      "price_change": -1840.0,
+      "price_change_pct": -19.452373400993764,
+      "timestamp": "2026-08-22 05:21:34.282930+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T05:23:26.813784+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-22_05-21_-19.5"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 9280.0,
+      "new_price": 7833.0,
+      "price_change": -1447.0,
+      "price_change_pct": -15.592672413793105,
+      "timestamp": "2026-08-22 05:21:34.282930+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T05:23:26.813820+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-08-22_05-21_-15.6"
+    },
+    {
+      "hotel_name": "Amarina Abu Soma Resort",
+      "duration_bucket": "",
+      "old_price": 9287.0,
+      "new_price": 9287.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 05:21:34.282930+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T05:23:26.813858+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Abu Soma Resort_2026-08-22_05-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Movenpick Waterpark Resort & Spa Soma Bay",
+      "duration_bucket": "",
+      "old_price": 7737.0,
+      "new_price": 7737.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 05:21:34.282930+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T05:23:26.813869+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Waterpark Resort & Spa Soma Bay_2026-08-22_05-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "The V Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 05:21:34.282930+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T05:23:26.813877+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The V Luxury Resort_2026-08-22_05-21_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T04:24:51.234418+00:00",
+    "last_processed_run": "2026-08-22T05:21:34.282930+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -3228,8 +3293,8 @@
         "premium_peak": null
       },
       "Steigenberger Ras Soma": {
-        "history_max": 12794.0,
-        "premium_peak": 12794.0
+        "history_max": 13793.0,
+        "premium_peak": 13793.0
       },
       "Steigenberger Golf Resort": {
         "history_max": 10057.0,
