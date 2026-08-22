@@ -4992,10 +4992,36 @@
       "created_at": "2026-08-22T10:17:07.432906+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-22_10-15_comeback_21.5"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9095.0,
+      "new_price": 8347.0,
+      "price_change": -748.0,
+      "price_change_pct": -8.224299065420562,
+      "timestamp": "2026-08-22 11:14:29.785000+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T11:16:12.386127+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-08-22_11-14_-8.2"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8687.0,
+      "new_price": 8687.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 11:14:29.785000+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T11:16:12.386211+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-22_11-14_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T10:15:13.958146+00:00",
+    "last_processed_run": "2026-08-22T11:14:29.785000+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 7016.0,
@@ -5730,7 +5756,7 @@
         "premium_peak": null
       },
       "Charmillion Garden Aqua Park": {
-        "history_max": 9032.0,
+        "history_max": 9170.0,
         "premium_peak": null
       },
       "Concorde El Salam Front Area": {

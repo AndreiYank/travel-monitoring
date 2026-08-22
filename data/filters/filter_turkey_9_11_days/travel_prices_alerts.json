@@ -1859,10 +1859,36 @@
       "created_at": "2026-08-22T10:19:57.445785+00:00",
       "threshold_percent": 8.0,
       "unique_key": "M. C. Arancia Resort_2026-08-22_10-16_comeback_9.0"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7291.0,
+      "new_price": 6651.0,
+      "price_change": -640.0,
+      "price_change_pct": -8.777945412151968,
+      "timestamp": "2026-08-22 11:16:23.312732+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T11:18:47.199886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-22_11-16_-8.8"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9883.0,
+      "new_price": 10109.0,
+      "price_change": 226.0,
+      "price_change_pct": 2.2867550338965903,
+      "timestamp": "2026-08-22 11:16:23.312732+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T11:18:47.199927+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-22_11-16_zone_out_+2.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T10:16:54.339763+00:00",
+    "last_processed_run": "2026-08-22T11:16:23.312732+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12066.0,
