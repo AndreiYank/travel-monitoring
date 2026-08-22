@@ -5139,9 +5139,101 @@
       "created_at": "2026-08-22T16:17:11.164867+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-22_16-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Safir Dahab Resort",
+      "duration_bucket": "",
+      "old_price": 8491.0,
+      "new_price": 9756.0,
+      "price_change": 1265.0,
+      "price_change_pct": 14.898127429042516,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-22T17:49:12.741402+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort_2026-08-22_17-47_+14.9"
+    },
+    {
+      "hotel_name": "Charmillion Club Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9579.0,
+      "new_price": 9579.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T17:49:12.741456+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Aqua Park_2026-08-22_17-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Concorde El Salam Front Area",
+      "duration_bucket": "",
+      "old_price": 9760.0,
+      "new_price": 10520.0,
+      "price_change": 760.0,
+      "price_change_pct": 7.786885245901639,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T17:49:12.741469+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde El Salam Front Area_2026-08-22_17-47_zone_out_+7.8"
+    },
+    {
+      "hotel_name": "Concorde El Salam Sport",
+      "duration_bucket": "",
+      "old_price": 9155.0,
+      "new_price": 9155.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T17:49:12.741477+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde El Salam Sport_2026-08-22_17-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Resort",
+      "duration_bucket": "",
+      "old_price": 9546.0,
+      "new_price": 9546.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T17:49:12.741485+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Resort_2026-08-22_17-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Neo Naama Bay",
+      "duration_bucket": "",
+      "old_price": 8575.0,
+      "new_price": 8575.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T17:49:12.741492+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Neo Naama Bay_2026-08-22_17-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Naama Bay Promenade Mountain Resort",
+      "duration_bucket": "",
+      "old_price": 9111.0,
+      "new_price": 9111.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 17:47:27.463084+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T17:49:12.741499+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Naama Bay Promenade Mountain Resort_2026-08-22_17-47_zone_out_gone"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-22T16:15:31.732083+00:00",
 =======
       "timestamp": "2026-08-22 16:56:40.561433+00:00",
@@ -5153,6 +5245,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-22T16:56:40.561433+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-22T17:47:27.463084+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
@@ -5232,8 +5327,8 @@
         "premium_peak": 10546.0
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 10146.0,
-        "premium_peak": 10146.0
+        "history_max": 10796.0,
+        "premium_peak": 10796.0
       },
       "Reef Oasis Blue Bay Resort": {
         "history_max": 12457.0,
@@ -5436,8 +5531,8 @@
         "premium_peak": 14627.0
       },
       "Sultan Gardens Resort": {
-        "history_max": 11907.0,
-        "premium_peak": 11907.0
+        "history_max": 11912.0,
+        "premium_peak": 11912.0
       },
       "Sunrise Alora Aqua Park Resort": {
         "history_max": 10587.0,
@@ -5500,8 +5595,8 @@
         "premium_peak": null
       },
       "Swissotel Sharm El Sheikh": {
-        "history_max": 11767.0,
-        "premium_peak": 11767.0
+        "history_max": 11773.0,
+        "premium_peak": 11773.0
       },
       "Xperience Kiroseiz Premier": {
         "history_max": 8305.0,
@@ -5596,7 +5691,7 @@
         "premium_peak": null
       },
       "Safir Dahab Resort": {
-        "history_max": 8491.0,
+        "history_max": 9756.0,
         "premium_peak": null
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
@@ -5892,8 +5987,8 @@
         "premium_peak": null
       },
       "Concorde El Salam Front Area": {
-        "history_max": 9760.0,
-        "premium_peak": null
+        "history_max": 10520.0,
+        "premium_peak": 10520.0
       },
       "Amphoras Beach": {
         "history_max": 9824.0,
