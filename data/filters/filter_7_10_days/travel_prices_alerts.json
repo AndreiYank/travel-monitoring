@@ -3588,10 +3588,114 @@
       "created_at": "2026-08-22T06:25:54.728412+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Sea Breeze Resort_2026-08-22_06-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 11607.0,
+      "new_price": 9117.0,
+      "price_change": -2490.0,
+      "price_change_pct": -21.45257172395968,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.344988+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-22_07-26_comeback_21.5"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 11257.0,
+      "new_price": 9057.0,
+      "price_change": -2200.0,
+      "price_change_pct": -19.543395220751535,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345024+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-08-22_07-26_comeback_19.5"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 11887.0,
+      "new_price": 9857.0,
+      "price_change": -2030.0,
+      "price_change_pct": -17.077479599562547,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345038+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-22_07-26_comeback_17.1"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 12048.0,
+      "new_price": 7964.0,
+      "price_change": -4084.0,
+      "price_change_pct": -33.89774236387782,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345059+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-22_07-26_comeback_33.9"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 12052.0,
+      "new_price": 8880.0,
+      "price_change": -3172.0,
+      "price_change_pct": -26.319283106538332,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345082+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-22_07-26_comeback_26.3"
+    },
+    {
+      "hotel_name": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)",
+      "duration_bucket": "",
+      "old_price": 10153.0,
+      "new_price": 9266.0,
+      "price_change": -887.0,
+      "price_change_pct": -8.736334088446766,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345093+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)_2026-08-22_07-26_comeback_8.7"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 10317.0,
+      "new_price": 9181.0,
+      "price_change": -1136.0,
+      "price_change_pct": -11.01095279635553,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345113+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-22_07-26_comeback_11.0"
+    },
+    {
+      "hotel_name": "Jaz Lamaya Resort (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 10628.0,
+      "new_price": 9148.0,
+      "price_change": -1480.0,
+      "price_change_pct": -13.925479864508844,
+      "timestamp": "2026-08-22 07:26:51.762382+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-22T07:28:46.345128+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Lamaya Resort (ex Iberotel)_2026-08-22_07-26_comeback_13.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T06:24:29.299139+00:00",
+    "last_processed_run": "2026-08-22T07:26:51.762382+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -3666,12 +3770,12 @@
         "premium_peak": null
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
-        "history_max": 9482.0,
-        "premium_peak": null
+        "history_max": 10546.0,
+        "premium_peak": 10546.0
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 9516.0,
-        "premium_peak": null
+        "history_max": 10146.0,
+        "premium_peak": 10146.0
       },
       "Reef Oasis Blue Bay Resort": {
         "history_max": 12457.0,
