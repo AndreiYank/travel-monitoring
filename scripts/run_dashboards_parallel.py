@@ -40,6 +40,7 @@ DEFAULT_DASHBOARDS = [
         "config": "config_ci_filter_egypt_autumn_7_10.json",
         "display_price_ceiling": "11000",
         "history_price_ceiling": "11000",
+        "all_airports_data": "data/filters/filter_egypt_autumn_2026_7_10_days/travel_prices_any_airports.csv",
     },
     {
         "data": "data/filters/filter_egypt_autumn_2026_13_16_days/travel_prices.csv",
@@ -50,6 +51,7 @@ DEFAULT_DASHBOARDS = [
         "config": "config_ci_filter_egypt_autumn_13_16.json",
         "display_price_ceiling": "11000",
         "history_price_ceiling": "11000",
+        "all_airports_data": "data/filters/filter_egypt_autumn_2026_13_16_days/travel_prices_any_airports.csv",
     },
     {
         "data": "data/filters/filter_turkey_7_10_days/travel_prices.csv",
@@ -129,6 +131,8 @@ def _run_one(spec: dict, log_dir: Path) -> tuple[str, int, float, str]:
     ]
     if spec.get("config"):
         cmd.extend(["--config-file", spec["config"]])
+    if spec.get("all_airports_data"):
+        cmd.extend(["--all-airports-data-file", spec["all_airports_data"]])
     t0 = time.monotonic()
     with log_path.open("w", encoding="utf-8") as log_f:
         log_f.write(f"# {output}\n# started {time.strftime('%Y-%m-%d %H:%M:%S')}\n\n")

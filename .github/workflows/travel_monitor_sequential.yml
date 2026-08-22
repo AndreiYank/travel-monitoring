@@ -91,7 +91,9 @@ jobs:
             python travel_monitor.py --config config_ci_filter_7_10.json
             python travel_monitor.py --config config_ci_filter_13_16.json
             python travel_monitor.py --config config_ci_filter_egypt_autumn_7_10.json
+            python travel_monitor.py --config config_ci_filter_egypt_autumn_7_10_any_airports.json
             python travel_monitor.py --config config_ci_filter_egypt_autumn_13_16.json
+            python travel_monitor.py --config config_ci_filter_egypt_autumn_13_16_any_airports.json
             python travel_monitor.py --config config_ci_filter_turkey_7_10.json
             python travel_monitor.py --config config_ci_filter_turkey_9_11.json
             python travel_monitor.py --config config_ci_filter_turkey_vacation_jul18.json

@@ -1692,8 +1692,23 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         print(f"❌ Ошибка загрузки данных: {e}")
         return
 
-    # Откат фичи сравнения аэропортов: не используем общий датасет
+    # Загружаем данные альтернативных аэропортов для сравнения, если переданы или обнаружены
     df_all_airports = None
+    alt_file_to_load = None
+    if all_airports_data_file and os.path.exists(all_airports_data_file):
+        alt_file_to_load = all_airports_data_file
+    else:
+        auto_alt_csv = os.path.join(data_dir, "travel_prices_any_airports.csv")
+        if os.path.exists(auto_alt_csv):
+            alt_file_to_load = auto_alt_csv
+
+    if alt_file_to_load:
+        try:
+            df_all_airports = pd.read_csv(alt_file_to_load, quoting=csv.QUOTE_ALL, on_bad_lines='skip')
+            print(f"✈️ Загружено {len(df_all_airports)} записей альтернативных аэропортов из {alt_file_to_load}")
+        except Exception as e:
+            print(f"⚠️ Ошибка чтения файла альтернативных аэропортов {alt_file_to_load}: {e}")
+            df_all_airports = None
 
     filter_config = load_filter_config(data_file, config_file)
     group_cols, trip_buckets, use_trip_buckets = _prepare_trip_duration_columns(df, filter_config or {})
@@ -5416,6 +5431,41 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             overflow-wrap: anywhere;
             word-break: break-word;
         }}
+        .cheaper-alt-badge {{
+            display: block;
+            width: fit-content;
+            max-width: 100%;
+            margin-top: .32rem;
+            font-size: .66rem;
+            font-weight: 700;
+            line-height: 1.25;
+            color: #047857;
+            background: rgba(16, 185, 129, 0.13);
+            border: 1px solid rgba(16, 185, 129, 0.32);
+            border-radius: 6px;
+            padding: .16rem .42rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+        }}
+        .cheaper-alt-badge:hover {{
+            background: rgba(16, 185, 129, 0.25);
+            border-color: rgba(16, 185, 129, 0.55);
+            color: #065f46;
+            text-decoration: none;
+        }}
+        .cheaper-alt-badge .alt-savings {{
+            color: #059669;
+            font-weight: 800;
+        }}
+        .dark-mode .cheaper-alt-badge {{
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.18);
+            border-color: rgba(16, 185, 129, 0.38);
+        }}
+        .dark-mode .cheaper-alt-badge:hover {{
+            background: rgba(16, 185, 129, 0.32);
+            color: #6ee7b7;
+        }}
         .hotel-card-stats {{
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -7746,8 +7796,35 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         hotel_slug = slugify(hotel_name)
         chart_href = _hotel_chart_viewer_href(_filter_data_id, hotel_slug)
 
-        # Откат: не вычисляем аэропорт и альтернативы
-        
+        # Альтернативные аэропорты (если доступен датасет df_all_airports)
+        cheaper_alt_html = ""
+        if df_all_airports is not None and not df_all_airports.empty:
+            cur_airport = hotel.get('from_airport')
+            if not cur_airport or pd.isna(cur_airport) or not str(cur_airport).strip():
+                cur_airport = extract_airport_from_url(hotel.get('offer_url') or hotel.get('url', ''))
+            alts = find_cheaper_airport_alternatives(
+                df_all_airports,
+                hotel_name,
+                dates,
+                price,
+                cur_airport,
+            )
+            if alts:
+                best_alt = alts[0]
+                alt_url = best_alt.get('url', '')
+                alt_airport = html_lib.escape(str(best_alt['airport']))
+                alt_price = best_alt['price']
+                alt_savings = best_alt['savings']
+                alt_savings_pct = best_alt['savings_percent']
+                alt_title = html_lib.escape(
+                    f"Вылет из {best_alt['airport']}: {alt_price:.0f} PLN (дешевле на {alt_savings:.0f} PLN / {alt_savings_pct:.1f}%)",
+                    quote=True,
+                )
+                if alt_url:
+                    cheaper_alt_html = f'<a href="{html_lib.escape(str(alt_url), quote=True)}" target="_blank" class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></a>'
+                else:
+                    cheaper_alt_html = f'<span class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></span>'
+
         # Ссылка на предложение
         offer_url = hotel.get('offer_url', '')
         offer_link_html = ""
@@ -7806,7 +7883,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         table_rows_html_parts.append(f"""
                     <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}" data-departure-date="{departure_date_attr}" data-departure-key="{departure_key_attr}">
                         <td class="hotel-name col-hotel" data-label="Отель"><button class="watchlist-star-btn" data-hotel-name="{hotel_name_attr}" title="Добавить в избранное">☆</button><a class="open-chart-link hotel-hover-link" href="{chart_href}" target="_blank" data-hotel-name="{hotel_name_attr}">{hotel_name_html}</a></td>
-                        <td class="price col-tight" data-label="Цена" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}</td>
+                        <td class="price col-tight" data-label="Цена" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}{cheaper_alt_html}</td>
                         <td class="col-tight col-w-deal-td" data-label="Deal" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
                         <td class="col-tight col-w-forecast-td" data-label="Прогноз" data-sort-value="{forecast['text']}"><span class="forecast-pill {forecast['class']}">{forecast['icon']} {forecast['text']}</span></td>
                         <td class="col-tight col-w-ta-td col-hide-sm" data-label="TripAdvisor">{ta_rating_html}</td>
