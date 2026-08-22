@@ -39,10 +39,62 @@
       "created_at": "2026-08-22T21:17:08.588041+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Palm Royale Soma Bay_2026-08-22_21-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 6817.0,
+      "new_price": 5817.0,
+      "price_change": -1000.0,
+      "price_change_pct": -14.669209329617134,
+      "timestamp": "2026-08-22 22:15:46.530618+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T22:16:36.923359+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-22_22-15_-14.7"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7517.0,
+      "new_price": 6877.0,
+      "price_change": -640.0,
+      "price_change_pct": -8.514034854330186,
+      "timestamp": "2026-08-22 22:15:46.530618+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-22T22:16:36.923391+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam_2026-08-22_22-15_-8.5"
+    },
+    {
+      "hotel_name": "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 7865.0,
+      "new_price": 7865.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 22:15:46.530618+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T22:16:36.923435+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-22_22-15_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8377.0,
+      "new_price": 8377.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-22 22:15:46.530618+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-22T22:16:36.923445+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-22_22-15_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-22T21:16:21.866463+00:00",
+    "last_processed_run": "2026-08-22T22:15:46.530618+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -666,6 +718,14 @@
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
         "history_max": 7867.0,
+        "premium_peak": null
+      },
+      "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
+        "history_max": 7865.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
+        "history_max": 7057.0,
         "premium_peak": null
       }
     }
