@@ -1918,20 +1918,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if len(same_hotel_dates) == 0:
                 return []
             
-            # Добавляем информацию об аэропорте с поэлементным fallback: сначала from_airport, затем извлекаем из URL
+            # Извлекаем аэропорт: сначала 'departure_airport', затем 'from_airport', затем из URL
+            same_hotel_dates['airport'] = None
+            if 'departure_airport' in same_hotel_dates.columns:
+                same_hotel_dates['airport'] = same_hotel_dates['departure_airport']
             if 'from_airport' in same_hotel_dates.columns:
-                same_hotel_dates['airport'] = same_hotel_dates['from_airport']
-                same_hotel_dates['airport'] = same_hotel_dates['airport'].where(
-                    same_hotel_dates['airport'].astype(str).str.strip().ne(''),
-                    None
-                )
-                same_hotel_dates['airport'] = same_hotel_dates['airport'].fillna(
-                    same_hotel_dates['url'].apply(extract_airport_from_url)
-                )
-            else:
-                same_hotel_dates['airport'] = same_hotel_dates['url'].apply(extract_airport_from_url)
+                same_hotel_dates['airport'] = same_hotel_dates['airport'].fillna(same_hotel_dates['from_airport'])
             
-            # Подставляем плейсхолдер для неизвестного аэропорта, чтобы не терять альтернативы
+            same_hotel_dates['airport'] = same_hotel_dates['airport'].where(
+                same_hotel_dates['airport'].astype(str).str.strip().ne('') &
+                same_hotel_dates['airport'].astype(str).str.strip().ne('Все аэропорты') &
+                same_hotel_dates['airport'].astype(str).str.strip().ne('None'),
+                None
+            )
+            same_hotel_dates['airport'] = same_hotel_dates['airport'].fillna(
+                same_hotel_dates['url'].apply(extract_airport_from_url)
+            )
             same_hotel_dates['airport'] = same_hotel_dates['airport'].fillna('Другой город')
             same_hotel_dates.loc[same_hotel_dates['airport'].astype(str).str.strip()=='', 'airport'] = 'Другой город'
             
@@ -1941,11 +1943,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 idx_min_by_airport, ['airport', 'price', 'offer_url', 'url']
             ].reset_index(drop=True)
             
-            # Фильтруем аэропорты с ценами дешевле текущей
-            cheaper_alternatives = airport_prices[
-                (airport_prices['price'] < current_price) & 
-                (airport_prices['airport'] != current_airport_norm)
-            ].sort_values('price')
+            # Нормализация текущего аэропорта для фильтрации совпадений (например, если текущий - Варшава)
+            cur_ap_lower = current_airport_norm.lower()
+            is_cur_warsaw = 'warszaw' in cur_ap_lower or 'waw' in cur_ap_lower or 'wmi' in cur_ap_lower or 'rdo' in cur_ap_lower or not cur_ap_lower
+            
+            def is_same_airport(alt_ap: str) -> bool:
+                alt_lower = str(alt_ap).strip().lower()
+                if is_cur_warsaw and ('warszaw' in alt_lower or 'waw' in alt_lower or 'wmi' in alt_lower or 'rdo' in alt_lower):
+                    return True
+                return alt_lower == cur_ap_lower
+
+            # Фильтруем аэропорты с ценами дешевле текущей и не из того же города вылета
+            mask_cheaper = (airport_prices['price'] < current_price) & (~airport_prices['airport'].apply(is_same_airport))
+            cheaper_alternatives = airport_prices[mask_cheaper].sort_values('price')
             
             alternatives = []
             for _, row in cheaper_alternatives.iterrows():
