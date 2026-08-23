@@ -41,7 +41,7 @@ def generate_landing(tiles=None, output_file='index.html'):
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Travel Price Monitor • Выбор направления</title>
+  <title>Travel Price Monitor • Мониторинг цен на туры из Польши</title>
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
   <link rel="apple-touch-icon" href="favicon.svg">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,12 +49,12 @@ def generate_landing(tiles=None, output_file='index.html'):
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
     :root {{
-      --bg: #f3f6ff;
-      --ink: #101828;
+      --bg: #f8fafc;
+      --ink: #0f172a;
       --muted: #475467;
-      --line: #dce3f2;
-      --glass: rgba(255,255,255,.72);
-      --shadow: 0 16px 48px rgba(16,24,40,.12);
+      --line: #e2e8f0;
+      --glass: rgba(255,255,255,.82);
+      --shadow: 0 16px 48px rgba(15,23,42,.08);
       --brand: #4f46e5;
       --brand-2: #0ea5e9;
       --radius: 18px;
@@ -63,8 +63,8 @@ def generate_landing(tiles=None, output_file='index.html'):
     body {{
       font-family: 'Inter', sans-serif;
       background:
-        radial-gradient(1200px 500px at -10% -20%, rgba(79,70,229,.16), transparent 60%),
-        radial-gradient(900px 500px at 120% 0%, rgba(14,165,233,.14), transparent 55%),
+        radial-gradient(1200px 500px at -10% -20%, rgba(79,70,229,.12), transparent 60%),
+        radial-gradient(900px 500px at 120% 0%, rgba(14,165,233,.12), transparent 55%),
         var(--bg);
       margin: 0;
       color: var(--ink);
@@ -76,9 +76,9 @@ def generate_landing(tiles=None, output_file='index.html'):
       padding: 24px;
     }}
     .header {{
-      background: linear-gradient(135deg, rgba(79,70,229,.94), rgba(14,165,233,.9));
+      background: linear-gradient(135deg, rgba(79,70,229,.95), rgba(14,165,233,.92));
       color: #fff;
-      padding: 30px 28px;
+      padding: 36px 32px;
       border-radius: calc(var(--radius) + 6px);
       box-shadow: var(--shadow);
       position: relative;
@@ -91,15 +91,45 @@ def generate_landing(tiles=None, output_file='index.html'):
       background: linear-gradient(120deg, rgba(255,255,255,.18), transparent 35%);
       pointer-events: none;
     }}
-    .header h1 {{ margin: 0 0 8px; font-size: clamp(1.5rem, 2.6vw, 2rem); }}
-    .subtitle {{ opacity: .94; }}
-    .meta {{
-      margin-top: 14px;
-      font-size: .9rem;
-      opacity: .95;
-      padding: 8px 12px;
+    .header h1 {{ margin: 0 0 10px; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; }}
+    .subtitle {{ font-size: 1.05rem; opacity: .95; line-height: 1.45; max-width: 720px; }}
+    
+    .onboarding-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 12px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 2;
+    }}
+    .onboarding-card {{
       background: rgba(255,255,255,.15);
+      backdrop-filter: blur(8px);
       border: 1px solid rgba(255,255,255,.25);
+      border-radius: 14px;
+      padding: 14px 16px;
+      font-size: .88rem;
+    }}
+    .onboarding-card-title {{
+      font-weight: 700;
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+    .onboarding-card-desc {{
+      opacity: .9;
+      font-size: .82rem;
+      line-height: 1.35;
+    }}
+
+    .meta {{
+      margin-top: 20px;
+      font-size: .88rem;
+      opacity: .95;
+      padding: 8px 14px;
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.28);
       border-radius: 999px;
       display: inline-flex;
       gap: 10px;
@@ -107,13 +137,13 @@ def generate_landing(tiles=None, output_file='index.html'):
       flex-wrap: wrap;
     }}
     .filter-section {{
-      margin-top: 24px;
+      margin-top: 28px;
     }}
     .section-head {{
       display: flex;
       align-items: center;
       gap: 10px;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       padding: 0 2px;
     }}
     .section-icon {{
@@ -122,7 +152,7 @@ def generate_landing(tiles=None, output_file='index.html'):
     }}
     .section-title {{
       margin: 0;
-      font-size: 1.15rem;
+      font-size: 1.2rem;
       font-weight: 800;
       letter-spacing: .01em;
       color: #1e293b;
@@ -136,48 +166,49 @@ def generate_landing(tiles=None, output_file='index.html'):
       grid-column: span 6;
       background: var(--glass);
       backdrop-filter: blur(14px);
-      border: 1px solid rgba(255,255,255,.6);
+      border: 1px solid rgba(255,255,255,.8);
       border-radius: var(--radius);
       text-decoration: none;
       color: inherit;
-      box-shadow: 0 8px 26px rgba(16,24,40,.08);
+      box-shadow: 0 8px 26px rgba(16,24,40,.06);
       transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
     }}
     .card:hover {{
       transform: translateY(-3px);
       border-color: rgba(79,70,229,.35);
-      box-shadow: 0 14px 34px rgba(16,24,40,.14);
+      box-shadow: 0 14px 34px rgba(16,24,40,.12);
     }}
-    .card-body {{ padding: 20px; }}
+    .card-body {{ padding: 22px; }}
     .card-title {{
-      font-size: 1.1rem;
+      font-size: 1.12rem;
       font-weight: 700;
       color: #1d4ed8;
       letter-spacing: .01em;
     }}
     .card-sub {{
-      margin-top: 7px;
+      margin-top: 8px;
       color: var(--muted);
       font-size: .93rem;
+      line-height: 1.4;
     }}
     .card-action {{
-      margin-top: 14px;
+      margin-top: 16px;
       font-size: .88rem;
-      font-weight: 600;
-      color: #3730a3;
+      font-weight: 700;
+      color: #4338ca;
     }}
     .footer {{
       text-align: center;
-      color: #667085;
-      margin-top: 24px;
-      font-size: .9rem;
+      color: #64748b;
+      margin-top: 32px;
+      font-size: .88rem;
     }}
     @media (max-width: 768px) {{
       .card {{ grid-column: span 12; }}
     }}
     @media (max-width: 640px) {{
       .container {{ padding: 14px; }}
-      .header {{ padding: 20px 16px; border-radius: 16px; }}
+      .header {{ padding: 22px 18px; border-radius: 18px; }}
       .header h1 {{ font-size: 1.45rem; }}
       .subtitle {{ font-size: .9rem; line-height: 1.45; }}
       .meta {{
@@ -197,12 +228,34 @@ def generate_landing(tiles=None, output_file='index.html'):
 <body>
   <div class="container">
     <div class="header">
-      <h1>🏨 Travel Price Monitor</h1>
-      <div class="subtitle">Выберите направление и длительность • Обновлено: {now}</div>
-      <div class="meta"><span>🎯 Активных фильтров: {cards_count}</span><span>•</span><span>⏱ Обновление каждый час</span></div>
+      <h1>🌊 Travel Price Monitor</h1>
+      <div class="subtitle">Автоматический мониторинг цен на туры из Польши. Сканируем миллионы предложений каждый час и находим лучшие моменты для покупки.</div>
+      
+      <div class="onboarding-grid">
+        <div class="onboarding-card">
+          <div class="onboarding-card-title">📡 Почасовой сбор</div>
+          <div class="onboarding-card-desc">Отслеживаем цены отелей в реальном времени с fly.pl</div>
+        </div>
+        <div class="onboarding-card">
+          <div class="onboarding-card-title">📊 История & Тренды</div>
+          <div class="onboarding-card-desc">Строим графики ценовых колебаний за всё время наблюдений</div>
+        </div>
+        <div class="onboarding-card">
+          <div class="onboarding-card-title">🎯 Deal Score 80+</div>
+          <div class="onboarding-card-desc">Алгоритм подсвечивает отели, которые подешевели ниже обычного</div>
+        </div>
+      </div>
+
+      <div class="meta">
+        <span>🎯 Активных фильтров: {cards_count}</span>
+        <span>•</span>
+        <span>🟢 Обновляется каждый час</span>
+        <span>•</span>
+        <span>Обновлено: {now}</span>
+      </div>
     </div>
     {''.join(sections_html)}
-    <div class="footer">🤖 Обновляется каждый час • GitHub Pages</div>
+    <div class="footer">🤖 Автоматический мониторинг • Powered by GitHub Actions</div>
   </div>
 </body>
 </html>

@@ -1566,22 +1566,23 @@ def _render_hotel_chart_page(
             <div class="chart-hero-img">{img_html}</div>
             <div class="chart-hero-body">
                 <h1>{hotel_name_html}</h1>
-                <p class="chart-hero-meta">{dates} · {duration}</p>
+                <p class="chart-hero-meta">🗓️ {dates} · ⏱️ {duration}</p>
                 <div class="chart-hero-price-row">
                     <span class="chart-current-price">{current_p:.0f} PLN</span>
                     <span class="deal-pill {deal_class}">Deal {deal_score} · {html_lib.escape(deal_label)}</span>
                     {min_badge}
                     {ceiling_badge}
+                    {offer_btn}
                 </div>
             </div>
         </section>
         <section class="chart-kpis">
-            <div class="chart-kpi"><div class="v {'drop' if delta48_str.startswith('-') else ('up' if delta48_str.startswith('+') else '')}">{html_lib.escape(delta48_str)}</div><div class="l">Δ за 48ч</div></div>
-            <div class="chart-kpi"><div class="v {'drop' if delta_avg_str.startswith('-') else ('up' if delta_avg_str.startswith('+') else '')}">{html_lib.escape(delta_avg_str)}</div><div class="l">Δ к своей средней</div></div>
-            <div class="chart-kpi"><div class="v">{min_p:.0f}</div><div class="l">Минимум истории</div></div>
-            <div class="chart-kpi"><div class="v">{median_p:.0f}</div><div class="l">Ср. по времени</div></div>
-            <div class="chart-kpi"><div class="v">{max_p:.0f}</div><div class="l">Максимум</div></div>
-            <div class="chart-kpi"><div class="v">{samples}</div><div class="l">Замеров · {html_lib.escape(confidence)}</div></div>
+            <div class="chart-kpi" title="Изменение цены за последние 48 часов"><div class="v {'drop' if delta48_str.startswith('-') else ('up' if delta48_str.startswith('+') else '')}">{html_lib.escape(delta48_str)}</div><div class="l">Δ за 48ч</div></div>
+            <div class="chart-kpi" title="Отклонение от средней цены этого отеля за всё время наблюдений"><div class="v {'drop' if delta_avg_str.startswith('-') else ('up' if delta_avg_str.startswith('+') else '')}">{html_lib.escape(delta_avg_str)}</div><div class="l">Δ к своей средней</div></div>
+            <div class="chart-kpi" title="Самая низкая цена зафиксированная для этого отеля"><div class="v">{min_p:.0f} PLN</div><div class="l">Минимум истории</div></div>
+            <div class="chart-kpi" title="Медианное значение цены за время мониторинга"><div class="v">{median_p:.0f} PLN</div><div class="l">Ср. по времени</div></div>
+            <div class="chart-kpi" title="Самая высокая цена зафиксированная для этого отеля"><div class="v">{max_p:.0f} PLN</div><div class="l">Максимум</div></div>
+            <div class="chart-kpi" title="Количество проверок и степень уверенности оценки (Low/Medium/High)"><div class="v">{samples}</div><div class="l">Замеров · {html_lib.escape(confidence)}</div></div>
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
@@ -1611,32 +1612,71 @@ def _render_hotel_chart_page(
         hovertemplate: '<b>%{{y:.0f}} PLN</b><br>%{{text}}<extra></extra>'
       }};
       const tripDatesLabel = {json.dumps(str(trip_dates_label or '—'), ensure_ascii=False)};
+      const medianP = {median_p:.0f};
       const yDataMin = y.length ? Math.min(...y) : 0;
       const yDataMax = y.length ? Math.max(...y) : 0;
       const ySpan = Math.max(yDataMax - yDataMin, 1);
       const yPad = Math.max(ySpan * 0.08, 80);
+
+      // Линия средней цены
+      const medianTrace = {{
+        x: x.length ? [x[0], x[x.length - 1]] : [],
+        y: [medianP, medianP],
+        type: 'scatter',
+        mode: 'lines',
+        name: 'Средняя цена',
+        line: {{ color: 'rgba(148,163,184,0.7)', width: 1.5, dash: 'dot' }},
+        hovertemplate: 'Средняя: <b>%{{y:.0f}} PLN</b><extra></extra>'
+      }};
+
+      // Аннотация последней точки
+      const annotations = [];
+      if (y.length) {{
+        const lastY = y[y.length - 1];
+        const lastX = x[x.length - 1];
+        annotations.push({{
+          x: lastX,
+          y: lastY,
+          text: `<b>${{lastY.toFixed(0)}} PLN</b>`,
+          showarrow: true,
+          arrowhead: 2,
+          arrowsize: 1,
+          arrowwidth: 1.5,
+          arrowcolor: '#4f46e5',
+          ax: 0,
+          ay: -32,
+          font: {{ size: 12, color: '#4f46e5', family: 'Inter, sans-serif' }},
+          bgcolor: 'rgba(255,255,255,0.85)',
+          borderpad: 3,
+          bordercolor: '#4f46e5',
+          borderwidth: 1
+        }});
+      }}
+
       const layout = {{
-        margin: {{ t: 10, r: 20, b: 65, l: 60 }},
+        margin: {{ t: 24, r: 20, b: 75, l: 70 }},
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
         xaxis: {{
-          title: {{ text: 'Даты поездки: ' + tripDatesLabel, standoff: 14 }},
+          title: {{ text: 'Время проверки (обновляется каждый час) · Даты поездки: ' + tripDatesLabel, standoff: 16, font: {{ size: 11, color: '#64748b' }} }},
           type: 'date',
-          tickformat: '%d.%m.%Y',
+          tickformat: '%d.%m',
           hoverformat: '%d.%m.%Y %H:%M',
           gridcolor: 'rgba(148,163,184,0.2)',
           tickangle: -20
         }},
         yaxis: {{
-          title: 'Цена (PLN)',
+          title: {{ text: 'Цена (PLN) · 2 взрослых + 1 ребёнок', standoff: 10, font: {{ size: 11, color: '#64748b' }} }},
           gridcolor: 'rgba(148,163,184,0.2)',
           range: [yDataMin - yPad, yDataMax + yPad],
           fixedrange: false
         }},
-        showlegend: false,
-        hovermode: 'closest'
+        showlegend: true,
+        legend: {{ orientation: 'h', x: 0, y: -0.22, font: {{ size: 11, color: '#64748b' }} }},
+        hovermode: 'closest',
+        annotations
       }};
-      Plotly.newPlot('chart', [mainTrace], layout, {{ responsive: true, displayModeBar: true }});
+      Plotly.newPlot('chart', [mainTrace, medianTrace], layout, {{ responsive: true, displayModeBar: true }});
     </script>
 </body>
 </html>"""
@@ -2016,6 +2056,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 sorted_prices = sorted(latest_prices)
                 top10_prices = sorted_prices[:10]
                 avg_price = sum(top10_prices) / len(top10_prices)
+                min_price = top10_prices[0]
+                max_price = top10_prices[-1]
                 
                 # Находим отели, которые попали в ТОП-10
                 top10_hotels = []
@@ -2035,14 +2077,18 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 top10_detailed_data.append({
                     'run_time': run_time,
                     'avg_price': avg_price,
+                    'min_price': min_price,
+                    'max_price': max_price,
                     'top10_hotels': top10_hotels
                 })
             elif len(latest_prices) > 0:
                 # Если отелей меньше 10, берем все
-                avg_price = sum(latest_prices) / len(latest_prices)
+                sorted_prices = sorted(latest_prices)
+                avg_price = sum(sorted_prices) / len(sorted_prices)
+                min_price = sorted_prices[0]
+                max_price = sorted_prices[-1]
                 
                 # Все отели попадают в "ТОП"
-                sorted_prices = sorted(latest_prices)
                 top_hotels = []
                 for hotel_name, price in hotel_prices.items():
                     top_hotels.append({
@@ -2056,12 +2102,16 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 top10_detailed_data.append({
                     'run_time': run_time,
                     'avg_price': avg_price,
+                    'min_price': min_price,
+                    'max_price': max_price,
                     'top10_hotels': top_hotels
                 })
         
         if run_data:
             top10_x_values = [pd.Timestamp(ts).isoformat() for ts, _ in run_data]
             top10_y_values = [float(price) for _, price in run_data]
+            top10_min_values = [float(d.get('min_price', y)) for d, y in zip(top10_detailed_data, top10_y_values)]
+            top10_max_values = [float(d.get('max_price', y)) for d, y in zip(top10_detailed_data, top10_y_values)]
             
             # Добавляем информацию об изменениях цен для каждого рана
             for i, detailed in enumerate(top10_detailed_data):
@@ -2134,12 +2184,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 print(f"   Последняя точка: {run_data[-1][1]:.2f} PLN")
         else:
             top10_x_values, top10_y_values = [], []
+            top10_min_values, top10_max_values = [], []
             top10_detailed_data = []
             print("❌ Нет данных для ТОП-10 графика")
             
     except Exception as e:
         print(f"Ошибка расчета ТОП-10: {e}")
         top10_x_values, top10_y_values = [], []
+        top10_min_values, top10_max_values = [], []
         top10_detailed_data = []
         run_slices = []
     
@@ -3750,10 +3802,26 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         _updated_ts = df['scraped_at_display'].max()
         updated_date = _updated_ts.strftime('%d.%m.%Y')
         updated_time = _updated_ts.strftime('%H:%M')
+        updated_iso = _updated_ts.isoformat()
+        # Статус свежести данных (зелёный / жёлтый / красный)
+        _now_ts = datetime.now(tz=_updated_ts.tzinfo) if _updated_ts.tzinfo else datetime.now()
+        _age_hours = (_now_ts - _updated_ts).total_seconds() / 3600
+        if _age_hours < 3:
+            update_status_cls = 'update-status--ok'
+            update_status_icon = '🟢'
+        elif _age_hours < 12:
+            update_status_cls = 'update-status--warn'
+            update_status_icon = '🟡'
+        else:
+            update_status_cls = 'update-status--err'
+            update_status_icon = '🔴'
     except Exception:
         _updated_ts = datetime.now()
         updated_date = _updated_ts.strftime('%d.%m.%Y')
         updated_time = _updated_ts.strftime('%H:%M')
+        updated_iso = _updated_ts.isoformat()
+        update_status_cls = 'update-status--ok'
+        update_status_icon = '🟢'
 
     filter_params_html = render_filter_params_html(
         filter_config,
@@ -6107,6 +6175,85 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             background: linear-gradient(90deg, rgba(79,70,229,.08) 0%, rgba(14,165,233,.08) 100%);
         }}
 
+        /* ── Color-coded строки ── */
+        .hotels-table tbody tr.row--at-min {{
+            border-left: 3px solid #10b981;
+            background: rgba(16,185,129,.06) !important;
+        }}
+        .hotels-table tbody tr.row--rising {{
+            border-left: 3px solid #ef4444;
+            background: rgba(239,68,68,.05) !important;
+        }}
+        .hotels-table tbody tr.row--at-min:hover {{
+            background: rgba(16,185,129,.12) !important;
+        }}
+        .hotels-table tbody tr.row--rising:hover {{
+            background: rgba(239,68,68,.10) !important;
+        }}
+
+        /* ── Tooltip на заголовках таблицы ── */
+        .th-tip {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 1.1em;
+            height: 1.1em;
+            font-size: 0.7rem;
+            background: rgba(255,255,255,.28);
+            border-radius: 50%;
+            cursor: help;
+            position: relative;
+            vertical-align: middle;
+            margin-left: 2px;
+            font-style: normal;
+            font-weight: 700;
+            line-height: 1;
+            transition: background .15s;
+            border: 1px solid rgba(255,255,255,.45);
+        }}
+        .th-tip:hover {{
+            background: rgba(255,255,255,.55);
+        }}
+        .th-tip::after {{
+            content: attr(data-tip);
+            position: absolute;
+            bottom: calc(100% + 8px);
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1e293b;
+            color: #f1f5f9;
+            font-size: 0.78rem;
+            font-weight: 400;
+            text-transform: none;
+            letter-spacing: 0;
+            padding: .5rem .8rem;
+            border-radius: 8px;
+            white-space: normal;
+            width: 220px;
+            max-width: 90vw;
+            box-shadow: 0 4px 16px rgba(0,0,0,.35);
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity .18s ease;
+            z-index: 200;
+        }}
+        .th-tip:hover::after {{
+            opacity: 1;
+        }}
+
+        /* ── Статус обновления ── */
+        .update-status {{
+            display: inline-flex;
+            align-items: center;
+            gap: .35rem;
+            font-size: 0.92rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }}
+        .update-status--ok    {{ color: #10b981; }}
+        .update-status--warn  {{ color: #f59e0b; }}
+        .update-status--err   {{ color: #ef4444; }}
+
         @keyframes sectionFadeIn {{
             from {{ opacity: 0; transform: translateY(8px); }}
             to {{ opacity: 1; transform: translateY(0); }}
@@ -7333,11 +7480,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         </div>
                         <div class="hero-kpi__body">
                             <div class="hero-kpi__v hero-kpi__datetime">
-                                <span class="hero-kpi__date">{updated_date}</span>
-                                <span class="hero-kpi__time">{updated_time}</span>
+                                <span class="update-status {update_status_cls}" id="updateStatusBadge" title="{updated_date} {updated_time}" data-iso="{updated_iso}">{update_status_icon} <span id="updateAgoText">{updated_date} {updated_time}</span></span>
                             </div>
                             <div class="hero-kpi__l">Обновлено</div>
-                            <div class="hero-kpi__s">Время последнего обновления данных по этому фильтру.</div>
+                            <div class="hero-kpi__s">Данные собираются автоматически раз в час. Зелёный — всё ок, жёлтый — задержка, красный — мониторинг недоступен.</div>
                         </div>
                     </div>
                 </div>
@@ -7807,12 +7953,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <thead>
                     <tr>
                         <th class="sortable col-hotel" data-sort="hotel">Отель</th>
-                        <th class="sortable col-tight" data-sort="price">Цена</th>
-                        <th class="sortable col-tight" data-sort="deal">Deal Score</th>
-                        <th class="sortable col-tight" data-sort="forecast">Прогноз</th>
+                        <th class="sortable col-tight" data-sort="price">Цена <span class="th-tip" data-tip="Стоимость тура за 2 взрослых + 1 ребёнок (PLN). Ниже — лучше.">ℹ</span></th>
+                        <th class="sortable col-tight" data-sort="deal">Deal Score <span class="th-tip" data-tip="Оценка выгодности от 0 до 100. Учитывает историческую цену, тренд и рейтинг отеля. 80+ — сигнал к покупке.">ℹ</span></th>
+                        <th class="sortable col-tight" data-sort="forecast">Прогноз <span class="th-tip" data-tip="Ожидаемое направление цены на ближайшие дни: рост, снижение или стабильно.">ℹ</span></th>
                         <th class="sortable col-tight th-ta col-hide-sm" data-sort="ta" title="Рейтинг на TripAdvisor">{TRIPADVISOR_HEADER_ICON_HTML}</th>
-                        <th class="sortable col-tight" data-sort="delta48">Δ 48ч</th>
-                        <th class="sortable col-tight col-hide-sm" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней</th>
+                        <th class="sortable col-tight" data-sort="delta48">Δ 48ч <span class="th-tip" data-tip="Изменение цены за последние 48 часов. ↑ подорожал, ↓ подешевел, → без изменений.">ℹ</span></th>
+                        <th class="sortable col-tight col-hide-sm" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней <span class="th-tip" data-tip="Насколько текущая цена отличается от среднеисторической для этого отеля. Минус — дешевле обычного.">ℹ</span></th>
                         <th class="sortable col-tight" data-sort="region">Регион</th>
                         <th class="sortable col-tight col-dates" data-sort="dates">Даты</th>
                         <th class="sortable col-tight col-duration" data-sort="duration">Длительность</th>
@@ -7940,8 +8086,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         departure_date_attr = html_lib.escape(str(hotel.get('departure_date') or ''), quote=True)
         departure_key_attr = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
 
+        # Color-coded класс строки
+        _d48 = float(delta_info[1]) if delta_info is not None else 0.0
+        if _d48 > 8.0:
+            row_color_class = ' row--rising'
+        elif deal_score >= 80 and confidence_level != 'Low' and _d48 <= 0:
+            row_color_class = ' row--at-min'
+        else:
+            row_color_class = ''
+
         table_rows_html_parts.append(f"""
-                    <tr data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}" data-departure-date="{departure_date_attr}" data-departure-key="{departure_key_attr}">
+                    <tr class="hotel-row{row_color_class}" data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}" data-departure-date="{departure_date_attr}" data-departure-key="{departure_key_attr}">
                         <td class="hotel-name col-hotel" data-label="Отель"><button class="watchlist-star-btn" data-hotel-name="{hotel_name_attr}" title="Добавить в избранное">☆</button><a class="open-chart-link hotel-hover-link" href="{chart_href}" target="_blank" data-hotel-name="{hotel_name_attr}">{hotel_name_html}</a></td>
                         <td class="price col-tight" data-label="Цена" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}{cheaper_alt_html}</td>
                         <td class="col-tight col-w-deal-td" data-label="Deal" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
@@ -8189,6 +8344,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
       (function(){
         const X = """ + json.dumps(top10_x_values, ensure_ascii=False) + """;
         const Y = """ + json.dumps(top10_y_values, ensure_ascii=False) + """;
+        const minY = """ + json.dumps(top10_min_values, ensure_ascii=False) + """;
+        const maxY = """ + json.dumps(top10_max_values, ensure_ascii=False) + """;
         const detailedData = """ + json.dumps(top10_detailed_data, ensure_ascii=False, default=str) + """;
         
         if (Array.isArray(X) && Array.isArray(Y) && X.length > 0 && Y.length > 0 && window.Plotly) {
@@ -8200,10 +8357,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             const hover = data.hover_data || {};
             let text = hover.title || '';
             
-            // Добавляем среднюю цену
+            // Добавляем среднюю цену и диапазон
             if (hover.avg_price) {
-              text += '<br><br><b>Средняя цена:</b><br>';
-              text += `${Math.round(hover.avg_price)} PLN`;
+              const minVal = Math.round(data.min_price || hover.avg_price);
+              const maxVal = Math.round(data.max_price || hover.avg_price);
+              const spread = maxVal - minVal;
+              text += '<br><br><b>Средняя цена ТОП-10:</b> ' + Math.round(hover.avg_price) + ' PLN';
+              text += `<br><b>Диапазон (№1 — №10):</b> ${minVal} — ${maxVal} PLN <span style="opacity:.7;font-size:.88em;">(разброс ${spread} PLN)</span>`;
             }
             
             if (hover.avg_change) {
@@ -8238,14 +8398,37 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             
             return text;
           });
+
+          const traceMin = {
+            x: X,
+            y: minY.length === X.length ? minY : Y,
+            type: 'scatter',
+            mode: 'lines',
+            line: { width: 0 },
+            showlegend: false,
+            hoverinfo: 'skip'
+          };
+
+          const traceMax = {
+            x: X,
+            y: maxY.length === X.length ? maxY : Y,
+            type: 'scatter',
+            mode: 'lines',
+            fill: 'tonexty',
+            fillcolor: 'rgba(162, 59, 114, 0.14)',
+            line: { width: 0 },
+            name: 'Диапазон ТОП-10 (мин - макс)',
+            hoverinfo: 'skip'
+          };
           
-          const trace = { 
+          const traceAvg = { 
             x: X, 
             y: Y, 
             type: 'scatter', 
             mode: 'lines+markers', 
             line: { color: '#A23B72', width: 3 }, 
-            marker: { size: 8 },
+            marker: { size: 7, color: '#A23B72' },
+            name: 'Средняя цена ТОП-10',
             text: hoverTexts,
             hovertemplate: '%{text}<extra></extra>',
             hoverinfo: 'text',
@@ -8266,10 +8449,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             margin: { t: 10, r: 10, b: 40, l: 50 }, 
             xaxis: { title: 'Время', type: 'date' }, 
             yaxis: { title: 'Цена (PLN)' },
-            hovermode: 'closest'
+            hovermode: 'closest',
+            showlegend: false
           };
           
-          Plotly.newPlot('avgTop10', [trace], layout, { responsive: true, displayModeBar: false });
+          Plotly.newPlot('avgTop10', [traceMin, traceMax, traceAvg], layout, { responsive: true, displayModeBar: false });
         }
       })();
       
@@ -8763,7 +8947,30 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           themeToggle.textContent = isDark ? '☀️' : '🌙';
           localStorage.setItem('theme', isDark ? 'dark' : 'light');
         });
-        
+
+        // ── Relative update time ──────────────────────────────────────────────
+        function _updateRelativeTime() {
+          const badge = document.getElementById('updateStatusBadge');
+          const span  = document.getElementById('updateAgoText');
+          if (!badge || !span) return;
+          const iso = badge.getAttribute('data-iso');
+          if (!iso) return;
+          const diff = Math.max(0, Math.floor((Date.now() - new Date(iso).getTime()) / 1000));
+          let label;
+          if (diff < 60)        label = 'только что';
+          else if (diff < 3600) label = Math.floor(diff / 60) + ' мин назад';
+          else if (diff < 86400) {
+            const h = Math.floor(diff / 3600);
+            label = h + ' ч назад';
+          } else {
+            const d = Math.floor(diff / 86400);
+            label = d + ' д назад';
+          }
+          span.textContent = label;
+        }
+        _updateRelativeTime();
+        setInterval(_updateRelativeTime, 60000);
+
         // Table filtering and pagination
         const searchInput = document.getElementById('searchInput');
         const priceFilter = document.getElementById('priceFilter');
@@ -9659,24 +9866,49 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           if (!window.Plotly || !charts) return;
           const X = charts.top10_x || [];
           const Y = charts.top10_y || [];
+          const minY = charts.top10_min || [];
+          const maxY = charts.top10_max || [];
           const detailedData = charts.top10_detailed || [];
           if (X.length && Y.length) {
             const hoverTexts = buildTop10HoverTexts(detailedData);
-            Plotly.react('avgTop10', [{
+            const traceMin = {
+              x: X,
+              y: minY.length === X.length ? minY : Y,
+              type: 'scatter',
+              mode: 'lines',
+              line: { width: 0 },
+              showlegend: false,
+              hoverinfo: 'skip'
+            };
+            const traceMax = {
+              x: X,
+              y: maxY.length === X.length ? maxY : Y,
+              type: 'scatter',
+              mode: 'lines',
+              fill: 'tonexty',
+              fillcolor: 'rgba(162, 59, 114, 0.14)',
+              line: { width: 0 },
+              name: 'Диапазон ТОП-10 (мин - макс)',
+              hoverinfo: 'skip'
+            };
+            const traceAvg = {
               x: X,
               y: Y,
               type: 'scatter',
               mode: 'lines+markers',
               line: { color: '#A23B72', width: 3 },
-              marker: { size: 8 },
+              marker: { size: 7, color: '#A23B72' },
+              name: 'Средняя цена ТОП-10',
               text: hoverTexts,
               hovertemplate: '%{text}<extra></extra>',
               hoverinfo: 'text',
-            }], {
+            };
+            Plotly.react('avgTop10', [traceMin, traceMax, traceAvg], {
               margin: { t: 10, r: 10, b: 40, l: 50 },
               xaxis: { title: 'Время', type: 'date' },
               yaxis: { title: 'Цена (PLN)' },
               hovermode: 'closest',
+              showlegend: false
             }, { responsive: true, displayModeBar: false });
           } else {
             Plotly.react('avgTop10', [], emptyChartLayout('top10'));
