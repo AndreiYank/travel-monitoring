@@ -7488,10 +7488,36 @@
       "created_at": "2026-08-23T05:27:18.137542+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Mirage World_2026-08-23_05-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Avia Resort & Spa Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 7267.0,
+      "new_price": 7267.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 06:28:19.155037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T06:31:02.171161+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Avia Resort & Spa Turcja, Side, Colakli_2026-08-23_06-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Viking Star",
+      "duration_bucket": "",
+      "old_price": 7853.0,
+      "new_price": 7853.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 06:28:19.155037+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T06:31:02.171186+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star_2026-08-23_06-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-23T05:24:50.080998+00:00",
+    "last_processed_run": "2026-08-23T06:28:19.155037+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -8510,7 +8536,7 @@
         "premium_peak": null
       },
       "Avia Resort & Spa": {
-        "history_max": 8007.0,
+        "history_max": 8436.0,
         "premium_peak": null
       },
       "Karmir Resort (Kemer)": {
@@ -9035,6 +9061,10 @@
       },
       "Sun Star Resort": {
         "history_max": 9803.0,
+        "premium_peak": null
+      },
+      "Viking Star Turcja, Kemer": {
+        "history_max": 7853.0,
         "premium_peak": null
       }
     }

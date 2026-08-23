@@ -5876,10 +5876,49 @@
       "created_at": "2026-08-23T02:23:41.740547+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-23_02-21_+10.6"
+    },
+    {
+      "hotel_name": "Pickalbatros Dana Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 10710.0,
+      "price_change": 1053.0,
+      "price_change_pct": 10.904007455731593,
+      "timestamp": "2026-08-23 06:26:03.645132+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-23T06:27:58.597122+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Dana Beach Resort_2026-08-23_06-26_+10.9"
+    },
+    {
+      "hotel_name": "Pickalbatros Golf Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8041.0,
+      "new_price": 8041.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 06:26:03.645132+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T06:27:58.597241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Golf Beach Resort_2026-08-23_06-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7237.0,
+      "new_price": 7237.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 06:26:03.645132+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T06:27:58.597270+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam_2026-08-23_06-26_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-23T05:22:48.002127+00:00",
+    "last_processed_run": "2026-08-23T06:26:03.645132+00:00",
     "premium_state": {
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
         "history_max": 10216.0,
