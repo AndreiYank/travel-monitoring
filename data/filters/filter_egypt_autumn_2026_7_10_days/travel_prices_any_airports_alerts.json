@@ -1,8 +1,35 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7857.0,
+      "new_price": 7857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:07:08.891097+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:07:35.501176+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam_2026-08-23_20-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)",
+      "duration_bucket": "",
+      "old_price": 8013.0,
+      "new_price": 8013.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:07:08.891097+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:07:35.501212+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)_2026-08-23_20-07_zone_out_gone"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-23T19:17:47.719775+00:00",
+    "last_processed_run": "2026-08-23T20:07:08.891097+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -65,7 +92,7 @@
         "premium_peak": null
       },
       "Fantazia Resort": {
-        "history_max": 8586.0,
+        "history_max": 8703.0,
         "premium_peak": null
       },
       "Retac Qunay Dahab Resort & Spa": {
@@ -441,7 +468,7 @@
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 8906.0,
+        "history_max": 9320.0,
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam": {
@@ -493,7 +520,7 @@
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 8954.0,
+        "history_max": 9123.0,
         "premium_peak": null
       },
       "Amphoras Beach": {
@@ -614,6 +641,14 @@
       },
       "Stella Beach Resort & Spa": {
         "history_max": 8523.0,
+        "premium_peak": null
+      },
+      "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort) Egipt, Sharm El Sheikh": {
+        "history_max": 8013.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Villaggio Resort Portofino": {
+        "history_max": 8157.0,
         "premium_peak": null
       }
     }
