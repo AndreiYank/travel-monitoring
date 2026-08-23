@@ -5395,13 +5395,56 @@
       "created_at": "2026-08-23T05:24:45.255710+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)_2026-08-23_05-22_comeback_11.9"
+    },
+    {
+      "hotel_name": "Red Sea Grand Makadi (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9310.0,
+      "new_price": 9310.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 07:59:38.659307+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T08:01:05.396624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-08-23_07-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)",
+      "duration_bucket": "",
+      "old_price": 9516.0,
+      "new_price": 13648.0,
+      "price_change": 4132.0,
+      "price_change_pct": 43.42160571668769,
+      "timestamp": "2026-08-23 07:59:38.659307+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T08:01:05.396655+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)_2026-08-23_07-59_zone_out_+43.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 12048.0,
+      "new_price": 7667.0,
+      "price_change": -4381.0,
+      "price_change_pct": -36.3628818061089,
+      "timestamp": "2026-08-23 07:59:38.659307+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-23T08:01:05.396682+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-23_07-59_comeback_36.4"
     }
   ],
   "meta": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-23T06:26:03.786379+00:00",
 =======
     "last_processed_run": "2026-08-23T07:15:43.211946+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-23T07:59:38.659307+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
@@ -5541,8 +5584,8 @@
         "premium_peak": 12797.0
       },
       "Steigenberger Ras Soma": {
-        "history_max": 13793.0,
-        "premium_peak": 13793.0
+        "history_max": 14053.0,
+        "premium_peak": 14053.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
         "history_max": 9280.0,
@@ -5605,8 +5648,8 @@
         "premium_peak": 12987.0
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 10796.0,
-        "premium_peak": 10796.0
+        "history_max": 13648.0,
+        "premium_peak": 13648.0
       },
       "Reef Oasis Blue Bay Resort": {
         "history_max": 12457.0,
