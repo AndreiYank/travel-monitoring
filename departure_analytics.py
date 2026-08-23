@@ -1099,9 +1099,11 @@ def build_departure_price_curve(
     days_min: int = 0,
     days_max: int = HOT_DEPARTURE_CHART_DAYS_MAX,
 ) -> Dict[str, Any]:
-    """Median / cheap-tier price by days_to_departure (latest scrape each day)."""
+    """Median / cheap-tier price curve for a departure key over time (preserves all scrape runs)."""
     empty: Dict[str, Any] = {
         "days": [],
+        "labels": [],
+        "timestamps": [],
         "median_price": [],
         "p10_price": [],
         "min_price": [],
@@ -1118,19 +1120,27 @@ def build_departure_price_curve(
         return empty
 
     work["_run_ts"] = pd.to_datetime(work["run_started_at"], errors="coerce", utc=True)
+    work = work.dropna(subset=["_run_ts"]).sort_values("_run_ts")
+
     points: List[Dict[str, Any]] = []
-    for days, dgrp in work.groupby("days_to_departure", sort=True):
-        latest = dgrp.sort_values("_run_ts").iloc[-1]
+    for _ts, rgrp in work.groupby("_run_ts", sort=True):
+        latest = rgrp.iloc[-1]
+        days_val = int(latest.get("days_to_departure") or 0)
+        ts_str = _ts.strftime("%d.%m %H:%M")
         points.append({
-            "days": int(days),
+            "days": days_val,
+            "label": f"D-{days_val} ({ts_str})",
+            "timestamp": _ts.isoformat(),
             "median_price": round(float(latest.get("median_price") or 0), 2),
             "p10_price": round(float(latest.get("p10_price") or 0), 2),
             "min_price": round(float(latest.get("min_price") or 0), 2),
             "hotel_count": int(latest.get("hotel_count") or 0),
         })
-    points.sort(key=lambda row: row["days"], reverse=True)
+
     return {
         "days": [row["days"] for row in points],
+        "labels": [row["label"] for row in points],
+        "timestamps": [row["timestamp"] for row in points],
         "median_price": [row["median_price"] for row in points],
         "p10_price": [row["p10_price"] for row in points],
         "min_price": [row["min_price"] for row in points],
