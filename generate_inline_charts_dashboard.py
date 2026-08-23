@@ -7605,17 +7605,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </details>
 """
 
-    # Блок выбора вида списка предложений (всегда виден)
-    html_template += f"""
-        <div class="table-toolbar" id="modeSwitchRow">
-            <div class="table-toolbar-title">Вид</div>
-            <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
-                <button type="button" class="mode-btn active" data-mode="cards">Карточки</button>
-                <button type="button" class="mode-btn" data-mode="table">Таблица</button>
-            </div>
-        </div>
-        {cards_html}
-"""
+
 
     # Адаптивные диапазоны фильтра по цене на основе фактических цен таблицы
     try:
