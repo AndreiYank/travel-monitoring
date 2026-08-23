@@ -7489,12 +7489,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             z-index: 999;
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
             transition: var(--transition-normal);
         }}
         
         .sidebar-overlay.open {{
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }}
         
         .main-content {{
@@ -8095,7 +8097,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 </head>
 <body>
     <div class="app-topbar">
-        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Меню">☰</button>
+        <button class="sidebar-toggle" id="sidebarToggle" onclick="window.toggleSidebar()" aria-label="Меню">☰</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Тема">🌙</button>
     </div>
     <!-- Sidebar Navigation -->
@@ -8580,13 +8582,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         price_filter_options_html = '<option value="">Все цены</option>'
 
     html_template += f"""
-        {top_movers_html}
-
         <div class="table-toolbar" id="modeSwitchRow">
             <div class="table-toolbar-title">Вид</div>
             <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
-                <button type="button" class="mode-btn active" data-mode="cards">Карточки</button>
-                <button type="button" class="mode-btn" data-mode="table">Таблица</button>
+                <button type="button" class="mode-btn active" data-mode="cards" onclick="window.setDashboardMode('cards')">Карточки</button>
+                <button type="button" class="mode-btn" data-mode="table" onclick="window.setDashboardMode('table')">Таблица</button>
             </div>
         </div>
 
@@ -9567,13 +9567,24 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           if (saved === '0') isOpen = false;
         } catch (e) {}
         el.open = isOpen;
+
+        function triggerChartResize() {
+          setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+            if (window.Plotly) {
+              el.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart').forEach(p => {
+                try { window.Plotly.Plots.resize(p); } catch (e) {}
+              });
+            }
+          }, 80);
+        }
+
+        if (isOpen) triggerChartResize();
+
         el.addEventListener('toggle', () => {
           try { localStorage.setItem(key, el.open ? '1' : '0'); } catch (e) {}
-          // Перерисовываем графики Plotly внутри: при закрытом details ширина была 0
-          if (el.open && window.Plotly) {
-            el.querySelectorAll('.js-plotly-plot').forEach(p => {
-              try { window.Plotly.Plots.resize(p); } catch (e) {}
-            });
+          if (el.open) {
+            triggerChartResize();
           }
         });
       }
@@ -9618,18 +9629,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         syncMobileSortBar();
         
         // Sidebar functionality
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const mainContent = document.getElementById('mainContent');
-        
         function toggleSidebar() {
+          const sidebar = document.getElementById('sidebar');
+          const sidebarOverlay = document.getElementById('sidebarOverlay');
+          const mainContent = document.getElementById('mainContent');
           if (!sidebar || !sidebarOverlay || !mainContent) return;
           sidebar.classList.toggle('open');
           sidebarOverlay.classList.toggle('open');
           mainContent.classList.toggle('sidebar-open');
         }
+        window.toggleSidebar = toggleSidebar;
         
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
         if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
 
@@ -9667,6 +9679,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             setMode(btn.dataset.mode || 'cards');
           });
         }
+        bindFoldPersistence('analyticsFold', 'dashboard_fold_analytics', false);
+        bindFoldPersistence('calendarFold', 'dashboard_fold_calendar', false);
         bindFoldPersistence('offersCountFold', 'dashboard_fold_offers_count', false);
         bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
         bindFoldPersistence('timingFold', 'dashboard_fold_timing', false);
