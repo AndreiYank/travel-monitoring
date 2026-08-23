@@ -7212,7 +7212,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 </head>
 <body>
     <div class="app-topbar">
-        <button class="sidebar-toggle" id="sidebarToggle" onclick="window.toggleSidebar()" aria-label="Меню">☰</button>
+        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Меню">☰</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Тема">🌙</button>
     </div>
     <!-- Sidebar Navigation -->
