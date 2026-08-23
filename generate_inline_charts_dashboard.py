@@ -1371,6 +1371,10 @@ def _render_hotel_chart_page(
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{meta_desc}">
+    <meta property="og:title" content="{title_esc} — {current_p:.0f} PLN">
+    <meta property="og:description" content="{meta_desc}">
+    <meta property="og:image" content="{html_lib.escape(image_url or '')}">
+    <meta property="og:type" content="website">
     <title>{title_esc} — {current_p:.0f} PLN</title>
     <link rel="icon" href="{html_lib.escape(favicon_href)}" type="image/svg+xml">
     <link rel="apple-touch-icon" href="{html_lib.escape(favicon_href)}">
@@ -1413,6 +1417,11 @@ def _render_hotel_chart_page(
             font-size: .88rem;
         }}
         .chart-back:hover {{ text-decoration: underline; }}
+        .chart-topbar-actions {{
+            display: flex;
+            gap: .5rem;
+            align-items: center;
+        }}
         .chart-btn {{
             display: inline-flex;
             align-items: center;
@@ -1425,7 +1434,10 @@ def _render_hotel_chart_page(
             border: 1px solid var(--border-soft);
             background: #fff;
             color: #1e293b;
+            cursor: pointer;
+            transition: all .15s ease;
         }}
+        .chart-btn:hover {{ background: #f8fafc; border-color: #cbd5e1; }}
         .chart-btn.primary {{
             background: var(--gradient-primary);
             color: #fff;
@@ -1612,7 +1624,10 @@ def _render_hotel_chart_page(
     <div class="page">
         <div class="chart-topbar">
             <a class="chart-back" href="{back_href_esc}">← Назад к дашборду</a>
-            {offer_btn}
+            <div class="chart-topbar-actions">
+                <button type="button" class="chart-btn" id="copyLinkBtn" onclick="copyHotelLink()">📋 Скопировать ссылку</button>
+                {offer_btn}
+            </div>
         </div>
         <section class="chart-hero">
             <div class="chart-hero-img">{img_html}</div>
@@ -1638,7 +1653,7 @@ def _render_hotel_chart_page(
         </section>
         <section class="chart-panel">
             <h2>История цен</h2>
-            <p class="chart-legend-note">Сплошная линия — история цены отеля в этом фильтре. По горизонтали — время проверки, в подсказке — даты поездки оффера.</p>
+            <p class="chart-legend-note">Сплошная линия — история цены отеля в этом фильтре. Зелёная зона снизу — область хорошей выгоды (ниже средней цены).</p>
             <div id="chart"></div>
         </section>
         <section class="chart-recent">
@@ -1650,6 +1665,19 @@ def _render_hotel_chart_page(
         </section>
     </div>
     <script>
+      function copyHotelLink() {{
+        const btn = document.getElementById('copyLinkBtn');
+        navigator.clipboard.writeText(window.location.href).then(function() {{
+          if (btn) {{
+            const orig = btn.textContent;
+            btn.textContent = '✅ Ссылка скопирована!';
+            setTimeout(function() {{ btn.textContent = orig; }}, 2000);
+          }}
+        }}).catch(function(e) {{
+          prompt('Скопируйте ссылку:', window.location.href);
+        }});
+      }}
+
       const x = {json.dumps(chart_x, ensure_ascii=False)};
       const y = {json.dumps(chart_y, ensure_ascii=False)};
       const text = {json.dumps(enriched_hover, ensure_ascii=False)};
@@ -1657,7 +1685,7 @@ def _render_hotel_chart_page(
         x, y, text,
         type: 'scatter',
         mode: 'lines+markers',
-        name: 'Цена',
+        name: 'Цена отеля',
         line: {{ color: '#4f46e5', width: 2.5 }},
         marker: {{ size: 6, color: '#4f46e5', line: {{ width: 1, color: '#fff' }} }},
         connectgaps: true,
@@ -1680,6 +1708,22 @@ def _render_hotel_chart_page(
         line: {{ color: 'rgba(148,163,184,0.7)', width: 1.5, dash: 'dot' }},
         hovertemplate: 'Средняя: <b>%{{y:.0f}} PLN</b><extra></extra>'
       }};
+
+      // Зелёная зона хорошей выгоды (ниже средней цены)
+      const shapes = [];
+      if (y.length && medianP > yDataMin) {{
+        shapes.push({{
+          type: 'rect',
+          xref: 'paper',
+          yref: 'y',
+          x0: 0,
+          x1: 1,
+          y0: yDataMin - yPad,
+          y1: medianP,
+          fillcolor: 'rgba(16, 185, 129, 0.08)',
+          line: {{ width: 0 }}
+        }});
+      }}
 
       // Аннотация последней точки
       const annotations = [];
@@ -1709,6 +1753,7 @@ def _render_hotel_chart_page(
         margin: {{ t: 24, r: 20, b: 75, l: 70 }},
         paper_bgcolor: 'rgba(0,0,0,0)',
         plot_bgcolor: 'rgba(0,0,0,0)',
+        shapes: shapes,
         xaxis: {{
           title: {{ text: 'Время проверки (обновляется каждый час) · Даты поездки: ' + tripDatesLabel, standoff: 16, font: {{ size: 11, color: '#64748b' }} }},
           type: 'date',
