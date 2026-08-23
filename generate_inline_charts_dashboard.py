@@ -3011,6 +3011,35 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             deal_score, confidence, d_avg_for_badge, d48_for_badge, comeback_drop,
         )
 
+        # Альтернативные аэропорты для карточного режима
+        card_cheaper_alt_html = ""
+        if df_all_airports is not None and not df_all_airports.empty:
+            cur_airport = hotel.get('from_airport')
+            if not cur_airport or pd.isna(cur_airport) or not str(cur_airport).strip():
+                cur_airport = extract_airport_from_url(hotel.get('offer_url') or hotel.get('url', ''))
+            alts = find_cheaper_airport_alternatives(
+                df_all_airports,
+                hotel_name,
+                dates,
+                price,
+                cur_airport,
+            )
+            if alts:
+                best_alt = alts[0]
+                alt_url = best_alt.get('url', '')
+                alt_airport = html_lib.escape(str(best_alt['airport']))
+                alt_price = best_alt['price']
+                alt_savings = best_alt['savings']
+                alt_savings_pct = best_alt['savings_percent']
+                alt_title = html_lib.escape(
+                    f"Вылет из {best_alt['airport']}: {alt_price:.0f} PLN (дешевле на {alt_savings:.0f} PLN / {alt_savings_pct:.1f}%)",
+                    quote=True,
+                )
+                if alt_url:
+                    card_cheaper_alt_html = f'<a href="{html_lib.escape(str(alt_url), quote=True)}" target="_blank" class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></a>'
+                else:
+                    card_cheaper_alt_html = f'<span class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></span>'
+
         hotel_cards.append({
             "hotel_name": hotel_name,
             "row_id": row_id,
@@ -3029,6 +3058,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             "deal_class": deal_class,
             "confidence": confidence,
             "comeback_html": comeback_html,
+            "cheaper_alt_html": card_cheaper_alt_html,
             "departure_date": str(hotel.get('departure_date') or ''),
             "departure_key": str(hotel.get('departure_key') or ''),
             "forecast_text": forecast["text"],
@@ -5442,38 +5472,55 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             word-break: break-word;
         }}
         .cheaper-alt-badge {{
-            display: block;
+            display: inline-flex;
+            align-items: center;
+            gap: .3rem;
             width: fit-content;
             max-width: 100%;
-            margin-top: .32rem;
-            font-size: .66rem;
+            margin-top: .35rem;
+            font-size: .7rem;
             font-weight: 700;
-            line-height: 1.25;
+            line-height: 1.2;
             color: #047857;
-            background: rgba(16, 185, 129, 0.13);
-            border: 1px solid rgba(16, 185, 129, 0.32);
-            border-radius: 6px;
-            padding: .16rem .42rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(5, 150, 105, 0.08));
+            border: 1px solid rgba(16, 185, 129, 0.35);
+            border-radius: 999px;
+            padding: .2rem .55rem;
             text-decoration: none;
-            transition: all 0.2s ease;
+            box-shadow: 0 1px 4px rgba(16, 185, 129, 0.1);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }}
         .cheaper-alt-badge:hover {{
-            background: rgba(16, 185, 129, 0.25);
-            border-color: rgba(16, 185, 129, 0.55);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(5, 150, 105, 0.18));
+            border-color: rgba(16, 185, 129, 0.65);
             color: #065f46;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
             text-decoration: none;
         }}
         .cheaper-alt-badge .alt-savings {{
-            color: #059669;
+            background: rgba(16, 185, 129, 0.22);
+            color: #047857;
             font-weight: 800;
+            font-size: .65rem;
+            padding: .08rem .38rem;
+            border-radius: 999px;
+            letter-spacing: -0.01em;
         }}
         .dark-mode .cheaper-alt-badge {{
             color: #34d399;
-            background: rgba(16, 185, 129, 0.18);
-            border-color: rgba(16, 185, 129, 0.38);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.15));
+            border-color: rgba(16, 185, 129, 0.45);
+            box-shadow: 0 1px 6px rgba(16, 185, 129, 0.2);
         }}
         .dark-mode .cheaper-alt-badge:hover {{
-            background: rgba(16, 185, 129, 0.32);
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.38), rgba(5, 150, 105, 0.28));
+            color: #6ee7b7;
+            border-color: rgba(52, 211, 153, 0.7);
+            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
+        }}
+        .dark-mode .cheaper-alt-badge .alt-savings {{
+            background: rgba(52, 211, 153, 0.25);
             color: #6ee7b7;
         }}
         .hotel-card-stats {{
@@ -6842,6 +6889,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             #hotelsTable tbody td.offer-link-cell::before {{
                 align-self: center;
             }}
+            .hover-thumb {{
+                display: none !important;
+            }}
             .table-scroll-hint {{
                 display: none;
             }}
@@ -7351,6 +7401,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <span class="forecast-pill {c['forecast_class']}">{c['forecast_icon']} {c['forecast_text']}</span>
                     </div>
                     {c["comeback_html"]}
+                    {c.get("cheaper_alt_html", "")}
                     <div class="hotel-card-stats">
                         <div>Δ48ч: <strong>{c["delta48"]}</strong></div>
                         <div>Δср: <strong>{c["delta_avg"]}</strong></div>
