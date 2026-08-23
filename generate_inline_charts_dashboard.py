@@ -3185,9 +3185,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     quote=True,
                 )
                 if alt_url:
-                    card_cheaper_alt_html = f'<a href="{html_lib.escape(str(alt_url), quote=True)}" target="_blank" class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></a>'
+                    card_cheaper_alt_html = f'<a href="{html_lib.escape(str(alt_url), quote=True)}" target="_blank" class="cheaper-alt-badge" title="{alt_title}">✈️ <span class="alt-label">{alt_airport}: {alt_price:.0f} PLN</span> <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></a>'
                 else:
-                    card_cheaper_alt_html = f'<span class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></span>'
+                    card_cheaper_alt_html = f'<span class="cheaper-alt-badge" title="{alt_title}">✈️ <span class="alt-label">{alt_airport}: {alt_price:.0f} PLN</span> <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></span>'
 
         hotel_cards.append({
             "hotel_name": hotel_name,
@@ -3956,6 +3956,43 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 f'<span class="country-name">{flt["title"]}</span></a>'
             )
     sidebar_nav_html = ''.join(_sidebar_nav_parts)
+    
+    # Детекция страны назначения для плашки "Куда"
+    COUNTRY_MAP = {
+        "egipt": "Египет",
+        "egypt": "Египет",
+        "grecja": "Греция",
+        "greece": "Греция",
+        "turcja": "Турция",
+        "turkey": "Турция",
+        "hiszpania": "Испания",
+        "spain": "Испания",
+        "cypr": "Кипр",
+        "cyprus": "Кипр",
+        "wlochy": "Италия",
+        "italy": "Италия",
+        "bulgaria": "Болгария",
+        "albania": "Албания",
+        "tunezja": "Тунис",
+        "maroko": "Марокко",
+    }
+    combined_dest_str = f"{title} {output_file} {data_file} {filter_config or {}}".lower()
+    dest_display_name = "Все страны"
+    for k, v in COUNTRY_MAP.items():
+        if k in combined_dest_str or v.lower() in combined_dest_str:
+            dest_display_name = v
+            break
+    if dest_display_name == "Все страны" and not df_canonical.empty and 'offer_url' in df_canonical.columns:
+        for url in df_canonical['offer_url'].dropna().head(30):
+            path_info = parse_offer_path(str(url))
+            c_key = (path_info.get('country') or '').lower()
+            if c_key in COUNTRY_MAP:
+                dest_display_name = COUNTRY_MAP[c_key]
+                break
+
+    entry_candidates_count = len(entry_candidates)
+    market_breadth_pct_str = f"{market_breadth*100:.0f}%"
+    best_deal_score_val = max((v['score'] for v in deal_score_by_hotel.values()), default=0)
 
     html_template = f"""<!DOCTYPE html>
 <html lang="ru">
@@ -4021,7 +4058,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-family: 'Inter', 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
             margin: 0;
             padding: 0;
-            background: #0f172a;
+            background: #f0f6fc;
             min-height: 100vh;
             line-height: 1.6;
             color: var(--text-main);
@@ -4034,10 +4071,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             position: fixed;
             inset: 0;
             z-index: -2;
-            background:
-                linear-gradient(180deg, rgba(2,6,23,.42), rgba(2,6,23,.66)),
-                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=2200&q=80') center/cover no-repeat;
-            transform: scale(1.03);
+            background: linear-gradient(180deg, #e8f3fc 0%, #f0f7ff 60%, #e8f3fc 100%);
         }}
 
         body::after {{
@@ -4046,23 +4080,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             inset: 0;
             z-index: -1;
             background:
-                radial-gradient(1400px 700px at -10% -25%, rgba(99,102,241,.24), transparent 58%),
-                radial-gradient(1200px 800px at 120% -10%, rgba(6,182,212,.20), transparent 56%),
-                radial-gradient(900px 600px at 50% 120%, rgba(56,189,248,.16), transparent 60%);
+                radial-gradient(1400px 700px at -10% -25%, rgba(186, 230, 253, 0.35), transparent 58%),
+                radial-gradient(1200px 800px at 120% -10%, rgba(224, 242, 254, 0.4), transparent 56%),
+                radial-gradient(900px 600px at 50% 120%, rgba(199, 210, 254, 0.25), transparent 60%);
             animation: gradientDrift 18s ease-in-out infinite alternate;
         }}
         
         .container {{
             width: min(var(--content-max-width), calc(100% - (var(--page-gutter) * 2)));
             margin: 0 auto;
-            background: var(--surface);
-            backdrop-filter: blur(16px);
+            background: transparent;
             padding: var(--container-padding);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-xl);
-            margin-top: 2rem;
+            border-radius: 0;
+            box-shadow: none;
+            margin-top: 1rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255,255,255,0.7);
+            border: none;
             animation: sectionFadeIn .65s ease both;
         }}
         
@@ -4115,50 +4148,54 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .dark-theme body {{
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+            background: #0f172a !important;
             color: #f1f5f9 !important;
+        }}
+        .dark-theme body::before {{
+            background: linear-gradient(180deg, #0b1329 0%, #0f172a 100%) !important;
         }}
         
         .dark-theme .main-content {{
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%) !important;
+            background: #0f172a !important;
         }}
         
         .dark-theme .container {{
-            background: rgba(30, 41, 59, 0.95);
+            background: transparent;
             color: #f1f5f9;
         }}
         
         .dark-theme .metric {{
-            background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
-            border: 1px solid #475569;
+            background: #1e293b;
+            border: 1px solid #334155;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
         }}
         
         .dark-theme .hotels-section {{
-            background: linear-gradient(145deg, #1e293b 0%, #334155 100%);
-            border: 1px solid #475569;
+            background: transparent;
+            border: none;
         }}
         
         .dark-theme .hotels-table th {{
-            background: linear-gradient(135deg, #334155 0%, #475569 100%);
-            color: #f1f5f9;
-            border-bottom: 2px solid #475569;
-            border-top: 1px solid #475569;
+            background: transparent;
+            color: #38bdf8;
+            border: none;
         }}
         
         .dark-theme .hotels-table th:hover {{
-            background: linear-gradient(135deg, #475569 0%, #64748b 100%);
+            background: transparent;
+            color: #7dd3fc;
         }}
         
-        .dark-theme .hotels-table tbody tr:nth-child(even) {{
+        .dark-theme .hotels-table tbody tr {{
             background: #1e293b;
-        }}
-        
-        .dark-theme .hotels-table tbody tr:nth-child(odd) {{
-            background: #0f172a;
+            border-color: #334155;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
         }}
         
         .dark-theme .hotels-table tbody tr:hover {{
-            background: linear-gradient(90deg, #1e40af 0%, #3b82f6 100%);
+            background: #1e293b;
+            border-color: #38bdf8;
+            box-shadow: 0 8px 24px rgba(56, 189, 248, 0.15);
         }}
         
         .dark-theme .airport {{
@@ -4840,8 +4877,234 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .departure-change.muted {{
             color: var(--text-muted);
-            background: rgba(148,163,184,.15);
+        }}
+        .hero {{
+            margin-bottom: 1.25rem;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--border-soft);
+            background:
+                linear-gradient(180deg, rgba(2,6,23,.18), rgba(2,6,23,.48)),
+                url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1800&q=80') center/cover no-repeat;
+            min-height: 180px;
+            position: relative;
+            animation: sectionFadeIn .7s ease both;
+        }}
+        .hero-content {{
+            position: relative;
+            z-index: 1;
+            color: #fff;
+            padding: 1.4rem 1.35rem;
+        }}
+
+        /* Mockup Hero Banner Styling matching Image 2 */
+        .hero--mockup {{
+            margin-bottom: 1.5rem;
+            padding: 1.75rem;
+            border-radius: 20px;
+            background: linear-gradient(135deg, #e0f2fe 0%, #f0f9ff 50%, #e0f2fe 100%);
+            border: 1px solid #bae6fd;
+            box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+        }}
+        .dark-theme .hero--mockup {{
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-color: #334155;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }}
+
+        .hero-header-mockup {{
+            margin-bottom: 1.25rem;
+        }}
+        .hero-brand-tag {{
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #0284c7;
+            margin-bottom: 0.2rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }}
+        .dark-theme .hero-brand-tag {{
+            color: #38bdf8;
+        }}
+        .hero-subtitle-tag {{
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 0.4rem;
+        }}
+        .dark-theme .hero-subtitle-tag {{
+            color: #94a3b8;
+        }}
+        .hero-title-mockup {{
+            margin: 0;
+            font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+            font-weight: 800;
+            color: #0f172a;
+        }}
+        .dark-theme .hero-title-mockup {{
+            color: #f8fafc;
+        }}
+
+        /* Floating White Search Control Bar */
+        .search-pill-bar {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 10px 16px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            margin-bottom: 1rem;
+            gap: 8px;
+            overflow-x: auto;
+        }}
+        .dark-theme .search-pill-bar {{
+            background: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }}
+
+        .search-pill-item {{
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 4px 8px;
+            flex: 1;
+            min-width: max-content;
+        }}
+        .search-pill-icon {{
+            font-size: 1.2rem;
+        }}
+        .search-pill-content {{
+            display: flex;
+            flex-direction: column;
+        }}
+        .search-pill-label {{
+            font-size: 0.72rem;
+            color: #64748b;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }}
+        .dark-theme .search-pill-label {{
+            color: #94a3b8;
+        }}
+        .pill-arrow {{
+            font-size: 0.65rem;
+            opacity: 0.7;
+        }}
+        .search-pill-val {{
+            font-size: 0.88rem;
             font-weight: 700;
+            color: #0f172a;
+            white-space: nowrap;
+        }}
+        .dark-theme .search-pill-val {{
+            color: #f8fafc;
+        }}
+
+        .search-pill-divider {{
+            width: 1px;
+            height: 28px;
+            background: #cbd5e1;
+            flex-shrink: 0;
+        }}
+        .dark-theme .search-pill-divider {{
+            background: #334155;
+        }}
+
+        /* 4 White KPI Cards */
+        .kpi-cards-grid {{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 14px;
+        }}
+        @media (max-width: 900px) {{
+            .kpi-cards-grid {{
+                grid-template-columns: repeat(2, 1fr);
+            }}
+        }}
+        @media (max-width: 500px) {{
+            .kpi-cards-grid {{
+                grid-template-columns: 1fr;
+            }}
+        }}
+
+        .kpi-card-white {{
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 14px 18px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.04);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            display: flex;
+            align-items: center;
+            gap: 14px;
+        }}
+        .dark-theme .kpi-card-white {{
+            background: #1e293b;
+            border-color: #334155;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+        }}
+
+        .kpi-card-icon-box {{
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            background: #e0f2fe;
+            color: #0284c7;
+        }}
+        .dark-theme .kpi-card-icon-box {{
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }}
+
+        .kpi-svg {{
+            width: 22px;
+            height: 22px;
+        }}
+
+        .kpi-card-info {{
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+        }}
+        .kpi-card-number {{
+            font-size: 1.45rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1.1;
+        }}
+        .dark-theme .kpi-card-number {{
+            color: #f8fafc;
+        }}
+        .kpi-card-title {{
+            font-size: 0.78rem;
+            font-weight: 600;
+            color: #64748b;
+            margin-top: 2px;
+            white-space: nowrap;
+        }}
+        .dark-theme .kpi-card-title {{
+            color: #94a3b8;
+        }}
+
+        .kpi-status-tag {{
+            font-size: 0.75rem;
+            font-weight: 700;
+            color: #16a34a;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }}
+        .dark-theme .kpi-status-tag {{
+            color: #4ade80;
         }}
         .departure-price-line {{
             display: flex;
@@ -5638,55 +5901,48 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .cheaper-alt-badge {{
             display: inline-flex;
+            flex-wrap: wrap;
             align-items: center;
-            gap: .3rem;
-            width: fit-content;
-            max-width: 100%;
-            margin-top: .35rem;
-            font-size: .7rem;
-            font-weight: 700;
-            line-height: 1.2;
-            color: #047857;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.14), rgba(5, 150, 105, 0.08));
-            border: 1px solid rgba(16, 185, 129, 0.35);
-            border-radius: 999px;
-            padding: .2rem .55rem;
+            gap: 1px 4px;
+            white-space: normal;
+            margin-top: 3px;
+            font-size: 0.68rem;
+            line-height: 1.25;
+            color: #475569;
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 6px;
+            padding: 2px 6px;
             text-decoration: none;
-            box-shadow: 0 1px 4px rgba(16, 185, 129, 0.1);
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            max-width: 100%;
+            transition: all 0.15s ease;
         }}
         .cheaper-alt-badge:hover {{
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.28), rgba(5, 150, 105, 0.18));
-            border-color: rgba(16, 185, 129, 0.65);
-            color: #065f46;
-            transform: translateY(-1px);
-            box-shadow: 0 4px 10px rgba(16, 185, 129, 0.25);
+            background: #e0f2fe;
+            border-color: #7dd3fc;
+            color: #0369a1;
             text-decoration: none;
         }}
+        .cheaper-alt-badge .alt-label {{
+            color: #475569;
+            font-weight: 600;
+            white-space: nowrap;
+        }}
         .cheaper-alt-badge .alt-savings {{
-            background: rgba(16, 185, 129, 0.22);
-            color: #047857;
-            font-weight: 800;
-            font-size: .65rem;
-            padding: .08rem .38rem;
-            border-radius: 999px;
-            letter-spacing: -0.01em;
+            color: #059669;
+            font-weight: 700;
+            white-space: nowrap;
         }}
-        .dark-mode .cheaper-alt-badge {{
+        .dark-theme .cheaper-alt-badge {{
+            background: rgba(56, 189, 248, 0.1);
+            border-color: #334155;
+            color: #cbd5e1;
+        }}
+        .dark-theme .cheaper-alt-badge .alt-label {{
+            color: #cbd5e1;
+        }}
+        .dark-theme .cheaper-alt-badge .alt-savings {{
             color: #34d399;
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.22), rgba(5, 150, 105, 0.15));
-            border-color: rgba(16, 185, 129, 0.45);
-            box-shadow: 0 1px 6px rgba(16, 185, 129, 0.2);
-        }}
-        .dark-mode .cheaper-alt-badge:hover {{
-            background: linear-gradient(135deg, rgba(16, 185, 129, 0.38), rgba(5, 150, 105, 0.28));
-            color: #6ee7b7;
-            border-color: rgba(52, 211, 153, 0.7);
-            box-shadow: 0 4px 12px rgba(16, 185, 129, 0.35);
-        }}
-        .dark-mode .cheaper-alt-badge .alt-savings {{
-            background: rgba(52, 211, 153, 0.25);
-            color: #6ee7b7;
         }}
         .hotel-card-stats {{
             display: grid;
@@ -6144,10 +6400,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             -webkit-overflow-scrolling: touch;
             width: 100%;
             max-width: 100%;
-            border-radius: var(--panel-shell-radius);
-            box-shadow: var(--shadow-sm);
-            background: rgba(255,255,255,0.9);
-            border: 1px solid var(--border-soft);
+            border-radius: 16px;
+            box-shadow: none;
+            background: #eef6fc;
+            border: 1px solid #e2eef8;
+            padding: 8px 12px;
+        }}
+        .dark-theme .table-container {{
+            background: #0f172a;
+            border-color: #1e293b;
         }}
         .table-container--hotels {{
             overflow-x: auto;
@@ -6157,40 +6418,54 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             width: 100%;
             min-width: 960px;
             table-layout: fixed;
-            border-collapse: collapse;
-            border-spacing: 0;
+            border-collapse: separate;
+            border-spacing: 0 8px;
             margin: 0;
             font-size: 0.875rem;
         }}
 
-        .hotels-table col.col-w-hotel {{ width: 22%; }}
-        .hotels-table col.col-w-price {{ width: 8.2%; }}
+        .hotels-table col.col-w-hotel {{ width: 23.5%; }}
+        .hotels-table col.col-w-price {{ width: 9.0%; }}
         .hotels-table col.col-w-deal {{ width: 8.5%; }}
-        .hotels-table col.col-w-forecast {{ width: 9%; }}
-        .hotels-table col.col-w-ta {{ width: 8.5%; }}
+        .hotels-table col.col-w-forecast {{ width: 8.5%; }}
+        .hotels-table col.col-w-ta {{ width: 7.0%; }}
         .hotels-table col.col-w-d48 {{ width: 5.5%; }}
-        .hotels-table col.col-w-davg {{ width: 7%; }}
-        .hotels-table col.col-w-region {{ width: 10%; }}
-        .hotels-table col.col-w-dates {{ width: 13.4%; }}
-        .hotels-table col.col-w-dur {{ width: 7.8%; }}
-        .hotels-table col.col-w-link {{ width: 5%; }}
+        .hotels-table col.col-w-davg {{ width: 9.5%; }}
+        .hotels-table col.col-w-region {{ width: 9.5%; }}
+        .hotels-table col.col-w-dates {{ width: 11.0%; }}
+        .hotels-table col.col-w-dur {{ width: 4.5%; }}
+        .hotels-table col.col-w-link {{ width: 3.5%; }}
 
-        .hotels-table td.col-w-deal-td,
-        .hotels-table td.col-w-davg-td {{
-            width: 1%;
-            max-width: max-content;
+        .hotels-table td.col-w-d48-td,
+        .hotels-table td.col-w-davg-td,
+        .hotels-table td.col-w-dur-td,
+        .hotels-table td.col-duration,
+        .hotels-table td.offer-link-cell {{
+            text-align: center !important;
+        }}
+
+        .hero-title-clean {{
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: #0f172a;
+            letter-spacing: -0.02em;
+            margin: 0 0 1rem 0;
+            line-height: 1.25;
+        }}
+        .dark-theme .hero-title-clean {{
+            color: #f8fafc;
         }}
 
         .hotels-table td.col-tight,
         .hotels-table th.col-tight {{
             white-space: nowrap;
             vertical-align: middle;
-            padding: 0.7rem 0.55rem;
+            padding: 0.75rem 0.5rem;
         }}
 
         .hotels-table th.col-tight {{
             font-size: 0.78rem;
-            letter-spacing: 0.03em;
+            letter-spacing: 0.04em;
         }}
 
         .hotels-table .col-dates {{
@@ -6206,86 +6481,225 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             line-height: 1.35;
         }}
         
+        .hotels-table thead tr {{
+            background: transparent !important;
+            border-radius: 0;
+        }}
+        .dark-theme .hotels-table thead tr {{
+            background: transparent !important;
+        }}
+        
         .hotels-table th {{
-            background: linear-gradient(135deg, rgba(79,70,229,.93) 0%, rgba(14,165,233,.90) 100%);
-            color: #fff;
-            font-weight: 600;
-            font-size: 0.875rem;
+            background: transparent !important;
+            color: #0284c7;
+            font-weight: 800;
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.05em;
-            padding: 1rem 1.25rem;
+            letter-spacing: 0.04em;
+            padding: 0.75rem 0.5rem;
             text-align: left;
             cursor: pointer;
             user-select: none;
             position: sticky;
             top: 0;
             z-index: 10;
+            border: none !important;
+            box-shadow: none !important;
+            white-space: nowrap;
             transition: var(--transition-fast);
-            border-bottom: 2px solid rgba(255,255,255,.30);
-            border-top: 1px solid rgba(255,255,255,.18);
+        }}
+        .dark-theme .hotels-table th {{
+            color: #38bdf8;
         }}
         
         .hotels-table th:hover {{
-            background: linear-gradient(135deg, rgba(79,70,229,1) 0%, rgba(14,165,233,1) 100%);
-            transform: translateY(-1px);
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            background: transparent !important;
+            color: #0369a1;
+            transform: none;
+            box-shadow: none;
         }}
         
         .hotels-table th.sortable::after {{
             content: ' ↕';
-            opacity: 0.7;
-            margin-left: 0.5rem;
-            font-size: 0.75rem;
+            opacity: 0.55;
+            margin-left: 0.35rem;
+            font-size: 0.8rem;
         }}
         
         .hotels-table th.sort-asc::after {{
             content: ' ↑';
             opacity: 1;
-            color: #fbbf24;
+            color: #0284c7;
         }}
         
         .hotels-table th.sort-desc::after {{
             content: ' ↓';
             opacity: 1;
-            color: #fbbf24;
+            color: #0284c7;
         }}
         
         .hotels-table td {{
-            padding: 1rem 1.25rem;
-            border-bottom: none;
-            transition: background-color var(--transition-fast);
+            height: 100%;
+            padding: 0.75rem 0.65rem;
+            border: none;
+            vertical-align: middle;
+            background: transparent;
+            box-sizing: border-box;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }}
 
+        /* ── Alternating White Volumetric Floating Cards & Sky Blue Rows ── */
         .hotels-table tbody tr {{
-            border-bottom: 1px solid #eef2f7;
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
         }}
-        
-        .hotels-table tbody tr:nth-child(even) {{
-            background: #f8fafc;
-        }}
-        
+
         .hotels-table tbody tr:nth-child(odd) {{
-            background: white;
+            box-shadow: 0 4px 14px -2px rgba(0, 50, 100, 0.06);
         }}
-        
+
+        .hotels-table tbody tr:nth-child(odd) td {{
+            background: #ffffff;
+            border-top: 1px solid #e2eef8;
+            border-bottom: 1px solid #e2eef8;
+        }}
+
+        .hotels-table tbody tr:nth-child(odd) td:first-child {{
+            border-left: 1px solid #e2eef8;
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
+        }}
+
+        .hotels-table tbody tr:nth-child(odd) td:last-child {{
+            border-right: 1px solid #e2eef8;
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }}
+
+        .hotels-table tbody tr:nth-child(even) td {{
+            background: transparent;
+            border: 1px solid transparent;
+        }}
+
+        .hotels-table tbody tr:nth-child(even) td:first-child {{
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
+        }}
+        .hotels-table tbody tr:nth-child(even) td:last-child {{
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }}
+
         .hotels-table tbody tr:hover {{
-            background: linear-gradient(90deg, rgba(79,70,229,.08) 0%, rgba(14,165,233,.08) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px -4px rgba(2, 132, 199, 0.14);
+        }}
+
+        .hotels-table tbody tr:hover td {{
+            background: #ffffff !important;
+            border-top: 1px solid #7dd3fc !important;
+            border-bottom: 1px solid #7dd3fc !important;
+        }}
+        .hotels-table tbody tr:hover td:first-child {{
+            border-left: 1px solid #7dd3fc !important;
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
+        }}
+        .hotels-table tbody tr:hover td:last-child {{
+            border-right: 1px solid #7dd3fc !important;
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }}
+
+        .dark-theme .hotels-table tbody tr:nth-child(odd) td {{
+            background: #1e293b;
+            border-top: 1px solid #334155;
+            border-bottom: 1px solid #334155;
+        }}
+        .dark-theme .hotels-table tbody tr:nth-child(odd) td:first-child {{
+            border-left: 1px solid #334155;
+        }}
+        .dark-theme .hotels-table tbody tr:nth-child(odd) td:last-child {{
+            border-right: 1px solid #334155;
+        }}
+
+        .dark-theme .hotels-table tbody tr:hover td {{
+            background: #1e293b !important;
+            border-top-color: #38bdf8 !important;
+            border-bottom-color: #38bdf8 !important;
+        }}
+        .dark-theme .hotels-table tbody tr:hover td:first-child {{
+            border-left-color: #38bdf8 !important;
+        }}
+        .dark-theme .hotels-table tbody tr:hover td:last-child {{
+            border-right-color: #38bdf8 !important;
+        }}
+
+        /* Rounded corners for row capsules */
+        .hotels-table tbody tr td:first-child {{
+            border-top-left-radius: 14px;
+            border-bottom-left-radius: 14px;
+        }}
+        .hotels-table tbody tr td:last-child {{
+            border-top-right-radius: 14px;
+            border-bottom-right-radius: 14px;
+        }}
+
+        /* ── Price formatting ── */
+        .hotels-table td.price {{
+            color: #059669 !important;
+            font-weight: 800;
+            font-size: 1.05rem;
+        }}
+        .dark-theme .hotels-table td.price {{
+            color: #34d399 !important;
+        }}
+
+        /* ── Link Button ── */
+        .col-link-btn {{
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #e0f2fe;
+            color: #0284c7;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.18s ease;
+            box-shadow: 0 2px 6px rgba(2, 132, 199, 0.12);
+        }}
+        .col-link-btn:hover {{
+            background: #0284c7;
+            color: #ffffff;
+            transform: scale(1.08);
+            box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+        }}
+        .dark-theme .col-link-btn {{
+            background: rgba(56, 189, 248, 0.15);
+            color: #38bdf8;
+        }}
+        .dark-theme .col-link-btn:hover {{
+            background: #38bdf8;
+            color: #0f172a;
         }}
 
         /* ── Color-coded строки ── */
         .hotels-table tbody tr.row--at-min {{
-            border-left: 3px solid #10b981;
-            background: rgba(16,185,129,.06) !important;
+            border-left: 4px solid #10b981;
+            background: #ffffff !important;
         }}
         .hotels-table tbody tr.row--rising {{
-            border-left: 3px solid #ef4444;
-            background: rgba(239,68,68,.05) !important;
+            border-left: 4px solid #ef4444;
+            background: #ffffff !important;
         }}
-        .hotels-table tbody tr.row--at-min:hover {{
-            background: rgba(16,185,129,.12) !important;
+        .dark-theme .hotels-table tbody tr.row--at-min {{
+            border-left: 4px solid #10b981;
+            background: #1e293b !important;
         }}
-        .hotels-table tbody tr.row--rising:hover {{
-            background: rgba(239,68,68,.10) !important;
+        .dark-theme .hotels-table tbody tr.row--rising {{
+            border-left: 4px solid #ef4444;
+            background: #1e293b !important;
         }}
 
         /* ── Tooltip на заголовках таблицы ── */
@@ -6572,41 +6986,69 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .hotels-table .col-hotel {{
             width: auto;
             max-width: 100%;
-            padding: 0.7rem 0.75rem;
-            overflow: hidden;
+            padding: 0.75rem 0.65rem;
+            overflow: visible;
         }}
 
         .hotel-name {{
-            color: var(--primary-color);
+            color: #0f172a;
             font-weight: 700;
             font-size: 0.88rem;
-            line-height: 1.32;
+            line-height: 1.35;
             max-width: 100%;
             white-space: normal;
             overflow-wrap: break-word;
             word-break: break-word;
-            display: -webkit-box;
-            -webkit-line-clamp: 2;
-            -webkit-box-orient: vertical;
-            overflow: hidden;
+            display: block;
+            overflow: visible;
         }}
         
-        .hotel-name a {{
-            color: inherit;
+        .hotel-name a,
+        .open-chart-link {{
+            color: #0f172a !important;
             text-decoration: none;
             transition: var(--transition-fast);
         }}
         
-        .hotel-name a:hover {{
-            color: var(--primary-dark);
+        .hotel-name a:hover,
+        .open-chart-link:hover {{
+            color: #0284c7 !important;
             text-decoration: underline;
+        }}
+
+        .dark-theme .hotel-name,
+        .dark-theme .hotel-name a,
+        .dark-theme .open-chart-link {{
+            color: #f1f5f9 !important;
+        }}
+        .dark-theme .hotel-name a:hover,
+        .dark-theme .open-chart-link:hover {{
+            color: #38bdf8 !important;
+        }}
+
+        .watchlist-star-btn {{
+            background: none;
+            border: none;
+            color: #94a3b8;
+            cursor: pointer;
+            font-size: 0.95rem;
+            margin-right: 6px;
+            padding: 0;
+            vertical-align: middle;
+            transition: color 0.15s ease;
+        }}
+        .watchlist-star-btn:hover {{
+            color: #f59e0b;
         }}
 
         .arrival-hub {{
             font-weight: 700;
-            font-size: 0.88rem;
-            color: var(--text-color);
+            font-size: 0.86rem;
+            color: #0f172a;
             white-space: nowrap;
+        }}
+        .dark-theme .arrival-hub {{
+            color: #f1f5f9;
         }}
 
         .deal-cell-inline {{
@@ -6649,8 +7091,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
         .hotels-table td.price {{
             white-space: normal;
-            overflow: hidden;
-            vertical-align: top;
+            overflow: visible;
+            vertical-align: middle;
             line-height: 1.28;
         }}
 
@@ -6729,18 +7171,42 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .delta.up {{
-            background: var(--gradient-danger);
-            color: white;
+            background: #fff1f2;
+            color: #be123c;
+            border: 1px solid #fecdd3;
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }}
         
         .delta.down {{
-            background: var(--gradient-success);
-            color: white;
+            background: #ecfdf5;
+            color: #047857;
+            border: 1px solid #a7f3d0;
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            font-size: 0.78rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }}
         
         .delta.flat {{
             background: #f1f5f9;
-            color: #64748b;
+            color: #94a3b8;
+            border-radius: 999px;
+            padding: 0.15rem 0.6rem;
+            min-width: 2.2rem;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.78rem;
+            font-weight: 600;
         }}
         
         .offer-link {{
@@ -7625,7 +8091,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-color: var(--color-primary) !important;
         }}
     </style>
-    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{{"token": "1b9c3c0ee6164106a1cb5eda9e61a045"}}'></script><!-- End Cloudflare Web Analytics -->
+    <!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='&#123;&quot;token&quot;: &quot;1b9c3c0ee6164106a1cb5eda9e61a045&quot;&#125;'></script><!-- End Cloudflare Web Analytics -->
 </head>
 <body>
     <div class="app-topbar">
@@ -7648,60 +8114,106 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     <!-- Main Content -->
     <div class="main-content" id="mainContent">
     <div class="container">
-        <div class="hero">
-            <div class="hero-content">
-                <h2 style="margin:0; font-size:clamp(1.2rem,2.4vw,1.65rem); font-weight:800;">🌊 Sea Intelligence</h2>
-                <div style="margin-top:.35rem; font-size:.92rem; opacity:.96;">Сканируем рынок туров и показываем точки входа раньше массового спроса.</div>
-                <h1 style="margin:.55rem 0 0; font-size:clamp(1.4rem,3vw,2.1rem); font-weight:800; line-height:1.15;">{title.replace('🇬🇷 ', '').replace('🇪🇬 ', '').replace('🇹🇷 ', '')}</h1>
-                {filter_params_html}
-                {global_duration_switch_html}
-                <div class="hero-kpis">
-                    <div class="hero-kpi">
-                        <div class="hero-kpi__badge hero-kpi__badge--blue">
-                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8zM22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
-                        </div>
-                        <div class="hero-kpi__body">
-                            <div class="hero-kpi__v" id="heroKpiEntryCount">{len(entry_candidates)}</div>
-                            <div class="hero-kpi__l">Кандидаты входа</div>
-                            <div class="hero-kpi__s">Отели с сильным Deal Score и ценой ниже обычного уровня.</div>
-                        </div>
+        <div class="hero--mockup">
+            <div class="hero-header-mockup">
+                <h1 class="hero-title-clean">{title}</h1>
+            </div>
+
+            <!-- Floating White Search Control Bar -->
+            <div class="search-pill-bar">
+                <div class="search-pill-item">
+                    <span class="search-pill-icon">🧭</span>
+                    <div class="search-pill-content">
+                        <div class="search-pill-label">Откуда <span class="pill-arrow">⌄</span></div>
+                        <div class="search-pill-val">RDO • WAW • WMI</div>
                     </div>
-                    <div class="hero-kpi">
-                        <div class="hero-kpi__badge hero-kpi__badge--green">
-                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M23 18l-9.5-9.5-5 5L1 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/><path d="M17 6h6v6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                        </div>
-                        <div class="hero-kpi__body">
-                            <div class="hero-kpi__v" id="heroKpiBreadthPct">{market_breadth*100:.0f}%</div>
-                            <div class="hero-kpi__l">Рынок дешевеет</div>
-                            <div class="hero-kpi__s">Доля отелей, где цена снизилась за последние 48 часов.</div>
-                        </div>
+                </div>
+                <div class="search-pill-divider"></div>
+                <div class="search-pill-item">
+                    <span class="search-pill-icon">📍</span>
+                    <div class="search-pill-content">
+                        <div class="search-pill-label">Куда <span class="pill-arrow">⌄</span></div>
+                        <div class="search-pill-val">{dest_display_name}</div>
                     </div>
-                    <div class="hero-kpi">
-                        <div class="hero-kpi__badge hero-kpi__badge--purple">
-                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="12" cy="12" r="1.5" fill="currentColor"/></svg>
-                        </div>
-                        <div class="hero-kpi__body">
-                            <div class="hero-kpi__v" id="heroKpiBestDeal">{max((v['score'] for v in deal_score_by_hotel.values()), default=0)}</div>
-                            <div class="hero-kpi__l">Лучший Deal Score</div>
-                            <div class="hero-kpi__s">Самая сильная найденная возможность в текущем ране.</div>
-                        </div>
+                </div>
+                <div class="search-pill-divider"></div>
+                <div class="search-pill-item">
+                    <span class="search-pill-icon">📅</span>
+                    <div class="search-pill-content">
+                        <div class="search-pill-label">Даты <span class="pill-arrow">⌄</span></div>
+                        <div class="search-pill-val">7-10 дней</div>
                     </div>
-                    <div class="hero-kpi">
-                        <div class="hero-kpi__badge hero-kpi__badge--gold">
-                            <svg class="hero-kpi__svg" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </div>
+                <div class="search-pill-divider"></div>
+                <div class="search-pill-item">
+                    <span class="search-pill-icon">👥</span>
+                    <div class="search-pill-content">
+                        <div class="search-pill-label">Туристы <span class="pill-arrow">⌄</span></div>
+                        <div class="search-pill-val">2 взр. + 1 реб.</div>
+                    </div>
+                </div>
+                <div class="search-pill-divider"></div>
+                <div class="search-pill-item">
+                    <span class="search-pill-icon">🏨</span>
+                    <div class="search-pill-content">
+                        <div class="search-pill-label">Отель <span class="pill-arrow">⌄</span></div>
+                        <div class="search-pill-val">5★ + с питанием</div>
+                    </div>
+                </div>
+                <div class="search-pill-divider"></div>
+                <div class="search-pill-item">
+                    <span class="search-pill-icon">👛</span>
+                    <div class="search-pill-content">
+                        <div class="search-pill-label">Бюджет <span class="pill-arrow">⌄</span></div>
+                        <div class="search-pill-val">0-11k PLN</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 4 White KPI Cards -->
+            <div class="kpi-cards-grid">
+                <div class="kpi-card-white">
+                    <div class="kpi-card-icon-box">
+                        <svg class="kpi-svg" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2M9 11a4 4 0 100-8 4 4 0 000 8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="kpi-card-info">
+                        <div class="kpi-card-number" id="heroKpiEntryCount">{entry_candidates_count}</div>
+                        <div class="kpi-card-title">Кандидаты входа</div>
+                    </div>
+                </div>
+                <div class="kpi-card-white">
+                    <div class="kpi-card-icon-box">
+                        <svg class="kpi-svg" viewBox="0 0 24 24"><path d="M23 18l-9.5-9.5-5 5L1 6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M17 6h6v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="kpi-card-info">
+                        <div class="kpi-card-number" id="heroKpiBreadthPct">{market_breadth_pct_str}</div>
+                        <div class="kpi-card-title">Рынок дешевеет</div>
+                    </div>
+                </div>
+                <div class="kpi-card-white">
+                    <div class="kpi-card-icon-box">
+                        <svg class="kpi-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3" fill="currentColor"/></svg>
+                    </div>
+                    <div class="kpi-card-info">
+                        <div class="kpi-card-number" id="heroKpiBestDeal">{best_deal_score_val}</div>
+                        <div class="kpi-card-title">Лучший Deal Score</div>
+                    </div>
+                </div>
+                <div class="kpi-card-white">
+                    <div class="kpi-card-icon-box">
+                        <svg class="kpi-svg" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </div>
+                    <div class="kpi-card-info">
+                        <div class="kpi-status-tag">
+                            <span class="update-status {update_status_cls}" id="updateStatusBadge" title="{updated_date} {updated_time}" data-iso="{updated_iso}">
+                                {update_status_icon} Обновлено
+                            </span>
                         </div>
-                        <div class="hero-kpi__body">
-                            <div class="hero-kpi__v hero-kpi__datetime">
-                                <span class="update-status {update_status_cls}" id="updateStatusBadge" title="{updated_date} {updated_time}" data-iso="{updated_iso}">{update_status_icon} <span id="updateAgoText">{updated_date} {updated_time}</span></span>
-                            </div>
-                            <div class="hero-kpi__l">Обновлено</div>
-                            <div class="hero-kpi__s">Данные собираются автоматически раз в час. Зелёный — всё ок, жёлтый — задержка, красный — мониторинг недоступен.</div>
-                        </div>
+                        <div class="kpi-card-number kpi-card-time" id="updateAgoText">{updated_date} {updated_time}</div>
                     </div>
                 </div>
             </div>
         </div>
-        
 """
 
     from price_alerts_v2 import ALERT_THRESHOLD_PERCENT
@@ -7782,15 +8294,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <button id="cardsPrevPage" disabled>← Предыдущая</button>
                 <div class="cards-pagination-info">
                     Показано <span id="cardsShowingFrom">1</span>-<span id="cardsShowingTo">24</span> из <span id="cardsTotalItems">0</span>
-    </div>
+                </div>
                 <button id="cardsNextPage">Следующая →</button>
             </div>
         </div>
 """
-    html_template += departure_block_html
-    html_template += departure_history_html
 
-    # --- Секция «Когда покупать»: статистика снижения цен по времени ---
     _t = timing_analysis if isinstance(timing_analysis, dict) else {}
     _conf_label = {"collecting": "Накопление", "preliminary": "Предварительно", "reliable": "Надёжно"}
     _conf_class = {"collecting": "timing-pill-collecting", "preliminary": "timing-pill-prelim", "reliable": "timing-pill-reliable"}
@@ -7949,74 +8458,70 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         ),
     ])
 
+    # 1. График ТОП-10 дешёвых предложений (всегда виден на главной странице)
     html_template += f"""
-
-        <div class="avg-top10-section">
+        <div class="avg-top10-section" style="margin-top:1.5rem; margin-bottom:1.5rem;">
             <h3>📉 Средняя цена ТОП‑10 дешёвых предложений</h3>
             <div id="avgTop10" style="height:300px;"></div>
         </div>
 
-        <details class="dashboard-fold" id="calendarFold">
+        <!-- --- Единая сворачиваемая панель расширенной аналитики (полноширинный fold) --- -->
+        <details class="dashboard-fold" id="analyticsFold">
             <summary>
-                <span>📅 Ценовой календарь по датам вылета</span>
-                <span class="fold-title-meta">Тепловая карта цен</span>
+                <span>📊 Расширенная аналитика и тренды рынка</span>
+                <span class="fold-title-meta">Вылеты · Алерты · Календарь · Тренды</span>
                 <span class="fold-chevron">⌄</span>
             </summary>
-            <div class="fold-content">
-                <div class="calendar-section">
-                    <h3>📅 Календарь минимальных цен по датам вылета</h3>
-                    <p class="chart-section-note">Показывает минимальную цену предложения на каждую дату вылета. Зелёные ячейки соответствуют наиболее дешёвым датам. Нажмите на дату, чтобы отфильтровать отели ниже.</p>
-                    <div id="calendarHeatmapWrapper" style="margin-top: 1rem; overflow-x: auto;"></div>
-                </div>
-            </div>
-        </details>
-
-        <details class="dashboard-fold" id="offersCountFold">
-            <summary>
-                <span>Количество предложений по дням</span>
-                <span class="fold-title-meta">Доп. аналитика</span>
-                <span class="fold-chevron">⌄</span>
-            </summary>
-            <div class="fold-content">
-                <div class="avg-top10-section offers-count-section">
-                    <h3>📈 Количество предложений по дням</h3>
-                    <p class="chart-section-note">Одна точка в день — последний скрап за сутки{f" • видимая зона ≤{ceiling_val:.0f} PLN" if ceiling_val is not None else ""}</p>
-                    <div id="offersCountChart" style="height:280px;"></div>
-                </div>
-            </div>
-        </details>
-
-        <details class="dashboard-fold" id="trendFold">
-            <summary>
-                <span>Индекс ценовой динамики</span>
-                <span class="fold-title-meta">Доп. аналитика</span>
-                <span class="fold-chevron">⌄</span>
-            </summary>
-            <div class="fold-content">
-                <div class="trend-index-section">
-                    <h3>📊 Индекс ценовой динамики</h3>
-                    <div id="trendIndexChart" style="height:280px;"></div>
-                </div>
-            </div>
-        </details>
-{timing_section_html}
-        <details class="dashboard-fold" id="statsFold">
-            <summary>
-                <span>Статистика и сигналы</span>
-                <span class="fold-title-meta">Скрыто по умолчанию</span>
-                <span class="fold-chevron">⌄</span>
-            </summary>
-            <div class="fold-content">
-                <div class="metrics metrics-compact" id="statsMetricsRow1">
-                    {stats_metrics_row1}
-                </div>
-
-                <div class="metrics metrics-compact" id="statsMetricsRow2">
-                    {stats_metrics_row2}
-                </div>
-
-                <div id="durationScopedChanges">{changes_html}</div>
-                <div id="durationScopedEntry">{entry_signal_html}</div>
+            <div class="fold-content" style="padding-top: 1rem;">
+                {departure_block_html}
+                {departure_history_html}
+                {alerts_html}
+                <details class="dashboard-fold" id="calendarFold">
+                    <summary>
+                        <span>📅 Ценовой календарь по датам вылета</span>
+                        <span class="fold-title-meta">Тепловая карта цен</span>
+                        <span class="fold-chevron">⌄</span>
+                    </summary>
+                    <div class="fold-content">
+                        <div class="calendar-section">
+                            <h3>📅 Календарь минимальных цен по датам вылета</h3>
+                            <p class="chart-section-note">Показывает минимальную цену предложения на каждую дату вылета. Зелёные ячейки соответствуют наиболее дешёвым датам. Нажмите на дату, чтобы отфильтровать отели ниже.</p>
+                            <div id="calendarHeatmapWrapper" style="margin-top: 1rem; overflow-x: auto;"></div>
+                        </div>
+                    </div>
+                </details>
+                <details class="dashboard-fold" id="offersCountFold">
+                    <summary>
+                        <span>📈 Количество предложений по дням</span>
+                        <span class="fold-title-meta">Доп. аналитика</span>
+                        <span class="fold-chevron">⌄</span>
+                    </summary>
+                    <div class="fold-content">
+                        <div class="avg-top10-section offers-count-section">
+                            <h3>📈 Количество предложений по дням</h3>
+                            <p class="chart-section-note">Одна точка в день — последний скрап за сутки{f" • видимая зона ≤{ceiling_val:.0f} PLN" if ceiling_val is not None else ""}</p>
+                            <div id="offersCountChart" style="height:280px;"></div>
+                        </div>
+                    </div>
+                </details>
+                {timing_section_html}
+                <details class="dashboard-fold" id="statsFold">
+                    <summary>
+                        <span>Статистика и сигналы</span>
+                        <span class="fold-title-meta">Скрыто по умолчанию</span>
+                        <span class="fold-chevron">⌄</span>
+                    </summary>
+                    <div class="fold-content">
+                        <div class="metrics metrics-compact" id="statsMetricsRow1">
+                            {stats_metrics_row1}
+                        </div>
+                        <div class="metrics metrics-compact" id="statsMetricsRow2">
+                            {stats_metrics_row2}
+                        </div>
+                        <div id="durationScopedChanges">{changes_html}</div>
+                        <div id="durationScopedEntry">{entry_signal_html}</div>
+                    </div>
+                </details>
             </div>
         </details>
 """
@@ -8171,12 +8676,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                         <th class="sortable col-tight" data-sort="deal">Deal Score <span class="th-tip" data-tip="Оценка выгодности от 0 до 100. Учитывает историческую цену, тренд и рейтинг отеля. 80+ — сигнал к покупке.">ℹ</span></th>
                         <th class="sortable col-tight" data-sort="forecast">Прогноз <span class="th-tip" data-tip="Ожидаемое направление цены на ближайшие дни: рост, снижение или стабильно.">ℹ</span></th>
                         <th class="sortable col-tight th-ta col-hide-sm" data-sort="ta" title="Рейтинг на TripAdvisor">{TRIPADVISOR_HEADER_ICON_HTML}</th>
-                        <th class="sortable col-tight" data-sort="delta48">Δ 48ч <span class="th-tip" data-tip="Изменение цены за последние 48 часов. ↑ подорожал, ↓ подешевел, → без изменений.">ℹ</span></th>
-                        <th class="sortable col-tight col-hide-sm" data-sort="deltaavg" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней <span class="th-tip" data-tip="Насколько текущая цена отличается от среднеисторической для этого отеля. Минус — дешевле обычного.">ℹ</span></th>
+                        <th class="sortable col-tight th-col-d48" data-sort="delta48" style="text-align:center;">Δ 48ч <span class="th-tip" data-tip="Изменение цены за последние 48 часов. ↑ подорожал, ↓ подешевел, → без изменений.">ℹ</span></th>
+                        <th class="sortable col-tight col-hide-sm th-col-davg" data-sort="deltaavg" style="text-align:center;" title="Отклонение от средней, взвешенной по длительности удержания каждой цены">Δ к средней <span class="th-tip" data-tip="Насколько текущая цена отличается от среднеисторической для этого отеля. Минус — дешевле обычного.">ℹ</span></th>
                         <th class="sortable col-tight" data-sort="region">Регион</th>
                         <th class="sortable col-tight col-dates" data-sort="dates">Даты</th>
-                        <th class="sortable col-tight col-duration" data-sort="duration">Длительность</th>
-                        <th class="col-tight">Ссылка</th>
+                        <th class="sortable col-tight col-duration th-col-dur" data-sort="duration" style="text-align:center;">Длит.</th>
+                        <th class="col-tight th-col-link" style="text-align:center;">Ссылка</th>
                     </tr>
                 </thead>
                 <tbody>"""
@@ -8241,15 +8746,15 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     quote=True,
                 )
                 if alt_url:
-                    cheaper_alt_html = f'<a href="{html_lib.escape(str(alt_url), quote=True)}" target="_blank" class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></a>'
+                    cheaper_alt_html = f'<a href="{html_lib.escape(str(alt_url), quote=True)}" target="_blank" class="cheaper-alt-badge" title="{alt_title}">✈️ <span class="alt-label">{alt_airport}: {alt_price:.0f} PLN</span> <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></a>'
                 else:
-                    cheaper_alt_html = f'<span class="cheaper-alt-badge" title="{alt_title}">✈️ {alt_airport}: {alt_price:.0f} PLN <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></span>'
+                    cheaper_alt_html = f'<span class="cheaper-alt-badge" title="{alt_title}">✈️ <span class="alt-label">{alt_airport}: {alt_price:.0f} PLN</span> <span class="alt-savings">(−{alt_savings:.0f} PLN)</span></span>'
 
         # Ссылка на предложение
         offer_url = hotel.get('offer_url', '')
         offer_link_html = ""
         if offer_url and pd.notna(offer_url) and offer_url.strip():
-            offer_link_html = f'<a href="{offer_url}" target="_blank" class="offer-link">🔗</a>'
+            offer_link_html = f'<a href="{offer_url}" target="_blank" class="col-link-btn" title="Открыть предложение"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>'
         else:
             offer_link_html = "—"
         
@@ -8749,7 +9254,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }
       })();
 
-      (function(){
+        window.toggleAnalyticsDrawer = function() {
+          const content = document.getElementById('analyticsDrawerContent');
+          const arrow = document.getElementById('analyticsDrawerArrow');
+          if (!content) return;
+          if (content.style.display === 'none' || content.classList.contains('collapsed')) {
+            content.style.display = 'block';
+            content.classList.remove('collapsed');
+            if (arrow) arrow.textContent = '▲ Скрыть аналитику';
+          } else {
+            content.style.display = 'none';
+            content.classList.add('collapsed');
+            if (arrow) arrow.textContent = '▼ Показать аналитику';
+          }
+        };
+
+        (function(){
         const offersDates = """ + json.dumps(offers_count_dates, ensure_ascii=False) + """;
         const offersCounts = """ + json.dumps(offers_count_values, ensure_ascii=False) + """;
         const offersMeta = """ + json.dumps(offers_count_meta, ensure_ascii=False, default=str) + """;
@@ -8777,6 +9297,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           }
           try { Plotly.purge(chartEl); } catch (e) {}
           chartEl.innerHTML = '';
+
+          const yNums = y.filter(function(v) { return v != null && !isNaN(v) && v > 0; });
+          let yMin = yNums.length ? Math.min.apply(null, yNums) : 0;
+          let yMax = yNums.length ? Math.max.apply(null, yNums) : 100;
+          let ySpan = yMax - yMin;
+          let yPad = Math.max(ySpan * 0.35, Math.ceil(yMax * 0.05), 3);
+          const yRange = [Math.max(0, Math.floor(yMin - yPad)), Math.ceil(yMax + yPad)];
+
           const hoverTexts = buildOffersCountHoverTexts(meta);
           const trace = {
             x: x,
@@ -8790,10 +9318,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             hoverinfo: 'text',
           };
           const layout = {
-            margin: { t: 10, r: 12, b: 45, l: 52 },
+            margin: { t: 15, r: 15, b: 45, l: 52 },
             xaxis: { title: 'День', type: 'date', tickformat: '%d.%m' },
-            yaxis: { title: 'Предложений', rangemode: 'tozero' },
+            yaxis: { title: 'Предложений', range: yRange, gridcolor: '#e5e7eb' },
             hovermode: 'closest',
+            paper_bgcolor: 'rgba(0,0,0,0)',
+            plot_bgcolor: 'rgba(0,0,0,0)',
           };
           const config = { responsive: true, displayModeBar: false };
           Plotly.newPlot('offersCountChart', [trace], layout, config);
