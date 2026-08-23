@@ -2,6 +2,7 @@
   "version": 2,
   "alerts": [
     {
+<<<<<<< Updated upstream
       "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
       "duration_bucket": "",
       "old_price": 7857.0,
@@ -30,6 +31,62 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-23T20:07:08.891097+00:00",
+=======
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 7767.0,
+      "new_price": 5747.0,
+      "price_change": -2020.0,
+      "price_change_pct": -26.007467490665636,
+      "timestamp": "2026-08-23 20:36:30.832328+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-23T20:37:00.168845+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-23_20-36_-26.0"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7857.0,
+      "new_price": 6727.0,
+      "price_change": -1130.0,
+      "price_change_pct": -14.382079674175893,
+      "timestamp": "2026-08-23 20:36:30.832328+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-23T20:37:00.168897+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam_2026-08-23_20-36_-14.4"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8377.0,
+      "new_price": 8377.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:30.832328+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:37:00.168923+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-23_20-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 7987.0,
+      "new_price": 7987.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:30.832328+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:37:00.168933+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay_2026-08-23_20-36_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-23T20:36:30.832328+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -643,12 +700,21 @@
         "history_max": 8523.0,
         "premium_peak": null
       },
+<<<<<<< Updated upstream
       "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort) Egipt, Sharm El Sheikh": {
         "history_max": 8013.0,
         "premium_peak": null
       },
       "Pickalbatros Villaggio Resort Portofino": {
         "history_max": 8157.0,
+=======
+      "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
+        "history_max": 7957.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
+        "history_max": 6907.0,
+>>>>>>> Stashed changes
         "premium_peak": null
       }
     }

@@ -1,8 +1,26 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9563.0,
+      "new_price": 10129.0,
+      "price_change": 566.0,
+      "price_change_pct": 5.9186447767437,
+      "timestamp": "2026-08-23 20:37:01.097364+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:37:51.327472+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-23_20-37_zone_out_+5.9"
+    }
+  ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-23T20:07:37.063736+00:00",
+=======
+    "last_processed_run": "2026-08-23T20:37:01.097364+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 12045.0,
@@ -293,8 +311,8 @@
         "premium_peak": 11757.0
       },
       "Casa Fora Beach Resort": {
-        "history_max": 9563.0,
-        "premium_peak": null
+        "history_max": 10129.0,
+        "premium_peak": 10129.0
       },
       "Vikingen Infinity Resort & Spa": {
         "history_max": 11957.0,
@@ -949,8 +967,8 @@
         "premium_peak": 15678.0
       },
       "Xoria Deluxe": {
-        "history_max": 10014.0,
-        "premium_peak": 10014.0
+        "history_max": 10386.0,
+        "premium_peak": 10386.0
       },
       "Side Crown Serenity": {
         "history_max": 9697.0,

@@ -13,10 +13,92 @@
       "created_at": "2026-08-23T19:17:59.304206+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-23_19-17_+10.8"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 8078.0,
+      "new_price": 8078.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:03.626904+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:36:41.897574+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib_2026-08-23_20-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 8657.0,
+      "new_price": 8657.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:03.626904+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:36:41.897598+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-08-23_20-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Maritim Jolie Ville Royal Peninsula Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 8179.0,
+      "new_price": 8179.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:03.626904+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:36:41.897609+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maritim Jolie Ville Royal Peninsula Egipt, Sharm El Sheikh_2026-08-23_20-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Movenpick Resort Soma Bay Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8037.0,
+      "new_price": 8037.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:03.626904+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:36:41.897617+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort Soma Bay Egipt, Hurghada_2026-08-23_20-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8457.0,
+      "new_price": 8457.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:03.626904+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:36:41.897624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino_2026-08-23_20-36_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 9617.0,
+      "new_price": 9617.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-23 20:36:03.626904+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-23T20:36:41.897631+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-23_20-36_zone_out_gone"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-23T20:06:43.395927+00:00",
+=======
+    "last_processed_run": "2026-08-23T20:36:03.626904+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -600,6 +682,34 @@
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada": {
         "history_max": 7843.0,
+        "premium_peak": null
+      },
+      "El Kasr Red Sea": {
+        "history_max": 10287.0,
+        "premium_peak": null
+      },
+      "Golf Villas And Suites Sharm": {
+        "history_max": 8179.0,
+        "premium_peak": null
+      },
+      "Amarina Jannah Resort Aquapark": {
+        "history_max": 8078.0,
+        "premium_peak": null
+      },
+      "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
+        "history_max": 5857.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam": {
+        "history_max": 6727.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
+        "history_max": 6907.0,
+        "premium_peak": null
+      },
+      "Movenpick Waterpark Resort & Spa Soma Bay": {
+        "history_max": 8037.0,
         "premium_peak": null
       }
     }
