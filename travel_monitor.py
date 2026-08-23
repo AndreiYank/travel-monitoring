@@ -277,9 +277,9 @@ class TravelPriceMonitor:
         """
         offers: List[Dict[str, Any]] = []
         cards = re.split(r'<div class="card-offer-search', page_html)[1:]
-        departure_airport = self.extract_departure_airport_from_url(self.config['url'])
-
         for card in cards:
+            departure_airport = self.extract_card_departure_airport(card, self.config['url'])
+
             def find(pattern: str, flags: int = 0) -> str:
                 m = re.search(pattern, card, flags)
                 return ihtml.unescape(m.group(1)).strip() if m else ''
@@ -1146,8 +1146,12 @@ class TravelPriceMonitor:
             # Ссылка на детальную страницу предложения
             offer_url = await self.extract_offer_url(element)
             
-            # Извлекаем аэропорт вылета
-            departure_airport = self.extract_departure_airport_from_url(self.config['url'])
+            # Извлекаем аэропорт вылета из HTML карточки
+            try:
+                card_html = await element.inner_html()
+                departure_airport = self.extract_card_departure_airport(card_html, self.config['url'])
+            except Exception:
+                departure_airport = self.extract_departure_airport_from_url(self.config['url'])
             
             # Очищаем и форматируем данные
             hotel_name = self.clean_text(hotel_name) if hotel_name else f"Предложение {index + 1}"
@@ -1628,6 +1632,20 @@ class TravelPriceMonitor:
         except Exception as e:
             logger.warning(f"Ошибка извлечения аэропорта из URL: {e}")
             return "Неизвестно"
+
+    def extract_card_departure_airport(self, card_html: str, fallback_url: str) -> str:
+        """Извлекает аэропорт вылета из HTML-карточки (icon-plane span) или использует fallback на URL"""
+        try:
+            m_plane = re.search(r'icon-plane[^>]*></i>\s*<span>\s*([^<]+)\s*</span>', card_html)
+            if not m_plane:
+                m_plane = re.search(r'icon-plane[^>]*></span>\s*<span>\s*([^<]+)\s*</span>', card_html)
+            if m_plane:
+                apt = m_plane.group(1).strip()
+                if apt:
+                    return apt
+        except Exception:
+            pass
+        return self.extract_departure_airport_from_url(fallback_url)
 
     @staticmethod
     def _archive_if_week_rolled(filepath: str) -> None:
