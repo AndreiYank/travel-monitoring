@@ -1,0 +1,203 @@
+name: Travel Price Monitor
+
+on:
+  schedule:
+    # Запускаем каждый час
+    - cron: "0 * * * *"
+  workflow_dispatch: # Позволяет запускать вручную
+  push:
+    branches: [ main ]
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "travel-monitor"
+  cancel-in-progress: false
+
+jobs:
+  monitor-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 1
+          persist-credentials: true
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.9"
+
+      - name: Cache Python dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements*.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-pip-
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -r requirements_dashboard.txt
+
+      - name: Cache Playwright browsers
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/ms-playwright
+          key: ${{ runner.os }}-playwright-${{ hashFiles('**/requirements.txt') }}
+          restore-keys: |
+            ${{ runner.os }}-playwright-
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+
+      - name: Run monitoring (filters)
+        env:
+          # Откат без revert: MONITOR_PARALLEL_ENABLED: "false"
+          MONITOR_PARALLEL_ENABLED: "true"
+          # 3 — баланс скорости и fly.pl / RAM; для максимума: "6"
+          MONITOR_PARALLEL_JOBS: "3"
+          # Больше HTTP-попыток перед дорогим Playwright fallback
+          HTTP_MAX_RETRIES: "6"
+          PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD: 1
+          PLAYWRIGHT_BROWSERS_PATH: /home/runner/.cache/ms-playwright
+        run: |
+          echo "🚀 Starting monitoring at $(date)"
+          if [ "${MONITOR_PARALLEL_ENABLED}" = "true" ]; then
+            echo "Mode: parallel (jobs=${MONITOR_PARALLEL_JOBS})"
+            if ! python scripts/run_monitors_parallel.py -j "${MONITOR_PARALLEL_JOBS}"; then
+              echo "❌ Parallel monitoring failed. Printing last 100 lines of each log:"
+              for f in logs/parallel/*.log; do
+                if [ -f "$f" ]; then
+                  echo "=== LOG: $f ==="
+                  tail -n 100 "$f"
+                  echo "================"
+                fi
+              done
+              exit 1
+            fi
+          else
+            echo "Mode: sequential (rollback)"
+            python travel_monitor.py --config config_ci_filter_7_10.json
+            python travel_monitor.py --config config_ci_filter_13_16.json
+            python travel_monitor.py --config config_ci_filter_egypt_autumn_7_10.json
+            python travel_monitor.py --config config_ci_filter_egypt_autumn_7_10_any_airports.json
+            python travel_monitor.py --config config_ci_filter_egypt_autumn_13_16.json
+            python travel_monitor.py --config config_ci_filter_egypt_autumn_13_16_any_airports.json
+            python travel_monitor.py --config config_ci_filter_turkey_7_10.json
+            python travel_monitor.py --config config_ci_filter_turkey_9_11.json
+            python travel_monitor.py --config config_ci_filter_turkey_vacation_jul18.json
+            python travel_monitor.py --config config_ci_filter_turkey_13_16.json
+            python travel_monitor.py --config config_ci_filter_greece_7_10.json
+            python travel_monitor.py --config config_ci_filter_greece_13_16.json
+          fi
+          echo "✅ Monitoring completed"
+
+      - name: Generate dashboards (only new filters) + landing
+        env:
+          DASHBOARD_PARALLEL_JOBS: "3"
+        run: |
+          echo "🌐 Generating filter dashboards at $(date)"
+          python scripts/run_dashboards_parallel.py -j "${DASHBOARD_PARALLEL_JOBS}"
+          echo "✅ Dashboards + landing generated"
+
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v4
+
+      - name: Prepare site directory (HTML + hotel_series only)
+        run: |
+          bash scripts/prepare_pages_site.sh
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: 'site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
+
+      - name: Commit and push data updates
+        run: |
+          echo "📝 Committing data changes..."
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Action"
+          git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+          
+          # Обновляем локальную ветку, чтобы избежать non-fast-forward
+          git fetch origin main || true
+          git checkout main || true
+          # Сохраняем незакоммиченные изменения от предыдущих шагов, подтягиваем, возвращаем изменения
+          git stash push -u -m "ci-stash" || true
+          git pull --rebase origin main || true
+          git stash pop || true
+          
+          # Добавляем только данные/страницы фильтров
+          # Исключаем price_alerts_history.json — он слишком большой и не нужен в git
+          # (актуальные алерты хранятся в travel_prices_alerts.json, который < 1 MB)
+          git add -f data/filters/ || true
+          git reset HEAD -- data/price_alerts_history.json "data/filters/"*"/price_alerts_history.json" 2>/dev/null || true
+          git add index.html hotel-chart.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_egypt_autumn_2026_7_10_days.html index_filter_egypt_autumn_2026_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_9_11_days.html index_filter_turkey_vacation_jul18.html index_filter_turkey_13_16_days.html index_filter_greece_7_10_days.html index_filter_greece_13_16_days.html || true
+          # Проверяем размер файлов перед коммитом чтобы поймать проблему заранее
+          echo "📏 Файлы >40MB в staging:" && git diff --cached --name-only | xargs -I{} sh -c 'sz=$(git cat-file -s ":{}") 2>/dev/null; [ "$sz" -gt 41943040 ] 2>/dev/null && echo "  $sz bytes: {}" || true' || true
+
+          
+          # Проверяем, есть ли изменения для коммита
+          if git diff --staged --quiet; then
+            echo "ℹ️ No changes to commit"
+          else
+            # Создаем коммит с детальным сообщением
+            COMMIT_MSG="🔄 Hourly update (only new filters) - $(date '+%Y-%m-%d %H:%M:%S UTC')
+
+            📌 Filters:
+            - Egypt 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - Egypt 13–16 days (scrape 4000–20000 PLN, show ≤10000)
+            - Egypt autumn 2026 7–10 days (10.10–05.11, ≤11000 PLN)
+            - Egypt autumn 2026 13–16 days (10.10–05.11, ≤11000 PLN)
+            - Turkey 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - Turkey 9–11 days (scrape 4610–20000 PLN, show ≤10000)
+            - Turkey vacation Jul 18 (retired after window)
+            - Turkey 13–16 days (scrape 4000–20000 PLN, show ≤10000)
+            - Greece 7–10 days (scrape 4000–20000 PLN, show ≤10000)
+            - Greece 13–16 days (scrape 4000–20000 PLN, show ≤10000)
+
+            🤖 Automated by GitHub Actions"
+            
+            git commit -m "$COMMIT_MSG"
+            git push origin HEAD:main
+            echo "✅ Changes committed and pushed"
+          fi
+
+      - name: Create summary
+        if: always()
+        run: |
+          echo "## 🏨 Travel Price Monitor Summary" >> $GITHUB_STEP_SUMMARY
+          echo "**Run ID:** ${{ github.run_number }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Time:** $(date)" >> $GITHUB_STEP_SUMMARY
+          echo "**Trigger:** ${{ github.event_name }}" >> $GITHUB_STEP_SUMMARY
+          echo "**Status:** ${{ job.status }}" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          echo "### 🔗 Links" >> $GITHUB_STEP_SUMMARY
+          echo "- [Landing](https://Jancker2a.github.io/travel-monitoring/)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt 7–10 days](https://Jancker2a.github.io/travel-monitoring/index_filter_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt 13–16 days](https://Jancker2a.github.io/travel-monitoring/index_filter_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt autumn 2026 7–10](https://Jancker2a.github.io/travel-monitoring/index_filter_egypt_autumn_2026_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Egypt autumn 2026 13–16](https://Jancker2a.github.io/travel-monitoring/index_filter_egypt_autumn_2026_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Turkey 7–10 days](https://Jancker2a.github.io/travel-monitoring/index_filter_turkey_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Turkey 9–11 days](https://Jancker2a.github.io/travel-monitoring/index_filter_turkey_9_11_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Turkey 13–16 days](https://Jancker2a.github.io/travel-monitoring/index_filter_turkey_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Greece 7–10 days](https://Jancker2a.github.io/travel-monitoring/index_filter_greece_7_10_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [Greece 13–16 days](https://Jancker2a.github.io/travel-monitoring/index_filter_greece_13_16_days.html)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Data](https://github.com/Jancker2a/travel-monitoring/tree/main/data/filters)" >> $GITHUB_STEP_SUMMARY
+          echo "- [View Logs](https://github.com/Jancker2a/travel-monitoring/actions/runs/${{ github.run_id }})" >> $GITHUB_STEP_SUMMARY

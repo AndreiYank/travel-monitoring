@@ -1,0 +1,13 @@
+{
+  "url": "https://fly.pl/kierunek/grecja/?filter[dest]=14:&filter[hotelids]=&filter[cityids]=0&filter[cregids]=&filter[ofrType]=&filter[addObjType]=&filter[whenFrom]=20-09-2025&filter[whenTo]=04-10-2025&filter[duration]=6:15&filter[from]=&filter[person]=2&filter[child]=1&filter[price]=0&filter[PriceFrom]=0&filter[PriceTo]=30000&filter[addCategory]=40&filter[addCatering]=1&filter[addMisc]=0&filter[addTransport]=F&filter[fp]=1&order_by=ofr_price&filter[tourOperator]=0&filter[childAge][1]=20201210",
+  "max_price_threshold": 30000,
+  "wait_timeout": 30000,
+  "max_retries": 3,
+  "max_offers": 200,
+  "retry_delay": 5,
+  "data_dir": "data",
+  "output_data_file": "travel_prices_any_airports.csv",
+  "charts_dir": "data/charts",
+  "report_file": "data/price_report.txt",
+  "description": "Конфигурация для мониторинга цен на путешествия в Грецию из всех аэропортов"
+}
