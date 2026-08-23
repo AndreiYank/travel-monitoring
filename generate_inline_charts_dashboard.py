@@ -743,6 +743,58 @@ def _resolve_chart_href(hotel_name: str, lookup: dict, charts_subdir: str, slugi
     return _hotel_chart_viewer_href(active_filter_id(charts_subdir), slug)
 
 
+def _render_top_movers_html(decreases_48h, increases_48h, slugify_fn, filter_data_id):
+    """Генерирует виджет Top Movers (топ снижений и роста цен за 48 часов)."""
+    if not decreases_48h and not increases_48h:
+        return ""
+
+    def _render_list(items, is_drop=True):
+        if not items:
+            return '<div class="top-mover-empty">За последние 48ч изменения цен не зафиксированы</div>'
+        rows = []
+        for item in items[:3]:
+            hotel_name = html_lib.escape(str(item['hotel_name']))
+            slug = slugify_fn(item['hotel_name'])
+            href = _hotel_chart_viewer_href(filter_data_id, slug)
+            old_p = float(item['old_price'])
+            new_p = float(item['new_price'])
+            pct = float(item['change_percent'])
+            cls = 'drop' if is_drop else 'up'
+            sign = '' if pct < 0 else '+'
+            arrow = '↓' if is_drop else '↑'
+            rows.append(
+                f'<a href="{href}" target="_blank" class="top-mover-item">'
+                f'<span class="top-mover-name" title="{hotel_name}">{hotel_name}</span>'
+                f'<span class="top-mover-prices">{old_p:.0f} → <strong>{new_p:.0f} PLN</strong></span>'
+                f'<span class="top-mover-badge {cls}">{arrow} {sign}{pct:.1f}%</span>'
+                f'</a>'
+            )
+        return "".join(rows)
+
+    drops_html = _render_list(decreases_48h, is_drop=True)
+    rises_html = _render_list(increases_48h, is_drop=False)
+
+    return f"""
+        <div class="top-movers-section">
+            <div class="top-movers-head">
+                <h3>📊 Динамика цен за 48 часов (Top Movers)</h3>
+                <span class="top-movers-sub">Отели с наибольшим изменением стоимости</span>
+            </div>
+            <div class="top-movers-grid">
+                <div class="top-movers-card top-movers-card--drops">
+                    <div class="top-movers-card-title">📉 Лидеры снижения цены</div>
+                    <div class="top-movers-list">{drops_html}</div>
+                </div>
+                <div class="top-movers-card top-movers-card--rises">
+                    <div class="top-movers-card-title">📈 Лидеры роста цены</div>
+                    <div class="top-movers-list">{rises_html}</div>
+                </div>
+            </div>
+        </div>
+    """
+
+
+
 def _alert_is_current(alert, table_prices, tolerance=2.0, scope_duration_bucket=None):
     """Alert is current if the hotel is in the last run at the alert's new price."""
     hotel_name = str(alert.get('hotel_name') or alert.get('hotel') or '')
@@ -6254,6 +6306,105 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .update-status--warn  {{ color: #f59e0b; }}
         .update-status--err   {{ color: #ef4444; }}
 
+        /* ── Top Movers Widget ── */
+        .top-movers-section {{
+            background: #fff;
+            border: 1px solid var(--border-soft);
+            border-radius: var(--radius-xl);
+            padding: 1.1rem 1.3rem;
+            margin-bottom: 1.5rem;
+            box-shadow: var(--shadow-sm);
+        }}
+        .top-movers-head {{
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: .4rem;
+            margin-bottom: .85rem;
+        }}
+        .top-movers-head h3 {{
+            margin: 0;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #1e293b;
+        }}
+        .top-movers-sub {{
+            font-size: .8rem;
+            color: var(--text-muted);
+        }}
+        .top-movers-grid {{
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: .85rem;
+        }}
+        .top-movers-card {{
+            background: #f8fafc;
+            border-radius: 12px;
+            padding: .85rem 1rem;
+            border: 1px solid #e2e8f0;
+        }}
+        .top-movers-card--drops {{ border-left: 4px solid #10b981; }}
+        .top-movers-card--rises {{ border-left: 4px solid #ef4444; }}
+        .top-movers-card-title {{
+            font-size: .85rem;
+            font-weight: 700;
+            margin-bottom: .6rem;
+            color: #334155;
+        }}
+        .top-mover-empty {{
+            font-size: .8rem;
+            color: var(--text-muted);
+            font-style: italic;
+            padding: .4rem 0;
+        }}
+        .top-mover-item {{
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: .4rem;
+            padding: .45rem .6rem;
+            border-radius: 8px;
+            text-decoration: none;
+            color: inherit;
+            background: #fff;
+            margin-bottom: .35rem;
+            border: 1px solid #edf2f7;
+            transition: background .15s ease, border-color .15s ease;
+        }}
+        .top-mover-item:hover {{
+            background: #f1f5f9;
+            border-color: #cbd5e1;
+        }}
+        .top-mover-name {{
+            font-size: .84rem;
+            font-weight: 600;
+            color: #1e293b;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 150px;
+        }}
+        .top-mover-prices {{
+            font-size: .78rem;
+            color: #64748b;
+        }}
+        .top-mover-badge {{
+            font-size: .75rem;
+            font-weight: 700;
+            padding: .12rem .4rem;
+            border-radius: 999px;
+            white-space: nowrap;
+        }}
+        .top-mover-badge.drop {{
+            background: rgba(16,185,129,.15);
+            color: #047857;
+        }}
+        .top-mover-badge.up {{
+            background: rgba(239,68,68,.15);
+            color: #b91c1c;
+        }}
+
         @keyframes sectionFadeIn {{
             from {{ opacity: 0; transform: translateY(8px); }}
             to {{ opacity: 1; transform: translateY(0); }}
@@ -7809,17 +7960,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         </details>
 """
 
-    # Блок выбора вида списка предложений (всегда виден)
-    html_template += f"""
-        <div class="table-toolbar" id="modeSwitchRow">
-            <div class="table-toolbar-title">Вид</div>
-            <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
-                <button type="button" class="mode-btn active" data-mode="cards">Карточки</button>
-                <button type="button" class="mode-btn" data-mode="table">Таблица</button>
-            </div>
-        </div>
-        {cards_html}
-"""
+    # Блок выбора вида списка предложений и фильтры (всегда видны)
+    _filter_data_id = active_filter_id(charts_subdir)
+    top_movers_html = _render_top_movers_html(decreases_48h, increases_48h, slugify, _filter_data_id)
 
     # Адаптивные диапазоны фильтра по цене на основе фактических цен таблицы
     try:
@@ -7870,9 +8013,46 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     else:
         price_filter_options_html = '<option value="">Все цены</option>'
 
-    duration_filter_html = ""
-
     html_template += f"""
+        {top_movers_html}
+
+        <div class="table-toolbar" id="modeSwitchRow">
+            <div class="table-toolbar-title">Вид</div>
+            <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
+                <button type="button" class="mode-btn active" data-mode="cards">Карточки</button>
+                <button type="button" class="mode-btn" data-mode="table">Таблица</button>
+            </div>
+        </div>
+
+        <!-- Table & Cards Universal Filters -->
+        <div class="table-filters" id="globalFilters" style="margin-bottom: 1.25rem;">
+            <input type="text" class="filter-input" id="searchInput" placeholder="🔍 Поиск по отелям..." />
+            <select class="filter-select" id="priceFilter">
+                {price_filter_options_html}
+            </select>
+            <select class="filter-select" id="taFilter">
+                <option value="">Все рейтинги TripAdvisor</option>
+                <option value="4.5">Рейтинг ≥ 4.5</option>
+                <option value="4.0">Рейтинг ≥ 4.0</option>
+                <option value="3.5">Рейтинг ≥ 3.5</option>
+                <option value="none">Без оценки</option>
+            </select>
+            <select class="filter-select" id="changeFilter">
+                <option value="">Все изменения</option>
+                <option value="decrease">Снижение цен</option>
+                <option value="increase">Рост цен</option>
+                <option value="stable">Стабильные</option>
+            </select>
+            <select class="filter-select" id="regionFilter">
+                <option value="">Все регионы</option>
+                {region_filter_options_html}
+            </select>
+            <button class="filter-button" id="watchlistToggle" style="padding: 0.75rem 1rem; background: #cbd5e1; color: #1e293b; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">⭐ Избранные</button>
+            <button class="filter-button" id="clearFilters" style="padding: 0.75rem 1rem; background: var(--gradient-primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600;">Очистить</button>
+        </div>
+
+        {cards_html}
+
         <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
             <div class="table-header-row">
             <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
@@ -7886,33 +8066,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <span class="deal-badge-warm">⏳ Warm-up</span> = пока мало истории.
                 Confidence: Low / Medium / High — степень надежности оценки.
                 TripAdvisor слегка сдвигает Deal Score; без отзывов влияние минимально.
-            </div>
-            
-            <!-- Table Filters -->
-            <div class="table-filters">
-                <input type="text" class="filter-input" id="searchInput" placeholder="🔍 Поиск по отелям..." />
-                <select class="filter-select" id="priceFilter">
-                    {price_filter_options_html}
-                </select>
-                <select class="filter-select" id="taFilter">
-                    <option value="">Все рейтинги TripAdvisor</option>
-                    <option value="4.5">Рейтинг ≥ 4.5</option>
-                    <option value="4.0">Рейтинг ≥ 4.0</option>
-                    <option value="3.5">Рейтинг ≥ 3.5</option>
-                    <option value="none">Без оценки</option>
-                </select>
-                <select class="filter-select" id="changeFilter">
-                    <option value="">Все изменения</option>
-                    <option value="decrease">Снижение цен</option>
-                    <option value="increase">Рост цен</option>
-                    <option value="stable">Стабильные</option>
-                </select>
-                <select class="filter-select" id="regionFilter">
-                    <option value="">Все регионы</option>
-                    {region_filter_options_html}
-                </select>
-                <button class="filter-button" id="watchlistToggle" style="padding: 0.75rem 1rem; background: #cbd5e1; color: #1e293b; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">⭐ Избранные</button>
-                <button class="filter-button" id="clearFilters" style="padding: 0.75rem 1rem; background: var(--gradient-primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600;">Очистить</button>
             </div>
 
             <div class="mobile-sort-bar" id="mobileSortBar" aria-label="Сортировка таблицы">
@@ -9602,8 +9755,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             return;
           }
           if (chartTitleEl) chartTitleEl.style.display = 'block';
-          chartEl.style.display = 'block';
-          const x = curve.days.map(function(d) { return 'D-' + d; });
+          const x = (curve.labels && curve.labels.length)
+            ? curve.labels
+            : curve.days.map(function(d) { return 'D-' + d; });
           const yVals = (curve.median_price || []).concat(curve.p10_price || []).filter(function(v) {
             return v != null && !isNaN(v) && v > 0;
           });
