@@ -7370,9 +7370,9 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                     <p class="alerts-lead">Отели, у которых <strong>заметно изменилась цена</strong> (от {ALERT_THRESHOLD_PERCENT:.0f}% между проверками или возврат из дорогого сегмента) и <strong>эта цена всё ещё актуальна</strong> — в последнем обновлении она не менялась. Прошлые события — в «Истории».</p>
                     <div class="alerts-summary-chips" id="alertsSummaryChips">{alert_chips_html}</div>
                 </div>
-                <span class="expand-icon" id="alertsExpandIcon">▼</span>
+                <span class="expand-icon collapsed" id="alertsExpandIcon">►</span>
             </div>
-            <div class="alerts-content" id="alertsContent">
+            <div class="alerts-content collapsed" id="alertsContent">
 {alerts_content_html}
             </div>
         </div>
@@ -7429,7 +7429,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             </div>
         </div>
 """
-    html_template += alerts_html
     html_template += departure_block_html
     html_template += departure_history_html
 
@@ -8161,6 +8160,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 <button id="nextPage">Следующая →</button>
             </div>
         </div>
+{alerts_html}
 {vanished_section_html}
 {duration_views_json_embed}
         <div class="footer">
