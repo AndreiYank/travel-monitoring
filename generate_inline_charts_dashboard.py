@@ -6314,7 +6314,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .th-tip::after {{
             content: attr(data-tip);
             position: absolute;
-            bottom: calc(100% + 8px);
+            top: calc(100% + 8px);
+            bottom: auto;
             left: 50%;
             transform: translateX(-50%);
             background: #1e293b;
@@ -6323,18 +6324,33 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-weight: 400;
             text-transform: none;
             letter-spacing: 0;
-            padding: .5rem .8rem;
+            padding: .55rem .85rem;
             border-radius: 8px;
             white-space: normal;
             width: 220px;
             max-width: 90vw;
-            box-shadow: 0 4px 16px rgba(0,0,0,.35);
+            box-shadow: 0 8px 24px rgba(0,0,0,.4);
             pointer-events: none;
             opacity: 0;
             transition: opacity .18s ease;
-            z-index: 200;
+            z-index: 9999;
         }}
-        .th-tip:hover::after {{
+        .th-tip::before {{
+            content: "";
+            position: absolute;
+            top: calc(100% + 2px);
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 0 6px 6px 6px;
+            border-style: solid;
+            border-color: transparent transparent #1e293b transparent;
+            opacity: 0;
+            transition: opacity .18s ease;
+            z-index: 10000;
+            pointer-events: none;
+        }}
+        .th-tip:hover::after,
+        .th-tip:hover::before {{
             opacity: 1;
         }}
 
