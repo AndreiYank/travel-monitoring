@@ -8585,8 +8585,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         <div class="table-toolbar" id="modeSwitchRow">
             <div class="table-toolbar-title">Вид</div>
             <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
-                <button type="button" class="mode-btn active" data-mode="cards" onclick="window.setDashboardMode('cards')">Карточки</button>
-                <button type="button" class="mode-btn" data-mode="table" onclick="window.setDashboardMode('table')">Таблица</button>
+                <button type="button" class="mode-btn active" data-mode="cards">Карточки</button>
+                <button type="button" class="mode-btn" data-mode="table">Таблица</button>
             </div>
         </div>
 
@@ -9571,10 +9571,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         function triggerChartResize() {
           setTimeout(() => {
             window.dispatchEvent(new Event('resize'));
-            if (window.Plotly) {
-              el.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart').forEach(p => {
+            if (window.Plotly && window.Plotly.Plots) {
+              document.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart, #departurePriceChart').forEach(p => {
                 try { window.Plotly.Plots.resize(p); } catch (e) {}
               });
+            }
+            if (typeof window.updateCalendarHeatmap === 'function') {
+              window.updateCalendarHeatmap();
             }
           }, 80);
         }
@@ -9588,6 +9591,22 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           }
         });
       }
+
+      document.addEventListener('toggle', function(event) {
+        if (event.target && event.target.tagName === 'DETAILS' && event.target.open) {
+          setTimeout(function() {
+            window.dispatchEvent(new Event('resize'));
+            if (window.Plotly && window.Plotly.Plots) {
+              document.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart, #departurePriceChart').forEach(function(p) {
+                try { window.Plotly.Plots.resize(p); } catch (e) {}
+              });
+            }
+            if (typeof window.updateCalendarHeatmap === 'function') {
+              window.updateCalendarHeatmap();
+            }
+          }, 80);
+        }
+      }, true);
       
       function runOnReady(fn) {
         if (document.readyState === 'loading') {
@@ -9629,10 +9648,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         syncMobileSortBar();
         
         // Sidebar functionality
+        const sidebar = document.getElementById('sidebar');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
+        const mainContent = document.getElementById('mainContent');
+
         function toggleSidebar() {
-          const sidebar = document.getElementById('sidebar');
-          const sidebarOverlay = document.getElementById('sidebarOverlay');
-          const mainContent = document.getElementById('mainContent');
           if (!sidebar || !sidebarOverlay || !mainContent) return;
           sidebar.classList.toggle('open');
           sidebarOverlay.classList.toggle('open');
@@ -9641,26 +9661,36 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         window.toggleSidebar = toggleSidebar;
         
         const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
-        if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
+        if (sidebarToggle) {
+          sidebarToggle.onclick = function(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            toggleSidebar();
+          };
+        }
+        if (sidebarOverlay) {
+          sidebarOverlay.onclick = function(e) {
+            if (e) { e.preventDefault(); e.stopPropagation(); }
+            toggleSidebar();
+          };
+        }
 
         // Cards/Table view mode
-        const cardsSection = document.getElementById('cardsSection');
-        const tableSection = document.getElementById('tableSection');
-        const alertsSection = document.getElementById('alertsSection');
-        const modeSwitch = document.getElementById('modeSwitch');
         let refreshTableView = null;
 
         function setMode(mode) {
           const normalized = mode === 'table' ? 'table' : 'cards';
           const cardsMode = normalized !== 'table';
-          if (cardsSection) cardsSection.style.display = cardsMode ? 'block' : 'none';
-          if (tableSection) tableSection.style.display = cardsMode ? 'none' : 'block';
-          if (alertsSection) alertsSection.style.display = 'block';
-          if (modeSwitch) {
-            modeSwitch.dataset.mode = normalized;
-            modeSwitch.querySelectorAll('.mode-btn').forEach((btn) => {
+          const cardsEl = document.getElementById('cardsSection');
+          const tableEl = document.getElementById('tableSection');
+          const alertsEl = document.getElementById('alertsSection');
+          const modeSwEl = document.getElementById('modeSwitch');
+
+          if (cardsEl) cardsEl.style.display = cardsMode ? 'block' : 'none';
+          if (tableEl) tableEl.style.display = cardsMode ? 'none' : 'block';
+          if (alertsEl) alertsEl.style.display = 'block';
+          if (modeSwEl) {
+            modeSwEl.dataset.mode = normalized;
+            modeSwEl.querySelectorAll('.mode-btn').forEach((btn) => {
               btn.classList.toggle('active', btn.dataset.mode === normalized);
             });
           }
@@ -9671,12 +9701,13 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }
         window.setDashboardMode = setMode;
 
+        const modeSwitch = document.getElementById('modeSwitch');
         if (modeSwitch) {
-          modeSwitch.addEventListener('click', (event) => {
-            const btn = event.target.closest('.mode-btn');
-            if (!btn) return;
-            event.preventDefault();
-            setMode(btn.dataset.mode || 'cards');
+          modeSwitch.querySelectorAll('.mode-btn').forEach((btn) => {
+            btn.onclick = function(e) {
+              if (e) { e.preventDefault(); e.stopPropagation(); }
+              setMode(btn.dataset.mode || 'cards');
+            };
           });
         }
         bindFoldPersistence('analyticsFold', 'dashboard_fold_analytics', false);
@@ -10483,6 +10514,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
           modal.classList.add('open');
           modal.setAttribute('aria-hidden', 'false');
+          setTimeout(function() {
+            const chartEl = document.getElementById('departureModalChart');
+            if (chartEl && window.Plotly && window.Plotly.Plots) {
+              try { window.Plotly.Plots.resize(chartEl); } catch (e) {}
+            }
+          }, 60);
         }
 
         function closeDepartureOffers() {
