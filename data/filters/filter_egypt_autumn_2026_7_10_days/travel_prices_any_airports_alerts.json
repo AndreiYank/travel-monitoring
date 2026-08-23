@@ -169,10 +169,23 @@
       "created_at": "2026-08-23T10:20:31.715515+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-23_10-19_+17.9"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6432.0,
+      "new_price": 7618.0,
+      "price_change": 1186.0,
+      "price_change_pct": 18.43905472636816,
+      "timestamp": "2026-08-23 11:16:34.480086+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-23T11:17:26.609039+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-08-23_11-16_+18.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-23T10:19:35.953044+00:00",
+    "last_processed_run": "2026-08-23T11:16:34.480086+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -283,7 +296,7 @@
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
-        "history_max": 6817.0,
+        "history_max": 7287.0,
         "premium_peak": null
       },
       "Jaz Elite Asteria (Hurghada)": {
@@ -808,6 +821,10 @@
       },
       "Desert Rose Resort": {
         "history_max": 8873.0,
+        "premium_peak": null
+      },
+      "Caesar Bay Resort": {
+        "history_max": 10404.0,
         "premium_peak": null
       }
     }
