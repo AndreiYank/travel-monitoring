@@ -6607,12 +6607,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             z-index: 999;
             opacity: 0;
             visibility: hidden;
+            pointer-events: none;
             transition: var(--transition-normal);
         }}
         
         .sidebar-overlay.open {{
             opacity: 1;
             visibility: visible;
+            pointer-events: auto;
         }}
         
         .main-content {{
@@ -7210,7 +7212,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 </head>
 <body>
     <div class="app-topbar">
-        <button class="sidebar-toggle" id="sidebarToggle" aria-label="Меню">☰</button>
+        <button class="sidebar-toggle" id="sidebarToggle" onclick="window.toggleSidebar()" aria-label="Меню">☰</button>
         <button class="theme-toggle" id="themeToggle" aria-label="Тема">🌙</button>
     </div>
     <!-- Sidebar Navigation -->
@@ -7667,6 +7669,42 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     duration_filter_html = ""
 
     html_template += f"""
+        <div class="table-toolbar" id="modeSwitchRow">
+            <div class="table-toolbar-title">Вид</div>
+            <div class="mode-switch table-mode-switch" id="modeSwitch" data-mode="cards">
+                <button type="button" class="mode-btn active" data-mode="cards" onclick="window.setDashboardMode('cards')">Карточки</button>
+                <button type="button" class="mode-btn" data-mode="table" onclick="window.setDashboardMode('table')">Таблица</button>
+            </div>
+        </div>
+
+        <!-- Table & Cards Universal Filters -->
+        <div class="table-filters" id="globalFilters" style="margin-bottom: 1.25rem;">
+            <input type="text" class="filter-input" id="searchInput" placeholder="🔍 Поиск по отелям..." />
+            <select class="filter-select" id="priceFilter">
+                {price_filter_options_html}
+            </select>
+            <select class="filter-select" id="taFilter">
+                <option value="">Все рейтинги TripAdvisor</option>
+                <option value="4.5">Рейтинг ≥ 4.5</option>
+                <option value="4.0">Рейтинг ≥ 4.0</option>
+                <option value="3.5">Рейтинг ≥ 3.5</option>
+                <option value="none">Без оценки</option>
+            </select>
+            <select class="filter-select" id="changeFilter">
+                <option value="">Все изменения</option>
+                <option value="decrease">Снижение цен</option>
+                <option value="increase">Рост цен</option>
+                <option value="stable">Стабильные</option>
+            </select>
+            <select class="filter-select" id="regionFilter">
+                <option value="">Все регионы</option>
+                {region_filter_options_html}
+            </select>
+            <button class="filter-button" id="watchlistToggle" style="padding: 0.75rem 1rem; background: #cbd5e1; color: #1e293b; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease;">⭐ Избранные</button>
+            <button class="filter-button" id="clearFilters" style="padding: 0.75rem 1rem; background: var(--gradient-primary); color: white; border: none; border-radius: var(--radius-md); cursor: pointer; font-weight: 600;">Очистить</button>
+        </div>
+
+        {cards_html}
         <div class="hotels-section full-width-table-section" id="tableSection" style="display:none;">
             <div class="table-header-row">
             <h3>🏨 Все отели • клик по отелю откроет график на отдельной странице</h3>
@@ -8578,13 +8616,24 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           if (saved === '0') isOpen = false;
         } catch (e) {}
         el.open = isOpen;
+
+        function triggerChartResize() {
+          setTimeout(() => {
+            window.dispatchEvent(new Event('resize'));
+            if (window.Plotly) {
+              el.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart').forEach(p => {
+                try { window.Plotly.Plots.resize(p); } catch (e) {}
+              });
+            }
+          }, 80);
+        }
+
+        if (isOpen) triggerChartResize();
+
         el.addEventListener('toggle', () => {
           try { localStorage.setItem(key, el.open ? '1' : '0'); } catch (e) {}
-          // Перерисовываем графики Plotly внутри: при закрытом details ширина была 0
-          if (el.open && window.Plotly) {
-            el.querySelectorAll('.js-plotly-plot').forEach(p => {
-              try { window.Plotly.Plots.resize(p); } catch (e) {}
-            });
+          if (el.open) {
+            triggerChartResize();
           }
         });
       }
@@ -8629,18 +8678,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         syncMobileSortBar();
         
         // Sidebar functionality
-        const sidebar = document.getElementById('sidebar');
-        const sidebarToggle = document.getElementById('sidebarToggle');
-        const sidebarOverlay = document.getElementById('sidebarOverlay');
-        const mainContent = document.getElementById('mainContent');
-        
         function toggleSidebar() {
+          const sidebar = document.getElementById('sidebar');
+          const sidebarOverlay = document.getElementById('sidebarOverlay');
+          const mainContent = document.getElementById('mainContent');
           if (!sidebar || !sidebarOverlay || !mainContent) return;
           sidebar.classList.toggle('open');
           sidebarOverlay.classList.toggle('open');
           mainContent.classList.toggle('sidebar-open');
         }
+        window.toggleSidebar = toggleSidebar;
         
+        const sidebarToggle = document.getElementById('sidebarToggle');
+        const sidebarOverlay = document.getElementById('sidebarOverlay');
         if (sidebarToggle) sidebarToggle.addEventListener('click', toggleSidebar);
         if (sidebarOverlay) sidebarOverlay.addEventListener('click', toggleSidebar);
 
@@ -8678,6 +8728,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             setMode(btn.dataset.mode || 'cards');
           });
         }
+        bindFoldPersistence('analyticsFold', 'dashboard_fold_analytics', false);
+        bindFoldPersistence('calendarFold', 'dashboard_fold_calendar', false);
         bindFoldPersistence('offersCountFold', 'dashboard_fold_offers_count', false);
         bindFoldPersistence('trendFold', 'dashboard_fold_trend', false);
         bindFoldPersistence('timingFold', 'dashboard_fold_timing', false);
