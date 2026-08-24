@@ -73,11 +73,32 @@
       "new_price": 9725.0,
       "price_change": 977.0,
       "price_change_pct": 11.168267032464563,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 06:40:33.548786+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-08-24T06:41:28.462465+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Omer Prime Holiday Resort_2026-08-24_06-40_+11.2"
+=======
+      "timestamp": "2026-08-24 07:13:59.720080+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T07:14:45.142526+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Omer Prime Holiday Resort_2026-08-24_07-13_+11.2"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9809.0,
+      "new_price": 9007.0,
+      "price_change": -802.0,
+      "price_change_pct": -8.176164746661229,
+      "timestamp": "2026-08-24 07:13:59.720080+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T07:14:45.142568+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-08-24_07-13_-8.2"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Daima Biz (Kemer)",
@@ -86,11 +107,19 @@
       "new_price": 7817.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 06:40:33.548786+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T06:41:28.462556+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Daima Biz (Kemer)_2026-08-24_06-40_zone_out_gone"
+=======
+      "timestamp": "2026-08-24 07:13:59.720080+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T07:14:45.142643+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz (Kemer)_2026-08-24_07-13_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Grand Ozcelik Turcja, Kusadasi",
@@ -99,6 +128,7 @@
       "new_price": 7308.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 06:40:33.548786+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T06:41:28.462571+00:00",
@@ -108,6 +138,17 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T06:40:33.548786+00:00",
+=======
+      "timestamp": "2026-08-24 07:13:59.720080+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T07:14:45.142654+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Ozcelik Turcja, Kusadasi_2026-08-24_07-13_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-24T07:13:59.720080+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -1317,6 +1358,7 @@
         "history_max": 7760.0,
         "premium_peak": null
       },
+<<<<<<< Updated upstream
       "Porto Bello": {
         "history_max": 11745.0,
         "premium_peak": 11745.0
@@ -1324,6 +1366,15 @@
       "Signature Blue Resort (ex. Grand Ozcelik)": {
         "history_max": 7821.0,
         "premium_peak": null
+=======
+      "Signature Blue Resort (ex. Grand Ozcelik)": {
+        "history_max": 7821.0,
+        "premium_peak": null
+      },
+      "Garcia Resort & Spa": {
+        "history_max": 10584.0,
+        "premium_peak": 10584.0
+>>>>>>> Stashed changes
       }
     }
   }
