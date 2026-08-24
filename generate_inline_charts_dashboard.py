@@ -7110,17 +7110,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             white-space: nowrap;
         }}
 
-        .hotels-table td.price {{
-            white-space: normal;
-            overflow: visible;
-            vertical-align: middle;
-            line-height: 1.28;
-        }}
 
-        .hotels-table td.price .price-main {{
-            display: block;
-            white-space: nowrap;
-        }}
         
         .airport {{
             font-weight: 600;
