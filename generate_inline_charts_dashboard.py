@@ -6416,25 +6416,25 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         .hotels-table {{
             width: 100%;
-            min-width: 960px;
+            min-width: 1020px;
             table-layout: fixed;
             border-collapse: separate;
-            border-spacing: 0 8px;
+            border-spacing: 0 6px;
             margin: 0;
-            font-size: 0.875rem;
+            font-size: 0.85rem;
         }}
 
         .hotels-table col.col-w-hotel {{ width: 23.5%; }}
-        .hotels-table col.col-w-price {{ width: 9.0%; }}
+        .hotels-table col.col-w-price {{ width: 9.5%; }}
         .hotels-table col.col-w-deal {{ width: 8.5%; }}
-        .hotels-table col.col-w-forecast {{ width: 8.5%; }}
-        .hotels-table col.col-w-ta {{ width: 7.0%; }}
+        .hotels-table col.col-w-forecast {{ width: 9.0%; }}
+        .hotels-table col.col-w-ta {{ width: 7.5%; }}
         .hotels-table col.col-w-d48 {{ width: 5.5%; }}
-        .hotels-table col.col-w-davg {{ width: 9.5%; }}
+        .hotels-table col.col-w-davg {{ width: 8.5%; }}
         .hotels-table col.col-w-region {{ width: 9.5%; }}
-        .hotels-table col.col-w-dates {{ width: 11.0%; }}
-        .hotels-table col.col-w-dur {{ width: 4.5%; }}
-        .hotels-table col.col-w-link {{ width: 3.5%; }}
+        .hotels-table col.col-w-dates {{ width: 11.5%; }}
+        .hotels-table col.col-w-dur {{ width: 4.0%; }}
+        .hotels-table col.col-w-link {{ width: 3.0%; }}
 
         .hotels-table td.col-w-d48-td,
         .hotels-table td.col-w-davg-td,
@@ -6460,11 +6460,11 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         .hotels-table th.col-tight {{
             white-space: nowrap;
             vertical-align: middle;
-            padding: 0.75rem 0.5rem;
+            padding: 0.55rem 0.5rem;
         }}
 
         .hotels-table th.col-tight {{
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             letter-spacing: 0.04em;
         }}
 
@@ -6493,10 +6493,10 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             background: transparent !important;
             color: #0284c7;
             font-weight: 800;
-            font-size: 0.78rem;
+            font-size: 0.76rem;
             text-transform: uppercase;
             letter-spacing: 0.04em;
-            padding: 0.75rem 0.5rem;
+            padding: 0.6rem 0.5rem;
             text-align: left;
             cursor: pointer;
             user-select: none;
@@ -6539,59 +6539,64 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         
         .hotels-table td {{
-            height: 100%;
-            padding: 0.75rem 0.65rem;
+            height: 48px;
+            padding: 0.55rem 0.55rem;
             border: none;
             vertical-align: middle;
             background: transparent;
             box-sizing: border-box;
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
         }}
 
         /* ── Alternating White Volumetric Floating Cards & Sky Blue Rows ── */
         .hotels-table tbody tr {{
-            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
         }}
 
-        .hotels-table tbody tr:nth-child(odd) {{
-            box-shadow: 0 4px 14px -2px rgba(0, 50, 100, 0.06);
-        }}
-
-        .hotels-table tbody tr:nth-child(odd) td {{
+        .hotels-table tbody tr:nth-child(odd) td,
+        .hotels-table tbody tr.row-odd td {{
             background: #ffffff;
             border-top: 1px solid #e2eef8;
             border-bottom: 1px solid #e2eef8;
         }}
 
-        .hotels-table tbody tr:nth-child(odd) td:first-child {{
+        .hotels-table tbody tr:nth-child(odd) td:first-child,
+        .hotels-table tbody tr.row-odd td:first-child {{
             border-left: 1px solid #e2eef8;
-            border-top-left-radius: 14px;
-            border-bottom-left-radius: 14px;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
         }}
 
-        .hotels-table tbody tr:nth-child(odd) td:last-child {{
+        .hotels-table tbody tr:nth-child(odd) td:last-child,
+        .hotels-table tbody tr.row-odd td:last-child {{
             border-right: 1px solid #e2eef8;
-            border-top-right-radius: 14px;
-            border-bottom-right-radius: 14px;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
         }}
 
-        .hotels-table tbody tr:nth-child(even) td {{
+        .hotels-table tbody tr:nth-child(odd),
+        .hotels-table tbody tr.row-odd {{
+            box-shadow: 0 2px 8px rgba(0, 50, 100, 0.05);
+        }}
+
+        .hotels-table tbody tr:nth-child(even) td,
+        .hotels-table tbody tr.row-even td {{
             background: transparent;
-            border: 1px solid transparent;
+            border-top: 1px solid transparent;
+            border-bottom: 1px solid transparent;
+            border-left: 1px solid transparent;
+            border-right: 1px solid transparent;
         }}
 
-        .hotels-table tbody tr:nth-child(even) td:first-child {{
-            border-top-left-radius: 14px;
-            border-bottom-left-radius: 14px;
+        .hotels-table tbody tr:nth-child(even) td:first-child,
+        .hotels-table tbody tr.row-even td:first-child {{
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
         }}
-        .hotels-table tbody tr:nth-child(even) td:last-child {{
-            border-top-right-radius: 14px;
-            border-bottom-right-radius: 14px;
-        }}
-
-        .hotels-table tbody tr:hover {{
-            transform: translateY(-2px);
-            box-shadow: 0 8px 24px -4px rgba(2, 132, 199, 0.14);
+        .hotels-table tbody tr:nth-child(even) td:last-child,
+        .hotels-table tbody tr.row-even td:last-child {{
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
         }}
 
         .hotels-table tbody tr:hover td {{
@@ -6601,24 +6606,31 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .hotels-table tbody tr:hover td:first-child {{
             border-left: 1px solid #7dd3fc !important;
-            border-top-left-radius: 14px;
-            border-bottom-left-radius: 14px;
+            border-top-left-radius: 12px;
+            border-bottom-left-radius: 12px;
         }}
         .hotels-table tbody tr:hover td:last-child {{
             border-right: 1px solid #7dd3fc !important;
-            border-top-right-radius: 14px;
-            border-bottom-right-radius: 14px;
+            border-top-right-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }}
+        .hotels-table tbody tr:hover {{
+            transform: translateY(-1px);
+            box-shadow: 0 6px 18px -2px rgba(2, 132, 199, 0.14) !important;
         }}
 
-        .dark-theme .hotels-table tbody tr:nth-child(odd) td {{
+        .dark-theme .hotels-table tbody tr:nth-child(odd) td,
+        .dark-theme .hotels-table tbody tr.row-odd td {{
             background: #1e293b;
             border-top: 1px solid #334155;
             border-bottom: 1px solid #334155;
         }}
-        .dark-theme .hotels-table tbody tr:nth-child(odd) td:first-child {{
+        .dark-theme .hotels-table tbody tr:nth-child(odd) td:first-child,
+        .dark-theme .hotels-table tbody tr.row-odd td:first-child {{
             border-left: 1px solid #334155;
         }}
-        .dark-theme .hotels-table tbody tr:nth-child(odd) td:last-child {{
+        .dark-theme .hotels-table tbody tr:nth-child(odd) td:last-child,
+        .dark-theme .hotels-table tbody tr.row-odd td:last-child {{
             border-right: 1px solid #334155;
         }}
 
@@ -6634,21 +6646,38 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-right-color: #38bdf8 !important;
         }}
 
-        /* Rounded corners for row capsules */
-        .hotels-table tbody tr td:first-child {{
-            border-top-left-radius: 14px;
-            border-bottom-left-radius: 14px;
-        }}
-        .hotels-table tbody tr td:last-child {{
-            border-top-right-radius: 14px;
-            border-bottom-right-radius: 14px;
-        }}
-
         /* ── Price formatting ── */
         .hotels-table td.price {{
             color: #059669 !important;
             font-weight: 800;
-            font-size: 1.05rem;
+            font-size: 1.02rem;
+            line-height: 1.15;
+            white-space: nowrap;
+        }}
+        .hotels-table td.price .price-main {{
+            display: inline-block;
+            font-weight: 800;
+            color: #059669;
+        }}
+        .hotels-table .cheaper-alt-badge {{
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 500;
+            padding: 1px 4px;
+            margin-top: 1px;
+            line-height: 1.1;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-width: 100%;
+            border-radius: 4px;
+        }}
+        .hotels-table .comeback-badge {{
+            display: inline-block;
+            font-size: 0.65rem;
+            margin-left: 3px;
+            vertical-align: middle;
+            line-height: 1;
         }}
         .dark-theme .hotels-table td.price {{
             color: #34d399 !important;
@@ -6659,8 +6688,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            width: 34px;
-            height: 34px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             background: #e0f2fe;
             color: #0284c7;
@@ -6684,22 +6713,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: #0f172a;
         }}
 
-        /* ── Color-coded строки ── */
-        .hotels-table tbody tr.row--at-min {{
-            border-left: 4px solid #10b981;
-            background: #ffffff !important;
+        /* ── Color-coded строки (индикаторы) ── */
+        .hotels-table tbody tr.row--at-min td:first-child {{
+            border-left: 3.5px solid #10b981 !important;
         }}
-        .hotels-table tbody tr.row--rising {{
-            border-left: 4px solid #ef4444;
-            background: #ffffff !important;
-        }}
-        .dark-theme .hotels-table tbody tr.row--at-min {{
-            border-left: 4px solid #10b981;
-            background: #1e293b !important;
-        }}
-        .dark-theme .hotels-table tbody tr.row--rising {{
-            border-left: 4px solid #ef4444;
-            background: #1e293b !important;
+        .hotels-table tbody tr.row--rising td:first-child {{
+            border-left: 3.5px solid #ef4444 !important;
         }}
 
         /* ── Tooltip на заголовках таблицы ── */
@@ -8815,7 +8834,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             row_color_class = ''
 
         table_rows_html_parts.append(f"""
-                    <tr class="hotel-row{row_color_class}" data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}" data-departure-date="{departure_date_attr}" data-departure-key="{departure_key_attr}">
+                    <tr class="hotel-row {'row-odd' if i % 2 == 0 else 'row-even'}{row_color_class}" data-region="{arrival_hub_html}" data-ta-rating="{ta_data_attr}" data-duration-bucket="{duration_bucket_attr}" data-departure-date="{departure_date_attr}" data-departure-key="{departure_key_attr}">
                         <td class="hotel-name col-hotel" data-label="Отель"><button class="watchlist-star-btn" data-hotel-name="{hotel_name_attr}" title="Добавить в избранное">☆</button><a class="open-chart-link hotel-hover-link" href="{chart_href}" target="_blank" data-hotel-name="{hotel_name_attr}">{hotel_name_html}</a></td>
                         <td class="price col-tight" data-label="Цена" data-sort-value="{price}"><span class="price-main">{price:.0f} PLN</span>{comeback_cell}{cheaper_alt_html}</td>
                         <td class="col-tight col-w-deal-td" data-label="Deal" data-sort-value="{deal_score}" title="{deal_title}"><span class="deal-cell-inline">{deal_score} <span style="opacity:.85;">{deal_badge}</span> <span class="deal-conf-short">{confidence_short}</span></span></td>
@@ -9988,8 +10007,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           // Clear current rows
           tbody.innerHTML = '';
           
-          // Add filtered rows
-          pageRows.forEach(row => tbody.appendChild(row));
+          // Add filtered rows with exact zebra striping classes
+          pageRows.forEach((row, idx) => {
+            row.classList.remove('row-even', 'row-odd');
+            row.classList.add(idx % 2 === 1 ? 'row-even' : 'row-odd');
+            tbody.appendChild(row);
+          });
           
           // Update pagination info
           showingFrom.textContent = filteredRows.length > 0 ? startIndex + 1 : 0;

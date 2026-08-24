@@ -735,7 +735,7 @@ def build_duration_view_bundle(
     cards_html = "".join(cards_parts)
 
     table_rows_parts = []
-    for _, hotel in all_hotels.iterrows():
+    for i, (_, hotel) in enumerate(all_hotels.iterrows()):
         hotel_name = hotel['hotel_name']
         row_id = str(hotel.get('row_id') or hotel_name)
         bucket = str(hotel.get('duration_bucket') or '')
@@ -785,8 +785,8 @@ def build_duration_view_bundle(
         chart_href = g._hotel_chart_viewer_href(filter_data_id, g.slugify(hotel_name))
         offer_url = str(hotel.get('offer_url') or '')
         offer_link_html = (
-            f'<a href="{html_lib.escape(offer_url, quote=True)}" target="_blank" class="offer-link">🔗</a>'
-            if offer_url.strip() else '—'
+            f'<a href="{html_lib.escape(offer_url, quote=True)}" target="_blank" class="col-link-btn" title="Открыть предложение"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>'
+            if offer_url and offer_url.strip() else '—'
         )
         ta_html = g._render_ta_rating_html(hotel.get('ta_rating', ''), hotel.get('ta_review_count', ''))
         ta_sort_val = g._parse_ta_rating_value(hotel.get('ta_rating', ''))
@@ -799,7 +799,7 @@ def build_duration_view_bundle(
         dep_key_esc = html_lib.escape(str(hotel.get('departure_key') or ''), quote=True)
         
         table_rows_parts.append(
-            f'<tr data-region="{html_lib.escape(str(arrival_hub))}" data-ta-rating="{ta_data_attr}" '
+            f'<tr class="hotel-row {"row-odd" if i % 2 == 0 else "row-even"}" data-region="{html_lib.escape(str(arrival_hub))}" data-ta-rating="{ta_data_attr}" '
             f'data-duration-bucket="{html_lib.escape(bucket, quote=True)}" data-departure-date="{dep_date_esc}" data-departure-key="{dep_key_esc}">'
             f'<td class="hotel-name col-hotel" data-label="Отель"><button class="watchlist-star-btn" data-hotel-name="{html_lib.escape(str(hotel_name), quote=True)}" title="Добавить в избранное">☆</button><a class="open-chart-link hotel-hover-link" href="{chart_href}" '
             f'target="_blank" data-hotel-name="{html_lib.escape(str(hotel_name), quote=True)}">'
