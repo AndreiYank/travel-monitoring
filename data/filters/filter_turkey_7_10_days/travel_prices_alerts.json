@@ -221,10 +221,101 @@
       "created_at": "2026-08-24T22:19:25.522755+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Orange County Belek_2026-08-24_22-18_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 7826.0,
+      "new_price": 8847.0,
+      "price_change": 1021.0,
+      "price_change_pct": 13.046256069511882,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T23:18:14.895119+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-24_23-17_+13.0"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8710.0,
+      "new_price": 9892.0,
+      "price_change": 1182.0,
+      "price_change_pct": 13.57060849598163,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T23:18:14.895148+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-24_23-17_+13.6"
+    },
+    {
+      "hotel_name": "OZ Incekum Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8682.0,
+      "new_price": 9607.0,
+      "price_change": 925.0,
+      "price_change_pct": 10.654227136604469,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T23:18:14.895173+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "OZ Incekum Beach Resort_2026-08-24_23-17_+10.7"
+    },
+    {
+      "hotel_name": "Benata",
+      "duration_bucket": "",
+      "old_price": 7497.0,
+      "new_price": 7497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T23:18:14.895203+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Benata_2026-08-24_23-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7328.0,
+      "new_price": 7328.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T23:18:14.895212+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-08-24_23-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Green Garden Resort",
+      "duration_bucket": "",
+      "old_price": 9528.0,
+      "new_price": 10547.0,
+      "price_change": 1019.0,
+      "price_change_pct": 10.694794290512174,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T23:18:14.895220+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Garden Resort_2026-08-24_23-17_zone_out_+10.7"
+    },
+    {
+      "hotel_name": "Seaden Sea World Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9748.0,
+      "new_price": 10175.0,
+      "price_change": 427.0,
+      "price_change_pct": 4.380385720147722,
+      "timestamp": "2026-08-24 23:17:17.043306+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T23:18:14.895228+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaden Sea World Resort & Spa_2026-08-24_23-17_zone_out_+4.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T22:18:30.860507+00:00",
+    "last_processed_run": "2026-08-24T23:17:17.043306+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -251,8 +342,8 @@
         "premium_peak": null
       },
       "Kaya Side (ex. Club Calimera Kaya Side)": {
-        "history_max": 11108.0,
-        "premium_peak": 11108.0
+        "history_max": 11547.0,
+        "premium_peak": 11547.0
       },
       "Kaya Izmir Thermal & Convention": {
         "history_max": 10169.0,
@@ -343,8 +434,8 @@
         "premium_peak": null
       },
       "Green Garden Resort": {
-        "history_max": 9528.0,
-        "premium_peak": null
+        "history_max": 10547.0,
+        "premium_peak": 10547.0
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
         "history_max": 8757.0,
@@ -443,8 +534,8 @@
         "premium_peak": null
       },
       "Limak Limra": {
-        "history_max": 10282.0,
-        "premium_peak": 10282.0
+        "history_max": 10548.0,
+        "premium_peak": 10548.0
       },
       "Liberty Kusadasi (ex. Seven Seas Sealight Elite)": {
         "history_max": 9995.0,
@@ -763,11 +854,11 @@
         "premium_peak": null
       },
       "Sultan of Side": {
-        "history_max": 7668.0,
+        "history_max": 8027.0,
         "premium_peak": null
       },
       "Sultan of Dreams": {
-        "history_max": 7826.0,
+        "history_max": 8847.0,
         "premium_peak": null
       },
       "Sueno Beach Side": {
@@ -779,8 +870,8 @@
         "premium_peak": null
       },
       "Side Star Resort (ex Club)": {
-        "history_max": 11221.0,
-        "premium_peak": 11221.0
+        "history_max": 11552.0,
+        "premium_peak": 11552.0
       },
       "Side Star Elegance (ex. Asteria)": {
         "history_max": 11570.0,
@@ -791,8 +882,8 @@
         "premium_peak": 11424.0
       },
       "Side Premium by OZ Hotels": {
-        "history_max": 10118.0,
-        "premium_peak": 10118.0
+        "history_max": 10617.0,
+        "premium_peak": 10617.0
       },
       "Side Moon Palace": {
         "history_max": 8997.0,
@@ -835,7 +926,7 @@
         "premium_peak": 11357.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 8401.0,
+        "history_max": 8867.0,
         "premium_peak": null
       },
       "The Lumos Deluxe Resort & Spa": {
@@ -1055,7 +1146,7 @@
         "premium_peak": null
       },
       "OZ Incekum Beach Resort": {
-        "history_max": 8682.0,
+        "history_max": 9607.0,
         "premium_peak": null
       },
       "Numa Club (Side)": {
@@ -1147,12 +1238,12 @@
         "premium_peak": null
       },
       "Seaden Sea World Resort & Spa": {
-        "history_max": 9748.0,
-        "premium_peak": null
+        "history_max": 10175.0,
+        "premium_peak": 10175.0
       },
       "Seaden Sea Planet Resort & Spa": {
-        "history_max": 11109.0,
-        "premium_peak": 11109.0
+        "history_max": 11259.0,
+        "premium_peak": 11259.0
       },
       "Movenpick": {
         "history_max": 10556.0,
@@ -1187,8 +1278,8 @@
         "premium_peak": null
       },
       "Royal Alhambra Palace": {
-        "history_max": 11040.0,
-        "premium_peak": 11040.0
+        "history_max": 11382.0,
+        "premium_peak": 11382.0
       },
       "Rox Royal (ex. Grand Haber)": {
         "history_max": 8033.0,
@@ -1419,7 +1510,7 @@
         "premium_peak": 10863.0
       },
       "Cenger Blue Collection": {
-        "history_max": 8396.0,
+        "history_max": 8497.0,
         "premium_peak": null
       },
       "Benata": {
@@ -1457,6 +1548,14 @@
       "Diamond Hill Resort Turcja, Alanya, Incekum": {
         "history_max": 7273.0,
         "premium_peak": null
+      },
+      "Cenger Beach Resort (Side)": {
+        "history_max": 7999.0,
+        "premium_peak": null
+      },
+      "Pine Beach Belek (ex. Maritim Pine Beach Resort)": {
+        "history_max": 11768.0,
+        "premium_peak": 11768.0
       }
     }
   }
