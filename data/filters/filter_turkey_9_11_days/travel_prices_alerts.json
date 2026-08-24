@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9945.0,
+      "new_price": 10129.0,
+      "price_change": 184.0,
+      "price_change_pct": 1.8501759678230267,
+      "timestamp": "2026-08-24 09:39:38.989616+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T09:40:44.381624+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-24_09-39_zone_out_+1.9"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-24T08:42:52.914592+00:00",
+    "last_processed_run": "2026-08-24T09:39:38.989616+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11973.0,
@@ -289,8 +303,8 @@
         "premium_peak": 13143.0
       },
       "Primasol Hane Family Resort": {
-        "history_max": 12452.0,
-        "premium_peak": 12452.0
+        "history_max": 12600.0,
+        "premium_peak": 12600.0
       },
       "Asteria Family Belek": {
         "history_max": 11799.0,
@@ -357,7 +371,7 @@
         "premium_peak": 14157.0
       },
       "Asteria Family Resort Side": {
-        "history_max": 9239.0,
+        "history_max": 9351.0,
         "premium_peak": null
       },
       "Pine Beach Belek (ex. Maritim Pine Beach Resort)": {
@@ -521,8 +535,8 @@
         "premium_peak": null
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
-        "history_max": 12551.0,
-        "premium_peak": 12551.0
+        "history_max": 12632.0,
+        "premium_peak": 12632.0
       },
       "Club Side Coast": {
         "history_max": 8170.0,
@@ -957,8 +971,8 @@
         "premium_peak": 10931.0
       },
       "Adora Hotel & Resort (ex. Adora Golf)": {
-        "history_max": 14758.0,
-        "premium_peak": 14758.0
+        "history_max": 14984.0,
+        "premium_peak": 14984.0
       },
       "Vikingen Infinity Resort & Spa": {
         "history_max": 11957.0,
@@ -1013,8 +1027,8 @@
         "premium_peak": 15778.0
       },
       "Sherwood Dreams Resort": {
-        "history_max": 14990.0,
-        "premium_peak": 14990.0
+        "history_max": 15017.0,
+        "premium_peak": 15017.0
       },
       "Venosa Beach Resort": {
         "history_max": 15392.0,
@@ -1069,16 +1083,16 @@
         "premium_peak": 14831.0
       },
       "Alarcha": {
-        "history_max": 11769.0,
-        "premium_peak": 11769.0
+        "history_max": 12357.0,
+        "premium_peak": 12357.0
       },
       "Tusan Beach Resort": {
         "history_max": 10842.0,
         "premium_peak": 10842.0
       },
       "Ulusoy Kemer Holiday Club": {
-        "history_max": 13297.0,
-        "premium_peak": 13297.0
+        "history_max": 14357.0,
+        "premium_peak": 14357.0
       },
       "Unique Residence Golf Spa": {
         "history_max": 11343.0,
@@ -1133,8 +1147,8 @@
         "premium_peak": 10026.0
       },
       "Selectum Colours Side": {
-        "history_max": 10566.0,
-        "premium_peak": 10566.0
+        "history_max": 10715.0,
+        "premium_peak": 10715.0
       },
       "Sealight Resort (ex Otium Sealight Beach Resort)": {
         "history_max": 13800.0,

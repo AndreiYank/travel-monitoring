@@ -286,10 +286,62 @@
       "created_at": "2026-08-24T08:42:28.893125+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-08-24_08-42_-16.9"
+    },
+    {
+      "hotel_name": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)",
+      "duration_bucket": "",
+      "old_price": 9534.0,
+      "new_price": 8718.0,
+      "price_change": -816.0,
+      "price_change_pct": -8.55884203901825,
+      "timestamp": "2026-08-24 09:38:41.896577+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T09:39:21.431428+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)_2026-08-24_09-38_-8.6"
+    },
+    {
+      "hotel_name": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)",
+      "duration_bucket": "",
+      "old_price": 9909.0,
+      "new_price": 9909.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 09:38:41.896577+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T09:39:21.431467+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)_2026-08-24_09-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8687.0,
+      "new_price": 10767.0,
+      "price_change": 2080.0,
+      "price_change_pct": 23.94382410498446,
+      "timestamp": "2026-08-24 09:38:41.896577+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T09:39:21.431481+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-24_09-38_zone_out_+23.9"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 9057.0,
+      "new_price": 10457.0,
+      "price_change": 1400.0,
+      "price_change_pct": 15.45765706083692,
+      "timestamp": "2026-08-24 09:38:41.896577+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T09:39:21.431491+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-08-24_09-38_zone_out_+15.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T08:42:02.586620+00:00",
+    "last_processed_run": "2026-08-24T09:38:41.896577+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -336,12 +388,12 @@
         "premium_peak": 12659.0
       },
       "Desert Rose Resort": {
-        "history_max": 11155.0,
-        "premium_peak": 11155.0
+        "history_max": 11297.0,
+        "premium_peak": 11297.0
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
-        "history_max": 12581.0,
-        "premium_peak": 12581.0
+        "history_max": 13225.0,
+        "premium_peak": 13225.0
       },
       "Rixos Montaza Alexandria": {
         "history_max": 16097.0,
@@ -420,8 +472,8 @@
         "premium_peak": null
       },
       "Reef Oasis Suakin Resort": {
-        "history_max": 9057.0,
-        "premium_peak": null
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Coral Sea Holiday Resort": {
         "history_max": 9365.0,
@@ -488,8 +540,8 @@
         "premium_peak": null
       },
       "Steigenberger Ras Soma": {
-        "history_max": 15339.0,
-        "premium_peak": 15339.0
+        "history_max": 15519.0,
+        "premium_peak": 15519.0
       },
       "Siva Golden Bay Makadi": {
         "history_max": 7077.0,
@@ -524,8 +576,8 @@
         "premium_peak": 10067.0
       },
       "Savoy (Sharm El Sheikh)": {
-        "history_max": 13868.0,
-        "premium_peak": 13868.0
+        "history_max": 14184.0,
+        "premium_peak": 14184.0
       },
       "Sea Star Beau Rivage": {
         "history_max": 7411.0,
@@ -552,7 +604,7 @@
         "premium_peak": null
       },
       "Serenity Alma Heights Ross Park Collection": {
-        "history_max": 8853.0,
+        "history_max": 9003.0,
         "premium_peak": null
       },
       "Concorde El Salam Front Area": {
@@ -568,8 +620,8 @@
         "premium_peak": 12013.0
       },
       "Caribbean World Soma Bay": {
-        "history_max": 8687.0,
-        "premium_peak": null
+        "history_max": 10767.0,
+        "premium_peak": 10767.0
       },
       "Pickalbatros Vita Resort Portofino": {
         "history_max": 9217.0,
@@ -688,8 +740,8 @@
         "premium_peak": null
       },
       "Jaz Oriental Resort": {
-        "history_max": 12298.0,
-        "premium_peak": 12298.0
+        "history_max": 12453.0,
+        "premium_peak": 12453.0
       },
       "Jaz Elite Asteria (Hurghada)": {
         "history_max": 11497.0,
@@ -744,7 +796,7 @@
         "premium_peak": 11003.0
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
-        "history_max": 8779.0,
+        "history_max": 9283.0,
         "premium_peak": null
       },
       "Pickalbatros Luxury Suites": {
@@ -884,7 +936,7 @@
         "premium_peak": null
       },
       "Titanic Palace Resort": {
-        "history_max": 8455.0,
+        "history_max": 8605.0,
         "premium_peak": null
       },
       "Baron Resort (Sharm El Sheikh)": {
@@ -904,7 +956,7 @@
         "premium_peak": 11033.0
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 9091.0,
+        "history_max": 9135.0,
         "premium_peak": null
       },
       "Sunrise Alora Aqua Park Resort": {
@@ -912,7 +964,7 @@
         "premium_peak": 10587.0
       },
       "Caesar Bay Resort": {
-        "history_max": 8197.0,
+        "history_max": 8797.0,
         "premium_peak": null
       },
       "True Beach Resort": {

@@ -312,10 +312,62 @@
       "created_at": "2026-08-24T08:43:41.095790+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-08-24_08-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8733.0,
+      "new_price": 7760.0,
+      "price_change": -973.0,
+      "price_change_pct": -11.141646627733882,
+      "timestamp": "2026-08-24 09:39:37.386523+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T09:40:36.891467+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-24_09-39_-11.1"
+    },
+    {
+      "hotel_name": "Alarcha",
+      "duration_bucket": "",
+      "old_price": 8597.0,
+      "new_price": 9497.0,
+      "price_change": 900.0,
+      "price_change_pct": 10.468768174944747,
+      "timestamp": "2026-08-24 09:39:37.386523+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T09:40:36.891514+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alarcha_2026-08-24_09-39_+10.5"
+    },
+    {
+      "hotel_name": "Ozkaymak Marina (Kemer)",
+      "duration_bucket": "",
+      "old_price": 7906.0,
+      "new_price": 8995.0,
+      "price_change": 1089.0,
+      "price_change_pct": 13.774348596003035,
+      "timestamp": "2026-08-24 09:39:37.386523+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T09:40:36.891539+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Marina (Kemer)_2026-08-24_09-39_+13.8"
+    },
+    {
+      "hotel_name": "Ulusoy Kemer Holiday Club",
+      "duration_bucket": "",
+      "old_price": 9497.0,
+      "new_price": 10897.0,
+      "price_change": 1400.0,
+      "price_change_pct": 14.74149731494156,
+      "timestamp": "2026-08-24 09:39:37.386523+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T09:40:36.891571+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ulusoy Kemer Holiday Club_2026-08-24_09-39_zone_out_+14.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T08:42:44.513897+00:00",
+    "last_processed_run": "2026-08-24T09:39:37.386523+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -518,8 +570,8 @@
         "premium_peak": 10709.0
       },
       "Palm Wings Ephesus": {
-        "history_max": 10827.0,
-        "premium_peak": 10827.0
+        "history_max": 11268.0,
+        "premium_peak": 11268.0
       },
       "Asteria Family Belek": {
         "history_max": 9635.0,
@@ -594,8 +646,8 @@
         "premium_peak": 10331.0
       },
       "Primasol Hane Family Resort": {
-        "history_max": 10215.0,
-        "premium_peak": 10215.0
+        "history_max": 10377.0,
+        "premium_peak": 10377.0
       },
       "Azura World (ex. Wyndham Alanya)": {
         "history_max": 10080.0,
@@ -606,7 +658,7 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 7906.0,
+        "history_max": 8995.0,
         "premium_peak": null
       },
       "Nova Park": {
@@ -754,7 +806,7 @@
         "premium_peak": null
       },
       "Fun & Sun Smart Hane Sun": {
-        "history_max": 8042.0,
+        "history_max": 8087.0,
         "premium_peak": null
       },
       "Galeri Resort": {
@@ -770,7 +822,7 @@
         "premium_peak": 10220.0
       },
       "Glamour Resort & Spa": {
-        "history_max": 9742.0,
+        "history_max": 9892.0,
         "premium_peak": null
       },
       "Gold City": {
@@ -1034,8 +1086,8 @@
         "premium_peak": 11210.0
       },
       "Green Bay Resort": {
-        "history_max": 10402.0,
-        "premium_peak": 10402.0
+        "history_max": 11246.0,
+        "premium_peak": 11246.0
       },
       "Green Garden Resort": {
         "history_max": 10547.0,
@@ -1114,8 +1166,8 @@
         "premium_peak": 11440.0
       },
       "Ulusoy Kemer Holiday Club": {
-        "history_max": 10497.0,
-        "premium_peak": 10497.0
+        "history_max": 10897.0,
+        "premium_peak": 10897.0
       },
       "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)": {
         "history_max": 10980.0,
@@ -1270,7 +1322,7 @@
         "premium_peak": null
       },
       "Sultan of Side": {
-        "history_max": 8027.0,
+        "history_max": 8077.0,
         "premium_peak": null
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
@@ -1506,7 +1558,7 @@
         "premium_peak": 10130.0
       },
       "Alarcha": {
-        "history_max": 8997.0,
+        "history_max": 9497.0,
         "premium_peak": null
       },
       "Washington Resort": {
