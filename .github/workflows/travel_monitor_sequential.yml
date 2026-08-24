@@ -135,11 +135,11 @@ jobs:
           git remote set-url origin "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           
           # Обновляем локальную ветку, чтобы избежать non-fast-forward
-          git fetch origin main || true
-          git checkout main || true
+          CURRENT_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+          git fetch origin ${CURRENT_BRANCH} || true
           # Сохраняем незакоммиченные изменения от предыдущих шагов, подтягиваем, возвращаем изменения
           git stash push -u -m "ci-stash" || true
-          git pull --rebase origin main || true
+          git pull --rebase origin ${CURRENT_BRANCH} || true
           git stash pop || true
           
           # Добавляем только данные/страницы фильтров
@@ -174,7 +174,7 @@ jobs:
             🤖 Automated by GitHub Actions"
             
             git commit -m "$COMMIT_MSG"
-            git push origin HEAD:main
+            git push origin HEAD
             echo "✅ Changes committed and pushed"
           fi
 
