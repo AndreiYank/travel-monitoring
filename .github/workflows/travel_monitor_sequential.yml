@@ -142,11 +142,9 @@ jobs:
           git pull --rebase origin ${CURRENT_BRANCH} || true
           git stash pop || true
           
-          # Добавляем только данные/страницы фильтров
-          # Исключаем price_alerts_history.json — он слишком большой и не нужен в git
-          # (актуальные алерты хранятся в travel_prices_alerts.json, который < 1 MB)
-          git add -f data/filters/ || true
-          git reset HEAD -- data/price_alerts_history.json "data/filters/"*"/price_alerts_history.json" 2>/dev/null || true
+          # Добавляем данные фильтров (исключая временные hotel_series и price_alerts_history)
+          git add data/filters/ || true
+          git reset HEAD -- data/price_alerts_history.json "data/filters/*/price_alerts_history.json" "data/filters/*/hotel_series" "data/filters/*/hotel_series/*" 2>/dev/null || true
           git add index.html hotel-chart.html index_filter_7_10_days.html index_filter_13_16_days.html index_filter_egypt_autumn_2026_7_10_days.html index_filter_egypt_autumn_2026_13_16_days.html index_filter_turkey_7_10_days.html index_filter_turkey_9_11_days.html index_filter_turkey_vacation_jul18.html index_filter_turkey_13_16_days.html index_filter_greece_7_10_days.html index_filter_greece_13_16_days.html || true
           # Проверяем размер файлов перед коммитом чтобы поймать проблему заранее
           echo "📏 Файлы >40MB в staging:" && git diff --cached --name-only | xargs -I{} sh -c 'sz=$(git cat-file -s ":{}") 2>/dev/null; [ "$sz" -gt 41943040 ] 2>/dev/null && echo "  $sz bytes: {}" || true' || true

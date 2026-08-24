@@ -88,3 +88,7 @@ data/filters/filter_egypt_autumn_2026_13_16_days/*
 # Per-filter alerts (travel_prices_alerts.json) ARE committed — only the legacy global file is excluded
 data/price_alerts_history.json
 data/filters/*/price_alerts_history.json
+
+# Per-hotel series JSON files — generated on the fly during dashboard build, not tracked in git
+data/filters/*/hotel_series/
+data/filters/*/hotel_series
