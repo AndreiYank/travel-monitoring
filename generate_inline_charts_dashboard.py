@@ -6412,17 +6412,17 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             font-size: 0.85rem;
         }}
 
-        .hotels-table col.col-w-hotel {{ width: 23.5%; }}
-        .hotels-table col.col-w-price {{ width: 9.5%; }}
-        .hotels-table col.col-w-deal {{ width: 8.5%; }}
+        .hotels-table col.col-w-hotel {{ width: 22.0%; }}
+        .hotels-table col.col-w-price {{ width: 12.0%; }}
+        .hotels-table col.col-w-deal {{ width: 8.0%; }}
         .hotels-table col.col-w-forecast {{ width: 9.0%; }}
-        .hotels-table col.col-w-ta {{ width: 7.5%; }}
+        .hotels-table col.col-w-ta {{ width: 7.0%; }}
         .hotels-table col.col-w-d48 {{ width: 5.5%; }}
-        .hotels-table col.col-w-davg {{ width: 8.5%; }}
+        .hotels-table col.col-w-davg {{ width: 8.0%; }}
         .hotels-table col.col-w-region {{ width: 9.5%; }}
-        .hotels-table col.col-w-dates {{ width: 11.5%; }}
+        .hotels-table col.col-w-dates {{ width: 11.0%; }}
         .hotels-table col.col-w-dur {{ width: 4.0%; }}
-        .hotels-table col.col-w-link {{ width: 3.0%; }}
+        .hotels-table col.col-w-link {{ width: 4.0%; }}
 
         .hotels-table td.col-w-d48-td,
         .hotels-table td.col-w-davg-td,
