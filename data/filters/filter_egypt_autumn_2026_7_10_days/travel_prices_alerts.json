@@ -312,10 +312,92 @@
       "created_at": "2026-08-24T12:29:32.791395+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Grand Rotana Resort & Spa_2026-08-24_12-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort",
+      "duration_bucket": "",
+      "old_price": 9377.0,
+      "new_price": 10987.0,
+      "price_change": 1610.0,
+      "price_change_pct": 17.16967047029967,
+      "timestamp": "2026-08-24 14:22:56.767429+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T14:23:43.362704+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-24_14-22_+17.2"
+    },
+    {
+      "hotel_name": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 8005.0,
+      "new_price": 6834.0,
+      "price_change": -1171.0,
+      "price_change_pct": -14.628357276702062,
+      "timestamp": "2026-08-24 14:22:56.767429+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T14:23:43.362735+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh_2026-08-24_14-22_-14.6"
+    },
+    {
+      "hotel_name": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 6455.0,
+      "new_price": 5640.0,
+      "price_change": -815.0,
+      "price_change_pct": -12.62587141750581,
+      "timestamp": "2026-08-24 14:22:56.767429+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T14:23:43.362748+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh_2026-08-24_14-22_-12.6"
+    },
+    {
+      "hotel_name": "El Kasr Red Sea",
+      "duration_bucket": "",
+      "old_price": 10287.0,
+      "new_price": 10287.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 14:22:56.767429+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T14:23:43.362789+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-08-24_14-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Movenpick Waterpark Resort & Spa Soma Bay",
+      "duration_bucket": "",
+      "old_price": 8037.0,
+      "new_price": 8037.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 14:22:56.767429+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T14:23:43.362799+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Waterpark Resort & Spa Soma Bay_2026-08-24_14-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7930.0,
+      "new_price": 7930.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 14:22:56.767429+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T14:23:43.362807+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam_2026-08-24_14-22_zone_out_gone"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-24T13:44:44.442186+00:00",
+=======
+    "last_processed_run": "2026-08-24T14:22:56.767429+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -959,6 +1041,10 @@
       },
       "Jaz Villagio": {
         "history_max": 10437.0,
+        "premium_peak": null
+      },
+      "Three Corners Fayrouz Plaza Beach Resort": {
+        "history_max": 8058.0,
         "premium_peak": null
       }
     }

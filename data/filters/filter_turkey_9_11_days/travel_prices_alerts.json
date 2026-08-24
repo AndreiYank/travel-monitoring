@@ -93,12 +93,29 @@
       "unique_key": "Raxeria (Side)_2026-08-24_12-29_comeback_9.3"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "hotel_name": "Nova Life",
+      "duration_bucket": "",
+      "old_price": 9674.0,
+      "new_price": 8766.0,
+      "price_change": -908.0,
+      "price_change_pct": -9.385983047343395,
+      "timestamp": "2026-08-24 14:24:01.018477+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T14:25:13.181652+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life_2026-08-24_14-24_-9.4"
+    },
+    {
+>>>>>>> Stashed changes
       "hotel_name": "Casa Fora Beach Resort",
       "duration_bucket": "",
       "old_price": 9509.0,
       "new_price": 10129.0,
       "price_change": 620.0,
       "price_change_pct": 6.52013881585866,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 13:45:50.941439+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T13:47:04.716680+00:00",
@@ -108,6 +125,17 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T13:45:50.941439+00:00",
+=======
+      "timestamp": "2026-08-24 14:24:01.018477+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T14:25:13.181692+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-24_14-24_zone_out_+6.5"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-24T14:24:01.018477+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11973.0,
@@ -522,8 +550,8 @@
         "premium_peak": null
       },
       "Cesars Resort (Side)": {
-        "history_max": 12529.0,
-        "premium_peak": 12529.0
+        "history_max": 12557.0,
+        "premium_peak": 12557.0
       },
       "Crystal World of Colours Comfort Collection": {
         "history_max": 10643.0,
@@ -630,8 +658,8 @@
         "premium_peak": 12483.0
       },
       "Club Phaselis Rose": {
-        "history_max": 15525.0,
-        "premium_peak": 15525.0
+        "history_max": 16129.0,
+        "premium_peak": 16129.0
       },
       "Club Sera": {
         "history_max": 15071.0,
@@ -690,8 +718,8 @@
         "premium_peak": 10757.0
       },
       "Sural Resort": {
-        "history_max": 16135.0,
-        "premium_peak": 16135.0
+        "history_max": 16397.0,
+        "premium_peak": 16397.0
       },
       "Seaden Sea World Resort & Spa": {
         "history_max": 12508.0,
@@ -726,12 +754,12 @@
         "premium_peak": 14413.0
       },
       "Swandor Kemer (ex. Pgs Kiris Resort)": {
-        "history_max": 16192.0,
-        "premium_peak": 16192.0
+        "history_max": 16371.0,
+        "premium_peak": 16371.0
       },
       "Royal Holiday Palace": {
-        "history_max": 15965.0,
-        "premium_peak": 15965.0
+        "history_max": 16545.0,
+        "premium_peak": 16545.0
       },
       "Royal Dragon": {
         "history_max": 14264.0,
@@ -1321,6 +1349,7 @@
         "history_max": 16576.0,
         "premium_peak": 16576.0
       },
+<<<<<<< Updated upstream
       "Kamelya Selin": {
         "history_max": 16848.0,
         "premium_peak": 16848.0
@@ -1328,6 +1357,15 @@
       "Rai Premium Tekirova (ex. Queens Park Tekirova)": {
         "history_max": 16802.0,
         "premium_peak": 16802.0
+=======
+      "Rai Premium Tekirova (ex. Queens Park Tekirova)": {
+        "history_max": 16802.0,
+        "premium_peak": 16802.0
+      },
+      "Kamelya Selin": {
+        "history_max": 16848.0,
+        "premium_peak": 16848.0
+>>>>>>> Stashed changes
       }
     }
   }

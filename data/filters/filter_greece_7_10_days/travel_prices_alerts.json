@@ -112,6 +112,7 @@
       "new_price": 8857.0,
       "price_change": -1000.0,
       "price_change_pct": -10.145074566298062,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 13:46:58.600553+00:00",
       "alert_type": "price_drop",
       "created_at": "2026-08-24T13:47:57.581228+00:00",
@@ -130,6 +131,26 @@
       "created_at": "2026-08-24T13:47:57.581256+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-24_13-46_+8.2"
+=======
+      "timestamp": "2026-08-24 14:25:08.504411+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T14:26:09.738464+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-24_14-25_-10.1"
+    },
+    {
+      "hotel_name": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10757.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.034548558802852,
+      "timestamp": "2026-08-24 14:25:08.504411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T14:26:09.738499+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos_2026-08-24_14-25_zone_out_+8.0"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Kouros Palace Grecja, Kos, Mastichari",
@@ -138,6 +159,7 @@
       "new_price": 7457.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 13:46:58.600553+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T13:47:57.581274+00:00",
@@ -147,6 +169,17 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T13:46:58.600553+00:00",
+=======
+      "timestamp": "2026-08-24 14:25:08.504411+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T14:26:09.738511+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kouros Palace Grecja, Kos, Mastichari_2026-08-24_14-25_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-24T14:25:08.504411+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10472.0,
@@ -181,12 +214,12 @@
         "premium_peak": 12437.0
       },
       "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos": {
-        "history_max": 10597.0,
-        "premium_peak": 10597.0
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       },
       "Knossos Beach": {
-        "history_max": 17086.0,
-        "premium_peak": 17086.0
+        "history_max": 17114.0,
+        "premium_peak": 17114.0
       },
       "Porto Angeli Grecja, Rodos, Archangelos": {
         "history_max": 10439.0,
@@ -589,8 +622,8 @@
         "premium_peak": 10408.0
       },
       "CHC Athina Palace Resort & Spa (Agia Pelagia)": {
-        "history_max": 11758.0,
-        "premium_peak": 11758.0
+        "history_max": 12208.0,
+        "premium_peak": 12208.0
       },
       "Grand Blue Beach": {
         "history_max": 11448.0,
