@@ -91,10 +91,36 @@
       "created_at": "2026-08-24T21:22:51.021353+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh_2026-08-24_21-22_+14.3"
+    },
+    {
+      "hotel_name": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 7810.0,
+      "new_price": 7810.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 22:17:36.447481+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T22:18:13.310875+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh_2026-08-24_22-17_zone_out_gone"
+    },
+    {
+      "hotel_name": "Swissotel Resort El Quseir",
+      "duration_bucket": "",
+      "old_price": 8096.0,
+      "new_price": 8096.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 22:17:36.447481+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T22:18:13.310901+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swissotel Resort El Quseir_2026-08-24_22-17_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T21:22:15.990005+00:00",
+    "last_processed_run": "2026-08-24T22:17:36.447481+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -710,6 +736,14 @@
       },
       "Coral Sea Holiday Resort": {
         "history_max": 10747.0,
+        "premium_peak": null
+      },
+      "Parrotel Beach Resort (ex. Radisson Blu)": {
+        "history_max": 8573.0,
+        "premium_peak": null
+      },
+      "Radisson Blu Resort (El Quseir) Egipt, Marsa Alam, Al-Kusajr": {
+        "history_max": 8096.0,
         "premium_peak": null
       }
     }
