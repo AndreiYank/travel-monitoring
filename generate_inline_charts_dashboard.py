@@ -5887,18 +5887,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             border-radius: 999px;
             padding: .12rem .45rem;
         }}
-        .hotels-table .comeback-badge {{
-            display: block;
-            width: fit-content;
-            max-width: 100%;
-            margin-top: .28rem;
-            font-size: .64rem;
-            line-height: 1.2;
-            padding: .14rem .38rem;
-            white-space: normal;
-            overflow-wrap: anywhere;
-            word-break: break-word;
-        }}
         .cheaper-alt-badge {{
             display: inline-flex;
             flex-wrap: wrap;
@@ -6651,36 +6639,57 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             color: #059669 !important;
             font-weight: 800;
             font-size: 1.02rem;
-            line-height: 1.15;
+            line-height: 1.2;
             white-space: nowrap;
         }}
         .hotels-table td.price .price-main {{
-            display: inline-block;
+            display: inline;
             font-weight: 800;
             color: #059669;
-        }}
-        .hotels-table .cheaper-alt-badge {{
-            display: block;
-            font-size: 0.6rem;
-            font-weight: 500;
-            padding: 1px 4px;
-            margin-top: 2px;
-            line-height: 1.1;
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-width: 100%;
-            border-radius: 4px;
+            vertical-align: middle;
         }}
         .hotels-table .comeback-badge {{
-            display: inline-block;
-            font-size: 0.65rem;
-            margin-left: 3px;
+            display: inline-flex !important;
+            align-items: center;
+            font-size: 0.68rem;
+            font-weight: 700;
+            margin-left: 6px;
+            padding: 1px 6px;
+            border-radius: 999px;
             vertical-align: middle;
-            line-height: 1;
+            line-height: 1.2;
+            color: #065f46;
+            background: rgba(16, 185, 129, 0.16);
+            border: 1px solid rgba(16, 185, 129, 0.32);
+        }}
+        .hotels-table .cheaper-alt-badge {{
+            display: inline-flex !important;
+            align-items: center;
+            font-size: 0.65rem;
+            font-weight: 600;
+            margin-left: 6px;
+            padding: 1px 6px;
+            border-radius: 6px;
+            vertical-align: middle;
+            line-height: 1.2;
+            color: #0284c7;
+            background: #e0f2fe;
+            border: 1px solid #bae6fd;
+            text-decoration: none;
+            white-space: nowrap;
         }}
         .dark-theme .hotels-table td.price {{
             color: #34d399 !important;
+        }}
+        .dark-theme .hotels-table .comeback-badge {{
+            color: #34d399;
+            background: rgba(16, 185, 129, 0.2);
+            border-color: rgba(52, 211, 153, 0.4);
+        }}
+        .dark-theme .hotels-table .cheaper-alt-badge {{
+            color: #38bdf8;
+            background: rgba(56, 189, 248, 0.15);
+            border-color: rgba(56, 189, 248, 0.3);
         }}
 
         /* ── Link Button ── */
