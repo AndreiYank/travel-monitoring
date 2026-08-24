@@ -65,10 +65,36 @@
       "created_at": "2026-08-24T20:25:22.525878+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-24_20-24_-14.7"
+    },
+    {
+      "hotel_name": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)",
+      "duration_bucket": "",
+      "old_price": 8759.0,
+      "new_price": 9462.0,
+      "price_change": 703.0,
+      "price_change_pct": 8.026030368763557,
+      "timestamp": "2026-08-24 21:22:15.990005+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T21:22:51.021305+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)_2026-08-24_21-22_+8.0"
+    },
+    {
+      "hotel_name": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 6834.0,
+      "new_price": 7810.0,
+      "price_change": 976.0,
+      "price_change_pct": 14.281533508925959,
+      "timestamp": "2026-08-24 21:22:15.990005+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T21:22:51.021353+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh_2026-08-24_21-22_+14.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T20:24:44.152738+00:00",
+    "last_processed_run": "2026-08-24T21:22:15.990005+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -455,7 +481,7 @@
         "premium_peak": null
       },
       "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": {
-        "history_max": 8899.0,
+        "history_max": 9164.0,
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
@@ -531,7 +557,7 @@
         "premium_peak": null
       },
       "Rehana Royal Beach Resort & Spa": {
-        "history_max": 9299.0,
+        "history_max": 9547.0,
         "premium_peak": null
       },
       "Renaissance Golden View Beach Resort by Marriott": {
@@ -587,7 +613,7 @@
         "premium_peak": null
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
-        "history_max": 8759.0,
+        "history_max": 9462.0,
         "premium_peak": null
       },
       "Amarina Queen Resort Egipt, Marsa Alam": {
@@ -635,7 +661,7 @@
         "premium_peak": null
       },
       "Amarina Star Resort & Aqua Park (ex. Raouf Star)": {
-        "history_max": 9075.0,
+        "history_max": 9772.0,
         "premium_peak": null
       },
       "Ancient Sands Golf Resort": {
@@ -680,6 +706,10 @@
       },
       "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib": {
         "history_max": 7916.0,
+        "premium_peak": null
+      },
+      "Coral Sea Holiday Resort": {
+        "history_max": 10747.0,
         "premium_peak": null
       }
     }
