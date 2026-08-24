@@ -13,10 +13,36 @@
       "created_at": "2026-08-24T03:47:15.266534+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Belvedere_2026-08-24_03-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Red Sea Grand Makadi (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9310.0,
+      "new_price": 12896.0,
+      "price_change": 3586.0,
+      "price_change_pct": 38.51772287862513,
+      "timestamp": "2026-08-24 06:39:42.589987+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T06:40:21.420119+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-08-24_06-39_zone_out_+38.5"
+    },
+    {
+      "hotel_name": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)",
+      "duration_bucket": "",
+      "old_price": 9516.0,
+      "new_price": 10146.0,
+      "price_change": 630.0,
+      "price_change_pct": 6.620428751576292,
+      "timestamp": "2026-08-24 06:39:42.589987+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T06:40:21.420143+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)_2026-08-24_06-39_zone_out_+6.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T05:32:44.055658+00:00",
+    "last_processed_run": "2026-08-24T06:39:42.589987+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -195,7 +221,7 @@
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
-        "history_max": 9598.0,
+        "history_max": 9696.0,
         "premium_peak": null
       },
       "Stella Di Mare Beach & Spa": {
@@ -647,7 +673,7 @@
         "premium_peak": 10214.0
       },
       "Calimera Blend Paradise Resort": {
-        "history_max": 8141.0,
+        "history_max": 8244.0,
         "premium_peak": null
       },
       "Amarina Queen Resort": {
@@ -799,12 +825,12 @@
         "premium_peak": null
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 9516.0,
-        "premium_peak": null
+        "history_max": 10146.0,
+        "premium_peak": 10146.0
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
-        "history_max": 9310.0,
-        "premium_peak": null
+        "history_max": 12896.0,
+        "premium_peak": 12896.0
       }
     }
   }
