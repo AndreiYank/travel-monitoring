@@ -455,10 +455,49 @@
       "created_at": "2026-08-24T15:33:10.343996+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-24_15-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6655.0,
+      "new_price": 5713.0,
+      "price_change": -942.0,
+      "price_change_pct": -14.154770848985725,
+      "timestamp": "2026-08-24 16:26:50.779577+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T16:27:23.645509+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada_2026-08-24_16-26_-14.2"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 16:26:50.779577+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T16:27:23.645561+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-08-24_16-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 16:26:50.779577+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T16:27:23.645572+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-24_16-26_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T15:32:36.355574+00:00",
+    "last_processed_run": "2026-08-24T16:26:50.779577+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -769,7 +808,7 @@
         "premium_peak": null
       },
       "Rewaya Majestic Resort Egipt, Hurghada": {
-        "history_max": 7295.0,
+        "history_max": 7524.0,
         "premium_peak": null
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
@@ -1138,6 +1177,10 @@
       },
       "Charmillion Club Resort": {
         "history_max": 7881.0,
+        "premium_peak": null
+      },
+      "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": {
+        "history_max": 10797.0,
         "premium_peak": null
       }
     }

@@ -988,10 +988,75 @@
       "created_at": "2026-08-24T15:34:15.989631+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Selectum Noa_2026-08-24_15-33_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6687.0,
+      "new_price": 6007.0,
+      "price_change": -680.0,
+      "price_change_pct": -10.168984596979215,
+      "timestamp": "2026-08-24 16:27:20.789033+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T16:28:20.361279+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-24_16-27_-10.2"
+    },
+    {
+      "hotel_name": "Anadolu Hotels Didim Club (ex. Palm Wings Didim)",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 9157.0,
+      "price_change": 1000.0,
+      "price_change_pct": 12.25940909648155,
+      "timestamp": "2026-08-24 16:27:20.789033+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T16:28:20.361315+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Anadolu Hotels Didim Club (ex. Palm Wings Didim)_2026-08-24_16-27_+12.3"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9809.0,
+      "new_price": 10148.0,
+      "price_change": 339.0,
+      "price_change_pct": 3.4560097869303705,
+      "timestamp": "2026-08-24 16:27:20.789033+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T16:28:20.361347+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-08-24_16-27_zone_out_+3.5"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8710.0,
+      "new_price": 10112.0,
+      "price_change": 1402.0,
+      "price_change_pct": 16.096440872560276,
+      "timestamp": "2026-08-24 16:27:20.789033+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T16:28:20.361358+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-24_16-27_zone_out_+16.1"
+    },
+    {
+      "hotel_name": "Lalila Blue Suites",
+      "duration_bucket": "",
+      "old_price": 9801.0,
+      "new_price": 10336.0,
+      "price_change": 535.0,
+      "price_change_pct": 5.458626670747883,
+      "timestamp": "2026-08-24 16:27:20.789033+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T16:28:20.361366+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lalila Blue Suites_2026-08-24_16-27_zone_out_+5.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T15:33:08.183973+00:00",
+    "last_processed_run": "2026-08-24T16:27:20.789033+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -1018,8 +1083,8 @@
         "premium_peak": null
       },
       "Lalila Blue Suites": {
-        "history_max": 9801.0,
-        "premium_peak": null
+        "history_max": 10336.0,
+        "premium_peak": 10336.0
       },
       "Laur Experience & Elegance": {
         "history_max": 10964.0,
@@ -1586,8 +1651,8 @@
         "premium_peak": null
       },
       "Glamour Resort & Spa": {
-        "history_max": 9892.0,
-        "premium_peak": null
+        "history_max": 10112.0,
+        "premium_peak": 10112.0
       },
       "Arnor De Luxe & SPA": {
         "history_max": 9622.0,
@@ -1754,8 +1819,8 @@
         "premium_peak": 11341.0
       },
       "Asia Beach Resort and Spa": {
-        "history_max": 9809.0,
-        "premium_peak": null
+        "history_max": 10148.0,
+        "premium_peak": 10148.0
       },
       "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac": {
         "history_max": 7713.0,
@@ -1998,7 +2063,7 @@
         "premium_peak": null
       },
       "Anadolu Hotels Didim Club (ex. Palm Wings Didim)": {
-        "history_max": 8757.0,
+        "history_max": 9157.0,
         "premium_peak": null
       },
       "Sentido Serra Family Resort": {
@@ -2308,6 +2373,10 @@
       "Ladonia Hotels Adakule (ex Alkoclar Adakule) Turcja, Kusadasi": {
         "history_max": 7254.0,
         "premium_peak": null
+      },
+      "Litore Resort & Spa": {
+        "history_max": 11737.0,
+        "premium_peak": 11737.0
       }
     }
   }
