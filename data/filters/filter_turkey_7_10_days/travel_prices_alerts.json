@@ -314,6 +314,7 @@
       "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-08-24_08-42_zone_out_gone"
     },
     {
+<<<<<<< Updated upstream
       "hotel_name": "Vita Silva",
       "duration_bucket": "",
       "old_price": 8733.0,
@@ -340,22 +341,98 @@
       "unique_key": "Alarcha_2026-08-24_09-39_+10.5"
     },
     {
+=======
+>>>>>>> Stashed changes
       "hotel_name": "Ozkaymak Marina (Kemer)",
       "duration_bucket": "",
       "old_price": 7906.0,
       "new_price": 8995.0,
       "price_change": 1089.0,
       "price_change_pct": 13.774348596003035,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 09:39:37.386523+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-08-24T09:40:36.891539+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ozkaymak Marina (Kemer)_2026-08-24_09-39_+13.8"
+=======
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T10:13:33.318970+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ozkaymak Marina (Kemer)_2026-08-24_10-12_+13.8"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 8733.0,
+      "new_price": 7760.0,
+      "price_change": -973.0,
+      "price_change_pct": -11.141646627733882,
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T10:13:33.318996+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-24_10-12_-11.1"
+    },
+    {
+      "hotel_name": "Alarcha",
+      "duration_bucket": "",
+      "old_price": 8597.0,
+      "new_price": 9297.0,
+      "price_change": 700.0,
+      "price_change_pct": 8.142375247179249,
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T10:13:33.319016+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alarcha_2026-08-24_10-12_+8.1"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9007.0,
+      "new_price": 9809.0,
+      "price_change": 802.0,
+      "price_change_pct": 8.904185633396247,
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T10:13:33.319028+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-08-24_10-12_+8.9"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 9157.0,
+      "new_price": 7757.0,
+      "price_change": -1400.0,
+      "price_change_pct": -15.28885006006334,
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T10:13:33.319040+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-24_10-12_-15.3"
+    },
+    {
+      "hotel_name": "Turunc Premium",
+      "duration_bucket": "",
+      "old_price": 9575.0,
+      "new_price": 10635.0,
+      "price_change": 1060.0,
+      "price_change_pct": 11.070496083550914,
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T10:13:33.319084+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc Premium_2026-08-24_10-12_zone_out_+11.1"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Ulusoy Kemer Holiday Club",
       "duration_bucket": "",
       "old_price": 9497.0,
+<<<<<<< Updated upstream
       "new_price": 10897.0,
       "price_change": 1400.0,
       "price_change_pct": 14.74149731494156,
@@ -368,6 +445,20 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T09:39:37.386523+00:00",
+=======
+      "new_price": 10497.0,
+      "price_change": 1000.0,
+      "price_change_pct": 10.529640939243972,
+      "timestamp": "2026-08-24 10:12:39.996015+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T10:13:33.319094+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ulusoy Kemer Holiday Club_2026-08-24_10-12_zone_out_+10.5"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-24T10:12:39.996015+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -422,7 +513,7 @@
         "premium_peak": 11007.0
       },
       "Meryan": {
-        "history_max": 9914.0,
+        "history_max": 9936.0,
         "premium_peak": null
       },
       "Beks Premium Resort & Spa": {
@@ -1278,8 +1369,8 @@
         "premium_peak": null
       },
       "Turunc Premium": {
-        "history_max": 9575.0,
-        "premium_peak": null
+        "history_max": 10635.0,
+        "premium_peak": 10635.0
       },
       "Side Aluna": {
         "history_max": 9356.0,
@@ -1558,7 +1649,11 @@
         "premium_peak": 10130.0
       },
       "Alarcha": {
+<<<<<<< Updated upstream
         "history_max": 9497.0,
+=======
+        "history_max": 9297.0,
+>>>>>>> Stashed changes
         "premium_peak": null
       },
       "Washington Resort": {

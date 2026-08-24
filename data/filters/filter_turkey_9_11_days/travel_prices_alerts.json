@@ -8,6 +8,7 @@
       "new_price": 10129.0,
       "price_change": 184.0,
       "price_change_pct": 1.8501759678230267,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 09:39:38.989616+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T09:40:44.381624+00:00",
@@ -17,6 +18,30 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T09:39:38.989616+00:00",
+=======
+      "timestamp": "2026-08-24 10:12:41.987915+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T10:13:40.586616+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-24_10-12_zone_out_+1.9"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 11557.0,
+      "new_price": 8957.0,
+      "price_change": -2600.0,
+      "price_change_pct": -22.49718785151856,
+      "timestamp": "2026-08-24 10:12:41.987915+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-24T10:13:40.586664+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-24_10-12_comeback_22.5"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-24T10:12:41.987915+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11973.0,
@@ -639,8 +664,8 @@
         "premium_peak": null
       },
       "Kremlin Palace": {
-        "history_max": 12681.0,
-        "premium_peak": 12681.0
+        "history_max": 12731.0,
+        "premium_peak": 12731.0
       },
       "L' Oceanica Beach Resort (Kemer)": {
         "history_max": 12191.0,
@@ -1083,16 +1108,26 @@
         "premium_peak": 14831.0
       },
       "Alarcha": {
+<<<<<<< Updated upstream
         "history_max": 12357.0,
         "premium_peak": 12357.0
+=======
+        "history_max": 12157.0,
+        "premium_peak": 12157.0
+>>>>>>> Stashed changes
       },
       "Tusan Beach Resort": {
         "history_max": 10842.0,
         "premium_peak": 10842.0
       },
       "Ulusoy Kemer Holiday Club": {
+<<<<<<< Updated upstream
         "history_max": 14357.0,
         "premium_peak": 14357.0
+=======
+        "history_max": 13557.0,
+        "premium_peak": 13557.0
+>>>>>>> Stashed changes
       },
       "Unique Residence Golf Spa": {
         "history_max": 11343.0,
@@ -1167,8 +1202,8 @@
         "premium_peak": 10566.0
       },
       "Selectum Family Comfort Side (ex. Lyra Resort)": {
-        "history_max": 11700.0,
-        "premium_peak": 11700.0
+        "history_max": 11849.0,
+        "premium_peak": 11849.0
       },
       "Selectum Noa": {
         "history_max": 12267.0,
