@@ -546,10 +546,49 @@
       "created_at": "2026-08-24T12:29:33.839300+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Viva Casa Maza_2026-08-24_12-28_comeback_20.2"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8773.0,
+      "new_price": 7817.0,
+      "price_change": -956.0,
+      "price_change_pct": -10.897070557391999,
+      "timestamp": "2026-08-24 13:44:44.331470+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T13:45:33.980783+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-24_13-44_-10.9"
+    },
+    {
+      "hotel_name": "Jaz Belvedere",
+      "duration_bucket": "",
+      "old_price": 9257.0,
+      "new_price": 10057.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.642108674516583,
+      "timestamp": "2026-08-24 13:44:44.331470+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:45:33.980852+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Belvedere_2026-08-24_13-44_zone_out_+8.6"
+    },
+    {
+      "hotel_name": "Stella Makadi Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 8628.0,
+      "new_price": 10619.0,
+      "price_change": 1991.0,
+      "price_change_pct": 23.076031525266576,
+      "timestamp": "2026-08-24 13:44:44.331470+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:45:33.980869+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Makadi Beach & Spa_2026-08-24_13-44_zone_out_+23.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T12:28:47.900467+00:00",
+    "last_processed_run": "2026-08-24T13:44:44.331470+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
@@ -732,8 +771,8 @@
         "premium_peak": 11497.0
       },
       "Jaz Belvedere": {
-        "history_max": 9457.0,
-        "premium_peak": null
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
       },
       "Domina Coral Bay Aquamarine": {
         "history_max": 10530.0,
@@ -760,7 +799,7 @@
         "premium_peak": null
       },
       "Cooee Prima Life Makadi Bay": {
-        "history_max": 8417.0,
+        "history_max": 9057.0,
         "premium_peak": null
       },
       "Continental (ex Movenpick Resort)": {
@@ -856,7 +895,7 @@
         "premium_peak": null
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 8439.0,
+        "history_max": 8979.0,
         "premium_peak": null
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
@@ -988,8 +1027,8 @@
         "premium_peak": 13895.0
       },
       "Stella Makadi Beach & Spa": {
-        "history_max": 8628.0,
-        "premium_peak": null
+        "history_max": 10619.0,
+        "premium_peak": 10619.0
       },
       "Sunrise Remal Beach": {
         "history_max": 13429.0,
@@ -1024,7 +1063,7 @@
         "premium_peak": null
       },
       "Utopia Blue Resort": {
-        "history_max": 8839.0,
+        "history_max": 9459.0,
         "premium_peak": null
       },
       "True Beach Resort": {
@@ -1288,7 +1327,7 @@
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 9171.0,
+        "history_max": 9373.0,
         "premium_peak": null
       },
       "Baron Resort (Sharm El Sheikh)": {
@@ -1342,6 +1381,10 @@
       "Sakhra & Spa by Jaz": {
         "history_max": 14083.0,
         "premium_peak": 14083.0
+      },
+      "Ghazala Alamein": {
+        "history_max": 12823.0,
+        "premium_peak": 12823.0
       }
     }
   }

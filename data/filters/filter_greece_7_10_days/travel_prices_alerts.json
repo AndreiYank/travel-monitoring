@@ -104,10 +104,49 @@
       "created_at": "2026-08-24T12:31:57.480343+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kouros Palace Grecja, Kos, Mastichari_2026-08-24_12-30_-9.7"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 8857.0,
+      "price_change": -1000.0,
+      "price_change_pct": -10.145074566298062,
+      "timestamp": "2026-08-24 13:46:58.600553+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T13:47:57.581228+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-24_13-46_-10.1"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6073.0,
+      "new_price": 6573.0,
+      "price_change": 500.0,
+      "price_change_pct": 8.233163181294254,
+      "timestamp": "2026-08-24 13:46:58.600553+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T13:47:57.581256+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-24_13-46_+8.2"
+    },
+    {
+      "hotel_name": "Kouros Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 7457.0,
+      "new_price": 7457.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:46:58.600553+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:47:57.581274+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kouros Palace Grecja, Kos, Mastichari_2026-08-24_13-46_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T12:30:54.898772+00:00",
+    "last_processed_run": "2026-08-24T13:46:58.600553+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10472.0,
@@ -406,8 +445,8 @@
         "premium_peak": null
       },
       "Sandy Villas Resort (ex. Kairaba Sandy Villas)": {
-        "history_max": 11022.0,
-        "premium_peak": 11022.0
+        "history_max": 11522.0,
+        "premium_peak": 11522.0
       },
       "Georgioupolis Suites": {
         "history_max": 17204.0,
@@ -486,8 +525,8 @@
         "premium_peak": 11396.0
       },
       "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
-        "history_max": 10257.0,
-        "premium_peak": 10257.0
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
         "history_max": 8998.0,
@@ -514,7 +553,7 @@
         "premium_peak": 10757.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 9114.0,
+        "history_max": 9174.0,
         "premium_peak": null
       },
       "Almyra Village Grecja, Kreta Wschodnia, Koutsounari": {
@@ -620,6 +659,10 @@
       "Kakkos Terra Blu": {
         "history_max": 16296.0,
         "premium_peak": 16296.0
+      },
+      "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki": {
+        "history_max": 10953.0,
+        "premium_peak": 10953.0
       }
     }
   }

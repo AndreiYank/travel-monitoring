@@ -689,10 +689,114 @@
       "created_at": "2026-08-24T12:30:53.994692+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Adalya Art Side (Ex. Grand Art Side)_2026-08-24_12-29_comeback_9.3"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 5807.0,
+      "new_price": 6398.0,
+      "price_change": 591.0,
+      "price_change_pct": 10.177372137075944,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T13:46:57.537325+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-24_13-45_+10.2"
+    },
+    {
+      "hotel_name": "Adalya Art Side (Ex. Grand Art Side)",
+      "duration_bucket": "",
+      "old_price": 9849.0,
+      "new_price": 10863.0,
+      "price_change": 1014.0,
+      "price_change_pct": 10.295461468169357,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537377+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Adalya Art Side (Ex. Grand Art Side)_2026-08-24_13-45_zone_out_+10.3"
+    },
+    {
+      "hotel_name": "Amelia Beach Resort & Spa Turcja, Side, Kizilot",
+      "duration_bucket": "",
+      "old_price": 7572.0,
+      "new_price": 7572.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537390+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amelia Beach Resort & Spa Turcja, Side, Kizilot_2026-08-24_13-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dedeman Kemer Resort",
+      "duration_bucket": "",
+      "old_price": 7759.0,
+      "new_price": 7759.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537399+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dedeman Kemer Resort_2026-08-24_13-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Horus Paradise Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 9995.0,
+      "new_price": 9995.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537407+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Horus Paradise Luxury Resort_2026-08-24_13-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 7543.0,
+      "new_price": 7543.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537414+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar_2026-08-24_13-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Maril Resort Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 7757.0,
+      "new_price": 7757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537421+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Beach & Spa_2026-08-24_13-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Selectum Collection Bodrum",
+      "duration_bucket": "",
+      "old_price": 9005.0,
+      "new_price": 9005.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 13:45:50.538914+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T13:46:57.537428+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Selectum Collection Bodrum_2026-08-24_13-45_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T12:29:47.769657+00:00",
+    "last_processed_run": "2026-08-24T13:45:50.538914+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -907,8 +1011,8 @@
         "premium_peak": null
       },
       "Nova Park": {
-        "history_max": 10426.0,
-        "premium_peak": 10426.0
+        "history_max": 10853.0,
+        "premium_peak": 10853.0
       },
       "Nox Inn Club (ex Limoncello Konakli Beach) Turcja, Alanya, Konaklı": {
         "history_max": 6697.0,
@@ -1151,8 +1255,8 @@
         "premium_peak": 10220.0
       },
       "Eftalia Blue": {
-        "history_max": 11657.0,
-        "premium_peak": 11657.0
+        "history_max": 11670.0,
+        "premium_peak": 11670.0
       },
       "White City Resort": {
         "history_max": 11288.0,
@@ -1311,8 +1415,8 @@
         "premium_peak": null
       },
       "Delphin Botanik (Alanya)": {
-        "history_max": 11615.0,
-        "premium_peak": 11615.0
+        "history_max": 11646.0,
+        "premium_peak": 11646.0
       },
       "Delta by Marriott Bodrum Turcja, Bodrum, Yalikavak": {
         "history_max": 7757.0,
@@ -1807,8 +1911,8 @@
         "premium_peak": 10617.0
       },
       "Selectum Colours Bodrum (ex Asteria Bodrum Resort)": {
-        "history_max": 11043.0,
-        "premium_peak": 11043.0
+        "history_max": 11210.0,
+        "premium_peak": 11210.0
       },
       "Selectum Family Resort (ex Letoonia Golf Resort)": {
         "history_max": 11417.0,
@@ -1875,8 +1979,8 @@
         "premium_peak": null
       },
       "Seaden Sea Planet Resort & Spa": {
-        "history_max": 11120.0,
-        "premium_peak": 11120.0
+        "history_max": 11259.0,
+        "premium_peak": 11259.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)": {
         "history_max": 10449.0,
@@ -1976,6 +2080,18 @@
       },
       "Ring Beach Turcja, Kemer, Beldibi": {
         "history_max": 7484.0,
+        "premium_peak": null
+      },
+      "Club Jovia Kemer (ex. Armir Resort) Turcja, Kemer": {
+        "history_max": 7492.0,
+        "premium_peak": null
+      },
+      "Kirbiyik Resort (ex. Dinler)": {
+        "history_max": 7543.0,
+        "premium_peak": null
+      },
+      "Maril Resort Turcja, Bodrum, Didim": {
+        "history_max": 6957.0,
         "premium_peak": null
       }
     }
