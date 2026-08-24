@@ -1,8 +1,35 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 7455.0,
+      "new_price": 6127.0,
+      "price_change": -1328.0,
+      "price_change_pct": -17.813547954393023,
+      "timestamp": "2026-08-24 03:47:29.051005+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T03:48:18.875169+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-24_03-47_-17.8"
+    },
+    {
+      "hotel_name": "Crystal Aura Aqua Collection",
+      "duration_bucket": "",
+      "old_price": 9097.0,
+      "new_price": 9097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 03:47:29.051005+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T03:48:18.875228+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Crystal Aura Aqua Collection_2026-08-24_03-47_zone_out_gone"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-24T02:19:29.296672+00:00",
+    "last_processed_run": "2026-08-24T03:47:29.051005+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -309,7 +336,7 @@
         "premium_peak": 10980.0
       },
       "Grand Kaptan": {
-        "history_max": 9268.0,
+        "history_max": 9659.0,
         "premium_peak": null
       },
       "Grand Cettia": {

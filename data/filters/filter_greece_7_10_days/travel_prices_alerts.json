@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 9874.0,
+      "new_price": 10152.0,
+      "price_change": 278.0,
+      "price_change_pct": 2.815474984808588,
+      "timestamp": "2026-08-24 03:48:19.839864+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T03:49:10.839335+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-24_03-48_zone_out_+2.8"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-24T02:20:16.589375+00:00",
+    "last_processed_run": "2026-08-24T03:48:19.839864+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10472.0,
@@ -101,8 +115,8 @@
         "premium_peak": null
       },
       "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos": {
-        "history_max": 9874.0,
-        "premium_peak": null
+        "history_max": 10152.0,
+        "premium_peak": 10152.0
       },
       "Filion Suites Resort Grecja, Kreta Wschodnia, Bali": {
         "history_max": 8956.0,
@@ -117,7 +131,7 @@
         "premium_peak": 16254.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
-        "history_max": 8968.0,
+        "history_max": 8998.0,
         "premium_peak": null
       },
       "Rodos Palace Grecja, Rodos, Ixia": {
@@ -149,8 +163,8 @@
         "premium_peak": 13209.0
       },
       "Mitsis Royal Mare": {
-        "history_max": 12441.0,
-        "premium_peak": 12441.0
+        "history_max": 12443.0,
+        "premium_peak": 12443.0
       },
       "Mitsis Ramira": {
         "history_max": 13615.0,
@@ -161,8 +175,8 @@
         "premium_peak": 14914.0
       },
       "Mitsis Selection Blue Domes": {
-        "history_max": 14603.0,
-        "premium_peak": 14603.0
+        "history_max": 14605.0,
+        "premium_peak": 14605.0
       },
       "Mitsis Galini": {
         "history_max": 14039.0,
@@ -185,8 +199,8 @@
         "premium_peak": 10975.0
       },
       "Mitsis Summer Palace": {
-        "history_max": 11556.0,
-        "premium_peak": 11556.0
+        "history_max": 11564.0,
+        "premium_peak": 11564.0
       },
       "MarBella, Mar-Bella Collection (Agios Ioannis)": {
         "history_max": 18009.0,
@@ -277,8 +291,8 @@
         "premium_peak": 14027.0
       },
       "Mitsis Rodos Village": {
-        "history_max": 14034.0,
-        "premium_peak": 14034.0
+        "history_max": 14041.0,
+        "premium_peak": 14041.0
       },
       "White Olive Elite": {
         "history_max": 11348.0,

@@ -1,8 +1,22 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Jaz Belvedere",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 9457.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 03:46:38.823341+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T03:47:15.266534+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Belvedere_2026-08-24_03-46_zone_out_gone"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-24T02:18:41.235364+00:00",
+    "last_processed_run": "2026-08-24T03:46:38.823341+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6962.0,
