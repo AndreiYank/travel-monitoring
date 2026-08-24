@@ -1381,7 +1381,7 @@ def _render_hotel_chart_page(
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <style>
         :root {{
             --gradient-primary: linear-gradient(135deg, #4f46e5 0%, #0ea5e9 100%);
@@ -3999,7 +3999,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-2.35.2.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -9182,7 +9182,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         const trendIndexY = """ + json.dumps(trend_index_y_values, ensure_ascii=False) + """;
         const trendIndexDetailedData = """ + json.dumps(trend_index_detailed_data, ensure_ascii=False, default=str) + """;
         
-        if (Array.isArray(trendIndexX) && Array.isArray(trendIndexY) && trendIndexX.length > 0 && trendIndexY.length > 0 && window.Plotly) {
+        if (document.getElementById('trendIndexChart') && Array.isArray(trendIndexX) && Array.isArray(trendIndexY) && trendIndexX.length > 0 && trendIndexY.length > 0 && window.Plotly) {
           // Создаем hover текст для каждой точки
           const trendIndexHoverTexts = trendIndexDetailedData.map((data, index) => {
             let text = `<b>📊 Индекс ценовой динамики</b><br>`;
@@ -9569,17 +9569,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         el.open = isOpen;
 
         function triggerChartResize() {
-          setTimeout(() => {
-            window.dispatchEvent(new Event('resize'));
-            if (window.Plotly && window.Plotly.Plots) {
-              document.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart, #departurePriceChart').forEach(p => {
-                try { window.Plotly.Plots.resize(p); } catch (e) {}
-              });
-            }
-            if (typeof window.updateCalendarHeatmap === 'function') {
-              window.updateCalendarHeatmap();
-            }
-          }, 80);
+          [40, 150, 350].forEach(delay => {
+            setTimeout(() => {
+              window.dispatchEvent(new Event('resize'));
+              if (window.Plotly && window.Plotly.Plots) {
+                document.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart, #departurePriceChart').forEach(p => {
+                  try { window.Plotly.Plots.resize(p); } catch (e) {}
+                });
+              }
+              if (typeof window.updateCalendarHeatmap === 'function') {
+                window.updateCalendarHeatmap();
+              }
+            }, delay);
+          });
         }
 
         if (isOpen) triggerChartResize();
@@ -9594,17 +9596,19 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 
       document.addEventListener('toggle', function(event) {
         if (event.target && event.target.tagName === 'DETAILS' && event.target.open) {
-          setTimeout(function() {
-            window.dispatchEvent(new Event('resize'));
-            if (window.Plotly && window.Plotly.Plots) {
-              document.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart, #departurePriceChart').forEach(function(p) {
-                try { window.Plotly.Plots.resize(p); } catch (e) {}
-              });
-            }
-            if (typeof window.updateCalendarHeatmap === 'function') {
-              window.updateCalendarHeatmap();
-            }
-          }, 80);
+          [40, 150, 350].forEach(function(delay) {
+            setTimeout(function() {
+              window.dispatchEvent(new Event('resize'));
+              if (window.Plotly && window.Plotly.Plots) {
+                document.querySelectorAll('.js-plotly-plot, #avgTop10, #offersCountChart, #timingHourChart, #timingDowChart, #timingHeatmap, #timingPartChart, #timingMonthChart, #departurePriceChart').forEach(function(p) {
+                  try { window.Plotly.Plots.resize(p); } catch (e) {}
+                });
+              }
+              if (typeof window.updateCalendarHeatmap === 'function') {
+                window.updateCalendarHeatmap();
+              }
+            }, delay);
+          });
         }
       }, true);
       
@@ -10709,35 +10713,38 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           } else {
             Plotly.react('avgTop10', [], emptyChartLayout('top10'));
           }
-          const trendX = charts.trend_x || [];
-          const trendY = charts.trend_y || [];
-          const trendDetailed = charts.trend_detailed || [];
-          if (trendX.length && trendY.length) {
-            const trendHoverTexts = trendDetailed.map((data) => {
-              let text = '<b>' + (data.run_time || '') + '</b><br>';
-              text += 'Среднее изменение: ' + (data.avg_change_pct || 0).toFixed(2) + '%<br>';
-              text += 'Отелей с изменением: ' + (data.hotels_with_changes || 0)
-                + ' / ' + (data.total_hotels || 0);
-              return text;
-            });
-            Plotly.react('trendIndexChart', [{
-              x: trendX,
-              y: trendY,
-              type: 'scatter',
-              mode: 'lines+markers',
-              line: { color: '#2E86AB', width: 2 },
-              marker: { size: 7 },
-              text: trendHoverTexts,
-              hovertemplate: '%{text}<extra></extra>',
-              hoverinfo: 'text',
-            }], {
-              margin: { t: 10, r: 10, b: 40, l: 50 },
-              xaxis: { title: 'Время', type: 'date' },
-              yaxis: { title: 'Изменение, %' },
-              hovermode: 'closest',
-            }, { responsive: true, displayModeBar: false });
-          } else {
-            Plotly.react('trendIndexChart', [], emptyChartLayout('trend'));
+          const trendEl = document.getElementById('trendIndexChart');
+          if (trendEl && window.Plotly) {
+            const trendX = charts.trend_x || [];
+            const trendY = charts.trend_y || [];
+            const trendDetailed = charts.trend_detailed || [];
+            if (trendX.length && trendY.length) {
+              const trendHoverTexts = trendDetailed.map((data) => {
+                let text = '<b>' + (data.run_time || '') + '</b><br>';
+                text += 'Среднее изменение: ' + (data.avg_change_pct || 0).toFixed(2) + '%<br>';
+                text += 'Отелей с изменением: ' + (data.hotels_with_changes || 0)
+                  + ' / ' + (data.total_hotels || 0);
+                return text;
+              });
+              Plotly.react('trendIndexChart', [{
+                x: trendX,
+                y: trendY,
+                type: 'scatter',
+                mode: 'lines+markers',
+                line: { color: '#2E86AB', width: 2 },
+                marker: { size: 7 },
+                text: trendHoverTexts,
+                hovertemplate: '%{text}<extra></extra>',
+                hoverinfo: 'text',
+              }], {
+                margin: { t: 10, r: 10, b: 40, l: 50 },
+                xaxis: { title: 'Время', type: 'date' },
+                yaxis: { title: 'Изменение, %' },
+                hovermode: 'closest',
+              }, { responsive: true, displayModeBar: false });
+            } else {
+              Plotly.react('trendIndexChart', [], emptyChartLayout('trend'));
+            }
           }
           if (typeof window.renderOffersCountChart === 'function') {
             window.renderOffersCountChart(
