@@ -6528,11 +6528,12 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         
         .hotels-table td {{
             height: auto;
-            padding: 0.7rem 0.65rem;
+            padding: 0.75rem 0.65rem;
             border: none;
-            vertical-align: middle;
+            vertical-align: top;
             background: transparent;
             box-sizing: border-box;
+            line-height: 1.3;
             transition: all 0.18s cubic-bezier(0.4, 0, 0.2, 1);
         }}
 
@@ -6999,7 +7000,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         }}
         .hotels-table td.col-w-ta-td {{
             font-size: 0.78rem;
-            vertical-align: middle;
+            vertical-align: top;
             text-align: center;
         }}
         
