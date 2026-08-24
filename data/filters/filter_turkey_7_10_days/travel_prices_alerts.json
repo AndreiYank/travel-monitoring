@@ -26,10 +26,49 @@
       "created_at": "2026-08-24T03:48:18.875228+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Crystal Aura Aqua Collection_2026-08-24_03-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa",
+      "duration_bucket": "",
+      "old_price": 9007.0,
+      "new_price": 9809.0,
+      "price_change": 802.0,
+      "price_change_pct": 8.904185633396247,
+      "timestamp": "2026-08-24 05:33:37.221663+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T05:34:27.445237+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa_2026-08-24_05-33_+8.9"
+    },
+    {
+      "hotel_name": "Daima Biz Resort Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 7683.0,
+      "new_price": 7683.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 05:33:37.221663+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T05:34:27.445324+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz Resort Turcja, Kemer_2026-08-24_05-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 7760.0,
+      "new_price": 7760.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 05:33:37.221663+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T05:34:27.445337+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-24_05-33_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T04:38:57.919519+00:00",
+    "last_processed_run": "2026-08-24T05:33:37.221663+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -124,7 +163,7 @@
         "premium_peak": null
       },
       "L' Oceanica Beach Resort (Kemer)": {
-        "history_max": 9503.0,
+        "history_max": 9812.0,
         "premium_peak": null
       },
       "Sealife Family Resort": {
@@ -900,7 +939,7 @@
         "premium_peak": null
       },
       "Asia Beach Resort and Spa": {
-        "history_max": 9007.0,
+        "history_max": 9809.0,
         "premium_peak": null
       },
       "Asteria Family Belek": {
@@ -1229,6 +1268,14 @@
       },
       "Club Side Coast Turcja, Side, Colakli": {
         "history_max": 7334.0,
+        "premium_peak": null
+      },
+      "Daima Biz (Kemer)": {
+        "history_max": 7817.0,
+        "premium_peak": null
+      },
+      "Amelia Beach Resort & Spa Turcja, Side, Kizilot": {
+        "history_max": 7760.0,
         "premium_peak": null
       }
     }
