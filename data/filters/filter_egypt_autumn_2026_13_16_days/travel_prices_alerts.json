@@ -1,11 +1,29 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Mercure Dahab Bay View Egipt, Dahab",
+      "duration_bucket": "",
+      "old_price": 10734.0,
+      "new_price": 10734.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 10:46:30.384123+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T10:46:46.040421+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mercure Dahab Bay View Egipt, Dahab_2026-08-24_10-46_zone_out_gone"
+    }
+  ],
   "meta": {
+<<<<<<< Updated upstream
 <<<<<<< Updated upstream
     "last_processed_run": "2026-08-24T09:39:20.800543+00:00",
 =======
     "last_processed_run": "2026-08-24T10:12:23.821472+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-24T10:46:30.384123+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon) Egipt, Marsa Alam": {
