@@ -374,9 +374,88 @@
       "created_at": "2026-08-24T13:45:49.386601+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-08-24_13-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 5957.0,
+      "new_price": 7307.0,
+      "price_change": 1350.0,
+      "price_change_pct": 22.662413966761793,
+      "timestamp": "2026-08-24 15:00:25.733814+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T15:00:57.293970+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-24_15-00_+22.7"
+    },
+    {
+      "hotel_name": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 6727.0,
+      "new_price": 5640.0,
+      "price_change": -1087.0,
+      "price_change_pct": -16.158763193102423,
+      "timestamp": "2026-08-24 15:00:25.733814+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T15:00:57.294004+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh_2026-08-24_15-00_-16.2"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 7881.0,
+      "new_price": 7881.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 15:00:25.733814+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:57.294032+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh_2026-08-24_15-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "El Kasr Red Sea",
+      "duration_bucket": "",
+      "old_price": 10287.0,
+      "new_price": 10287.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 15:00:25.733814+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:57.294040+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-08-24_15-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Parrotel Beach Resort (ex. Radisson Blu)",
+      "duration_bucket": "",
+      "old_price": 7915.0,
+      "new_price": 7915.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 15:00:25.733814+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:57.294046+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Beach Resort (ex. Radisson Blu)_2026-08-24_15-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 15:00:25.733814+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:57.294052+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-24_15-00_zone_out_gone"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-24T13:45:14.015840+00:00",
 =======
       "timestamp": "2026-08-24 14:23:26.909860+00:00",
@@ -401,6 +480,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T14:23:26.909860+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-24T15:00:25.733814+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
@@ -532,7 +614,7 @@
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
-        "history_max": 7427.0,
+        "history_max": 7477.0,
         "premium_peak": null
       },
       "Amwaj Oyoun Resort & Spa (ex AA Amwaj Resort) Egipt, Sharm El Sheikh": {
@@ -712,7 +794,7 @@
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
-        "history_max": 6737.0,
+        "history_max": 7307.0,
         "premium_peak": null
       },
       "Jaz Elite Asteria (Hurghada)": {

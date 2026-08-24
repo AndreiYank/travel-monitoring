@@ -121,9 +121,49 @@
       "created_at": "2026-08-24T13:47:04.716680+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-24_13-45_zone_out_+6.5"
+    },
+    {
+      "hotel_name": "Nova Life",
+      "duration_bucket": "",
+      "old_price": 9674.0,
+      "new_price": 8766.0,
+      "price_change": -908.0,
+      "price_change_pct": -9.385983047343395,
+      "timestamp": "2026-08-24 15:01:00.497669+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T15:01:51.097981+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life_2026-08-24_15-01_-9.4"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 9541.0,
+      "new_price": 8742.0,
+      "price_change": -799.0,
+      "price_change_pct": -8.374384236453201,
+      "timestamp": "2026-08-24 15:01:00.497669+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T15:01:51.098005+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-08-24_15-01_-8.4"
+    },
+    {
+      "hotel_name": "Asteria Collection Side",
+      "duration_bucket": "",
+      "old_price": 9657.0,
+      "new_price": 10206.0,
+      "price_change": 549.0,
+      "price_change_pct": 5.684995340167754,
+      "timestamp": "2026-08-24 15:01:00.497669+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:01:51.098024+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Collection Side_2026-08-24_15-01_zone_out_+5.7"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-24T13:45:50.941439+00:00",
 =======
       "timestamp": "2026-08-24 14:24:01.018477+00:00",
@@ -135,6 +175,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-24T14:24:01.018477+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-24T15:01:00.497669+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
@@ -510,8 +553,8 @@
         "premium_peak": 13229.0
       },
       "Asteria Collection Side": {
-        "history_max": 9657.0,
-        "premium_peak": null
+        "history_max": 10206.0,
+        "premium_peak": 10206.0
       },
       "Asteria Bloom Side": {
         "history_max": 10076.0,
@@ -798,8 +841,8 @@
         "premium_peak": 10877.0
       },
       "Ramada Resort Lara": {
-        "history_max": 13604.0,
-        "premium_peak": 13604.0
+        "history_max": 13923.0,
+        "premium_peak": 13923.0
       },
       "Rai Foresta Tekirova": {
         "history_max": 14683.0,

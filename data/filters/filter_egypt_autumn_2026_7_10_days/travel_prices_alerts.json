@@ -320,11 +320,32 @@
       "new_price": 10987.0,
       "price_change": 1610.0,
       "price_change_pct": 17.16967047029967,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 14:22:56.767429+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-08-24T14:23:43.362704+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-24_14-22_+17.2"
+=======
+      "timestamp": "2026-08-24 15:00:01.335158+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T15:00:48.428505+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort_2026-08-24_15-00_+17.2"
+    },
+    {
+      "hotel_name": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 6727.0,
+      "new_price": 5640.0,
+      "price_change": -1087.0,
+      "price_change_pct": -16.158763193102423,
+      "timestamp": "2026-08-24 15:00:01.335158+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T15:00:48.428534+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh_2026-08-24_15-00_-16.2"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh",
@@ -333,6 +354,7 @@
       "new_price": 6834.0,
       "price_change": -1171.0,
       "price_change_pct": -14.628357276702062,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 14:22:56.767429+00:00",
       "alert_type": "price_drop",
       "created_at": "2026-08-24T14:23:43.362735+00:00",
@@ -351,6 +373,26 @@
       "created_at": "2026-08-24T14:23:43.362748+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh_2026-08-24_14-22_-12.6"
+=======
+      "timestamp": "2026-08-24 15:00:01.335158+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-24T15:00:48.428546+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh_2026-08-24_15-00_-14.6"
+    },
+    {
+      "hotel_name": "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 7958.0,
+      "new_price": 7958.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 15:00:01.335158+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:48.428581+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib_2026-08-24_15-00_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "El Kasr Red Sea",
@@ -359,11 +401,19 @@
       "new_price": 10287.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 14:22:56.767429+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T14:23:43.362789+00:00",
       "threshold_percent": 8.0,
       "unique_key": "El Kasr Red Sea_2026-08-24_14-22_zone_out_gone"
+=======
+      "timestamp": "2026-08-24 15:00:01.335158+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:48.428588+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-08-24_15-00_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Movenpick Waterpark Resort & Spa Soma Bay",
@@ -372,6 +422,7 @@
       "new_price": 8037.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-24 14:22:56.767429+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-24T14:23:43.362799+00:00",
@@ -397,6 +448,17 @@
     "last_processed_run": "2026-08-24T13:44:44.442186+00:00",
 =======
     "last_processed_run": "2026-08-24T14:22:56.767429+00:00",
+>>>>>>> Stashed changes
+=======
+      "timestamp": "2026-08-24 15:00:01.335158+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T15:00:48.428594+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Waterpark Resort & Spa Soma Bay_2026-08-24_15-00_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-24T15:00:01.335158+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
@@ -980,7 +1042,7 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam": {
-        "history_max": 7930.0,
+        "history_max": 8058.0,
         "premium_peak": null
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
@@ -1043,8 +1105,13 @@
         "history_max": 10437.0,
         "premium_peak": null
       },
+<<<<<<< Updated upstream
       "Three Corners Fayrouz Plaza Beach Resort": {
         "history_max": 8058.0,
+=======
+      "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
+        "history_max": 8066.0,
+>>>>>>> Stashed changes
         "premium_peak": null
       }
     }
