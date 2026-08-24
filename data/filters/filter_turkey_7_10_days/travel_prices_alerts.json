@@ -273,10 +273,49 @@
       "created_at": "2026-08-24T07:53:39.094114+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ulusoy Kemer Holiday Club_2026-08-24_07-52_comeback_9.5"
+    },
+    {
+      "hotel_name": "Vita Silva",
+      "duration_bucket": "",
+      "old_price": 7760.0,
+      "new_price": 8733.0,
+      "price_change": 973.0,
+      "price_change_pct": 12.538659793814432,
+      "timestamp": "2026-08-24 08:42:44.513897+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-24T08:43:41.095741+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Vita Silva_2026-08-24_08-42_+12.5"
+    },
+    {
+      "hotel_name": "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac",
+      "duration_bucket": "",
+      "old_price": 7713.0,
+      "new_price": 7713.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 08:42:44.513897+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T08:43:41.095781+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Euphoria Palm Beach (ex. Fun & Sun Euphoria Palm Beach) Turcja, Side, Kizilagac_2026-08-24_08-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Signature Blue Resort (ex. Grand Ozcelik)",
+      "duration_bucket": "",
+      "old_price": 7821.0,
+      "new_price": 7821.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-24 08:42:44.513897+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-24T08:43:41.095790+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-08-24_08-42_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T07:52:40.558153+00:00",
+    "last_processed_run": "2026-08-24T08:42:44.513897+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -443,8 +482,8 @@
         "premium_peak": 10049.0
       },
       "Lonicera Resort & Spa": {
-        "history_max": 10580.0,
-        "premium_peak": 10580.0
+        "history_max": 10742.0,
+        "premium_peak": 10742.0
       },
       "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar": {
         "history_max": 6800.0,
@@ -667,8 +706,8 @@
         "premium_peak": null
       },
       "Eftalia Marin": {
-        "history_max": 10473.0,
-        "premium_peak": 10473.0
+        "history_max": 10475.0,
+        "premium_peak": 10475.0
       },
       "Club Turan Prince World": {
         "history_max": 11582.0,
@@ -963,7 +1002,7 @@
         "premium_peak": null
       },
       "Grand Ozcelik Turcja, Kusadasi": {
-        "history_max": 7308.0,
+        "history_max": 7511.0,
         "premium_peak": null
       },
       "Grand Park Lara": {
@@ -1111,8 +1150,8 @@
         "premium_peak": 10502.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)": {
-        "history_max": 10125.0,
-        "premium_peak": 10125.0
+        "history_max": 10134.0,
+        "premium_peak": 10134.0
       },
       "Armas Gul Beach (ex Otium Gul Beach Resort) Turcja, Kemer": {
         "history_max": 7497.0,
@@ -1127,8 +1166,8 @@
         "premium_peak": null
       },
       "Armas Labada": {
-        "history_max": 10368.0,
-        "premium_peak": 10368.0
+        "history_max": 10530.0,
+        "premium_peak": 10530.0
       },
       "Viking Star": {
         "history_max": 7853.0,
@@ -1455,7 +1494,7 @@
         "premium_peak": 10914.0
       },
       "Vita Silva": {
-        "history_max": 7760.0,
+        "history_max": 8733.0,
         "premium_peak": null
       },
       "Seaphoria Beach Resort": {
@@ -1528,6 +1567,10 @@
       },
       "Benata Turcja, Side, Manavgat": {
         "history_max": 7497.0,
+        "premium_peak": null
+      },
+      "Asteria Family Resort Side": {
+        "history_max": 7713.0,
         "premium_peak": null
       }
     }
