@@ -212,13 +212,29 @@
         return;
       }
 
-      const seriesUrl = 'data/filters/' + encodeURIComponent(filterId) + '/hotel_series/' + encodeURIComponent(hotelSlug) + '.json';
+      const candidates = [
+        'data/filters/' + encodeURIComponent(filterId) + '/hotel_series/' + encodeURIComponent(hotelSlug) + '.json'
+      ];
+      if (!filterId.startsWith('filter_')) {
+        candidates.push('data/filters/filter_' + encodeURIComponent(filterId) + '/hotel_series/' + encodeURIComponent(hotelSlug) + '.json');
+        if (!filterId.endsWith('_days')) {
+          candidates.push('data/filters/filter_' + encodeURIComponent(filterId) + '_days/hotel_series/' + encodeURIComponent(hotelSlug) + '.json');
+        }
+      } else if (!filterId.endsWith('_days')) {
+        candidates.push('data/filters/' + encodeURIComponent(filterId) + '_days/hotel_series/' + encodeURIComponent(hotelSlug) + '.json');
+      }
 
-      fetch(seriesUrl)
-        .then(function (r) {
-          if (!r.ok) throw new Error('Серия не найдена (' + r.status + ')');
-          return r.json();
-        })
+      function fetchCandidate(idx) {
+        if (idx >= candidates.length) {
+          throw new Error('Серия отеля не найдена (' + filterId + ')');
+        }
+        return fetch(candidates[idx]).then(function(r) {
+          if (r.ok) return r.json();
+          return fetchCandidate(idx + 1);
+        });
+      }
+
+      fetchCandidate(0)
         .then(function (d) {
           const x = d.x || [];
           const y = d.y || [];

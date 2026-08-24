@@ -8548,7 +8548,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
 """
 
     # Блок выбора вида списка предложений и фильтры (всегда видны)
-    _filter_data_id = active_filter_id(charts_subdir)
     top_movers_html = _render_top_movers_html(decreases_48h, increases_48h, slugify, _filter_data_id)
 
     # Адаптивные диапазоны фильтра по цене на основе фактических цен таблицы
