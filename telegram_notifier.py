@@ -422,7 +422,11 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
     summary.market_breadth = (breadth_down / breadth_total * 100.0) if breadth_total > 0 else 0.0
     summary.median_market_price = float(pd.Series(current_prices).median()) if current_prices else 0.0
 
-    if hotel_metrics_list:
+    max_ceiling = (display_price_ceiling or 10000) + 1000
+    valid_deals = [h for h in hotel_metrics_list if h["current_price"] <= max_ceiling]
+    if valid_deals:
+        summary.best_deal = max(valid_deals, key=lambda x: (x["deal_score"], -x["delta_48h_pct"]))
+    elif hotel_metrics_list:
         summary.best_deal = max(hotel_metrics_list, key=lambda x: (x["deal_score"], -x["delta_48h_pct"]))
 
     return summary
