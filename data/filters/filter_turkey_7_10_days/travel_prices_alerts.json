@@ -1651,10 +1651,23 @@
       "created_at": "2026-08-25T12:30:50.503097+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Numa Bay Exclusive (ex Sentido Numa Bay)_2026-08-25_12-29_zone_out_+11.9"
+    },
+    {
+      "hotel_name": "Berry Blue",
+      "duration_bucket": "",
+      "old_price": 9828.0,
+      "new_price": 10564.0,
+      "price_change": 736.0,
+      "price_change_pct": 7.488807488807489,
+      "timestamp": "2026-08-25 12:52:24.250156+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T12:53:27.523223+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Berry Blue_2026-08-25_12-52_zone_out_+7.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T12:29:50.093243+00:00",
+    "last_processed_run": "2026-08-25T12:52:24.250156+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -2069,8 +2082,8 @@
         "premium_peak": null
       },
       "Berry Blue": {
-        "history_max": 9828.0,
-        "premium_peak": null
+        "history_max": 10564.0,
+        "premium_peak": 10564.0
       },
       "Sural Resort": {
         "history_max": 11400.0,
