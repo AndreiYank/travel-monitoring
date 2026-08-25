@@ -466,21 +466,32 @@ def collapse_canonical_per_run(df, ceiling_val=None, run_gap_minutes=5, group_co
     if df.empty:
         return df.copy()
 
-    rows = []
-    for _, _, run_slice in iter_scrape_runs(df, gap_minutes=run_gap_minutes):
-        for _, grp in run_slice.groupby(group_cols, sort=False):
-            pick = grp.sort_values('scraped_at_display')
-            if ceiling_val is not None:
-                in_band = pick[pick['price'].astype(float) <= ceiling_val]
-                if in_band.empty:
-                    continue
-                pick = in_band
-            rows.append(_lowest_price_row(pick))
-
-    if not rows:
+    work = df.dropna(subset=['scraped_at_display']).copy()
+    if work.empty:
         return pd.DataFrame(columns=df.columns)
+
+    if '__price_num' not in work.columns:
+        work['__price_num'] = pd.to_numeric(work['price'], errors='coerce')
+    work = work.dropna(subset=['__price_num']).sort_values('scraped_at_display')
+    if work.empty:
+        return pd.DataFrame(columns=df.columns)
+
+    # Assign run_id vectorially
+    tdiff = work['scraped_at_display'].diff()
+    is_new_run = (tdiff > pd.Timedelta(minutes=run_gap_minutes)).fillna(False)
+    work['__run_id'] = is_new_run.cumsum()
+
+    if ceiling_val is not None:
+        work = work[work['__price_num'] <= float(ceiling_val)]
+        if work.empty:
+            return pd.DataFrame(columns=df.columns)
+
+    # Pick lowest price per run per hotel
+    work_sorted = work.sort_values(by=['__price_num', 'scraped_at_display'])
+    dedup_cols = ['__run_id'] + list(group_cols)
+    res = work_sorted.drop_duplicates(subset=dedup_cols, keep='first')
     sort_cols = list(group_cols) + ['scraped_at_display']
-    return pd.DataFrame(rows).sort_values(sort_cols).reset_index(drop=True)
+    return res.drop(columns=['__run_id', '__price_num'], errors='ignore').sort_values(by=sort_cols).reset_index(drop=True)
 
 
 def build_daily_offers_count_timeline(
@@ -2570,25 +2581,20 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
                 labels.append(f"Новый максимум {days}д")
         minmax_labels_by_hotel[row_id] = labels
 
+    # Pre-index full history by hotel/group key to avoid O(N*M) full dataframe scans
+    full_history_by_group = {}
+    for group_key, grp in df_sorted_full.groupby(group_cols, sort=False):
+        _, _, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
+        full_history_by_group[row_id] = grp.sort_values('scraped_at_display')
+
     # Отклонение от "типичной" цены отеля:
     # baseline = time-weighted mean по всей истории (без потолка показа).
     avg_baseline_delta = {}
     for row_id, last_price in table_prices.items():
-        if use_trip_buckets:
-            hotel_name, bucket, _ = _unpack_table_group_key(
-                tuple(row_id.split('|', 1)) if '|' in row_id else (row_id, ''),
-                True,
-            )
-            mask = (df_sorted_full['hotel_name'] == hotel_name)
-            if bucket:
-                mask &= (df_sorted_full['duration_bucket'].astype(str) == bucket)
-            grp = df_sorted_full[mask]
-        else:
-            grp = df_sorted_full[df_sorted_full['hotel_name'] == row_id]
-        if grp.empty:
+        grp = full_history_by_group.get(row_id)
+        if grp is None or grp.empty:
             avg_baseline_delta[row_id] = None
             continue
-        grp = grp.sort_values('scraped_at_display')
         baseline = _time_weighted_price_baseline(grp)
         if baseline is None or baseline == 0:
             avg_baseline_delta[row_id] = None
@@ -2621,14 +2627,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
     for group_key, grp in df_sorted.groupby(group_cols):
         hotel_name, bucket, row_id = _unpack_table_group_key(group_key, use_trip_buckets)
         grp = grp.sort_values('scraped_at_display')
-        if use_trip_buckets:
-            mask = (df_sorted_full['hotel_name'] == hotel_name)
-            if bucket:
-                mask &= (df_sorted_full['duration_bucket'].astype(str) == bucket)
-            grp_full = df_sorted_full[mask].sort_values('scraped_at_display')
-        else:
-            grp_full = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name].sort_values('scraped_at_display')
-        hist_grp = grp_full if not grp_full.empty else grp
+        grp_full = full_history_by_group.get(row_id)
+        hist_grp = grp_full if grp_full is not None and not grp_full.empty else grp
         prices = hist_grp['price'].astype(float).tolist()
         if not prices:
             continue
@@ -3330,7 +3330,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
         else:
             min_p = max_p = 0.0
         median_p = float(deal_info.get('typical_price') or deal_info.get('median') or 0.0)
-        hist_grp_chart = df_sorted_full[df_sorted_full['hotel_name'] == hotel_name]
+        hist_grp_chart = full_history_by_group.get(str(hotel_name), pd.DataFrame())
         if median_p <= 0 and not hist_grp_chart.empty:
             median_p = _time_weighted_price_baseline(hist_grp_chart) or 0.0
 

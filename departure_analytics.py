@@ -172,10 +172,12 @@ def load_departure_offers(path: str) -> pd.DataFrame:
         | df["departure_date"].fillna("").astype(str).eq("")
     )
     if missing_identity.any():
-        for idx, row in df[missing_identity].iterrows():
-            ident = build_departure_identity(row.to_dict())
-            for key, value in ident.items():
-                df.at[idx, key] = value
+        sub_records = df[missing_identity].to_dict("records")
+        ident_records = [build_departure_identity(r) for r in sub_records]
+        if ident_records:
+            ident_df = pd.DataFrame(ident_records, index=df[missing_identity].index)
+            for key in ident_df.columns:
+                df.loc[missing_identity, key] = ident_df[key]
     return df
 
 
