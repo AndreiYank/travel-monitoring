@@ -597,21 +597,24 @@ def process_notifications(
                 # Global filters
                 if max_price_pln and cur_price > max_price_pln:
                     continue
-                if ta_rating is not None and ta_rating < min_ta_rating:
-                    continue
-
-                # Check 1: Hot Deal
-                if notify_hot_deals and deal_score >= deal_score_min and delta_48h <= -2.0 and item["confidence"] != "Low":
+                # Check 1: Hot Deal (Score >= 80, drop >= 3%, confident)
+                if notify_hot_deals and deal_score >= deal_score_min and delta_48h <= -3.0 and item["confidence"] != "Low":
                     candidate_alerts.append((deal_score, summary, item, "hot_deal"))
                     continue
 
-                # Check 2: Historic Low
-                if notify_historic_low and item["is_historic_low"] and delta_48h < 0:
-                    candidate_alerts.append((deal_score + 10, summary, item, "historic_low"))
+                # Check 2: True Historic Low (All-time low + drop >= 3% + high confidence)
+                if (
+                    notify_historic_low
+                    and item["is_historic_low"]
+                    and delta_48h <= -3.0
+                    and deal_score >= 70
+                    and item["confidence"] != "Low"
+                ):
+                    candidate_alerts.append((deal_score + 5, summary, item, "historic_low"))
                     continue
 
-                # Check 3: Big Price Drop
-                if notify_price_drops and delta_48h <= -price_drop_pct_min:
+                # Check 3: Big Price Drop (>= 10% drop + decent deal score)
+                if notify_price_drops and delta_48h <= -price_drop_pct_min and deal_score >= 65:
                     candidate_alerts.append((deal_score, summary, item, "price_drop"))
 
         # Sort candidate alerts by highest priority
@@ -647,6 +650,10 @@ def process_notifications(
                     sent_count_sub += 1
                     total_messages_sent += 1
                     time.sleep(1.0)
+                else:
+                    # If failed (e.g. 403 Forbidden or invalid chat_id), abort loop for this subscriber
+                    logger.warning(f"  Aborting further notifications for {sub_name} due to delivery failure.")
+                    break
 
     save_sent_cache(sent_cache, cache_path)
     logger.info(f"Done! Total notifications dispatched: {total_messages_sent}")
