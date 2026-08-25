@@ -364,10 +364,114 @@
       "created_at": "2026-08-25T05:27:10.532491+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Queen Resort Egipt, Marsa Alam_2026-08-25_05-26_+13.6"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7704.0,
+      "new_price": 6744.0,
+      "price_change": -960.0,
+      "price_change_pct": -12.461059190031152,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T06:30:14.311434+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-08-25_06-29_-12.5"
+    },
+    {
+      "hotel_name": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7432.0,
+      "new_price": 6602.0,
+      "price_change": -830.0,
+      "price_change_pct": -11.167922497308934,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T06:30:14.311469+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada_2026-08-25_06-29_-11.2"
+    },
+    {
+      "hotel_name": "Casa Mare Resort (ex. Royal Tulip Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:30:14.311522+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-25_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dreams Vacation Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 7857.0,
+      "new_price": 7857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:30:14.311532+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-25_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Akassia Beach (ex. LTI Akassia Beach) Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7871.0,
+      "new_price": 7871.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:30:14.311540+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Akassia Beach (ex. LTI Akassia Beach) Egipt, Marsa Alam_2026-08-25_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8673.0,
+      "new_price": 8673.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:30:14.311547+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-08-25_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 8387.0,
+      "new_price": 8387.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:30:14.311554+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-08-25_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Makadi Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 8647.0,
+      "new_price": 8647.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:38.580808+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:30:14.311562+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Makadi Beach & Spa_2026-08-25_06-29_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T05:26:37.104524+00:00",
+    "last_processed_run": "2026-08-25T06:29:38.580808+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -470,7 +574,7 @@
         "premium_peak": null
       },
       "Jaz Mirabel Beach Resort": {
-        "history_max": 9095.0,
+        "history_max": 9311.0,
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
@@ -910,7 +1014,7 @@
         "premium_peak": null
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)": {
-        "history_max": 8887.0,
+        "history_max": 9258.0,
         "premium_peak": null
       },
       "Grand Rotana Resort & Spa": {
@@ -1054,11 +1158,23 @@
         "premium_peak": null
       },
       "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 6607.0,
+        "history_max": 6677.0,
         "premium_peak": null
       },
       "Charmillion Club Resort": {
         "history_max": 7881.0,
+        "premium_peak": null
+      },
+      "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay": {
+        "history_max": 7701.0,
+        "premium_peak": null
+      },
+      "Stella Di Mare Gardens Resort & Spa Egipt, Hurghada, Makadi Bay": {
+        "history_max": 7366.0,
+        "premium_peak": null
+      },
+      "Dreams Vacation Sharm Resort": {
+        "history_max": 7857.0,
         "premium_peak": null
       }
     }

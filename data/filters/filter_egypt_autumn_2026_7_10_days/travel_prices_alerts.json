@@ -325,10 +325,49 @@
       "created_at": "2026-08-25T05:26:48.055977+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Queen Resort Egipt, Marsa Alam_2026-08-25_05-26_+13.6"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 9998.0,
+      "new_price": 8359.0,
+      "price_change": -1639.0,
+      "price_change_pct": -16.393278655731148,
+      "timestamp": "2026-08-25 06:29:11.562454+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T06:29:48.778984+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-08-25_06-29_-16.4"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8317.0,
+      "new_price": 8317.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:11.562454+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:29:48.779032+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-25_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 7957.0,
+      "new_price": 7957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:29:11.562454+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:29:48.779043+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay_2026-08-25_06-29_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T05:26:09.741220+00:00",
+    "last_processed_run": "2026-08-25T06:29:11.562454+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -355,7 +394,7 @@
         "premium_peak": null
       },
       "Jaz Mirabel Beach Resort": {
-        "history_max": 9095.0,
+        "history_max": 9311.0,
         "premium_peak": null
       },
       "Jaz Mirabel Park": {
@@ -963,7 +1002,7 @@
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
-        "history_max": 5787.0,
+        "history_max": 5857.0,
         "premium_peak": null
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
@@ -971,19 +1010,23 @@
         "premium_peak": null
       },
       "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 6607.0,
+        "history_max": 6697.0,
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
-        "history_max": 6907.0,
+        "history_max": 7417.0,
         "premium_peak": null
       },
       "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam": {
-        "history_max": 6887.0,
+        "history_max": 7237.0,
         "premium_peak": null
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
         "history_max": 8037.0,
+        "premium_peak": null
+      },
+      "Sunrise Royal Makadi Aqua Resort": {
+        "history_max": 10946.0,
         "premium_peak": null
       }
     }

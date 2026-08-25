@@ -546,10 +546,75 @@
       "created_at": "2026-08-25T05:28:13.654681+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seaden Sea World Resort & Spa_2026-08-25_05-27_zone_out_+2.9"
+    },
+    {
+      "hotel_name": "M. C. Beach Resort (ex. Otium MC Beach Resort) Turcja, Alanya, Konakli",
+      "duration_bucket": "",
+      "old_price": 5729.0,
+      "new_price": 5252.0,
+      "price_change": -477.0,
+      "price_change_pct": -8.326060394484202,
+      "timestamp": "2026-08-25 06:30:05.557901+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T06:31:15.669854+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "M. C. Beach Resort (ex. Otium MC Beach Resort) Turcja, Alanya, Konakli_2026-08-25_06-30_-8.3"
+    },
+    {
+      "hotel_name": "Club Jovia Kemer (ex. Armir Resort) Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 7257.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:30:05.557901+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:31:15.669913+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Jovia Kemer (ex. Armir Resort) Turcja, Kemer_2026-08-25_06-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Orange County Belek",
+      "duration_bucket": "",
+      "old_price": 9851.0,
+      "new_price": 10119.0,
+      "price_change": 268.0,
+      "price_change_pct": 2.720535986194295,
+      "timestamp": "2026-08-25 06:30:05.557901+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:31:15.669926+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Belek_2026-08-25_06-30_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Raxeria (Side)",
+      "duration_bucket": "",
+      "old_price": 7785.0,
+      "new_price": 7785.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:30:05.557901+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:31:15.669935+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raxeria (Side)_2026-08-25_06-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Victory Volare",
+      "duration_bucket": "",
+      "old_price": 10000.0,
+      "new_price": 10000.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 06:30:05.557901+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T06:31:15.669943+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Victory Volare_2026-08-25_06-30_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T05:27:05.845385+00:00",
+    "last_processed_run": "2026-08-25T06:30:05.557901+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -1216,7 +1281,7 @@
         "premium_peak": null
       },
       "Vita Silva": {
-        "history_max": 7572.0,
+        "history_max": 7945.0,
         "premium_peak": null
       },
       "Vikingen Infinity Resort & Spa": {
@@ -1600,7 +1665,7 @@
         "premium_peak": null
       },
       "Arnor De Luxe & SPA": {
-        "history_max": 9766.0,
+        "history_max": 9911.0,
         "premium_peak": null
       },
       "Calimera Hane Garden (ex. PrimaSol Hane Garden)": {
@@ -1620,8 +1685,8 @@
         "premium_peak": null
       },
       "Azura Deluxe Resort & Spa": {
-        "history_max": 10238.0,
-        "premium_peak": 10238.0
+        "history_max": 10256.0,
+        "premium_peak": 10256.0
       },
       "Armonia Holiday Village": {
         "history_max": 10174.0,
@@ -1652,7 +1717,7 @@
         "premium_peak": 11395.0
       },
       "Armas Beach": {
-        "history_max": 8569.0,
+        "history_max": 9090.0,
         "premium_peak": null
       },
       "Andriake Beach Club": {
@@ -1833,6 +1898,14 @@
       },
       "Signature Blue Resort (ex. Grand Ozcelik)": {
         "history_max": 7466.0,
+        "premium_peak": null
+      },
+      "Fame Residence (Kemer)": {
+        "history_max": 10939.0,
+        "premium_peak": 10939.0
+      },
+      "Raxeria Turcja, Side, Kızılot": {
+        "history_max": 7236.0,
         "premium_peak": null
       }
     }

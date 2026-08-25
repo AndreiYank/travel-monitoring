@@ -221,10 +221,49 @@
       "created_at": "2026-08-25T03:44:01.756550+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-25_03-43_zone_out_+10.5"
+    },
+    {
+      "hotel_name": "Raxeria (Side)",
+      "duration_bucket": "",
+      "old_price": 9864.0,
+      "new_price": 8906.0,
+      "price_change": -958.0,
+      "price_change_pct": -9.712084347120843,
+      "timestamp": "2026-08-25 06:30:15.168632+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T06:31:04.989565+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raxeria (Side)_2026-08-25_06-30_-9.7"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 5967.0,
+      "new_price": 5436.0,
+      "price_change": -531.0,
+      "price_change_pct": -8.89894419306184,
+      "timestamp": "2026-08-25 06:30:15.168632+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T06:31:04.989597+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-08-25_06-30_-8.9"
+    },
+    {
+      "hotel_name": "M. C. Beach Resort (ex. Otium MC Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 11120.0,
+      "new_price": 7578.0,
+      "price_change": -3542.0,
+      "price_change_pct": -31.852517985611513,
+      "timestamp": "2026-08-25 06:30:15.168632+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T06:31:04.989630+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "M. C. Beach Resort (ex. Otium MC Beach Resort)_2026-08-25_06-30_comeback_31.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T05:27:11.461382+00:00",
+    "last_processed_run": "2026-08-25T06:30:15.168632+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -363,7 +402,7 @@
         "premium_peak": 12728.0
       },
       "Nova Life": {
-        "history_max": 8766.0,
+        "history_max": 8888.0,
         "premium_peak": null
       },
       "Narcia Resort Side": {
@@ -471,8 +510,8 @@
         "premium_peak": null
       },
       "Greenwood Suites Resort (ex. Sherwood Suites Resort)": {
-        "history_max": 13509.0,
-        "premium_peak": 13509.0
+        "history_max": 13581.0,
+        "premium_peak": 13581.0
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)": {
         "history_max": 12486.0,
@@ -847,8 +886,8 @@
         "premium_peak": 11813.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)": {
-        "history_max": 13140.0,
-        "premium_peak": 13140.0
+        "history_max": 15471.0,
+        "premium_peak": 15471.0
       },
       "Timo Deluxe Resort": {
         "history_max": 10301.0,
@@ -971,8 +1010,8 @@
         "premium_peak": 16718.0
       },
       "Sherwood Dreams Resort": {
-        "history_max": 15017.0,
-        "premium_peak": 15017.0
+        "history_max": 15430.0,
+        "premium_peak": 15430.0
       },
       "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)": {
         "history_max": 14378.0,
@@ -1411,8 +1450,8 @@
         "premium_peak": 14984.0
       },
       "Azura Deluxe Resort & Spa": {
-        "history_max": 12785.0,
-        "premium_peak": 12785.0
+        "history_max": 13122.0,
+        "premium_peak": 13122.0
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
         "history_max": 12786.0,
@@ -1461,6 +1500,10 @@
       "MegaSaray Club Belek": {
         "history_max": 16905.0,
         "premium_peak": 16905.0
+      },
+      "Paloma Oceana Resort (ex Paloma Beach)": {
+        "history_max": 16788.0,
+        "premium_peak": 16788.0
       }
     }
   }
