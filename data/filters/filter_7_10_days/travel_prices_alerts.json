@@ -104,10 +104,75 @@
       "created_at": "2026-08-24T23:17:01.148138+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amphoras Beach_2026-08-24_23-16_comeback_13.0"
+    },
+    {
+      "hotel_name": "Stella Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7358.0,
+      "new_price": 8352.0,
+      "price_change": 994.0,
+      "price_change_pct": 13.509105735254145,
+      "timestamp": "2026-08-25 00:41:54.983120+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T00:42:34.218829+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Beach Resort & Spa_2026-08-25_00-41_+13.5"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 8417.0,
+      "new_price": 9557.0,
+      "price_change": 1140.0,
+      "price_change_pct": 13.544018058690746,
+      "timestamp": "2026-08-25 00:41:54.983120+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T00:42:34.218860+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-08-25_00-41_+13.5"
+    },
+    {
+      "hotel_name": "Amphoras Beach",
+      "duration_bucket": "",
+      "old_price": 9147.0,
+      "new_price": 10513.0,
+      "price_change": 1366.0,
+      "price_change_pct": 14.933858095550454,
+      "timestamp": "2026-08-25 00:41:54.983120+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T00:42:34.218886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amphoras Beach_2026-08-25_00-41_zone_out_+14.9"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 11187.0,
+      "new_price": 9017.0,
+      "price_change": -2170.0,
+      "price_change_pct": -19.397514972736214,
+      "timestamp": "2026-08-25 00:41:54.983120+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T00:42:34.218911+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-25_00-41_comeback_19.4"
+    },
+    {
+      "hotel_name": "Serenity Sky Arc",
+      "duration_bucket": "",
+      "old_price": 11768.0,
+      "new_price": 9135.0,
+      "price_change": -2633.0,
+      "price_change_pct": -22.37423521414004,
+      "timestamp": "2026-08-25 00:41:54.983120+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T00:42:34.218928+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-08-25_00-41_comeback_22.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T23:16:24.742936+00:00",
+    "last_processed_run": "2026-08-25T00:41:54.983120+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -698,16 +763,16 @@
         "premium_peak": null
       },
       "Cardina Resort by Sunrise": {
-        "history_max": 10147.0,
-        "premium_peak": 10147.0
+        "history_max": 10317.0,
+        "premium_peak": 10317.0
       },
       "Stella Di Mare Beach & Spa": {
         "history_max": 11087.0,
         "premium_peak": 11087.0
       },
       "Sunrise Tucana Resort": {
-        "history_max": 12852.0,
-        "premium_peak": 12852.0
+        "history_max": 13285.0,
+        "premium_peak": 13285.0
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
         "history_max": 8029.0,
@@ -766,7 +831,7 @@
         "premium_peak": null
       },
       "Stella Beach Resort & Spa": {
-        "history_max": 7358.0,
+        "history_max": 8352.0,
         "premium_peak": null
       },
       "Aldiana Club Naga Bay": {
@@ -928,6 +993,14 @@
       "El Kasr Red Sea": {
         "history_max": 13557.0,
         "premium_peak": 13557.0
+      },
+      "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
+        "history_max": 13557.0,
+        "premium_peak": 13557.0
+      },
+      "Rewaya Majestic Resort": {
+        "history_max": 10807.0,
+        "premium_peak": 10807.0
       }
     }
   }

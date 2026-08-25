@@ -312,10 +312,101 @@
       "created_at": "2026-08-24T23:18:14.895228+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Seaden Sea World Resort & Spa_2026-08-24_23-17_zone_out_+4.4"
+    },
+    {
+      "hotel_name": "Solivia (Ex. Titan Select)",
+      "duration_bucket": "",
+      "old_price": 7686.0,
+      "new_price": 8753.0,
+      "price_change": 1067.0,
+      "price_change_pct": 13.882383554514702,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T00:43:48.312906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solivia (Ex. Titan Select)_2026-08-25_00-42_+13.9"
+    },
+    {
+      "hotel_name": "Alan Xafira Deluxe Resort & Spa Turcja, Alanya, Turkler",
+      "duration_bucket": "",
+      "old_price": 7412.0,
+      "new_price": 7412.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T00:43:48.312958+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Alan Xafira Deluxe Resort & Spa Turcja, Alanya, Turkler_2026-08-25_00-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aria Resort & SPA",
+      "duration_bucket": "",
+      "old_price": 9973.0,
+      "new_price": 10408.0,
+      "price_change": 435.0,
+      "price_change_pct": 4.361776797352853,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T00:43:48.312971+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aria Resort & SPA_2026-08-25_00-42_zone_out_+4.4"
+    },
+    {
+      "hotel_name": "Champion Holiday Village (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9467.0,
+      "new_price": 10699.0,
+      "price_change": 1232.0,
+      "price_change_pct": 13.013626280764761,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T00:43:48.312981+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Champion Holiday Village (Kemer)_2026-08-25_00-42_zone_out_+13.0"
+    },
+    {
+      "hotel_name": "Numa Bay Exclusive (ex Sentido Numa Bay)",
+      "duration_bucket": "",
+      "old_price": 9546.0,
+      "new_price": 10288.0,
+      "price_change": 742.0,
+      "price_change_pct": 7.772889168238005,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T00:43:48.312989+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Numa Bay Exclusive (ex Sentido Numa Bay)_2026-08-25_00-42_zone_out_+7.8"
+    },
+    {
+      "hotel_name": "Side Crown Serenity",
+      "duration_bucket": "",
+      "old_price": 7497.0,
+      "new_price": 7497.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T00:43:48.312996+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Crown Serenity_2026-08-25_00-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10678.0,
+      "new_price": 9261.0,
+      "price_change": -1417.0,
+      "price_change_pct": -13.270275332459262,
+      "timestamp": "2026-08-25 00:42:50.786554+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T00:43:48.313027+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort_2026-08-25_00-42_comeback_13.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-24T23:17:17.043306+00:00",
+    "last_processed_run": "2026-08-25T00:42:50.786554+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -478,8 +569,8 @@
         "premium_peak": 11559.0
       },
       "Marvida Family Eco": {
-        "history_max": 10380.0,
-        "premium_peak": 10380.0
+        "history_max": 10406.0,
+        "premium_peak": 10406.0
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
         "history_max": 8055.0,
@@ -866,7 +957,7 @@
         "premium_peak": 10939.0
       },
       "Solivia (Ex. Titan Select)": {
-        "history_max": 7686.0,
+        "history_max": 8753.0,
         "premium_peak": null
       },
       "Side Star Resort (ex Club)": {
@@ -1058,8 +1149,8 @@
         "premium_peak": 10449.0
       },
       "Selectum Noa": {
-        "history_max": 10161.0,
-        "premium_peak": 10161.0
+        "history_max": 10323.0,
+        "premium_peak": 10323.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
         "history_max": 9770.0,
@@ -1154,8 +1245,8 @@
         "premium_peak": 11711.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
-        "history_max": 9805.0,
-        "premium_peak": null
+        "history_max": 10288.0,
+        "premium_peak": 10288.0
       },
       "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)": {
         "history_max": 7697.0,
@@ -1206,7 +1297,7 @@
         "premium_peak": 11210.0
       },
       "Seher Sun Palace Resort & Spa": {
-        "history_max": 7835.0,
+        "history_max": 7965.0,
         "premium_peak": null
       },
       "Seher Resort & Spa": {
@@ -1254,8 +1345,8 @@
         "premium_peak": null
       },
       "Saphir Resort": {
-        "history_max": 11138.0,
-        "premium_peak": 11138.0
+        "history_max": 11167.0,
+        "premium_peak": 11167.0
       },
       "Saphir Hotel & Villas": {
         "history_max": 10175.0,
@@ -1310,8 +1401,8 @@
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 9770.0,
-        "premium_peak": null
+        "history_max": 10699.0,
+        "premium_peak": 10699.0
       },
       "Laur Experience & Elegance": {
         "history_max": 10964.0,
@@ -1430,7 +1521,7 @@
         "premium_peak": null
       },
       "Armella Hill": {
-        "history_max": 7811.0,
+        "history_max": 8384.0,
         "premium_peak": null
       },
       "Asteria Family Belek": {
@@ -1486,8 +1577,8 @@
         "premium_peak": 11331.0
       },
       "Aria Resort & SPA": {
-        "history_max": 9973.0,
-        "premium_peak": null
+        "history_max": 10408.0,
+        "premium_peak": 10408.0
       },
       "Armas Green Fugla Turcja, Alanya": {
         "history_max": 6651.0,
@@ -1510,7 +1601,7 @@
         "premium_peak": 10863.0
       },
       "Cenger Blue Collection": {
-        "history_max": 8497.0,
+        "history_max": 8834.0,
         "premium_peak": null
       },
       "Benata": {
@@ -1556,6 +1647,30 @@
       "Pine Beach Belek (ex. Maritim Pine Beach Resort)": {
         "history_max": 11768.0,
         "premium_peak": 11768.0
+      },
+      "Villa Side Residence": {
+        "history_max": 11349.0,
+        "premium_peak": 11349.0
+      },
+      "Side Crown Serenity Turcja, Side, Colakli": {
+        "history_max": 7497.0,
+        "premium_peak": null
+      },
+      "Ramada By Wyndham Istanbul Pera": {
+        "history_max": 11677.0,
+        "premium_peak": 11677.0
+      },
+      "Porto Bello": {
+        "history_max": 11606.0,
+        "premium_peak": 11606.0
+      },
+      "Maxeria Blue Didyma": {
+        "history_max": 10957.0,
+        "premium_peak": 10957.0
+      },
+      "Sy Belek Boutique Luxury": {
+        "history_max": 10863.0,
+        "premium_peak": 10863.0
       }
     }
   }
