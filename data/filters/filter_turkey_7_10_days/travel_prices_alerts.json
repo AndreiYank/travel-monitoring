@@ -2262,10 +2262,62 @@
       "created_at": "2026-08-25T17:30:57.749569+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Side Premium by OZ Hotels_2026-08-25_17-29_comeback_8.1"
+    },
+    {
+      "hotel_name": "Armella Hill",
+      "duration_bucket": "",
+      "old_price": 7161.0,
+      "new_price": 7161.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 19:28:31.936884+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T19:29:52.715670+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armella Hill_2026-08-25_19-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Crystal Tat Beach Pearl Collection",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10097.0,
+      "price_change": 140.0,
+      "price_change_pct": 1.4060459977904993,
+      "timestamp": "2026-08-25 19:28:31.936884+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T19:29:52.715703+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Crystal Tat Beach Pearl Collection_2026-08-25_19-28_zone_out_+1.4"
+    },
+    {
+      "hotel_name": "Limak Limra",
+      "duration_bucket": "",
+      "old_price": 9930.0,
+      "new_price": 10207.0,
+      "price_change": 277.0,
+      "price_change_pct": 2.789526686807654,
+      "timestamp": "2026-08-25 19:28:31.936884+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T19:29:52.715715+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Limak Limra_2026-08-25_19-28_zone_out_+2.8"
+    },
+    {
+      "hotel_name": "Sun Star Resort Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 7123.0,
+      "new_price": 7123.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 19:28:31.936884+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T19:29:52.715724+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sun Star Resort Turcja, Alanya, Mahmutlar_2026-08-25_19-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T17:29:51.508791+00:00",
+    "last_processed_run": "2026-08-25T19:28:31.936884+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -2408,8 +2460,8 @@
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 11234.0,
-        "premium_peak": 11234.0
+        "history_max": 11501.0,
+        "premium_peak": 11501.0
       },
       "The Norm Oriental (ex. Asteria Kemer Resort)": {
         "history_max": 10449.0,
@@ -3650,6 +3702,10 @@
       "Arycanda Kirman Premium": {
         "history_max": 11556.0,
         "premium_peak": 11556.0
+      },
+      "Sun Star Resort": {
+        "history_max": 7123.0,
+        "premium_peak": null
       }
     }
   }

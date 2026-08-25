@@ -1014,10 +1014,49 @@
       "created_at": "2026-08-25T17:29:33.811732+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Naama Bay Promenade Mountain Resort_2026-08-25_17-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Red Sea Grand Makadi (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 9490.0,
+      "new_price": 9490.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 19:27:20.170536+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T19:28:15.900576+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-08-25_19-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)",
+      "duration_bucket": "",
+      "old_price": 9648.0,
+      "new_price": 9648.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 19:27:20.170536+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T19:28:15.900602+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)_2026-08-25_19-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "V Hotel Sharm",
+      "duration_bucket": "",
+      "old_price": 11755.0,
+      "new_price": 9706.0,
+      "price_change": -2049.0,
+      "price_change_pct": -17.430880476393025,
+      "timestamp": "2026-08-25 19:27:20.170536+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T19:28:15.900649+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "V Hotel Sharm_2026-08-25_19-27_comeback_17.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T17:28:46.048532+00:00",
+    "last_processed_run": "2026-08-25T19:27:20.170536+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -1728,7 +1767,7 @@
         "premium_peak": 10382.0
       },
       "Movenpick Resort & Spa El Gouna": {
-        "history_max": 9117.0,
+        "history_max": 9306.0,
         "premium_peak": null
       },
       "Sea Star Beau Rivage": {

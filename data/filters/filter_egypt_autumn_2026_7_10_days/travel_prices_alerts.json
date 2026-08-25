@@ -793,10 +793,49 @@
       "created_at": "2026-08-25T17:29:33.610547+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Golf Villas And Suites Sharm_2026-08-25_17-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)",
+      "duration_bucket": "",
+      "old_price": 8217.0,
+      "new_price": 9477.0,
+      "price_change": 1260.0,
+      "price_change_pct": 15.33406352683461,
+      "timestamp": "2026-08-25 19:27:20.200492+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T19:28:10.765201+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)_2026-08-25_19-27_+15.3"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8457.0,
+      "new_price": 9437.0,
+      "price_change": 980.0,
+      "price_change_pct": 11.588033581648338,
+      "timestamp": "2026-08-25 19:27:20.200492+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T19:28:10.765229+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino_2026-08-25_19-27_+11.6"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9288.0,
+      "new_price": 8113.0,
+      "price_change": -1175.0,
+      "price_change_pct": -12.650732127476314,
+      "timestamp": "2026-08-25 19:27:20.200492+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T19:28:10.765262+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-08-25_19-27_-12.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T17:28:45.966530+00:00",
+    "last_processed_run": "2026-08-25T19:27:20.200492+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -999,7 +1038,7 @@
         "premium_peak": null
       },
       "Amphoras Beach": {
-        "history_max": 9327.0,
+        "history_max": 10007.0,
         "premium_peak": null
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
@@ -1335,7 +1374,7 @@
         "premium_peak": null
       },
       "Pickalbatros Palace Resort": {
-        "history_max": 9317.0,
+        "history_max": 9537.0,
         "premium_peak": null
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
