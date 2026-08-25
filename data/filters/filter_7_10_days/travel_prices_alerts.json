@@ -598,10 +598,114 @@
       "created_at": "2026-08-25T13:44:08.081629+00:00",
       "threshold_percent": 8.0,
       "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-08-25_13-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 8717.0,
+      "new_price": 7436.0,
+      "price_change": -1281.0,
+      "price_change_pct": -14.695422737180222,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T14:37:56.322797+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-08-25_14-37_-14.7"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 7221.0,
+      "new_price": 6459.0,
+      "price_change": -762.0,
+      "price_change_pct": -10.552555047777316,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T14:37:56.322838+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-08-25_14-37_-10.6"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8057.0,
+      "new_price": 7116.0,
+      "price_change": -941.0,
+      "price_change_pct": -11.679285093707335,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T14:37:56.322859+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-08-25_14-37_-11.7"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 7677.0,
+      "new_price": 8339.0,
+      "price_change": 662.0,
+      "price_change_pct": 8.623160088576267,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T14:37:56.322874+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-08-25_14-37_+8.6"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 7657.0,
+      "new_price": 8657.0,
+      "price_change": 1000.0,
+      "price_change_pct": 13.059945148230378,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T14:37:56.322887+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-08-25_14-37_+13.1"
+    },
+    {
+      "hotel_name": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)",
+      "duration_bucket": "",
+      "old_price": 8024.0,
+      "new_price": 7327.0,
+      "price_change": -697.0,
+      "price_change_pct": -8.686440677966102,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T14:37:56.322914+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)_2026-08-25_14-37_-8.7"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 7919.0,
+      "new_price": 7185.0,
+      "price_change": -734.0,
+      "price_change_pct": -9.268847076651092,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T14:37:56.322932+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-08-25_14-37_-9.3"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9907.0,
+      "new_price": 10008.0,
+      "price_change": 101.0,
+      "price_change_pct": 1.0194811749268193,
+      "timestamp": "2026-08-25 14:37:14.374999+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T14:37:56.322964+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-08-25_14-37_zone_out_+1.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T13:43:27.726913+00:00",
+    "last_processed_run": "2026-08-25T14:37:14.374999+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -632,7 +736,7 @@
         "premium_peak": null
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
-        "history_max": 9697.0,
+        "history_max": 9997.0,
         "premium_peak": null
       },
       "Rixos Premium Seagate": {
@@ -680,7 +784,7 @@
         "premium_peak": 11817.0
       },
       "Lazuli (Marsa Alam)": {
-        "history_max": 8057.0,
+        "history_max": 8657.0,
         "premium_peak": null
       },
       "Charmillion Club Resort": {
@@ -1260,8 +1364,8 @@
         "premium_peak": 13706.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 9907.0,
-        "premium_peak": null
+        "history_max": 10008.0,
+        "premium_peak": 10008.0
       },
       "True Beach Resort": {
         "history_max": 11340.0,
@@ -1408,8 +1512,8 @@
         "premium_peak": 13797.0
       },
       "Baron Palms": {
-        "history_max": 12477.0,
-        "premium_peak": 12477.0
+        "history_max": 14217.0,
+        "premium_peak": 14217.0
       },
       "Steigenberger Resort Alaya": {
         "history_max": 14997.0,

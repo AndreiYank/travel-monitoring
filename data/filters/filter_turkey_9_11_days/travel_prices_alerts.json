@@ -494,10 +494,62 @@
       "created_at": "2026-08-25T13:45:30.454795+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe_2026-08-25_13-44_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 8957.0,
+      "new_price": 9757.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.931561906888467,
+      "timestamp": "2026-08-25 14:38:14.585178+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T14:39:22.771684+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa_2026-08-25_14-38_+8.9"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 6750.0,
+      "new_price": 6197.0,
+      "price_change": -553.0,
+      "price_change_pct": -8.192592592592593,
+      "timestamp": "2026-08-25 14:38:14.585178+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T14:39:22.771714+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-25_14-38_-8.2"
+    },
+    {
+      "hotel_name": "Sultan of Dreams",
+      "duration_bucket": "",
+      "old_price": 10777.0,
+      "new_price": 9466.0,
+      "price_change": -1311.0,
+      "price_change_pct": -12.164795397606012,
+      "timestamp": "2026-08-25 14:38:14.585178+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T14:39:22.771748+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Dreams_2026-08-25_14-38_comeback_12.2"
+    },
+    {
+      "hotel_name": "Sentido Lycus Beach (ex. Lti)",
+      "duration_bucket": "",
+      "old_price": 10749.0,
+      "new_price": 9839.0,
+      "price_change": -910.0,
+      "price_change_pct": -8.465903805005116,
+      "timestamp": "2026-08-25 14:38:14.585178+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T14:39:22.771761+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Lycus Beach (ex. Lti)_2026-08-25_14-38_comeback_8.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T13:44:33.119029+00:00",
+    "last_processed_run": "2026-08-25T14:38:14.585178+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -588,8 +640,8 @@
         "premium_peak": null
       },
       "Sueno Beach Side": {
-        "history_max": 12726.0,
-        "premium_peak": 12726.0
+        "history_max": 12856.0,
+        "premium_peak": 12856.0
       },
       "Horus Paradise Luxury Resort": {
         "history_max": 11875.0,
@@ -740,8 +792,8 @@
         "premium_peak": 11088.0
       },
       "Arcanus Trendline Resort": {
-        "history_max": 13136.0,
-        "premium_peak": 13136.0
+        "history_max": 13284.0,
+        "premium_peak": 13284.0
       },
       "Grand Belish": {
         "history_max": 12315.0,
@@ -848,7 +900,7 @@
         "premium_peak": 11282.0
       },
       "Green Nature Resort & Spa": {
-        "history_max": 8957.0,
+        "history_max": 9757.0,
         "premium_peak": null
       },
       "Sultan of Dreams": {
@@ -952,7 +1004,7 @@
         "premium_peak": 15759.0
       },
       "Master Family Club": {
-        "history_max": 9615.0,
+        "history_max": 9757.0,
         "premium_peak": null
       },
       "Side Mare Resort": {
@@ -1048,8 +1100,8 @@
         "premium_peak": 13178.0
       },
       "Aydinbey Queens Palace & Spa": {
-        "history_max": 10193.0,
-        "premium_peak": 10193.0
+        "history_max": 10211.0,
+        "premium_peak": 10211.0
       },
       "Aydinbey Gold Dreams": {
         "history_max": 12187.0,
@@ -1524,7 +1576,7 @@
         "premium_peak": 12205.0
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
-        "history_max": 8831.0,
+        "history_max": 8961.0,
         "premium_peak": null
       },
       "Dream World Palace": {
@@ -1568,8 +1620,8 @@
         "premium_peak": 13368.0
       },
       "Crystal Admiral Aqua Collection": {
-        "history_max": 11909.0,
-        "premium_peak": 11909.0
+        "history_max": 12087.0,
+        "premium_peak": 12087.0
       },
       "Raxeria (Side)": {
         "history_max": 9864.0,
@@ -1588,8 +1640,8 @@
         "premium_peak": 15521.0
       },
       "Trendy Aspendos Beach": {
-        "history_max": 13964.0,
-        "premium_peak": 13964.0
+        "history_max": 14112.0,
+        "premium_peak": 14112.0
       },
       "Adora Hotel & Resort (ex. Adora Golf)": {
         "history_max": 14984.0,
@@ -1774,6 +1826,10 @@
       "Serra Palace (ex. LTI Serra Resort)": {
         "history_max": 13157.0,
         "premium_peak": 13157.0
+      },
+      "Gural Premier Belek": {
+        "history_max": 16974.0,
+        "premium_peak": 16974.0
       }
     }
   }
