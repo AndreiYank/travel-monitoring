@@ -120,26 +120,52 @@ def send_telegram_message(
 # Cache & Deduplication
 # ============================================================================
 
-def load_sent_cache(cache_path: str = DEFAULT_CACHE_PATH) -> Dict[str, str]:
+def load_sent_cache(cache_path: str = DEFAULT_CACHE_PATH) -> Dict[str, Any]:
     if not os.path.isfile(cache_path):
-        return {}
+        return {"version": 2, "history": {}, "digests": {}}
     try:
         with open(cache_path, "r", encoding="utf-8") as f:
             data = json.load(f)
-            return data.get("sent", {}) if isinstance(data, dict) else {}
+            if not isinstance(data, dict):
+                return {"version": 2, "history": {}, "digests": {}}
+            if "history" in data or "digests" in data:
+                return {
+                    "version": 2,
+                    "history": dict(data.get("history") or {}),
+                    "digests": dict(data.get("digests") or {}),
+                }
+            # Migration from version 1
+            sent_legacy = data.get("sent", {})
+            return {"version": 2, "history": {}, "digests": sent_legacy}
     except Exception as e:
         logger.warning(f"Could not load cache {cache_path}: {e}")
-        return {}
+        return {"version": 2, "history": {}, "digests": {}}
 
 
-def save_sent_cache(cache: Dict[str, str], cache_path: str = DEFAULT_CACHE_PATH) -> None:
+def save_sent_cache(cache: Dict[str, Any], cache_path: str = DEFAULT_CACHE_PATH) -> None:
     try:
         os.makedirs(os.path.dirname(cache_path), exist_ok=True)
-        # Purge entries older than CACHE_RETENTION_DAYS
         cutoff = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=CACHE_RETENTION_DAYS)).isoformat()
-        cleaned = {k: v for k, v in cache.items() if v >= cutoff}
+        
+        history = cache.get("history", {})
+        cleaned_history = {
+            k: v for k, v in history.items()
+            if isinstance(v, dict) and v.get("last_sent_at", "") >= cutoff
+        }
+        
+        digests = cache.get("digests", {})
+        cleaned_digests = {
+            k: v for k, v in digests.items()
+            if str(v) >= cutoff
+        }
+        
+        doc = {
+            "version": 2,
+            "history": cleaned_history,
+            "digests": cleaned_digests,
+        }
         with open(cache_path, "w", encoding="utf-8") as f:
-            json.dump({"version": 1, "sent": cleaned}, f, indent=2, ensure_ascii=False)
+            json.dump(doc, f, indent=2, ensure_ascii=False)
     except Exception as e:
         logger.warning(f"Could not save cache {cache_path}: {e}")
 
@@ -549,7 +575,8 @@ def process_notifications(
         # A. Send Daily Digest if scheduled
         if is_digest_time and rules.get("notify_market_summary", True):
             digest_cache_key = f"{chat_id}:daily_digest:{now_sub_time.strftime('%Y-%m-%d')}"
-            if digest_cache_key not in sent_cache or force_digest:
+            digests_cache = sent_cache.setdefault("digests", {})
+            if digest_cache_key not in digests_cache or force_digest:
                 applicable_summaries = [
                     s for fid, s in filter_summaries.items()
                     if not sub_filters or fid in sub_filters
@@ -561,12 +588,12 @@ def process_notifications(
                         print("\n" + "=" * 50 + " [SIMULATED TELEGRAM DIGEST] " + "=" * 50)
                         print(digest_text)
                         print("=" * 125 + "\n")
-                        sent_cache[digest_cache_key] = now_utc_iso
+                        digests_cache[digest_cache_key] = now_utc_iso
                         total_messages_sent += 1
                     else:
                         ok = send_telegram_message(bot_token, chat_id, digest_text)
                         if ok:
-                            sent_cache[digest_cache_key] = now_utc_iso
+                            digests_cache[digest_cache_key] = now_utc_iso
                             total_messages_sent += 1
                             time.sleep(1.0)
 
@@ -593,6 +620,7 @@ def process_notifications(
 
             for item in summary.hotel_metrics:
                 cur_price = item["current_price"]
+                prev_price = item.get("prev_price")
                 deal_score = item["deal_score"]
                 delta_48h = item["delta_48h_pct"]
                 delta_run = item.get("delta_run_pct", 0.0)
@@ -604,8 +632,15 @@ def process_notifications(
                 if ta_rating is not None and ta_rating < min_ta_rating:
                     continue
 
-                # Check 1: Flash Drop (Sudden drop >= 12% in 1 run OR >= 15% in 48h)
-                if (delta_run <= -single_run_drop_pct_min or delta_48h <= -price_drop_pct_min) and cur_price > 0:
+                # Instant alert requirement: MUST be a fresh price drop in the latest scrape run
+                # or a brand-new top offer that just appeared!
+                is_fresh_drop = (delta_run <= -2.0)
+                is_brand_new_offer = (prev_price is None or prev_price <= 0)
+                if not is_fresh_drop and not is_brand_new_offer:
+                    continue
+
+                # Check 1: Flash Drop (Sudden drop >= 12% in this run OR >= 15% in 48h)
+                if (delta_run <= -single_run_drop_pct_min or (delta_48h <= -price_drop_pct_min and is_fresh_drop)) and cur_price > 0:
                     candidate_alerts.append((150 + int(abs(delta_48h)), summary, item, "flash_drop"))
                     continue
 
@@ -629,32 +664,49 @@ def process_notifications(
         candidate_alerts.sort(key=lambda x: x[0], reverse=True)
 
         sent_count_sub = 0
+        history_cache = sent_cache.setdefault("history", {})
+
         for _, flt_summary, item, alert_type in candidate_alerts:
             if sent_count_sub >= max_msgs:
                 logger.info(f"  Reached max message limit ({max_msgs}) for {sub_name}.")
                 break
 
             hotel_name = item["hotel_name"]
-            price_bucket = round(item["current_price"] / 50.0) * 50  # Group by ~50 PLN brackets
-            cache_key = f"{chat_id}:{flt_summary.filter_id}:{hotel_name}:{price_bucket}:{alert_type}"
+            cur_price = item["current_price"]
+            hotel_key = f"{chat_id}:{flt_summary.filter_id}:{hotel_name}"
 
-            if cache_key in sent_cache:
-                continue
+            # Check if this hotel was already sent to this subscriber
+            prev_info = history_cache.get(hotel_key)
+            if prev_info:
+                last_sent_price = float(prev_info.get("last_sent_price") or 0.0)
+                # If already sent, only re-alert if price dropped by another >= 5% below last sent price
+                if last_sent_price > 0 and cur_price >= last_sent_price * 0.95:
+                    continue
 
             msg_text = format_hotel_alert_message(flt_summary, item, alert_type)
-            logger.info(f"  📨 Sending {alert_type} alert for '{hotel_name}' ({item['current_price']:.0f} PLN) to {sub_name}...")
+            logger.info(f"  📨 Sending {alert_type} alert for '{hotel_name}' ({cur_price:.0f} PLN) to {sub_name}...")
 
             if dry_run:
                 print("\n" + "-" * 40 + f" [SIMULATED ALERT: {alert_type.upper()}] " + "-" * 40)
                 print(msg_text)
                 print("-" * 105 + "\n")
-                sent_cache[cache_key] = now_utc_iso
+                history_cache[hotel_key] = {
+                    "last_sent_price": cur_price,
+                    "last_sent_deal_score": item["deal_score"],
+                    "last_sent_at": now_utc_iso,
+                    "alert_type": alert_type,
+                }
                 sent_count_sub += 1
                 total_messages_sent += 1
             else:
                 ok = send_telegram_message(bot_token, chat_id, msg_text)
                 if ok:
-                    sent_cache[cache_key] = now_utc_iso
+                    history_cache[hotel_key] = {
+                        "last_sent_price": cur_price,
+                        "last_sent_deal_score": item["deal_score"],
+                        "last_sent_at": now_utc_iso,
+                        "alert_type": alert_type,
+                    }
                     sent_count_sub += 1
                     total_messages_sent += 1
                     time.sleep(1.0)
