@@ -1,0 +1,681 @@
+#!/usr/bin/env python3
+"""
+telegram_notifier.py — Flexible Telegram notification engine for Travel Price Monitor.
+
+Features:
+- Reads subscriptions and filter criteria from telegram_subscriptions.json.
+- Identifies Hot Deals (Deal Score >= threshold), Significant Price Drops, and Historic Lows.
+- Supports Daily Market Digests (summary of market movements and top deals per destination).
+- Respects quiet hours per subscriber timezone (e.g., Europe/Warsaw).
+- Deduplicates notifications via a local cache to avoid repeating alerts for unchanged prices.
+- Supports rate limits (max messages per run/hour).
+- CLI modes: --dry-run, --force-digest, --force-instant.
+"""
+
+from __future__ import annotations
+
+import argparse
+import datetime
+import html
+import json
+import logging
+import os
+import re
+import sys
+import time
+import urllib.parse
+import urllib.request
+import zoneinfo
+from typing import Any, Dict, List, Optional, Set, Tuple
+
+import pandas as pd
+
+from filter_registry import active_filter_groups, is_filter_active
+from hotel_deal_score import (
+    blend_tripadvisor_into_deal_score,
+    compute_hotel_deal_metrics,
+    time_weighted_price_baseline,
+    time_weighted_price_quantile,
+)
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+)
+logger = logging.getLogger("telegram_notifier")
+
+DEFAULT_CONFIG_PATH = "telegram_subscriptions.json"
+DEFAULT_CACHE_PATH = "data/telegram_sent_cache.json"
+CACHE_RETENTION_DAYS = 7
+
+
+# ============================================================================
+# Telegram API Client
+# ============================================================================
+
+def send_telegram_message(
+    bot_token: str,
+    chat_id: str | int,
+    text: str,
+    *,
+    parse_mode: str = "HTML",
+    disable_web_page_preview: bool = False,
+    timeout: float = 15.0,
+) -> bool:
+    """Send an HTML message via the Telegram Bot API."""
+    if not bot_token or not chat_id:
+        logger.warning("Telegram bot token or chat ID is missing. Message skipped.")
+        return False
+
+    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
+    payload = {
+        "chat_id": chat_id,
+        "text": text,
+        "parse_mode": parse_mode,
+        "disable_web_page_preview": disable_web_page_preview,
+    }
+    data = json.dumps(payload).encode("utf-8")
+    req = urllib.request.Request(
+        url,
+        data=data,
+        headers={"Content-Type": "application/json; charset=utf-8"},
+        method="POST",
+    )
+
+    for attempt in range(1, 4):
+        try:
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                if response.status == 200:
+                    return True
+                logger.warning(f"Telegram API response code: {response.status}")
+        except urllib.error.HTTPError as e:
+            err_body = e.read().decode("utf-8", errors="ignore")
+            logger.error(f"Telegram HTTP error ({e.code}): {err_body}")
+            if e.code == 400 and "can't parse entities" in err_body:
+                # Fallback: send as plain text if HTML parsing failed
+                try:
+                    payload["parse_mode"] = ""
+                    fallback_data = json.dumps(payload).encode("utf-8")
+                    fallback_req = urllib.request.Request(
+                        url,
+                        data=fallback_data,
+                        headers={"Content-Type": "application/json; charset=utf-8"},
+                        method="POST",
+                    )
+                    with urllib.request.urlopen(fallback_req, timeout=timeout) as fb_resp:
+                        return fb_resp.status == 200
+                except Exception as fb_err:
+                    logger.error(f"Fallback plain text send failed: {fb_err}")
+            if e.code in (403, 404):
+                return False
+        except Exception as err:
+            logger.warning(f"Telegram request attempt {attempt} failed: {err}")
+            time.sleep(1.5)
+
+    return False
+
+
+# ============================================================================
+# Cache & Deduplication
+# ============================================================================
+
+def load_sent_cache(cache_path: str = DEFAULT_CACHE_PATH) -> Dict[str, str]:
+    if not os.path.isfile(cache_path):
+        return {}
+    try:
+        with open(cache_path, "r", encoding="utf-8") as f:
+            data = json.load(f)
+            return data.get("sent", {}) if isinstance(data, dict) else {}
+    except Exception as e:
+        logger.warning(f"Could not load cache {cache_path}: {e}")
+        return {}
+
+
+def save_sent_cache(cache: Dict[str, str], cache_path: str = DEFAULT_CACHE_PATH) -> None:
+    try:
+        os.makedirs(os.path.dirname(cache_path), exist_ok=True)
+        # Purge entries older than CACHE_RETENTION_DAYS
+        cutoff = (datetime.datetime.now(datetime.timezone.utc) - datetime.timedelta(days=CACHE_RETENTION_DAYS)).isoformat()
+        cleaned = {k: v for k, v in cache.items() if v >= cutoff}
+        with open(cache_path, "w", encoding="utf-8") as f:
+            json.dump({"version": 1, "sent": cleaned}, f, indent=2, ensure_ascii=False)
+    except Exception as e:
+        logger.warning(f"Could not save cache {cache_path}: {e}")
+
+
+# ============================================================================
+# Configuration Loader
+# ============================================================================
+
+def load_config(config_path: str = DEFAULT_CONFIG_PATH) -> Dict[str, Any]:
+    if not os.path.isfile(config_path):
+        logger.warning(f"Config file '{config_path}' not found. Using default template.")
+        return {"version": 1, "subscribers": []}
+
+    try:
+        with open(config_path, "r", encoding="utf-8") as f:
+            raw_text = f.read()
+
+        # Substitute environment variables (e.g. ${TELEGRAM_CHAT_ID})
+        def repl(match):
+            var_name = match.group(1)
+            return os.environ.get(var_name, f"${{{var_name}}}")
+
+        processed_text = re.sub(r"\$\{([A-Za-z0-9_]+)\}", repl, raw_text)
+        return json.loads(processed_text)
+    except Exception as e:
+        logger.error(f"Failed to parse config '{config_path}': {e}")
+        return {"version": 1, "subscribers": []}
+
+
+# ============================================================================
+# Filter & Data Processing
+# ============================================================================
+
+class FilterDataSummary:
+    def __init__(
+        self,
+        filter_id: str,
+        filter_title: str,
+        filter_href: str,
+        data_dir: str,
+        csv_path: str,
+        df: pd.DataFrame,
+    ):
+        self.filter_id = filter_id
+        self.filter_title = filter_title
+        self.filter_href = filter_href
+        self.data_dir = data_dir
+        self.csv_path = csv_path
+        self.df = df
+        self.latest_run_time: Optional[datetime.datetime] = None
+        self.hotel_metrics: List[Dict[str, Any]] = []
+        self.market_breadth: float = 0.0
+        self.hotels_down_count: int = 0
+        self.hotels_up_count: int = 0
+        self.total_active_hotels: int = 0
+        self.median_market_price: float = 0.0
+        self.best_deal: Optional[Dict[str, Any]] = None
+
+
+def analyze_filter_data(flt: Dict[str, Any]) -> Optional[FilterDataSummary]:
+    filter_id = flt.get("id", "")
+    filter_title = flt.get("title", filter_id)
+    filter_href = flt.get("href", "index.html")
+    charts = flt.get("charts_subdir") or ""
+    data_id = charts.rsplit("/", 1)[-1] if charts else filter_id
+    data_dir = os.path.join("data/filters", data_id)
+    csv_path = os.path.join(data_dir, "travel_prices.csv")
+
+    if not os.path.isfile(csv_path):
+        return None
+
+    try:
+        df = pd.read_csv(csv_path, quoting=1, on_bad_lines="skip")
+    except Exception as e:
+        logger.warning(f"Could not read {csv_path}: {e}")
+        return None
+
+    if df.empty or "hotel_name" not in df.columns or "price" not in df.columns or "scraped_at" not in df.columns:
+        return None
+
+    df["price_num"] = pd.to_numeric(df["price"], errors="coerce")
+    df = df[df["price_num"].notna() & (df["price_num"] > 0)].copy()
+    if df.empty:
+        return None
+
+    df["scraped_at_dt"] = pd.to_datetime(df["scraped_at"], errors="coerce", utc=True)
+    df = df.dropna(subset=["scraped_at_dt"]).sort_values("scraped_at_dt")
+    if df.empty:
+        return None
+
+    latest_run_time = df["scraped_at_dt"].max()
+    summary = FilterDataSummary(
+        filter_id=filter_id,
+        filter_title=filter_title,
+        filter_href=filter_href,
+        data_dir=data_dir,
+        csv_path=csv_path,
+        df=df,
+    )
+    summary.latest_run_time = latest_run_time
+
+    # Group by hotel_name
+    hotel_metrics_list = []
+    breadth_total = 0
+    breadth_down = 0
+    breadth_up = 0
+    current_prices = []
+
+    cutoff_48h = latest_run_time - datetime.timedelta(hours=48)
+    cutoff_run = latest_run_time - datetime.timedelta(minutes=45)
+
+    for hotel_name, grp in df.groupby("hotel_name", sort=False):
+        grp_sorted = grp.sort_values("scraped_at_dt")
+        if grp_sorted.empty:
+            continue
+
+        latest_row = grp_sorted.iloc[-1]
+        latest_time = latest_row["scraped_at_dt"]
+        is_in_latest_run = latest_time >= cutoff_run
+
+        # If hotel was not scraped in latest run, skip active notifications
+        if not is_in_latest_run:
+            continue
+
+        current_price = float(latest_row["price_num"])
+        current_prices.append(current_price)
+
+        # Baseline 48 hours ago
+        win_48h = grp_sorted[grp_sorted["scraped_at_dt"] >= cutoff_48h]
+        if len(win_48h) >= 2:
+            baseline_row = win_48h.iloc[0]
+        elif len(grp_sorted) >= 2:
+            baseline_row = grp_sorted.iloc[-2]
+        else:
+            baseline_row = latest_row
+
+        baseline_price = float(baseline_row["price_num"])
+        delta_48h_pct = ((current_price - baseline_price) / baseline_price * 100.0) if baseline_price > 0 else 0.0
+
+        if baseline_price > 0 and len(grp_sorted) >= 2:
+            breadth_total += 1
+            if current_price < baseline_price:
+                breadth_down += 1
+            elif current_price > baseline_price:
+                breadth_up += 1
+
+        # Previous run baseline
+        if len(grp_sorted) >= 2:
+            prev_row = grp_sorted.iloc[-2]
+            prev_price = float(prev_row["price_num"])
+            delta_run_pct = ((current_price - prev_price) / prev_price * 100.0) if prev_price > 0 else 0.0
+        else:
+            prev_price = current_price
+            delta_run_pct = 0.0
+
+        # Historical minimum
+        all_prices = grp_sorted["price_num"].astype(float).tolist()
+        hist_min = min(all_prices)
+        is_historic_low = (current_price <= hist_min) and (len(all_prices) >= 2)
+
+        # TripAdvisor info
+        ta_rating_raw = latest_row.get("ta_rating")
+        ta_reviews_raw = latest_row.get("ta_review_count")
+        try:
+            ta_rating = float(ta_rating_raw) if pd.notna(ta_rating_raw) else None
+        except Exception:
+            ta_rating = None
+        try:
+            ta_reviews = int(float(ta_reviews_raw)) if pd.notna(ta_reviews_raw) else 0
+        except Exception:
+            ta_reviews = 0
+
+        # Deal metrics
+        deal_info = compute_hotel_deal_metrics(
+            grp_sorted,
+            current_price,
+            time_col="scraped_at_dt",
+            price_col="price_num",
+            ta_rating=ta_rating,
+            ta_review_count=ta_reviews,
+        )
+        deal_score = int(deal_info.get("deal_score") or 0)
+        confidence = str(deal_info.get("confidence") or "Low")
+
+        # Blend TA
+        deal_score, _ = blend_tripadvisor_into_deal_score(deal_score, ta_rating, ta_reviews)
+
+        # Offer details
+        dates = str(latest_row.get("dates") or "")
+        duration = str(latest_row.get("duration") or "")
+        airport = str(latest_row.get("departure_airport") or "")
+        offer_url = str(latest_row.get("offer_url") or latest_row.get("url") or "")
+        image_url = str(latest_row.get("image_url") or "")
+
+        hotel_metrics_list.append({
+            "hotel_name": str(hotel_name),
+            "current_price": current_price,
+            "prev_price": prev_price,
+            "baseline_48h_price": baseline_price,
+            "delta_48h_pct": delta_48h_pct,
+            "delta_run_pct": delta_run_pct,
+            "hist_min": hist_min,
+            "is_historic_low": is_historic_low,
+            "deal_score": deal_score,
+            "confidence": confidence,
+            "ta_rating": ta_rating,
+            "ta_reviews": ta_reviews,
+            "dates": dates,
+            "duration": duration,
+            "airport": airport,
+            "offer_url": offer_url,
+            "image_url": image_url,
+            "scraped_at": latest_time.isoformat(),
+        })
+
+    summary.hotel_metrics = hotel_metrics_list
+    summary.total_active_hotels = len(hotel_metrics_list)
+    summary.hotels_down_count = breadth_down
+    summary.hotels_up_count = breadth_up
+    summary.market_breadth = (breadth_down / breadth_total * 100.0) if breadth_total > 0 else 0.0
+    summary.median_market_price = float(pd.Series(current_prices).median()) if current_prices else 0.0
+
+    if hotel_metrics_list:
+        summary.best_deal = max(hotel_metrics_list, key=lambda x: (x["deal_score"], -x["delta_48h_pct"]))
+
+    return summary
+
+
+# ============================================================================
+# Notification Builders
+# ============================================================================
+
+def format_hotel_alert_message(
+    flt_summary: FilterDataSummary,
+    item: Dict[str, Any],
+    alert_type: str,  # "hot_deal" | "price_drop" | "historic_low"
+) -> str:
+    hotel_name = html.escape(item["hotel_name"])
+    title = html.escape(flt_summary.filter_title)
+    current_p = f"{item['current_price']:,.0f}".replace(",", " ")
+    base_p = f"{item['baseline_48h_price']:,.0f}".replace(",", " ")
+    delta_pct = item["delta_48h_pct"]
+
+    # Header emoji & title
+    if alert_type == "hot_deal":
+        header = f"🔥 <b>HOT DEAL • {title}</b>"
+    elif alert_type == "historic_low":
+        header = f"⚡ <b>ИСТОРИЧЕСКИЙ МИНИМУМ • {title}</b>"
+    else:
+        header = f"📉 <b>СНИЖЕНИЕ ЦЕНЫ {delta_pct:+.1f}% • {title}</b>"
+
+    # Rating badge
+    rating_str = ""
+    if item["ta_rating"] is not None:
+        rating_str = f" ⭐ <b>{item['ta_rating']:.1f}</b>"
+        if item["ta_reviews"] > 0:
+            rating_str += f" <i>({item['ta_reviews']} отзывов)</i>"
+
+    # Deal pill
+    score = item["deal_score"]
+    score_pill = f"🎯 Deal Score: <b>{score} / 100</b> ({item['confidence']})"
+
+    # Details
+    dates_str = html.escape(item["dates"]) if item["dates"] else "По запросу"
+    dur_str = html.escape(item["duration"]) if item["duration"] else ""
+    dur_part = f" • {dur_str}" if dur_str else ""
+    airport_str = html.escape(item["airport"]) if item["airport"] else "Любой аэропорт"
+
+    # Links
+    links = []
+    if item["offer_url"]:
+        links.append(f'<a href="{html.escape(item["offer_url"])}">🔗 Открыть на Fly.pl</a>')
+    
+    # Dashboard link
+    dashboard_url = f"https://jancker2a.github.io/travel-monitoring/{flt_summary.filter_href}"
+    links.append(f'<a href="{dashboard_url}">📊 Дашборд</a>')
+
+    lines = [
+        header,
+        "",
+        f"🏨 <b>{hotel_name}</b>{rating_str}",
+        f"💰 <b>{current_p} PLN</b> (было {base_p} PLN → <b>{delta_pct:+.1f}%</b>)",
+        f"{score_pill}",
+        f"📅 {dates_str}{dur_part}",
+        f"✈️ {airport_str}",
+    ]
+
+    if item["is_historic_low"]:
+        lines.append("📉 <i>Это новый исторический минимум цены за всё время наблюдений!</i>")
+
+    lines.append("")
+    lines.append(" • ".join(links))
+
+    return "\n".join(lines)
+
+
+def format_daily_digest_message(summaries: List[FilterDataSummary], subscriber_name: str = "") -> str:
+    now_str = datetime.datetime.now(zoneinfo.ZoneInfo("Europe/Warsaw")).strftime("%d.%m.%Y %H:%M")
+    greeting = f"Привет, {html.escape(subscriber_name)}!" if subscriber_name else "Доброе утро!"
+    
+    lines = [
+        f"📊 <b>Утренний дайджест цен • {now_str}</b>",
+        f"<i>{greeting} Вот сводка ситуации на рынке туров:</i>",
+        "━━━━━━━━━━━━━━━━━━",
+    ]
+
+    for s in summaries:
+        if not s.hotel_metrics:
+            continue
+        title = html.escape(s.filter_title)
+        lines.append(f"🎯 <b>{title}</b> (активно {s.total_active_hotels} отелей):")
+        
+        # Stats
+        if s.hotels_down_count > 0 or s.hotels_up_count > 0:
+            lines.append(f"  📉 Подешевели: <b>{s.hotels_down_count}</b> • 📈 Подорожали: <b>{s.hotels_up_count}</b> (Breadth: {s.market_breadth:.0f}%)")
+        
+        if s.best_deal:
+            bd = s.best_deal
+            bd_name = html.escape(bd["hotel_name"])
+            bd_price = f"{bd['current_price']:,.0f}".replace(",", " ")
+            lines.append(f"  🔥 Топ-дил: <b>{bd_name}</b> — <b>{bd_price} PLN</b> (Deal Score {bd['deal_score']}, {bd['delta_48h_pct']:+.1f}%)")
+        lines.append("")
+
+    lines.append("━━━━━━━━━━━━━━━━━━")
+    lines.append('🌐 <a href="https://jancker2a.github.io/travel-monitoring/">Открыть все дашборды и графики</a>')
+
+    return "\n".join(lines)
+
+
+# ============================================================================
+# Main Dispatcher
+# ============================================================================
+
+def process_notifications(
+    config_path: str = DEFAULT_CONFIG_PATH,
+    cache_path: str = DEFAULT_CACHE_PATH,
+    dry_run: bool = False,
+    force_digest: bool = False,
+    force_instant: bool = False,
+    target_filter_id: Optional[str] = None,
+) -> int:
+    config = load_config(config_path)
+    subscribers = config.get("subscribers", [])
+    bot_token = os.environ.get("TELEGRAM_BOT_TOKEN", "").strip()
+
+    if not subscribers:
+        logger.info("No subscribers configured in telegram_subscriptions.json.")
+        return 0
+
+    if not bot_token and not dry_run:
+        logger.warning("TELEGRAM_BOT_TOKEN is not set. Running in dry-run simulation mode.")
+        dry_run = True
+
+    # 1. Discover all active filters and process summaries
+    logger.info("Scanning active filters data...")
+    filter_summaries: Dict[str, FilterDataSummary] = {}
+    
+    for group in active_filter_groups():
+        for flt in group["filters"]:
+            flt_id = flt.get("id")
+            if target_filter_id and flt_id != target_filter_id:
+                continue
+            summary = analyze_filter_data(flt)
+            if summary:
+                filter_summaries[flt_id] = summary
+                logger.info(f"  ✓ {flt_id}: {summary.total_active_hotels} hotels, top deal: {summary.best_deal['hotel_name'] if summary.best_deal else 'N/A'}")
+
+    sent_cache = load_sent_cache(cache_path)
+    total_messages_sent = 0
+    now_utc_iso = datetime.datetime.now(datetime.timezone.utc).isoformat()
+
+    # 2. Iterate subscribers and evaluate rules
+    for sub in subscribers:
+        if not sub.get("enabled", True):
+            continue
+
+        chat_id = str(sub.get("chat_id") or "").strip()
+        sub_name = sub.get("name", "Subscriber")
+        if not chat_id or chat_id.startswith("${"):
+            logger.warning(f"Subscriber '{sub_name}' has invalid chat_id ({chat_id}). Skipping.")
+            continue
+
+        rules = sub.get("rules", {})
+        schedule = sub.get("schedule", {})
+        sub_filters = sub.get("filters", [])  # Empty = all filters
+
+        tz_name = schedule.get("timezone", "Europe/Warsaw")
+        try:
+            sub_tz = zoneinfo.ZoneInfo(tz_name)
+        except Exception:
+            sub_tz = zoneinfo.ZoneInfo("Europe/Warsaw")
+
+        now_sub_time = datetime.datetime.now(sub_tz)
+        current_hour = now_sub_time.hour
+        quiet_hours = schedule.get("quiet_hours", [23, 0, 1, 2, 3, 4, 5, 6])
+        daily_digest_hour = int(schedule.get("daily_digest_hour", 9))
+        mode = schedule.get("mode", "instant")
+        max_msgs = int(schedule.get("max_messages_per_hour", 5))
+
+        is_quiet = (current_hour in quiet_hours) and not force_instant
+        is_digest_time = (current_hour == daily_digest_hour) or force_digest
+
+        logger.info(f"Processing subscriber '{sub_name}' (Chat: {chat_id}, Local time: {now_sub_time.strftime('%H:%M %Z')}, Quiet: {is_quiet}, Digest: {is_digest_time})")
+
+        # A. Send Daily Digest if scheduled
+        if is_digest_time and rules.get("notify_market_summary", True):
+            digest_cache_key = f"{chat_id}:daily_digest:{now_sub_time.strftime('%Y-%m-%d')}"
+            if digest_cache_key not in sent_cache or force_digest:
+                applicable_summaries = [
+                    s for fid, s in filter_summaries.items()
+                    if not sub_filters or fid in sub_filters
+                ]
+                if applicable_summaries:
+                    digest_text = format_daily_digest_message(applicable_summaries, sub_name)
+                    logger.info(f"  📨 Sending daily digest to {sub_name}...")
+                    if dry_run:
+                        print("\n" + "=" * 50 + " [SIMULATED TELEGRAM DIGEST] " + "=" * 50)
+                        print(digest_text)
+                        print("=" * 125 + "\n")
+                        sent_cache[digest_cache_key] = now_utc_iso
+                        total_messages_sent += 1
+                    else:
+                        ok = send_telegram_message(bot_token, chat_id, digest_text)
+                        if ok:
+                            sent_cache[digest_cache_key] = now_utc_iso
+                            total_messages_sent += 1
+                            time.sleep(1.0)
+
+        # B. If quiet hours or digest-only mode, skip instant alerts
+        if is_quiet or mode == "digest":
+            logger.info(f"  ⏭ Instant alerts skipped for {sub_name} (quiet hours or digest mode).")
+            continue
+
+        # C. Instant Alerts (Hot Deals, Big Drops, Historic Lows)
+        candidate_alerts: List[Tuple[int, FilterDataSummary, Dict[str, Any], str]] = []
+        
+        deal_score_min = int(rules.get("deal_score_min", 75))
+        price_drop_pct_min = float(rules.get("price_drop_pct_min", 8.0))
+        max_price_pln = float(rules.get("max_price_pln")) if rules.get("max_price_pln") is not None else None
+        min_ta_rating = float(rules.get("min_ta_rating", 3.8))
+        notify_hot_deals = rules.get("notify_hot_deals", True)
+        notify_price_drops = rules.get("notify_price_drops", True)
+        notify_historic_low = rules.get("notify_new_historic_low", True)
+
+        for flt_id, summary in filter_summaries.items():
+            if sub_filters and flt_id not in sub_filters:
+                continue
+
+            for item in summary.hotel_metrics:
+                cur_price = item["current_price"]
+                deal_score = item["deal_score"]
+                delta_48h = item["delta_48h_pct"]
+                ta_rating = item["ta_rating"]
+
+                # Global filters
+                if max_price_pln and cur_price > max_price_pln:
+                    continue
+                if ta_rating is not None and ta_rating < min_ta_rating:
+                    continue
+
+                # Check 1: Hot Deal
+                if notify_hot_deals and deal_score >= deal_score_min and delta_48h <= -2.0 and item["confidence"] != "Low":
+                    candidate_alerts.append((deal_score, summary, item, "hot_deal"))
+                    continue
+
+                # Check 2: Historic Low
+                if notify_historic_low and item["is_historic_low"] and delta_48h < 0:
+                    candidate_alerts.append((deal_score + 10, summary, item, "historic_low"))
+                    continue
+
+                # Check 3: Big Price Drop
+                if notify_price_drops and delta_48h <= -price_drop_pct_min:
+                    candidate_alerts.append((deal_score, summary, item, "price_drop"))
+
+        # Sort candidate alerts by highest priority
+        candidate_alerts.sort(key=lambda x: x[0], reverse=True)
+
+        sent_count_sub = 0
+        for _, flt_summary, item, alert_type in candidate_alerts:
+            if sent_count_sub >= max_msgs:
+                logger.info(f"  Reached max message limit ({max_msgs}) for {sub_name}.")
+                break
+
+            hotel_name = item["hotel_name"]
+            price_bucket = round(item["current_price"] / 50.0) * 50  # Group by ~50 PLN brackets
+            cache_key = f"{chat_id}:{flt_summary.filter_id}:{hotel_name}:{price_bucket}:{alert_type}"
+
+            if cache_key in sent_cache:
+                continue
+
+            msg_text = format_hotel_alert_message(flt_summary, item, alert_type)
+            logger.info(f"  📨 Sending {alert_type} alert for '{hotel_name}' ({item['current_price']:.0f} PLN) to {sub_name}...")
+
+            if dry_run:
+                print("\n" + "-" * 40 + f" [SIMULATED ALERT: {alert_type.upper()}] " + "-" * 40)
+                print(msg_text)
+                print("-" * 105 + "\n")
+                sent_cache[cache_key] = now_utc_iso
+                sent_count_sub += 1
+                total_messages_sent += 1
+            else:
+                ok = send_telegram_message(bot_token, chat_id, msg_text)
+                if ok:
+                    sent_cache[cache_key] = now_utc_iso
+                    sent_count_sub += 1
+                    total_messages_sent += 1
+                    time.sleep(1.0)
+
+    save_sent_cache(sent_cache, cache_path)
+    logger.info(f"Done! Total notifications dispatched: {total_messages_sent}")
+    return total_messages_sent
+
+
+# ============================================================================
+# CLI Entrypoint
+# ============================================================================
+
+def main():
+    parser = argparse.ArgumentParser(description="Travel Price Monitor — Telegram Notifier")
+    parser.add_argument("--config", default=DEFAULT_CONFIG_PATH, help="Path to telegram_subscriptions.json")
+    parser.add_argument("--cache", default=DEFAULT_CACHE_PATH, help="Path to telegram_sent_cache.json")
+    parser.add_argument("--dry-run", action="store_true", help="Simulate and print to stdout without calling Telegram API")
+    parser.add_argument("--force-digest", action="store_true", help="Force send daily digest regardless of current hour")
+    parser.add_argument("--force-instant", action="store_true", help="Ignore quiet hours and force check instant alerts")
+    parser.add_argument("--filter", dest="filter_id", default=None, help="Process only a specific filter ID")
+
+    args = parser.parse_args()
+    process_notifications(
+        config_path=args.config,
+        cache_path=args.cache,
+        dry_run=args.dry_run,
+        force_digest=args.force_digest,
+        force_instant=args.force_instant,
+        target_filter_id=args.filter_id,
+    )
+
+
+if __name__ == "__main__":
+    main()

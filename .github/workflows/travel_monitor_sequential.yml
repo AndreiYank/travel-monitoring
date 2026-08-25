@@ -127,6 +127,14 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
 
+      - name: Send Telegram notifications
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: |
+          echo "📱 Processing Telegram notifications..."
+          python telegram_notifier.py || echo "⚠️ Telegram notification step completed with warning (non-critical)"
+
       - name: Commit and push data updates
         run: |
           echo "📝 Committing data changes..."

@@ -1,0 +1,29 @@
+{
+  "$schema": "./telegram_subscriptions.schema.json",
+  "version": 1,
+  "subscribers": [
+    {
+      "chat_id": "${TELEGRAM_CHAT_ID}",
+      "name": "Default Subscriber",
+      "enabled": true,
+      "filters": [],
+      "rules": {
+        "deal_score_min": 75,
+        "price_drop_pct_min": 8.0,
+        "max_price_pln": null,
+        "min_ta_rating": 3.8,
+        "notify_hot_deals": true,
+        "notify_price_drops": true,
+        "notify_new_historic_low": true,
+        "notify_market_summary": true
+      },
+      "schedule": {
+        "mode": "instant",
+        "quiet_hours": [23, 0, 1, 2, 3, 4, 5, 6],
+        "timezone": "Europe/Warsaw",
+        "daily_digest_hour": 9,
+        "max_messages_per_hour": 5
+      }
+    }
+  ]
+}
