@@ -432,6 +432,15 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
 # Notification Builders
 # ============================================================================
 
+def _clean_telegram_href(url: str) -> str:
+    if not url:
+        return ""
+    # In Telegram HTML parse mode, ampersands inside href attributes MUST remain literal '&'.
+    # If escaped as '&amp;', Telegram client passes 'amp;filter[person]=2' to the browser,
+    # which Fly.pl fails to recognize and falls back to default 2+0.
+    return str(url).strip().replace('"', '%22')
+
+
 def format_hotel_alert_message(
     flt_summary: FilterDataSummary,
     item: Dict[str, Any],
@@ -473,7 +482,8 @@ def format_hotel_alert_message(
     # Links
     links = []
     if item["offer_url"]:
-        links.append(f'<a href="{html.escape(item["offer_url"])}">🔗 Открыть на Fly.pl</a>')
+        clean_url = _clean_telegram_href(item["offer_url"])
+        links.append(f'<a href="{clean_url}">🔗 Открыть на Fly.pl</a>')
     
     # Hotel specific chart link
     hotel_slug = slugify(item["hotel_name"])
