@@ -481,10 +481,75 @@
       "created_at": "2026-08-25T04:34:02.448483+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Numa Bay Exclusive (ex Sentido Numa Bay)_2026-08-25_04-32_comeback_11.0"
+    },
+    {
+      "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 4959.0,
+      "new_price": 4541.0,
+      "price_change": -418.0,
+      "price_change_pct": -8.42911877394636,
+      "timestamp": "2026-08-25 05:27:05.845385+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T05:28:13.654569+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-08-25_05-27_-8.4"
+    },
+    {
+      "hotel_name": "Grand Ozcelik Turcja, Kusadasi",
+      "duration_bucket": "",
+      "old_price": 7466.0,
+      "new_price": 7466.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 05:27:05.845385+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T05:28:13.654649+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Ozcelik Turcja, Kusadasi_2026-08-25_05-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Holiday Park Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 8809.0,
+      "new_price": 8809.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 05:27:05.845385+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T05:28:13.654661+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)_2026-08-25_05-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Saphir Hotel & Villas",
+      "duration_bucket": "",
+      "old_price": 9648.0,
+      "new_price": 10175.0,
+      "price_change": 527.0,
+      "price_change_pct": 5.462271973466003,
+      "timestamp": "2026-08-25 05:27:05.845385+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T05:28:13.654671+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Saphir Hotel & Villas_2026-08-25_05-27_zone_out_+5.5"
+    },
+    {
+      "hotel_name": "Seaden Sea World Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9890.0,
+      "new_price": 10175.0,
+      "price_change": 285.0,
+      "price_change_pct": 2.8816986855409503,
+      "timestamp": "2026-08-25 05:27:05.845385+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T05:28:13.654681+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seaden Sea World Resort & Spa_2026-08-25_05-27_zone_out_+2.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T04:32:46.569045+00:00",
+    "last_processed_run": "2026-08-25T05:27:05.845385+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -523,8 +588,8 @@
         "premium_peak": null
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)": {
-        "history_max": 11577.0,
-        "premium_peak": 11577.0
+        "history_max": 11607.0,
+        "premium_peak": 11607.0
       },
       "Kaila Beach (ex Katya)": {
         "history_max": 9330.0,
@@ -1761,6 +1826,14 @@
       "Adalya Ocean Deluxe": {
         "history_max": 11471.0,
         "premium_peak": 11471.0
+      },
+      "Holiday Park Resort (Okurcalar) Turcja, Alanya, Okurcalar": {
+        "history_max": 7249.0,
+        "premium_peak": null
+      },
+      "Signature Blue Resort (ex. Grand Ozcelik)": {
+        "history_max": 7466.0,
+        "premium_peak": null
       }
     }
   }
