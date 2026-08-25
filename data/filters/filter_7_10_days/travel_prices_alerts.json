@@ -236,12 +236,81 @@
       "unique_key": "Stella Makadi Beach & Spa_2026-08-25_06-29_zone_out_gone"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "hotel_name": "Royal Brayka Beach Resort (ex Zee Brayka)",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 6657.0,
+      "price_change": -600.0,
+      "price_change_pct": -8.26787928896238,
+      "timestamp": "2026-08-25 08:52:54.073840+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T08:53:34.741467+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-08-25_08-52_-8.3"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 8244.0,
+      "new_price": 7434.0,
+      "price_change": -810.0,
+      "price_change_pct": -9.82532751091703,
+      "timestamp": "2026-08-25 08:52:54.073840+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T08:53:34.741515+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-08-25_08-52_-9.8"
+    },
+    {
+      "hotel_name": "Jaz Makadi Saraya (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 9671.0,
+      "new_price": 8861.0,
+      "price_change": -810.0,
+      "price_change_pct": -8.375555785337607,
+      "timestamp": "2026-08-25 08:52:54.073840+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T08:53:34.741527+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Saraya (ex Iberotel)_2026-08-25_08-52_-8.4"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 5720.0,
+      "new_price": 5234.0,
+      "price_change": -486.0,
+      "price_change_pct": -8.496503496503497,
+      "timestamp": "2026-08-25 08:52:54.073840+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T08:53:34.741540+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-08-25_08-52_-8.5"
+    },
+    {
+      "hotel_name": "Dreams Vacation Sharm Resort",
+      "duration_bucket": "",
+      "old_price": 7867.0,
+      "new_price": 7867.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 08:52:54.073840+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:53:34.741563+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Sharm Resort_2026-08-25_08-52_zone_out_gone"
+    },
+    {
+>>>>>>> Stashed changes
       "hotel_name": "Desert Rose Resort",
       "duration_bucket": "",
       "old_price": 11297.0,
       "new_price": 7817.0,
       "price_change": -3480.0,
       "price_change_pct": -30.804638399575108,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-25 08:21:42.638413+00:00",
       "alert_type": "premium_comeback",
       "created_at": "2026-08-25T08:22:22.583374+00:00",
@@ -254,6 +323,17 @@
     "last_processed_run": "2026-08-25T07:38:42.380452+00:00",
 =======
     "last_processed_run": "2026-08-25T08:21:42.638413+00:00",
+>>>>>>> Stashed changes
+=======
+      "timestamp": "2026-08-25 08:52:54.073840+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T08:53:34.741589+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-25_08-52_comeback_30.8"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-25T08:52:54.073840+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
@@ -381,8 +461,8 @@
         "premium_peak": 16097.0
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
-        "history_max": 13225.0,
-        "premium_peak": 13225.0
+        "history_max": 14012.0,
+        "premium_peak": 14012.0
       },
       "Serenity Alma Heights Ross Park Collection": {
         "history_max": 9003.0,
@@ -809,8 +889,8 @@
         "premium_peak": 11817.0
       },
       "Baron Resort (Sharm El Sheikh)": {
-        "history_max": 11067.0,
-        "premium_peak": 11067.0
+        "history_max": 12527.0,
+        "premium_peak": 12527.0
       },
       "Sunrise Anjum Resort": {
         "history_max": 11033.0,

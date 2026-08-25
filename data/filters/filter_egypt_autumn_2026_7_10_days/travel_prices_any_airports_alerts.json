@@ -525,9 +525,62 @@
       "created_at": "2026-08-25T07:39:51.041566+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lazuli (Marsa Alam)_2026-08-25_07-39_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6602.0,
+      "new_price": 7432.0,
+      "price_change": 830.0,
+      "price_change_pct": 12.5719478945774,
+      "timestamp": "2026-08-25 08:53:22.147407+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T08:53:56.354533+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada_2026-08-25_08-53_+12.6"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 5997.0,
+      "new_price": 6655.0,
+      "price_change": 658.0,
+      "price_change_pct": 10.972152743038185,
+      "timestamp": "2026-08-25 08:53:22.147407+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T08:53:56.354582+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada_2026-08-25_08-53_+11.0"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6744.0,
+      "new_price": 7556.0,
+      "price_change": 812.0,
+      "price_change_pct": 12.040332147093713,
+      "timestamp": "2026-08-25 08:53:22.147407+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T08:53:56.354597+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-08-25_08-53_+12.0"
+    },
+    {
+      "hotel_name": "Casa Mare Resort (ex. Royal Tulip Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9897.0,
+      "new_price": 9897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 08:53:22.147407+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:53:56.354627+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-25_08-53_zone_out_gone"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-25T07:39:11.978083+00:00",
 =======
       "timestamp": "2026-08-25 08:22:09.047840+00:00",
@@ -539,6 +592,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-25T08:22:09.047840+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-25T08:53:22.147407+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
@@ -1135,7 +1191,11 @@
       },
       "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "history_max": 5997.0,
+=======
+        "history_max": 6655.0,
+>>>>>>> Stashed changes
 =======
         "history_max": 6655.0,
 >>>>>>> Stashed changes
@@ -1231,9 +1291,13 @@
       },
       "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib": {
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         "history_max": 6697.0,
 =======
         "history_max": 6757.0,
+>>>>>>> Stashed changes
+=======
+        "history_max": 7117.0,
 >>>>>>> Stashed changes
         "premium_peak": null
       },

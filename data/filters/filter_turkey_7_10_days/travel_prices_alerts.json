@@ -814,9 +814,49 @@
       "created_at": "2026-08-25T07:40:59.843246+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asia Beach Resort and Spa_2026-08-25_07-39_comeback_11.2"
+    },
+    {
+      "hotel_name": "Green Nature Resort & Spa Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 7157.0,
+      "new_price": 6557.0,
+      "price_change": -600.0,
+      "price_change_pct": -8.383400866284756,
+      "timestamp": "2026-08-25 08:53:52.552167+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T08:54:53.572180+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Nature Resort & Spa Turcja, Marmaris_2026-08-25_08-53_-8.4"
+    },
+    {
+      "hotel_name": "Diamond Hill Resort Turcja, Alanya, Incekum",
+      "duration_bucket": "",
+      "old_price": 7273.0,
+      "new_price": 7273.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 08:53:52.552167+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:54:53.572277+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Diamond Hill Resort Turcja, Alanya, Incekum_2026-08-25_08-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hane Sun Elite (ex Noble Palace Side)",
+      "duration_bucket": "",
+      "old_price": 7340.0,
+      "new_price": 7340.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 08:53:52.552167+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:54:53.572295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hane Sun Elite (ex Noble Palace Side)_2026-08-25_08-53_zone_out_gone"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-25T07:39:48.915634+00:00",
 =======
       "timestamp": "2026-08-25 08:22:40.323545+00:00",
@@ -828,6 +868,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-25T08:22:40.323545+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-25T08:53:52.552167+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
@@ -1063,7 +1106,7 @@
         "premium_peak": null
       },
       "Laguna Beach Alya": {
-        "history_max": 9357.0,
+        "history_max": 9757.0,
         "premium_peak": null
       },
       "Labranda TMT Bodrum Resort": {
@@ -1115,8 +1158,8 @@
         "premium_peak": 10570.0
       },
       "Crystal Tat Beach Pearl Collection": {
-        "history_max": 10097.0,
-        "premium_peak": 10097.0
+        "history_max": 10157.0,
+        "premium_peak": 10157.0
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
         "history_max": 10274.0,
@@ -1467,8 +1510,8 @@
         "premium_peak": 10914.0
       },
       "Yasmin Resort": {
-        "history_max": 10860.0,
-        "premium_peak": 10860.0
+        "history_max": 10950.0,
+        "premium_peak": 10950.0
       },
       "Xoria Deluxe": {
         "history_max": 8115.0,
@@ -2011,7 +2054,7 @@
         "premium_peak": null
       },
       "Avia Resort & Spa": {
-        "history_max": 8161.0,
+        "history_max": 8249.0,
         "premium_peak": null
       },
       "Bodrum Holiday Resort": {
