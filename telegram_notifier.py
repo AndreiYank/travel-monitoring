@@ -384,10 +384,12 @@ def format_hotel_alert_message(
     delta_pct = item["delta_48h_pct"]
 
     # Header emoji & title
-    if alert_type == "hot_deal":
-        header = f"🔥 <b>HOT DEAL • {title}</b>"
+    if alert_type == "flash_drop":
+        header = f"⚡ <b>РЕЗКИЙ ОБВАЛ ЦЕНЫ {delta_pct:+.1f}% • {title}</b>"
+    elif alert_type == "hot_deal":
+        header = f"🔥 <b>SUPER HOT DEAL • {title}</b>"
     elif alert_type == "historic_low":
-        header = f"⚡ <b>ИСТОРИЧЕСКИЙ МИНИМУМ • {title}</b>"
+        header = f"📉 <b>ИСТОРИЧЕСКИЙ МИНИМУМ • {title}</b>"
     else:
         header = f"📉 <b>СНИЖЕНИЕ ЦЕНЫ {delta_pct:+.1f}% • {title}</b>"
 
@@ -576,8 +578,9 @@ def process_notifications(
         # C. Instant Alerts (Hot Deals, Big Drops, Historic Lows)
         candidate_alerts: List[Tuple[int, FilterDataSummary, Dict[str, Any], str]] = []
         
-        deal_score_min = int(rules.get("deal_score_min", 75))
-        price_drop_pct_min = float(rules.get("price_drop_pct_min", 8.0))
+        deal_score_min = int(rules.get("deal_score_min", 90))
+        price_drop_pct_min = float(rules.get("price_drop_pct_min", 15.0))
+        single_run_drop_pct_min = float(rules.get("single_run_drop_pct_min", 12.0))
         max_price_pln = float(rules.get("max_price_pln")) if rules.get("max_price_pln") is not None else None
         min_ta_rating = float(rules.get("min_ta_rating", 3.8))
         notify_hot_deals = rules.get("notify_hot_deals", True)
@@ -592,30 +595,35 @@ def process_notifications(
                 cur_price = item["current_price"]
                 deal_score = item["deal_score"]
                 delta_48h = item["delta_48h_pct"]
+                delta_run = item.get("delta_run_pct", 0.0)
                 ta_rating = item["ta_rating"]
 
                 # Global filters
                 if max_price_pln and cur_price > max_price_pln:
                     continue
-                # Check 1: Hot Deal (Score >= 80, drop >= 3%, confident)
+                if ta_rating is not None and ta_rating < min_ta_rating:
+                    continue
+
+                # Check 1: Flash Drop (Sudden drop >= 12% in 1 run OR >= 15% in 48h)
+                if (delta_run <= -single_run_drop_pct_min or delta_48h <= -price_drop_pct_min) and cur_price > 0:
+                    candidate_alerts.append((150 + int(abs(delta_48h)), summary, item, "flash_drop"))
+                    continue
+
+                # Check 2: Super Hot Deal (Deal Score >= 90, e.g. 90-100)
                 if notify_hot_deals and deal_score >= deal_score_min and delta_48h <= -3.0 and item["confidence"] != "Low":
                     candidate_alerts.append((deal_score, summary, item, "hot_deal"))
                     continue
 
-                # Check 2: True Historic Low (All-time low + drop >= 3% + high confidence)
+                # Check 3: True Historic Low (All-time low + drop >= 5% + Deal Score >= 80 + high confidence)
                 if (
                     notify_historic_low
                     and item["is_historic_low"]
-                    and delta_48h <= -3.0
-                    and deal_score >= 70
+                    and delta_48h <= -5.0
+                    and deal_score >= 80
                     and item["confidence"] != "Low"
                 ):
-                    candidate_alerts.append((deal_score + 5, summary, item, "historic_low"))
+                    candidate_alerts.append((deal_score, summary, item, "historic_low"))
                     continue
-
-                # Check 3: Big Price Drop (>= 10% drop + decent deal score)
-                if notify_price_drops and delta_48h <= -price_drop_pct_min and deal_score >= 65:
-                    candidate_alerts.append((deal_score, summary, item, "price_drop"))
 
         # Sort candidate alerts by highest priority
         candidate_alerts.sort(key=lambda x: x[0], reverse=True)
