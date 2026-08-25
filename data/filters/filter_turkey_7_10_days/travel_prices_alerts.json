@@ -2379,10 +2379,88 @@
       "created_at": "2026-08-25T21:22:38.475741+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi_2026-08-25_21-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6078.0,
+      "new_price": 6747.0,
+      "price_change": 669.0,
+      "price_change_pct": 11.006910167818361,
+      "timestamp": "2026-08-25 22:19:08.414796+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T22:20:12.837988+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-08-25_22-19_+11.0"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 8453.0,
+      "new_price": 9473.0,
+      "price_change": 1020.0,
+      "price_change_pct": 12.066721873890925,
+      "timestamp": "2026-08-25 22:19:08.414796+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T22:20:12.838029+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-08-25_22-19_+12.1"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 5764.0,
+      "new_price": 6473.0,
+      "price_change": 709.0,
+      "price_change_pct": 12.300485773768216,
+      "timestamp": "2026-08-25 22:19:08.414796+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T22:20:12.838047+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-25_22-19_+12.3"
+    },
+    {
+      "hotel_name": "Asia Beach Resort and Spa Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 6529.0,
+      "new_price": 5197.0,
+      "price_change": -1332.0,
+      "price_change_pct": -20.401286567621383,
+      "timestamp": "2026-08-25 22:19:08.414796+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T22:20:12.838058+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asia Beach Resort and Spa Turcja, Alanya_2026-08-25_22-19_-20.4"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9337.0,
+      "new_price": 10411.0,
+      "price_change": 1074.0,
+      "price_change_pct": 11.502623969154975,
+      "timestamp": "2026-08-25 22:19:08.414796+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T22:20:12.838098+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-25_22-19_zone_out_+11.5"
+    },
+    {
+      "hotel_name": "Eftalia Marin",
+      "duration_bucket": "",
+      "old_price": 9765.0,
+      "new_price": 10336.0,
+      "price_change": 571.0,
+      "price_change_pct": 5.8474142345110085,
+      "timestamp": "2026-08-25 22:19:08.414796+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T22:20:12.838107+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Marin_2026-08-25_22-19_zone_out_+5.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T21:21:27.605710+00:00",
+    "last_processed_run": "2026-08-25T22:19:08.414796+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -2621,8 +2699,8 @@
         "premium_peak": 10336.0
       },
       "Calido Maris": {
-        "history_max": 10049.0,
-        "premium_peak": 10049.0
+        "history_max": 10411.0,
+        "premium_peak": 10411.0
       },
       "Bodrum Holiday Resort": {
         "history_max": 11717.0,
@@ -3189,8 +3267,8 @@
         "premium_peak": 10200.0
       },
       "Antique Roman Palace": {
-        "history_max": 11129.0,
-        "premium_peak": 11129.0
+        "history_max": 11429.0,
+        "premium_peak": 11429.0
       },
       "Selectum Colours Bodrum (ex Asteria Bodrum Resort)": {
         "history_max": 11210.0,
@@ -3777,8 +3855,12 @@
         "premium_peak": null
       },
       "Seaphoria Beach Resort Turcja, Alanya, Okurcalar": {
-        "history_max": 6011.0,
+        "history_max": 6466.0,
         "premium_peak": null
+      },
+      "Eftalia Sol": {
+        "history_max": 11458.0,
+        "premium_peak": 11458.0
       }
     }
   }
