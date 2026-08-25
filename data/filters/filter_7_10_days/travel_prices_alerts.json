@@ -533,10 +533,75 @@
       "created_at": "2026-08-25T12:52:11.253273+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Calimera Blend Paradise Resort_2026-08-25_12-51_zone_out_gone"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 7727.0,
+      "new_price": 8397.0,
+      "price_change": 670.0,
+      "price_change_pct": 8.670894266856477,
+      "timestamp": "2026-08-25 13:43:27.726913+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T13:44:08.081537+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-08-25_13-43_+8.7"
+    },
+    {
+      "hotel_name": "Gorgonia Beach",
+      "duration_bucket": "",
+      "old_price": 7973.0,
+      "new_price": 8711.0,
+      "price_change": 738.0,
+      "price_change_pct": 9.256239809356579,
+      "timestamp": "2026-08-25 13:43:27.726913+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T13:44:08.081565+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gorgonia Beach_2026-08-25_13-43_+9.3"
+    },
+    {
+      "hotel_name": "Swissotel Resort El Quseir",
+      "duration_bucket": "",
+      "old_price": 7393.0,
+      "new_price": 8298.0,
+      "price_change": 905.0,
+      "price_change_pct": 12.24130934667929,
+      "timestamp": "2026-08-25 13:43:27.726913+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T13:44:08.081592+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swissotel Resort El Quseir_2026-08-25_13-43_+12.2"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 9017.0,
+      "new_price": 10647.0,
+      "price_change": 1630.0,
+      "price_change_pct": 18.076965731396253,
+      "timestamp": "2026-08-25 13:43:27.726913+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T13:44:08.081619+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-25_13-43_zone_out_+18.1"
+    },
+    {
+      "hotel_name": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)",
+      "duration_bucket": "",
+      "old_price": 9363.0,
+      "new_price": 9363.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 13:43:27.726913+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T13:44:08.081629+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)_2026-08-25_13-43_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T12:51:28.351350+00:00",
+    "last_processed_run": "2026-08-25T13:43:27.726913+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -679,7 +744,7 @@
         "premium_peak": 13919.0
       },
       "Amarina Jannah Resort Aquapark": {
-        "history_max": 8051.0,
+        "history_max": 8397.0,
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
@@ -759,7 +824,7 @@
         "premium_peak": 13257.0
       },
       "Swissotel Resort El Quseir": {
-        "history_max": 7393.0,
+        "history_max": 8298.0,
         "premium_peak": null
       },
       "Jaz Palmariva Beach": {
@@ -915,8 +980,8 @@
         "premium_peak": null
       },
       "Movenpick Resort El Quseir": {
-        "history_max": 12443.0,
-        "premium_peak": 12443.0
+        "history_max": 12915.0,
+        "premium_peak": 12915.0
       },
       "Movenpick Resort Sharm el Sheikh": {
         "history_max": 13405.0,
@@ -955,7 +1020,7 @@
         "premium_peak": null
       },
       "Novotel Marsa Alam": {
-        "history_max": 8375.0,
+        "history_max": 8437.0,
         "premium_peak": null
       },
       "Ancient Sands Golf Resort": {
@@ -1115,7 +1180,7 @@
         "premium_peak": null
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 7016.0,
+        "history_max": 7019.0,
         "premium_peak": null
       },
       "Seven Seas Jolie Bay": {
@@ -1167,7 +1232,7 @@
         "premium_peak": 10197.0
       },
       "Gorgonia Beach": {
-        "history_max": 7973.0,
+        "history_max": 8711.0,
         "premium_peak": null
       },
       "Sharm Grand Plaza Resort": {
@@ -1195,7 +1260,7 @@
         "premium_peak": 13706.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 9405.0,
+        "history_max": 9907.0,
         "premium_peak": null
       },
       "True Beach Resort": {

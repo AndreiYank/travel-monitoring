@@ -1664,10 +1664,88 @@
       "created_at": "2026-08-25T12:53:27.523223+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Berry Blue_2026-08-25_12-52_zone_out_+7.5"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 5333.0,
+      "new_price": 5764.0,
+      "price_change": 431.0,
+      "price_change_pct": 8.081755109694356,
+      "timestamp": "2026-08-25 13:44:26.116353+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T13:45:44.655163+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-08-25_13-44_+8.1"
+    },
+    {
+      "hotel_name": "Armonia Holiday Village Turcja, Bodrum",
+      "duration_bucket": "",
+      "old_price": 7233.0,
+      "new_price": 7233.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 13:44:26.116353+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T13:45:44.655207+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armonia Holiday Village Turcja, Bodrum_2026-08-25_13-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dedeman Kemer Resort",
+      "duration_bucket": "",
+      "old_price": 7249.0,
+      "new_price": 7249.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 13:44:26.116353+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T13:45:44.655219+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dedeman Kemer Resort_2026-08-25_13-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 9732.0,
+      "new_price": 10232.0,
+      "price_change": 500.0,
+      "price_change_pct": 5.1376900945334985,
+      "timestamp": "2026-08-25 13:44:26.116353+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T13:45:44.655229+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-25_13-44_zone_out_+5.1"
+    },
+    {
+      "hotel_name": "Turunc",
+      "duration_bucket": "",
+      "old_price": 9588.0,
+      "new_price": 10188.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.25782227784731,
+      "timestamp": "2026-08-25 13:44:26.116353+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T13:45:44.655238+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc_2026-08-25_13-44_zone_out_+6.3"
+    },
+    {
+      "hotel_name": "Armonia Holiday Village",
+      "duration_bucket": "",
+      "old_price": 10174.0,
+      "new_price": 7577.0,
+      "price_change": -2597.0,
+      "price_change_pct": -25.52585020640849,
+      "timestamp": "2026-08-25 13:44:26.116353+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T13:45:44.655269+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armonia Holiday Village_2026-08-25_13-44_comeback_25.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T12:52:24.250156+00:00",
+    "last_processed_run": "2026-08-25T13:44:26.116353+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -1810,8 +1888,8 @@
         "premium_peak": 11210.0
       },
       "Selectum Noa": {
-        "history_max": 10323.0,
-        "premium_peak": 10323.0
+        "history_max": 10472.0,
+        "premium_peak": 10472.0
       },
       "Victory Volare": {
         "history_max": 10000.0,
@@ -1898,7 +1976,7 @@
         "premium_peak": 10331.0
       },
       "Grand Seker": {
-        "history_max": 9653.0,
+        "history_max": 9690.0,
         "premium_peak": null
       },
       "Grand Ozcelik Turcja, Kusadasi": {
@@ -2002,7 +2080,7 @@
         "premium_peak": 10175.0
       },
       "Gold City": {
-        "history_max": 8793.0,
+        "history_max": 9131.0,
         "premium_peak": null
       },
       "Salmakis Beach Resort": {
@@ -2094,11 +2172,11 @@
         "premium_peak": null
       },
       "Blue Marlin Deluxe Spa & Resort": {
-        "history_max": 11465.0,
-        "premium_peak": 11465.0
+        "history_max": 11502.0,
+        "premium_peak": 11502.0
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
-        "history_max": 7917.0,
+        "history_max": 7954.0,
         "premium_peak": null
       },
       "Bodrum Holiday Resort": {
@@ -2198,7 +2276,7 @@
         "premium_peak": 10595.0
       },
       "Asteria Family Resort Side": {
-        "history_max": 8015.0,
+        "history_max": 8051.0,
         "premium_peak": null
       },
       "Trendy Lara": {
@@ -2354,8 +2432,8 @@
         "premium_peak": 11424.0
       },
       "VONResort Golden Beach": {
-        "history_max": 10502.0,
-        "premium_peak": 10502.0
+        "history_max": 10539.0,
+        "premium_peak": 10539.0
       },
       "Sun Star Resort Turcja, Alanya, Mahmutlar": {
         "history_max": 6864.0,
@@ -2370,8 +2448,8 @@
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
-        "history_max": 10699.0,
-        "premium_peak": 10699.0
+        "history_max": 11234.0,
+        "premium_peak": 11234.0
       },
       "Charisma Deluxe (Kusadasi)": {
         "history_max": 9653.0,
