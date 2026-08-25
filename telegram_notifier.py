@@ -195,6 +195,13 @@ def load_config(config_path: str = DEFAULT_CONFIG_PATH) -> Dict[str, Any]:
         return {"version": 1, "subscribers": []}
 
 
+def slugify(text: str) -> str:
+    text = str(text).lower().strip()
+    text = re.sub(r"[^a-z0-9]+", "-", text)
+    text = re.sub(r"-+", "-", text).strip("-")
+    return text or "hotel"
+
+
 # ============================================================================
 # Filter & Data Processing
 # ============================================================================
@@ -203,18 +210,22 @@ class FilterDataSummary:
     def __init__(
         self,
         filter_id: str,
+        data_id: str,
         filter_title: str,
         filter_href: str,
         data_dir: str,
         csv_path: str,
         df: pd.DataFrame,
+        display_price_ceiling: int = 10000,
     ):
         self.filter_id = filter_id
+        self.data_id = data_id
         self.filter_title = filter_title
         self.filter_href = filter_href
         self.data_dir = data_dir
         self.csv_path = csv_path
         self.df = df
+        self.display_price_ceiling = display_price_ceiling
         self.latest_run_time: Optional[datetime.datetime] = None
         self.hotel_metrics: List[Dict[str, Any]] = []
         self.market_breadth: float = 0.0
@@ -225,14 +236,35 @@ class FilterDataSummary:
         self.best_deal: Optional[Dict[str, Any]] = None
 
 
-def analyze_filter_data(flt: Dict[str, Any]) -> Optional[FilterDataSummary]:
+def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = None) -> Optional[FilterDataSummary]:
     filter_id = flt.get("id", "")
-    filter_title = flt.get("title", filter_id)
+    flt_title = flt.get("title", filter_id)
     filter_href = flt.get("href", "index.html")
     charts = flt.get("charts_subdir") or ""
     data_id = charts.rsplit("/", 1)[-1] if charts else filter_id
     data_dir = os.path.join("data/filters", data_id)
     csv_path = os.path.join(data_dir, "travel_prices.csv")
+
+    group_label = (group.get("label") or "") if group else ""
+    group_icon = (group.get("icon") or "") if group else ""
+    
+    if group_label and group_label.lower() not in flt_title.lower() and group_label != "Поездки":
+        filter_title = f"{group_icon} {group_label} • {flt_title}".strip()
+    elif group_icon and not flt_title.startswith(group_icon):
+        filter_title = f"{group_icon} {flt_title}".strip()
+    else:
+        filter_title = flt_title
+
+    # Read display price ceiling from filter config (default 10,000 PLN)
+    config_file = flt.get("config")
+    display_price_ceiling = 10000
+    if config_file and os.path.isfile(config_file):
+        try:
+            with open(config_file, "r", encoding="utf-8") as f:
+                cfg_json = json.load(f)
+                display_price_ceiling = int(cfg_json.get("display_price_ceiling") or 10000)
+        except Exception:
+            display_price_ceiling = 10000
 
     if not os.path.isfile(csv_path):
         return None
@@ -259,11 +291,13 @@ def analyze_filter_data(flt: Dict[str, Any]) -> Optional[FilterDataSummary]:
     latest_run_time = df["scraped_at_dt"].max()
     summary = FilterDataSummary(
         filter_id=filter_id,
+        data_id=data_id,
         filter_title=filter_title,
         filter_href=filter_href,
         data_dir=data_dir,
         csv_path=csv_path,
         df=df,
+        display_price_ceiling=display_price_ceiling,
     )
     summary.latest_run_time = latest_run_time
 
@@ -441,6 +475,11 @@ def format_hotel_alert_message(
     if item["offer_url"]:
         links.append(f'<a href="{html.escape(item["offer_url"])}">🔗 Открыть на Fly.pl</a>')
     
+    # Hotel specific chart link
+    hotel_slug = slugify(item["hotel_name"])
+    hotel_chart_url = f"https://jancker2a.github.io/travel-monitoring/hotel-chart.html?filter={flt_summary.data_id}&hotel={hotel_slug}"
+    links.append(f'<a href="{hotel_chart_url}">📈 График отеля</a>')
+
     # Dashboard link
     dashboard_url = f"https://jancker2a.github.io/travel-monitoring/{flt_summary.filter_href}"
     links.append(f'<a href="{dashboard_url}">📊 Дашборд</a>')
@@ -530,10 +569,10 @@ def process_notifications(
             flt_id = flt.get("id")
             if target_filter_id and flt_id != target_filter_id:
                 continue
-            summary = analyze_filter_data(flt)
+            summary = analyze_filter_data(flt, group)
             if summary:
                 filter_summaries[flt_id] = summary
-                logger.info(f"  ✓ {flt_id}: {summary.total_active_hotels} hotels, top deal: {summary.best_deal['hotel_name'] if summary.best_deal else 'N/A'}")
+                logger.info(f"  ✓ {flt_id} ({summary.filter_title}): {summary.total_active_hotels} hotels, ceiling: {summary.display_price_ceiling} PLN")
 
     sent_cache = load_sent_cache(cache_path)
     total_messages_sent = 0
@@ -618,6 +657,8 @@ def process_notifications(
             if sub_filters and flt_id not in sub_filters:
                 continue
 
+            max_ceiling_price = (summary.display_price_ceiling or 10000) + 1000
+
             for item in summary.hotel_metrics:
                 cur_price = item["current_price"]
                 prev_price = item.get("prev_price")
@@ -625,6 +666,10 @@ def process_notifications(
                 delta_48h = item["delta_48h_pct"]
                 delta_run = item.get("delta_run_pct", 0.0)
                 ta_rating = item["ta_rating"]
+
+                # Price ceiling filter (must be within filter's ceiling + 1000 PLN)
+                if cur_price > max_ceiling_price:
+                    continue
 
                 # Global filters
                 if max_price_pln and cur_price > max_price_pln:
