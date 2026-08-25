@@ -96,3 +96,8 @@ data/filters/*/hotel_series
 # Telegram bot notification cache
 telegram_sent_cache.json
 data/telegram_sent_cache.json
+
+# Generated HTML dashboards and legacy charts (built on CI and deployed to Pages from site/)
+index*.html
+hotel-charts/
+site/
