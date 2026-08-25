@@ -217,6 +217,7 @@ class FilterDataSummary:
         csv_path: str,
         df: pd.DataFrame,
         display_price_ceiling: int = 10000,
+        config_url: str = "",
     ):
         self.filter_id = filter_id
         self.data_id = data_id
@@ -226,6 +227,7 @@ class FilterDataSummary:
         self.csv_path = csv_path
         self.df = df
         self.display_price_ceiling = display_price_ceiling
+        self.config_url = config_url
         self.latest_run_time: Optional[datetime.datetime] = None
         self.hotel_metrics: List[Dict[str, Any]] = []
         self.market_breadth: float = 0.0
@@ -255,14 +257,16 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
     else:
         filter_title = flt_title
 
-    # Read display price ceiling from filter config (default 10,000 PLN)
+    # Read display price ceiling and url from filter config
     config_file = flt.get("config")
     display_price_ceiling = 10000
+    config_url = ""
     if config_file and os.path.isfile(config_file):
         try:
             with open(config_file, "r", encoding="utf-8") as f:
                 cfg_json = json.load(f)
                 display_price_ceiling = int(cfg_json.get("display_price_ceiling") or 10000)
+                config_url = str(cfg_json.get("url") or "").strip()
         except Exception:
             display_price_ceiling = 10000
 
@@ -298,6 +302,7 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
         csv_path=csv_path,
         df=df,
         display_price_ceiling=display_price_ceiling,
+        config_url=config_url,
     )
     summary.latest_run_time = latest_run_time
 
@@ -436,13 +441,72 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
 # Notification Builders
 # ============================================================================
 
-def _clean_telegram_href(url: str) -> str:
+def normalize_fly_offer_url(offer_url: str, config_url: str = "") -> str:
+    """
+    Normalizes a Fly.pl offer URL:
+    1. Ensures all participant parameters (filter[person], filter[child], filter[childAge])
+       are preserved, and restores them from the filter's search config if missing.
+    2. Reconstructs the query string with decoded parameter keys (filter[person] instead of filter%5Bperson%5D)
+       so that Fly.pl accurately recognizes family group composition (e.g. 2 adults + 1 child).
+    """
+    if not offer_url or "fly.pl" not in offer_url:
+        return str(offer_url).strip()
+
+    pax_params: Dict[str, str] = {}
+    if config_url:
+        try:
+            cfg_parsed = urllib.parse.urlparse(config_url)
+            cfg_qs = urllib.parse.parse_qs(cfg_parsed.query, keep_blank_values=True)
+            for k, v in cfg_qs.items():
+                norm_k = urllib.parse.unquote(k)
+                if any(p in norm_k for p in ["person", "child", "childAge"]):
+                    pax_params[norm_k] = v[0] if v else ""
+        except Exception:
+            pass
+
+    try:
+        parsed = urllib.parse.urlparse(offer_url)
+        qs = urllib.parse.parse_qs(parsed.query, keep_blank_values=True)
+        norm_qs: Dict[str, List[str]] = {}
+        for k, v_list in qs.items():
+            norm_k = urllib.parse.unquote(k)
+            norm_qs[norm_k] = [urllib.parse.unquote(str(v)) for v in v_list]
+
+        has_person = any("person" in k for k in norm_qs.keys())
+        has_child = any("child" in k or "childAge" in k for k in norm_qs.keys())
+
+        if (not has_person or not has_child) and pax_params:
+            for k, v in pax_params.items():
+                if k not in norm_qs:
+                    norm_qs[k] = [v]
+
+        query_parts = []
+        for k, v_list in norm_qs.items():
+            for v in v_list:
+                query_parts.append(f"{k}={v}")
+
+        new_query = "&".join(query_parts)
+        return urllib.parse.urlunparse((
+            parsed.scheme or "https",
+            parsed.netloc,
+            parsed.path,
+            parsed.params,
+            new_query,
+            parsed.fragment,
+        ))
+    except Exception:
+        return str(offer_url).strip()
+
+
+def _clean_telegram_href(url: str, config_url: str = "") -> str:
     if not url:
         return ""
-    # In Telegram HTML parse mode, ampersands inside href attributes MUST remain literal '&'.
-    # If escaped as '&amp;', Telegram client passes 'amp;filter[person]=2' to the browser,
-    # which Fly.pl fails to recognize and falls back to default 2+0.
-    return str(url).strip().replace('"', '%22')
+    normalized = normalize_fly_offer_url(url, config_url)
+    # In Telegram HTML parse mode, attributes in <a href="..."> MUST be HTML-escaped (& -> &amp;, " -> &quot;).
+    # Telegram Bot API converts &amp; back to & when creating the message text_link entity.
+    # If & is left unescaped, Telegram's parser treats &filter as an unknown entity and drops subsequent query parameters,
+    # stripping filter[person]=2 and filter[child]=1, causing Fly.pl to fall back to default 2+0.
+    return html.escape(str(normalized).strip(), quote=True)
 
 
 def format_hotel_alert_message(
@@ -486,7 +550,7 @@ def format_hotel_alert_message(
     # Links
     links = []
     if item["offer_url"]:
-        clean_url = _clean_telegram_href(item["offer_url"])
+        clean_url = _clean_telegram_href(item["offer_url"], flt_summary.config_url)
         links.append(f'<a href="{clean_url}">🔗 Открыть на Fly.pl</a>')
     
     # Hotel specific chart link

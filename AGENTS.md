@@ -29,6 +29,7 @@
    git pull --rebase origin <current-branch>
    git push origin <current-branch>
    ```
+4. **Автономность запуска команд:** Пользователь разрешил запуск `python3`, `pytest`, `git` и любых верификационных скриптов без дополнительного запроса подтверждения.
 
 ---
 
