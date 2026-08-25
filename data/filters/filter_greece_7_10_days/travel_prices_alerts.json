@@ -221,10 +221,23 @@
       "created_at": "2026-08-25T12:15:40.678895+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-25_12-14_zone_out_+40.2"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 6584.0,
+      "new_price": 4731.0,
+      "price_change": -1853.0,
+      "price_change_pct": -28.143985419198053,
+      "timestamp": "2026-08-25 12:30:47.231505+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T12:31:39.050645+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-25_12-30_-28.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T12:14:50.080605+00:00",
+    "last_processed_run": "2026-08-25T12:30:47.231505+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10432.0,
@@ -737,6 +750,10 @@
       "Lindos Breeze Beach Grecja, Rodos, Kiotari": {
         "history_max": 10340.0,
         "premium_peak": 10340.0
+      },
+      "Rethymno Palace Grecja, Kreta Zachodnia, Adelianos Kampos": {
+        "history_max": 10754.0,
+        "premium_peak": 10754.0
       }
     }
   }

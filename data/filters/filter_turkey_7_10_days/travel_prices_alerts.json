@@ -1625,10 +1625,36 @@
       "created_at": "2026-08-25T12:14:49.246247+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Marin_2026-08-25_12-13_comeback_10.8"
+    },
+    {
+      "hotel_name": "Laur Experience & Elegance",
+      "duration_bucket": "",
+      "old_price": 8954.0,
+      "new_price": 7922.0,
+      "price_change": -1032.0,
+      "price_change_pct": -11.525575161938798,
+      "timestamp": "2026-08-25 12:29:50.093243+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T12:30:50.503018+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Laur Experience & Elegance_2026-08-25_12-29_-11.5"
+    },
+    {
+      "hotel_name": "Numa Bay Exclusive (ex Sentido Numa Bay)",
+      "duration_bucket": "",
+      "old_price": 9156.0,
+      "new_price": 10248.0,
+      "price_change": 1092.0,
+      "price_change_pct": 11.926605504587156,
+      "timestamp": "2026-08-25 12:29:50.093243+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T12:30:50.503097+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Numa Bay Exclusive (ex Sentido Numa Bay)_2026-08-25_12-29_zone_out_+11.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T12:13:52.380334+00:00",
+    "last_processed_run": "2026-08-25T12:29:50.093243+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -2163,8 +2189,8 @@
         "premium_peak": null
       },
       "Trendy Lara": {
-        "history_max": 11237.0,
-        "premium_peak": 11237.0
+        "history_max": 11408.0,
+        "premium_peak": 11408.0
       },
       "Avia Resort & Spa": {
         "history_max": 8249.0,

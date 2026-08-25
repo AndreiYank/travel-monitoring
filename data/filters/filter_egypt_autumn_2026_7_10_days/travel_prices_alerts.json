@@ -559,10 +559,49 @@
       "created_at": "2026-08-25T12:13:39.915960+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-25_12-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9472.0,
+      "new_price": 10869.0,
+      "price_change": 1397.0,
+      "price_change_pct": 14.748733108108109,
+      "timestamp": "2026-08-25 12:28:55.791599+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T12:29:33.288808+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-25_12-28_+14.7"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 7257.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 12:28:55.791599+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T12:29:33.288851+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-25_12-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Akassia Beach (ex. LTI Akassia Beach)",
+      "duration_bucket": "",
+      "old_price": 7952.0,
+      "new_price": 7952.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 12:28:55.791599+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T12:29:33.288862+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Akassia Beach (ex. LTI Akassia Beach)_2026-08-25_12-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T12:12:59.472868+00:00",
+    "last_processed_run": "2026-08-25T12:28:55.791599+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
