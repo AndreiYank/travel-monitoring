@@ -1079,10 +1079,49 @@
       "created_at": "2026-08-25T22:18:51.489976+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Queen Resort_2026-08-25_22-18_-15.2"
+    },
+    {
+      "hotel_name": "V Hotel Sharm",
+      "duration_bucket": "",
+      "old_price": 9706.0,
+      "new_price": 10016.0,
+      "price_change": 310.0,
+      "price_change_pct": 3.1939006799917578,
+      "timestamp": "2026-08-25 23:18:49.795349+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T23:19:37.854599+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "V Hotel Sharm_2026-08-25_23-18_zone_out_+3.2"
+    },
+    {
+      "hotel_name": "Amphoras Beach",
+      "duration_bucket": "",
+      "old_price": 10513.0,
+      "new_price": 9147.0,
+      "price_change": -1366.0,
+      "price_change_pct": -12.99343669742224,
+      "timestamp": "2026-08-25 23:18:49.795349+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T23:19:37.854649+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amphoras Beach_2026-08-25_23-18_comeback_13.0"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 11187.0,
+      "new_price": 9017.0,
+      "price_change": -2170.0,
+      "price_change_pct": -19.397514972736214,
+      "timestamp": "2026-08-25 23:18:49.795349+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T23:19:37.854666+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-25_23-18_comeback_19.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T22:18:09.381824+00:00",
+    "last_processed_run": "2026-08-25T23:18:49.795349+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -1389,8 +1428,8 @@
         "premium_peak": 10348.0
       },
       "Coral Sea Sensatori (ex Coral Sea Imperial)": {
-        "history_max": 11342.0,
-        "premium_peak": 11342.0
+        "history_max": 11445.0,
+        "premium_peak": 11445.0
       },
       "Coral Sea Holiday Resort": {
         "history_max": 9365.0,
@@ -1525,7 +1564,7 @@
         "premium_peak": 13257.0
       },
       "Parrotel Beach Resort (ex. Radisson Blu)": {
-        "history_max": 8464.0,
+        "history_max": 8743.0,
         "premium_peak": null
       },
       "Royal Brayka Beach Resort (ex Zee Brayka)": {
@@ -1533,8 +1572,8 @@
         "premium_peak": null
       },
       "Park Regency Resort (ex. Hyatt)": {
-        "history_max": 11063.0,
-        "premium_peak": 11063.0
+        "history_max": 11445.0,
+        "premium_peak": 11445.0
       },
       "Palm Royale Soma Bay": {
         "history_max": 9135.0,

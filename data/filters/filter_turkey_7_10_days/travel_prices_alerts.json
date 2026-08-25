@@ -2457,10 +2457,75 @@
       "created_at": "2026-08-25T22:20:12.838107+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Marin_2026-08-25_22-19_zone_out_+5.8"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 7483.0,
+      "new_price": 8649.0,
+      "price_change": 1166.0,
+      "price_change_pct": 15.581985834558331,
+      "timestamp": "2026-08-25 23:19:54.848002+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T23:21:03.358807+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-08-25_23-19_+15.6"
+    },
+    {
+      "hotel_name": "Green Garden Resort",
+      "duration_bucket": "",
+      "old_price": 9788.0,
+      "new_price": 10547.0,
+      "price_change": 759.0,
+      "price_change_pct": 7.754393134450348,
+      "timestamp": "2026-08-25 23:19:54.848002+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T23:21:03.358880+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Green Garden Resort_2026-08-25_23-19_zone_out_+7.8"
+    },
+    {
+      "hotel_name": "Holiday Park Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 6970.0,
+      "new_price": 6970.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 23:19:54.848002+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T23:21:03.358892+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Park Resort (Okurcalar)_2026-08-25_23-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa) Turcja, Alanya, Konakli",
+      "duration_bucket": "",
+      "old_price": 6957.0,
+      "new_price": 6957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 23:19:54.848002+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T23:21:03.358901+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa) Turcja, Alanya, Konakli_2026-08-25_23-19_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aska Just in Beach",
+      "duration_bucket": "",
+      "old_price": 11182.0,
+      "new_price": 9822.0,
+      "price_change": -1360.0,
+      "price_change_pct": -12.162403863351816,
+      "timestamp": "2026-08-25 23:19:54.848002+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T23:21:03.358933+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aska Just in Beach_2026-08-25_23-19_comeback_12.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T22:19:08.414796+00:00",
+    "last_processed_run": "2026-08-25T23:19:54.848002+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -2483,8 +2548,8 @@
         "premium_peak": 11190.0
       },
       "Royal Alhambra Palace": {
-        "history_max": 11382.0,
-        "premium_peak": 11382.0
+        "history_max": 11557.0,
+        "premium_peak": 11557.0
       },
       "Beks Premium Resort & Spa": {
         "history_max": 10544.0,
@@ -3251,7 +3316,7 @@
         "premium_peak": null
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 8867.0,
+        "history_max": 9103.0,
         "premium_peak": null
       },
       "Grand Belish": {
@@ -3351,12 +3416,12 @@
         "premium_peak": null
       },
       "Terrace Elite Resort": {
-        "history_max": 10158.0,
-        "premium_peak": 10158.0
+        "history_max": 10337.0,
+        "premium_peak": 10337.0
       },
       "Seaden Sea Planet Resort & Spa": {
-        "history_max": 11286.0,
-        "premium_peak": 11286.0
+        "history_max": 11297.0,
+        "premium_peak": 11297.0
       },
       "Kaya Izmir Thermal & Convention": {
         "history_max": 10169.0,
@@ -3861,6 +3926,10 @@
       "Eftalia Sol": {
         "history_max": 11458.0,
         "premium_peak": 11458.0
+      },
+      "Monachus Family Resort Sorgun": {
+        "history_max": 11478.0,
+        "premium_peak": 11478.0
       }
     }
   }
