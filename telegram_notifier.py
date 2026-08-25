@@ -274,7 +274,17 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
         return None
 
     try:
-        df = pd.read_csv(csv_path, quoting=1, on_bad_lines="skip")
+        frames = []
+        archive_dir = os.path.join(data_dir, "archive")
+        if os.path.isdir(archive_dir):
+            for af in sorted(os.listdir(archive_dir)):
+                if af.startswith("travel_prices_") and af.endswith(".csv"):
+                    try:
+                        frames.append(pd.read_csv(os.path.join(archive_dir, af), quoting=1, on_bad_lines="skip"))
+                    except Exception:
+                        pass
+        frames.append(pd.read_csv(csv_path, quoting=1, on_bad_lines="skip"))
+        df = pd.concat(frames, ignore_index=True, sort=False) if len(frames) > 1 else frames[0]
     except Exception as e:
         logger.warning(f"Could not read {csv_path}: {e}")
         return None
@@ -360,10 +370,10 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
             prev_price = current_price
             delta_run_pct = 0.0
 
-        # Historical minimum
-        all_prices = grp_sorted["price_num"].astype(float).tolist()
-        hist_min = min(all_prices)
-        is_historic_low = (current_price <= hist_min) and (len(all_prices) >= 2)
+        # Historical minimum across full season history
+        all_prices_prior = grp_sorted.iloc[:-1]["price_num"].astype(float).tolist()
+        hist_min = min(grp_sorted["price_num"].astype(float).tolist())
+        is_historic_low = (current_price <= min(all_prices_prior)) if all_prices_prior else False
 
         # TripAdvisor info
         ta_rating_raw = latest_row.get("ta_rating")
