@@ -366,12 +366,68 @@
       "unique_key": "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay_2026-08-25_06-29_zone_out_gone"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "hotel_name": "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 6697.0,
+      "new_price": 7877.0,
+      "price_change": 1180.0,
+      "price_change_pct": 17.619829774525908,
+      "timestamp": "2026-08-25 08:21:42.468164+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T08:22:23.265859+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib_2026-08-25_08-21_+17.6"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 10869.0,
+      "new_price": 9172.0,
+      "price_change": -1697.0,
+      "price_change_pct": -15.613211887018124,
+      "timestamp": "2026-08-25 08:21:42.468164+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T08:22:23.265896+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-25_08-21_-15.6"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 5857.0,
+      "new_price": 6777.0,
+      "price_change": 920.0,
+      "price_change_pct": 15.70770018780946,
+      "timestamp": "2026-08-25 08:21:42.468164+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T08:22:23.265909+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-25_08-21_+15.7"
+    },
+    {
+      "hotel_name": "Albatros Makadi Resort (ex Royal Pharaohs Makadi)",
+      "duration_bucket": "",
+      "old_price": 7957.0,
+      "new_price": 7957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 08:21:42.468164+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:22:23.265932+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Makadi Resort (ex Royal Pharaohs Makadi)_2026-08-25_08-21_zone_out_gone"
+    },
+    {
+>>>>>>> Stashed changes
       "hotel_name": "El Kasr Red Sea",
       "duration_bucket": "",
       "old_price": 10007.0,
       "new_price": 10007.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-25 07:38:42.349270+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-25T07:39:29.990698+00:00",
@@ -394,6 +450,30 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-25T07:38:42.349270+00:00",
+=======
+      "timestamp": "2026-08-25 08:21:42.468164+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:22:23.265939+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-08-25_08-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7417.0,
+      "new_price": 7417.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 08:21:42.468164+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T08:22:23.265945+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam_2026-08-25_08-21_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-25T08:21:42.468164+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -476,7 +556,7 @@
         "premium_peak": null
       },
       "Naama Bay Hotel & Resort": {
-        "history_max": 9203.0,
+        "history_max": 9318.0,
         "premium_peak": null
       },
       "Naama Bay Promenade Beach Resort": {
@@ -676,7 +756,7 @@
         "premium_peak": null
       },
       "Seven Seas Jolie Bay": {
-        "history_max": 9300.0,
+        "history_max": 9340.0,
         "premium_peak": null
       },
       "Sharm Grand Plaza Resort Egipt, Sharm El Sheikh": {
@@ -1028,7 +1108,11 @@
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
+<<<<<<< Updated upstream
         "history_max": 6197.0,
+=======
+        "history_max": 6777.0,
+>>>>>>> Stashed changes
         "premium_peak": null
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
@@ -1036,7 +1120,7 @@
         "premium_peak": null
       },
       "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 6697.0,
+        "history_max": 7877.0,
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
