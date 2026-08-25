@@ -652,17 +652,41 @@
       "unique_key": "Golf Villas And Suites Sharm_2026-08-25_14-37_zone_out_gone"
     },
     {
+<<<<<<< Updated upstream
+=======
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8317.0,
+      "new_price": 9617.0,
+      "price_change": 1300.0,
+      "price_change_pct": 15.630636046651436,
+      "timestamp": "2026-08-25 15:43:16.648861+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T15:44:01.261003+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-25_15-43_+15.6"
+    },
+    {
+>>>>>>> Stashed changes
       "hotel_name": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk",
       "duration_bucket": "",
       "old_price": 6419.0,
       "new_price": 5669.0,
       "price_change": -750.0,
       "price_change_pct": -11.68406293815236,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-25 15:25:03.601350+00:00",
       "alert_type": "price_drop",
       "created_at": "2026-08-25T15:25:42.624396+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-25_15-25_-11.7"
+=======
+      "timestamp": "2026-08-25 15:43:16.648861+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T15:44:01.261040+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-25_15-43_-11.7"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Dreams Vacation Sharm Resort",
@@ -671,6 +695,7 @@
       "new_price": 8047.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-25 15:25:03.601350+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-25T15:25:42.624463+00:00",
@@ -680,6 +705,43 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-25T15:25:03.601350+00:00",
+=======
+      "timestamp": "2026-08-25 15:43:16.648861+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T15:44:01.261076+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Sharm Resort_2026-08-25_15-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sharm Grand Plaza Resort Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 7747.0,
+      "new_price": 7747.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 15:43:16.648861+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T15:44:01.261087+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sharm Grand Plaza Resort Egipt, Sharm El Sheikh_2026-08-25_15-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Swissotel Resort El Quseir",
+      "duration_bucket": "",
+      "old_price": 8096.0,
+      "new_price": 8096.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 15:43:16.648861+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T15:44:01.261095+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swissotel Resort El Quseir_2026-08-25_15-43_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-25T15:43:16.648861+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -1162,7 +1224,7 @@
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino": {
-        "history_max": 8677.0,
+        "history_max": 9617.0,
         "premium_peak": null
       },
       "Amarina Star Resort & Aqua Park (ex. Raouf Star)": {
@@ -1363,6 +1425,10 @@
       },
       "Maritim Jolie Ville Royal Peninsula Egipt, Sharm El Sheikh": {
         "history_max": 8029.0,
+        "premium_peak": null
+      },
+      "Sharm Grand Plaza Resort": {
+        "history_max": 8641.0,
         "premium_peak": null
       }
     }
