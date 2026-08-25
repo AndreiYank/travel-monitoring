@@ -455,10 +455,23 @@
       "created_at": "2026-08-25T02:17:12.560328+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xafira Deluxe Resort & Spa_2026-08-25_02-16_zone_out_gone"
+    },
+    {
+      "hotel_name": "Victory Be Mine",
+      "duration_bucket": "",
+      "old_price": 10000.0,
+      "new_price": 10000.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 03:43:22.505595+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T03:43:59.702864+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Victory Be Mine_2026-08-25_03-43_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T02:16:07.802404+00:00",
+    "last_processed_run": "2026-08-25T03:43:22.505595+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10140.0,
@@ -1309,8 +1322,8 @@
         "premium_peak": null
       },
       "Nova Park": {
-        "history_max": 11053.0,
-        "premium_peak": 11053.0
+        "history_max": 11182.0,
+        "premium_peak": 11182.0
       },
       "Nova Life Turcja, Alanya, Konaklı": {
         "history_max": 7133.0,
@@ -1731,6 +1744,10 @@
       "Turquoise Hotel": {
         "history_max": 11242.0,
         "premium_peak": 11242.0
+      },
+      "Adalya Ocean Deluxe": {
+        "history_max": 11471.0,
+        "premium_peak": 11471.0
       }
     }
   }

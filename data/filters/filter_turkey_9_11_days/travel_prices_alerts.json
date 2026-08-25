@@ -208,10 +208,23 @@
       "created_at": "2026-08-25T02:17:21.869246+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Casa Fora Beach Resort_2026-08-25_02-16_comeback_9.5"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9163.0,
+      "new_price": 10129.0,
+      "price_change": 966.0,
+      "price_change_pct": 10.542398777692895,
+      "timestamp": "2026-08-25 03:43:22.788642+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T03:44:01.756550+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-25_03-43_zone_out_+10.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T02:16:10.442311+00:00",
+    "last_processed_run": "2026-08-25T03:43:22.788642+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1444,6 +1457,10 @@
       "Side Sunport (ex. Side Sungate)": {
         "history_max": 16710.0,
         "premium_peak": 16710.0
+      },
+      "MegaSaray Club Belek": {
+        "history_max": 16905.0,
+        "premium_peak": 16905.0
       }
     }
   }
