@@ -1972,9 +1972,127 @@
       "created_at": "2026-08-25T10:59:15.488725+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sural_2026-08-25_10-58_comeback_11.0"
+    },
+    {
+      "hotel_name": "Armella Hill",
+      "duration_bucket": "",
+      "old_price": 8384.0,
+      "new_price": 7382.0,
+      "price_change": -1002.0,
+      "price_change_pct": -11.951335877862595,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T11:30:23.079468+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armella Hill_2026-08-25_11-29_-12.0"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 7254.0,
+      "new_price": 7903.0,
+      "price_change": 649.0,
+      "price_change_pct": 8.946787979046043,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T11:30:23.079522+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-08-25_11-29_+8.9"
+    },
+    {
+      "hotel_name": "Raxeria Turcja, Side, Kızılot",
+      "duration_bucket": "",
+      "old_price": 7236.0,
+      "new_price": 7236.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T11:30:23.079562+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raxeria Turcja, Side, Kızılot_2026-08-25_11-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Richmond Ephesus",
+      "duration_bucket": "",
+      "old_price": 9736.0,
+      "new_price": 10331.0,
+      "price_change": 595.0,
+      "price_change_pct": 6.111339359079705,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T11:30:23.079574+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Richmond Ephesus_2026-08-25_11-29_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7505.0,
+      "new_price": 7505.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T11:30:23.079583+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa_2026-08-25_11-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Numa Bay Exclusive (ex Sentido Numa Bay)",
+      "duration_bucket": "",
+      "old_price": 10288.0,
+      "new_price": 9156.0,
+      "price_change": -1132.0,
+      "price_change_pct": -11.003110419906688,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T11:30:23.079612+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Numa Bay Exclusive (ex Sentido Numa Bay)_2026-08-25_11-29_comeback_11.0"
+    },
+    {
+      "hotel_name": "Mary Side (ex. Mary Palace)",
+      "duration_bucket": "",
+      "old_price": 10825.0,
+      "new_price": 9732.0,
+      "price_change": -1093.0,
+      "price_change_pct": -10.096997690531177,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T11:30:23.079629+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mary Side (ex. Mary Palace)_2026-08-25_11-29_comeback_10.1"
+    },
+    {
+      "hotel_name": "Turunc",
+      "duration_bucket": "",
+      "old_price": 11190.0,
+      "new_price": 9588.0,
+      "price_change": -1602.0,
+      "price_change_pct": -14.316353887399464,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T11:30:23.079642+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Turunc_2026-08-25_11-29_comeback_14.3"
+    },
+    {
+      "hotel_name": "Grand Belish",
+      "duration_bucket": "",
+      "old_price": 10202.0,
+      "new_price": 9221.0,
+      "price_change": -981.0,
+      "price_change_pct": -9.615761615369536,
+      "timestamp": "2026-08-25 11:29:06.684643+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T11:30:23.079653+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Belish_2026-08-25_11-29_comeback_9.6"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-25T10:58:10.420431+00:00",
 =======
       "timestamp": "2026-08-25 11:13:16.667878+00:00",
@@ -1999,6 +2117,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-25T11:13:16.667878+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-25T11:29:06.684643+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
@@ -3968,7 +4089,7 @@
         "premium_peak": null
       },
       "Washington Resort": {
-        "history_max": 8497.0,
+        "history_max": 8897.0,
         "premium_peak": null
       },
       "Xafira Deluxe Resort & Spa": {
@@ -4535,7 +4656,7 @@
         "premium_peak": 11123.0
       },
       "Ladonia Adakule": {
-        "history_max": 7254.0,
+        "history_max": 7903.0,
         "premium_peak": null
       },
       "Garden of Sun Spa & Wellness Turcja, Bodrum, Didim": {

@@ -604,9 +604,62 @@
       "created_at": "2026-08-25T10:57:50.723613+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Amarina Jannah Resort Aquapark_2026-08-25_10-57_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 7517.0,
+      "new_price": 9172.0,
+      "price_change": 1655.0,
+      "price_change_pct": 22.01676200611946,
+      "timestamp": "2026-08-25 11:28:01.162847+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T11:28:48.717587+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-25_11-28_+22.0"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 7077.0,
+      "new_price": 8187.0,
+      "price_change": 1110.0,
+      "price_change_pct": 15.684612123781264,
+      "timestamp": "2026-08-25 11:28:01.162847+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T11:28:48.717626+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-25_11-28_+15.7"
+    },
+    {
+      "hotel_name": "Monte Carlo Resort Spa",
+      "duration_bucket": "",
+      "old_price": 8457.0,
+      "new_price": 9257.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.459619250325174,
+      "timestamp": "2026-08-25 11:28:01.162847+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-25T11:28:48.717643+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Monte Carlo Resort Spa_2026-08-25_11-28_+9.5"
+    },
+    {
+      "hotel_name": "Sunrise Royal Makadi Aqua Resort",
+      "duration_bucket": "",
+      "old_price": 9946.0,
+      "new_price": 10013.0,
+      "price_change": 67.0,
+      "price_change_pct": 0.6736376432736778,
+      "timestamp": "2026-08-25 11:28:01.162847+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T11:28:48.717680+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Royal Makadi Aqua Resort_2026-08-25_11-28_zone_out_+0.7"
     }
   ],
   "meta": {
+<<<<<<< Updated upstream
     "last_processed_run": "2026-08-25T10:57:09.854425+00:00",
 =======
       "timestamp": "2026-08-25 11:12:21.433327+00:00",
@@ -631,6 +684,9 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-25T11:12:21.433327+00:00",
+>>>>>>> Stashed changes
+=======
+    "last_processed_run": "2026-08-25T11:28:01.162847+00:00",
 >>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
@@ -667,7 +723,7 @@
         "premium_peak": 14083.0
       },
       "Monte Carlo Resort Spa": {
-        "history_max": 8457.0,
+        "history_max": 9257.0,
         "premium_peak": null
       },
       "Movenpick Resort & Spa El Gouna": {
@@ -1087,7 +1143,7 @@
         "premium_peak": null
       },
       "Siva Golden Bay Makadi": {
-        "history_max": 7077.0,
+        "history_max": 8187.0,
         "premium_peak": null
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
@@ -1271,7 +1327,7 @@
         "premium_peak": 10057.0
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 9545.0,
+        "history_max": 9607.0,
         "premium_peak": null
       },
       "Swissotel Sharm El Sheikh": {
@@ -2099,7 +2155,7 @@
         "premium_peak": 11930.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 9353.0,
+        "history_max": 9405.0,
         "premium_peak": null
       },
       "Amarina Queen Resort": {
