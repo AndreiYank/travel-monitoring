@@ -2028,10 +2028,49 @@
       "created_at": "2026-08-25T15:10:11.668020+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Unique Residence Golf Spa_2026-08-25_15-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Armella Hill",
+      "duration_bucket": "",
+      "old_price": 7161.0,
+      "new_price": 7161.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 15:25:58.989297+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T15:27:00.693375+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armella Hill_2026-08-25_15-25_zone_out_gone"
+    },
+    {
+      "hotel_name": "Karmir Resort (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9866.0,
+      "new_price": 10315.0,
+      "price_change": 449.0,
+      "price_change_pct": 4.55098317453882,
+      "timestamp": "2026-08-25 15:25:58.989297+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T15:27:00.693402+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Karmir Resort (Kemer)_2026-08-25_15-25_zone_out_+4.6"
+    },
+    {
+      "hotel_name": "Sunmelia Beach Resort & Spa Turcja, Side, Kizilagac",
+      "duration_bucket": "",
+      "old_price": 7097.0,
+      "new_price": 7097.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-25 15:25:58.989297+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-25T15:27:00.693410+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunmelia Beach Resort & Spa Turcja, Side, Kizilagac_2026-08-25_15-25_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T15:09:02.107766+00:00",
+    "last_processed_run": "2026-08-25T15:25:58.989297+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -2174,8 +2213,8 @@
         "premium_peak": 11210.0
       },
       "Selectum Noa": {
-        "history_max": 10472.0,
-        "premium_peak": 10472.0
+        "history_max": 10539.0,
+        "premium_peak": 10539.0
       },
       "Victory Volare": {
         "history_max": 10000.0,
@@ -2426,7 +2465,7 @@
         "premium_peak": 10157.0
       },
       "Beach Club Doganay": {
-        "history_max": 9188.0,
+        "history_max": 9300.0,
         "premium_peak": null
       },
       "Beks Premium Resort & Spa": {
@@ -2722,7 +2761,7 @@
         "premium_peak": 10539.0
       },
       "Sun Star Resort Turcja, Alanya, Mahmutlar": {
-        "history_max": 6864.0,
+        "history_max": 7123.0,
         "premium_peak": null
       },
       "Cesars Resort (Side)": {
@@ -2826,7 +2865,7 @@
         "premium_peak": 11016.0
       },
       "Kirbiyik Resort (ex. Dinler)": {
-        "history_max": 7543.0,
+        "history_max": 7803.0,
         "premium_peak": null
       },
       "Nova Life Turcja, Alanya, Konaklı": {
@@ -2862,8 +2901,8 @@
         "premium_peak": null
       },
       "Karmir Resort (Kemer)": {
-        "history_max": 9959.0,
-        "premium_peak": null
+        "history_max": 10315.0,
+        "premium_peak": 10315.0
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)": {
         "history_max": 8079.0,
@@ -2918,8 +2957,8 @@
         "premium_peak": null
       },
       "Zena Resort": {
-        "history_max": 10914.0,
-        "premium_peak": 10914.0
+        "history_max": 11174.0,
+        "premium_peak": 11174.0
       },
       "Kaila Beach (ex Katya)": {
         "history_max": 9330.0,
@@ -2958,8 +2997,8 @@
         "premium_peak": 11190.0
       },
       "Greenwood Kemer Resort (ex. Sherwood Greenwood Resort)": {
-        "history_max": 11196.0,
-        "premium_peak": 11196.0
+        "history_max": 11289.0,
+        "premium_peak": 11289.0
       },
       "Numa Bay Exclusive (ex Sentido Numa Bay)": {
         "history_max": 10288.0,
@@ -3194,8 +3233,8 @@
         "premium_peak": null
       },
       "Horus Paradise Luxury Resort": {
-        "history_max": 10033.0,
-        "premium_peak": 10033.0
+        "history_max": 10126.0,
+        "premium_peak": 10126.0
       },
       "Pine Bay Holiday Resort": {
         "history_max": 9557.0,
@@ -3412,6 +3451,10 @@
       "Elegance (Marmaris)": {
         "history_max": 11385.0,
         "premium_peak": 11385.0
+      },
+      "Arycanda Kirman Premium": {
+        "history_max": 11556.0,
+        "premium_peak": 11556.0
       }
     }
   }
