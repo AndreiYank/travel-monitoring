@@ -52,17 +52,69 @@
       "created_at": "2026-08-25T06:32:00.289011+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-25_06-31_+11.4"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 8057.0,
+      "new_price": 7057.0,
+      "price_change": -1000.0,
+      "price_change_pct": -12.411567580985478,
+      "timestamp": "2026-08-25 07:41:01.331644+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T07:42:04.219166+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-25_07-41_-12.4"
+    },
+    {
+      "hotel_name": "Sitia Beach Grecja, Kreta Wschodnia, Sitia",
+      "duration_bucket": "",
+      "old_price": 9057.0,
+      "new_price": 8057.0,
+      "price_change": -1000.0,
+      "price_change_pct": -11.041183614883515,
+      "timestamp": "2026-08-25 07:41:01.331644+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T07:42:04.219196+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-25_07-41_-11.0"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6342.0,
+      "new_price": 5608.0,
+      "price_change": -734.0,
+      "price_change_pct": -11.573636076947336,
+      "timestamp": "2026-08-25 07:41:01.331644+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-25T07:42:04.219208+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-25_07-41_-11.6"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 10146.0,
+      "new_price": 8475.0,
+      "price_change": -1671.0,
+      "price_change_pct": -16.469544648137198,
+      "timestamp": "2026-08-25 07:41:01.331644+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-25T07:42:04.219236+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-08-25_07-41_comeback_16.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T06:31:05.888297+00:00",
+    "last_processed_run": "2026-08-25T07:41:01.331644+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10432.0,
         "premium_peak": 10432.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 8898.0,
+        "history_max": 8929.0,
         "premium_peak": null
       },
       "Porto Angeli": {
@@ -326,8 +378,8 @@
         "premium_peak": 13895.0
       },
       "Gouves Water Park Holiday Resort": {
-        "history_max": 13509.0,
-        "premium_peak": 13509.0
+        "history_max": 14036.0,
+        "premium_peak": 14036.0
       },
       "Sitia Beach Grecja, Kreta Wschodnia, Sitia": {
         "history_max": 9057.0,
@@ -530,12 +582,20 @@
         "premium_peak": 14684.0
       },
       "Rethymno Mare & Water Park (Rethymno)": {
-        "history_max": 14327.0,
-        "premium_peak": 14327.0
+        "history_max": 14537.0,
+        "premium_peak": 14537.0
       },
       "Amada Colossos Resort (ex Louis Beach)": {
         "history_max": 16157.0,
         "premium_peak": 16157.0
+      },
+      "Ramada by Wyndham Loutraki Poseidon Resort": {
+        "history_max": 10953.0,
+        "premium_peak": 10953.0
+      },
+      "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
+        "history_max": 10642.0,
+        "premium_peak": 10642.0
       }
     }
   }
