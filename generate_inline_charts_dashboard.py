@@ -10408,6 +10408,7 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             if (chartTitleEl) chartTitleEl.style.display = 'none';
             return;
           }
+          chartEl.style.display = 'block';
           if (chartTitleEl) chartTitleEl.style.display = 'block';
           const x = (curve.labels && curve.labels.length)
             ? curve.labels
@@ -10476,6 +10477,8 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
           const bodyEl = document.getElementById('departureModalBody');
           if (!modal || !titleEl || !metaEl || !bodyEl) return;
 
+          modal.classList.add('open');
+          modal.setAttribute('aria-hidden', 'false');
           renderDeparturePriceChart(key);
 
           const payload = departureOffers[key];
@@ -10483,8 +10486,6 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             titleEl.textContent = 'Отели по вылету';
             metaEl.textContent = 'Для этого вылета нет сохранённых предложений в истории scrape.';
             bodyEl.innerHTML = '<div class="departure-modal-empty">Архивный вылет: офферы показываются только если они есть в travel_prices / departure_offers. Для будущих вылетов список появится после ближайших проверок.</div>';
-            modal.classList.add('open');
-            modal.setAttribute('aria-hidden', 'false');
             return;
           }
 
@@ -10530,14 +10531,14 @@ def generate_inline_charts_dashboard(data_file: str = 'data/travel_prices.csv', 
             bodyEl.innerHTML = '<div class="departure-modal-table-scroll"><table class="departure-offers-table"><thead><tr><th>Отель</th><th>Цена</th><th>Deal</th><th title="Отклонение от типичной цены отеля по истории вылетов">Δ типич.</th><th>Ссылки</th></tr></thead><tbody>' + rows + '</tbody></table></div>';
           }
 
-          modal.classList.add('open');
-          modal.setAttribute('aria-hidden', 'false');
-          setTimeout(function() {
-            const chartEl = document.getElementById('departureModalChart');
-            if (chartEl && window.Plotly && window.Plotly.Plots) {
-              try { window.Plotly.Plots.resize(chartEl); } catch (e) {}
-            }
-          }, 60);
+          [40, 150, 350].forEach(function(delay) {
+            setTimeout(function() {
+              const chartEl = document.getElementById('departureModalChart');
+              if (chartEl && window.Plotly && window.Plotly.Plots && chartEl.style.display !== 'none') {
+                try { window.Plotly.Plots.resize(chartEl); } catch (e) {}
+              }
+            }, delay);
+          });
         }
 
         function closeDepartureOffers() {
