@@ -351,10 +351,75 @@
       "created_at": "2026-08-25T22:20:51.925147+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-25_22-20_zone_out_+11.6"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 5718.0,
+      "new_price": 7663.0,
+      "price_change": 1945.0,
+      "price_change_pct": 34.01538999650227,
+      "timestamp": "2026-08-26 00:43:43.422108+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T00:44:33.361039+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-26_00-43_+34.0"
+    },
+    {
+      "hotel_name": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari",
+      "duration_bucket": "",
+      "old_price": 8338.0,
+      "new_price": 9068.0,
+      "price_change": 730.0,
+      "price_change_pct": 8.755097145598464,
+      "timestamp": "2026-08-26 00:43:43.422108+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T00:44:33.361065+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-26_00-43_+8.8"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9295.0,
+      "new_price": 10647.0,
+      "price_change": 1352.0,
+      "price_change_pct": 14.545454545454545,
+      "timestamp": "2026-08-26 00:43:43.422108+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T00:44:33.361079+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-08-26_00-43_zone_out_+14.5"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 8929.0,
+      "new_price": 10600.0,
+      "price_change": 1671.0,
+      "price_change_pct": 18.71430171351775,
+      "timestamp": "2026-08-26 00:43:43.422108+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T00:44:33.361088+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-08-26_00-43_zone_out_+18.7"
+    },
+    {
+      "hotel_name": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos",
+      "duration_bucket": "",
+      "old_price": 10872.0,
+      "new_price": 9657.0,
+      "price_change": -1215.0,
+      "price_change_pct": -11.175496688741722,
+      "timestamp": "2026-08-26 00:43:43.422108+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-26T00:44:33.361107+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-26_00-43_comeback_11.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-25T23:21:04.295713+00:00",
+    "last_processed_run": "2026-08-26T00:43:43.422108+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10432.0,
@@ -385,8 +450,8 @@
         "premium_peak": 17180.0
       },
       "Rethymno Palace": {
-        "history_max": 12164.0,
-        "premium_peak": 12164.0
+        "history_max": 12643.0,
+        "premium_peak": 12643.0
       },
       "Mitsis Rodos Village": {
         "history_max": 14559.0,
@@ -397,7 +462,7 @@
         "premium_peak": 17651.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 6342.0,
+        "history_max": 7663.0,
         "premium_peak": null
       },
       "Mitsis Rodos Maris": {
@@ -433,8 +498,8 @@
         "premium_peak": 14509.0
       },
       "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
-        "history_max": 9295.0,
-        "premium_peak": null
+        "history_max": 10647.0,
+        "premium_peak": 10647.0
       },
       "Asterias Beach Resort": {
         "history_max": 12828.0,
@@ -445,8 +510,8 @@
         "premium_peak": 13972.0
       },
       "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
-        "history_max": 8929.0,
-        "premium_peak": null
+        "history_max": 10600.0,
+        "premium_peak": 10600.0
       },
       "Rodos Palace Grecja, Rodos, Ixia": {
         "history_max": 8997.0,
@@ -517,8 +582,8 @@
         "premium_peak": 19311.0
       },
       "Bella Beach": {
-        "history_max": 13000.0,
-        "premium_peak": 13000.0
+        "history_max": 13224.0,
+        "premium_peak": 13224.0
       },
       "Princess Andriana Resort & Spa": {
         "history_max": 14393.0,
@@ -561,7 +626,7 @@
         "premium_peak": 15189.0
       },
       "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia": {
-        "history_max": 9257.0,
+        "history_max": 9657.0,
         "premium_peak": null
       },
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
@@ -685,8 +750,8 @@
         "premium_peak": 10146.0
       },
       "Georgioupolis Resort & Aqua Park": {
-        "history_max": 14990.0,
-        "premium_peak": 14990.0
+        "history_max": 18527.0,
+        "premium_peak": 18527.0
       },
       "Anemos Luxury Grand Resort": {
         "history_max": 15291.0,
@@ -785,8 +850,8 @@
         "premium_peak": 14969.0
       },
       "Lindos Imperial Resort & Spa": {
-        "history_max": 13107.0,
-        "premium_peak": 13107.0
+        "history_max": 13487.0,
+        "premium_peak": 13487.0
       },
       "Fodele Beach & Water Park Holiday Resort": {
         "history_max": 13991.0,
@@ -875,6 +940,18 @@
       "King Minos Retreat (ex. King Minos Palace)": {
         "history_max": 19990.0,
         "premium_peak": 19990.0
+      },
+      "Mitsis Faliraki": {
+        "history_max": 17477.0,
+        "premium_peak": 17477.0
+      },
+      "Levante Beach Resort By Playitas": {
+        "history_max": 11827.0,
+        "premium_peak": 11827.0
+      },
+      "Georgioupolis Resort": {
+        "history_max": 19628.0,
+        "premium_peak": 19628.0
       }
     }
   }
