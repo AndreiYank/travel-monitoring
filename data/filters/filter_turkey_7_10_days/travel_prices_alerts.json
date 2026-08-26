@@ -2886,10 +2886,62 @@
       "created_at": "2026-08-26T04:35:06.304943+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Calido Maris_2026-08-26_04-33_comeback_10.3"
+    },
+    {
+      "hotel_name": "Calido Maris",
+      "duration_bucket": "",
+      "old_price": 9337.0,
+      "new_price": 10411.0,
+      "price_change": 1074.0,
+      "price_change_pct": 11.502623969154975,
+      "timestamp": "2026-08-26 05:27:28.622199+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T05:28:38.538148+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calido Maris_2026-08-26_05-27_zone_out_+11.5"
+    },
+    {
+      "hotel_name": "Daima Biz (Kemer)",
+      "duration_bucket": "",
+      "old_price": 7122.0,
+      "new_price": 7122.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 05:27:28.622199+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T05:28:38.538174+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz (Kemer)_2026-08-26_05-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Glamour Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9883.0,
+      "new_price": 10106.0,
+      "price_change": 223.0,
+      "price_change_pct": 2.2563998785793786,
+      "timestamp": "2026-08-26 05:27:28.622199+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T05:28:38.538187+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Glamour Resort & Spa_2026-08-26_05-27_zone_out_+2.3"
+    },
+    {
+      "hotel_name": "Viking Star Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 6953.0,
+      "new_price": 6953.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 05:27:28.622199+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T05:28:38.538196+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star Turcja, Kemer_2026-08-26_05-27_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T04:33:41.773500+00:00",
+    "last_processed_run": "2026-08-26T05:27:28.622199+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -3588,7 +3640,7 @@
         "premium_peak": null
       },
       "Fun & Sun Smart Hane Sun": {
-        "history_max": 8087.0,
+        "history_max": 8478.0,
         "premium_peak": null
       },
       "Seven For Life Thermal": {
@@ -4200,7 +4252,7 @@
         "premium_peak": null
       },
       "Hane Sun Elite (ex Noble Palace Side)": {
-        "history_max": 7340.0,
+        "history_max": 7907.0,
         "premium_peak": null
       },
       "Ring Beach (Kemer)": {
@@ -4317,6 +4369,10 @@
       },
       "Raymar Resort & Aqua Turcja, Side": {
         "history_max": 6789.0,
+        "premium_peak": null
+      },
+      "Viking Star": {
+        "history_max": 7142.0,
         "premium_peak": null
       }
     }
