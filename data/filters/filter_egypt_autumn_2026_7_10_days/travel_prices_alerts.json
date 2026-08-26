@@ -1196,10 +1196,75 @@
       "created_at": "2026-08-26T05:27:10.381197+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Dreams Vacation Sharm Resort_2026-08-26_05-26_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 10869.0,
+      "new_price": 9172.0,
+      "price_change": -1697.0,
+      "price_change_pct": -15.613211887018124,
+      "timestamp": "2026-08-26 06:32:01.397507+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T06:32:46.447541+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-26_06-32_-15.6"
+    },
+    {
+      "hotel_name": "Dreams Vacation Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 7867.0,
+      "new_price": 7867.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 06:32:01.397507+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T06:32:46.447620+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-26_06-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Golf Villas And Suites Sharm",
+      "duration_bucket": "",
+      "old_price": 8037.0,
+      "new_price": 8037.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 06:32:01.397507+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T06:32:46.447631+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Golf Villas And Suites Sharm_2026-08-26_06-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8073.0,
+      "new_price": 8073.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 06:32:01.397507+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T06:32:46.447639+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-08-26_06-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 7807.0,
+      "new_price": 7807.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 06:32:01.397507+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T06:32:46.447646+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi Egipt, Hurghada, Makadi Bay_2026-08-26_06-32_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T05:26:18.904155+00:00",
+    "last_processed_run": "2026-08-26T06:32:01.397507+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -1390,7 +1455,7 @@
         "premium_peak": null
       },
       "Ancient Sands Golf Resort": {
-        "history_max": 10145.0,
+        "history_max": 10211.0,
         "premium_peak": null
       },
       "Xperience Sea Breeze Egipt, Sharm El Sheikh": {
@@ -1398,7 +1463,7 @@
         "premium_peak": null
       },
       "Amwaj Oyoun Resort & Spa (ex AA Amwaj Resort) Egipt, Sharm El Sheikh": {
-        "history_max": 7143.0,
+        "history_max": 7160.0,
         "premium_peak": null
       },
       "Amphoras Beach": {
@@ -1506,7 +1571,7 @@
         "premium_peak": null
       },
       "Royal Regency Club Egipt, Sharm El Sheikh, Szarm el-Szejk": {
-        "history_max": 7329.0,
+        "history_max": 7348.0,
         "premium_peak": null
       },
       "Royal Pharaohs Makadi (ex. Harmony) Egipt, Hurghada, Makadi Bay": {
@@ -1546,7 +1611,7 @@
         "premium_peak": null
       },
       "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk": {
-        "history_max": 6549.0,
+        "history_max": 6569.0,
         "premium_peak": null
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
@@ -1650,11 +1715,11 @@
         "premium_peak": null
       },
       "Nubian Village": {
-        "history_max": 10398.0,
+        "history_max": 10415.0,
         "premium_peak": null
       },
       "Nubian Island": {
-        "history_max": 10398.0,
+        "history_max": 10415.0,
         "premium_peak": null
       },
       "Novotel Sharm Palm": {
@@ -1686,7 +1751,7 @@
         "premium_peak": null
       },
       "Movenpick Resort Sharm el Sheikh": {
-        "history_max": 10289.0,
+        "history_max": 10781.0,
         "premium_peak": null
       },
       "Monte Carlo Resort Spa": {
@@ -1710,7 +1775,7 @@
         "premium_peak": null
       },
       "Old Palace Resort": {
-        "history_max": 8452.0,
+        "history_max": 8519.0,
         "premium_peak": null
       },
       "Amarina Star Resort & Aqua Park (ex. Raouf Star)": {
@@ -1782,7 +1847,7 @@
         "premium_peak": null
       },
       "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk": {
-        "history_max": 6360.0,
+        "history_max": 6378.0,
         "premium_peak": null
       },
       "Park Regency Resort (ex. Hyatt)": {
@@ -1923,6 +1988,10 @@
       },
       "Charmillion Club Resort": {
         "history_max": 7901.0,
+        "premium_peak": null
+      },
+      "Marriott Hurghada Beach Resort Egipt, Hurghada": {
+        "history_max": 7773.0,
         "premium_peak": null
       }
     }
