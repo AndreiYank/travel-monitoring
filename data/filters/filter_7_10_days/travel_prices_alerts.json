@@ -1573,10 +1573,49 @@
       "created_at": "2026-08-26T06:32:44.229492+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Desert Rose Resort_2026-08-26_06-32_comeback_41.4"
+    },
+    {
+      "hotel_name": "Calimera Blend Paradise Resort",
+      "duration_bucket": "",
+      "old_price": 6417.0,
+      "new_price": 7727.0,
+      "price_change": 1310.0,
+      "price_change_pct": 20.414523920835283,
+      "timestamp": "2026-08-26 07:40:03.995048+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T07:41:00.614778+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calimera Blend Paradise Resort_2026-08-26_07-40_+20.4"
+    },
+    {
+      "hotel_name": "Casa Mare Resort (ex. Royal Tulip Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 7457.0,
+      "new_price": 6657.0,
+      "price_change": -800.0,
+      "price_change_pct": -10.728174869250369,
+      "timestamp": "2026-08-26 07:40:03.995048+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T07:41:00.614810+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-26_07-40_-10.7"
+    },
+    {
+      "hotel_name": "Coral Sea Holiday Resort",
+      "duration_bucket": "",
+      "old_price": 9271.0,
+      "new_price": 9271.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 07:40:03.995048+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T07:41:00.614851+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Coral Sea Holiday Resort_2026-08-26_07-40_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T06:32:01.304348+00:00",
+    "last_processed_run": "2026-08-26T07:40:03.995048+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -1695,8 +1734,8 @@
         "premium_peak": 12472.0
       },
       "Jaz Belvedere": {
-        "history_max": 10057.0,
-        "premium_peak": 10057.0
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Jaz Aquaviva": {
         "history_max": 9645.0,

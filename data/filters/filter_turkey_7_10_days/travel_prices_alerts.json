@@ -2964,10 +2964,62 @@
       "created_at": "2026-08-26T06:33:58.845154+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Calido Maris_2026-08-26_06-33_comeback_9.3"
+    },
+    {
+      "hotel_name": "Asteria Bloom Side",
+      "duration_bucket": "",
+      "old_price": 7853.0,
+      "new_price": 8523.0,
+      "price_change": 670.0,
+      "price_change_pct": 8.531771297593277,
+      "timestamp": "2026-08-26 07:41:14.626723+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T07:42:48.031353+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Bloom Side_2026-08-26_07-41_+8.5"
+    },
+    {
+      "hotel_name": "Azura Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9945.0,
+      "new_price": 10593.0,
+      "price_change": 648.0,
+      "price_change_pct": 6.515837104072399,
+      "timestamp": "2026-08-26 07:41:14.626723+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T07:42:48.031429+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azura Deluxe Resort & Spa_2026-08-26_07-41_zone_out_+6.5"
+    },
+    {
+      "hotel_name": "Laur Experience & Elegance",
+      "duration_bucket": "",
+      "old_price": 7922.0,
+      "new_price": 10964.0,
+      "price_change": 3042.0,
+      "price_change_pct": 38.399394092400904,
+      "timestamp": "2026-08-26 07:41:14.626723+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T07:42:48.031444+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Laur Experience & Elegance_2026-08-26_07-41_zone_out_+38.4"
+    },
+    {
+      "hotel_name": "Orange County (Kemer)",
+      "duration_bucket": "",
+      "old_price": 9746.0,
+      "new_price": 10003.0,
+      "price_change": 257.0,
+      "price_change_pct": 2.6369792735481226,
+      "timestamp": "2026-08-26 07:41:14.626723+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T07:42:48.031454+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County (Kemer)_2026-08-26_07-41_zone_out_+2.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T06:33:01.950768+00:00",
+    "last_processed_run": "2026-08-26T07:41:14.626723+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10494.0,
@@ -3034,8 +3086,8 @@
         "premium_peak": 10742.0
       },
       "Azura Deluxe Resort & Spa": {
-        "history_max": 10256.0,
-        "premium_peak": 10256.0
+        "history_max": 10593.0,
+        "premium_peak": 10593.0
       },
       "Tusan Beach Resort": {
         "history_max": 8582.0,
@@ -3106,7 +3158,7 @@
         "premium_peak": 11502.0
       },
       "L' Oceanica Beach Resort (Kemer)": {
-        "history_max": 9545.0,
+        "history_max": 9653.0,
         "premium_peak": null
       },
       "Champion Holiday Village (Kemer)": {
@@ -3402,7 +3454,7 @@
         "premium_peak": null
       },
       "Asteria Bloom Side": {
-        "history_max": 8145.0,
+        "history_max": 8523.0,
         "premium_peak": null
       },
       "Queens Park Goynuk (Kemer)": {
@@ -3418,8 +3470,8 @@
         "premium_peak": 11103.0
       },
       "Marvida Family Eco": {
-        "history_max": 10417.0,
-        "premium_peak": 10417.0
+        "history_max": 10585.0,
+        "premium_peak": 10585.0
       },
       "Aska Just in Beach": {
         "history_max": 11182.0,
@@ -3826,8 +3878,8 @@
         "premium_peak": 10220.0
       },
       "Sural Resort": {
-        "history_max": 11400.0,
-        "premium_peak": 11400.0
+        "history_max": 11418.0,
+        "premium_peak": 11418.0
       },
       "Kaila Beach (ex Katya)": {
         "history_max": 9330.0,
@@ -4400,6 +4452,14 @@
       "Viking Star": {
         "history_max": 7142.0,
         "premium_peak": null
+      },
+      "Royal Seginus": {
+        "history_max": 11466.0,
+        "premium_peak": 11466.0
+      },
+      "Royal Taj Mahal": {
+        "history_max": 11313.0,
+        "premium_peak": 11313.0
       }
     }
   }
