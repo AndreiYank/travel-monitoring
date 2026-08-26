@@ -2067,10 +2067,49 @@
       "created_at": "2026-08-26T12:32:55.582248+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Viva Casa Maza_2026-08-26_12-31_+21.1"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7057.0,
+      "new_price": 7647.0,
+      "price_change": 590.0,
+      "price_change_pct": 8.360493127391242,
+      "timestamp": "2026-08-26 13:47:29.666430+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T13:48:27.732893+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-08-26_13-47_+8.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 7483.0,
+      "new_price": 6574.0,
+      "price_change": -909.0,
+      "price_change_pct": -12.147534411332353,
+      "timestamp": "2026-08-26 13:47:29.666430+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T13:48:27.732931+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-26_13-47_-12.1"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 9017.0,
+      "new_price": 9017.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 13:47:29.666430+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T13:48:27.732968+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-08-26_13-47_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T12:31:53.458583+00:00",
+    "last_processed_run": "2026-08-26T13:47:29.666430+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -2333,11 +2372,11 @@
         "premium_peak": null
       },
       "Safir Dahab Resort": {
-        "history_max": 9756.0,
+        "history_max": 9808.0,
         "premium_peak": null
       },
       "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": {
-        "history_max": 8955.0,
+        "history_max": 9089.0,
         "premium_peak": null
       },
       "Sakhra & Spa by Jaz": {
@@ -2617,8 +2656,8 @@
         "premium_peak": 12915.0
       },
       "Movenpick Resort Sharm el Sheikh": {
-        "history_max": 13405.0,
-        "premium_peak": 13405.0
+        "history_max": 13539.0,
+        "premium_peak": 13539.0
       },
       "Movenpick Waterpark Resort & Spa Soma Bay": {
         "history_max": 7488.0,
@@ -2633,8 +2672,8 @@
         "premium_peak": null
       },
       "Novotel Sharm Palm": {
-        "history_max": 12473.0,
-        "premium_peak": 12473.0
+        "history_max": 12607.0,
+        "premium_peak": 12607.0
       },
       "Nubian Village": {
         "history_max": 13405.0,
@@ -2789,8 +2828,8 @@
         "premium_peak": 15687.0
       },
       "Swissotel Sharm El Sheikh": {
-        "history_max": 11557.0,
-        "premium_peak": 11557.0
+        "history_max": 11691.0,
+        "premium_peak": 11691.0
       },
       "True Beach Resort": {
         "history_max": 11380.0,
