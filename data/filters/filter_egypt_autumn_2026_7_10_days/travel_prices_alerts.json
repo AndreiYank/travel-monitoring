@@ -1755,10 +1755,88 @@
       "created_at": "2026-08-26T11:22:59.277695+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-26_11-22_+12.0"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 5447.0,
+      "new_price": 6447.0,
+      "price_change": 1000.0,
+      "price_change_pct": 18.358729575913348,
+      "timestamp": "2026-08-26 12:31:53.312134+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T12:32:55.030120+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-08-26_12-31_+18.4"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 5847.0,
+      "new_price": 6531.0,
+      "price_change": 684.0,
+      "price_change_pct": 11.698306824012313,
+      "timestamp": "2026-08-26 12:31:53.312134+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T12:32:55.030162+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-08-26_12-31_+11.7"
+    },
+    {
+      "hotel_name": "El Kasr Red Sea",
+      "duration_bucket": "",
+      "old_price": 10007.0,
+      "new_price": 10007.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 12:31:53.312134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T12:32:55.030199+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-08-26_12-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Rotana Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10883.0,
+      "new_price": 10883.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 12:31:53.312134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T12:32:55.030209+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Rotana Resort & Spa_2026-08-26_12-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7387.0,
+      "new_price": 7387.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 12:31:53.312134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T12:32:55.030217+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada_2026-08-26_12-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 7807.0,
+      "new_price": 7807.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 12:31:53.312134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T12:32:55.030224+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-26_12-31_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T11:22:11.373183+00:00",
+    "last_processed_run": "2026-08-26T12:31:53.312134+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -1789,7 +1867,7 @@
         "premium_peak": null
       },
       "Jaz Aquamarine Resort": {
-        "history_max": 8507.0,
+        "history_max": 8927.0,
         "premium_peak": null
       },
       "Hawaii Paradise Aqua Park Resort Egipt, Hurghada": {
@@ -2397,7 +2475,7 @@
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
-        "history_max": 7257.0,
+        "history_max": 7377.0,
         "premium_peak": null
       },
       "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam": {

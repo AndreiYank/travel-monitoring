@@ -2015,10 +2015,62 @@
       "created_at": "2026-08-26T11:22:56.477584+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Elite Asteria (Hurghada)_2026-08-26_11-22_zone_out_+0.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 6574.0,
+      "new_price": 7483.0,
+      "price_change": 909.0,
+      "price_change_pct": 13.827198052935808,
+      "timestamp": "2026-08-26 12:31:53.458583+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T12:32:55.582189+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-26_12-31_+13.8"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 8687.0,
+      "new_price": 9807.0,
+      "price_change": 1120.0,
+      "price_change_pct": 12.8928283642224,
+      "timestamp": "2026-08-26 12:31:53.458583+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T12:32:55.582224+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-08-26_12-31_+12.9"
+    },
+    {
+      "hotel_name": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)",
+      "duration_bucket": "",
+      "old_price": 6443.0,
+      "new_price": 5640.0,
+      "price_change": -803.0,
+      "price_change_pct": -12.463138289616637,
+      "timestamp": "2026-08-26 12:31:53.458583+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T12:32:55.582237+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)_2026-08-26_12-31_-12.5"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 8218.0,
+      "new_price": 9949.0,
+      "price_change": 1731.0,
+      "price_change_pct": 21.063519104404964,
+      "timestamp": "2026-08-26 12:31:53.458583+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T12:32:55.582248+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-08-26_12-31_+21.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T11:22:11.274297+00:00",
+    "last_processed_run": "2026-08-26T12:31:53.458583+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -2609,7 +2661,7 @@
         "premium_peak": 11926.0
       },
       "Jaz Viva Casa Maza": {
-        "history_max": 8218.0,
+        "history_max": 9949.0,
         "premium_peak": null
       },
       "Jaz Villagio": {
@@ -2637,7 +2689,7 @@
         "premium_peak": 13919.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
-        "history_max": 8717.0,
+        "history_max": 9807.0,
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
