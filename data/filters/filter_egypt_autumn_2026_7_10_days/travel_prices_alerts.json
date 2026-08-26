@@ -1144,10 +1144,36 @@
       "created_at": "2026-08-26T03:47:05.891810+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Movenpick Resort Sharm el Sheikh_2026-08-26_03-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 7800.0,
+      "new_price": 7800.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 04:32:39.310136+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T04:33:28.733351+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh_2026-08-26_04-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 7807.0,
+      "new_price": 7807.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 04:32:39.310136+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T04:33:28.733378+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-26_04-32_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T03:46:16.580158+00:00",
+    "last_processed_run": "2026-08-26T04:32:39.310136+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -1867,6 +1893,10 @@
       },
       "Sunrise Montemare Resort": {
         "history_max": 10993.0,
+        "premium_peak": null
+      },
+      "Charmillion Club Resort": {
+        "history_max": 7901.0,
         "premium_peak": null
       }
     }
