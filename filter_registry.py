@@ -38,6 +38,22 @@ FILTER_GROUPS = [
                 'charts_subdir': 'hotel-charts/filter_egypt_autumn_2026_13_16_days',
                 'config': 'config_ci_filter_egypt_autumn_13_16.json',
             },
+            {
+                'id': 'egypt_ny_dec24_2026_7_10',
+                'title': 'Египет • НГ 24.12–06.01 • 7–10 дн.',
+                'subtitle': '24.12.2026–06.01.2027 • WAW/WMI/RDO • 2+1 • показ ≤11k',
+                'href': 'index_filter_egypt_ny_dec24_2026_7_10_days.html',
+                'charts_subdir': 'hotel-charts/filter_egypt_ny_dec24_2026_7_10_days',
+                'config': 'config_ci_filter_egypt_ny_dec24_7_10.json',
+            },
+            {
+                'id': 'egypt_ny_dec28_2026_7_10',
+                'title': 'Египет • НГ 28.12–06.01 • 7–10 дн.',
+                'subtitle': '28.12.2026–06.01.2027 • WAW/WMI/RDO • 2+1 • показ ≤11k',
+                'href': 'index_filter_egypt_ny_dec28_2026_7_10_days.html',
+                'charts_subdir': 'hotel-charts/filter_egypt_ny_dec28_2026_7_10_days',
+                'config': 'config_ci_filter_egypt_ny_dec28_7_10.json',
+            },
         ],
     },
     {

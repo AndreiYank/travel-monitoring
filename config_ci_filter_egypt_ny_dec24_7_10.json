@@ -1,0 +1,25 @@
+{
+  "dynamic_search_dates": false,
+  "retire_after": "2027-01-07",
+  "url": "https://fly.pl/oferta/egipt-wczasy/?filter[dest]=11:&filter[hotelids]=&filter[cityids]=&filter[cregids]=&filter[ofrType]=&filter[addObjType]=&filter[whenFrom]=24-12-2026&filter[whenTo]=06-01-2027&filter[duration]=7:10&filter[from]=Warszawa-Radom,Warszawa,Warszawa-Modlin,Warszawa%20-%20Radom,Warszawa%20-%20Modlin&filter[person]=2&filter[child]=1&filter[price]=0:11000&filter[PriceFrom]=0&filter[PriceTo]=11000&filter[addCategory]=50&filter[addCatering]=1&filter[addMisc]=0&filter[addTransport]=F&filter[fp]=1&order_by=ofr_price&filter[tourOperator]=0&filter[childAge][1]=20201210",
+  "max_price_threshold": 11000,
+  "min_price_threshold": 0,
+  "required_offer_url_contains": [
+    "/wycieczka/egipt",
+    "transport=accommodation_flight"
+  ],
+  "excluded_offer_url_contains": [
+    "/wycieczka/polska",
+    "/wycieczka/czechy",
+    "transport=accommodation&"
+  ],
+  "wait_timeout": 30000,
+  "max_retries": 3,
+  "max_offers": 0,
+  "max_pages": 10,
+  "display_price_ceiling": 11000,
+  "retry_delay": 5,
+  "data_dir": "data/filters/filter_egypt_ny_dec24_2026_7_10_days",
+  "output_data_file": "travel_prices.csv",
+  "description": "CI filter • Египет • НГ 24.12.2026–06.01.2027 • 7–10 дн. • WAW/WMI/RDO • 2+1 • с питанием • сбор/показ ≤11k"
+}
