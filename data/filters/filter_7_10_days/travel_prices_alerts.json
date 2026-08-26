@@ -1989,10 +1989,36 @@
       "created_at": "2026-08-26T10:27:25.174738+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-26_10-26_-10.1"
+    },
+    {
+      "hotel_name": "Casa Mare Resort (ex. Royal Tulip Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 5997.0,
+      "new_price": 6657.0,
+      "price_change": 660.0,
+      "price_change_pct": 11.005502751375689,
+      "timestamp": "2026-08-26 11:22:11.274297+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T11:22:56.477542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-26_11-22_+11.0"
+    },
+    {
+      "hotel_name": "Jaz Elite Asteria (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 9977.0,
+      "new_price": 10017.0,
+      "price_change": 40.0,
+      "price_change_pct": 0.4009221208780195,
+      "timestamp": "2026-08-26 11:22:11.274297+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T11:22:56.477584+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Asteria (Hurghada)_2026-08-26_11-22_zone_out_+0.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T10:57:00.786211+00:00",
+    "last_processed_run": "2026-08-26T11:22:11.274297+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -2763,8 +2789,8 @@
         "premium_peak": 15427.0
       },
       "Albatros Sea World Resort Marsa Alam": {
-        "history_max": 10099.0,
-        "premium_peak": 10099.0
+        "history_max": 10125.0,
+        "premium_peak": 10125.0
       },
       "Utopia Blue Resort": {
         "history_max": 9459.0,
