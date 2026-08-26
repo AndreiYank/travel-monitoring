@@ -1963,10 +1963,36 @@
       "created_at": "2026-08-26T09:34:24.185925+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia Blue Resort_2026-08-26_09-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort",
+      "duration_bucket": "",
+      "old_price": 8257.0,
+      "new_price": 9607.0,
+      "price_change": 1350.0,
+      "price_change_pct": 16.34976383674458,
+      "timestamp": "2026-08-26 10:26:42.867606+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T10:27:25.174715+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort_2026-08-26_10-26_+16.3"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 8857.0,
+      "price_change": -1000.0,
+      "price_change_pct": -10.145074566298062,
+      "timestamp": "2026-08-26 10:26:42.867606+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T10:27:25.174738+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-08-26_10-26_-10.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T09:33:38.610381+00:00",
+    "last_processed_run": "2026-08-26T10:26:42.867606+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -2325,7 +2351,7 @@
         "premium_peak": null
       },
       "Charmillion Club Resort": {
-        "history_max": 9257.0,
+        "history_max": 9607.0,
         "premium_peak": null
       },
       "Ghazala Alamein": {
@@ -2557,7 +2583,7 @@
         "premium_peak": 11926.0
       },
       "Jaz Viva Casa Maza": {
-        "history_max": 8127.0,
+        "history_max": 8218.0,
         "premium_peak": null
       },
       "Jaz Villagio": {
