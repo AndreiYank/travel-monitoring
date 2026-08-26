@@ -1131,10 +1131,23 @@
       "created_at": "2026-08-26T02:22:15.965828+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Swissotel Sharm El Sheikh_2026-08-26_02-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Movenpick Resort Sharm el Sheikh",
+      "duration_bucket": "",
+      "old_price": 10139.0,
+      "new_price": 10139.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 03:46:16.580158+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T03:47:05.891810+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort Sharm el Sheikh_2026-08-26_03-46_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T02:21:21.046134+00:00",
+    "last_processed_run": "2026-08-26T03:46:16.580158+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -1257,7 +1270,7 @@
         "premium_peak": null
       },
       "Jaz Belvedere": {
-        "history_max": 8841.0,
+        "history_max": 8877.0,
         "premium_peak": null
       },
       "Jaz Aquaviva": {
@@ -1721,7 +1734,7 @@
         "premium_peak": null
       },
       "Park Regency Resort (ex. Hyatt)": {
-        "history_max": 9523.0,
+        "history_max": 9597.0,
         "premium_peak": null
       },
       "Amarina Queen Resort Egipt, Marsa Alam": {
@@ -1850,6 +1863,10 @@
       },
       "Naama Waves": {
         "history_max": 9914.0,
+        "premium_peak": null
+      },
+      "Sunrise Montemare Resort": {
+        "history_max": 10993.0,
         "premium_peak": null
       }
     }

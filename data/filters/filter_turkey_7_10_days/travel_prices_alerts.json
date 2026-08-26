@@ -2860,10 +2860,23 @@
       "created_at": "2026-08-26T00:43:50.786789+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asia Beach Resort and Spa_2026-08-26_00-42_comeback_8.4"
+    },
+    {
+      "hotel_name": "Daima Biz Resort Turcja, Kemer",
+      "duration_bucket": "",
+      "old_price": 7122.0,
+      "new_price": 7122.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 03:47:09.991138+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T03:48:35.393500+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Daima Biz Resort Turcja, Kemer_2026-08-26_03-47_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T02:22:30.913030+00:00",
+    "last_processed_run": "2026-08-26T03:47:09.991138+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10281.0,
@@ -3546,8 +3559,8 @@
         "premium_peak": 10617.0
       },
       "Sheraton Istanbul Levent": {
-        "history_max": 10538.0,
-        "premium_peak": 10538.0
+        "history_max": 10938.0,
+        "premium_peak": 10938.0
       },
       "Flora Garden Ephesus": {
         "history_max": 9194.0,
@@ -4287,6 +4300,10 @@
       },
       "Daima Biz Resort Turcja, Kemer": {
         "history_max": 7122.0,
+        "premium_peak": null
+      },
+      "Raymar Resort & Aqua Turcja, Side": {
+        "history_max": 6789.0,
         "premium_peak": null
       }
     }
