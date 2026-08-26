@@ -78,10 +78,75 @@
       "created_at": "2026-08-26T10:28:04.460728+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-08-26_10-27_+15.1"
+    },
+    {
+      "hotel_name": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna",
+      "duration_bucket": "",
+      "old_price": 9399.0,
+      "new_price": 7979.0,
+      "price_change": -1420.0,
+      "price_change_pct": -15.107990211724651,
+      "timestamp": "2026-08-26 10:58:13.787750+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T10:58:30.783711+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna_2026-08-26_10-58_-15.1"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Harem Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 10785.0,
+      "new_price": 10785.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 10:58:13.787750+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T10:58:30.783756+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Harem Egipt, Sharm El Sheikh_2026-08-26_10-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Oasis Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 10785.0,
+      "new_price": 10785.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 10:58:13.787750+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T10:58:30.783773+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis Egipt, Sharm El Sheikh_2026-08-26_10-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)",
+      "duration_bucket": "",
+      "old_price": 10919.0,
+      "new_price": 10919.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 10:58:13.787750+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T10:58:30.783786+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)_2026-08-26_10-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rehana Royal Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10913.0,
+      "new_price": 10913.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 10:58:13.787750+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T10:58:30.783799+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rehana Royal Beach Resort & Spa_2026-08-26_10-58_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T10:27:42.955354+00:00",
+    "last_processed_run": "2026-08-26T10:58:13.787750+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 9880.0,
@@ -209,6 +274,14 @@
       },
       "Rewaya Luxury Resort Egipt, Hurghada": {
         "history_max": 8647.0,
+        "premium_peak": null
+      },
+      "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort) Egipt, Hurghada": {
+        "history_max": 10919.0,
+        "premium_peak": null
+      },
+      "Rehana Royal Beach Resort & Spa Egipt, Sharm El Sheikh": {
+        "history_max": 10913.0,
         "premium_peak": null
       }
     }

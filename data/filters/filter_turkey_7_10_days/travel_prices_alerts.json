@@ -3445,10 +3445,49 @@
       "created_at": "2026-08-26T10:29:15.208037+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Utopia World_2026-08-26_10-27_zone_out_gone"
+    },
+    {
+      "hotel_name": "Grand Ring",
+      "duration_bucket": "",
+      "old_price": 8713.0,
+      "new_price": 8713.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 10:58:19.644857+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T10:59:50.014616+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Ring_2026-08-26_10-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "PrimaSol Telatiye Resort",
+      "duration_bucket": "",
+      "old_price": 8357.0,
+      "new_price": 8357.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 10:58:19.644857+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T10:59:50.014642+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "PrimaSol Telatiye Resort_2026-08-26_10-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Utopia World",
+      "duration_bucket": "",
+      "old_price": 10170.0,
+      "new_price": 9275.0,
+      "price_change": -895.0,
+      "price_change_pct": -8.80039331366765,
+      "timestamp": "2026-08-26 10:58:19.644857+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-26T10:59:50.014703+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia World_2026-08-26_10-58_comeback_8.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T10:27:48.631609+00:00",
+    "last_processed_run": "2026-08-26T10:58:19.644857+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10494.0,
@@ -4599,7 +4638,7 @@
         "premium_peak": null
       },
       "Dedeman Istanbul": {
-        "history_max": 9510.0,
+        "history_max": 9760.0,
         "premium_peak": null
       },
       "Crystal World of Colours Comfort Collection": {
@@ -4913,6 +4952,10 @@
       "Sidemarin Kirman Premium": {
         "history_max": 11156.0,
         "premium_peak": 11156.0
+      },
+      "Leodikya Kirman Premium": {
+        "history_max": 11313.0,
+        "premium_peak": 11313.0
       }
     }
   }
