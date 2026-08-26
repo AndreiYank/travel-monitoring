@@ -1924,10 +1924,88 @@
       "created_at": "2026-08-26T13:48:25.466664+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Siva Golden Bay Makadi Egipt, Hurghada, Makadi Bay_2026-08-26_13-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 6867.0,
+      "new_price": 7527.0,
+      "price_change": 660.0,
+      "price_change_pct": 9.611183923110529,
+      "timestamp": "2026-08-26 14:37:06.523367+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T14:37:53.024185+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-26_14-37_+9.6"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6333.0,
+      "new_price": 7668.0,
+      "price_change": 1335.0,
+      "price_change_pct": 21.08005684509711,
+      "timestamp": "2026-08-26 14:37:06.523367+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T14:37:53.024212+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-08-26_14-37_+21.1"
+    },
+    {
+      "hotel_name": "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 7267.0,
+      "new_price": 7267.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 14:37:06.523367+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T14:37:53.024288+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib_2026-08-26_14-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Calimera Blend Paradise Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7772.0,
+      "new_price": 7772.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 14:37:06.523367+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T14:37:53.024298+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calimera Blend Paradise Egipt, Hurghada_2026-08-26_14-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)",
+      "duration_bucket": "",
+      "old_price": 7867.0,
+      "new_price": 7867.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 14:37:06.523367+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T14:37:53.024303+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)_2026-08-26_14-37_zone_out_gone"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7870.0,
+      "new_price": 7870.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 14:37:06.523367+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T14:37:53.024308+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-08-26_14-37_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T13:47:29.839799+00:00",
+    "last_processed_run": "2026-08-26T14:37:06.523367+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -2566,7 +2644,7 @@
         "premium_peak": null
       },
       "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya": {
-        "history_max": 7377.0,
+        "history_max": 7527.0,
         "premium_peak": null
       },
       "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam": {
@@ -2606,7 +2684,7 @@
         "premium_peak": null
       },
       "Dreams Vacation Sharm Resort": {
-        "history_max": 8137.0,
+        "history_max": 8537.0,
         "premium_peak": null
       },
       "Maritim Jolie Ville Royal Peninsula Egipt, Sharm El Sheikh": {
@@ -2683,6 +2761,10 @@
       },
       "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": {
         "history_max": 9973.0,
+        "premium_peak": null
+      },
+      "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada": {
+        "history_max": 7867.0,
         "premium_peak": null
       }
     }

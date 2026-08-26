@@ -1820,10 +1820,36 @@
       "created_at": "2026-08-26T13:48:50.286141+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sharm Grand Plaza Resort Egipt, Sharm El Sheikh_2026-08-26_13-48_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6333.0,
+      "new_price": 7658.0,
+      "price_change": 1325.0,
+      "price_change_pct": 20.922153797568292,
+      "timestamp": "2026-08-26 14:37:36.068477+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T14:38:14.995417+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-08-26_14-37_+20.9"
+    },
+    {
+      "hotel_name": "Nubian Island",
+      "duration_bucket": "",
+      "old_price": 8956.0,
+      "new_price": 8956.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 14:37:36.068477+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T14:38:14.995468+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nubian Island_2026-08-26_14-37_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T13:48:04.196794+00:00",
+    "last_processed_run": "2026-08-26T14:37:36.068477+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -2406,7 +2432,7 @@
         "premium_peak": null
       },
       "Akassia Swiss Resort (ex. Calimera Club Akassia Swiss Resort)": {
-        "history_max": 9118.0,
+        "history_max": 9215.0,
         "premium_peak": null
       },
       "Domina Coral Bay Harem": {
