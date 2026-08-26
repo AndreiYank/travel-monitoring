@@ -342,35 +342,42 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
         current_price = float(latest_row["price_num"])
         current_prices.append(current_price)
 
-        # Baseline 48 hours ago
-        win_48h = grp_sorted[grp_sorted["scraped_at_dt"] >= cutoff_48h]
-        if len(win_48h) >= 2:
-            baseline_row = win_48h.iloc[0]
-        elif len(grp_sorted) >= 2:
-            baseline_row = grp_sorted.iloc[-2]
+        # Filter history to same trip dates for accurate price comparisons
+        current_dates = str(latest_row.get("dates") or "")
+        if current_dates:
+            same_dates_grp = grp_sorted[grp_sorted["dates"].astype(str) == current_dates]
+        else:
+            same_dates_grp = grp_sorted
+
+        # Baseline 48 hours ago (same trip dates only)
+        same_dates_48h = same_dates_grp[same_dates_grp["scraped_at_dt"] >= cutoff_48h]
+        if len(same_dates_48h) >= 2:
+            baseline_row = same_dates_48h.iloc[0]
+        elif len(same_dates_grp) >= 2:
+            baseline_row = same_dates_grp.iloc[-2]
         else:
             baseline_row = latest_row
 
         baseline_price = float(baseline_row["price_num"])
         delta_48h_pct = ((current_price - baseline_price) / baseline_price * 100.0) if baseline_price > 0 else 0.0
 
-        if baseline_price > 0 and len(grp_sorted) >= 2:
+        if baseline_price > 0 and len(same_dates_grp) >= 2:
             breadth_total += 1
             if current_price < baseline_price:
                 breadth_down += 1
             elif current_price > baseline_price:
                 breadth_up += 1
 
-        # Previous run baseline
-        if len(grp_sorted) >= 2:
-            prev_row = grp_sorted.iloc[-2]
+        # Previous run baseline (same trip dates only)
+        if len(same_dates_grp) >= 2:
+            prev_row = same_dates_grp.iloc[-2]
             prev_price = float(prev_row["price_num"])
             delta_run_pct = ((current_price - prev_price) / prev_price * 100.0) if prev_price > 0 else 0.0
         else:
             prev_price = current_price
             delta_run_pct = 0.0
 
-        # Historical minimum across full season history
+        # Historical minimum across full season history (all dates for this hotel)
         all_prices_prior = grp_sorted.iloc[:-1]["price_num"].astype(float).tolist()
         hist_min = min(grp_sorted["price_num"].astype(float).tolist())
         is_historic_low = (current_price <= min(all_prices_prior)) if all_prices_prior else False
