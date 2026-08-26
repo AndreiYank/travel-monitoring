@@ -962,10 +962,36 @@
       "created_at": "2026-08-26T14:40:12.174463+00:00",
       "threshold_percent": 8.0,
       "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-08-26_14-39_+10.9"
+    },
+    {
+      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 7069.0,
+      "new_price": 8829.0,
+      "price_change": 1760.0,
+      "price_change_pct": 24.897439524685243,
+      "timestamp": "2026-08-26 16:14:59.341022+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-26T16:16:05.245865+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-26_16-14_+24.9"
+    },
+    {
+      "hotel_name": "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra",
+      "duration_bucket": "",
+      "old_price": 9187.0,
+      "new_price": 10091.0,
+      "price_change": 904.0,
+      "price_change_pct": 9.839991292043104,
+      "timestamp": "2026-08-26 16:14:59.341022+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T16:16:05.245899+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra_2026-08-26_16-14_zone_out_+9.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T14:39:18.087848+00:00",
+    "last_processed_run": "2026-08-26T16:14:59.341022+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10432.0,
@@ -1508,8 +1534,8 @@
         "premium_peak": 10657.0
       },
       "Kipriotis Panorama & Suites Grecja, Kos, Psalidi": {
-        "history_max": 10323.0,
-        "premium_peak": 10323.0
+        "history_max": 10515.0,
+        "premium_peak": 10515.0
       },
       "Zeus Eleva Ajul (Ayios Nikolaos)": {
         "history_max": 9187.0,
@@ -1544,8 +1570,8 @@
         "premium_peak": null
       },
       "White Olive Elite Rethymno": {
-        "history_max": 10541.0,
-        "premium_peak": 10541.0
+        "history_max": 11019.0,
+        "premium_peak": 11019.0
       },
       "Out of the Blue Resort": {
         "history_max": 9457.0,
@@ -1617,6 +1643,10 @@
       },
       "Zeus Kos Beach": {
         "history_max": 9257.0,
+        "premium_peak": null
+      },
+      "Kouros Palace Grecja, Kos, Mastichari": {
+        "history_max": 8657.0,
         "premium_peak": null
       }
     }

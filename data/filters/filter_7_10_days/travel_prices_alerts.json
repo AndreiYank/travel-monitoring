@@ -2119,10 +2119,75 @@
       "created_at": "2026-08-26T14:37:47.416403+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)_2026-08-26_14-37_-8.4"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 8012.0,
+      "new_price": 7098.0,
+      "price_change": -914.0,
+      "price_change_pct": -11.407888167748377,
+      "timestamp": "2026-08-26 16:12:14.399476+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T16:13:10.099374+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-08-26_16-12_-11.4"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 7008.0,
+      "new_price": 6361.0,
+      "price_change": -647.0,
+      "price_change_pct": -9.23230593607306,
+      "timestamp": "2026-08-26 16:12:14.399476+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-26T16:13:10.099478+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-08-26_16-12_-9.2"
+    },
+    {
+      "hotel_name": "Jaz Aquaviva",
+      "duration_bucket": "",
+      "old_price": 9645.0,
+      "new_price": 10062.0,
+      "price_change": 417.0,
+      "price_change_pct": 4.32348367029549,
+      "timestamp": "2026-08-26 16:12:14.399476+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T16:13:10.099515+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquaviva_2026-08-26_16-12_zone_out_+4.3"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort)",
+      "duration_bucket": "",
+      "old_price": 9807.0,
+      "new_price": 10718.0,
+      "price_change": 911.0,
+      "price_change_pct": 9.289283165086163,
+      "timestamp": "2026-08-26 16:12:14.399476+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T16:13:10.099528+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort)_2026-08-26_16-12_zone_out_+9.3"
+    },
+    {
+      "hotel_name": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)",
+      "duration_bucket": "",
+      "old_price": 9089.0,
+      "new_price": 9089.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-26 16:12:14.399476+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-26T16:13:10.099537+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)_2026-08-26_16-12_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-26T14:37:06.371177+00:00",
+    "last_processed_run": "2026-08-26T16:12:14.399476+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -2345,8 +2410,8 @@
         "premium_peak": null
       },
       "Sultan Gardens Resort": {
-        "history_max": 11912.0,
-        "premium_peak": 11912.0
+        "history_max": 12097.0,
+        "premium_peak": 12097.0
       },
       "Sunrise Alora Aqua Park Resort": {
         "history_max": 10587.0,
@@ -2533,8 +2598,8 @@
         "premium_peak": null
       },
       "Jaz Aquaviva": {
-        "history_max": 9645.0,
-        "premium_peak": null
+        "history_max": 10062.0,
+        "premium_peak": 10062.0
       },
       "Dreams Vacation Sharm Resort": {
         "history_max": 7867.0,
@@ -2741,8 +2806,8 @@
         "premium_peak": 13919.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
-        "history_max": 9807.0,
-        "premium_peak": null
+        "history_max": 10718.0,
+        "premium_peak": 10718.0
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
         "history_max": 9847.0,
