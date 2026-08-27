@@ -1261,10 +1261,23 @@
       "created_at": "2026-08-27T10:18:41.166805+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)_2026-08-27_10-17_comeback_9.1"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9996.0,
+      "new_price": 10261.0,
+      "price_change": 265.0,
+      "price_change_pct": 2.651060424169668,
+      "timestamp": "2026-08-27 13:23:10.391001+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T13:24:14.468921+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-27_13-23_zone_out_+2.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T13:06:38.139576+00:00",
+    "last_processed_run": "2026-08-27T13:23:10.391001+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -2625,6 +2638,10 @@
       "Delphin Deluxe Resort": {
         "history_max": 16713.0,
         "premium_peak": 16713.0
+      },
+      "Kirman Belazur Resort & Spa": {
+        "history_max": 17774.0,
+        "premium_peak": 17774.0
       }
     }
   }
