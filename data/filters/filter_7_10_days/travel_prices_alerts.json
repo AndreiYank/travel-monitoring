@@ -2678,10 +2678,114 @@
       "created_at": "2026-08-27T10:16:39.852296+00:00",
       "threshold_percent": 8.0,
       "unique_key": "The V Luxury Resort_2026-08-27_10-15_zone_out_+16.5"
+    },
+    {
+      "hotel_name": "Movenpick Waterpark Resort & Spa Soma Bay",
+      "duration_bucket": "",
+      "old_price": 6935.0,
+      "new_price": 6368.0,
+      "price_change": -567.0,
+      "price_change_pct": -8.175919250180245,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T13:05:58.662038+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Waterpark Resort & Spa Soma Bay_2026-08-27_13-05_-8.2"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 5166.0,
+      "new_price": 5585.0,
+      "price_change": 419.0,
+      "price_change_pct": 8.110723964382501,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-27T13:05:58.662079+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-08-27_13-05_+8.1"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7335.0,
+      "new_price": 9047.0,
+      "price_change": 1712.0,
+      "price_change_pct": 23.340149965916837,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-27T13:05:58.662092+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-08-27_13-05_+23.3"
+    },
+    {
+      "hotel_name": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 8486.0,
+      "new_price": 9982.0,
+      "price_change": 1496.0,
+      "price_change_pct": 17.62903605939194,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-27T13:05:58.662109+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)_2026-08-27_13-05_+17.6"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 9667.0,
+      "new_price": 10323.0,
+      "price_change": 656.0,
+      "price_change_pct": 6.785972897486293,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T13:05:58.662134+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-27_13-05_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Serenity Alma Heights Ross Park Collection",
+      "duration_bucket": "",
+      "old_price": 8702.0,
+      "new_price": 10339.0,
+      "price_change": 1637.0,
+      "price_change_pct": 18.811767409790853,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T13:05:58.662143+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Alma Heights Ross Park Collection_2026-08-27_13-05_zone_out_+18.8"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 11297.0,
+      "new_price": 7472.0,
+      "price_change": -3825.0,
+      "price_change_pct": -33.85854651677436,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T13:05:58.662166+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-27_13-05_comeback_33.9"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Park",
+      "duration_bucket": "",
+      "old_price": 12066.0,
+      "new_price": 9023.0,
+      "price_change": -3043.0,
+      "price_change_pct": -25.21962539366816,
+      "timestamp": "2026-08-27 13:05:08.042780+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T13:05:58.662180+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Park_2026-08-27_13-05_comeback_25.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T10:15:31.816706+00:00",
+    "last_processed_run": "2026-08-27T13:05:08.042780+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -2744,8 +2848,8 @@
         "premium_peak": 13177.0
       },
       "Rixos Premium Seagate": {
-        "history_max": 13017.0,
-        "premium_peak": 13017.0
+        "history_max": 13637.0,
+        "premium_peak": 13637.0
       },
       "Rixos Radamis Beach": {
         "history_max": 14597.0,
@@ -2760,8 +2864,8 @@
         "premium_peak": 10796.0
       },
       "Rixos Radamis Sharm El Sheikh": {
-        "history_max": 13237.0,
-        "premium_peak": 13237.0
+        "history_max": 13653.0,
+        "premium_peak": 13653.0
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
         "history_max": 12896.0,
@@ -2776,7 +2880,7 @@
         "premium_peak": 18317.0
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
-        "history_max": 9757.0,
+        "history_max": 9982.0,
         "premium_peak": null
       },
       "Pickalbatros Dana Beach Resort": {
@@ -2824,7 +2928,7 @@
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino": {
-        "history_max": 9217.0,
+        "history_max": 9347.0,
         "premium_peak": null
       },
       "Pickalbatros Water Valley Resort Neverland": {
@@ -2892,7 +2996,7 @@
         "premium_peak": 12618.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
-        "history_max": 7514.0,
+        "history_max": 7648.0,
         "premium_peak": null
       },
       "Stella Makadi Beach & Spa": {
@@ -2984,8 +3088,8 @@
         "premium_peak": null
       },
       "Serenity Alma Heights Ross Park Collection": {
-        "history_max": 9152.0,
-        "premium_peak": null
+        "history_max": 10339.0,
+        "premium_peak": 10339.0
       },
       "Serenity Alpha Beach (ex. Serenity Makadi Beach)": {
         "history_max": 17597.0,
@@ -3184,8 +3288,8 @@
         "premium_peak": null
       },
       "Cleopatra Luxury Resort": {
-        "history_max": 11010.0,
-        "premium_peak": 11010.0
+        "history_max": 11134.0,
+        "premium_peak": 11134.0
       },
       "Sunrise Arabian Beach Resort": {
         "history_max": 14559.0,
@@ -3212,7 +3316,7 @@
         "premium_peak": 11895.0
       },
       "Marriott Hurghada Beach Resort": {
-        "history_max": 7596.0,
+        "history_max": 9047.0,
         "premium_peak": null
       },
       "Monte Carlo Resort Spa": {
@@ -3240,7 +3344,7 @@
         "premium_peak": null
       },
       "Novotel Marsa Alam": {
-        "history_max": 8437.0,
+        "history_max": 8617.0,
         "premium_peak": null
       },
       "Novotel Sharm Palm": {
@@ -3292,8 +3396,8 @@
         "premium_peak": 13457.0
       },
       "Jaz Elite Maraya": {
-        "history_max": 10267.0,
-        "premium_peak": 10267.0
+        "history_max": 10454.0,
+        "premium_peak": 10454.0
       },
       "Jaz Elite Riviera": {
         "history_max": 14437.0,
@@ -3428,8 +3532,8 @@
         "premium_peak": null
       },
       "Titanic Royal": {
-        "history_max": 10527.0,
-        "premium_peak": 10527.0
+        "history_max": 10857.0,
+        "premium_peak": 10857.0
       },
       "The V Luxury Resort": {
         "history_max": 10061.0,
@@ -3480,12 +3584,12 @@
         "premium_peak": 10482.0
       },
       "Steigenberger Resort Alaya": {
-        "history_max": 14997.0,
-        "premium_peak": 14997.0
+        "history_max": 15297.0,
+        "premium_peak": 15297.0
       },
       "Steigenberger Coraya Beach": {
-        "history_max": 14307.0,
-        "premium_peak": 14307.0
+        "history_max": 14577.0,
+        "premium_peak": 14577.0
       },
       "Premier Le Reve & Spa": {
         "history_max": 14877.0,

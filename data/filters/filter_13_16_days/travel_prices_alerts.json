@@ -182,10 +182,75 @@
       "created_at": "2026-08-27T10:16:10.939253+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-08-27_10-15_comeback_12.9"
+    },
+    {
+      "hotel_name": "Casa Mare Resort (ex. Royal Tulip Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9057.0,
+      "new_price": 10057.0,
+      "price_change": 1000.0,
+      "price_change_pct": 11.041183614883515,
+      "timestamp": "2026-08-27 13:05:07.899005+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T13:05:53.347835+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Mare Resort (ex. Royal Tulip Beach Resort)_2026-08-27_13-05_zone_out_+11.0"
+    },
+    {
+      "hotel_name": "Royal Brayka Beach Resort (ex Zee Brayka)",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 10657.0,
+      "price_change": 1200.0,
+      "price_change_pct": 12.689013429205879,
+      "timestamp": "2026-08-27 13:05:07.899005+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T13:05:53.347879+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Brayka Beach Resort (ex Zee Brayka)_2026-08-27_13-05_zone_out_+12.7"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11424.0,
+      "new_price": 9638.0,
+      "price_change": -1786.0,
+      "price_change_pct": -15.63375350140056,
+      "timestamp": "2026-08-27 13:05:07.899005+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T13:05:53.347919+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-08-27_13-05_comeback_15.6"
+    },
+    {
+      "hotel_name": "Concorde Moreen Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10957.0,
+      "new_price": 9620.0,
+      "price_change": -1337.0,
+      "price_change_pct": -12.202245140093092,
+      "timestamp": "2026-08-27 13:05:07.899005+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T13:05:53.347939+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Moreen Beach Resort & Spa_2026-08-27_13-05_comeback_12.2"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 11112.0,
+      "new_price": 9508.0,
+      "price_change": -1604.0,
+      "price_change_pct": -14.43484521238301,
+      "timestamp": "2026-08-27 13:05:07.899005+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T13:05:53.347957+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-08-27_13-05_comeback_14.4"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T10:15:31.678475+00:00",
+    "last_processed_run": "2026-08-27T13:05:07.899005+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 13281.0,
@@ -200,7 +265,7 @@
         "premium_peak": 13019.0
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 8819.0,
+        "history_max": 9587.0,
         "premium_peak": null
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
@@ -232,8 +297,8 @@
         "premium_peak": 16113.0
       },
       "Creek Hotel and Residences": {
-        "history_max": 12047.0,
-        "premium_peak": 12047.0
+        "history_max": 12107.0,
+        "premium_peak": 12107.0
       },
       "Hilton Marsa Alam Nubian Resort": {
         "history_max": 17317.0,
@@ -448,8 +513,8 @@
         "premium_peak": 12677.0
       },
       "Pickalbatros Vita Resort Portofino": {
-        "history_max": 11491.0,
-        "premium_peak": 11491.0
+        "history_max": 13047.0,
+        "premium_peak": 13047.0
       },
       "Pickalbatros White Beach Resort": {
         "history_max": 16475.0,
@@ -480,8 +545,8 @@
         "premium_peak": 16295.0
       },
       "Reef Oasis Suakin Resort": {
-        "history_max": 13857.0,
-        "premium_peak": 13857.0
+        "history_max": 14857.0,
+        "premium_peak": 14857.0
       },
       "Regency Plaza Aqua Park Spa": {
         "history_max": 19341.0,
