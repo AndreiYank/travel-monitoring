@@ -2223,10 +2223,88 @@
       "created_at": "2026-08-27T15:41:49.438236+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-27_15-41_+10.1"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6923.0,
+      "new_price": 5781.0,
+      "price_change": -1142.0,
+      "price_change_pct": -16.495738841542686,
+      "timestamp": "2026-08-27 23:24:22.265564+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T23:25:12.601279+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada_2026-08-27_23-24_-16.5"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 6787.0,
+      "new_price": 5877.0,
+      "price_change": -910.0,
+      "price_change_pct": -13.407985855311624,
+      "timestamp": "2026-08-27 23:24:22.265564+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T23:25:12.601322+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-27_23-24_-13.4"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 7740.0,
+      "new_price": 7740.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-27 23:24:22.265564+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T23:25:12.601359+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib_2026-08-27_23-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Neo Naama Bay",
+      "duration_bucket": "",
+      "old_price": 10883.0,
+      "new_price": 10883.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-27 23:24:22.265564+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T23:25:12.601373+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Neo Naama Bay_2026-08-27_23-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 8123.0,
+      "new_price": 8123.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-27 23:24:22.265564+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T23:25:12.601386+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-08-27_23-24_zone_out_gone"
+    },
+    {
+      "hotel_name": "Novotel Sharm Palm",
+      "duration_bucket": "",
+      "old_price": 10904.0,
+      "new_price": 10904.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-27 23:24:22.265564+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T23:25:12.601399+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Sharm Palm_2026-08-27_23-24_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T15:41:01.724428+00:00",
+    "last_processed_run": "2026-08-27T23:24:22.265564+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -2321,7 +2399,7 @@
         "premium_peak": null
       },
       "Concorde El Salam Front Area": {
-        "history_max": 9974.0,
+        "history_max": 9977.0,
         "premium_peak": null
       },
       "Retac Qunay Dahab Resort & Spa": {
@@ -2381,7 +2459,7 @@
         "premium_peak": null
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
-        "history_max": 8257.0,
+        "history_max": 8827.0,
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
@@ -2417,7 +2495,7 @@
         "premium_peak": null
       },
       "Pickalbatros Luxury Suites": {
-        "history_max": 10154.0,
+        "history_max": 10236.0,
         "premium_peak": null
       },
       "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": {
@@ -2445,11 +2523,11 @@
         "premium_peak": null
       },
       "Aurora Oriental Resort": {
-        "history_max": 8747.0,
+        "history_max": 8834.0,
         "premium_peak": null
       },
       "Sirena Beach Resort & Spa": {
-        "history_max": 8640.0,
+        "history_max": 8694.0,
         "premium_peak": null
       },
       "Siva Golden Bay Makadi Egipt, Hurghada, Makadi Bay": {
@@ -2553,7 +2631,7 @@
         "premium_peak": null
       },
       "Charmillion Club Aqua Park": {
-        "history_max": 9186.0,
+        "history_max": 9327.0,
         "premium_peak": null
       },
       "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada": {
@@ -2773,7 +2851,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Resort": {
-        "history_max": 9396.0,
+        "history_max": 9483.0,
         "premium_peak": null
       },
       "Jaz Palmariva Beach": {
@@ -2861,11 +2939,11 @@
         "premium_peak": null
       },
       "IL Mercato Splash Aqua Park": {
-        "history_max": 8278.0,
+        "history_max": 8374.0,
         "premium_peak": null
       },
       "Invidia Coral Beach Tiran": {
-        "history_max": 9852.0,
+        "history_max": 9993.0,
         "premium_peak": null
       },
       "Jolie Ville Golf & Resort (ex Maritim Jolie Ville Golf) Egipt, Sharm El Sheikh": {
@@ -2937,7 +3015,7 @@
         "premium_peak": null
       },
       "Sunrise Diamond Beach Resort Grand Select": {
-        "history_max": 10907.0,
+        "history_max": 10957.0,
         "premium_peak": null
       },
       "Calimera Blend Paradise Egipt, Hurghada": {
@@ -2965,7 +3043,7 @@
         "premium_peak": null
       },
       "Ecotel Dahab Bay View Resort": {
-        "history_max": 7803.0,
+        "history_max": 8247.0,
         "premium_peak": null
       },
       "Swissotel Sharm El Sheikh": {

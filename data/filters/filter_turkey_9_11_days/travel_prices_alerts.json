@@ -1378,10 +1378,75 @@
       "created_at": "2026-08-27T15:43:06.052210+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Port River & Spa_2026-08-27_15-41_zone_out_+6.0"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 6451.0,
+      "new_price": 7157.0,
+      "price_change": 706.0,
+      "price_change_pct": 10.944039683769958,
+      "timestamp": "2026-08-27 23:25:12.591889+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-27T23:26:44.959753+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-27_23-25_+10.9"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 6084.0,
+      "new_price": 5562.0,
+      "price_change": -522.0,
+      "price_change_pct": -8.579881656804734,
+      "timestamp": "2026-08-27 23:25:12.591889+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T23:26:44.959784+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-08-27_23-25_-8.6"
+    },
+    {
+      "hotel_name": "Hane Sun Elite (ex Noble Palace Side)",
+      "duration_bucket": "",
+      "old_price": 9757.0,
+      "new_price": 10497.0,
+      "price_change": 740.0,
+      "price_change_pct": 7.584298452393154,
+      "timestamp": "2026-08-27 23:25:12.591889+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T23:26:44.959805+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hane Sun Elite (ex Noble Palace Side)_2026-08-27_23-25_zone_out_+7.6"
+    },
+    {
+      "hotel_name": "Xoria Deluxe",
+      "duration_bucket": "",
+      "old_price": 9996.0,
+      "new_price": 10261.0,
+      "price_change": 265.0,
+      "price_change_pct": 2.651060424169668,
+      "timestamp": "2026-08-27 23:25:12.591889+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T23:26:44.959817+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xoria Deluxe_2026-08-27_23-25_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Viking Star",
+      "duration_bucket": "",
+      "old_price": 12177.0,
+      "new_price": 9927.0,
+      "price_change": -2250.0,
+      "price_change_pct": -18.477457501847745,
+      "timestamp": "2026-08-27 23:25:12.591889+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T23:26:44.959840+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star_2026-08-27_23-25_comeback_18.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T15:41:55.860389+00:00",
+    "last_processed_run": "2026-08-27T23:25:12.591889+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -2380,8 +2445,8 @@
         "premium_peak": 13357.0
       },
       "Duja Didim": {
-        "history_max": 14464.0,
-        "premium_peak": 14464.0
+        "history_max": 14610.0,
+        "premium_peak": 14610.0
       },
       "Kirbiyik Resort (ex. Dinler)": {
         "history_max": 11514.0,
@@ -2460,8 +2525,8 @@
         "premium_peak": null
       },
       "Juju Premier Palace (ex. Amara Premier Palace)": {
-        "history_max": 16421.0,
-        "premium_peak": 16421.0
+        "history_max": 16430.0,
+        "premium_peak": 16430.0
       },
       "Jadore Deluxe": {
         "history_max": 11585.0,
@@ -2484,8 +2549,8 @@
         "premium_peak": 15453.0
       },
       "Hane Sun Elite (ex Noble Palace Side)": {
-        "history_max": 9757.0,
-        "premium_peak": null
+        "history_max": 10497.0,
+        "premium_peak": 10497.0
       },
       "Holiday Garden Resort (Okurcalar)": {
         "history_max": 9781.0,
@@ -2548,8 +2613,8 @@
         "premium_peak": null
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
-        "history_max": 12966.0,
-        "premium_peak": 12966.0
+        "history_max": 13106.0,
+        "premium_peak": 13106.0
       },
       "Adalya Ocean Deluxe": {
         "history_max": 18224.0,
@@ -2616,12 +2681,12 @@
         "premium_peak": 17611.0
       },
       "MegaSaray Club Belek": {
-        "history_max": 17455.0,
-        "premium_peak": 17455.0
+        "history_max": 17715.0,
+        "premium_peak": 17715.0
       },
       "Paloma Oceana Resort (ex Paloma Beach)": {
-        "history_max": 17690.0,
-        "premium_peak": 17690.0
+        "history_max": 17823.0,
+        "premium_peak": 17823.0
       },
       "Club Melas Prive (ex. Melas Holiday Village)": {
         "history_max": 16785.0,
@@ -2700,12 +2765,12 @@
         "premium_peak": null
       },
       "Susesi Luxury Resort": {
-        "history_max": 17168.0,
-        "premium_peak": 17168.0
+        "history_max": 18009.0,
+        "premium_peak": 18009.0
       },
       "Serenity Queen": {
-        "history_max": 17602.0,
-        "premium_peak": 17602.0
+        "history_max": 18040.0,
+        "premium_peak": 18040.0
       },
       "Can Garden Resort (Side)": {
         "history_max": 16536.0,
@@ -2732,8 +2797,8 @@
         "premium_peak": 17687.0
       },
       "Aquasis Deluxe Resort & Spa": {
-        "history_max": 17686.0,
-        "premium_peak": 17686.0
+        "history_max": 17816.0,
+        "premium_peak": 17816.0
       },
       "Felicia Village": {
         "history_max": 17687.0,
@@ -2770,6 +2835,10 @@
       "Paloma Sencia": {
         "history_max": 18338.0,
         "premium_peak": 18338.0
+      },
+      "Sherwood Exclusive Kemer (ex Sherwood Club Kemer)": {
+        "history_max": 18272.0,
+        "premium_peak": 18272.0
       }
     }
   }
