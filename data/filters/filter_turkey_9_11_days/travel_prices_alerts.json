@@ -1274,10 +1274,114 @@
       "created_at": "2026-08-27T13:24:14.468921+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xoria Deluxe_2026-08-27_13-23_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Misal (ex. Nox Inn Club)",
+      "duration_bucket": "",
+      "old_price": 7843.0,
+      "new_price": 8471.0,
+      "price_change": 628.0,
+      "price_change_pct": 8.007140124952187,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-27T15:43:06.052109+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Misal (ex. Nox Inn Club)_2026-08-27_15-41_+8.0"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7157.0,
+      "new_price": 6451.0,
+      "price_change": -706.0,
+      "price_change_pct": -9.86446835266173,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T15:43:06.052143+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-08-27_15-41_-9.9"
+    },
+    {
+      "hotel_name": "Benata",
+      "duration_bucket": "",
+      "old_price": 9757.0,
+      "new_price": 10357.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.149431177616071,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:43:06.052165+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Benata_2026-08-27_15-41_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9729.0,
+      "new_price": 10385.0,
+      "price_change": 656.0,
+      "price_change_pct": 6.742727926816733,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:43:06.052176+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-08-27_15-41_zone_out_+6.7"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler)",
+      "duration_bucket": "",
+      "old_price": 8857.0,
+      "new_price": 11514.0,
+      "price_change": 2657.0,
+      "price_change_pct": 29.998870949531444,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:43:06.052185+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler)_2026-08-27_15-41_zone_out_+30.0"
+    },
+    {
+      "hotel_name": "Labranda Alantur Resort",
+      "duration_bucket": "",
+      "old_price": 9757.0,
+      "new_price": 10357.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.149431177616071,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:43:06.052194+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Alantur Resort_2026-08-27_15-41_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10757.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.034548558802852,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:43:06.052202+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nox Inn Deluxe (ex NOX Inn Beach Resort & Spa)_2026-08-27_15-41_zone_out_+8.0"
+    },
+    {
+      "hotel_name": "Port River & Spa",
+      "duration_bucket": "",
+      "old_price": 9957.0,
+      "new_price": 10557.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.025911419102139,
+      "timestamp": "2026-08-27 15:41:55.860389+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:43:06.052210+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Port River & Spa_2026-08-27_15-41_zone_out_+6.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T13:23:10.391001+00:00",
+    "last_processed_run": "2026-08-27T15:41:55.860389+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1468,8 +1572,8 @@
         "premium_peak": 14828.0
       },
       "Sensitive Premium Resort & Spa": {
-        "history_max": 11557.0,
-        "premium_peak": 11557.0
+        "history_max": 11757.0,
+        "premium_peak": 11757.0
       },
       "Diamond Hill Resort": {
         "history_max": 10073.0,
@@ -1488,8 +1592,8 @@
         "premium_peak": 10749.0
       },
       "Crystal Admiral Aqua Collection": {
-        "history_max": 12087.0,
-        "premium_peak": 12087.0
+        "history_max": 12517.0,
+        "premium_peak": 12517.0
       },
       "Crystal World of Colours Comfort Collection": {
         "history_max": 11084.0,
@@ -1536,8 +1640,8 @@
         "premium_peak": 13957.0
       },
       "Side Crown Palace (Side)": {
-        "history_max": 11357.0,
-        "premium_peak": 11357.0
+        "history_max": 11471.0,
+        "premium_peak": 11471.0
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
         "history_max": 12632.0,
@@ -1672,8 +1776,8 @@
         "premium_peak": null
       },
       "Antique Roman Palace": {
-        "history_max": 14797.0,
-        "premium_peak": 14797.0
+        "history_max": 14978.0,
+        "premium_peak": 14978.0
       },
       "Aria Claros Beach and Spa Resort": {
         "history_max": 11922.0,
@@ -1684,8 +1788,8 @@
         "premium_peak": 12757.0
       },
       "Aria Resort & SPA": {
-        "history_max": 12479.0,
-        "premium_peak": 12479.0
+        "history_max": 12646.0,
+        "premium_peak": 12646.0
       },
       "Viking Star": {
         "history_max": 12177.0,
@@ -1892,8 +1996,8 @@
         "premium_peak": 11472.0
       },
       "Long Beach (Avsallar)": {
-        "history_max": 13933.0,
-        "premium_peak": 13933.0
+        "history_max": 13947.0,
+        "premium_peak": 13947.0
       },
       "Long Beach Club Nature": {
         "history_max": 14822.0,
@@ -2100,8 +2204,8 @@
         "premium_peak": 10053.0
       },
       "Meryan": {
-        "history_max": 11984.0,
-        "premium_peak": 11984.0
+        "history_max": 12065.0,
+        "premium_peak": 12065.0
       },
       "Ozkaymak Marina (Kemer)": {
         "history_max": 12556.0,
@@ -2228,8 +2332,8 @@
         "premium_peak": 15341.0
       },
       "Dream World Palace": {
-        "history_max": 12757.0,
-        "premium_peak": 12757.0
+        "history_max": 13157.0,
+        "premium_peak": 13157.0
       },
       "Selectum Family Comfort Side (ex. Lyra Resort)": {
         "history_max": 13446.0,
@@ -2280,8 +2384,8 @@
         "premium_peak": 14464.0
       },
       "Kirbiyik Resort (ex. Dinler)": {
-        "history_max": 8885.0,
-        "premium_peak": null
+        "history_max": 11514.0,
+        "premium_peak": 11514.0
       },
       "Green Nature Diamond": {
         "history_max": 13957.0,
@@ -2396,8 +2500,8 @@
         "premium_peak": 15836.0
       },
       "Royal Holiday Palace": {
-        "history_max": 17240.0,
-        "premium_peak": 17240.0
+        "history_max": 18172.0,
+        "premium_peak": 18172.0
       },
       "Horus Paradise Luxury Resort": {
         "history_max": 12394.0,
@@ -2448,8 +2552,8 @@
         "premium_peak": 12966.0
       },
       "Adalya Ocean Deluxe": {
-        "history_max": 14683.0,
-        "premium_peak": 14683.0
+        "history_max": 18224.0,
+        "premium_peak": 18224.0
       },
       "White City Resort": {
         "history_max": 13229.0,
@@ -2468,8 +2572,8 @@
         "premium_peak": null
       },
       "Adora Hotel & Resort (ex. Adora Golf)": {
-        "history_max": 17365.0,
-        "premium_peak": 17365.0
+        "history_max": 18278.0,
+        "premium_peak": 18278.0
       },
       "Akka Alinda": {
         "history_max": 16597.0,
@@ -2642,6 +2746,30 @@
       "Kirman Belazur Resort & Spa": {
         "history_max": 17774.0,
         "premium_peak": 17774.0
+      },
+      "Dobedan Exclusive (ex. Alva Donna Exclusive & SPA)": {
+        "history_max": 17901.0,
+        "premium_peak": 17901.0
+      },
+      "Bellis Deluxe": {
+        "history_max": 18117.0,
+        "premium_peak": 18117.0
+      },
+      "Selectum Luxury Resort": {
+        "history_max": 18261.0,
+        "premium_peak": 18261.0
+      },
+      "Samara (Bodrum)": {
+        "history_max": 18325.0,
+        "premium_peak": 18325.0
+      },
+      "Paloma Perissia": {
+        "history_max": 18213.0,
+        "premium_peak": 18213.0
+      },
+      "Paloma Sencia": {
+        "history_max": 18338.0,
+        "premium_peak": 18338.0
       }
     }
   }

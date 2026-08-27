@@ -247,10 +247,62 @@
       "created_at": "2026-08-27T13:05:53.347957+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Fantazia Resort_2026-08-27_13-05_comeback_14.4"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 9508.0,
+      "new_price": 8608.0,
+      "price_change": -900.0,
+      "price_change_pct": -9.465713083718974,
+      "timestamp": "2026-08-27 15:40:21.989949+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T15:41:00.840168+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-08-27_15-40_-9.5"
+    },
+    {
+      "hotel_name": "Sirena Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9638.0,
+      "new_price": 8738.0,
+      "price_change": -900.0,
+      "price_change_pct": -9.338036937123885,
+      "timestamp": "2026-08-27 15:40:21.989949+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T15:41:00.840195+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sirena Beach Resort & Spa_2026-08-27_15-40_-9.3"
+    },
+    {
+      "hotel_name": "Concorde Moreen Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9620.0,
+      "new_price": 8721.0,
+      "price_change": -899.0,
+      "price_change_pct": -9.345114345114345,
+      "timestamp": "2026-08-27 15:40:21.989949+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T15:41:00.840207+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Moreen Beach Resort & Spa_2026-08-27_15-40_-9.3"
+    },
+    {
+      "hotel_name": "Jaz Lamaya Resort (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 12520.0,
+      "new_price": 9834.0,
+      "price_change": -2686.0,
+      "price_change_pct": -21.45367412140575,
+      "timestamp": "2026-08-27 15:40:21.989949+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T15:41:00.840231+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Lamaya Resort (ex Iberotel)_2026-08-27_15-40_comeback_21.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T13:21:49.666022+00:00",
+    "last_processed_run": "2026-08-27T15:40:21.989949+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 13281.0,
@@ -509,8 +561,8 @@
         "premium_peak": 19988.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
-        "history_max": 12677.0,
-        "premium_peak": 12677.0
+        "history_max": 16027.0,
+        "premium_peak": 16027.0
       },
       "Pickalbatros Vita Resort Portofino": {
         "history_max": 13047.0,
@@ -777,8 +829,8 @@
         "premium_peak": 19435.0
       },
       "Park Regency Resort (ex. Hyatt)": {
-        "history_max": 19364.0,
-        "premium_peak": 19364.0
+        "history_max": 19726.0,
+        "premium_peak": 19726.0
       },
       "Rixos Premium Seagate": {
         "history_max": 19853.0,
@@ -899,6 +951,10 @@
       "Grand Rotana Resort & Spa": {
         "history_max": 18365.0,
         "premium_peak": 18365.0
+      },
+      "Jaz Elite Riviera": {
+        "history_max": 19396.0,
+        "premium_peak": 19396.0
       }
     }
   }

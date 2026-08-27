@@ -1105,10 +1105,75 @@
       "created_at": "2026-08-27T13:25:10.451727+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-27_13-24_-13.0"
+    },
+    {
+      "hotel_name": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 9839.0,
+      "new_price": 9029.0,
+      "price_change": -810.0,
+      "price_change_pct": -8.232543957719281,
+      "timestamp": "2026-08-27 15:43:06.953541+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-27T15:44:16.227299+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi_2026-08-27_15-43_-8.2"
+    },
+    {
+      "hotel_name": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes",
+      "duration_bucket": "",
+      "old_price": 6638.0,
+      "new_price": 7335.0,
+      "price_change": 697.0,
+      "price_change_pct": 10.500150647785478,
+      "timestamp": "2026-08-27 15:43:06.953541+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-27T15:44:16.227326+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-08-27_15-43_+10.5"
+    },
+    {
+      "hotel_name": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos",
+      "duration_bucket": "",
+      "old_price": 9548.0,
+      "new_price": 10246.0,
+      "price_change": 698.0,
+      "price_change_pct": 7.310431503979892,
+      "timestamp": "2026-08-27 15:43:06.953541+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-27T15:44:16.227346+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-27_15-43_zone_out_+7.3"
+    },
+    {
+      "hotel_name": "Natura Park Village Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 10939.0,
+      "new_price": 8652.0,
+      "price_change": -2287.0,
+      "price_change_pct": -20.906847060974496,
+      "timestamp": "2026-08-27 15:43:06.953541+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T15:44:16.227368+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-08-27_15-43_comeback_20.9"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 11019.0,
+      "new_price": 9742.0,
+      "price_change": -1277.0,
+      "price_change_pct": -11.589073418640531,
+      "timestamp": "2026-08-27 15:43:06.953541+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-27T15:44:16.227382+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-27_15-43_comeback_11.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T13:24:15.787269+00:00",
+    "last_processed_run": "2026-08-27T15:43:06.953541+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10432.0,
@@ -1599,8 +1664,8 @@
         "premium_peak": 10642.0
       },
       "Sheraton Rhodes Resort (ex. Imperial)": {
-        "history_max": 19371.0,
-        "premium_peak": 19371.0
+        "history_max": 19404.0,
+        "premium_peak": 19404.0
       },
       "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos": {
         "history_max": 10668.0,
@@ -1792,6 +1857,10 @@
       },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
         "history_max": 9155.0,
+        "premium_peak": null
+      },
+      "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta": {
+        "history_max": 9852.0,
         "premium_peak": null
       }
     }
