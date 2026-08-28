@@ -1261,11 +1261,47 @@
       "hot_score": 0.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-08-28T07:51:48+0000",
-=======
+      "departure_key": "egipt|dahab|2026-09-12|2026-09-26|14|Warszawa|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "dahab",
+      "departure_date": "2026-09-12",
+      "return_date": "2026-09-26",
+      "nights": 14.0,
+      "days_to_departure": 15.0,
+      "old_min_price": "",
+      "new_min_price": 10379.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 0,
+      "hot_score": 0.0
+    },
+    {
       "event_time": "2026-08-28T08:09:29+0000",
->>>>>>> Stashed changes
+      "departure_key": "egipt|dahab|2026-09-12|2026-09-26|14|Warszawa|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "dahab",
+      "departure_date": "2026-09-12",
+      "return_date": "2026-09-26",
+      "nights": 14.0,
+      "days_to_departure": 15.0,
+      "old_min_price": "",
+      "new_min_price": 10379.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 0,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-08-28T19:48:44+0000",
       "departure_key": "egipt|dahab|2026-09-12|2026-09-26|14|Warszawa|2+1",
       "event_type": "deal_quality_surge",
       "severity": "medium",
@@ -7042,6 +7078,26 @@
       "median_drop_pct": 2.08,
       "hotel_count": 17.0,
       "hotel_delta": 0,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-08-28T19:48:44+0000",
+      "departure_key": "egipt|hurghada|2026-09-10|2026-09-24|14|Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-09-10",
+      "return_date": "2026-09-24",
+      "nights": 14.0,
+      "days_to_departure": 13.0,
+      "old_min_price": "",
+      "new_min_price": 11057.0,
+      "min_drop_pct": -8.29,
+      "p10_drop_pct": -9.33,
+      "median_drop_pct": -2.65,
+      "hotel_count": 15.0,
+      "hotel_delta": 4,
       "hot_score": 0.0
     },
     {
@@ -15625,11 +15681,7 @@
       "hot_score": 100.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-08-28T07:51:48+0000",
-=======
-      "event_time": "2026-08-28T08:09:29+0000",
->>>>>>> Stashed changes
       "departure_key": "egipt|marsa-alam|2026-08-29|2026-09-11|13|Warszawa|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -15645,6 +15697,46 @@
       "p10_drop_pct": 0.0,
       "median_drop_pct": 0.0,
       "hotel_count": 8.0,
+      "hotel_delta": 1,
+      "hot_score": 100.0
+    },
+    {
+      "event_time": "2026-08-28T08:09:29+0000",
+      "departure_key": "egipt|marsa-alam|2026-08-29|2026-09-11|13|Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-08-29",
+      "return_date": "2026-09-11",
+      "nights": 13.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 8608.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 8.0,
+      "hotel_delta": 1,
+      "hot_score": 100.0
+    },
+    {
+      "event_time": "2026-08-28T19:48:44+0000",
+      "departure_key": "egipt|marsa-alam|2026-08-29|2026-09-11|13|Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-08-29",
+      "return_date": "2026-09-11",
+      "nights": 13.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 8308.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 9.0,
       "hotel_delta": 1,
       "hot_score": 100.0
     },
