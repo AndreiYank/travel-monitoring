@@ -3393,10 +3393,75 @@
       "created_at": "2026-08-28T05:43:57.047371+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-08-28_05-43_comeback_23.6"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 7857.0,
+      "new_price": 9057.0,
+      "price_change": 1200.0,
+      "price_change_pct": 15.273004963726613,
+      "timestamp": "2026-08-28 07:51:48.781340+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-28T07:52:42.373931+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-08-28_07-51_+15.3"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 6572.0,
+      "new_price": 9022.0,
+      "price_change": 2450.0,
+      "price_change_pct": 37.27936701156421,
+      "timestamp": "2026-08-28 07:51:48.781340+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-28T07:52:42.373959+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-28_07-51_+37.3"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10457.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.087044739778837,
+      "timestamp": "2026-08-28 07:51:48.781340+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T07:52:42.374017+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Beach Resort_2026-08-28_07-51_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "Pickalbatros Aqua Park Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 9867.0,
+      "new_price": 10047.0,
+      "price_change": 180.0,
+      "price_change_pct": 1.8242626938279112,
+      "timestamp": "2026-08-28 07:51:48.781340+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T07:52:42.374035+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Aqua Park Resort (Sharm El Sheikh)_2026-08-28_07-51_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "The V Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 9161.0,
+      "new_price": 10967.0,
+      "price_change": 1806.0,
+      "price_change_pct": 19.714005021285885,
+      "timestamp": "2026-08-28 07:51:48.781340+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T07:52:42.374046+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "The V Luxury Resort_2026-08-28_07-51_zone_out_+19.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-28T06:03:35.189694+00:00",
+    "last_processed_run": "2026-08-28T07:51:48.781340+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -3687,8 +3752,8 @@
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
-        "history_max": 9867.0,
-        "premium_peak": null
+        "history_max": 10047.0,
+        "premium_peak": 10047.0
       },
       "Sentido Mamlouk Palace Resort & Spa (ex Sunrise)": {
         "history_max": 12013.0,
@@ -3919,7 +3984,7 @@
         "premium_peak": null
       },
       "Lazuli (Marsa Alam)": {
-        "history_max": 8657.0,
+        "history_max": 9057.0,
         "premium_peak": null
       },
       "Maritim Jolie Ville Resort and Casino": {
@@ -4147,8 +4212,8 @@
         "premium_peak": 10857.0
       },
       "The V Luxury Resort": {
-        "history_max": 10061.0,
-        "premium_peak": 10061.0
+        "history_max": 10967.0,
+        "premium_peak": 10967.0
       },
       "Sunrise Montemare Resort": {
         "history_max": 13047.0,
