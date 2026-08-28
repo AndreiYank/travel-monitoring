@@ -1196,10 +1196,62 @@
       "created_at": "2026-08-27T23:27:36.786643+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta_2026-08-27_23-26_zone_out_+3.9"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 7657.0,
+      "new_price": 9657.0,
+      "price_change": 2000.0,
+      "price_change_pct": 26.119890296460756,
+      "timestamp": "2026-08-28 05:45:50.711137+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-28T05:46:55.678856+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-28_05-45_+26.1"
+    },
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 7197.0,
+      "new_price": 8457.0,
+      "price_change": 1260.0,
+      "price_change_pct": 17.507294706127553,
+      "timestamp": "2026-08-28 05:45:50.711137+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-28T05:46:55.678880+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-08-28_05-45_+17.5"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 8870.0,
+      "new_price": 10290.0,
+      "price_change": 1420.0,
+      "price_change_pct": 16.00901916572717,
+      "timestamp": "2026-08-28 05:45:50.711137+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T05:46:55.678897+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-08-28_05-45_zone_out_+16.0"
+    },
+    {
+      "hotel_name": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou",
+      "duration_bucket": "",
+      "old_price": 10457.0,
+      "new_price": 9457.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.56297217175098,
+      "timestamp": "2026-08-28 05:45:50.711137+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-28T05:46:55.678918+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou_2026-08-28_05-45_comeback_9.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T23:26:29.707090+00:00",
+    "last_processed_run": "2026-08-28T05:45:50.711137+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10432.0,
@@ -1354,8 +1406,8 @@
         "premium_peak": 10528.0
       },
       "Apollonion Asterias Resort & Spa": {
-        "history_max": 13145.0,
-        "premium_peak": 13145.0
+        "history_max": 13252.0,
+        "premium_peak": 13252.0
       },
       "Aquila Porto Rethymno": {
         "history_max": 16715.0,
@@ -1366,8 +1418,8 @@
         "premium_peak": 11419.0
       },
       "Arina Beach Resort (ex Aquis Arina Sand)": {
-        "history_max": 15000.0,
-        "premium_peak": 15000.0
+        "history_max": 15403.0,
+        "premium_peak": 15403.0
       },
       "Iberostar Selection Creta Marine": {
         "history_max": 15419.0,
@@ -1486,8 +1538,8 @@
         "premium_peak": 14484.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
-        "history_max": 13327.0,
-        "premium_peak": 13327.0
+        "history_max": 13437.0,
+        "premium_peak": 13437.0
       },
       "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki": {
         "history_max": 10953.0,
@@ -1502,8 +1554,8 @@
         "premium_peak": 12122.0
       },
       "Rethymno Palace": {
-        "history_max": 12651.0,
-        "premium_peak": 12651.0
+        "history_max": 13239.0,
+        "premium_peak": 13239.0
       },
       "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
         "history_max": 10457.0,
@@ -1882,8 +1934,8 @@
         "premium_peak": 10657.0
       },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
-        "history_max": 9155.0,
-        "premium_peak": null
+        "history_max": 10290.0,
+        "premium_peak": 10290.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta": {
         "history_max": 10232.0,
@@ -1892,6 +1944,10 @@
       "Rimondi Grand Resort & Spa Grecja, Kreta Zachodnia, Magnisia": {
         "history_max": 8796.0,
         "premium_peak": null
+      },
+      "Kakkos Terra Blu": {
+        "history_max": 15125.0,
+        "premium_peak": 15125.0
       }
     }
   }

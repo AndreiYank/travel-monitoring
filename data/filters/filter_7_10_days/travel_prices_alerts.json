@@ -3289,10 +3289,114 @@
       "created_at": "2026-08-27T23:24:30.754774+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Elite Maraya_2026-08-27_23-23_comeback_8.6"
+    },
+    {
+      "hotel_name": "Sharm Grand Plaza Resort",
+      "duration_bucket": "",
+      "old_price": 8537.0,
+      "new_price": 9228.0,
+      "price_change": 691.0,
+      "price_change_pct": 8.094178282769123,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-28T05:43:57.047245+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sharm Grand Plaza Resort_2026-08-28_05-43_+8.1"
+    },
+    {
+      "hotel_name": "Concorde Moreen Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 5397.0,
+      "new_price": 6213.0,
+      "price_change": 816.0,
+      "price_change_pct": 15.119510839355197,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-28T05:43:57.047281+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Concorde Moreen Beach Resort & Spa_2026-08-28_05-43_+15.1"
+    },
+    {
+      "hotel_name": "Jaz Villagio",
+      "duration_bucket": "",
+      "old_price": 9722.0,
+      "new_price": 11814.0,
+      "price_change": 2092.0,
+      "price_change_pct": 21.51820613042584,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T05:43:57.047309+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Villagio_2026-08-28_05-43_zone_out_+21.5"
+    },
+    {
+      "hotel_name": "Jaz Viva Casa Maza",
+      "duration_bucket": "",
+      "old_price": 9499.0,
+      "new_price": 11362.0,
+      "price_change": 1863.0,
+      "price_change_pct": 19.612590799031477,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T05:43:57.047319+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Viva Casa Maza_2026-08-28_05-43_zone_out_+19.6"
+    },
+    {
+      "hotel_name": "Renaissance Golden View Beach Resort by Marriott",
+      "duration_bucket": "",
+      "old_price": 8917.0,
+      "new_price": 10222.0,
+      "price_change": 1305.0,
+      "price_change_pct": 14.634966917124592,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T05:43:57.047327+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Renaissance Golden View Beach Resort by Marriott_2026-08-28_05-43_zone_out_+14.6"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 8297.0,
+      "new_price": 8297.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-28T05:43:57.047335+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-28_05-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 10387.0,
+      "new_price": 9386.0,
+      "price_change": -1001.0,
+      "price_change_pct": -9.637046307884855,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-28T05:43:57.047355+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)_2026-08-28_05-43_comeback_9.6"
+    },
+    {
+      "hotel_name": "Red Sea Grand Makadi (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 12896.0,
+      "new_price": 9858.0,
+      "price_change": -3038.0,
+      "price_change_pct": -23.557692307692307,
+      "timestamp": "2026-08-28 05:43:01.117575+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-28T05:43:57.047371+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-08-28_05-43_comeback_23.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-27T23:23:36.202485+00:00",
+    "last_processed_run": "2026-08-28T05:43:01.117575+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -3319,8 +3423,8 @@
         "premium_peak": null
       },
       "Renaissance Golden View Beach Resort by Marriott": {
-        "history_max": 8917.0,
-        "premium_peak": null
+        "history_max": 10222.0,
+        "premium_peak": 10222.0
       },
       "Retac Qunay Dahab Resort & Spa": {
         "history_max": 8168.0,
@@ -3619,7 +3723,7 @@
         "premium_peak": null
       },
       "Sharm Grand Plaza Resort": {
-        "history_max": 8617.0,
+        "history_max": 9228.0,
         "premium_peak": null
       },
       "Sentido Naga Bay": {
@@ -3655,8 +3759,8 @@
         "premium_peak": null
       },
       "Ghazala Alamein": {
-        "history_max": 12823.0,
-        "premium_peak": 12823.0
+        "history_max": 13483.0,
+        "premium_peak": 13483.0
       },
       "Gorgonia Beach": {
         "history_max": 8711.0,
@@ -3883,12 +3987,12 @@
         "premium_peak": 11926.0
       },
       "Jaz Viva Casa Maza": {
-        "history_max": 9949.0,
-        "premium_peak": null
+        "history_max": 11362.0,
+        "premium_peak": 11362.0
       },
       "Jaz Villagio": {
-        "history_max": 10382.0,
-        "premium_peak": 10382.0
+        "history_max": 11814.0,
+        "premium_peak": 11814.0
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
         "history_max": 9997.0,
@@ -3943,8 +4047,8 @@
         "premium_peak": 12066.0
       },
       "Jaz Oriental Resort": {
-        "history_max": 12298.0,
-        "premium_peak": 12298.0
+        "history_max": 12299.0,
+        "premium_peak": 12299.0
       },
       "Jaz Palmariva Beach": {
         "history_max": 8244.0,
@@ -4185,6 +4289,10 @@
       "Sharm Dreams Vacation Club": {
         "history_max": 8699.0,
         "premium_peak": null
+      },
+      "Domina Coral Bay King's Lake": {
+        "history_max": 12266.0,
+        "premium_peak": 12266.0
       }
     }
   }
