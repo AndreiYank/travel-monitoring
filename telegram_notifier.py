@@ -368,11 +368,16 @@ def analyze_filter_data(flt: Dict[str, Any], group: Optional[Dict[str, Any]] = N
             elif current_price > baseline_price:
                 breadth_up += 1
 
-        # Previous run baseline (same trip dates only)
+        # Previous run baseline (same trip dates only, within last 4 hours)
         if len(same_dates_grp) >= 2:
             prev_row = same_dates_grp.iloc[-2]
-            prev_price = float(prev_row["price_num"])
-            delta_run_pct = ((current_price - prev_price) / prev_price * 100.0) if prev_price > 0 else 0.0
+            prev_time = prev_row["scraped_at_dt"]
+            if (latest_time - prev_time) <= datetime.timedelta(hours=4):
+                prev_price = float(prev_row["price_num"])
+                delta_run_pct = ((current_price - prev_price) / prev_price * 100.0) if prev_price > 0 else 0.0
+            else:
+                prev_price = current_price
+                delta_run_pct = 0.0
         else:
             prev_price = current_price
             delta_run_pct = 0.0
@@ -579,11 +584,15 @@ def format_hotel_alert_message(
     dashboard_url = f"https://jancker2a.github.io/travel-monitoring/{flt_summary.filter_href}"
     links.append(f'<a href="{dashboard_url}">📊 Дашборд</a>')
 
+    price_info = f"💰 <b>{current_p} PLN</b>"
+    if float(item.get("baseline_48h_price") or 0) > 0 and base_p != current_p and delta_pct < 0:
+        price_info += f" (было {base_p} PLN → <b>{delta_pct:+.1f}%</b>)"
+
     lines = [
         header,
         "",
         f"🏨 <b>{hotel_name}</b>{rating_str}",
-        f"💰 <b>{current_p} PLN</b> (было {base_p} PLN → <b>{delta_pct:+.1f}%</b>)",
+        price_info,
         f"{score_pill}",
         f"📅 {dates_str}{dur_part}",
         f"✈️ {airport_str}",
@@ -773,23 +782,26 @@ def process_notifications(
                     continue
 
                 # Instant alert requirement: MUST be a fresh price drop in the latest scrape run
-                # or a brand-new top offer that just appeared!
+                # (dropped by >= 2% in the last 4h, or brand-new offer with high deal score)
                 is_fresh_drop = (delta_run <= -2.0)
                 is_brand_new_offer = (prev_price is None or prev_price <= 0)
                 if not is_fresh_drop and not is_brand_new_offer:
                     continue
 
-                # Check 1: Flash Drop (Sudden drop >= 12% in this run OR >= 15% in 48h)
-                if (delta_run <= -single_run_drop_pct_min or (delta_48h <= -price_drop_pct_min and is_fresh_drop)) and cur_price > 0:
+                # Check 1: Flash Drop (Sudden drop >= 12% in this run AND delta_48h < 0, OR >= 15% drop in 48h with fresh drop)
+                if (
+                    ((delta_run <= -single_run_drop_pct_min and delta_48h < 0) or (delta_48h <= -price_drop_pct_min and is_fresh_drop))
+                    and cur_price > 0
+                ):
                     candidate_alerts.append((150 + int(abs(delta_48h)), summary, item, "flash_drop"))
                     continue
 
-                # Check 2: Super Hot Deal (Deal Score >= 90, e.g. 90-100)
+                # Check 2: Super Hot Deal (Deal Score >= 90, e.g. 90-100, and price dropped >= 3% in 48h)
                 if notify_hot_deals and deal_score >= deal_score_min and delta_48h <= -3.0 and item["confidence"] != "Low":
                     candidate_alerts.append((deal_score, summary, item, "hot_deal"))
                     continue
 
-                # Check 3: True Historic Low (All-time low + drop >= 5% + Deal Score >= 80 + high confidence)
+                # Check 3: True Historic Low (All-time low + drop >= 5% in 48h + Deal Score >= 80 + high confidence)
                 if (
                     notify_historic_low
                     and item["is_historic_low"]
