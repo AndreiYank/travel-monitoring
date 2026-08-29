@@ -234,10 +234,36 @@
       "created_at": "2026-08-28T19:50:16.698850+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-08-28_06-04_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fantazia Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 10039.0,
+      "new_price": 9031.0,
+      "price_change": -1008.0,
+      "price_change_pct": -10.040840721187369,
+      "timestamp": "2026-08-29 06:51:21.351693+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T06:51:36.783929+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort Egipt, Marsa Alam_2026-08-29_06-51_-10.0"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 10355.0,
+      "new_price": 10355.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-29 06:51:21.351693+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T06:51:36.783995+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage Egipt, Hurghada_2026-08-29_06-51_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T02:39:21.031326+00:00",
+    "last_processed_run": "2026-08-29T06:51:21.351693+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10223.0,
@@ -280,7 +306,7 @@
         "premium_peak": null
       },
       "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib": {
-        "history_max": 10180.0,
+        "history_max": 10228.0,
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr": {
@@ -288,7 +314,7 @@
         "premium_peak": null
       },
       "Concorde Moreen Beach Resort & Spa Egipt, Marsa Alam": {
-        "history_max": 9265.0,
+        "history_max": 9310.0,
         "premium_peak": null
       },
       "Fantazia Resort Egipt, Marsa Alam": {
@@ -296,23 +322,27 @@
         "premium_peak": null
       },
       "Gorgonia Beach Egipt, Marsa Alam": {
-        "history_max": 9356.0,
+        "history_max": 9400.0,
         "premium_peak": null
       },
       "Jaz Solaya (ex Sol Y Mar Solaya) Egipt, Marsa Alam": {
-        "history_max": 10866.0,
+        "history_max": 10918.0,
         "premium_peak": null
       },
       "Radisson Blu Resort (El Quseir) Egipt, Marsa Alam, Al-Kusajr": {
-        "history_max": 10330.0,
+        "history_max": 10379.0,
         "premium_peak": null
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort) Egipt, Marsa Alam": {
-        "history_max": 9929.0,
+        "history_max": 9976.0,
         "premium_peak": null
       },
       "Sea Star Beau Rivage Egipt, Hurghada": {
         "history_max": 10355.0,
+        "premium_peak": null
+      },
+      "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam": {
+        "history_max": 10546.0,
         "premium_peak": null
       }
     }

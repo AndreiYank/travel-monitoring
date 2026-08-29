@@ -3835,10 +3835,62 @@
       "created_at": "2026-08-29T02:38:57.808371+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Renaissance Golden View Beach Resort by Marriott_2026-08-29_02-38_comeback_12.8"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8637.0,
+      "new_price": 9437.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.262475396549728,
+      "timestamp": "2026-08-29 06:50:06.570281+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T06:51:02.083720+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino_2026-08-29_06-50_+9.3"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 6559.0,
+      "new_price": 7133.0,
+      "price_change": 574.0,
+      "price_change_pct": 8.751334044823906,
+      "timestamp": "2026-08-29 06:50:06.570281+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T06:51:02.083772+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-08-29_06-50_+8.8"
+    },
+    {
+      "hotel_name": "Sheraton Soma Bay",
+      "duration_bucket": "",
+      "old_price": 9297.0,
+      "new_price": 9297.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-29 06:50:06.570281+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T06:51:02.083798+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sheraton Soma Bay_2026-08-29_06-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Steigenberger Aqua Magic",
+      "duration_bucket": "",
+      "old_price": 9984.0,
+      "new_price": 10032.0,
+      "price_change": 48.0,
+      "price_change_pct": 0.4807692307692308,
+      "timestamp": "2026-08-29 06:50:06.570281+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T06:51:02.083809+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Aqua Magic_2026-08-29_06-50_zone_out_+0.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T02:38:02.929870+00:00",
+    "last_processed_run": "2026-08-29T06:50:06.570281+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -3865,8 +3917,8 @@
         "premium_peak": 10062.0
       },
       "Serenity Alpha Beach (ex. Serenity Makadi Beach)": {
-        "history_max": 17597.0,
-        "premium_peak": 17597.0
+        "history_max": 17927.0,
+        "premium_peak": 17927.0
       },
       "Jaz Almaza Beach": {
         "history_max": 11597.0,
@@ -3877,8 +3929,8 @@
         "premium_peak": 10457.0
       },
       "Jaz Elite Amara": {
-        "history_max": 12870.0,
-        "premium_peak": 12870.0
+        "history_max": 12932.0,
+        "premium_peak": 12932.0
       },
       "Serenity Alma Heights (ex. Serenity Fun City)": {
         "history_max": 7713.0,
@@ -3925,8 +3977,8 @@
         "premium_peak": 13483.0
       },
       "Steigenberger Al Dau Beach": {
-        "history_max": 13903.0,
-        "premium_peak": 13903.0
+        "history_max": 13969.0,
+        "premium_peak": 13969.0
       },
       "Gorgonia Beach": {
         "history_max": 8711.0,
@@ -4049,7 +4101,7 @@
         "premium_peak": 11362.0
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
-        "history_max": 9396.0,
+        "history_max": 9464.0,
         "premium_peak": null
       },
       "Rixos Radamis Tirana Sharm": {
@@ -4521,7 +4573,7 @@
         "premium_peak": 12057.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
-        "history_max": 9037.0,
+        "history_max": 9437.0,
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
@@ -4545,7 +4597,7 @@
         "premium_peak": null
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
-        "history_max": 9198.0,
+        "history_max": 9234.0,
         "premium_peak": null
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {

@@ -8216,10 +8216,49 @@
       "created_at": "2026-08-29T02:41:12.058053+00:00",
       "threshold_percent": 8.0,
       "unique_key": "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)_2026-08-29_02-39_comeback_8.1"
+    },
+    {
+      "hotel_name": "Dream World Palace",
+      "duration_bucket": "",
+      "old_price": 7897.0,
+      "new_price": 8757.0,
+      "price_change": 860.0,
+      "price_change_pct": 10.890211472711156,
+      "timestamp": "2026-08-29 06:51:36.353697+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T06:52:48.674295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream World Palace_2026-08-29_06-51_+10.9"
+    },
+    {
+      "hotel_name": "Asteria Family Belek",
+      "duration_bucket": "",
+      "old_price": 9941.0,
+      "new_price": 10040.0,
+      "price_change": 99.0,
+      "price_change_pct": 0.9958756664319486,
+      "timestamp": "2026-08-29 06:51:36.353697+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T06:52:48.674376+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Belek_2026-08-29_06-51_zone_out_+1.0"
+    },
+    {
+      "hotel_name": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat",
+      "duration_bucket": "",
+      "old_price": 6696.0,
+      "new_price": 6696.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-29 06:51:36.353697+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T06:52:48.674390+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat_2026-08-29_06-51_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T02:39:35.427479+00:00",
+    "last_processed_run": "2026-08-29T06:51:36.353697+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10885.0,
@@ -8590,8 +8629,8 @@
         "premium_peak": null
       },
       "Asteria Family Belek": {
-        "history_max": 9941.0,
-        "premium_peak": null
+        "history_max": 10040.0,
+        "premium_peak": 10040.0
       },
       "Glamour Resort & Spa": {
         "history_max": 10225.0,
@@ -8606,7 +8645,7 @@
         "premium_peak": 10680.0
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
-        "history_max": 8055.0,
+        "history_max": 8069.0,
         "premium_peak": null
       },
       "Armas Life Belek": {
@@ -9466,8 +9505,8 @@
         "premium_peak": 11606.0
       },
       "Sy Belek Boutique Luxury": {
-        "history_max": 11061.0,
-        "premium_peak": 11061.0
+        "history_max": 11187.0,
+        "premium_peak": 11187.0
       },
       "Maxeria Blue Didyma": {
         "history_max": 10957.0,

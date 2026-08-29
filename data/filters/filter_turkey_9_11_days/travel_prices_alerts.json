@@ -1885,10 +1885,49 @@
       "created_at": "2026-08-29T02:41:00.168057+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Insula Resort_2026-08-29_02-39_comeback_12.3"
+    },
+    {
+      "hotel_name": "Utopia Resort & Residence (ex Alara Park)",
+      "duration_bucket": "",
+      "old_price": 12011.0,
+      "new_price": 9842.0,
+      "price_change": -2169.0,
+      "price_change_pct": -18.05844642411123,
+      "timestamp": "2026-08-29 06:51:37.724323+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T06:53:06.232543+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Resort & Residence (ex Alara Park)_2026-08-29_06-51_comeback_18.1"
+    },
+    {
+      "hotel_name": "M. C. Beach Resort (ex. Otium MC Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 11120.0,
+      "new_price": 7578.0,
+      "price_change": -3542.0,
+      "price_change_pct": -31.852517985611513,
+      "timestamp": "2026-08-29 06:51:37.724323+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T06:53:06.232579+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "M. C. Beach Resort (ex. Otium MC Beach Resort)_2026-08-29_06-51_comeback_31.9"
+    },
+    {
+      "hotel_name": "Grand Seker",
+      "duration_bucket": "",
+      "old_price": 11848.0,
+      "new_price": 9950.0,
+      "price_change": -1898.0,
+      "price_change_pct": -16.01958136394328,
+      "timestamp": "2026-08-29 06:51:37.724323+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T06:53:06.232593+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Seker_2026-08-29_06-51_comeback_16.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T02:39:37.147802+00:00",
+    "last_processed_run": "2026-08-29T06:51:37.724323+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -2199,8 +2238,8 @@
         "premium_peak": 14978.0
       },
       "The Lumos Deluxe Resort & Spa": {
-        "history_max": 10373.0,
-        "premium_peak": 10373.0
+        "history_max": 10415.0,
+        "premium_peak": 10415.0
       },
       "The Marilis Hill Resort and Spa (Alanya)": {
         "history_max": 9350.0,
@@ -2399,8 +2438,8 @@
         "premium_peak": 13245.0
       },
       "Aria Resort & SPA": {
-        "history_max": 12778.0,
-        "premium_peak": 12778.0
+        "history_max": 12906.0,
+        "premium_peak": 12906.0
       },
       "Starlight Resort & Convention Center (Side)": {
         "history_max": 14536.0,
@@ -3341,6 +3380,10 @@
       "Pirates Beach Club": {
         "history_max": 15718.0,
         "premium_peak": 15718.0
+      },
+      "Seamelia Beach Resort & Spa": {
+        "history_max": 17020.0,
+        "premium_peak": 17020.0
       }
     }
   }
