@@ -3744,10 +3744,101 @@
       "created_at": "2026-08-28T19:49:41.272772+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Reef Oasis Blue Bay Resort_2026-08-28_19-48_comeback_18.2"
+    },
+    {
+      "hotel_name": "Sataya Resort (ex. Labranda Sataya Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 8057.0,
+      "price_change": 800.0,
+      "price_change_pct": 11.023839051949842,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T02:38:57.808195+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sataya Resort (ex. Labranda Sataya Marsa Alam)_2026-08-29_02-38_+11.0"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 5818.0,
+      "new_price": 7866.0,
+      "price_change": 2048.0,
+      "price_change_pct": 35.201100034376076,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T02:38:57.808226+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-08-29_02-38_+35.2"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 4917.0,
+      "new_price": 5622.0,
+      "price_change": 705.0,
+      "price_change_pct": 14.338010982306285,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T02:38:57.808245+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-08-29_02-38_+14.3"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 7989.0,
+      "new_price": 9396.0,
+      "price_change": 1407.0,
+      "price_change_pct": 17.611716109650768,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T02:38:57.808295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-08-29_02-38_+17.6"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 7680.0,
+      "new_price": 7680.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T02:38:57.808321+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-29_02-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Amphoras Beach",
+      "duration_bucket": "",
+      "old_price": 10513.0,
+      "new_price": 9317.0,
+      "price_change": -1196.0,
+      "price_change_pct": -11.376391134785504,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T02:38:57.808352+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amphoras Beach_2026-08-29_02-38_comeback_11.4"
+    },
+    {
+      "hotel_name": "Renaissance Golden View Beach Resort by Marriott",
+      "duration_bucket": "",
+      "old_price": 10222.0,
+      "new_price": 8917.0,
+      "price_change": -1305.0,
+      "price_change_pct": -12.766581882214831,
+      "timestamp": "2026-08-29 02:38:02.929870+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T02:38:57.808371+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Renaissance Golden View Beach Resort by Marriott_2026-08-29_02-38_comeback_12.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-28T19:48:44.581838+00:00",
+    "last_processed_run": "2026-08-29T02:38:02.929870+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,
@@ -3958,7 +4049,7 @@
         "premium_peak": 11362.0
       },
       "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
-        "history_max": 9241.0,
+        "history_max": 9396.0,
         "premium_peak": null
       },
       "Rixos Radamis Tirana Sharm": {
@@ -4238,7 +4329,7 @@
         "premium_peak": null
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 7251.0,
+        "history_max": 7257.0,
         "premium_peak": null
       },
       "Steigenberger Ras Soma": {
@@ -4246,7 +4337,7 @@
         "premium_peak": 16185.0
       },
       "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
-        "history_max": 9097.0,
+        "history_max": 9386.0,
         "premium_peak": null
       },
       "Dreams Vacation Sharm Resort": {
@@ -4266,8 +4357,8 @@
         "premium_peak": 14012.0
       },
       "Sultan Gardens Resort": {
-        "history_max": 12365.0,
-        "premium_peak": 12365.0
+        "history_max": 12382.0,
+        "premium_peak": 12382.0
       },
       "Sunrise Alora Aqua Park Resort": {
         "history_max": 10587.0,
@@ -4454,7 +4545,7 @@
         "premium_peak": null
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
-        "history_max": 8627.0,
+        "history_max": 9198.0,
         "premium_peak": null
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
@@ -4474,8 +4565,8 @@
         "premium_peak": null
       },
       "Park Regency Resort (ex. Hyatt)": {
-        "history_max": 11938.0,
-        "premium_peak": 11938.0
+        "history_max": 12337.0,
+        "premium_peak": 12337.0
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
         "history_max": 12896.0,
@@ -4526,8 +4617,8 @@
         "premium_peak": null
       },
       "Maritim Jolie Ville Resort and Casino": {
-        "history_max": 11895.0,
-        "premium_peak": 11895.0
+        "history_max": 11942.0,
+        "premium_peak": 11942.0
       },
       "Lazuli (Marsa Alam)": {
         "history_max": 9457.0,
@@ -4546,8 +4637,8 @@
         "premium_peak": 16097.0
       },
       "Baron Palms": {
-        "history_max": 14217.0,
-        "premium_peak": 14217.0
+        "history_max": 14487.0,
+        "premium_peak": 14487.0
       },
       "Steigenberger Coraya Beach": {
         "history_max": 14577.0,
@@ -4578,15 +4669,15 @@
         "premium_peak": 10807.0
       },
       "Grand Rotana Resort & Spa": {
-        "history_max": 11997.0,
-        "premium_peak": 11997.0
+        "history_max": 12304.0,
+        "premium_peak": 12304.0
       },
       "Naama Bay Promenade Beach Resort": {
-        "history_max": 10643.0,
-        "premium_peak": 10643.0
+        "history_max": 10755.0,
+        "premium_peak": 10755.0
       },
       "Naama Bay Promenade Mountain Resort": {
-        "history_max": 9360.0,
+        "history_max": 9581.0,
         "premium_peak": null
       },
       "Ecotel Dahab Bay View Resort": {
@@ -4594,7 +4685,7 @@
         "premium_peak": null
       },
       "Concorde El Salam Sport": {
-        "history_max": 9284.0,
+        "history_max": 9458.0,
         "premium_peak": null
       },
       "Invidia Coral Beach Tiran": {
