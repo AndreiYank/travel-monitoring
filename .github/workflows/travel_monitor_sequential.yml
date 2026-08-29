@@ -2,8 +2,8 @@ name: Travel Price Monitor
 
 on:
   schedule:
-    # Запускаем каждый час
-    - cron: "0 * * * *"
+    # Запускаем каждый час со сдвигом от глобального пика GitHub (:17)
+    - cron: "17 * * * *"
   workflow_dispatch: # Позволяет запускать вручную
   push:
     branches: [ main ]
