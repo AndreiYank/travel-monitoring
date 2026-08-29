@@ -4147,13 +4147,65 @@
       "created_at": "2026-08-29T14:38:51.090878+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunrise Royal Makadi Aqua Resort_2026-08-29_14-37_comeback_24.7"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 5707.0,
+      "new_price": 6948.0,
+      "price_change": 1241.0,
+      "price_change_pct": 21.745225162081656,
+      "timestamp": "2026-08-29 18:40:26.250227+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T18:41:24.411021+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-08-29_18-40_+21.7"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8424.0,
+      "new_price": 12294.0,
+      "price_change": 3870.0,
+      "price_change_pct": 45.94017094017094,
+      "timestamp": "2026-08-29 18:40:26.250227+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T18:41:24.411074+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-29_18-40_zone_out_+45.9"
+    },
+    {
+      "hotel_name": "Siva Golden Bay Makadi",
+      "duration_bucket": "",
+      "old_price": 8897.0,
+      "new_price": 8897.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-29 18:40:26.250227+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T18:41:24.411086+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Siva Golden Bay Makadi_2026-08-29_18-40_zone_out_gone"
+    },
+    {
+      "hotel_name": "V Hotel Sharm",
+      "duration_bucket": "",
+      "old_price": 11755.0,
+      "new_price": 9838.0,
+      "price_change": -1917.0,
+      "price_change_pct": -16.307954062101235,
+      "timestamp": "2026-08-29 18:40:26.250227+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T18:41:24.411115+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "V Hotel Sharm_2026-08-29_18-40_comeback_16.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T14:37:48.941092+00:00",
+    "last_processed_run": "2026-08-29T18:40:26.250227+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
-        "history_max": 5720.0,
+        "history_max": 6948.0,
         "premium_peak": null
       },
       "Jaz Tamerina (ex. Jaz Oriental Club)": {
@@ -4189,8 +4241,8 @@
         "premium_peak": null
       },
       "Desert Rose Resort": {
-        "history_max": 11297.0,
-        "premium_peak": 11297.0
+        "history_max": 12294.0,
+        "premium_peak": 12294.0
       },
       "Domina Coral Bay Aquamarine": {
         "history_max": 10530.0,
@@ -4365,7 +4417,7 @@
         "premium_peak": 11942.0
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
-        "history_max": 9281.0,
+        "history_max": 9474.0,
         "premium_peak": null
       },
       "Stella Makadi Beach & Spa": {

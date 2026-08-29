@@ -1547,10 +1547,88 @@
       "created_at": "2026-08-29T12:11:35.497484+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-29_09-13_-10.3"
+    },
+    {
+      "hotel_name": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari",
+      "duration_bucket": "",
+      "old_price": 9998.0,
+      "new_price": 8806.0,
+      "price_change": -1192.0,
+      "price_change_pct": -11.92238447689538,
+      "timestamp": "2026-08-29 18:43:35.920457+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T18:44:50.423485+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-29_18-43_-11.9"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 5552.0,
+      "new_price": 5055.0,
+      "price_change": -497.0,
+      "price_change_pct": -8.951729106628243,
+      "timestamp": "2026-08-29 18:43:35.920457+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T18:44:50.423512+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-29_18-43_-9.0"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 8857.0,
+      "new_price": 9657.0,
+      "price_change": 800.0,
+      "price_change_pct": 9.032403748447555,
+      "timestamp": "2026-08-29 18:43:35.920457+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T18:44:50.423526+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-29_18-43_+9.0"
+    },
+    {
+      "hotel_name": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 9874.0,
+      "new_price": 10042.0,
+      "price_change": 168.0,
+      "price_change_pct": 1.7014381203159814,
+      "timestamp": "2026-08-29 18:43:35.920457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T18:44:50.423544+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-29_18-43_zone_out_+1.7"
+    },
+    {
+      "hotel_name": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 8557.0,
+      "new_price": 10357.0,
+      "price_change": 1800.0,
+      "price_change_pct": 21.035409606170386,
+      "timestamp": "2026-08-29 18:43:35.920457+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T18:44:50.423554+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas_2026-08-29_18-43_zone_out_+21.0"
+    },
+    {
+      "hotel_name": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos",
+      "duration_bucket": "",
+      "old_price": 10872.0,
+      "new_price": 9973.0,
+      "price_change": -899.0,
+      "price_change_pct": -8.268947755702722,
+      "timestamp": "2026-08-29 18:43:35.920457+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T18:44:50.423574+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-29_18-43_comeback_8.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T14:41:02.976352+00:00",
+    "last_processed_run": "2026-08-29T18:43:35.920457+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 11096.0,
@@ -1741,8 +1819,8 @@
         "premium_peak": 14861.0
       },
       "Atlantica Ocean Beach Resort (ex. Creta Princess by Atlantica)": {
-        "history_max": 16664.0,
-        "premium_peak": 16664.0
+        "history_max": 16914.0,
+        "premium_peak": 16914.0
       },
       "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas": {
         "history_max": 10357.0,
@@ -1781,8 +1859,8 @@
         "premium_peak": 16191.0
       },
       "High Beach": {
-        "history_max": 16722.0,
-        "premium_peak": 16722.0
+        "history_max": 17947.0,
+        "premium_peak": 17947.0
       },
       "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros": {
         "history_max": 10184.0,
