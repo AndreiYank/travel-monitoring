@@ -3889,6 +3889,7 @@
       "unique_key": "Steigenberger Aqua Magic_2026-08-29_06-50_zone_out_+0.5"
     },
     {
+<<<<<<< Updated upstream
       "hotel_name": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)",
       "duration_bucket": "",
       "old_price": 8897.0,
@@ -3928,12 +3929,15 @@
       "unique_key": "Tropitel Sahl Hasheesh_2026-08-29_09-10_-8.2"
     },
     {
+=======
+>>>>>>> Stashed changes
       "hotel_name": "Movenpick Resort & Spa El Gouna",
       "duration_bucket": "",
       "old_price": 7772.0,
       "new_price": 7021.0,
       "price_change": -751.0,
       "price_change_pct": -9.662892434379824,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:10:26.520248+00:00",
       "alert_type": "price_drop",
       "created_at": "2026-08-29T09:11:23.960345+00:00",
@@ -3965,6 +3969,13 @@
       "created_at": "2026-08-29T09:11:23.960373+00:00",
       "threshold_percent": 8.0,
       "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-08-29_09-10_-9.3"
+=======
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610469+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-29_09-29_-9.7"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
@@ -3973,11 +3984,97 @@
       "new_price": 6877.0,
       "price_change": -636.0,
       "price_change_pct": -8.46532676693731,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:10:26.520248+00:00",
       "alert_type": "price_drop",
       "created_at": "2026-08-29T09:11:23.960383+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-08-29_09-10_-8.5"
+=======
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610498+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-08-29_09-29_-8.5"
+    },
+    {
+      "hotel_name": "Pickalbatros Dana Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9209.0,
+      "new_price": 8458.0,
+      "price_change": -751.0,
+      "price_change_pct": -8.15506569660115,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610512+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Dana Beach Resort_2026-08-29_09-29_-8.2"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 5622.0,
+      "new_price": 5100.0,
+      "price_change": -522.0,
+      "price_change_pct": -9.28495197438634,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610532+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-08-29_09-29_-9.3"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 7960.0,
+      "new_price": 7309.0,
+      "price_change": -651.0,
+      "price_change_pct": -8.178391959798995,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610548+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-08-29_09-29_-8.2"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 7556.0,
+      "new_price": 6947.0,
+      "price_change": -609.0,
+      "price_change_pct": -8.059820010587613,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610556+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-08-29_09-29_-8.1"
+    },
+    {
+      "hotel_name": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 8897.0,
+      "new_price": 8146.0,
+      "price_change": -751.0,
+      "price_change_pct": -8.441047544115994,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T09:30:35.610565+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)_2026-08-29_09-29_-8.4"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Oasis",
+      "duration_bucket": "",
+      "old_price": 9477.0,
+      "new_price": 9477.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T09:30:35.610607+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis_2026-08-29_09-29_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Serenity Sky Arc",
@@ -3986,11 +4083,19 @@
       "new_price": 12050.0,
       "price_change": 3630.0,
       "price_change_pct": 43.111638954869356,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:10:26.520248+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-29T09:11:23.960408+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Serenity Sky Arc_2026-08-29_09-10_zone_out_+43.1"
+=======
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T09:30:35.610618+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Serenity Sky Arc_2026-08-29_09-29_zone_out_+43.1"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Sunrise Royal Makadi Aqua Resort",
@@ -3999,6 +4104,7 @@
       "new_price": 11033.0,
       "price_change": 2726.0,
       "price_change_pct": 32.81569760443,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:10:26.520248+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-29T09:11:23.960419+00:00",
@@ -4017,6 +4123,13 @@
       "created_at": "2026-08-29T09:11:23.960445+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Domina Coral Bay Harem_2026-08-29_09-10_comeback_9.8"
+=======
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T09:30:35.610626+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Royal Makadi Aqua Resort_2026-08-29_09-29_zone_out_+32.8"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Steigenberger Aqua Magic",
@@ -4025,11 +4138,32 @@
       "new_price": 9153.0,
       "price_change": -1501.0,
       "price_change_pct": -14.088605218697204,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:10:26.520248+00:00",
       "alert_type": "premium_comeback",
       "created_at": "2026-08-29T09:11:23.960460+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Steigenberger Aqua Magic_2026-08-29_09-10_comeback_14.1"
+=======
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T09:30:35.610650+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Steigenberger Aqua Magic_2026-08-29_09-29_comeback_14.1"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Harem",
+      "duration_bucket": "",
+      "old_price": 10939.0,
+      "new_price": 9871.0,
+      "price_change": -1068.0,
+      "price_change_pct": -9.76323247097541,
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T09:30:35.610664+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Harem_2026-08-29_09-29_comeback_9.8"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Xanadu Makadi Bay",
@@ -4038,6 +4172,7 @@
       "new_price": 9531.0,
       "price_change": -2232.0,
       "price_change_pct": -18.974751338944145,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:10:26.520248+00:00",
       "alert_type": "premium_comeback",
       "created_at": "2026-08-29T09:11:23.960475+00:00",
@@ -4047,6 +4182,17 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-29T09:10:26.520248+00:00",
+=======
+      "timestamp": "2026-08-29 09:29:45.690566+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T09:30:35.610677+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xanadu Makadi Bay_2026-08-29_09-29_comeback_19.0"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-29T09:29:45.690566+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 5720.0,

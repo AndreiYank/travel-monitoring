@@ -668,6 +668,7 @@
       "hotel_name": "Sea Star Beau Rivage Egipt, Hurghada",
       "duration_bucket": "",
       "old_price": 8061.0,
+<<<<<<< Updated upstream
       "new_price": 9411.0,
       "price_change": 1350.0,
       "price_change_pct": 16.747301823595087,
@@ -689,6 +690,16 @@
       "created_at": "2026-08-29T09:12:22.761699+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Domina Coral Bay Harem_2026-08-29_09-12_zone_out_gone"
+=======
+      "new_price": 9431.0,
+      "price_change": 1370.0,
+      "price_change_pct": 16.99540999875946,
+      "timestamp": "2026-08-29 09:30:53.350596+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T09:31:12.348386+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage Egipt, Hurghada_2026-08-29_09-30_+17.0"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Domina Coral Bay Oasis",
@@ -697,11 +708,19 @@
       "new_price": 10888.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:12:03.897890+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-29T09:12:22.761711+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Domina Coral Bay Oasis_2026-08-29_09-12_zone_out_gone"
+=======
+      "timestamp": "2026-08-29 09:30:53.350596+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T09:31:12.348416+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis_2026-08-29_09-30_zone_out_gone"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Hilton Marsa Alam Nubian Resort",
@@ -710,6 +729,7 @@
       "new_price": 10546.0,
       "price_change": 0.0,
       "price_change_pct": 0.0,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:12:03.897890+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-29T09:12:22.761720+00:00",
@@ -719,6 +739,17 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-29T09:12:03.897890+00:00",
+=======
+      "timestamp": "2026-08-29 09:30:53.350596+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-29T09:31:12.348426+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-29_09-30_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-29T09:30:53.350596+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -885,7 +916,7 @@
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr": {
-        "history_max": 10270.0,
+        "history_max": 10542.0,
         "premium_peak": null
       },
       "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib": {
