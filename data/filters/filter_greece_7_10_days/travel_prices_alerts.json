@@ -10,7 +10,7 @@
       "price_change_pct": 5.016116035455278,
       "timestamp": "2026-08-24 17:49:47.448428+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.854479+00:00",
+      "created_at": "2026-08-29T12:11:35.491043+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-08-24_17-49_zone_out_+5.0"
     },
@@ -23,7 +23,7 @@
       "price_change_pct": -8.315911730545878,
       "timestamp": "2026-08-24 20:26:29.856489+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861038+00:00",
+      "created_at": "2026-08-29T12:11:35.495325+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aldemar Olympian Village Grecja, Peloponez, Skafidia_2026-08-24_20-26_-8.3"
     },
@@ -36,7 +36,7 @@
       "price_change_pct": 35.7233341778566,
       "timestamp": "2026-08-25 00:43:42.003632+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.861205+00:00",
+      "created_at": "2026-08-29T12:11:35.495436+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aldemar Olympian Village Grecja, Peloponez, Skafidia_2026-08-25_00-43_zone_out_+35.7"
     },
@@ -49,35 +49,9 @@
       "price_change_pct": 11.411276762694765,
       "timestamp": "2026-08-25 06:31:05.888297+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.861361+00:00",
+      "created_at": "2026-08-29T12:11:35.495528+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-25_06-31_+11.4"
-    },
-    {
-      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
-      "duration_bucket": "",
-      "old_price": 6342.0,
-      "new_price": 5608.0,
-      "price_change": -734.0,
-      "price_change_pct": -11.573636076947336,
-      "timestamp": "2026-08-25 07:41:01.331644+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861442+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-25_07-41_-11.6"
-    },
-    {
-      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
-      "duration_bucket": "",
-      "old_price": 8057.0,
-      "new_price": 7057.0,
-      "price_change": -1000.0,
-      "price_change_pct": -12.411567580985478,
-      "timestamp": "2026-08-25 07:41:01.331644+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861453+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-25_07-41_-12.4"
     },
     {
       "hotel_name": "Sitia Beach Grecja, Kreta Wschodnia, Sitia",
@@ -88,9 +62,35 @@
       "price_change_pct": -11.041183614883515,
       "timestamp": "2026-08-25 07:41:01.331644+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861463+00:00",
+      "created_at": "2026-08-29T12:11:35.495566+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-25_07-41_-11.0"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 8057.0,
+      "new_price": 7057.0,
+      "price_change": -1000.0,
+      "price_change_pct": -12.411567580985478,
+      "timestamp": "2026-08-25 07:41:01.331644+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T12:11:35.495572+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-25_07-41_-12.4"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6342.0,
+      "new_price": 5608.0,
+      "price_change": -734.0,
+      "price_change_pct": -11.573636076947336,
+      "timestamp": "2026-08-25 07:41:01.331644+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T12:11:35.495577+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-25_07-41_-11.6"
     },
     {
       "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
@@ -101,7 +101,7 @@
       "price_change_pct": -16.469544648137198,
       "timestamp": "2026-08-25 07:41:01.331644+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.861487+00:00",
+      "created_at": "2026-08-29T12:11:35.495590+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-08-25_07-41_comeback_16.5"
     },
@@ -114,7 +114,7 @@
       "price_change_pct": -15.502134351831048,
       "timestamp": "2026-08-25 08:23:44.279781+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861553+00:00",
+      "created_at": "2026-08-29T12:11:35.495627+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-25_08-23_-15.5"
     },
@@ -127,7 +127,7 @@
       "price_change_pct": -12.77794546735084,
       "timestamp": "2026-08-25 09:35:03.638267+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861650+00:00",
+      "created_at": "2026-08-29T12:11:35.495692+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-25_09-35_-12.8"
     },
@@ -140,7 +140,7 @@
       "price_change_pct": 19.669616519174042,
       "timestamp": "2026-08-25 09:35:03.638267+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.861668+00:00",
+      "created_at": "2026-08-29T12:11:35.495701+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-08-25_09-35_zone_out_+19.7"
     },
@@ -153,7 +153,7 @@
       "price_change_pct": -8.372435366639065,
       "timestamp": "2026-08-25 09:35:03.638267+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.861685+00:00",
+      "created_at": "2026-08-29T12:11:35.495711+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-25_09-35_comeback_8.4"
     },
@@ -166,7 +166,7 @@
       "price_change_pct": -12.82303716465666,
       "timestamp": "2026-08-25 10:59:16.763400+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861745+00:00",
+      "created_at": "2026-08-29T12:11:35.495749+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-25_10-59_-12.8"
     },
@@ -179,22 +179,9 @@
       "price_change_pct": 5.843960236971584,
       "timestamp": "2026-08-25 10:59:16.763400+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.861761+00:00",
+      "created_at": "2026-08-29T12:11:35.495757+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-25_10-59_zone_out_+5.8"
-    },
-    {
-      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
-      "duration_bucket": "",
-      "old_price": 5853.0,
-      "new_price": 5353.0,
-      "price_change": -500.0,
-      "price_change_pct": -8.542627712284299,
-      "timestamp": "2026-08-25 11:14:14.552183+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.861844+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-25_11-14_-8.5"
     },
     {
       "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
@@ -205,9 +192,22 @@
       "price_change_pct": 39.676916536772,
       "timestamp": "2026-08-25 11:14:14.552183+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.861856+00:00",
+      "created_at": "2026-08-29T12:11:35.495793+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-25_11-14_+39.7"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 5853.0,
+      "new_price": 5353.0,
+      "price_change": -500.0,
+      "price_change_pct": -8.542627712284299,
+      "timestamp": "2026-08-25 11:14:14.552183+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T12:11:35.495799+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-25_11-14_-8.5"
     },
     {
       "hotel_name": "Sitia Beach Grecja, Kreta Wschodnia, Sitia",
@@ -218,7 +218,7 @@
       "price_change_pct": 40.23065575968888,
       "timestamp": "2026-08-25 12:14:50.080605+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.861961+00:00",
+      "created_at": "2026-08-29T12:11:35.495851+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-25_12-14_zone_out_+40.2"
     },
@@ -231,7 +231,7 @@
       "price_change_pct": -28.143985419198053,
       "timestamp": "2026-08-25 12:30:47.231505+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.862023+00:00",
+      "created_at": "2026-08-29T12:11:35.495883+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-25_12-30_-28.1"
     },
@@ -244,7 +244,7 @@
       "price_change_pct": -8.372435366639065,
       "timestamp": "2026-08-25 12:53:28.476941+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.862102+00:00",
+      "created_at": "2026-08-29T12:11:35.495927+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-25_12-53_comeback_8.4"
     },
@@ -257,7 +257,7 @@
       "price_change_pct": -11.90914671577655,
       "timestamp": "2026-08-25 13:45:31.333462+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.862160+00:00",
+      "created_at": "2026-08-29T12:11:35.495956+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-25_13-45_-11.9"
     },
@@ -270,7 +270,7 @@
       "price_change_pct": 8.165028620801383,
       "timestamp": "2026-08-25 13:45:31.333462+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862175+00:00",
+      "created_at": "2026-08-29T12:11:35.495965+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-25_13-45_zone_out_+8.2"
     },
@@ -283,7 +283,7 @@
       "price_change_pct": 5.843960236971584,
       "timestamp": "2026-08-25 13:45:31.333462+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862183+00:00",
+      "created_at": "2026-08-29T12:11:35.495970+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-25_13-45_zone_out_+5.8"
     },
@@ -296,7 +296,7 @@
       "price_change_pct": -28.688916515252938,
       "timestamp": "2026-08-25 14:39:13.684217+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.862255+00:00",
+      "created_at": "2026-08-29T12:11:35.496011+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-25_14-39_comeback_28.7"
     },
@@ -309,7 +309,7 @@
       "price_change_pct": 8.061378863194294,
       "timestamp": "2026-08-25 15:10:12.662571+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.862310+00:00",
+      "created_at": "2026-08-29T12:11:35.496045+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-25_15-10_+8.1"
     },
@@ -322,7 +322,7 @@
       "price_change_pct": 68.66,
       "timestamp": "2026-08-25 15:45:27.257598+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.862399+00:00",
+      "created_at": "2026-08-29T12:11:35.496094+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-25_15-45_+68.7"
     },
@@ -335,7 +335,7 @@
       "price_change_pct": 40.23065575968888,
       "timestamp": "2026-08-25 19:29:49.965395+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862515+00:00",
+      "created_at": "2026-08-29T12:11:35.496154+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-25_19-29_zone_out_+40.2"
     },
@@ -348,7 +348,7 @@
       "price_change_pct": 11.636668061950607,
       "timestamp": "2026-08-25 22:20:03.196458+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862619+00:00",
+      "created_at": "2026-08-29T12:11:35.496213+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-25_22-20_zone_out_+11.6"
     },
@@ -361,7 +361,7 @@
       "price_change_pct": 8.755097145598464,
       "timestamp": "2026-08-26 00:43:43.422108+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.862694+00:00",
+      "created_at": "2026-08-29T12:11:35.496256+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-26_00-43_+8.8"
     },
@@ -374,7 +374,7 @@
       "price_change_pct": 34.01538999650227,
       "timestamp": "2026-08-26 00:43:43.422108+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.862704+00:00",
+      "created_at": "2026-08-29T12:11:35.496261+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-26_00-43_+34.0"
     },
@@ -387,7 +387,7 @@
       "price_change_pct": 14.545454545454545,
       "timestamp": "2026-08-26 00:43:43.422108+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862716+00:00",
+      "created_at": "2026-08-29T12:11:35.496267+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-08-26_00-43_zone_out_+14.5"
     },
@@ -400,7 +400,7 @@
       "price_change_pct": 18.71430171351775,
       "timestamp": "2026-08-26 00:43:43.422108+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862724+00:00",
+      "created_at": "2026-08-29T12:11:35.496272+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-08-26_00-43_zone_out_+18.7"
     },
@@ -413,7 +413,7 @@
       "price_change_pct": -11.175496688741722,
       "timestamp": "2026-08-26 00:43:43.422108+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.862738+00:00",
+      "created_at": "2026-08-29T12:11:35.496280+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-26_00-43_comeback_11.2"
     },
@@ -426,7 +426,7 @@
       "price_change_pct": 3.4680337756332933,
       "timestamp": "2026-08-26 02:23:45.703594+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.862796+00:00",
+      "created_at": "2026-08-29T12:11:35.496314+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra_2026-08-26_02-23_zone_out_+3.5"
     },
@@ -439,7 +439,7 @@
       "price_change_pct": -9.16019955654102,
       "timestamp": "2026-08-26 09:36:00.121621+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.863052+00:00",
+      "created_at": "2026-08-29T12:11:35.496431+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-26_09-36_-9.2"
     },
@@ -452,7 +452,7 @@
       "price_change_pct": 6.2131096613855235,
       "timestamp": "2026-08-26 10:29:16.026509+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863127+00:00",
+      "created_at": "2026-08-29T12:11:35.496468+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-26_10-29_zone_out_+6.2"
     },
@@ -465,7 +465,7 @@
       "price_change_pct": 4.017274279401426,
       "timestamp": "2026-08-26 10:59:50.972975+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863190+00:00",
+      "created_at": "2026-08-29T12:11:35.496502+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas_2026-08-26_10-59_zone_out_+4.0"
     },
@@ -478,7 +478,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863267+00:00",
+      "created_at": "2026-08-29T12:11:35.496545+00:00",
       "threshold_percent": 8.0,
       "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-08-26_12-35_zone_out_gone"
     },
@@ -491,7 +491,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863275+00:00",
+      "created_at": "2026-08-29T12:11:35.496549+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-08-26_12-35_zone_out_gone"
     },
@@ -504,7 +504,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863282+00:00",
+      "created_at": "2026-08-29T12:11:35.496553+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos_2026-08-26_12-35_zone_out_gone"
     },
@@ -517,7 +517,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863289+00:00",
+      "created_at": "2026-08-29T12:11:35.496557+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-08-26_12-35_zone_out_gone"
     },
@@ -530,7 +530,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863296+00:00",
+      "created_at": "2026-08-29T12:11:35.496561+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-08-26_12-35_zone_out_gone"
     },
@@ -543,7 +543,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863302+00:00",
+      "created_at": "2026-08-29T12:11:35.496564+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-26_12-35_zone_out_gone"
     },
@@ -556,7 +556,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863309+00:00",
+      "created_at": "2026-08-29T12:11:35.496568+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-26_12-35_zone_out_gone"
     },
@@ -569,7 +569,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863316+00:00",
+      "created_at": "2026-08-29T12:11:35.496572+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-08-26_12-35_zone_out_gone"
     },
@@ -582,7 +582,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863323+00:00",
+      "created_at": "2026-08-29T12:11:35.496576+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-08-26_12-35_zone_out_gone"
     },
@@ -595,7 +595,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863331+00:00",
+      "created_at": "2026-08-29T12:11:35.496580+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros_2026-08-26_12-35_zone_out_gone"
     },
@@ -608,7 +608,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863337+00:00",
+      "created_at": "2026-08-29T12:11:35.496583+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-26_12-35_zone_out_gone"
     },
@@ -621,7 +621,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863344+00:00",
+      "created_at": "2026-08-29T12:11:35.496587+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia_2026-08-26_12-35_zone_out_gone"
     },
@@ -634,7 +634,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863351+00:00",
+      "created_at": "2026-08-29T12:11:35.496591+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-08-26_12-35_zone_out_gone"
     },
@@ -647,7 +647,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863358+00:00",
+      "created_at": "2026-08-29T12:11:35.496595+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach Grecja, Kreta Wschodnia, Sitia_2026-08-26_12-35_zone_out_gone"
     },
@@ -660,7 +660,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863365+00:00",
+      "created_at": "2026-08-29T12:11:35.496598+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-26_12-35_zone_out_gone"
     },
@@ -673,7 +673,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 12:35:29.418313+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863372+00:00",
+      "created_at": "2026-08-29T12:11:35.496602+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-26_12-35_zone_out_gone"
     },
@@ -686,7 +686,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863446+00:00",
+      "created_at": "2026-08-29T12:11:35.496643+00:00",
       "threshold_percent": 8.0,
       "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)_2026-08-26_13-50_zone_out_gone"
     },
@@ -699,7 +699,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863454+00:00",
+      "created_at": "2026-08-29T12:11:35.496655+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Azure Resort & Spa (ex. Mediterranee)_2026-08-26_13-50_zone_out_gone"
     },
@@ -712,7 +712,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863461+00:00",
+      "created_at": "2026-08-29T12:11:35.496659+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Filion Suites Resort_2026-08-26_13-50_zone_out_gone"
     },
@@ -725,7 +725,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863468+00:00",
+      "created_at": "2026-08-29T12:11:35.496663+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gaia Palace_2026-08-26_13-50_zone_out_gone"
     },
@@ -738,7 +738,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863475+00:00",
+      "created_at": "2026-08-29T12:11:35.496667+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace_2026-08-26_13-50_zone_out_gone"
     },
@@ -751,7 +751,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863482+00:00",
+      "created_at": "2026-08-29T12:11:35.496671+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Sea View (Agia Marina)_2026-08-26_13-50_zone_out_gone"
     },
@@ -764,7 +764,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863489+00:00",
+      "created_at": "2026-08-29T12:11:35.496674+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace_2026-08-26_13-50_zone_out_gone"
     },
@@ -777,7 +777,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863496+00:00",
+      "created_at": "2026-08-29T12:11:35.496678+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hydramis Palace Beach Resort_2026-08-26_13-50_zone_out_gone"
     },
@@ -790,7 +790,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863502+00:00",
+      "created_at": "2026-08-29T12:11:35.496682+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Royal (ex. COOEE)_2026-08-26_13-50_zone_out_gone"
     },
@@ -803,7 +803,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863509+00:00",
+      "created_at": "2026-08-29T12:11:35.496685+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Out of the Blue Resort_2026-08-26_13-50_zone_out_gone"
     },
@@ -816,7 +816,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863516+00:00",
+      "created_at": "2026-08-29T12:11:35.496689+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rodos Palace_2026-08-26_13-50_zone_out_gone"
     },
@@ -829,7 +829,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863523+00:00",
+      "created_at": "2026-08-29T12:11:35.496693+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sitia Beach_2026-08-26_13-50_zone_out_gone"
     },
@@ -842,7 +842,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863530+00:00",
+      "created_at": "2026-08-29T12:11:35.496696+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort_2026-08-26_13-50_zone_out_gone"
     },
@@ -855,7 +855,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863537+00:00",
+      "created_at": "2026-08-29T12:11:35.496700+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)_2026-08-26_13-50_zone_out_gone"
     },
@@ -868,7 +868,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863544+00:00",
+      "created_at": "2026-08-29T12:11:35.496704+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Zeus Eleva Ajul (Ayios Nikolaos)_2026-08-26_13-50_zone_out_gone"
     },
@@ -881,7 +881,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863551+00:00",
+      "created_at": "2026-08-29T12:11:35.496708+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Zeus Eretria Resort_2026-08-26_13-50_zone_out_gone"
     },
@@ -894,22 +894,9 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863557+00:00",
+      "created_at": "2026-08-29T12:11:35.496711+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Zeus Kos Beach_2026-08-26_13-50_zone_out_gone"
-    },
-    {
-      "hotel_name": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos",
-      "duration_bucket": "",
-      "old_price": 10757.0,
-      "new_price": 9357.0,
-      "price_change": -1400.0,
-      "price_change_pct": -13.01478107278981,
-      "timestamp": "2026-08-26 13:50:15.345269+00:00",
-      "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.863573+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos_2026-08-26_13-50_comeback_13.0"
     },
     {
       "hotel_name": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos",
@@ -920,9 +907,22 @@
       "price_change_pct": -8.106565176022835,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.863585+00:00",
+      "created_at": "2026-08-29T12:11:35.496725+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-08-26_13-50_comeback_8.1"
+    },
+    {
+      "hotel_name": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos",
+      "duration_bucket": "",
+      "old_price": 10757.0,
+      "new_price": 9357.0,
+      "price_change": -1400.0,
+      "price_change_pct": -13.01478107278981,
+      "timestamp": "2026-08-26 13:50:15.345269+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T12:11:35.496731+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos_2026-08-26_13-50_comeback_13.0"
     },
     {
       "hotel_name": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos",
@@ -933,7 +933,7 @@
       "price_change_pct": -14.79028697571744,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.863600+00:00",
+      "created_at": "2026-08-29T12:11:35.496736+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-26_13-50_comeback_14.8"
     },
@@ -946,7 +946,7 @@
       "price_change_pct": -11.934432515337424,
       "timestamp": "2026-08-26 13:50:15.345269+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.863615+00:00",
+      "created_at": "2026-08-29T12:11:35.496742+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra_2026-08-26_13-50_comeback_11.9"
     },
@@ -959,7 +959,7 @@
       "price_change_pct": 10.89208152355496,
       "timestamp": "2026-08-26 14:39:18.087848+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.863675+00:00",
+      "created_at": "2026-08-29T12:11:35.496779+00:00",
       "threshold_percent": 8.0,
       "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-08-26_14-39_+10.9"
     },
@@ -972,7 +972,7 @@
       "price_change_pct": 24.897439524685243,
       "timestamp": "2026-08-26 16:14:59.341022+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.863737+00:00",
+      "created_at": "2026-08-29T12:11:35.496816+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-26_16-14_+24.9"
     },
@@ -985,7 +985,7 @@
       "price_change_pct": 9.839991292043104,
       "timestamp": "2026-08-26 16:14:59.341022+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863751+00:00",
+      "created_at": "2026-08-29T12:11:35.496822+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra_2026-08-26_16-14_zone_out_+9.8"
     },
@@ -998,7 +998,7 @@
       "price_change_pct": 4.77366255144033,
       "timestamp": "2026-08-26 18:54:26.308308+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863828+00:00",
+      "created_at": "2026-08-29T12:11:35.496861+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros_2026-08-26_18-54_zone_out_+4.8"
     },
@@ -1011,22 +1011,9 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-26 18:54:26.308308+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863837+00:00",
+      "created_at": "2026-08-29T12:11:35.496865+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kouros Palace Grecja, Kos, Mastichari_2026-08-26_18-54_zone_out_gone"
-    },
-    {
-      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
-      "duration_bucket": "",
-      "old_price": 8829.0,
-      "new_price": 9963.0,
-      "price_change": 1134.0,
-      "price_change_pct": 12.844036697247708,
-      "timestamp": "2026-08-27 10:18:26.232813+00:00",
-      "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.863940+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-27_10-18_+12.8"
     },
     {
       "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
@@ -1037,9 +1024,22 @@
       "price_change_pct": 8.494973807164094,
       "timestamp": "2026-08-27 10:18:26.232813+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.863950+00:00",
+      "created_at": "2026-08-29T12:11:35.496923+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-27_10-18_+8.5"
+    },
+    {
+      "hotel_name": "Gaia Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 8829.0,
+      "new_price": 9963.0,
+      "price_change": 1134.0,
+      "price_change_pct": 12.844036697247708,
+      "timestamp": "2026-08-27 10:18:26.232813+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T12:11:35.496928+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gaia Palace Grecja, Kos, Mastichari_2026-08-27_10-18_+12.8"
     },
     {
       "hotel_name": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas",
@@ -1050,22 +1050,9 @@
       "price_change_pct": 4.017274279401426,
       "timestamp": "2026-08-27 10:18:26.232813+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.863963+00:00",
+      "created_at": "2026-08-29T12:11:35.496934+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas_2026-08-27_10-18_zone_out_+4.0"
-    },
-    {
-      "hotel_name": "Aldemar Olympian Village Grecja, Peloponez, Skafidia",
-      "duration_bucket": "",
-      "old_price": 10714.0,
-      "new_price": 8881.0,
-      "price_change": -1833.0,
-      "price_change_pct": -17.108456225499346,
-      "timestamp": "2026-08-27 10:18:26.232813+00:00",
-      "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.863982+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Aldemar Olympian Village Grecja, Peloponez, Skafidia_2026-08-27_10-18_comeback_17.1"
     },
     {
       "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
@@ -1076,9 +1063,22 @@
       "price_change_pct": -20.618963138182536,
       "timestamp": "2026-08-27 10:18:26.232813+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.863992+00:00",
+      "created_at": "2026-08-29T12:11:35.496943+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-08-27_10-18_comeback_20.6"
+    },
+    {
+      "hotel_name": "Aldemar Olympian Village Grecja, Peloponez, Skafidia",
+      "duration_bucket": "",
+      "old_price": 10714.0,
+      "new_price": 8881.0,
+      "price_change": -1833.0,
+      "price_change_pct": -17.108456225499346,
+      "timestamp": "2026-08-27 10:18:26.232813+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T12:11:35.496949+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aldemar Olympian Village Grecja, Peloponez, Skafidia_2026-08-27_10-18_comeback_17.1"
     },
     {
       "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
@@ -1089,7 +1089,7 @@
       "price_change_pct": -16.2321193060769,
       "timestamp": "2026-08-27 13:07:46.365847+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.864052+00:00",
+      "created_at": "2026-08-29T12:11:35.496983+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-27_13-07_-16.2"
     },
@@ -1102,22 +1102,9 @@
       "price_change_pct": -12.971421114446038,
       "timestamp": "2026-08-27 13:24:15.787269+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.864121+00:00",
+      "created_at": "2026-08-29T12:11:35.497023+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-27_13-24_-13.0"
-    },
-    {
-      "hotel_name": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi",
-      "duration_bucket": "",
-      "old_price": 9839.0,
-      "new_price": 9029.0,
-      "price_change": -810.0,
-      "price_change_pct": -8.232543957719281,
-      "timestamp": "2026-08-27 15:43:06.953541+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.864188+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi_2026-08-27_15-43_-8.2"
     },
     {
       "hotel_name": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes",
@@ -1128,9 +1115,22 @@
       "price_change_pct": 10.500150647785478,
       "timestamp": "2026-08-27 15:43:06.953541+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.864199+00:00",
+      "created_at": "2026-08-29T12:11:35.497057+00:00",
       "threshold_percent": 8.0,
       "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-08-27_15-43_+10.5"
+    },
+    {
+      "hotel_name": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 9839.0,
+      "new_price": 9029.0,
+      "price_change": -810.0,
+      "price_change_pct": -8.232543957719281,
+      "timestamp": "2026-08-27 15:43:06.953541+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T12:11:35.497064+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi_2026-08-27_15-43_-8.2"
     },
     {
       "hotel_name": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos",
@@ -1141,7 +1141,7 @@
       "price_change_pct": 7.310431503979892,
       "timestamp": "2026-08-27 15:43:06.953541+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864210+00:00",
+      "created_at": "2026-08-29T12:11:35.497070+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-08-27_15-43_zone_out_+7.3"
     },
@@ -1154,7 +1154,7 @@
       "price_change_pct": -11.589073418640531,
       "timestamp": "2026-08-27 15:43:06.953541+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864225+00:00",
+      "created_at": "2026-08-29T12:11:35.497078+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-27_15-43_comeback_11.6"
     },
@@ -1167,7 +1167,7 @@
       "price_change_pct": -20.906847060974496,
       "timestamp": "2026-08-27 15:43:06.953541+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864236+00:00",
+      "created_at": "2026-08-29T12:11:35.497085+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-08-27_15-43_comeback_20.9"
     },
@@ -1180,7 +1180,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-27 23:26:29.707090+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864298+00:00",
+      "created_at": "2026-08-29T12:11:35.497120+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos_2026-08-27_23-26_zone_out_gone"
     },
@@ -1193,22 +1193,9 @@
       "price_change_pct": 3.857084855866829,
       "timestamp": "2026-08-27 23:26:29.707090+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864308+00:00",
+      "created_at": "2026-08-29T12:11:35.497125+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta_2026-08-27_23-26_zone_out_+3.9"
-    },
-    {
-      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
-      "duration_bucket": "",
-      "old_price": 7657.0,
-      "new_price": 9657.0,
-      "price_change": 2000.0,
-      "price_change_pct": 26.119890296460756,
-      "timestamp": "2026-08-28 05:45:50.711137+00:00",
-      "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.864371+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-28_05-45_+26.1"
     },
     {
       "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
@@ -1219,9 +1206,22 @@
       "price_change_pct": 17.507294706127553,
       "timestamp": "2026-08-28 05:45:50.711137+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.864380+00:00",
+      "created_at": "2026-08-29T12:11:35.497159+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-08-28_05-45_+17.5"
+    },
+    {
+      "hotel_name": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari",
+      "duration_bucket": "",
+      "old_price": 7657.0,
+      "new_price": 9657.0,
+      "price_change": 2000.0,
+      "price_change_pct": 26.119890296460756,
+      "timestamp": "2026-08-28 05:45:50.711137+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T12:11:35.497164+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-28_05-45_+26.1"
     },
     {
       "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
@@ -1232,7 +1232,7 @@
       "price_change_pct": 16.00901916572717,
       "timestamp": "2026-08-28 05:45:50.711137+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864393+00:00",
+      "created_at": "2026-08-29T12:11:35.497172+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-08-28_05-45_zone_out_+16.0"
     },
@@ -1245,7 +1245,7 @@
       "price_change_pct": -9.56297217175098,
       "timestamp": "2026-08-28 05:45:50.711137+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864409+00:00",
+      "created_at": "2026-08-29T12:11:35.497181+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou_2026-08-28_05-45_comeback_9.6"
     },
@@ -1258,7 +1258,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-28 07:54:44.642918+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864499+00:00",
+      "created_at": "2026-08-29T12:11:35.497229+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-08-28_07-54_zone_out_gone"
     },
@@ -1271,7 +1271,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-28 07:54:44.642918+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864508+00:00",
+      "created_at": "2026-08-29T12:11:35.497234+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-08-28_07-54_zone_out_gone"
     },
@@ -1284,7 +1284,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-28 07:54:44.642918+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864515+00:00",
+      "created_at": "2026-08-29T12:11:35.497238+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-08-28_07-54_zone_out_gone"
     },
@@ -1297,22 +1297,9 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-28 07:54:44.642918+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864522+00:00",
+      "created_at": "2026-08-29T12:11:35.497242+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-08-28_07-54_zone_out_gone"
-    },
-    {
-      "hotel_name": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas",
-      "duration_bucket": "",
-      "old_price": 10697.0,
-      "new_price": 9497.0,
-      "price_change": -1200.0,
-      "price_change_pct": -11.218098532298775,
-      "timestamp": "2026-08-28 07:54:44.642918+00:00",
-      "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864537+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas_2026-08-28_07-54_comeback_11.2"
     },
     {
       "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
@@ -1323,48 +1310,22 @@
       "price_change_pct": -15.772594752186588,
       "timestamp": "2026-08-28 07:54:44.642918+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864547+00:00",
+      "created_at": "2026-08-29T12:11:35.497250+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-08-28_07-54_comeback_15.8"
     },
     {
-      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "hotel_name": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas",
       "duration_bucket": "",
-      "old_price": 8679.0,
-      "new_price": 7817.0,
-      "price_change": -862.0,
-      "price_change_pct": -9.932019817951376,
-      "timestamp": "2026-08-28 19:51:32.949133+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.864624+00:00",
+      "old_price": 10697.0,
+      "new_price": 9497.0,
+      "price_change": -1200.0,
+      "price_change_pct": -11.218098532298775,
+      "timestamp": "2026-08-28 07:54:44.642918+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-29T12:11:35.497255+00:00",
       "threshold_percent": 8.0,
-      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-28_19-51_-9.9"
-    },
-    {
-      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
-      "duration_bucket": "",
-      "old_price": 6669.0,
-      "new_price": 6049.0,
-      "price_change": -620.0,
-      "price_change_pct": -9.296746138851402,
-      "timestamp": "2026-08-28 19:51:32.949133+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-28T19:52:32.864633+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-28_19-51_-9.3"
-    },
-    {
-      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
-      "duration_bucket": "",
-      "old_price": 8330.0,
-      "new_price": 9192.0,
-      "price_change": 862.0,
-      "price_change_pct": 10.34813925570228,
-      "timestamp": "2026-08-28 19:51:32.949133+00:00",
-      "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.864641+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-08-28_19-51_+10.3"
+      "unique_key": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas_2026-08-28_07-54_comeback_11.2"
     },
     {
       "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
@@ -1375,7 +1336,7 @@
       "price_change_pct": 11.666873526126349,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.864650+00:00",
+      "created_at": "2026-08-29T12:11:35.497304+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-08-28_19-51_+11.7"
     },
@@ -1388,9 +1349,48 @@
       "price_change_pct": 17.94902476965418,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-28T19:52:32.864658+00:00",
+      "created_at": "2026-08-29T12:11:35.497309+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia_2026-08-28_19-51_+17.9"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 8679.0,
+      "new_price": 7817.0,
+      "price_change": -862.0,
+      "price_change_pct": -9.932019817951376,
+      "timestamp": "2026-08-28 19:51:32.949133+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T12:11:35.497314+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-08-28_19-51_-9.9"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 8330.0,
+      "new_price": 9192.0,
+      "price_change": 862.0,
+      "price_change_pct": 10.34813925570228,
+      "timestamp": "2026-08-28 19:51:32.949133+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-29T12:11:35.497319+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-08-28_19-51_+10.3"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6669.0,
+      "new_price": 6049.0,
+      "price_change": -620.0,
+      "price_change_pct": -9.296746138851402,
+      "timestamp": "2026-08-28 19:51:32.949133+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-29T12:11:35.497323+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-28_19-51_-9.3"
     },
     {
       "hotel_name": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas",
@@ -1401,7 +1401,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864669+00:00",
+      "created_at": "2026-08-29T12:11:35.497329+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas_2026-08-28_19-51_zone_out_gone"
     },
@@ -1414,7 +1414,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-28T19:52:32.864676+00:00",
+      "created_at": "2026-08-29T12:11:35.497334+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-08-28_19-51_zone_out_gone"
     },
@@ -1427,7 +1427,7 @@
       "price_change_pct": -23.285343825449342,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864693+00:00",
+      "created_at": "2026-08-29T12:11:35.497343+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-08-28_19-51_comeback_23.3"
     },
@@ -1440,7 +1440,7 @@
       "price_change_pct": -8.127109111361081,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864703+00:00",
+      "created_at": "2026-08-29T12:11:35.497349+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-28_19-51_comeback_8.1"
     },
@@ -1453,7 +1453,7 @@
       "price_change_pct": -11.500726744186046,
       "timestamp": "2026-08-28 19:51:32.949133+00:00",
       "alert_type": "premium_comeback",
-      "created_at": "2026-08-28T19:52:32.864712+00:00",
+      "created_at": "2026-08-29T12:11:35.497354+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-08-28_19-51_comeback_11.5"
     },
@@ -1466,7 +1466,7 @@
       "price_change_pct": 15.643564356435643,
       "timestamp": "2026-08-29 02:40:59.867465+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-29T02:42:02.857695+00:00",
+      "created_at": "2026-08-29T12:11:35.497392+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra_2026-08-29_02-40_zone_out_+15.6"
     },
@@ -1479,7 +1479,7 @@
       "price_change_pct": 12.811942959001781,
       "timestamp": "2026-08-29 02:40:59.867465+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-29T02:42:02.857723+00:00",
+      "created_at": "2026-08-29T12:11:35.497397+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Galini Palace Grecja, Kreta Zachodnia, Kolymvari_2026-08-29_02-40_zone_out_+12.8"
     },
@@ -1492,7 +1492,7 @@
       "price_change_pct": 22.49943807597213,
       "timestamp": "2026-08-29 02:40:59.867465+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-29T02:42:02.857735+00:00",
+      "created_at": "2026-08-29T12:11:35.497401+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Kipriotis Panorama & Suites Grecja, Kos, Psalidi_2026-08-29_02-40_zone_out_+22.5"
     },
@@ -1505,7 +1505,7 @@
       "price_change_pct": 0.0,
       "timestamp": "2026-08-29 02:40:59.867465+00:00",
       "alert_type": "zone_exit",
-      "created_at": "2026-08-29T02:42:02.857743+00:00",
+      "created_at": "2026-08-29T12:11:35.497406+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-08-29_02-40_zone_out_gone"
     },
@@ -1518,7 +1518,7 @@
       "price_change_pct": 10.431034482758621,
       "timestamp": "2026-08-29 06:52:50.125206+00:00",
       "alert_type": "price_increase",
-      "created_at": "2026-08-29T06:53:50.502860+00:00",
+      "created_at": "2026-08-29T12:11:35.497441+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-08-29_06-52_+10.4"
     },
@@ -1529,19 +1529,11 @@
       "new_price": 8857.0,
       "price_change": -800.0,
       "price_change_pct": -8.284146215180698,
-<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:13:40.239884+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-29T09:14:53.503439+00:00",
+      "created_at": "2026-08-29T12:11:35.497478+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-29_09-13_-8.3"
-=======
-      "timestamp": "2026-08-29 09:32:30.282347+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-29T09:33:32.391034+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Almyra Village Grecja, Kreta Wschodnia, Koutsounari_2026-08-29_09-32_-8.3"
->>>>>>> Stashed changes
     },
     {
       "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
@@ -1550,43 +1542,39 @@
       "new_price": 5428.0,
       "price_change": -621.0,
       "price_change_pct": -10.26615969581749,
-<<<<<<< Updated upstream
       "timestamp": "2026-08-29 09:13:40.239884+00:00",
       "alert_type": "price_drop",
-      "created_at": "2026-08-29T09:14:53.503469+00:00",
+      "created_at": "2026-08-29T12:11:35.497484+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-29_09-13_-10.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T09:13:40.239884+00:00",
-=======
-      "timestamp": "2026-08-29 09:32:30.282347+00:00",
-      "alert_type": "price_drop",
-      "created_at": "2026-08-29T09:33:32.391062+00:00",
-      "threshold_percent": 8.0,
-      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-29_09-32_-10.3"
-    }
-  ],
-  "meta": {
-    "last_processed_run": "2026-08-29T09:32:30.282347+00:00",
->>>>>>> Stashed changes
+    "last_processed_run": "2026-08-29T12:10:44.887732+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 11096.0,
         "premium_peak": 11096.0
       },
+      "Creta Maris Beach Resort (ex Terra Maris)": {
+        "history_max": 17726.0,
+        "premium_peak": 17726.0
+      },
+      "Dimitra Beach Hotel & Suites": {
+        "history_max": 16925.0,
+        "premium_peak": 16925.0
+      },
       "Domes Aulus Zante Autograph Collection": {
         "history_max": 17651.0,
         "premium_peak": 17651.0
       },
-      "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas": {
-        "history_max": 10357.0,
-        "premium_peak": 10357.0
-      },
       "Electra Palace (Ialyssos)": {
         "history_max": 17587.0,
         "premium_peak": 17587.0
+      },
+      "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki": {
+        "history_max": 11019.0,
+        "premium_peak": 11019.0
       },
       "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
         "history_max": 11008.0,
@@ -1616,6 +1604,10 @@
         "history_max": 13991.0,
         "premium_peak": 13991.0
       },
+      "White Olive Elite": {
+        "history_max": 12050.0,
+        "premium_peak": 12050.0
+      },
       "Gaia Palace Grecja, Kos, Mastichari": {
         "history_max": 9963.0,
         "premium_peak": null
@@ -1628,10 +1620,6 @@
         "history_max": 10126.0,
         "premium_peak": 10126.0
       },
-      "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 8679.0,
-        "premium_peak": null
-      },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
         "history_max": 9718.0,
         "premium_peak": null
@@ -1643,6 +1631,10 @@
       "Georgioupolis Suites": {
         "history_max": 17812.0,
         "premium_peak": 17812.0
+      },
+      "Village Heights Resort": {
+        "history_max": 16727.0,
+        "premium_peak": 16727.0
       },
       "Giannoulis Cavo Spada Luxury Sports & Leisure Resort": {
         "history_max": 13057.0,
@@ -1660,29 +1652,9 @@
         "history_max": 14872.0,
         "premium_peak": 14872.0
       },
-      "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki": {
-        "history_max": 11019.0,
-        "premium_peak": 11019.0
-      },
-      "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
-        "history_max": 10510.0,
-        "premium_peak": 10510.0
-      },
-      "High Beach": {
-        "history_max": 16722.0,
-        "premium_peak": 16722.0
-      },
-      "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros": {
-        "history_max": 10184.0,
-        "premium_peak": 10184.0
-      },
-      "Dimitra Beach Hotel & Suites": {
-        "history_max": 16925.0,
-        "premium_peak": 16925.0
-      },
-      "Creta Maris Beach Resort (ex Terra Maris)": {
-        "history_max": 17726.0,
-        "premium_peak": 17726.0
+      "Valis Resort Grecja, Tesalia, Agria": {
+        "history_max": 7663.0,
+        "premium_peak": null
       },
       "Costa Lindia Beach": {
         "history_max": 15106.0,
@@ -1692,9 +1664,21 @@
         "history_max": 13137.0,
         "premium_peak": 13137.0
       },
+      "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
+        "history_max": 8679.0,
+        "premium_peak": null
+      },
+      "CHC Athina Palace Resort & Spa (Agia Pelagia)": {
+        "history_max": 12396.0,
+        "premium_peak": 12396.0
+      },
       "Almyra Village Grecja, Kreta Wschodnia, Koutsounari": {
         "history_max": 10257.0,
         "premium_peak": 10257.0
+      },
+      "Zeus Eleva Mirabello Bay": {
+        "history_max": 13834.0,
+        "premium_peak": 13834.0
       },
       "Almyros Beach (ex Cyprotel Almyros)": {
         "history_max": 14253.0,
@@ -1716,10 +1700,6 @@
         "history_max": 15291.0,
         "premium_peak": 15291.0
       },
-      "Zeus Eleva Mirabello Bay": {
-        "history_max": 13834.0,
-        "premium_peak": 13834.0
-      },
       "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)": {
         "history_max": 13067.0,
         "premium_peak": 13067.0
@@ -1732,21 +1712,25 @@
         "history_max": 13252.0,
         "premium_peak": 13252.0
       },
+      "Zeus Dolce Athens (ex Dolce Attica Riviera)": {
+        "history_max": 16851.0,
+        "premium_peak": 16851.0
+      },
       "Aquila Porto Rethymno": {
         "history_max": 16715.0,
         "premium_peak": 16715.0
+      },
+      "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
+        "history_max": 10510.0,
+        "premium_peak": 10510.0
       },
       "Aquila Rithymna Beach": {
         "history_max": 11419.0,
         "premium_peak": 11419.0
       },
-      "Iberostar Selection Creta Marine": {
-        "history_max": 15419.0,
-        "premium_peak": 15419.0
-      },
-      "Arina Beach Resort (ex Aquis Arina Sand)": {
-        "history_max": 16191.0,
-        "premium_peak": 16191.0
+      "Asterias Beach Resort": {
+        "history_max": 12828.0,
+        "premium_peak": 12828.0
       },
       "Atlantica Aegean Blue": {
         "history_max": 17180.0,
@@ -1760,6 +1744,10 @@
         "history_max": 16664.0,
         "premium_peak": 16664.0
       },
+      "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas": {
+        "history_max": 10357.0,
+        "premium_peak": 10357.0
+      },
       "Atlantica Porto Bello Royal": {
         "history_max": 15057.0,
         "premium_peak": 15057.0
@@ -1767,10 +1755,6 @@
       "Avra Imperial Beach Resort & Spa": {
         "history_max": 17489.0,
         "premium_peak": 17489.0
-      },
-      "Zeus Dolce Athens (ex Dolce Attica Riviera)": {
-        "history_max": 16851.0,
-        "premium_peak": 16851.0
       },
       "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos": {
         "history_max": 10757.0,
@@ -1792,25 +1776,41 @@
         "history_max": 19909.0,
         "premium_peak": 19909.0
       },
-      "CHC Athina Palace Resort & Spa (Agia Pelagia)": {
-        "history_max": 12396.0,
-        "premium_peak": 12396.0
+      "Arina Beach Resort (ex Aquis Arina Sand)": {
+        "history_max": 16191.0,
+        "premium_peak": 16191.0
       },
-      "Asterias Beach Resort": {
-        "history_max": 12828.0,
-        "premium_peak": 12828.0
+      "High Beach": {
+        "history_max": 16722.0,
+        "premium_peak": 16722.0
       },
-      "Istion Club": {
-        "history_max": 16824.0,
-        "premium_peak": 16824.0
+      "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros": {
+        "history_max": 10184.0,
+        "premium_peak": 10184.0
       },
-      "Kakkos Bay": {
-        "history_max": 13008.0,
-        "premium_peak": 13008.0
+      "Iberostar Selection Creta Marine": {
+        "history_max": 15419.0,
+        "premium_peak": 15419.0
       },
-      "Kakkos Beach": {
-        "history_max": 19689.0,
-        "premium_peak": 19689.0
+      "Mitsis Selection Blue Domes": {
+        "history_max": 19692.0,
+        "premium_peak": 19692.0
+      },
+      "Mitsis Selection Laguna": {
+        "history_max": 18189.0,
+        "premium_peak": 18189.0
+      },
+      "Mitsis Summer Palace": {
+        "history_max": 13935.0,
+        "premium_peak": 13935.0
+      },
+      "Mythos Beach Resort": {
+        "history_max": 13258.0,
+        "premium_peak": 13258.0
+      },
+      "Nana Golden Beach": {
+        "history_max": 19714.0,
+        "premium_peak": 19714.0
       },
       "Natura Park Village Grecja, Kos, Psalidi": {
         "history_max": 10939.0,
@@ -1832,25 +1832,25 @@
         "history_max": 12291.0,
         "premium_peak": 12291.0
       },
+      "Serita Beach": {
+        "history_max": 12517.0,
+        "premium_peak": 12517.0
+      },
       "Porto Carras Meliton": {
         "history_max": 19311.0,
         "premium_peak": 19311.0
+      },
+      "Mitsis Royal Mare": {
+        "history_max": 15219.0,
+        "premium_peak": 15219.0
       },
       "Porto Platanias Beach (Chania)": {
         "history_max": 14927.0,
         "premium_peak": 14927.0
       },
-      "Porto Platanias Village": {
-        "history_max": 12861.0,
-        "premium_peak": 12861.0
-      },
       "Princess Andriana Resort & Spa": {
         "history_max": 14484.0,
         "premium_peak": 14484.0
-      },
-      "Thassos Grand Resort Grecja, Thassos, Alikí": {
-        "history_max": 10757.0,
-        "premium_peak": 10757.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 13437.0,
@@ -1860,21 +1860,21 @@
         "history_max": 10953.0,
         "premium_peak": 10953.0
       },
-      "Nana Golden Beach": {
-        "history_max": 19714.0,
-        "premium_peak": 19714.0
-      },
       "Rethymno Mare & Water Park (Rethymno)": {
         "history_max": 14597.0,
         "premium_peak": 14597.0
       },
+      "Rethymno Mare Royal & Water Park (ex. Bomo)": {
+        "history_max": 12122.0,
+        "premium_peak": 12122.0
+      },
+      "Senseana Sea Side Resort & Spa (ex. Golden Star)": {
+        "history_max": 15165.0,
+        "premium_peak": 15165.0
+      },
       "Rethymno Palace": {
         "history_max": 13376.0,
         "premium_peak": 13376.0
-      },
-      "Sunshine Crete Beach (ex Club Calimera) Grecja, Kreta Wschodnia, Koutsounari": {
-        "history_max": 11119.0,
-        "premium_peak": 11119.0
       },
       "Rocrita Lifestyle Resort (ex. Aldiana Kreta)": {
         "history_max": 17257.0,
@@ -1896,41 +1896,37 @@
         "history_max": 11657.0,
         "premium_peak": 11657.0
       },
-      "Sea Coast Halkidiki": {
-        "history_max": 13799.0,
-        "premium_peak": 13799.0
-      },
-      "Senseana Sea Side Resort & Spa (ex. Golden Star)": {
-        "history_max": 15165.0,
-        "premium_peak": 15165.0
-      },
-      "Serita Beach": {
-        "history_max": 12517.0,
-        "premium_peak": 12517.0
-      },
-      "Sitia Beach Grecja, Kreta Wschodnia, Sitia": {
-        "history_max": 10457.0,
-        "premium_peak": 10457.0
-      },
-      "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
-        "history_max": 10457.0,
-        "premium_peak": 10457.0
-      },
-      "Rethymno Mare Royal & Water Park (ex. Bomo)": {
-        "history_max": 12122.0,
-        "premium_peak": 12122.0
+      "Porto Platanias Village": {
+        "history_max": 12861.0,
+        "premium_peak": 12861.0
       },
       "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes": {
         "history_max": 8050.0,
         "premium_peak": null
       },
-      "Mythos Beach Resort": {
-        "history_max": 13258.0,
-        "premium_peak": 13258.0
+      "Mitsis Rodos Village": {
+        "history_max": 14559.0,
+        "premium_peak": 14559.0
       },
-      "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 7663.0,
-        "premium_peak": null
+      "Mitsis Rodos Maris": {
+        "history_max": 13212.0,
+        "premium_peak": 13212.0
+      },
+      "Istion Club": {
+        "history_max": 16824.0,
+        "premium_peak": 16824.0
+      },
+      "Kakkos Bay": {
+        "history_max": 13008.0,
+        "premium_peak": 13008.0
+      },
+      "Kakkos Beach": {
+        "history_max": 19689.0,
+        "premium_peak": 19689.0
+      },
+      "Thassos Grand Resort Grecja, Thassos, Alikí": {
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
       },
       "Kerkyra Blue N' Spa by Louis (Corfu)": {
         "history_max": 19109.0,
@@ -1939,6 +1935,10 @@
       "Kiani Beach": {
         "history_max": 13392.0,
         "premium_peak": 13392.0
+      },
+      "Sunshine Crete Beach (ex Club Calimera) Grecja, Kreta Wschodnia, Koutsounari": {
+        "history_max": 11119.0,
+        "premium_peak": 11119.0
       },
       "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi": {
         "history_max": 10146.0,
@@ -1952,10 +1952,6 @@
         "history_max": 17114.0,
         "premium_peak": 17114.0
       },
-      "White Olive Elite": {
-        "history_max": 12050.0,
-        "premium_peak": 12050.0
-      },
       "Kouros Palace": {
         "history_max": 13897.0,
         "premium_peak": 13897.0
@@ -1964,9 +1960,13 @@
         "history_max": 17447.0,
         "premium_peak": 17447.0
       },
-      "Lindian Village": {
-        "history_max": 19327.0,
-        "premium_peak": 19327.0
+      "Sitia Beach Grecja, Kreta Wschodnia, Sitia": {
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
+      },
+      "Stella Palace Aqua Park Resort": {
+        "history_max": 17319.0,
+        "premium_peak": 17319.0
       },
       "Lindos Breeze Beach": {
         "history_max": 13796.0,
@@ -1980,13 +1980,13 @@
         "history_max": 10872.0,
         "premium_peak": 10872.0
       },
-      "Mitsis Summer Palace": {
-        "history_max": 13935.0,
-        "premium_peak": 13935.0
-      },
       "Lydia Maris Resort & Spa": {
         "history_max": 13661.0,
         "premium_peak": 13661.0
+      },
+      "Lyttos Beach": {
+        "history_max": 19877.0,
+        "premium_peak": 19877.0
       },
       "MarBella, Mar-Bella Collection (Agios Ioannis)": {
         "history_max": 18884.0,
@@ -1996,9 +1996,9 @@
         "history_max": 17869.0,
         "premium_peak": 17869.0
       },
-      "Village Heights Resort": {
-        "history_max": 16727.0,
-        "premium_peak": 16727.0
+      "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Minos Imperial": {
         "history_max": 14369.0,
@@ -2016,53 +2016,29 @@
         "history_max": 14074.0,
         "premium_peak": 14074.0
       },
-      "Mitsis Rodos Maris": {
-        "history_max": 13212.0,
-        "premium_peak": 13212.0
-      },
-      "Mitsis Rodos Village": {
-        "history_max": 14559.0,
-        "premium_peak": 14559.0
-      },
-      "Mitsis Royal Mare": {
-        "history_max": 15219.0,
-        "premium_peak": 15219.0
-      },
-      "Mitsis Selection Blue Domes": {
-        "history_max": 19692.0,
-        "premium_peak": 19692.0
-      },
-      "Mitsis Selection Laguna": {
-        "history_max": 18189.0,
-        "premium_peak": 18189.0
-      },
-      "Lyttos Beach": {
-        "history_max": 19877.0,
-        "premium_peak": 19877.0
+      "Lindian Village": {
+        "history_max": 19327.0,
+        "premium_peak": 19327.0
       },
       "Aldemar Olympian Village Grecja, Peloponez, Skafidia": {
         "history_max": 10714.0,
         "premium_peak": 10714.0
       },
-      "Stella Palace Aqua Park Resort": {
-        "history_max": 17319.0,
-        "premium_peak": 17319.0
+      "Sea Coast Halkidiki": {
+        "history_max": 13799.0,
+        "premium_peak": 13799.0
       },
       "Akti Coast Club": {
         "history_max": 12106.0,
         "premium_peak": 12106.0
       },
-      "Ramada by Wyndham Loutraki Poseidon Resort": {
-        "history_max": 10953.0,
-        "premium_peak": 10953.0
-      },
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
         "history_max": 10642.0,
         "premium_peak": 10642.0
       },
-      "Mare blue (ex. Sunshine Crete Beach)": {
-        "history_max": 11119.0,
-        "premium_peak": 11119.0
+      "Ramada by Wyndham Loutraki Poseidon Resort": {
+        "history_max": 10953.0,
+        "premium_peak": 10953.0
       },
       "Sheraton Rhodes Resort (ex. Imperial)": {
         "history_max": 19603.0,
@@ -2072,13 +2048,17 @@
         "history_max": 10668.0,
         "premium_peak": 10668.0
       },
-      "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti": {
-        "history_max": 10692.0,
-        "premium_peak": 10692.0
+      "Mare blue (ex. Sunshine Crete Beach)": {
+        "history_max": 11119.0,
+        "premium_peak": 11119.0
       },
       "Natura Park Village": {
         "history_max": 11880.0,
         "premium_peak": 11880.0
+      },
+      "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti": {
+        "history_max": 10692.0,
+        "premium_peak": 10692.0
       },
       "Lindos Breeze Beach Grecja, Rodos, Kiotari": {
         "history_max": 10813.0,
@@ -2092,17 +2072,17 @@
         "history_max": 19990.0,
         "premium_peak": 19990.0
       },
-      "Mitsis Faliraki": {
-        "history_max": 17650.0,
-        "premium_peak": 17650.0
+      "Levante Beach Resort By Playitas": {
+        "history_max": 12096.0,
+        "premium_peak": 12096.0
       },
       "Georgioupolis Resort": {
         "history_max": 19628.0,
         "premium_peak": 19628.0
       },
-      "Levante Beach Resort By Playitas": {
-        "history_max": 12096.0,
-        "premium_peak": 12096.0
+      "Mitsis Faliraki": {
+        "history_max": 17650.0,
+        "premium_peak": 17650.0
       },
       "Apollonia Beach (Ammoudara)": {
         "history_max": 12357.0,
@@ -2116,93 +2096,93 @@
         "history_max": 10900.0,
         "premium_peak": 10900.0
       },
-      "Almyra Village": {
-        "history_max": 10257.0,
-        "premium_peak": 10257.0
+      "Aldemar Olympian Village": {
+        "history_max": 10714.0,
+        "premium_peak": 10714.0
       },
-      "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)": {
-        "history_max": 10600.0,
-        "premium_peak": 10600.0
+      "Zante Park Resort & SPA - BW Premier Collection": {
+        "history_max": 10357.0,
+        "premium_peak": 10357.0
       },
-      "Valis Resort": {
-        "history_max": 7663.0,
-        "premium_peak": null
-      },
-      "Sitia Beach": {
-        "history_max": 9657.0,
-        "premium_peak": null
-      },
-      "Zeus Kos Beach": {
-        "history_max": 11557.0,
-        "premium_peak": 11557.0
-      },
-      "Galini Sea View (Agia Marina)": {
-        "history_max": 8909.0,
-        "premium_peak": null
-      },
-      "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)": {
-        "history_max": 8309.0,
-        "premium_peak": null
-      },
-      "Galini Palace": {
-        "history_max": 9201.0,
-        "premium_peak": null
-      },
-      "Thassos Grand Resort": {
-        "history_max": 10157.0,
-        "premium_peak": 10157.0
-      },
-      "White Olive Elite Rethymno": {
-        "history_max": 11019.0,
-        "premium_peak": 11019.0
-      },
-      "Filion Suites Resort": {
-        "history_max": 9144.0,
-        "premium_peak": null
-      },
-      "Hydramis Palace Beach Resort": {
-        "history_max": 9720.0,
-        "premium_peak": null
-      },
-      "Zeus Eretria Resort": {
-        "history_max": 8000.0,
-        "premium_peak": null
-      },
-      "Gaia Palace": {
-        "history_max": 6555.0,
+      "Rodos Palace": {
+        "history_max": 8257.0,
         "premium_peak": null
       },
       "Zeus Eleva Ajul (Ayios Nikolaos)": {
         "history_max": 9187.0,
         "premium_peak": null
       },
-      "Aldemar Olympian Village": {
-        "history_max": 10714.0,
-        "premium_peak": 10714.0
+      "Almyra Village": {
+        "history_max": 10257.0,
+        "premium_peak": 10257.0
       },
       "Azure Resort & Spa (ex. Mediterranee)": {
         "history_max": 10757.0,
         "premium_peak": 10757.0
       },
-      "Solimar Aquamarine": {
-        "history_max": 10057.0,
-        "premium_peak": 10057.0
-      },
       "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze)": {
         "history_max": 6312.0,
         "premium_peak": null
       },
-      "Rodos Palace": {
-        "history_max": 8257.0,
+      "Out of the Blue Resort": {
+        "history_max": 9457.0,
         "premium_peak": null
+      },
+      "Filion Suites Resort": {
+        "history_max": 9144.0,
+        "premium_peak": null
+      },
+      "Zeus Eretria Resort": {
+        "history_max": 8000.0,
+        "premium_peak": null
+      },
+      "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa)": {
+        "history_max": 8309.0,
+        "premium_peak": null
+      },
+      "Helea Lifestyle Beach Resort": {
+        "history_max": 19990.0,
+        "premium_peak": 19990.0
       },
       "Hersonissos Palace": {
         "history_max": 11205.0,
         "premium_peak": 11205.0
       },
-      "Helea Lifestyle Beach Resort": {
-        "history_max": 19990.0,
-        "premium_peak": 19990.0
+      "Zeus Kos Beach": {
+        "history_max": 11557.0,
+        "premium_peak": 11557.0
+      },
+      "Valis Resort": {
+        "history_max": 7663.0,
+        "premium_peak": null
+      },
+      "Gaia Palace": {
+        "history_max": 6555.0,
+        "premium_peak": null
+      },
+      "Galini Palace": {
+        "history_max": 9201.0,
+        "premium_peak": null
+      },
+      "Galini Sea View (Agia Marina)": {
+        "history_max": 8909.0,
+        "premium_peak": null
+      },
+      "Lindos Royal (ex. COOEE)": {
+        "history_max": 9306.0,
+        "premium_peak": null
+      },
+      "Solimar Aquamarine": {
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
+      },
+      "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia)": {
+        "history_max": 10600.0,
+        "premium_peak": 10600.0
+      },
+      "Hydramis Palace Beach Resort": {
+        "history_max": 9720.0,
+        "premium_peak": null
       },
       "Kipriotis Maris Suites (ex Iberostar)": {
         "history_max": 10142.0,
@@ -2212,17 +2192,17 @@
         "history_max": 10647.0,
         "premium_peak": 10647.0
       },
-      "Out of the Blue Resort": {
-        "history_max": 9457.0,
-        "premium_peak": null
+      "White Olive Elite Rethymno": {
+        "history_max": 11019.0,
+        "premium_peak": 11019.0
       },
-      "Lindos Royal (ex. COOEE)": {
-        "history_max": 9306.0,
-        "premium_peak": null
+      "Thassos Grand Resort": {
+        "history_max": 10157.0,
+        "premium_peak": 10157.0
       },
-      "Zante Park Resort & SPA - BW Premier Collection": {
-        "history_max": 10357.0,
-        "premium_peak": 10357.0
+      "Sitia Beach": {
+        "history_max": 9657.0,
+        "premium_peak": null
       },
       "Kouros Palace Grecja, Kos, Mastichari": {
         "history_max": 8657.0,
@@ -2232,6 +2212,10 @@
         "history_max": 17537.0,
         "premium_peak": 17537.0
       },
+      "Grecotel LuxMe Daphnila Bay Dassia": {
+        "history_max": 17444.0,
+        "premium_peak": 17444.0
+      },
       "Alia Palace": {
         "history_max": 17297.0,
         "premium_peak": 17297.0
@@ -2240,21 +2224,17 @@
         "history_max": 19299.0,
         "premium_peak": 19299.0
       },
-      "Grecotel LuxMe Daphnila Bay Dassia": {
-        "history_max": 17444.0,
-        "premium_peak": 17444.0
-      },
       "Elios Hill Grecja, Kreta Wschodnia, Hersonissos": {
         "history_max": 10657.0,
         "premium_peak": 10657.0
       },
-      "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas": {
-        "history_max": 10811.0,
-        "premium_peak": 10811.0
-      },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
         "history_max": 10290.0,
         "premium_peak": 10290.0
+      },
+      "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas": {
+        "history_max": 10811.0,
+        "premium_peak": 10811.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta": {
         "history_max": 10829.0,

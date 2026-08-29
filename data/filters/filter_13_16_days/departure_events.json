@@ -1361,11 +1361,27 @@
       "hot_score": 0.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-08-29T09:10:26+0000",
-=======
+      "departure_key": "egipt|dahab|2026-09-12|2026-09-26|14|Warszawa|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "dahab",
+      "departure_date": "2026-09-12",
+      "return_date": "2026-09-26",
+      "nights": 14.0,
+      "days_to_departure": 14.0,
+      "old_min_price": "",
+      "new_min_price": 10379.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 3.0,
+      "hotel_delta": 0,
+      "hot_score": 0.0
+    },
+    {
       "event_time": "2026-08-29T09:29:45+0000",
->>>>>>> Stashed changes
       "departure_key": "egipt|dahab|2026-09-12|2026-09-26|14|Warszawa|2+1",
       "event_type": "deal_quality_surge",
       "severity": "medium",
@@ -7205,11 +7221,7 @@
       "hot_score": 0.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-08-29T09:10:26+0000",
-=======
-      "event_time": "2026-08-29T09:29:45+0000",
->>>>>>> Stashed changes
       "departure_key": "egipt|hurghada|2026-09-10|2026-09-24|14|Warszawa|2+1",
       "event_type": "mass_price_drop",
       "severity": "medium",
@@ -7226,6 +7238,46 @@
       "median_drop_pct": -2.82,
       "hotel_count": 14.0,
       "hotel_delta": 2,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-08-29T09:29:45+0000",
+      "departure_key": "egipt|hurghada|2026-09-10|2026-09-24|14|Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-09-10",
+      "return_date": "2026-09-24",
+      "nights": 14.0,
+      "days_to_departure": 12.0,
+      "old_min_price": "",
+      "new_min_price": 11057.0,
+      "min_drop_pct": -8.29,
+      "p10_drop_pct": -9.33,
+      "median_drop_pct": -2.82,
+      "hotel_count": 14.0,
+      "hotel_delta": 2,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-08-29T12:08:37+0000",
+      "departure_key": "egipt|hurghada|2026-09-10|2026-09-24|14|Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "hurghada",
+      "departure_date": "2026-09-10",
+      "return_date": "2026-09-24",
+      "nights": 14.0,
+      "days_to_departure": 12.0,
+      "old_min_price": "",
+      "new_min_price": 11057.0,
+      "min_drop_pct": -8.29,
+      "p10_drop_pct": -9.33,
+      "median_drop_pct": -1.91,
+      "hotel_count": 17.0,
+      "hotel_delta": 5,
       "hot_score": 0.0
     },
     {
@@ -16929,11 +16981,7 @@
       "hot_score": 0.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-08-29T09:10:26+0000",
-=======
-      "event_time": "2026-08-29T09:29:45+0000",
->>>>>>> Stashed changes
       "departure_key": "egipt|marsa-alam|2026-08-30|2026-09-13|14|Warszawa|2+1",
       "event_type": "late_deal_window",
       "severity": "high",
@@ -16951,6 +16999,46 @@
       "hotel_count": 5.0,
       "hotel_delta": 4,
       "hot_score": 85.0
+    },
+    {
+      "event_time": "2026-08-29T09:29:45+0000",
+      "departure_key": "egipt|marsa-alam|2026-08-30|2026-09-13|14|Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-08-30",
+      "return_date": "2026-09-13",
+      "nights": 14.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 9301.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 4,
+      "hot_score": 85.0
+    },
+    {
+      "event_time": "2026-08-29T12:08:37+0000",
+      "departure_key": "egipt|marsa-alam|2026-08-30|2026-09-13|14|Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "marsa-alam",
+      "departure_date": "2026-08-30",
+      "return_date": "2026-09-13",
+      "nights": 14.0,
+      "days_to_departure": 1.0,
+      "old_min_price": "",
+      "new_min_price": 9301.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 4,
+      "hot_score": 91.0
     },
     {
       "event_time": "2026-08-27T10:15:31+0000",
@@ -20573,11 +20661,7 @@
       "hot_score": 0.0
     },
     {
-<<<<<<< Updated upstream
       "event_time": "2026-08-29T09:10:26+0000",
-=======
-      "event_time": "2026-08-29T09:29:45+0000",
->>>>>>> Stashed changes
       "departure_key": "egipt|sharm-el-sheikh|2026-09-06|2026-09-20|14|Warszawa|2+1",
       "event_type": "deal_quality_surge",
       "severity": "high",
@@ -20594,6 +20678,46 @@
       "median_drop_pct": 0.0,
       "hotel_count": 13.0,
       "hotel_delta": 5,
+      "hot_score": 100.0
+    },
+    {
+      "event_time": "2026-08-29T09:29:45+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-09-06|2026-09-20|14|Warszawa|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "high",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-09-06",
+      "return_date": "2026-09-20",
+      "nights": 14.0,
+      "days_to_departure": 8.0,
+      "old_min_price": "",
+      "new_min_price": 12058.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 13.0,
+      "hotel_delta": 5,
+      "hot_score": 100.0
+    },
+    {
+      "event_time": "2026-08-29T12:08:37+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-09-06|2026-09-20|14|Warszawa|2+1",
+      "event_type": "deal_quality_surge",
+      "severity": "high",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-09-06",
+      "return_date": "2026-09-20",
+      "nights": 14.0,
+      "days_to_departure": 8.0,
+      "old_min_price": "",
+      "new_min_price": 9278.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 24.0,
+      "hotel_delta": 16,
       "hot_score": 100.0
     },
     {
