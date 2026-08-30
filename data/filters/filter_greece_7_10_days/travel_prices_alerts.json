@@ -1711,11 +1711,32 @@
       "new_price": 9605.0,
       "price_change": 812.0,
       "price_change_pct": 9.234618446491528,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-30 06:47:27.385208+00:00",
       "alert_type": "price_increase",
       "created_at": "2026-08-30T06:48:22.574803+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rimondi Grand Resort & Spa Grecja, Kreta Zachodnia, Magnisia_2026-08-30_06-47_+9.2"
+=======
+      "timestamp": "2026-08-30 07:00:31.251572+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-30T07:01:26.818201+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rimondi Grand Resort & Spa Grecja, Kreta Zachodnia, Magnisia_2026-08-30_07-00_+9.2"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9269.0,
+      "new_price": 8184.0,
+      "price_change": -1085.0,
+      "price_change_pct": -11.705685618729097,
+      "timestamp": "2026-08-30 07:00:31.251572+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-30T07:01:26.818227+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-08-30_07-00_-11.7"
+>>>>>>> Stashed changes
     },
     {
       "hotel_name": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos",
@@ -1724,6 +1745,7 @@
       "new_price": 10042.0,
       "price_change": 119.0,
       "price_change_pct": 1.1992341025899425,
+<<<<<<< Updated upstream
       "timestamp": "2026-08-30 06:47:27.385208+00:00",
       "alert_type": "zone_exit",
       "created_at": "2026-08-30T06:48:22.574841+00:00",
@@ -1733,6 +1755,17 @@
   ],
   "meta": {
     "last_processed_run": "2026-08-30T06:47:27.385208+00:00",
+=======
+      "timestamp": "2026-08-30 07:00:31.251572+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T07:01:26.818241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-08-30_07-00_zone_out_+1.2"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-30T07:00:31.251572+00:00",
+>>>>>>> Stashed changes
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 11096.0,
