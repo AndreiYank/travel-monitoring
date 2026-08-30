@@ -3627,10 +3627,62 @@
       "created_at": "2026-08-30T13:02:29.286719+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam_2026-08-30_13-01_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Vita Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8487.0,
+      "new_price": 10297.0,
+      "price_change": 1810.0,
+      "price_change_pct": 21.326735006480497,
+      "timestamp": "2026-08-30 15:00:31.160245+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-30T15:01:39.958897+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-30_15-00_+21.3"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7920.0,
+      "new_price": 10409.0,
+      "price_change": 2489.0,
+      "price_change_pct": 31.426767676767675,
+      "timestamp": "2026-08-30 15:00:31.160245+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-30T15:01:39.958940+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-08-30_15-00_+31.4"
+    },
+    {
+      "hotel_name": "Coral Sea Holiday Resort",
+      "duration_bucket": "",
+      "old_price": 9991.0,
+      "new_price": 9991.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 15:00:31.160245+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T15:01:39.958972+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Coral Sea Holiday Resort_2026-08-30_15-00_zone_out_gone"
+    },
+    {
+      "hotel_name": "Coral Sea Water World Resort",
+      "duration_bucket": "",
+      "old_price": 9991.0,
+      "new_price": 9991.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 15:00:31.160245+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T15:01:39.958982+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Coral Sea Water World Resort_2026-08-30_15-00_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-30T13:01:20.717018+00:00",
+    "last_processed_run": "2026-08-30T15:00:31.160245+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -4285,7 +4337,7 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 8242.0,
+        "history_max": 10409.0,
         "premium_peak": null
       },
       "Sunrise Royal Makadi Aqua Resort": {
