@@ -9074,10 +9074,75 @@
       "created_at": "2026-08-30T00:31:32.311363+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Adalya Art Side (Ex. Grand Art Side)_2026-08-30_00-30_comeback_8.3"
+    },
+    {
+      "hotel_name": "Richmond Ephesus",
+      "duration_bucket": "",
+      "old_price": 8045.0,
+      "new_price": 9408.0,
+      "price_change": 1363.0,
+      "price_change_pct": 16.942200124300808,
+      "timestamp": "2026-08-30 06:46:27.476377+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-30T06:47:26.762347+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Richmond Ephesus_2026-08-30_06-46_+16.9"
+    },
+    {
+      "hotel_name": "Asteria Family Belek",
+      "duration_bucket": "",
+      "old_price": 9567.0,
+      "new_price": 10121.0,
+      "price_change": 554.0,
+      "price_change_pct": 5.790738998641162,
+      "timestamp": "2026-08-30 06:46:27.476377+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T06:47:26.762396+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Belek_2026-08-30_06-46_zone_out_+5.8"
+    },
+    {
+      "hotel_name": "Eftalia Ocean (Alanya)",
+      "duration_bucket": "",
+      "old_price": 11253.0,
+      "new_price": 8573.0,
+      "price_change": -2680.0,
+      "price_change_pct": -23.8158713232027,
+      "timestamp": "2026-08-30 06:46:27.476377+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-30T06:47:26.762415+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Ocean (Alanya)_2026-08-30_06-46_comeback_23.8"
+    },
+    {
+      "hotel_name": "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)",
+      "duration_bucket": "",
+      "old_price": 10274.0,
+      "new_price": 8766.0,
+      "price_change": -1508.0,
+      "price_change_pct": -14.677827525793264,
+      "timestamp": "2026-08-30 06:46:27.476377+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-30T06:47:26.762424+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)_2026-08-30_06-46_comeback_14.7"
+    },
+    {
+      "hotel_name": "Crystal Prestige Pearl Collection",
+      "duration_bucket": "",
+      "old_price": 10957.0,
+      "new_price": 9957.0,
+      "price_change": -1000.0,
+      "price_change_pct": -9.126585744273068,
+      "timestamp": "2026-08-30 06:46:27.476377+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-30T06:47:26.762431+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Crystal Prestige Pearl Collection_2026-08-30_06-46_comeback_9.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-30T00:30:01.690135+00:00",
+    "last_processed_run": "2026-08-30T06:46:27.476377+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10885.0,
@@ -9400,8 +9465,8 @@
         "premium_peak": 11670.0
       },
       "Elite World Kusadasi (ex Marina)": {
-        "history_max": 11291.0,
-        "premium_peak": 11291.0
+        "history_max": 11498.0,
+        "premium_peak": 11498.0
       },
       "Sural Resort": {
         "history_max": 11418.0,
@@ -9432,8 +9497,8 @@
         "premium_peak": null
       },
       "Asteria Family Belek": {
-        "history_max": 10040.0,
-        "premium_peak": 10040.0
+        "history_max": 10121.0,
+        "premium_peak": 10121.0
       },
       "Terrace Elite Resort": {
         "history_max": 10407.0,
@@ -10212,8 +10277,8 @@
         "premium_peak": null
       },
       "Movenpick": {
-        "history_max": 10697.0,
-        "premium_peak": 10697.0
+        "history_max": 11264.0,
+        "premium_peak": 11264.0
       },
       "Club Paradiso": {
         "history_max": 10220.0,
@@ -10746,6 +10811,10 @@
       "Korumar Ephesus Beach": {
         "history_max": 11357.0,
         "premium_peak": 11357.0
+      },
+      "Can Garden Resort (Side)": {
+        "history_max": 11639.0,
+        "premium_peak": 11639.0
       }
     }
   }
