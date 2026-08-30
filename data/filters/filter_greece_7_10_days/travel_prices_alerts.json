@@ -1794,10 +1794,36 @@
       "created_at": "2026-08-30T15:04:58.921375+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou_2026-08-30_15-03_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 8499.0,
+      "new_price": 9495.0,
+      "price_change": 996.0,
+      "price_change_pct": 11.71902576773738,
+      "timestamp": "2026-08-30 23:41:54.057614+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-30T23:43:04.455171+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-08-30_23-41_+11.7"
+    },
+    {
+      "hotel_name": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 9856.0,
+      "new_price": 10456.0,
+      "price_change": 600.0,
+      "price_change_pct": 6.087662337662338,
+      "timestamp": "2026-08-30 23:41:54.057614+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:43:04.455204+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios_2026-08-30_23-41_zone_out_+6.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-30T17:41:17.941927+00:00",
+    "last_processed_run": "2026-08-30T23:41:54.057614+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 11096.0,
@@ -1828,8 +1854,8 @@
         "premium_peak": 12970.0
       },
       "Mitsis Summer Palace": {
-        "history_max": 14292.0,
-        "premium_peak": 14292.0
+        "history_max": 14443.0,
+        "premium_peak": 14443.0
       },
       "Avra Imperial Beach Resort & Spa": {
         "history_max": 17489.0,
@@ -2284,8 +2310,8 @@
         "premium_peak": 10953.0
       },
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
-        "history_max": 10704.0,
-        "premium_peak": 10704.0
+        "history_max": 11189.0,
+        "premium_peak": 11189.0
       },
       "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos": {
         "history_max": 10668.0,
@@ -2332,8 +2358,8 @@
         "premium_peak": 12096.0
       },
       "Apollonia Beach (Ammoudara)": {
-        "history_max": 12357.0,
-        "premium_peak": 12357.0
+        "history_max": 13047.0,
+        "premium_peak": 13047.0
       },
       "Cavo Spada Luxury Resort & Spa Grecja, Kreta Zachodnia, Rapaniana": {
         "history_max": 10657.0,
@@ -2480,8 +2506,8 @@
         "premium_peak": 10657.0
       },
       "White Olive Elite Grecja, Zakynthos, Laganas": {
-        "history_max": 10290.0,
-        "premium_peak": 10290.0
+        "history_max": 11172.0,
+        "premium_peak": 11172.0
       },
       "Rethymno Mare Royal & Water Park (ex. Bomo) Grecja, Kreta Zachodnia, Scaleta": {
         "history_max": 10843.0,
@@ -2516,8 +2542,8 @@
         "premium_peak": 19996.0
       },
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
-        "history_max": 9856.0,
-        "premium_peak": null
+        "history_max": 10456.0,
+        "premium_peak": 10456.0
       }
     }
   }

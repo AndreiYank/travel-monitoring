@@ -2899,10 +2899,62 @@
       "created_at": "2026-08-30T17:39:44.440031+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Villaggio Resort Portofino_2026-08-30_17-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 8873.0,
+      "new_price": 10984.0,
+      "price_change": 2111.0,
+      "price_change_pct": 23.791276907472106,
+      "timestamp": "2026-08-30 23:39:37.826519+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-30T23:40:31.608160+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-30_23-39_+23.8"
+    },
+    {
+      "hotel_name": "El Kasr Red Sea",
+      "duration_bucket": "",
+      "old_price": 10817.0,
+      "new_price": 10817.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 23:39:37.826519+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:40:31.608214+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "El Kasr Red Sea_2026-08-30_23-39_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7677.0,
+      "new_price": 7677.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 23:39:37.826519+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:40:31.608227+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam_2026-08-30_23-39_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine Resort",
+      "duration_bucket": "",
+      "old_price": 7727.0,
+      "new_price": 7727.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 23:39:37.826519+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:40:31.608235+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine Resort_2026-08-30_23-39_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-30T17:38:49.545377+00:00",
+    "last_processed_run": "2026-08-30T23:39:37.826519+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -3477,7 +3529,7 @@
         "premium_peak": null
       },
       "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": {
-        "history_max": 8674.0,
+        "history_max": 8689.0,
         "premium_peak": null
       },
       "Seven Seas Jolie Bay": {

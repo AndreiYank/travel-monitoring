@@ -5070,10 +5070,88 @@
       "created_at": "2026-08-30T17:38:57.379485+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Concorde Sport_2026-08-30_17-38_-9.7"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 6657.0,
+      "price_change": -600.0,
+      "price_change_pct": -8.26787928896238,
+      "timestamp": "2026-08-30 23:38:44.922727+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-30T23:39:40.184924+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-08-30_23-38_-8.3"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 8933.0,
+      "new_price": 10044.0,
+      "price_change": 1111.0,
+      "price_change_pct": 12.437031232508676,
+      "timestamp": "2026-08-30 23:38:44.922727+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:39:40.185017+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam_2026-08-30_23-38_zone_out_+12.4"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 9022.0,
+      "new_price": 12294.0,
+      "price_change": 3272.0,
+      "price_change_pct": 36.26690312569275,
+      "timestamp": "2026-08-30 23:38:44.922727+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:39:40.185038+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-08-30_23-38_zone_out_+36.3"
+    },
+    {
+      "hotel_name": "Monte Carlo Resort Spa",
+      "duration_bucket": "",
+      "old_price": 8657.0,
+      "new_price": 8657.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 23:38:44.922727+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T23:39:40.185052+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Monte Carlo Resort Spa_2026-08-30_23-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 10355.0,
+      "new_price": 9237.0,
+      "price_change": -1118.0,
+      "price_change_pct": -10.79671656204732,
+      "timestamp": "2026-08-30 23:38:44.922727+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-30T23:39:40.185083+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-30_23-38_comeback_10.8"
+    },
+    {
+      "hotel_name": "Sentido Naga Bay",
+      "duration_bucket": "",
+      "old_price": 10634.0,
+      "new_price": 9237.0,
+      "price_change": -1397.0,
+      "price_change_pct": -13.137107391386122,
+      "timestamp": "2026-08-30 23:38:44.922727+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-30T23:39:40.185105+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Naga Bay_2026-08-30_23-38_comeback_13.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-30T17:38:01.864536+00:00",
+    "last_processed_run": "2026-08-30T23:38:44.922727+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -5792,8 +5870,8 @@
         "premium_peak": 10355.0
       },
       "Movenpick Resort El Quseir": {
-        "history_max": 12915.0,
-        "premium_peak": 12915.0
+        "history_max": 14216.0,
+        "premium_peak": 14216.0
       },
       "Movenpick Resort Sharm el Sheikh": {
         "history_max": 13539.0,
