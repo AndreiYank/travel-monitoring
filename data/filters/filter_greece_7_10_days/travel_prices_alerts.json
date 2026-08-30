@@ -1664,10 +1664,49 @@
       "created_at": "2026-08-29T21:55:29.670873+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-29_21-54_zone_out_+4.6"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 5569.0,
+      "new_price": 5069.0,
+      "price_change": -500.0,
+      "price_change_pct": -8.97827258035554,
+      "timestamp": "2026-08-30 00:31:33.308283+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-30T00:32:44.553450+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-30_00-31_-9.0"
+    },
+    {
+      "hotel_name": "Ibiscus Corfu Grecja, Korfu, Roda",
+      "duration_bucket": "",
+      "old_price": 9802.0,
+      "new_price": 10472.0,
+      "price_change": 670.0,
+      "price_change_pct": 6.835339726586411,
+      "timestamp": "2026-08-30 00:31:33.308283+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T00:32:44.553512+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ibiscus Corfu Grecja, Korfu, Roda_2026-08-30_00-31_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 11019.0,
+      "new_price": 9849.0,
+      "price_change": -1170.0,
+      "price_change_pct": -10.618023414102913,
+      "timestamp": "2026-08-30 00:31:33.308283+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-30T00:32:44.553539+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-08-30_00-31_comeback_10.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-29T21:54:17.588480+00:00",
+    "last_processed_run": "2026-08-30T00:31:33.308283+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 11096.0,
@@ -1810,8 +1849,8 @@
         "premium_peak": null
       },
       "Amus": {
-        "history_max": 18588.0,
-        "premium_peak": 18588.0
+        "history_max": 18710.0,
+        "premium_peak": 18710.0
       },
       "Anemos Luxury Grand Resort": {
         "history_max": 15291.0,
@@ -2150,8 +2189,8 @@
         "premium_peak": 12106.0
       },
       "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari": {
-        "history_max": 10642.0,
-        "premium_peak": 10642.0
+        "history_max": 10704.0,
+        "premium_peak": 10704.0
       },
       "Ramada by Wyndham Loutraki Poseidon Resort": {
         "history_max": 10953.0,
@@ -2370,8 +2409,8 @@
         "premium_peak": 11183.0
       },
       "Ibiscus Corfu Grecja, Korfu, Roda": {
-        "history_max": 9883.0,
-        "premium_peak": null
+        "history_max": 10472.0,
+        "premium_peak": 10472.0
       },
       "Grand Blue Beach Grecja, kos, Kardamaina": {
         "history_max": 11144.0,
