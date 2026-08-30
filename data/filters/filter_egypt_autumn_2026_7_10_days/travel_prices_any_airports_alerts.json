@@ -2808,10 +2808,101 @@
       "created_at": "2026-08-30T15:02:12.939584+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hilton Marsa Alam Nubian Resort_2026-08-30_15-01_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 7257.0,
+      "new_price": 6037.0,
+      "price_change": -1220.0,
+      "price_change_pct": -16.81135455422351,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-30T17:39:44.439906+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-08-30_17-38_-16.8"
+    },
+    {
+      "hotel_name": "Novotel Marsa Alam Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 6234.0,
+      "new_price": 5484.0,
+      "price_change": -750.0,
+      "price_change_pct": -12.03079884504331,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-30T17:39:44.439943+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Novotel Marsa Alam Egipt, Marsa Alam_2026-08-30_17-38_-12.0"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7705.0,
+      "new_price": 7705.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T17:39:44.439997+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-08-30_17-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Almaza Blu",
+      "duration_bucket": "",
+      "old_price": 10525.0,
+      "new_price": 10525.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T17:39:44.440008+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Almaza Blu_2026-08-30_17-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7657.0,
+      "new_price": 7657.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T17:39:44.440016+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort Egipt, Hurghada_2026-08-30_17-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)",
+      "duration_bucket": "",
+      "old_price": 8138.0,
+      "new_price": 8138.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T17:39:44.440024+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)_2026-08-30_17-38_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino",
+      "duration_bucket": "",
+      "old_price": 8207.0,
+      "new_price": 8207.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-30 17:38:49.545377+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-30T17:39:44.440031+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino_2026-08-30_17-38_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-30T15:01:15.425946+00:00",
+    "last_processed_run": "2026-08-30T17:38:49.545377+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 7011.0,
@@ -2914,7 +3005,7 @@
         "premium_peak": null
       },
       "Pickalbatros White Beach Resort": {
-        "history_max": 10207.0,
+        "history_max": 10247.0,
         "premium_peak": null
       },
       "Domina Coral Bay Oasis": {
@@ -2946,7 +3037,7 @@
         "premium_peak": null
       },
       "Albatros Makadi Resort (ex Royal Pharaohs Makadi)": {
-        "history_max": 8177.0,
+        "history_max": 8237.0,
         "premium_peak": null
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
@@ -2990,7 +3081,7 @@
         "premium_peak": null
       },
       "Pickalbatros Dana Beach Resort": {
-        "history_max": 9867.0,
+        "history_max": 9907.0,
         "premium_peak": null
       },
       "Jaz Almaza Blu": {
