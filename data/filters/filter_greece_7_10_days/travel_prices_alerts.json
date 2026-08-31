@@ -117,10 +117,36 @@
       "created_at": "2026-08-31T13:14:01.809891+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-08-31_13-13_comeback_8.6"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6726.0,
+      "new_price": 5506.0,
+      "price_change": -1220.0,
+      "price_change_pct": -18.13856675587273,
+      "timestamp": "2026-08-31 14:09:44.260247+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-31T14:10:41.354205+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-08-31_14-09_-18.1"
+    },
+    {
+      "hotel_name": "Kouros Palace Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 8857.0,
+      "new_price": 8857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 14:09:44.260247+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T14:10:41.354240+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kouros Palace Grecja, Kos, Mastichari_2026-08-31_14-09_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-31T13:13:11.541835+00:00",
+    "last_processed_run": "2026-08-31T14:09:44.260247+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10310.0,
@@ -175,8 +201,8 @@
         "premium_peak": 11668.0
       },
       "Lindos Breeze Beach": {
-        "history_max": 11783.0,
-        "premium_peak": 11783.0
+        "history_max": 11903.0,
+        "premium_peak": 11903.0
       },
       "Lindos Imperial Resort & Spa": {
         "history_max": 13577.0,
@@ -299,8 +325,8 @@
         "premium_peak": 19817.0
       },
       "Domes Aulus Zante Autograph Collection": {
-        "history_max": 16001.0,
-        "premium_peak": 16001.0
+        "history_max": 16151.0,
+        "premium_peak": 16151.0
       },
       "Mitsis Galini": {
         "history_max": 13460.0,
@@ -367,7 +393,7 @@
         "premium_peak": 10478.0
       },
       "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
-        "history_max": 8143.0,
+        "history_max": 8286.0,
         "premium_peak": null
       },
       "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas": {
@@ -583,12 +609,12 @@
         "premium_peak": 15962.0
       },
       "Amus": {
-        "history_max": 16246.0,
-        "premium_peak": 16246.0
+        "history_max": 18656.0,
+        "premium_peak": 18656.0
       },
       "Blue Lagoon Village": {
-        "history_max": 14069.0,
-        "premium_peak": 14069.0
+        "history_max": 15036.0,
+        "premium_peak": 15036.0
       },
       "Atlantica Aegean Blue": {
         "history_max": 15147.0,
@@ -653,6 +679,18 @@
       "Grand Blue Beach": {
         "history_max": 11012.0,
         "premium_peak": 11012.0
+      },
+      "Natura Park Village Grecja, Kos, Psalidi": {
+        "history_max": 10925.0,
+        "premium_peak": 10925.0
+      },
+      "Kipriotis Panorama & Suites Grecja, Kos, Psalidi": {
+        "history_max": 10621.0,
+        "premium_peak": 10621.0
+      },
+      "Kakkos Beach": {
+        "history_max": 16054.0,
+        "premium_peak": 16054.0
       }
     }
   }
