@@ -1,8 +1,61 @@
 {
   "version": 2,
-  "alerts": [],
+  "alerts": [
+    {
+      "hotel_name": "Parrotel Lagoon Resort",
+      "duration_bucket": "",
+      "old_price": 9009.0,
+      "new_price": 7933.0,
+      "price_change": -1076.0,
+      "price_change_pct": -11.943611943611945,
+      "timestamp": "2026-08-31 13:11:17.624299+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-31T13:11:44.671612+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort_2026-08-31_13-11_-11.9"
+    },
+    {
+      "hotel_name": "IL Mercato Splash Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9973.0,
+      "new_price": 8628.0,
+      "price_change": -1345.0,
+      "price_change_pct": -13.486413315953072,
+      "timestamp": "2026-08-31 13:11:17.624299+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-31T13:11:44.671641+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "IL Mercato Splash Aqua Park_2026-08-31_13-11_-13.5"
+    },
+    {
+      "hotel_name": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)",
+      "duration_bucket": "",
+      "old_price": 10847.0,
+      "new_price": 9502.0,
+      "price_change": -1345.0,
+      "price_change_pct": -12.399741864109892,
+      "timestamp": "2026-08-31 13:11:17.624299+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-31T13:11:44.671668+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)_2026-08-31_13-11_comeback_12.4"
+    },
+    {
+      "hotel_name": "Retac Qunay Dahab Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 10468.0,
+      "new_price": 9123.0,
+      "price_change": -1345.0,
+      "price_change_pct": -12.84868169659916,
+      "timestamp": "2026-08-31 13:11:17.624299+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-31T13:11:44.671681+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Retac Qunay Dahab Resort & Spa_2026-08-31_13-11_comeback_12.8"
+    }
+  ],
   "meta": {
-    "last_processed_run": "2026-08-31T07:48:24.887304+00:00",
+    "last_processed_run": "2026-08-31T13:11:17.624299+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 13316.0,
@@ -129,8 +182,8 @@
         "premium_peak": 14836.0
       },
       "Swissotel Resort El Quseir": {
-        "history_max": 16793.0,
-        "premium_peak": 16793.0
+        "history_max": 17093.0,
+        "premium_peak": 17093.0
       },
       "IL Mercato Splash Aqua Park": {
         "history_max": 9973.0,
@@ -273,8 +326,8 @@
         "premium_peak": 16743.0
       },
       "Pickalbatros Vita Resort Portofino": {
-        "history_max": 13847.0,
-        "premium_peak": 13847.0
+        "history_max": 14447.0,
+        "premium_peak": 14447.0
       },
       "Palm Royale Soma Bay": {
         "history_max": 19277.0,
@@ -341,16 +394,16 @@
         "premium_peak": 15255.0
       },
       "Pickalbatros Royal Moderna": {
-        "history_max": 13794.0,
-        "premium_peak": 13794.0
+        "history_max": 13918.0,
+        "premium_peak": 13918.0
       },
       "Sirena Beach Resort & Spa": {
         "history_max": 12527.0,
         "premium_peak": 12527.0
       },
       "Pickalbatros Villaggio Resort Portofino": {
-        "history_max": 13127.0,
-        "premium_peak": 13127.0
+        "history_max": 13727.0,
+        "premium_peak": 13727.0
       },
       "Novotel Marsa Alam": {
         "history_max": 11467.0,
@@ -365,8 +418,8 @@
         "premium_peak": 10716.0
       },
       "Concorde Moreen Beach Resort & Spa": {
-        "history_max": 12057.0,
-        "premium_peak": 12057.0
+        "history_max": 12461.0,
+        "premium_peak": 12461.0
       },
       "Coral Sea Sensatori (ex Coral Sea Imperial)": {
         "history_max": 17502.0,
@@ -513,12 +566,16 @@
         "premium_peak": 13113.0
       },
       "Charmillion Club Resort": {
-        "history_max": 14427.0,
-        "premium_peak": 14427.0
+        "history_max": 16662.0,
+        "premium_peak": 16662.0
       },
       "Cardina Resort by Sunrise": {
         "history_max": 13857.0,
         "premium_peak": 13857.0
+      },
+      "Baron Palace Resort (Sahl Hasheesh)": {
+        "history_max": 19877.0,
+        "premium_peak": 19877.0
       }
     }
   }
