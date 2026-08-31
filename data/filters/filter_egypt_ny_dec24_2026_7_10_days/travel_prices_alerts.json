@@ -104,13 +104,65 @@
       "created_at": "2026-08-31T13:12:27.460200+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam_2026-08-31_13-12_zone_out_gone"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 9403.0,
+      "new_price": 10180.0,
+      "price_change": 777.0,
+      "price_change_pct": 8.263320216952035,
+      "timestamp": "2026-08-31 15:54:27.939211+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T15:54:44.666887+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-08-31_15-54_+8.3"
+    },
+    {
+      "hotel_name": "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 10624.0,
+      "new_price": 10624.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 15:54:27.939211+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T15:54:44.666932+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib_2026-08-31_15-54_zone_out_gone"
+    },
+    {
+      "hotel_name": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna",
+      "duration_bucket": "",
+      "old_price": 9381.0,
+      "new_price": 9381.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 15:54:27.939211+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T15:54:44.666946+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna_2026-08-31_15-54_zone_out_gone"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa",
+      "duration_bucket": "",
+      "old_price": 10751.0,
+      "new_price": 10751.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 15:54:27.939211+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T15:54:44.666959+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa_2026-08-31_15-54_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-31T14:08:33.377397+00:00",
+    "last_processed_run": "2026-08-31T15:54:27.939211+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
-        "history_max": 9403.0,
+        "history_max": 10180.0,
         "premium_peak": null
       },
       "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
@@ -122,7 +174,7 @@
         "premium_peak": null
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada": {
-        "history_max": 10327.0,
+        "history_max": 10535.0,
         "premium_peak": null
       },
       "IL Mercato (ex. Iberotel Il Mercato) Egipt, Sharm El Sheikh": {
@@ -154,7 +206,7 @@
         "premium_peak": null
       },
       "Sentido Oriental Dream Resort Egipt, Marsa Alam": {
-        "history_max": 9855.0,
+        "history_max": 10695.0,
         "premium_peak": null
       },
       "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh": {
@@ -271,6 +323,14 @@
       },
       "Safir Dahab Resort Egipt, Dahab": {
         "history_max": 10732.0,
+        "premium_peak": null
+      },
+      "Three Corners Fayrouz Plaza Beach Resort": {
+        "history_max": 10867.0,
+        "premium_peak": null
+      },
+      "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 10751.0,
         "premium_peak": null
       }
     }

@@ -221,10 +221,49 @@
       "created_at": "2026-08-31T14:08:18.758832+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Vita Resort Portofino_2026-08-31_14-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Monte Carlo Resort Spa",
+      "duration_bucket": "",
+      "old_price": 8735.0,
+      "new_price": 10530.0,
+      "price_change": 1795.0,
+      "price_change_pct": 20.54951345163137,
+      "timestamp": "2026-08-31 15:53:38.407942+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T15:54:11.645070+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Monte Carlo Resort Spa_2026-08-31_15-53_+20.5"
+    },
+    {
+      "hotel_name": "Ecotel Dahab Bay View Resort",
+      "duration_bucket": "",
+      "old_price": 7803.0,
+      "new_price": 7803.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 15:53:38.407942+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T15:54:11.645124+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ecotel Dahab Bay View Resort_2026-08-31_15-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 6797.0,
+      "new_price": 6797.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 15:53:38.407942+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T15:54:11.645136+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam_2026-08-31_15-53_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-31T14:07:37.447569+00:00",
+    "last_processed_run": "2026-08-31T15:53:38.407942+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -283,7 +322,7 @@
         "premium_peak": null
       },
       "Jaz Mirabel Beach Resort": {
-        "history_max": 9111.0,
+        "history_max": 9211.0,
         "premium_peak": null
       },
       "Steigenberger Aqua Magic": {
@@ -355,7 +394,7 @@
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 8550.0,
+        "history_max": 8631.0,
         "premium_peak": null
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)": {
@@ -543,7 +582,7 @@
         "premium_peak": null
       },
       "Monte Carlo Resort Spa": {
-        "history_max": 8735.0,
+        "history_max": 10530.0,
         "premium_peak": null
       },
       "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)": {
@@ -863,7 +902,7 @@
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino Egipt, Marsa Alam": {
-        "history_max": 7137.0,
+        "history_max": 7437.0,
         "premium_peak": null
       },
       "Jaz Aquamarine Resort": {
@@ -872,6 +911,10 @@
       },
       "Mercure Dahab Bay View Egipt, Dahab": {
         "history_max": 7803.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Villaggio Resort Portofino": {
+        "history_max": 8107.0,
         "premium_peak": null
       }
     }

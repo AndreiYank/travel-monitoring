@@ -260,10 +260,62 @@
       "created_at": "2026-08-31T14:08:16.026755+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Reef Oasis Suakin Resort_2026-08-31_14-07_-22.1"
+    },
+    {
+      "hotel_name": "Lazuli (Marsa Alam)",
+      "duration_bucket": "",
+      "old_price": 9457.0,
+      "new_price": 7657.0,
+      "price_change": -1800.0,
+      "price_change_pct": -19.03352014380882,
+      "timestamp": "2026-08-31 15:53:38.483341+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-31T15:54:15.788230+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Lazuli (Marsa Alam)_2026-08-31_15-53_-19.0"
+    },
+    {
+      "hotel_name": "Jaz Lamaya Resort (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 8791.0,
+      "new_price": 9542.0,
+      "price_change": 751.0,
+      "price_change_pct": 8.542827892162439,
+      "timestamp": "2026-08-31 15:53:38.483341+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T15:54:15.788258+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Lamaya Resort (ex Iberotel)_2026-08-31_15-53_+8.5"
+    },
+    {
+      "hotel_name": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)",
+      "duration_bucket": "",
+      "old_price": 6457.0,
+      "new_price": 7677.0,
+      "price_change": 1220.0,
+      "price_change_pct": 18.894223323524855,
+      "timestamp": "2026-08-31 15:53:38.483341+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T15:54:15.788276+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)_2026-08-31_15-53_+18.9"
+    },
+    {
+      "hotel_name": "Reef Oasis Suakin Resort",
+      "duration_bucket": "",
+      "old_price": 7057.0,
+      "new_price": 8857.0,
+      "price_change": 1800.0,
+      "price_change_pct": 25.506589202210574,
+      "timestamp": "2026-08-31 15:53:38.483341+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T15:54:15.788293+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Reef Oasis Suakin Resort_2026-08-31_15-53_+25.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-31T14:07:37.415046+00:00",
+    "last_processed_run": "2026-08-31T15:53:38.483341+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -402,7 +454,7 @@
         "premium_peak": null
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 6657.0,
+        "history_max": 7677.0,
         "premium_peak": null
       },
       "Sheraton Miramar Resort (El Gouna)": {
@@ -426,7 +478,7 @@
         "premium_peak": null
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 8633.0,
+        "history_max": 8797.0,
         "premium_peak": null
       },
       "Fantazia Resort": {
@@ -610,7 +662,7 @@
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel)": {
-        "history_max": 8840.0,
+        "history_max": 9542.0,
         "premium_peak": null
       },
       "Reef Oasis Suakin Resort": {
@@ -794,8 +846,8 @@
         "premium_peak": 15687.0
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
-        "history_max": 8146.0,
-        "premium_peak": null
+        "history_max": 11213.0,
+        "premium_peak": 11213.0
       },
       "Sunrise Diamond Beach Resort Grand Select": {
         "history_max": 13727.0,
@@ -866,8 +918,8 @@
         "premium_peak": null
       },
       "True Beach Resort": {
-        "history_max": 10148.0,
-        "premium_peak": 10148.0
+        "history_max": 10798.0,
+        "premium_peak": 10798.0
       },
       "Tropitel Sahl Hasheesh": {
         "history_max": 9460.0,
