@@ -1,5 +1,561 @@
 {
   "version": 2,
-  "alerts": [],
-  "meta": {}
+  "alerts": [
+    {
+      "hotel_name": "Rodos Palace Grecja, Rodos, Ixia",
+      "duration_bucket": "",
+      "old_price": 8997.0,
+      "new_price": 8197.0,
+      "price_change": -800.0,
+      "price_change_pct": -8.8918528398355,
+      "timestamp": "2026-08-31 07:50:22.985554+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-08-31T07:51:17.767449+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rodos Palace Grecja, Rodos, Ixia_2026-08-31_07-50_-8.9"
+    },
+    {
+      "hotel_name": "Aldemar Olympian Village Grecja, Peloponez, Skafidia",
+      "duration_bucket": "",
+      "old_price": 9360.0,
+      "new_price": 9360.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 07:50:22.985554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T07:51:17.767495+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aldemar Olympian Village Grecja, Peloponez, Skafidia_2026-08-31_07-50_zone_out_gone"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9495.0,
+      "new_price": 9495.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 07:50:22.985554+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T07:51:17.767507+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-08-31_07-50_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-08-31T07:50:22.985554+00:00",
+    "premium_state": {
+      "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
+        "history_max": 10244.0,
+        "premium_peak": 10244.0
+      },
+      "Hydramis Palace Beach Resort Grecja, Kreta Zachodnia, Kavros": {
+        "history_max": 9981.0,
+        "premium_peak": null
+      },
+      "Iberostar Selection Creta Marine": {
+        "history_max": 15074.0,
+        "premium_peak": 15074.0
+      },
+      "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
+        "history_max": 10456.0,
+        "premium_peak": 10456.0
+      },
+      "Kakkos Bay": {
+        "history_max": 12799.0,
+        "premium_peak": 12799.0
+      },
+      "Kakkos Terra Blu": {
+        "history_max": 15296.0,
+        "premium_peak": 15296.0
+      },
+      "King Minos Retreat (ex. King Minos Palace)": {
+        "history_max": 16447.0,
+        "premium_peak": 16447.0
+      },
+      "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi": {
+        "history_max": 9419.0,
+        "premium_peak": null
+      },
+      "Kipriotis Panorama & Suites": {
+        "history_max": 11435.0,
+        "premium_peak": 11435.0
+      },
+      "Knossos Beach": {
+        "history_max": 16707.0,
+        "premium_peak": 16707.0
+      },
+      "Kouros Palace": {
+        "history_max": 13897.0,
+        "premium_peak": 13897.0
+      },
+      "Kresten Royal Euphoria Resort (ex. Kresten Royal Villas)": {
+        "history_max": 17447.0,
+        "premium_peak": 17447.0
+      },
+      "Levante Beach Resort By Playitas": {
+        "history_max": 11668.0,
+        "premium_peak": 11668.0
+      },
+      "Lindos Breeze Beach": {
+        "history_max": 11783.0,
+        "premium_peak": 11783.0
+      },
+      "Lindos Imperial Resort & Spa": {
+        "history_max": 13577.0,
+        "premium_peak": 13577.0
+      },
+      "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos": {
+        "history_max": 9973.0,
+        "premium_peak": null
+      },
+      "Lyttos Beach": {
+        "history_max": 13879.0,
+        "premium_peak": 13879.0
+      },
+      "MarBella, Mar-Bella Collection (Agios Ioannis)": {
+        "history_max": 17173.0,
+        "premium_peak": 17173.0
+      },
+      "Mare blue (ex. Sunshine Crete Beach)": {
+        "history_max": 10982.0,
+        "premium_peak": 10982.0
+      },
+      "Michelangelo Resort & Spa": {
+        "history_max": 17476.0,
+        "premium_peak": 17476.0
+      },
+      "High Beach": {
+        "history_max": 18086.0,
+        "premium_peak": 18086.0
+      },
+      "Minos Imperial": {
+        "history_max": 12686.0,
+        "premium_peak": 12686.0
+      },
+      "Hersonissos Palace": {
+        "history_max": 11467.0,
+        "premium_peak": 11467.0
+      },
+      "Grecotel LuxMe Daphnila Bay Dassia": {
+        "history_max": 17444.0,
+        "premium_peak": 17444.0
+      },
+      "Dreams Corfu Resort & Spa (ex Louis Corcyra Beach)": {
+        "history_max": 19986.0,
+        "premium_peak": 19986.0
+      },
+      "Elinotel Apolamare Grecja, Chalkidiki, Hanioti": {
+        "history_max": 9495.0,
+        "premium_peak": null
+      },
+      "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia": {
+        "history_max": 7760.0,
+        "premium_peak": null
+      },
+      "Elios Hill": {
+        "history_max": 12457.0,
+        "premium_peak": 12457.0
+      },
+      "Enorme Santanna Island": {
+        "history_max": 17032.0,
+        "premium_peak": 17032.0
+      },
+      "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
+        "history_max": 8621.0,
+        "premium_peak": null
+      },
+      "Euphoria Resort": {
+        "history_max": 15458.0,
+        "premium_peak": 15458.0
+      },
+      "Filion Suites Resort Grecja, Kreta Wschodnia, Bali": {
+        "history_max": 8753.0,
+        "premium_peak": null
+      },
+      "Fodele Beach & Water Park Holiday Resort": {
+        "history_max": 13373.0,
+        "premium_peak": 13373.0
+      },
+      "Gaia Palace Grecja, Kos, Mastichari": {
+        "history_max": 9659.0,
+        "premium_peak": null
+      },
+      "Galaxy Beach Resort BW Premier Collection Grecja, Zakynthos, Laganas": {
+        "history_max": 10911.0,
+        "premium_peak": 10911.0
+      },
+      "Galini Palace Grecja, Kreta Zachodnia, Kolymvari": {
+        "history_max": 9376.0,
+        "premium_peak": null
+      },
+      "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
+        "history_max": 9524.0,
+        "premium_peak": null
+      },
+      "Georgioupolis Resort & Aqua Park": {
+        "history_max": 17348.0,
+        "premium_peak": 17348.0
+      },
+      "Georgioupolis Suites": {
+        "history_max": 17315.0,
+        "premium_peak": 17315.0
+      },
+      "Giannoulis Cavo Spada Luxury Sports & Leisure Resort": {
+        "history_max": 12857.0,
+        "premium_peak": 12857.0
+      },
+      "Gouves Water Park Holiday Resort": {
+        "history_max": 11427.0,
+        "premium_peak": 11427.0
+      },
+      "Grand Blue Beach Grecja, kos, Kardamaina": {
+        "history_max": 11012.0,
+        "premium_peak": 11012.0
+      },
+      "Grecotel LuxMe Costa Botanica (ex. Gelina Village)": {
+        "history_max": 13915.0,
+        "premium_peak": 13915.0
+      },
+      "Helea Lifestyle Beach Resort": {
+        "history_max": 19817.0,
+        "premium_peak": 19817.0
+      },
+      "Domes Aulus Zante Autograph Collection": {
+        "history_max": 16001.0,
+        "premium_peak": 16001.0
+      },
+      "Mitsis Galini": {
+        "history_max": 13460.0,
+        "premium_peak": 13460.0
+      },
+      "Mitsis Ramira": {
+        "history_max": 14196.0,
+        "premium_peak": 14196.0
+      },
+      "Sandy Beach Resort": {
+        "history_max": 11656.0,
+        "premium_peak": 11656.0
+      },
+      "Santa Marina Pearl": {
+        "history_max": 11657.0,
+        "premium_peak": 11657.0
+      },
+      "Sea Coast Halkidiki": {
+        "history_max": 12499.0,
+        "premium_peak": 12499.0
+      },
+      "Senseana Sea Side Resort & Spa (ex. Golden Star)": {
+        "history_max": 14443.0,
+        "premium_peak": 14443.0
+      },
+      "Serita Beach": {
+        "history_max": 11748.0,
+        "premium_peak": 11748.0
+      },
+      "Sheraton Rhodes Resort (ex. Imperial)": {
+        "history_max": 19300.0,
+        "premium_peak": 19300.0
+      },
+      "Sitia Beach Grecja, Kreta Wschodnia, Sitia": {
+        "history_max": 9657.0,
+        "premium_peak": null
+      },
+      "Solimar Aquamarine Grecja, Kreta Zachodnia, Pirgos Psilonerou": {
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
+      },
+      "Stella Palace Aqua Park Resort": {
+        "history_max": 14385.0,
+        "premium_peak": 14385.0
+      },
+      "Thassos Grand Resort Grecja, Thassos, Alikí": {
+        "history_max": 10157.0,
+        "premium_peak": 10157.0
+      },
+      "Valis Resort Grecja, Tesalia, Agria": {
+        "history_max": 6173.0,
+        "premium_peak": null
+      },
+      "Village Heights Resort": {
+        "history_max": 15768.0,
+        "premium_peak": 15768.0
+      },
+      "White Olive Elite": {
+        "history_max": 11772.0,
+        "premium_peak": 11772.0
+      },
+      "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki": {
+        "history_max": 10478.0,
+        "premium_peak": 10478.0
+      },
+      "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni": {
+        "history_max": 8143.0,
+        "premium_peak": null
+      },
+      "Zante Park Resort & SPA - BW Premier Collection Grecja, Zakynthos, Laganas": {
+        "history_max": 10357.0,
+        "premium_peak": 10357.0
+      },
+      "Zeus Dolce Athens (ex Dolce Attica Riviera)": {
+        "history_max": 16782.0,
+        "premium_peak": 16782.0
+      },
+      "Zeus Eleva Mirabello Bay": {
+        "history_max": 12414.0,
+        "premium_peak": 12414.0
+      },
+      "Zeus Kos Beach": {
+        "history_max": 11357.0,
+        "premium_peak": 11357.0
+      },
+      "Rodos Palace Grecja, Rodos, Ixia": {
+        "history_max": 8997.0,
+        "premium_peak": null
+      },
+      "Mitsis Norida": {
+        "history_max": 14424.0,
+        "premium_peak": 14424.0
+      },
+      "Rocrita Lifestyle Resort (ex. Aldiana Kreta)": {
+        "history_max": 15257.0,
+        "premium_peak": 15257.0
+      },
+      "Rethymno Palace": {
+        "history_max": 13376.0,
+        "premium_peak": 13376.0
+      },
+      "Mitsis Rodos Maris": {
+        "history_max": 12947.0,
+        "premium_peak": 12947.0
+      },
+      "Mitsis Rodos Village": {
+        "history_max": 13862.0,
+        "premium_peak": 13862.0
+      },
+      "Mitsis Royal Mare": {
+        "history_max": 15324.0,
+        "premium_peak": 15324.0
+      },
+      "Mitsis Selection Blue Domes": {
+        "history_max": 16005.0,
+        "premium_peak": 16005.0
+      },
+      "Mitsis Selection Laguna": {
+        "history_max": 17364.0,
+        "premium_peak": 17364.0
+      },
+      "Mitsis Summer Palace": {
+        "history_max": 14443.0,
+        "premium_peak": 14443.0
+      },
+      "Mythos Beach Resort": {
+        "history_max": 13042.0,
+        "premium_peak": 13042.0
+      },
+      "Natura Park Village": {
+        "history_max": 11929.0,
+        "premium_peak": 11929.0
+      },
+      "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia": {
+        "history_max": 9857.0,
+        "premium_peak": null
+      },
+      "Pegasos Beach (Faliraki)": {
+        "history_max": 13057.0,
+        "premium_peak": 13057.0
+      },
+      "Pilot Beach Resort": {
+        "history_max": 16556.0,
+        "premium_peak": 16556.0
+      },
+      "Porto Angeli": {
+        "history_max": 11280.0,
+        "premium_peak": 11280.0
+      },
+      "Porto Carras Meliton": {
+        "history_max": 16593.0,
+        "premium_peak": 16593.0
+      },
+      "Porto Platanias Village": {
+        "history_max": 12277.0,
+        "premium_peak": 12277.0
+      },
+      "Princess Andriana Resort & Spa": {
+        "history_max": 14506.0,
+        "premium_peak": 14506.0
+      },
+      "Ramada Athens Attica Riviera (ex Aquamarina)": {
+        "history_max": 13157.0,
+        "premium_peak": 13157.0
+      },
+      "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki": {
+        "history_max": 10634.0,
+        "premium_peak": 10634.0
+      },
+      "Rethymno Mare & Water Park (Rethymno)": {
+        "history_max": 13917.0,
+        "premium_peak": 13917.0
+      },
+      "Rethymno Mare Royal & Water Park (ex. Bomo)": {
+        "history_max": 11243.0,
+        "premium_peak": 11243.0
+      },
+      "Rimondi Grand Resort & Spa Grecja, Kreta Zachodnia, Magnisia": {
+        "history_max": 9667.0,
+        "premium_peak": null
+      },
+      "Dimitra Beach Hotel & Suites": {
+        "history_max": 15865.0,
+        "premium_peak": 15865.0
+      },
+      "Kiani Beach": {
+        "history_max": 11681.0,
+        "premium_peak": 11681.0
+      },
+      "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)": {
+        "history_max": 12827.0,
+        "premium_peak": 12827.0
+      },
+      "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos": {
+        "history_max": 10839.0,
+        "premium_peak": 10839.0
+      },
+      "Almyra Village Grecja, Kreta Wschodnia, Koutsounari": {
+        "history_max": 9657.0,
+        "premium_peak": null
+      },
+      "Apollonion Asterias Resort & Spa": {
+        "history_max": 12916.0,
+        "premium_peak": 12916.0
+      },
+      "Azure Resort & Spa (ex. Mediterranee) Grecja, Zakynthos, Planos": {
+        "history_max": 10757.0,
+        "premium_peak": 10757.0
+      },
+      "Avra Imperial Beach Resort & Spa": {
+        "history_max": 17117.0,
+        "premium_peak": 17117.0
+      },
+      "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes": {
+        "history_max": 7715.0,
+        "premium_peak": null
+      },
+      "Cabana Blu Hotel & Suites": {
+        "history_max": 12993.0,
+        "premium_peak": 12993.0
+      },
+      "Amada Colossos Resort (ex Louis Beach)": {
+        "history_max": 14257.0,
+        "premium_peak": 14257.0
+      },
+      "Arina Beach Resort (ex Aquis Arina Sand)": {
+        "history_max": 15726.0,
+        "premium_peak": 15726.0
+      },
+      "Blue Marine Resort & SPA": {
+        "history_max": 14965.0,
+        "premium_peak": 14965.0
+      },
+      "Alia Palace": {
+        "history_max": 16487.0,
+        "premium_peak": 16487.0
+      },
+      "Asterias Beach Resort": {
+        "history_max": 12114.0,
+        "premium_peak": 12114.0
+      },
+      "Almyros Beach (ex Cyprotel Almyros)": {
+        "history_max": 12322.0,
+        "premium_peak": 12322.0
+      },
+      "Aldemar Olympian Village Grecja, Peloponez, Skafidia": {
+        "history_max": 9360.0,
+        "premium_peak": null
+      },
+      "Apollonia Beach (Ammoudara)": {
+        "history_max": 12727.0,
+        "premium_peak": 12727.0
+      },
+      "Cora Hotel & Spa Resort": {
+        "history_max": 19996.0,
+        "premium_peak": 19996.0
+      },
+      "Atlantica Ocean Beach Resort (ex. Creta Princess by Atlantica)": {
+        "history_max": 17545.0,
+        "premium_peak": 17545.0
+      },
+      "Bella Beach": {
+        "history_max": 13122.0,
+        "premium_peak": 13122.0
+      },
+      "Anemos Luxury Grand Resort": {
+        "history_max": 13937.0,
+        "premium_peak": 13937.0
+      },
+      "Creta Maris Beach Resort (ex Terra Maris)": {
+        "history_max": 17699.0,
+        "premium_peak": 17699.0
+      },
+      "Atlantica Caldera Palace Resort & Spa (ex Atlantica Sensatori)": {
+        "history_max": 13584.0,
+        "premium_peak": 13584.0
+      },
+      "Akasha Beach (ex Armava)": {
+        "history_max": 15661.0,
+        "premium_peak": 15661.0
+      },
+      "Amus": {
+        "history_max": 16246.0,
+        "premium_peak": 16246.0
+      },
+      "Blue Lagoon Village": {
+        "history_max": 13174.0,
+        "premium_peak": 13174.0
+      },
+      "Atlantica Aegean Blue": {
+        "history_max": 15147.0,
+        "premium_peak": 15147.0
+      },
+      "Costa Lindia Beach": {
+        "history_max": 14376.0,
+        "premium_peak": 14376.0
+      },
+      "Atlantica Porto Bello Royal": {
+        "history_max": 13457.0,
+        "premium_peak": 13457.0
+      },
+      "Akti Coast Club": {
+        "history_max": 11533.0,
+        "premium_peak": 11533.0
+      },
+      "CHC Athina Palace Resort & Spa (Agia Pelagia)": {
+        "history_max": 11608.0,
+        "premium_peak": 11608.0
+      },
+      "Galaxy Beach Resort BW Premier Collection": {
+        "history_max": 11131.0,
+        "premium_peak": 11131.0
+      },
+      "Elinotel Apolamare": {
+        "history_max": 12010.0,
+        "premium_peak": 12010.0
+      },
+      "Aldemar Olympian Village": {
+        "history_max": 11154.0,
+        "premium_peak": 11154.0
+      },
+      "Sunshine Crete Beach (ex Club Calimera) Grecja, Kreta Wschodnia, Koutsounari": {
+        "history_max": 10982.0,
+        "premium_peak": 10982.0
+      },
+      "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios": {
+        "history_max": 10663.0,
+        "premium_peak": 10663.0
+      },
+      "Gouves Water Park Holiday Resort Grecja, Kreta Wschodnia, Kato Gouves": {
+        "history_max": 10418.0,
+        "premium_peak": 10418.0
+      }
+    }
+  }
 }
