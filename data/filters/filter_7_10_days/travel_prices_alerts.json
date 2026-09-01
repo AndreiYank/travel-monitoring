@@ -1768,10 +1768,88 @@
       "created_at": "2026-09-01T16:49:30.512478+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sentido Mamlouk Palace Resort & Spa (ex Sunrise)_2026-09-01_16-48_comeback_14.5"
+    },
+    {
+      "hotel_name": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)",
+      "duration_bucket": "",
+      "old_price": 9915.0,
+      "new_price": 10125.0,
+      "price_change": 210.0,
+      "price_change_pct": 2.118003025718608,
+      "timestamp": "2026-09-01 22:42:18.448586+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:42:50.581328+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Sahl Hasheesh (Ex. Ocean Breeze)_2026-09-01_22-42_zone_out_+2.1"
+    },
+    {
+      "hotel_name": "Hilton Plaza (Hurghada)",
+      "duration_bucket": "",
+      "old_price": 8505.0,
+      "new_price": 8505.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 22:42:18.448586+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:42:50.581349+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Plaza (Hurghada)_2026-09-01_22-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Di Mare Beach & Spa",
+      "duration_bucket": "",
+      "old_price": 9557.0,
+      "new_price": 9557.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 22:42:18.448586+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:42:50.581355+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Di Mare Beach & Spa_2026-09-01_22-42_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Beach Resort",
+      "duration_bucket": "",
+      "old_price": 12807.0,
+      "new_price": 9857.0,
+      "price_change": -2950.0,
+      "price_change_pct": -23.034278129148124,
+      "timestamp": "2026-09-01 22:42:18.448586+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-01T22:42:50.581371+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Beach Resort_2026-09-01_22-42_comeback_23.0"
+    },
+    {
+      "hotel_name": "Pickalbatros Golf Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10947.0,
+      "new_price": 8057.0,
+      "price_change": -2890.0,
+      "price_change_pct": -26.399926920617524,
+      "timestamp": "2026-09-01 22:42:18.448586+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-01T22:42:50.581378+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Golf Beach Resort_2026-09-01_22-42_comeback_26.4"
+    },
+    {
+      "hotel_name": "Caribbean World Soma Bay",
+      "duration_bucket": "",
+      "old_price": 10947.0,
+      "new_price": 9197.0,
+      "price_change": -1750.0,
+      "price_change_pct": -15.986114917328948,
+      "timestamp": "2026-09-01 22:42:18.448586+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-01T22:42:50.581386+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Caribbean World Soma Bay_2026-09-01_22-42_comeback_16.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T16:48:50.949021+00:00",
+    "last_processed_run": "2026-09-01T22:42:18.448586+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -1938,7 +2016,7 @@
         "premium_peak": null
       },
       "Fantazia Resort": {
-        "history_max": 7799.0,
+        "history_max": 8050.0,
         "premium_peak": null
       },
       "Gemma Resort (ex. Labranda Gemma Premium Resort)": {
@@ -1978,7 +2056,7 @@
         "premium_peak": null
       },
       "Sea Star Beau Rivage": {
-        "history_max": 9325.0,
+        "history_max": 9432.0,
         "premium_peak": null
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
@@ -2154,7 +2232,7 @@
         "premium_peak": 12807.0
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
-        "history_max": 9083.0,
+        "history_max": 9212.0,
         "premium_peak": null
       },
       "Jaz Viva Casa Maza": {
@@ -2166,7 +2244,7 @@
         "premium_peak": null
       },
       "Jaz Palmariva Beach": {
-        "history_max": 7718.0,
+        "history_max": 7727.0,
         "premium_peak": null
       },
       "Premier Le Reve & Spa": {
@@ -2322,7 +2400,7 @@
         "premium_peak": 14716.0
       },
       "The Cascades Golf Resort Spa & Thalasso (ex Westin Soma Bay)": {
-        "history_max": 7706.0,
+        "history_max": 8505.0,
         "premium_peak": null
       },
       "The V Luxury Resort": {
@@ -2418,7 +2496,7 @@
         "premium_peak": 10014.0
       },
       "Amarina Queen Resort": {
-        "history_max": 8949.0,
+        "history_max": 9058.0,
         "premium_peak": null
       },
       "Concorde El Salam Front Area": {

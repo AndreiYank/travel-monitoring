@@ -351,10 +351,49 @@
       "created_at": "2026-09-01T16:51:56.506482+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-09-01_16-51_zone_out_+3.6"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 4537.0,
+      "new_price": 7189.0,
+      "price_change": 2652.0,
+      "price_change_pct": 58.45272206303726,
+      "timestamp": "2026-09-01 22:44:04.617724+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-01T22:44:49.258252+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-09-01_22-44_+58.5"
+    },
+    {
+      "hotel_name": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 9990.0,
+      "new_price": 10418.0,
+      "price_change": 428.0,
+      "price_change_pct": 4.2842842842842845,
+      "timestamp": "2026-09-01 22:44:04.617724+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:44:49.258298+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-09-01_22-44_zone_out_+4.3"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 7384.0,
+      "new_price": 7384.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 22:44:04.617724+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:44:49.258305+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-09-01_22-44_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T16:51:00.844542+00:00",
+    "last_processed_run": "2026-09-01T22:44:04.617724+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -421,8 +460,8 @@
         "premium_peak": null
       },
       "Lyttos Beach": {
-        "history_max": 15112.0,
-        "premium_peak": 15112.0
+        "history_max": 15872.0,
+        "premium_peak": 15872.0
       },
       "MarBella, Mar-Bella Collection (Agios Ioannis)": {
         "history_max": 17173.0,
@@ -477,8 +516,8 @@
         "premium_peak": null
       },
       "Euphoria Resort": {
-        "history_max": 15765.0,
-        "premium_peak": 15765.0
+        "history_max": 15978.0,
+        "premium_peak": 15978.0
       },
       "Filion Suites Resort Grecja, Kreta Wschodnia, Bali": {
         "history_max": 8753.0,
@@ -517,8 +556,8 @@
         "premium_peak": 12857.0
       },
       "Gouves Water Park Holiday Resort": {
-        "history_max": 11938.0,
-        "premium_peak": 11938.0
+        "history_max": 12712.0,
+        "premium_peak": 12712.0
       },
       "Grand Blue Beach Grecja, kos, Kardamaina": {
         "history_max": 11012.0,
@@ -585,7 +624,7 @@
         "premium_peak": 10357.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 6726.0,
+        "history_max": 7189.0,
         "premium_peak": null
       },
       "Village Heights Resort": {
@@ -613,8 +652,8 @@
         "premium_peak": 17407.0
       },
       "Zeus Eleva Mirabello Bay": {
-        "history_max": 12414.0,
-        "premium_peak": 12414.0
+        "history_max": 12729.0,
+        "premium_peak": 12729.0
       },
       "Zeus Kos Beach": {
         "history_max": 11357.0,
@@ -661,8 +700,8 @@
         "premium_peak": 15031.0
       },
       "Mythos Beach Resort": {
-        "history_max": 13042.0,
-        "premium_peak": 13042.0
+        "history_max": 13146.0,
+        "premium_peak": 13146.0
       },
       "Natura Park Village": {
         "history_max": 11929.0,
@@ -693,8 +732,8 @@
         "premium_peak": 13129.0
       },
       "Princess Andriana Resort & Spa": {
-        "history_max": 14552.0,
-        "premium_peak": 14552.0
+        "history_max": 14702.0,
+        "premium_peak": 14702.0
       },
       "Ramada Athens Attica Riviera (ex Aquamarina)": {
         "history_max": 15497.0,
@@ -905,8 +944,8 @@
         "premium_peak": 11747.0
       },
       "Cooks Club Corfu (ex Ionian Park)": {
-        "history_max": 19865.0,
-        "premium_peak": 19865.0
+        "history_max": 19967.0,
+        "premium_peak": 19967.0
       },
       "Porto Angeli Grecja, Rodos, Archangelos": {
         "history_max": 10894.0,
@@ -931,6 +970,10 @@
       "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos": {
         "history_max": 10526.0,
         "premium_peak": 10526.0
+      },
+      "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
+        "history_max": 10946.0,
+        "premium_peak": 10946.0
       }
     }
   }

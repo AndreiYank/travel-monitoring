@@ -468,10 +468,75 @@
       "created_at": "2026-09-01T16:50:06.194242+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xperience Kiroseiz Premier_2026-09-01_16-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 8381.0,
+      "new_price": 9317.0,
+      "price_change": 936.0,
+      "price_change_pct": 11.168118362963847,
+      "timestamp": "2026-09-01 22:43:06.271657+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-01T22:43:23.578009+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-09-01_22-43_+11.2"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 9770.0,
+      "new_price": 8867.0,
+      "price_change": -903.0,
+      "price_change_pct": -9.24257932446264,
+      "timestamp": "2026-09-01 22:43:06.271657+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-01T22:43:23.578033+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-09-01_22-43_-9.2"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 10988.0,
+      "new_price": 10988.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 22:43:06.271657+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:43:23.578050+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-09-01_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Solaya (ex Sol Y Mar Solaya) Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 10538.0,
+      "new_price": 10538.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 22:43:06.271657+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:43:23.578057+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya (ex Sol Y Mar Solaya) Egipt, Marsa Alam_2026-09-01_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Safir Dahab Resort",
+      "duration_bucket": "",
+      "old_price": 10732.0,
+      "new_price": 10732.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 22:43:06.271657+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T22:43:23.578063+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort_2026-09-01_22-43_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T16:49:47.886166+00:00",
+    "last_processed_run": "2026-09-01T22:43:06.271657+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -526,7 +591,7 @@
         "premium_peak": null
       },
       "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk": {
-        "history_max": 8381.0,
+        "history_max": 9317.0,
         "premium_peak": null
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
@@ -574,7 +639,7 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam": {
-        "history_max": 10357.0,
+        "history_max": 10424.0,
         "premium_peak": null
       },
       "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada": {
