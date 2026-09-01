@@ -481,10 +481,101 @@
       "created_at": "2026-08-31T20:15:26.459203+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sunrise Anjum Resort_2026-08-31_20-14_comeback_12.5"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7526.0,
+      "new_price": 8207.0,
+      "price_change": 681.0,
+      "price_change_pct": 9.04863141110816,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T23:58:59.396669+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-08-31_23-58_+9.0"
+    },
+    {
+      "hotel_name": "Xperience Kiroseiz Premier",
+      "duration_bucket": "",
+      "old_price": 6888.0,
+      "new_price": 7587.0,
+      "price_change": 699.0,
+      "price_change_pct": 10.14808362369338,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T23:58:59.396704+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Kiroseiz Premier_2026-08-31_23-58_+10.1"
+    },
+    {
+      "hotel_name": "Xperience Kiroseiz Parkland",
+      "duration_bucket": "",
+      "old_price": 7061.0,
+      "new_price": 7775.0,
+      "price_change": 714.0,
+      "price_change_pct": 10.111882169664353,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-08-31T23:58:59.396715+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Kiroseiz Parkland_2026-08-31_23-58_+10.1"
+    },
+    {
+      "hotel_name": "Charmillion Club Aqua Park",
+      "duration_bucket": "",
+      "old_price": 7706.0,
+      "new_price": 7706.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T23:58:59.396736+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Aqua Park_2026-08-31_23-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Naama Bay Promenade Mountain Resort",
+      "duration_bucket": "",
+      "old_price": 7708.0,
+      "new_price": 7708.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-08-31T23:58:59.396743+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Naama Bay Promenade Mountain Resort_2026-08-31_23-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11907.0,
+      "new_price": 9857.0,
+      "price_change": -2050.0,
+      "price_change_pct": -17.21676324850928,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-31T23:58:59.396762+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Beach Resort_2026-08-31_23-58_comeback_17.2"
+    },
+    {
+      "hotel_name": "Movenpick Resort & Spa El Gouna",
+      "duration_bucket": "",
+      "old_price": 10355.0,
+      "new_price": 9237.0,
+      "price_change": -1118.0,
+      "price_change_pct": -10.79671656204732,
+      "timestamp": "2026-08-31 23:58:27.248080+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-08-31T23:58:59.396773+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Resort & Spa El Gouna_2026-08-31_23-58_comeback_10.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-31T20:14:54.691597+00:00",
+    "last_processed_run": "2026-08-31T23:58:27.248080+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -547,8 +638,8 @@
         "premium_peak": null
       },
       "Rixos Premium Alamein (ex. Regal Heights)": {
-        "history_max": 12058.0,
-        "premium_peak": 12058.0
+        "history_max": 12725.0,
+        "premium_peak": 12725.0
       },
       "Jaz Belvedere": {
         "history_max": 10657.0,
@@ -799,7 +890,7 @@
         "premium_peak": null
       },
       "Old Palace Resort": {
-        "history_max": 7389.0,
+        "history_max": 7724.0,
         "premium_peak": null
       },
       "Parrotel Lagoon Resort": {
@@ -971,8 +1062,8 @@
         "premium_peak": null
       },
       "Sunrise Tucana Resort": {
-        "history_max": 12893.0,
-        "premium_peak": 12893.0
+        "history_max": 12933.0,
+        "premium_peak": 12933.0
       },
       "Cardina Resort by Sunrise": {
         "history_max": 10347.0,
@@ -1256,6 +1347,18 @@
       },
       "Naama Bay Promenade Mountain Resort": {
         "history_max": 7708.0,
+        "premium_peak": null
+      },
+      "Dreams Vacation Sharm Resort": {
+        "history_max": 9147.0,
+        "premium_peak": null
+      },
+      "Sentido Reef Oasis Senses Resort": {
+        "history_max": 12577.0,
+        "premium_peak": 12577.0
+      },
+      "Amarina Abu Soma Resort": {
+        "history_max": 8217.0,
         "premium_peak": null
       }
     }
