@@ -247,10 +247,62 @@
       "created_at": "2026-08-31T23:59:32.224708+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Safir Dahab Resort Egipt, Dahab_2026-08-31_23-59_zone_out_gone"
+    },
+    {
+      "hotel_name": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna",
+      "duration_bucket": "",
+      "old_price": 7996.0,
+      "new_price": 9620.0,
+      "price_change": 1624.0,
+      "price_change_pct": 20.31015507753877,
+      "timestamp": "2026-09-01 05:01:32.174983+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-01T05:01:50.887446+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna_2026-09-01_05-01_+20.3"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8507.0,
+      "new_price": 9586.0,
+      "price_change": 1079.0,
+      "price_change_pct": 12.68367226989538,
+      "timestamp": "2026-09-01 05:01:32.174983+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-01T05:01:50.887476+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-09-01_05-01_+12.7"
+    },
+    {
+      "hotel_name": "Movenpick Sirena Beach Egipt, Marsa Alam, Al-Kusajr",
+      "duration_bucket": "",
+      "old_price": 10604.0,
+      "new_price": 10604.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 05:01:32.174983+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T05:01:50.887500+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Movenpick Sirena Beach Egipt, Marsa Alam, Al-Kusajr_2026-09-01_05-01_zone_out_gone"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 10731.0,
+      "new_price": 10731.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 05:01:32.174983+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T05:01:50.887510+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-09-01_05-01_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-08-31T23:59:15.430925+00:00",
+    "last_processed_run": "2026-09-01T05:01:32.174983+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -393,7 +445,7 @@
         "premium_peak": null
       },
       "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna": {
-        "history_max": 9381.0,
+        "history_max": 9620.0,
         "premium_peak": null
       },
       "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib": {
@@ -422,6 +474,18 @@
       },
       "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk": {
         "history_max": 10751.0,
+        "premium_peak": null
+      },
+      "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr": {
+        "history_max": 9840.0,
+        "premium_peak": null
+      },
+      "Jaz Solaya Resort (ex Sol Y Mar Solaya)": {
+        "history_max": 10941.0,
+        "premium_peak": null
+      },
+      "Sirena Beach Resort & Spa": {
+        "history_max": 10604.0,
         "premium_peak": null
       }
     }
