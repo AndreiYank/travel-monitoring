@@ -819,10 +819,49 @@
       "created_at": "2026-09-01T11:50:22.226985+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Strand Taba Heights Resort (ex. InterContinental)_2026-09-01_11-49_zone_out_gone"
+    },
+    {
+      "hotel_name": "Monte Carlo Resort Spa",
+      "duration_bucket": "",
+      "old_price": 10557.0,
+      "new_price": 8901.0,
+      "price_change": -1656.0,
+      "price_change_pct": -15.686274509803921,
+      "timestamp": "2026-09-01 14:10:33.405393+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-01T14:11:15.582359+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Monte Carlo Resort Spa_2026-09-01_14-10_-15.7"
+    },
+    {
+      "hotel_name": "Gewan Resort New Alamein",
+      "duration_bucket": "",
+      "old_price": 9772.0,
+      "new_price": 9772.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 14:10:33.405393+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T14:11:15.582412+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gewan Resort New Alamein_2026-09-01_14-10_zone_out_gone"
+    },
+    {
+      "hotel_name": "Gewan White Beach Resort New Alamein",
+      "duration_bucket": "",
+      "old_price": 9469.0,
+      "new_price": 9469.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-01 14:10:33.405393+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T14:11:15.582425+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gewan White Beach Resort New Alamein_2026-09-01_14-10_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T11:49:45.255058+00:00",
+    "last_processed_run": "2026-09-01T14:10:33.405393+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -841,7 +880,7 @@
         "premium_peak": null
       },
       "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada": {
-        "history_max": 7747.0,
+        "history_max": 7787.0,
         "premium_peak": null
       },
       "Jaz Aquaviva": {
@@ -905,7 +944,7 @@
         "premium_peak": null
       },
       "Jaz Sharm Dreams Resort": {
-        "history_max": 9974.0,
+        "history_max": 10115.0,
         "premium_peak": null
       },
       "Jaz Viva Casa Maza": {
@@ -949,7 +988,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Sultan": {
-        "history_max": 10505.0,
+        "history_max": 10839.0,
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
@@ -1033,7 +1072,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Harem": {
-        "history_max": 10006.0,
+        "history_max": 10337.0,
         "premium_peak": null
       },
       "Marriott Hurghada Beach Resort Egipt, Hurghada": {
@@ -1249,7 +1288,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Bella Vista": {
-        "history_max": 9343.0,
+        "history_max": 9674.0,
         "premium_peak": null
       },
       "Invidia Coral Beach Tiran": {
@@ -1273,7 +1312,7 @@
         "premium_peak": null
       },
       "Amphoras Beach": {
-        "history_max": 10706.0,
+        "history_max": 10729.0,
         "premium_peak": null
       },
       "Concorde El Salam Sport": {
@@ -1289,15 +1328,15 @@
         "premium_peak": null
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
-        "history_max": 9103.0,
+        "history_max": 9117.0,
         "premium_peak": null
       },
       "Amarina Star Resort & Aqua Park (ex. Raouf Star)": {
-        "history_max": 9415.0,
+        "history_max": 9430.0,
         "premium_peak": null
       },
       "Concorde Sport": {
-        "history_max": 9833.0,
+        "history_max": 9851.0,
         "premium_peak": null
       },
       "Amarina Queen Resort": {
@@ -1522,6 +1561,10 @@
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
         "history_max": 9027.0,
+        "premium_peak": null
+      },
+      "Pickalbatros Luxury Suites": {
+        "history_max": 10598.0,
         "premium_peak": null
       }
     }
