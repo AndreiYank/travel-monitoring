@@ -91,10 +91,62 @@
       "created_at": "2026-09-01T05:01:04.075336+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rehana Royal Beach Resort & Spa_2026-09-01_05-00_comeback_16.5"
+    },
+    {
+      "hotel_name": "Parrotel Lagoon Resort",
+      "duration_bucket": "",
+      "old_price": 7933.0,
+      "new_price": 9932.0,
+      "price_change": 1999.0,
+      "price_change_pct": 25.198537753687127,
+      "timestamp": "2026-09-01 11:49:45.221431+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-01T11:50:09.227973+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Parrotel Lagoon Resort_2026-09-01_11-49_+25.2"
+    },
+    {
+      "hotel_name": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)",
+      "duration_bucket": "",
+      "old_price": 9502.0,
+      "new_price": 18246.0,
+      "price_change": 8744.0,
+      "price_change_pct": 92.02273205640917,
+      "timestamp": "2026-09-01 11:49:45.221431+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T11:50:09.228005+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)_2026-09-01_11-49_zone_out_+92.0"
+    },
+    {
+      "hotel_name": "IL Mercato Splash Aqua Park",
+      "duration_bucket": "",
+      "old_price": 8628.0,
+      "new_price": 10551.0,
+      "price_change": 1923.0,
+      "price_change_pct": 22.287899860917943,
+      "timestamp": "2026-09-01 11:49:45.221431+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T11:50:09.228017+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "IL Mercato Splash Aqua Park_2026-09-01_11-49_zone_out_+22.3"
+    },
+    {
+      "hotel_name": "Rehana Royal Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9654.0,
+      "new_price": 17860.0,
+      "price_change": 8206.0,
+      "price_change_pct": 85.0010358400663,
+      "timestamp": "2026-09-01 11:49:45.221431+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-01T11:50:09.228025+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rehana Royal Beach Resort & Spa_2026-09-01_11-49_zone_out_+85.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T05:22:36.614597+00:00",
+    "last_processed_run": "2026-09-01T11:49:45.221431+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 13316.0,
@@ -225,8 +277,8 @@
         "premium_peak": 18378.0
       },
       "IL Mercato Splash Aqua Park": {
-        "history_max": 9973.0,
-        "premium_peak": null
+        "history_max": 10551.0,
+        "premium_peak": 10551.0
       },
       "Invidia Coral Beach Tiran": {
         "history_max": 16514.0,
@@ -265,8 +317,8 @@
         "premium_peak": 14933.0
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
-        "history_max": 15748.0,
-        "premium_peak": 15748.0
+        "history_max": 16317.0,
+        "premium_peak": 16317.0
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
         "history_max": 19913.0,
@@ -301,16 +353,16 @@
         "premium_peak": 18857.0
       },
       "Regency Plaza Aqua Park Spa": {
-        "history_max": 11576.0,
-        "premium_peak": 11576.0
+        "history_max": 14487.0,
+        "premium_peak": 14487.0
       },
       "Sharm Grand Plaza Resort": {
         "history_max": 12697.0,
         "premium_peak": 12697.0
       },
       "Rehana Royal Beach Resort & Spa": {
-        "history_max": 11557.0,
-        "premium_peak": 11557.0
+        "history_max": 17860.0,
+        "premium_peak": 17860.0
       },
       "Pyramisa Beach Resort Sahl Hasheesh": {
         "history_max": 14388.0,
@@ -333,16 +385,16 @@
         "premium_peak": 13905.0
       },
       "Royal Brayka Beach Resort (ex Zee Brayka)": {
-        "history_max": 11857.0,
-        "premium_peak": 11857.0
+        "history_max": 12257.0,
+        "premium_peak": 12257.0
       },
       "Sentido Naga Bay": {
         "history_max": 14297.0,
         "premium_peak": 14297.0
       },
       "Royal Regency Club": {
-        "history_max": 12719.0,
-        "premium_peak": 12719.0
+        "history_max": 15216.0,
+        "premium_peak": 15216.0
       },
       "Safir Dahab Resort": {
         "history_max": 12075.0,
@@ -381,7 +433,7 @@
         "premium_peak": 11464.0
       },
       "Parrotel Lagoon Resort": {
-        "history_max": 9009.0,
+        "history_max": 9932.0,
         "premium_peak": null
       },
       "Pharaoh Azur Resort (ex Sonesta Pharaoh Beach Resort)": {
@@ -393,8 +445,8 @@
         "premium_peak": 12892.0
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
-        "history_max": 15027.0,
-        "premium_peak": 15027.0
+        "history_max": 19471.0,
+        "premium_peak": 19471.0
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
         "history_max": 16865.0,
@@ -433,8 +485,8 @@
         "premium_peak": 15255.0
       },
       "Pickalbatros Royal Moderna": {
-        "history_max": 13918.0,
-        "premium_peak": 13918.0
+        "history_max": 17759.0,
+        "premium_peak": 17759.0
       },
       "Sirena Beach Resort & Spa": {
         "history_max": 12527.0,
@@ -461,16 +513,16 @@
         "premium_peak": 12949.0
       },
       "Coral Sea Sensatori (ex Coral Sea Imperial)": {
-        "history_max": 17502.0,
-        "premium_peak": 17502.0
+        "history_max": 18306.0,
+        "premium_peak": 18306.0
       },
       "Calimera Blend Paradise Resort": {
         "history_max": 15507.0,
         "premium_peak": 15507.0
       },
       "Amarina Star Resort & Aqua Park (ex. Raouf Star)": {
-        "history_max": 11471.0,
-        "premium_peak": 11471.0
+        "history_max": 18870.0,
+        "premium_peak": 18870.0
       },
       "Titanic Beach Spa & Aqua Park": {
         "history_max": 11257.0,
@@ -525,8 +577,8 @@
         "premium_peak": 15657.0
       },
       "Concorde Sport": {
-        "history_max": 12325.0,
-        "premium_peak": 12325.0
+        "history_max": 19724.0,
+        "premium_peak": 19724.0
       },
       "Casa Mare Resort (ex. Royal Tulip Beach Resort)": {
         "history_max": 10057.0,
@@ -537,8 +589,8 @@
         "premium_peak": 14457.0
       },
       "Amarina Queen Resort": {
-        "history_max": 14408.0,
-        "premium_peak": 14408.0
+        "history_max": 16288.0,
+        "premium_peak": 16288.0
       },
       "Cleopatra Luxury Resort (Makadi Bay)": {
         "history_max": 19354.0,
@@ -561,8 +613,8 @@
         "premium_peak": 19857.0
       },
       "Xperience Kiroseiz Premier": {
-        "history_max": 10963.0,
-        "premium_peak": 10963.0
+        "history_max": 11338.0,
+        "premium_peak": 11338.0
       },
       "Concorde El Salam Front Area": {
         "history_max": 14134.0,
@@ -577,8 +629,8 @@
         "premium_peak": 15047.0
       },
       "Amarina Sun Resort & Aqua Park (ex. Raouf Sun International Aqua Park & SPA)": {
-        "history_max": 10847.0,
-        "premium_peak": 10847.0
+        "history_max": 18246.0,
+        "premium_peak": 18246.0
       },
       "Creek Hotel and Residences": {
         "history_max": 12586.0,
@@ -605,12 +657,12 @@
         "premium_peak": 13113.0
       },
       "Charmillion Club Resort": {
-        "history_max": 16662.0,
-        "premium_peak": 16662.0
+        "history_max": 17267.0,
+        "premium_peak": 17267.0
       },
       "Cardina Resort by Sunrise": {
-        "history_max": 13857.0,
-        "premium_peak": 13857.0
+        "history_max": 19257.0,
+        "premium_peak": 19257.0
       },
       "Baron Palace Resort (Sahl Hasheesh)": {
         "history_max": 19877.0,
