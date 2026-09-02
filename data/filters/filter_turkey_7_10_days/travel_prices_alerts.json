@@ -2704,10 +2704,62 @@
       "created_at": "2026-09-02T05:22:38.290016+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Queens Park Le Jardin Resort_2026-09-02_05-21_comeback_10.3"
+    },
+    {
+      "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 4410.0,
+      "new_price": 4977.0,
+      "price_change": 567.0,
+      "price_change_pct": 12.857142857142856,
+      "timestamp": "2026-09-02 05:58:46.381124+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T06:00:05.173826+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-09-02_05-58_+12.9"
+    },
+    {
+      "hotel_name": "Ma Biche Kemer by Werde Hotels",
+      "duration_bucket": "",
+      "old_price": 9864.0,
+      "new_price": 10256.0,
+      "price_change": 392.0,
+      "price_change_pct": 3.9740470397404706,
+      "timestamp": "2026-09-02 05:58:46.381124+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T06:00:05.173927+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ma Biche Kemer by Werde Hotels_2026-09-02_05-58_zone_out_+4.0"
+    },
+    {
+      "hotel_name": "Mandarin Resort (Bodrum) Turcja, Bodrum",
+      "duration_bucket": "",
+      "old_price": 7276.0,
+      "new_price": 7276.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:58:46.381124+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T06:00:05.173941+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mandarin Resort (Bodrum) Turcja, Bodrum_2026-09-02_05-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "",
+      "old_price": 7702.0,
+      "new_price": 7702.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:58:46.381124+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T06:00:05.173950+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa_2026-09-02_05-58_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T05:21:42.275493+00:00",
+    "last_processed_run": "2026-09-02T05:58:46.381124+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10924.0,
@@ -2850,8 +2902,8 @@
         "premium_peak": null
       },
       "Kremlin Palace": {
-        "history_max": 10053.0,
-        "premium_peak": 10053.0
+        "history_max": 10620.0,
+        "premium_peak": 10620.0
       },
       "Side Crown Serenity Turcja, Side, Colakli": {
         "history_max": 7357.0,
@@ -3114,7 +3166,7 @@
         "premium_peak": 10868.0
       },
       "First Class Turcja, Alanya, Mahmutlar": {
-        "history_max": 4536.0,
+        "history_max": 4977.0,
         "premium_peak": null
       },
       "Crystal Prestige Pearl Collection": {
@@ -3230,7 +3282,7 @@
         "premium_peak": 10062.0
       },
       "Primasol Hane Family Resort": {
-        "history_max": 9225.0,
+        "history_max": 9315.0,
         "premium_peak": null
       },
       "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar": {
@@ -3614,8 +3666,8 @@
         "premium_peak": null
       },
       "Villa Side Residence": {
-        "history_max": 10503.0,
-        "premium_peak": 10503.0
+        "history_max": 10652.0,
+        "premium_peak": 10652.0
       },
       "Wyndham Residences Kusadasi Golf & Spa (ex. Kusadasi Golf & Spa Resort) Turcja, Kusadasi": {
         "history_max": 6782.0,

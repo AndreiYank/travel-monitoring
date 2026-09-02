@@ -741,10 +741,49 @@
       "created_at": "2026-09-02T01:10:12.649182+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Mira Meridia Beach Resort_2026-09-02_01-09_comeback_23.5"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 6170.0,
+      "new_price": 6908.0,
+      "price_change": 738.0,
+      "price_change_pct": 11.961102106969205,
+      "timestamp": "2026-09-02 05:58:57.713241+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T05:59:55.389362+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-02_05-58_+12.0"
+    },
+    {
+      "hotel_name": "Asteria Collection Side",
+      "duration_bucket": "",
+      "old_price": 12879.0,
+      "new_price": 9657.0,
+      "price_change": -3222.0,
+      "price_change_pct": -25.01747030048917,
+      "timestamp": "2026-09-02 05:58:57.713241+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T05:59:55.389406+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Collection Side_2026-09-02_05-58_comeback_25.0"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 11804.0,
+      "new_price": 9590.0,
+      "price_change": -2214.0,
+      "price_change_pct": -18.756353778380213,
+      "timestamp": "2026-09-02 05:58:57.713241+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T05:59:55.389423+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-09-02_05-58_comeback_18.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T05:21:53.234268+00:00",
+    "last_processed_run": "2026-09-02T05:58:57.713241+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -2003,8 +2042,8 @@
         "premium_peak": 19353.0
       },
       "Selectum Luxury Resort": {
-        "history_max": 18266.0,
-        "premium_peak": 18266.0
+        "history_max": 18990.0,
+        "premium_peak": 18990.0
       },
       "Samara (Bodrum)": {
         "history_max": 19382.0,
