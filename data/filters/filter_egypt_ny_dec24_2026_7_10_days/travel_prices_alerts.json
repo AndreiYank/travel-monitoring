@@ -533,10 +533,62 @@
       "created_at": "2026-09-01T22:43:23.578063+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Safir Dahab Resort_2026-09-01_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8973.0,
+      "new_price": 7173.0,
+      "price_change": -1800.0,
+      "price_change_pct": -20.060180541624874,
+      "timestamp": "2026-09-02 01:08:53.301879+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T01:09:10.855178+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-09-02_01-08_-20.1"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8867.0,
+      "new_price": 8007.0,
+      "price_change": -860.0,
+      "price_change_pct": -9.698883500620276,
+      "timestamp": "2026-09-02 01:08:53.301879+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T01:09:10.855207+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-09-02_01-08_-9.7"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 9880.0,
+      "new_price": 8127.0,
+      "price_change": -1753.0,
+      "price_change_pct": -17.742914979757085,
+      "timestamp": "2026-09-02 01:08:53.301879+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T01:09:10.855218+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-09-02_01-08_-17.7"
+    },
+    {
+      "hotel_name": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 10127.0,
+      "new_price": 9267.0,
+      "price_change": -860.0,
+      "price_change_pct": -8.492149698824923,
+      "timestamp": "2026-09-02 01:08:53.301879+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T01:09:10.855227+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada_2026-09-02_01-08_-8.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T22:43:06.271657+00:00",
+    "last_processed_run": "2026-09-02T01:08:53.301879+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -732,6 +784,14 @@
       },
       "Jaz Solaya (ex Sol Y Mar Solaya) Egipt, Marsa Alam": {
         "history_max": 10538.0,
+        "premium_peak": null
+      },
+      "Marriott Hurghada Beach Resort": {
+        "history_max": 10789.0,
+        "premium_peak": null
+      },
+      "Palm Royale Soma Bay": {
+        "history_max": 10781.0,
         "premium_peak": null
       }
     }

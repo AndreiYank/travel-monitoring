@@ -689,10 +689,62 @@
       "created_at": "2026-09-01T22:44:09.933842+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Eftalia Village_2026-09-01_22-43_zone_out_+4.1"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 9073.0,
+      "new_price": 8181.0,
+      "price_change": -892.0,
+      "price_change_pct": -9.831367794555273,
+      "timestamp": "2026-09-02 01:09:11.054976+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T01:10:12.649101+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-09-02_01-09_-9.8"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 9815.0,
+      "new_price": 10062.0,
+      "price_change": 247.0,
+      "price_change_pct": 2.5165562913907285,
+      "timestamp": "2026-09-02 01:09:11.054976+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T01:10:12.649142+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-09-02_01-09_zone_out_+2.5"
+    },
+    {
+      "hotel_name": "Signature Blue Resort (ex. Grand Ozcelik)",
+      "duration_bucket": "",
+      "old_price": 11505.0,
+      "new_price": 9717.0,
+      "price_change": -1788.0,
+      "price_change_pct": -15.541069100391134,
+      "timestamp": "2026-09-02 01:09:11.054976+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T01:10:12.649170+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Signature Blue Resort (ex. Grand Ozcelik)_2026-09-02_01-09_comeback_15.5"
+    },
+    {
+      "hotel_name": "Mira Meridia Beach Resort",
+      "duration_bucket": "",
+      "old_price": 12469.0,
+      "new_price": 9533.0,
+      "price_change": -2936.0,
+      "price_change_pct": -23.546395059748175,
+      "timestamp": "2026-09-02 01:09:11.054976+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T01:10:12.649182+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Mira Meridia Beach Resort_2026-09-02_01-09_comeback_23.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T22:43:22.658116+00:00",
+    "last_processed_run": "2026-09-02T01:09:11.054976+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -823,8 +875,8 @@
         "premium_peak": 12054.0
       },
       "Ozkaymak Incekum": {
-        "history_max": 10841.0,
-        "premium_peak": 10841.0
+        "history_max": 11309.0,
+        "premium_peak": 11309.0
       },
       "Ozkaymak Falez": {
         "history_max": 11357.0,
@@ -1219,8 +1271,8 @@
         "premium_peak": 16641.0
       },
       "Side Star Resort (ex Club)": {
-        "history_max": 14666.0,
-        "premium_peak": 14666.0
+        "history_max": 14976.0,
+        "premium_peak": 14976.0
       },
       "Side Star Elegance (ex. Asteria)": {
         "history_max": 17465.0,
@@ -1311,8 +1363,8 @@
         "premium_peak": 16205.0
       },
       "Utopia World": {
-        "history_max": 12213.0,
-        "premium_peak": 12213.0
+        "history_max": 12519.0,
+        "premium_peak": 12519.0
       },
       "Utopia Resort & Residence (ex Alara Park)": {
         "history_max": 11981.0,
@@ -1363,8 +1415,8 @@
         "premium_peak": 16815.0
       },
       "Side Aluna": {
-        "history_max": 11858.0,
-        "premium_peak": 11858.0
+        "history_max": 16218.0,
+        "premium_peak": 16218.0
       },
       "Siam Elegance": {
         "history_max": 13190.0,
@@ -1495,8 +1547,8 @@
         "premium_peak": 12388.0
       },
       "Serenity Queen": {
-        "history_max": 15257.0,
-        "premium_peak": 15257.0
+        "history_max": 15323.0,
+        "premium_peak": 15323.0
       },
       "Sentido Trendy Verbena Beach (ex. Trendy Verbena Beach)": {
         "history_max": 16376.0,
@@ -1535,8 +1587,8 @@
         "premium_peak": 10636.0
       },
       "Seher Resort & Spa": {
-        "history_max": 11063.0,
-        "premium_peak": 11063.0
+        "history_max": 11213.0,
+        "premium_peak": 11213.0
       },
       "Seamelia Beach Resort & Spa": {
         "history_max": 17145.0,
@@ -1655,8 +1707,8 @@
         "premium_peak": 10188.0
       },
       "Beks Premium Resort & Spa": {
-        "history_max": 16540.0,
-        "premium_peak": 16540.0
+        "history_max": 18270.0,
+        "premium_peak": 18270.0
       },
       "Club Side Coast": {
         "history_max": 8770.0,
@@ -2017,6 +2069,34 @@
       "Seaden Quality Resort & Spa": {
         "history_max": 19212.0,
         "premium_peak": 19212.0
+      },
+      "Papillon Belvil Club": {
+        "history_max": 18778.0,
+        "premium_peak": 18778.0
+      },
+      "Bosphorus Sorgun": {
+        "history_max": 15795.0,
+        "premium_peak": 15795.0
+      },
+      "Royal Dragon": {
+        "history_max": 19230.0,
+        "premium_peak": 19230.0
+      },
+      "Rubi Platinum Sign": {
+        "history_max": 16578.0,
+        "premium_peak": 16578.0
+      },
+      "Transatlantik (Kemer)": {
+        "history_max": 11048.0,
+        "premium_peak": 11048.0
+      },
+      "Eftalia Blue": {
+        "history_max": 12742.0,
+        "premium_peak": 12742.0
+      },
+      "Eftalia Ocean (Alanya)": {
+        "history_max": 11439.0,
+        "premium_peak": 11439.0
       }
     }
   }

@@ -390,10 +390,49 @@
       "created_at": "2026-09-01T22:44:49.258305+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-09-01_22-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria",
+      "duration_bucket": "",
+      "old_price": 7729.0,
+      "new_price": 8796.0,
+      "price_change": 1067.0,
+      "price_change_pct": 13.80514943718463,
+      "timestamp": "2026-09-02 01:10:02.154011+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T01:10:50.930214+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-09-02_01-10_+13.8"
+    },
+    {
+      "hotel_name": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 9191.0,
+      "new_price": 10223.0,
+      "price_change": 1032.0,
+      "price_change_pct": 11.228375584811229,
+      "timestamp": "2026-09-02 01:10:02.154011+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T01:10:50.930250+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios_2026-09-02_01-10_zone_out_+11.2"
+    },
+    {
+      "hotel_name": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia",
+      "duration_bucket": "",
+      "old_price": 9257.0,
+      "new_price": 10057.0,
+      "price_change": 800.0,
+      "price_change_pct": 8.642108674516583,
+      "timestamp": "2026-09-02 01:10:02.154011+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T01:10:50.930262+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia_2026-09-02_01-10_zone_out_+8.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-01T22:44:04.617724+00:00",
+    "last_processed_run": "2026-09-02T01:10:02.154011+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -432,8 +471,8 @@
         "premium_peak": 11435.0
       },
       "Knossos Beach": {
-        "history_max": 17028.0,
-        "premium_peak": 17028.0
+        "history_max": 17145.0,
+        "premium_peak": 17145.0
       },
       "Kouros Palace": {
         "history_max": 13897.0,
@@ -504,15 +543,15 @@
         "premium_peak": null
       },
       "Elios Hill": {
-        "history_max": 12457.0,
-        "premium_peak": 12457.0
+        "history_max": 13057.0,
+        "premium_peak": 13057.0
       },
       "Enorme Santanna Island": {
         "history_max": 17145.0,
         "premium_peak": 17145.0
       },
       "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria": {
-        "history_max": 8621.0,
+        "history_max": 8796.0,
         "premium_peak": null
       },
       "Euphoria Resort": {
@@ -540,7 +579,7 @@
         "premium_peak": null
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
-        "history_max": 9680.0,
+        "history_max": 9728.0,
         "premium_peak": null
       },
       "Georgioupolis Resort & Aqua Park": {
@@ -668,8 +707,8 @@
         "premium_peak": 14926.0
       },
       "Rocrita Lifestyle Resort (ex. Aldiana Kreta)": {
-        "history_max": 15257.0,
-        "premium_peak": 15257.0
+        "history_max": 15657.0,
+        "premium_peak": 15657.0
       },
       "Rethymno Palace": {
         "history_max": 13376.0,
@@ -708,8 +747,8 @@
         "premium_peak": 11929.0
       },
       "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia": {
-        "history_max": 9857.0,
-        "premium_peak": null
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
       },
       "Pegasos Beach (Faliraki)": {
         "history_max": 13057.0,
@@ -800,8 +839,8 @@
         "premium_peak": 14257.0
       },
       "Arina Beach Resort (ex Aquis Arina Sand)": {
-        "history_max": 17112.0,
-        "premium_peak": 17112.0
+        "history_max": 18327.0,
+        "premium_peak": 18327.0
       },
       "Blue Marine Resort & SPA": {
         "history_max": 16519.0,
@@ -852,8 +891,8 @@
         "premium_peak": 14463.0
       },
       "Akasha Beach (ex Armava)": {
-        "history_max": 16625.0,
-        "premium_peak": 16625.0
+        "history_max": 17441.0,
+        "premium_peak": 17441.0
       },
       "Amus": {
         "history_max": 18656.0,
@@ -974,6 +1013,30 @@
       "Serita Beach Grecja, Kreta Wschodnia, Anissaras": {
         "history_max": 10946.0,
         "premium_peak": 10946.0
+      },
+      "Zeus Eleva Ajul (Ayios Nikolaos)": {
+        "history_max": 10833.0,
+        "premium_peak": 10833.0
+      },
+      "Mitsis Faliraki": {
+        "history_max": 15813.0,
+        "premium_peak": 15813.0
+      },
+      "Levante Beach Resort By Playitas Grecja, Rodos, Afandu": {
+        "history_max": 10444.0,
+        "premium_peak": 10444.0
+      },
+      "Aquila Porto Rethymno": {
+        "history_max": 17035.0,
+        "premium_peak": 17035.0
+      },
+      "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara": {
+        "history_max": 10250.0,
+        "premium_peak": 10250.0
+      },
+      "Porto Platanias Beach (Chania)": {
+        "history_max": 13097.0,
+        "premium_peak": 13097.0
       }
     }
   }
