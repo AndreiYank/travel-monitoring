@@ -1937,10 +1937,101 @@
       "created_at": "2026-09-02T05:21:20.361213+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Jaz Mirabel Beach Resort_2026-09-02_05-20_zone_out_+20.8"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9540.0,
+      "new_price": 8168.0,
+      "price_change": -1372.0,
+      "price_change_pct": -14.381551362683437,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T08:41:42.298274+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-09-02_08-40_-14.4"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 6822.0,
+      "new_price": 5909.0,
+      "price_change": -913.0,
+      "price_change_pct": -13.3831720902961,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T08:41:42.298301+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort)_2026-09-02_08-40_-13.4"
+    },
+    {
+      "hotel_name": "Dreams Vacation Sharm Resort",
+      "duration_bucket": "",
+      "old_price": 8017.0,
+      "new_price": 9417.0,
+      "price_change": 1400.0,
+      "price_change_pct": 17.462891355868777,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T08:41:42.298315+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Sharm Resort_2026-09-02_08-40_+17.5"
+    },
+    {
+      "hotel_name": "Monte Carlo Resort Spa",
+      "duration_bucket": "",
+      "old_price": 8257.0,
+      "new_price": 9065.0,
+      "price_change": 808.0,
+      "price_change_pct": 9.785636429696016,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T08:41:42.298324+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Monte Carlo Resort Spa_2026-09-02_08-40_+9.8"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 7727.0,
+      "new_price": 9059.0,
+      "price_change": 1332.0,
+      "price_change_pct": 17.23825546784004,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T08:41:42.298334+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-09-02_08-40_+17.2"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 7362.0,
+      "new_price": 6489.0,
+      "price_change": -873.0,
+      "price_change_pct": -11.858190709046456,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T08:41:42.298343+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort_2026-09-02_08-40_-11.9"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort (Makadi Bay)",
+      "duration_bucket": "",
+      "old_price": 11213.0,
+      "new_price": 9640.0,
+      "price_change": -1573.0,
+      "price_change_pct": -14.028359939356106,
+      "timestamp": "2026-09-02 08:40:54.497376+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T08:41:42.298391+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort (Makadi Bay)_2026-09-02_08-40_comeback_14.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T05:57:39.512158+00:00",
+    "last_processed_run": "2026-09-02T08:40:54.497376+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -1959,8 +2050,8 @@
         "premium_peak": null
       },
       "Iberotel Makadi Beach": {
-        "history_max": 11358.0,
-        "premium_peak": 11358.0
+        "history_max": 11619.0,
+        "premium_peak": 11619.0
       },
       "Rixos Radamis Sharm El Sheikh": {
         "history_max": 12869.0,
@@ -2147,8 +2238,8 @@
         "premium_peak": null
       },
       "Sea Star Beau Rivage": {
-        "history_max": 11595.0,
-        "premium_peak": 11595.0
+        "history_max": 12294.0,
+        "premium_peak": 12294.0
       },
       "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
         "history_max": 10171.0,
@@ -2191,7 +2282,7 @@
         "premium_peak": 10163.0
       },
       "Monte Carlo Resort Spa": {
-        "history_max": 8657.0,
+        "history_max": 9065.0,
         "premium_peak": null
       },
       "Pickalbatros Luxury Suites": {
@@ -2239,7 +2330,7 @@
         "premium_peak": 19027.0
       },
       "Novotel Marsa Alam": {
-        "history_max": 8172.0,
+        "history_max": 8597.0,
         "premium_peak": null
       },
       "Pickalbatros Aqua Park Resort (Sharm El Sheikh)": {
@@ -2335,7 +2426,7 @@
         "premium_peak": null
       },
       "Jaz Palmariva Beach": {
-        "history_max": 7727.0,
+        "history_max": 9059.0,
         "premium_peak": null
       },
       "Premier Le Reve & Spa": {
@@ -2579,15 +2670,15 @@
         "premium_peak": null
       },
       "Three Corners Fayrouz Plaza Beach Resort": {
-        "history_max": 11215.0,
-        "premium_peak": 11215.0
+        "history_max": 12637.0,
+        "premium_peak": 12637.0
       },
       "Azur One Eleven": {
         "history_max": 10014.0,
         "premium_peak": 10014.0
       },
       "Amarina Queen Resort": {
-        "history_max": 9058.0,
+        "history_max": 9090.0,
         "premium_peak": null
       },
       "Concorde El Salam Front Area": {
@@ -2715,7 +2806,7 @@
         "premium_peak": null
       },
       "Dreams Vacation Sharm Resort": {
-        "history_max": 9147.0,
+        "history_max": 9417.0,
         "premium_peak": null
       },
       "Sentido Reef Oasis Senses Resort": {
