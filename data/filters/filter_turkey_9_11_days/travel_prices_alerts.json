@@ -793,10 +793,36 @@
       "created_at": "2026-09-02T08:43:27.688772+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Cenger Beach Resort (Side)_2026-09-02_08-42_+13.2"
+    },
+    {
+      "hotel_name": "Xafira Deluxe Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7911.0,
+      "new_price": 8935.0,
+      "price_change": 1024.0,
+      "price_change_pct": 12.944002022500317,
+      "timestamp": "2026-09-02 11:32:40.327144+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T11:34:15.257727+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xafira Deluxe Resort & Spa_2026-09-02_11-32_+12.9"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 10300.0,
+      "new_price": 9298.0,
+      "price_change": -1002.0,
+      "price_change_pct": -9.728155339805825,
+      "timestamp": "2026-09-02 11:32:40.327144+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T11:34:15.257781+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-09-02_11-32_comeback_9.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T08:42:17.512280+00:00",
+    "last_processed_run": "2026-09-02T11:32:40.327144+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1811,8 +1837,8 @@
         "premium_peak": null
       },
       "Aydinbey Queens Palace & Spa": {
-        "history_max": 10422.0,
-        "premium_peak": 10422.0
+        "history_max": 10535.0,
+        "premium_peak": 10535.0
       },
       "Armas Kaplan Paradise": {
         "history_max": 10728.0,

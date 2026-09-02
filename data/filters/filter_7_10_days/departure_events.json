@@ -48341,6 +48341,26 @@
       "hot_score": 96.0
     },
     {
+      "event_time": "2026-09-02T11:31:03+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-09-05|2026-09-12|7|Warszawa|2+1",
+      "event_type": "late_deal_window",
+      "severity": "high",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-09-05",
+      "return_date": "2026-09-12",
+      "nights": 7.0,
+      "days_to_departure": 3.0,
+      "old_min_price": "",
+      "new_min_price": 7304.0,
+      "min_drop_pct": 0.0,
+      "p10_drop_pct": 0.0,
+      "median_drop_pct": 0.0,
+      "hotel_count": 5.0,
+      "hotel_delta": 1,
+      "hot_score": 100.0
+    },
+    {
       "event_time": "2026-08-19T19:21:41+0000",
       "departure_key": "egipt|sharm-el-sheikh|2026-09-06|2026-09-13|7|Warszawa - Modlin|2+1",
       "event_type": "mass_price_drop",
@@ -48838,6 +48858,26 @@
       "median_drop_pct": -12.6,
       "hotel_count": 48.0,
       "hotel_delta": 11,
+      "hot_score": 0.0
+    },
+    {
+      "event_time": "2026-09-02T11:31:03+0000",
+      "departure_key": "egipt|sharm-el-sheikh|2026-09-20|2026-09-27|7|Warszawa|2+1",
+      "event_type": "mass_price_drop",
+      "severity": "medium",
+      "country": "egipt",
+      "region": "sharm-el-sheikh",
+      "departure_date": "2026-09-20",
+      "return_date": "2026-09-27",
+      "nights": 7.0,
+      "days_to_departure": 18.0,
+      "old_min_price": "",
+      "new_min_price": 6870.0,
+      "min_drop_pct": -12.58,
+      "p10_drop_pct": -10.01,
+      "median_drop_pct": -7.35,
+      "hotel_count": 40.0,
+      "hotel_delta": 3,
       "hot_score": 0.0
     }
   ]
