@@ -819,10 +819,114 @@
       "created_at": "2026-09-02T11:34:15.257781+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Side_2026-09-02_11-32_comeback_9.7"
+    },
+    {
+      "hotel_name": "Drita Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9293.0,
+      "new_price": 8343.0,
+      "price_change": -950.0,
+      "price_change_pct": -10.222748305175939,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T16:24:03.115191+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Drita Resort & Spa_2026-09-02_16-22_-10.2"
+    },
+    {
+      "hotel_name": "Nova Life",
+      "duration_bucket": "",
+      "old_price": 9371.0,
+      "new_price": 8568.0,
+      "price_change": -803.0,
+      "price_change_pct": -8.568989435492478,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T16:24:03.115218+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life_2026-09-02_16-22_-8.6"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 6908.0,
+      "new_price": 5900.0,
+      "price_change": -1008.0,
+      "price_change_pct": -14.59177764910249,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T16:24:03.115229+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-02_16-22_-14.6"
+    },
+    {
+      "hotel_name": "Prestige Alanya",
+      "duration_bucket": "",
+      "old_price": 7587.0,
+      "new_price": 6836.0,
+      "price_change": -751.0,
+      "price_change_pct": -9.898510610254382,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T16:24:03.115237+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Prestige Alanya_2026-09-02_16-22_-9.9"
+    },
+    {
+      "hotel_name": "Raxeria (Side)",
+      "duration_bucket": "",
+      "old_price": 10809.0,
+      "new_price": 9599.0,
+      "price_change": -1210.0,
+      "price_change_pct": -11.194375057822185,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T16:24:03.115266+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raxeria (Side)_2026-09-02_16-22_comeback_11.2"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "",
+      "old_price": 10728.0,
+      "new_price": 9518.0,
+      "price_change": -1210.0,
+      "price_change_pct": -11.278896346010441,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T16:24:03.115278+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort_2026-09-02_16-22_comeback_11.3"
+    },
+    {
+      "hotel_name": "Tusan Beach Resort",
+      "duration_bucket": "",
+      "old_price": 11935.0,
+      "new_price": 9267.0,
+      "price_change": -2668.0,
+      "price_change_pct": -22.354419773774612,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T16:24:03.115286+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tusan Beach Resort_2026-09-02_16-22_comeback_22.4"
+    },
+    {
+      "hotel_name": "Armas Pemar Beach Resort",
+      "duration_bucket": "",
+      "old_price": 13154.0,
+      "new_price": 9887.0,
+      "price_change": -3267.0,
+      "price_change_pct": -24.836551619279305,
+      "timestamp": "2026-09-02 16:22:59.222931+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-02T16:24:03.115294+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Pemar Beach Resort_2026-09-02_16-22_comeback_24.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T11:32:40.327144+00:00",
+    "last_processed_run": "2026-09-02T16:22:59.222931+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1149,8 +1253,8 @@
         "premium_peak": 15183.0
       },
       "Fantasia De Luxe Kusadasi": {
-        "history_max": 13968.0,
-        "premium_peak": 13968.0
+        "history_max": 14980.0,
+        "premium_peak": 14980.0
       },
       "Kirbiyik Resort (ex. Dinler)": {
         "history_max": 8520.0,
@@ -1173,8 +1277,8 @@
         "premium_peak": 13270.0
       },
       "Kamelya Selin": {
-        "history_max": 16921.0,
-        "premium_peak": 16921.0
+        "history_max": 17259.0,
+        "premium_peak": 17259.0
       },
       "Kamelya Aishen Club (ex. Kamelya Aishen K Club)": {
         "history_max": 14906.0,
@@ -1517,8 +1621,8 @@
         "premium_peak": 12227.0
       },
       "Richmond Ephesus": {
-        "history_max": 14284.0,
-        "premium_peak": 14284.0
+        "history_max": 18660.0,
+        "premium_peak": 18660.0
       },
       "Raymar Resort & Aqua": {
         "history_max": 10447.0,

@@ -715,10 +715,62 @@
       "created_at": "2026-09-02T11:32:39.393453+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna_2026-09-02_11-32_zone_out_gone"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 10507.0,
+      "new_price": 10507.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:22:40.760082+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:23:00.927755+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib_2026-09-02_16-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Creek Hotel and Residences",
+      "duration_bucket": "",
+      "old_price": 10990.0,
+      "new_price": 10990.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:22:40.760082+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:23:00.927778+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel and Residences_2026-09-02_16-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa",
+      "duration_bucket": "",
+      "old_price": 10751.0,
+      "new_price": 10751.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:22:40.760082+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:23:00.927786+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa_2026-09-02_16-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sentido Oriental Dream Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9695.0,
+      "new_price": 9695.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:22:40.760082+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:23:00.927792+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Oriental Dream Resort Egipt, Marsa Alam_2026-09-02_16-22_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T11:32:16.016573+00:00",
+    "last_processed_run": "2026-09-02T16:22:40.760082+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -938,6 +990,14 @@
       },
       "Domina Coral Bay Harem": {
         "history_max": 10856.0,
+        "premium_peak": null
+      },
+      "Amarina Jannah Resort Aquapark": {
+        "history_max": 10507.0,
+        "premium_peak": null
+      },
+      "Royal Regency Club": {
+        "history_max": 10974.0,
         "premium_peak": null
       }
     }

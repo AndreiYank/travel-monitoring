@@ -1352,10 +1352,101 @@
       "created_at": "2026-09-02T11:31:58.026239+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Pickalbatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort)_2026-09-02_11-31_zone_out_gone"
+    },
+    {
+      "hotel_name": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)",
+      "duration_bucket": "",
+      "old_price": 7831.0,
+      "new_price": 8659.0,
+      "price_change": 828.0,
+      "price_change_pct": 10.5733622781254,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T16:22:24.831993+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)_2026-09-02_16-21_+10.6"
+    },
+    {
+      "hotel_name": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya",
+      "duration_bucket": "",
+      "old_price": 6337.0,
+      "new_price": 5734.0,
+      "price_change": -603.0,
+      "price_change_pct": -9.515543632633738,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T16:22:24.832021+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Grand Marsa (ex Resta Grand Resort) Egipt, Marsa Alam, Madinat Coraya_2026-09-02_16-21_-9.5"
+    },
+    {
+      "hotel_name": "Tropitel Sahl Hasheesh",
+      "duration_bucket": "",
+      "old_price": 9534.0,
+      "new_price": 10320.0,
+      "price_change": 786.0,
+      "price_change_pct": 8.244178728760227,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T16:22:24.832037+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Tropitel Sahl Hasheesh_2026-09-02_16-21_+8.2"
+    },
+    {
+      "hotel_name": "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib",
+      "duration_bucket": "",
+      "old_price": 6977.0,
+      "new_price": 6977.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:22:24.832068+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Oasis Port Ghalib (ex. Red Sea Port Ghalib Resort) Egipt, Marsa Alam, Port Ghalib_2026-09-02_16-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ecotel Dahab Bay View Resort",
+      "duration_bucket": "",
+      "old_price": 7803.0,
+      "new_price": 7803.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:22:24.832075+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ecotel Dahab Bay View Resort_2026-09-02_16-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 7837.0,
+      "new_price": 7837.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:22:24.832081+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-09-02_16-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 7430.0,
+      "new_price": 7430.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:21:40.262941+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:22:24.832087+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay_2026-09-02_16-21_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T11:31:03.768647+00:00",
+    "last_processed_run": "2026-09-02T16:21:40.262941+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -1466,7 +1557,7 @@
         "premium_peak": null
       },
       "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam": {
-        "history_max": 7817.0,
+        "history_max": 7837.0,
         "premium_peak": null
       },
       "Domina Coral Bay Oasis": {
@@ -1490,7 +1581,7 @@
         "premium_peak": null
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort)": {
-        "history_max": 8589.0,
+        "history_max": 8659.0,
         "premium_peak": null
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon) Egipt, Marsa Alam": {
@@ -1730,7 +1821,7 @@
         "premium_peak": null
       },
       "Old Palace Resort Egipt, Hurghada": {
-        "history_max": 7645.0,
+        "history_max": 7757.0,
         "premium_peak": null
       },
       "Serenity Sky Arc": {
@@ -1870,7 +1961,7 @@
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 10069.0,
+        "history_max": 10320.0,
         "premium_peak": null
       },
       "Cardina Resort by Sunrise": {
@@ -1930,11 +2021,11 @@
         "premium_peak": null
       },
       "Calimera Blend Paradise Egipt, Hurghada": {
-        "history_max": 7565.0,
+        "history_max": 7731.0,
         "premium_peak": null
       },
       "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr": {
-        "history_max": 7097.0,
+        "history_max": 7177.0,
         "premium_peak": null
       },
       "Creek Hotel and Residences": {
@@ -1986,7 +2077,7 @@
         "premium_peak": null
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
-        "history_max": 8887.0,
+        "history_max": 8953.0,
         "premium_peak": null
       },
       "Hilton Marsa Alam Nubian Resort": {
@@ -2062,7 +2153,15 @@
         "premium_peak": null
       },
       "The Cleopatra Luxury Resort Collection Egipt, Sharm El Sheikh, Nabq Bay": {
-        "history_max": 7593.0,
+        "history_max": 7870.0,
+        "premium_peak": null
+      },
+      "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": {
+        "history_max": 9381.0,
+        "premium_peak": null
+      },
+      "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
+        "history_max": 8678.0,
         "premium_peak": null
       }
     }
