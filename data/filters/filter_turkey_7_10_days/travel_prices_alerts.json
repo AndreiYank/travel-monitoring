@@ -3315,10 +3315,49 @@
       "created_at": "2026-09-02T16:23:51.254979+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Dizalya Palm Garden_2026-09-02_16-22_comeback_17.4"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 7476.0,
+      "new_price": 8235.0,
+      "price_change": 759.0,
+      "price_change_pct": 10.152487961476725,
+      "timestamp": "2026-09-02 16:45:16.892265+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T16:46:08.261480+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-09-02_16-45_+10.2"
+    },
+    {
+      "hotel_name": "Castival (ex. La Grande Resort & Spa) Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 7157.0,
+      "new_price": 7157.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:45:16.892265+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:46:08.261566+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Castival (ex. La Grande Resort & Spa) Turcja, Side_2026-09-02_16-45_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler)",
+      "duration_bucket": "",
+      "old_price": 7311.0,
+      "new_price": 7311.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 16:45:16.892265+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T16:46:08.261584+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler)_2026-09-02_16-45_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T16:22:51.378555+00:00",
+    "last_processed_run": "2026-09-02T16:45:16.892265+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10924.0,
@@ -4770,6 +4809,10 @@
       },
       "Castival (ex. La Grande Resort & Spa) Turcja, Side": {
         "history_max": 7157.0,
+        "premium_peak": null
+      },
+      "Kirbiyik Resort (ex. Dinler) Turcja, Alanya, Mahmutlar": {
+        "history_max": 7311.0,
         "premium_peak": null
       }
     }
