@@ -585,10 +585,101 @@
       "created_at": "2026-09-02T01:09:10.855227+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada_2026-09-02_01-08_-8.5"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8127.0,
+      "new_price": 9880.0,
+      "price_change": 1753.0,
+      "price_change_pct": 21.570075058447152,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T05:21:52.783321+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-09-02_05-21_+21.6"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7173.0,
+      "new_price": 9067.0,
+      "price_change": 1894.0,
+      "price_change_pct": 26.404572703192525,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T05:21:52.783354+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-09-02_05-21_+26.4"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8007.0,
+      "new_price": 8887.0,
+      "price_change": 880.0,
+      "price_change_pct": 10.990383414512301,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T05:21:52.783368+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-09-02_05-21_+11.0"
+    },
+    {
+      "hotel_name": "Jaz Sharm Dreams Resort (ex. Sharm Dreams Resort) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 10630.0,
+      "new_price": 10630.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T05:21:52.783383+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Sharm Dreams Resort (ex. Sharm Dreams Resort) Egipt, Sharm El Sheikh_2026-09-02_05-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10789.0,
+      "new_price": 10789.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T05:21:52.783391+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-09-02_05-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Palm Royale Soma Bay",
+      "duration_bucket": "",
+      "old_price": 10781.0,
+      "new_price": 10781.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T05:21:52.783399+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Palm Royale Soma Bay_2026-09-02_05-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xperience Kiroseiz Parkland",
+      "duration_bucket": "",
+      "old_price": 10946.0,
+      "new_price": 10946.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:21:35.191134+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T05:21:52.783406+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Kiroseiz Parkland_2026-09-02_05-21_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T01:08:53.301879+00:00",
+    "last_processed_run": "2026-09-02T05:21:35.191134+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -711,7 +802,7 @@
         "premium_peak": null
       },
       "Concorde Moreen Beach Resort & Spa Egipt, Marsa Alam": {
-        "history_max": 9310.0,
+        "history_max": 9483.0,
         "premium_peak": null
       },
       "Utopia Blue Resort Egipt, Marsa Alam": {
@@ -743,7 +834,7 @@
         "premium_peak": null
       },
       "Xperience Kiroseiz Premier Egipt, Sharm El Sheikh": {
-        "history_max": 10573.0,
+        "history_max": 10717.0,
         "premium_peak": null
       },
       "Albatros Palace Port Ghalib (ex. Red Sea The Palace) Egipt, Marsa Alam, Port Ghalib": {

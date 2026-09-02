@@ -1677,10 +1677,49 @@
       "created_at": "2026-09-02T01:09:00.692077+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hilton Marsa Alam Nubian Resort_2026-09-02_01-08_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 5909.0,
+      "new_price": 6771.0,
+      "price_change": 862.0,
+      "price_change_pct": 14.587916737180572,
+      "timestamp": "2026-09-02 05:21:09.375250+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-02T05:21:41.420834+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada_2026-09-02_05-21_+14.6"
+    },
+    {
+      "hotel_name": "Cleopatra Luxury Resort",
+      "duration_bucket": "",
+      "old_price": 7859.0,
+      "new_price": 7859.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:21:09.375250+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T05:21:41.420900+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cleopatra Luxury Resort_2026-09-02_05-21_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7637.0,
+      "new_price": 7637.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 05:21:09.375250+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T05:21:41.420911+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam_2026-09-02_05-21_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T01:08:29.087908+00:00",
+    "last_processed_run": "2026-09-02T05:21:09.375250+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -1731,7 +1770,7 @@
         "premium_peak": null
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
-        "history_max": 8796.0,
+        "history_max": 8840.0,
         "premium_peak": null
       },
       "Golf Villas And Suites Sharm": {
@@ -1739,7 +1778,7 @@
         "premium_peak": null
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
-        "history_max": 8924.0,
+        "history_max": 8966.0,
         "premium_peak": null
       },
       "Gorgonia Beach": {
@@ -2207,7 +2246,7 @@
         "premium_peak": null
       },
       "Tropitel Sahl Hasheesh": {
-        "history_max": 9828.0,
+        "history_max": 9870.0,
         "premium_peak": null
       },
       "Amarina Queen Resort Egipt, Marsa Alam": {
@@ -2243,7 +2282,7 @@
         "premium_peak": null
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
-        "history_max": 8847.0,
+        "history_max": 8887.0,
         "premium_peak": null
       },
       "Monte Carlo Resort Spa": {
@@ -2500,6 +2539,10 @@
       },
       "Pickalbatros Luxury Suites": {
         "history_max": 10598.0,
+        "premium_peak": null
+      },
+      "The Cleopatra Luxury Resort Collection Egipt, Sharm El Sheikh, Nabq Bay": {
+        "history_max": 7593.0,
         "premium_peak": null
       }
     }
