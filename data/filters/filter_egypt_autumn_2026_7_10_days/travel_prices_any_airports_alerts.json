@@ -2119,10 +2119,75 @@
       "created_at": "2026-09-02T16:22:50.604590+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay_2026-09-02_16-22_zone_out_gone"
+    },
+    {
+      "hotel_name": "V Hotel Sharm",
+      "duration_bucket": "",
+      "old_price": 10333.0,
+      "new_price": 9070.0,
+      "price_change": -1263.0,
+      "price_change_pct": -12.222974934675312,
+      "timestamp": "2026-09-02 19:55:49.540779+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T19:56:24.004464+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "V Hotel Sharm_2026-09-02_19-55_-12.2"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7637.0,
+      "new_price": 5302.0,
+      "price_change": -2335.0,
+      "price_change_pct": -30.574833049626815,
+      "timestamp": "2026-09-02 19:55:49.540779+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-02T19:56:24.004502+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort Egipt, Marsa Alam_2026-09-02_19-55_-30.6"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 7772.0,
+      "new_price": 7772.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 19:55:49.540779+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T19:56:24.004550+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-09-02_19-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 7607.0,
+      "new_price": 7607.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 19:55:49.540779+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T19:56:24.004559+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Villaggio Resort Portofino Egipt, Marsa Alam_2026-09-02_19-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sunrise Diamond Beach Resort Grand Select",
+      "duration_bucket": "",
+      "old_price": 10992.0,
+      "new_price": 10992.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-02 19:55:49.540779+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-02T19:56:24.004566+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sunrise Diamond Beach Resort Grand Select_2026-09-02_19-55_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T16:44:44.510876+00:00",
+    "last_processed_run": "2026-09-02T19:55:49.540779+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -2753,7 +2818,7 @@
         "premium_peak": null
       },
       "Charmillion Garden Aqua Park": {
-        "history_max": 9123.0,
+        "history_max": 9188.0,
         "premium_peak": null
       },
       "Stella Di Mare Beach & Spa": {
@@ -2785,7 +2850,7 @@
         "premium_peak": null
       },
       "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam": {
-        "history_max": 7677.0,
+        "history_max": 7717.0,
         "premium_peak": null
       },
       "Pickalbatros Vita Resort Portofino": {
@@ -2957,7 +3022,11 @@
         "premium_peak": null
       },
       "Swissotel Sharm El Sheikh": {
-        "history_max": 10919.0,
+        "history_max": 10954.0,
+        "premium_peak": null
+      },
+      "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib": {
+        "history_max": 5718.0,
         "premium_peak": null
       }
     }
