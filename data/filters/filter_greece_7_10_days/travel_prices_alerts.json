@@ -702,10 +702,75 @@
       "created_at": "2026-09-03T01:17:22.857693+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-09-03_01-16_comeback_8.2"
+    },
+    {
+      "hotel_name": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria",
+      "duration_bucket": "",
+      "old_price": 8888.0,
+      "new_price": 8142.0,
+      "price_change": -746.0,
+      "price_change_pct": -8.393339333933394,
+      "timestamp": "2026-09-03 11:29:59.450582+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T11:30:48.724520+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eretria Hotel & Spa Resort (ex. Eretria Village) Grecja, Evia, Eretria_2026-09-03_11-29_-8.4"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 7189.0,
+      "new_price": 6489.0,
+      "price_change": -700.0,
+      "price_change_pct": -9.737098344693282,
+      "timestamp": "2026-09-03 11:29:59.450582+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T11:30:48.724542+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-09-03_11-29_-9.7"
+    },
+    {
+      "hotel_name": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 9857.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 11:29:59.450582+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T11:30:48.724553+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Out of the Blue Capsis Elite Resort Grecja, Kreta Wschodnia, Agia Pelagia_2026-09-03_11-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 10645.0,
+      "new_price": 9316.0,
+      "price_change": -1329.0,
+      "price_change_pct": -12.484734617191169,
+      "timestamp": "2026-09-03 11:29:59.450582+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T11:30:48.724570+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-09-03_11-29_comeback_12.5"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 10663.0,
+      "new_price": 9582.0,
+      "price_change": -1081.0,
+      "price_change_pct": -10.13785988933696,
+      "timestamp": "2026-09-03 11:29:59.450582+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T11:30:48.724577+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-09-03_11-29_comeback_10.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T05:59:26.260393+00:00",
+    "last_processed_run": "2026-09-03T11:29:59.450582+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -912,8 +977,8 @@
         "premium_peak": 14443.0
       },
       "Serita Beach": {
-        "history_max": 11748.0,
-        "premium_peak": 11748.0
+        "history_max": 12237.0,
+        "premium_peak": 12237.0
       },
       "Sheraton Rhodes Resort (ex. Imperial)": {
         "history_max": 19658.0,
@@ -1116,8 +1181,8 @@
         "premium_peak": 18327.0
       },
       "Blue Marine Resort & SPA": {
-        "history_max": 16846.0,
-        "premium_peak": 16846.0
+        "history_max": 16979.0,
+        "premium_peak": 16979.0
       },
       "Alia Palace": {
         "history_max": 16947.0,
@@ -1160,8 +1225,8 @@
         "premium_peak": 18384.0
       },
       "Atlantica Caldera Palace Resort & Spa (ex Atlantica Sensatori)": {
-        "history_max": 14677.0,
-        "premium_peak": 14677.0
+        "history_max": 16056.0,
+        "premium_peak": 16056.0
       },
       "Akasha Beach (ex Armava)": {
         "history_max": 17441.0,
@@ -1268,8 +1333,8 @@
         "premium_peak": 10689.0
       },
       "Gaia Palace": {
-        "history_max": 11871.0,
-        "premium_peak": 11871.0
+        "history_max": 11896.0,
+        "premium_peak": 11896.0
       },
       "Valmar Corfu": {
         "history_max": 15025.0,
@@ -1334,6 +1399,10 @@
       "Ibiscus Corfu Grecja, Korfu, Roda": {
         "history_max": 8899.0,
         "premium_peak": null
+      },
+      "Out of the Blue Resort": {
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       }
     }
   }

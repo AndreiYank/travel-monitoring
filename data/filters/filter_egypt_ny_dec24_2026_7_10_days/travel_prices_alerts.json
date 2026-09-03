@@ -1157,10 +1157,88 @@
       "created_at": "2026-09-03T05:09:43.799870+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Palm Royale Soma Bay_2026-09-03_05-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fantazia Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 9211.0,
+      "new_price": 10083.0,
+      "price_change": 872.0,
+      "price_change_pct": 9.466941700141136,
+      "timestamp": "2026-09-03 11:28:58.333459+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T11:29:16.341414+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort Egipt, Marsa Alam_2026-09-03_11-28_+9.5"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 10553.0,
+      "new_price": 10553.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 11:28:58.333459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T11:29:16.341442+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada) Egipt, Hurghada_2026-09-03_11-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 10654.0,
+      "new_price": 10654.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 11:28:58.333459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T11:29:16.341451+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-09-03_11-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 10639.0,
+      "new_price": 10639.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 11:28:58.333459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T11:29:16.341458+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-09-03_11-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Safir Dahab Resort Egipt, Dahab",
+      "duration_bucket": "",
+      "old_price": 10731.0,
+      "new_price": 10731.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 11:28:58.333459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T11:29:16.341464+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort Egipt, Dahab_2026-09-03_11-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Swisstouch Oriental Resort (ex. Hotelux Oriental Coast)",
+      "duration_bucket": "",
+      "old_price": 10835.0,
+      "new_price": 10835.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 11:28:58.333459+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T11:29:16.341470+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Swisstouch Oriental Resort (ex. Hotelux Oriental Coast)_2026-09-03_11-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T05:58:14.748993+00:00",
+    "last_processed_run": "2026-09-03T11:28:58.333459+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -1299,7 +1377,7 @@
         "premium_peak": null
       },
       "Fantazia Resort Egipt, Marsa Alam": {
-        "history_max": 9973.0,
+        "history_max": 10083.0,
         "premium_peak": null
       },
       "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna": {
@@ -1412,6 +1490,18 @@
       },
       "Swisstouch Oriental Resort (ex. Hotelux Oriental Coast)": {
         "history_max": 10835.0,
+        "premium_peak": null
+      },
+      "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay": {
+        "history_max": 9362.0,
+        "premium_peak": null
+      },
+      "Dreams Beach Sharm Resort (Sharm El Sheikh)": {
+        "history_max": 10654.0,
+        "premium_peak": null
+      },
+      "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
+        "history_max": 10553.0,
         "premium_peak": null
       }
     }
