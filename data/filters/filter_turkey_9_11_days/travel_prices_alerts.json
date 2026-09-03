@@ -1196,10 +1196,75 @@
       "created_at": "2026-09-03T16:03:58.549301+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Viking Star_2026-09-03_16-02_comeback_26.5"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 5355.0,
+      "new_price": 5900.0,
+      "price_change": 545.0,
+      "price_change_pct": 10.177404295051353,
+      "timestamp": "2026-09-03 20:00:52.609016+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T20:01:57.698846+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-03_20-00_+10.2"
+    },
+    {
+      "hotel_name": "World Star Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 6975.0,
+      "new_price": 7623.0,
+      "price_change": 648.0,
+      "price_change_pct": 9.290322580645162,
+      "timestamp": "2026-09-03 20:00:52.609016+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T20:01:57.698874+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "World Star Beach Resort & Spa_2026-09-03_20-00_+9.3"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7426.0,
+      "new_price": 6791.0,
+      "price_change": -635.0,
+      "price_change_pct": -8.551036897387556,
+      "timestamp": "2026-09-03 20:00:52.609016+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T20:01:57.698886+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-09-03_20-00_-8.6"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort (Side)",
+      "duration_bucket": "",
+      "old_price": 9246.0,
+      "new_price": 8180.0,
+      "price_change": -1066.0,
+      "price_change_pct": -11.529309971879732,
+      "timestamp": "2026-09-03 20:00:52.609016+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T20:01:57.698899+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort (Side)_2026-09-03_20-00_-11.5"
+    },
+    {
+      "hotel_name": "Orange County Alanya",
+      "duration_bucket": "",
+      "old_price": 9915.0,
+      "new_price": 10133.0,
+      "price_change": 218.0,
+      "price_change_pct": 2.1986888552697934,
+      "timestamp": "2026-09-03 20:00:52.609016+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T20:01:57.698917+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Orange County Alanya_2026-09-03_20-00_zone_out_+2.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T16:36:27.934658+00:00",
+    "last_processed_run": "2026-09-03T20:00:52.609016+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1246,8 +1311,8 @@
         "premium_peak": 14656.0
       },
       "Long Beach (Avsallar)": {
-        "history_max": 14416.0,
-        "premium_peak": 14416.0
+        "history_max": 14441.0,
+        "premium_peak": 14441.0
       },
       "Master Family Club": {
         "history_max": 10017.0,
@@ -1738,8 +1803,8 @@
         "premium_peak": 12810.0
       },
       "Side Premium by OZ Hotels": {
-        "history_max": 13159.0,
-        "premium_peak": 13159.0
+        "history_max": 13532.0,
+        "premium_peak": 13532.0
       },
       "Side Moon Palace": {
         "history_max": 11440.0,
@@ -1802,7 +1867,7 @@
         "premium_peak": 10362.0
       },
       "Victory Resort": {
-        "history_max": 9747.0,
+        "history_max": 9912.0,
         "premium_peak": null
       },
       "Victory Be Mine": {
