@@ -1235,10 +1235,88 @@
       "created_at": "2026-09-03T11:29:16.341470+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Swisstouch Oriental Resort (ex. Hotelux Oriental Coast)_2026-09-03_11-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna",
+      "duration_bucket": "",
+      "old_price": 7996.0,
+      "new_price": 9416.0,
+      "price_change": 1420.0,
+      "price_change_pct": 17.75887943971986,
+      "timestamp": "2026-09-03 16:02:14.555970+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T16:02:38.163576+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna_2026-09-03_16-02_+17.8"
+    },
+    {
+      "hotel_name": "Rewaya Majestic Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8143.0,
+      "new_price": 9147.0,
+      "price_change": 1004.0,
+      "price_change_pct": 12.329608252486798,
+      "timestamp": "2026-09-03 16:02:14.555970+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T16:02:38.163605+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Majestic Resort Egipt, Hurghada_2026-09-03_16-02_+12.3"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 8507.0,
+      "new_price": 9880.0,
+      "price_change": 1373.0,
+      "price_change_pct": 16.139649700246856,
+      "timestamp": "2026-09-03 16:02:14.555970+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T16:02:38.163623+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-09-03_16-02_+16.1"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)",
+      "duration_bucket": "",
+      "old_price": 10553.0,
+      "new_price": 10553.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 16:02:14.555970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:02:38.163640+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)_2026-09-03_16-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 9362.0,
+      "new_price": 9362.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 16:02:14.555970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:02:38.163649+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay_2026-09-03_16-02_zone_out_gone"
+    },
+    {
+      "hotel_name": "Xperience Kiroseiz Parkland",
+      "duration_bucket": "",
+      "old_price": 10616.0,
+      "new_price": 10616.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 16:02:14.555970+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:02:38.163657+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xperience Kiroseiz Parkland_2026-09-03_16-02_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T11:28:58.333459+00:00",
+    "last_processed_run": "2026-09-03T16:02:14.555970+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -1249,7 +1327,7 @@
         "premium_peak": null
       },
       "Hawaii Paradise Aqua Park Resort Egipt, Hurghada": {
-        "history_max": 9524.0,
+        "history_max": 9591.0,
         "premium_peak": null
       },
       "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada": {
@@ -1333,7 +1411,7 @@
         "premium_peak": null
       },
       "Rewaya Majestic Resort Egipt, Hurghada": {
-        "history_max": 9067.0,
+        "history_max": 9147.0,
         "premium_peak": null
       },
       "Gorgonia Beach Egipt, Marsa Alam": {
@@ -1502,6 +1580,14 @@
       },
       "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
         "history_max": 10553.0,
+        "premium_peak": null
+      },
+      "Stella Beach Resort & Spa": {
+        "history_max": 10662.0,
+        "premium_peak": null
+      },
+      "Domina Coral Bay Aquamarine": {
+        "history_max": 10685.0,
         "premium_peak": null
       }
     }

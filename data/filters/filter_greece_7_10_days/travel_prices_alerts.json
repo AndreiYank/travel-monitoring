@@ -767,10 +767,88 @@
       "created_at": "2026-09-03T11:30:48.724577+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-09-03_11-29_comeback_10.1"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6489.0,
+      "new_price": 7438.0,
+      "price_change": 949.0,
+      "price_change_pct": 14.624749576205886,
+      "timestamp": "2026-09-03 16:03:41.158822+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T16:04:26.938254+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-09-03_16-03_+14.6"
+    },
+    {
+      "hotel_name": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes",
+      "duration_bucket": "",
+      "old_price": 6575.0,
+      "new_price": 7480.0,
+      "price_change": 905.0,
+      "price_change_pct": 13.764258555133079,
+      "timestamp": "2026-09-03 16:03:41.158822+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T16:04:26.938286+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes_2026-09-03_16-03_+13.8"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 8930.0,
+      "new_price": 10028.0,
+      "price_change": 1098.0,
+      "price_change_pct": 12.295632698768197,
+      "timestamp": "2026-09-03 16:03:41.158822+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:04:26.938306+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-09-03_16-03_zone_out_+12.3"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 9316.0,
+      "new_price": 9316.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 16:03:41.158822+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:04:26.938316+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-09-03_16-03_zone_out_gone"
+    },
+    {
+      "hotel_name": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki",
+      "duration_bucket": "",
+      "old_price": 7807.0,
+      "new_price": 7807.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 16:03:41.158822+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:04:26.938324+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-09-03_16-03_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 10839.0,
+      "new_price": 9662.0,
+      "price_change": -1177.0,
+      "price_change_pct": -10.858935326137098,
+      "timestamp": "2026-09-03 16:03:41.158822+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T16:04:26.938344+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-09-03_16-03_comeback_10.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T11:29:59.450582+00:00",
+    "last_processed_run": "2026-09-03T16:03:41.158822+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -917,8 +995,8 @@
         "premium_peak": null
       },
       "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina": {
-        "history_max": 9928.0,
-        "premium_peak": null
+        "history_max": 10028.0,
+        "premium_peak": 10028.0
       },
       "Georgioupolis Resort & Aqua Park": {
         "history_max": 17748.0,
@@ -1001,7 +1079,7 @@
         "premium_peak": 10357.0
       },
       "Valis Resort Grecja, Tesalia, Agria": {
-        "history_max": 7189.0,
+        "history_max": 7438.0,
         "premium_peak": null
       },
       "Village Heights Resort": {

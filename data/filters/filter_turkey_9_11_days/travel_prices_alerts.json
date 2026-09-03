@@ -1105,10 +1105,101 @@
       "created_at": "2026-09-03T11:30:09.444860+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Unique Residence Golf Spa_2026-09-03_11-29_comeback_21.8"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 5900.0,
+      "new_price": 5355.0,
+      "price_change": -545.0,
+      "price_change_pct": -9.23728813559322,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T16:03:58.549186+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-03_16-02_-9.2"
+    },
+    {
+      "hotel_name": "World Star Beach Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 7623.0,
+      "new_price": 6975.0,
+      "price_change": -648.0,
+      "price_change_pct": -8.500590318772137,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T16:03:58.549217+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "World Star Beach Resort & Spa_2026-09-03_16-02_-8.5"
+    },
+    {
+      "hotel_name": "Nova Life",
+      "duration_bucket": "",
+      "old_price": 8568.0,
+      "new_price": 9371.0,
+      "price_change": 803.0,
+      "price_change_pct": 9.372082166199814,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T16:03:58.549230+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Nova Life_2026-09-03_16-02_+9.4"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "",
+      "old_price": 9614.0,
+      "new_price": 8645.0,
+      "price_change": -969.0,
+      "price_change_pct": -10.079051383399209,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T16:03:58.549241+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa_2026-09-03_16-02_-10.1"
+    },
+    {
+      "hotel_name": "Ladonia Adakule",
+      "duration_bucket": "",
+      "old_price": 9756.0,
+      "new_price": 10624.0,
+      "price_change": 868.0,
+      "price_change_pct": 8.897088970889708,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:03:58.549266+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ladonia Adakule_2026-09-03_16-02_zone_out_+8.9"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "",
+      "old_price": 9567.0,
+      "new_price": 11435.0,
+      "price_change": 1868.0,
+      "price_change_pct": 19.5254520748406,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T16:03:58.549278+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)_2026-09-03_16-02_zone_out_+19.5"
+    },
+    {
+      "hotel_name": "Viking Star",
+      "duration_bucket": "",
+      "old_price": 13487.0,
+      "new_price": 9918.0,
+      "price_change": -3569.0,
+      "price_change_pct": -26.462519463186773,
+      "timestamp": "2026-09-03 16:02:37.455192+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T16:03:58.549301+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star_2026-09-03_16-02_comeback_26.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T11:29:17.022468+00:00",
+    "last_processed_run": "2026-09-03T16:02:37.455192+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1127,8 +1218,8 @@
         "premium_peak": 14841.0
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
-        "history_max": 10346.0,
-        "premium_peak": 10346.0
+        "history_max": 11435.0,
+        "premium_peak": 11435.0
       },
       "Ma Biche Kemer by Werde Hotels": {
         "history_max": 12861.0,
@@ -1191,8 +1282,8 @@
         "premium_peak": null
       },
       "Ladonia Adakule": {
-        "history_max": 10276.0,
-        "premium_peak": 10276.0
+        "history_max": 10624.0,
+        "premium_peak": 10624.0
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
         "history_max": 10643.0,
@@ -1487,16 +1578,16 @@
         "premium_peak": 12224.0
       },
       "Infinity by Yelken": {
-        "history_max": 13952.0,
-        "premium_peak": 13952.0
+        "history_max": 14352.0,
+        "premium_peak": 14352.0
       },
       "IC Santai Family Resort (Belek)": {
         "history_max": 16452.0,
         "premium_peak": 16452.0
       },
       "Green Bay Resort": {
-        "history_max": 16147.0,
-        "premium_peak": 16147.0
+        "history_max": 16364.0,
+        "premium_peak": 16364.0
       },
       "IC Green Palace": {
         "history_max": 16760.0,
@@ -1919,8 +2010,8 @@
         "premium_peak": 16376.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 11083.0,
-        "premium_peak": 11083.0
+        "history_max": 11208.0,
+        "premium_peak": 11208.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 11757.0,
@@ -1959,8 +2050,8 @@
         "premium_peak": 17145.0
       },
       "Sealight Resort (ex Otium Sealight Beach Resort)": {
-        "history_max": 14345.0,
-        "premium_peak": 14345.0
+        "history_max": 14745.0,
+        "premium_peak": 14745.0
       },
       "Sealife Family Resort": {
         "history_max": 12965.0,
@@ -2191,8 +2282,8 @@
         "premium_peak": 16449.0
       },
       "Casa Fora Beach Resort": {
-        "history_max": 11999.0,
-        "premium_peak": 11999.0
+        "history_max": 12661.0,
+        "premium_peak": 12661.0
       },
       "Arnor De Luxe & SPA": {
         "history_max": 11738.0,
@@ -2207,7 +2298,7 @@
         "premium_peak": 11084.0
       },
       "Campus Hill": {
-        "history_max": 7411.0,
+        "history_max": 7426.0,
         "premium_peak": null
       },
       "Adalya Ocean Deluxe": {
@@ -2239,8 +2330,8 @@
         "premium_peak": 16388.0
       },
       "Adalya Art Side (Ex. Grand Art Side)": {
-        "history_max": 13326.0,
-        "premium_peak": 13326.0
+        "history_max": 13746.0,
+        "premium_peak": 13746.0
       },
       "Calyptus Kirman Premium": {
         "history_max": 14414.0,
@@ -2271,8 +2362,8 @@
         "premium_peak": 11085.0
       },
       "Asteria Bloom Side": {
-        "history_max": 11228.0,
-        "premium_peak": 11228.0
+        "history_max": 11390.0,
+        "premium_peak": 11390.0
       },
       "Amara Comfort Resort Kemer (ex. Loxia Comfort Resort Kemer)": {
         "history_max": 13149.0,
@@ -2489,6 +2580,10 @@
       "Nirvana Dolce Vita (ex. Amara Dolce Vita)": {
         "history_max": 19710.0,
         "premium_peak": 19710.0
+      },
+      "Palm Wings Ephesus": {
+        "history_max": 18399.0,
+        "premium_peak": 18399.0
       }
     }
   }
