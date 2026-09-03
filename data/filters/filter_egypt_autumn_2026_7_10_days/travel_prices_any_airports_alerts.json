@@ -2288,10 +2288,49 @@
       "created_at": "2026-09-02T22:47:11.583018+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sea Star Beau Rivage Egipt, Hurghada_2026-09-02_22-46_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 5607.0,
+      "new_price": 6457.0,
+      "price_change": 850.0,
+      "price_change_pct": 15.159621901194937,
+      "timestamp": "2026-09-03 05:09:00.338931+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T05:09:35.687295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-09-03_05-09_+15.2"
+    },
+    {
+      "hotel_name": "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7697.0,
+      "new_price": 7697.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 05:09:00.338931+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T05:09:35.687364+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Aquamarine (ex. Iberotel Aquamarine) Egipt, Hurghada_2026-09-03_05-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 7704.0,
+      "new_price": 7704.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 05:09:00.338931+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T05:09:35.687375+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-09-03_05-09_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T01:14:28.257600+00:00",
+    "last_processed_run": "2026-09-03T05:09:00.338931+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -2302,7 +2341,7 @@
         "premium_peak": null
       },
       "Rewaya Luxury Resort Egipt, Hurghada": {
-        "history_max": 5607.0,
+        "history_max": 6457.0,
         "premium_peak": null
       },
       "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)": {
