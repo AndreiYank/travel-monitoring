@@ -988,10 +988,62 @@
       "created_at": "2026-09-02T22:48:34.516879+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sultan of Side_2026-09-02_22-47_zone_out_+14.6"
+    },
+    {
+      "hotel_name": "Asteria Collection Side",
+      "duration_bucket": "",
+      "old_price": 9167.0,
+      "new_price": 12879.0,
+      "price_change": 3712.0,
+      "price_change_pct": 40.493072979164396,
+      "timestamp": "2026-09-03 01:15:17.028243+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T01:16:37.508846+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Collection Side_2026-09-03_01-15_zone_out_+40.5"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 9590.0,
+      "new_price": 11804.0,
+      "price_change": 2214.0,
+      "price_change_pct": 23.086548488008344,
+      "timestamp": "2026-09-03 01:15:17.028243+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T01:16:37.508874+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-09-03_01-15_zone_out_+23.1"
+    },
+    {
+      "hotel_name": "Prestige Alanya",
+      "duration_bucket": "",
+      "old_price": 6836.0,
+      "new_price": 10472.0,
+      "price_change": 3636.0,
+      "price_change_pct": 53.188999414862494,
+      "timestamp": "2026-09-03 01:15:17.028243+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T01:16:37.508885+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Prestige Alanya_2026-09-03_01-15_zone_out_+53.2"
+    },
+    {
+      "hotel_name": "Solivia (Ex. Titan Select)",
+      "duration_bucket": "",
+      "old_price": 10404.0,
+      "new_price": 9509.0,
+      "price_change": -895.0,
+      "price_change_pct": -8.60246059207997,
+      "timestamp": "2026-09-03 01:15:17.028243+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T01:16:37.508912+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Solivia (Ex. Titan Select)_2026-09-03_01-15_comeback_8.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T22:47:21.001113+00:00",
+    "last_processed_run": "2026-09-03T01:15:17.028243+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1050,8 +1102,8 @@
         "premium_peak": 15386.0
       },
       "Limak Lara De Luxe": {
-        "history_max": 16074.0,
-        "premium_peak": 16074.0
+        "history_max": 16305.0,
+        "premium_peak": 16305.0
       },
       "Limak Atlantis": {
         "history_max": 17719.0,
@@ -1826,8 +1878,8 @@
         "premium_peak": 15323.0
       },
       "Selectum Colours Side": {
-        "history_max": 13379.0,
-        "premium_peak": 13379.0
+        "history_max": 13689.0,
+        "premium_peak": 13689.0
       },
       "Seher Sun Palace Resort & Spa": {
         "history_max": 10636.0,
@@ -2046,8 +2098,8 @@
         "premium_peak": 13145.0
       },
       "Asteria Family Belek": {
-        "history_max": 16047.0,
-        "premium_peak": 16047.0
+        "history_max": 17186.0,
+        "premium_peak": 17186.0
       },
       "Azura World (ex. Wyndham Alanya)": {
         "history_max": 12582.0,
@@ -2074,8 +2126,8 @@
         "premium_peak": 16449.0
       },
       "Casa Fora Beach Resort": {
-        "history_max": 11574.0,
-        "premium_peak": 11574.0
+        "history_max": 11999.0,
+        "premium_peak": 11999.0
       },
       "Arnor De Luxe & SPA": {
         "history_max": 11738.0,
@@ -2110,8 +2162,8 @@
         "premium_peak": 18145.0
       },
       "Calido Maris": {
-        "history_max": 11164.0,
-        "premium_peak": 11164.0
+        "history_max": 11268.0,
+        "premium_peak": 11268.0
       },
       "Daima Biz (Kemer)": {
         "history_max": 10525.0,
@@ -2322,8 +2374,8 @@
         "premium_peak": 18778.0
       },
       "Bosphorus Sorgun": {
-        "history_max": 15795.0,
-        "premium_peak": 15795.0
+        "history_max": 17267.0,
+        "premium_peak": 17267.0
       },
       "Royal Dragon": {
         "history_max": 19230.0,
@@ -2352,6 +2404,22 @@
       "Side Sunport (ex. Side Sungate)": {
         "history_max": 19918.0,
         "premium_peak": 19918.0
+      },
+      "Juju Premier Palace (ex. Amara Premier Palace)": {
+        "history_max": 16674.0,
+        "premium_peak": 16674.0
+      },
+      "White City Resort": {
+        "history_max": 14287.0,
+        "premium_peak": 14287.0
+      },
+      "Granada Luxury Beach Avsallar": {
+        "history_max": 15738.0,
+        "premium_peak": 15738.0
+      },
+      "Belconti Resort (Belek)": {
+        "history_max": 14454.0,
+        "premium_peak": 14454.0
       }
     }
   }

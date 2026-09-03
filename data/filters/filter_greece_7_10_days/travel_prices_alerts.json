@@ -624,10 +624,88 @@
       "created_at": "2026-09-02T19:58:15.110482+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Rimondi Grand Resort & Spa Grecja, Kreta Zachodnia, Magnisia_2026-09-02_19-57_+10.9"
+    },
+    {
+      "hotel_name": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni",
+      "duration_bucket": "",
+      "old_price": 8293.0,
+      "new_price": 7158.0,
+      "price_change": -1135.0,
+      "price_change_pct": -13.686241408416738,
+      "timestamp": "2026-09-03 01:16:20.417271+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T01:17:22.857593+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xenios Anastasia Resort & Spa (ex. Anastasia Resort & Spa) Grecja, Chalkidiki, Nea Skioni_2026-09-03_01-16_-13.7"
+    },
+    {
+      "hotel_name": "Valis Resort Grecja, Tesalia, Agria",
+      "duration_bucket": "",
+      "old_price": 6189.0,
+      "new_price": 7189.0,
+      "price_change": 1000.0,
+      "price_change_pct": 16.157699143641945,
+      "timestamp": "2026-09-03 01:16:20.417271+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T01:17:22.857623+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Valis Resort Grecja, Tesalia, Agria_2026-09-03_01-16_+16.2"
+    },
+    {
+      "hotel_name": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali",
+      "duration_bucket": "",
+      "old_price": 8896.0,
+      "new_price": 7830.0,
+      "price_change": -1066.0,
+      "price_change_pct": -11.982913669064748,
+      "timestamp": "2026-09-03 01:16:20.417271+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T01:17:22.857638+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Filion Suites Resort Grecja, Kreta Wschodnia, Bali_2026-09-03_01-16_-12.0"
+    },
+    {
+      "hotel_name": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia",
+      "duration_bucket": "",
+      "old_price": 9339.0,
+      "new_price": 7749.0,
+      "price_change": -1590.0,
+      "price_change_pct": -17.025377449405717,
+      "timestamp": "2026-09-03 01:16:20.417271+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-03T01:17:22.857650+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Sermilia Resort (ex. Bomo Cronwell Sermilia) Grecja, Chalkidiki, Psakoudia_2026-09-03_01-16_-17.0"
+    },
+    {
+      "hotel_name": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara",
+      "duration_bucket": "",
+      "old_price": 10334.0,
+      "new_price": 9393.0,
+      "price_change": -941.0,
+      "price_change_pct": -9.105864137797562,
+      "timestamp": "2026-09-03 01:16:20.417271+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T01:17:22.857678+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Apollonia Beach (Ammoudara) Grecja, Kreta Wschodnia, Ammoudara_2026-09-03_01-16_comeback_9.1"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 10420.0,
+      "new_price": 9569.0,
+      "price_change": -851.0,
+      "price_change_pct": -8.166986564299423,
+      "timestamp": "2026-09-03 01:16:20.417271+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T01:17:22.857693+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-09-03_01-16_comeback_8.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-02T22:48:19.711313+00:00",
+    "last_processed_run": "2026-09-03T01:16:20.417271+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -738,8 +816,8 @@
         "premium_peak": null
       },
       "Elios Hill": {
-        "history_max": 13057.0,
-        "premium_peak": 13057.0
+        "history_max": 14057.0,
+        "premium_peak": 14057.0
       },
       "Enorme Santanna Island": {
         "history_max": 17145.0,
@@ -1236,6 +1314,26 @@
       "Pegasos Beach (Faliraki) Grecja, Rodos, Faliraki": {
         "history_max": 10397.0,
         "premium_peak": 10397.0
+      },
+      "Kerkyra Blue N' Spa by Louis (Corfu)": {
+        "history_max": 17802.0,
+        "premium_peak": 17802.0
+      },
+      "Almyra Village": {
+        "history_max": 10257.0,
+        "premium_peak": 10257.0
+      },
+      "Astir Odysseus": {
+        "history_max": 18817.0,
+        "premium_peak": 18817.0
+      },
+      "Nana Golden Beach": {
+        "history_max": 19493.0,
+        "premium_peak": 19493.0
+      },
+      "Ibiscus Corfu Grecja, Korfu, Roda": {
+        "history_max": 8899.0,
+        "premium_peak": null
       }
     }
   }
