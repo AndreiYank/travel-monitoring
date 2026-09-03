@@ -4511,10 +4511,114 @@
       "created_at": "2026-09-03T20:01:45.565689+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Q Premium Resort_2026-09-03_20-00_comeback_17.6"
+    },
+    {
+      "hotel_name": "Cenger Beach Resort Turcja, Side",
+      "duration_bucket": "",
+      "old_price": 6910.0,
+      "new_price": 7487.0,
+      "price_change": 577.0,
+      "price_change_pct": 8.350217076700433,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-03T22:44:48.459203+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cenger Beach Resort Turcja, Side_2026-09-03_22-43_+8.4"
+    },
+    {
+      "hotel_name": "Golden Rock Beach Turcja, Marmaris",
+      "duration_bucket": "",
+      "old_price": 6977.0,
+      "new_price": 6977.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T22:44:48.459263+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Golden Rock Beach Turcja, Marmaris_2026-09-03_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Holiday Garden Resort (Okurcalar)",
+      "duration_bucket": "",
+      "old_price": 7455.0,
+      "new_price": 7455.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T22:44:48.459279+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Holiday Garden Resort (Okurcalar)_2026-09-03_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Miarosa Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 7479.0,
+      "new_price": 7479.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T22:44:48.459290+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Miarosa Beach (Kemer)_2026-09-03_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Sealight Resort (ex Otium Sealight Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 9995.0,
+      "new_price": 10060.0,
+      "price_change": 65.0,
+      "price_change_pct": 0.6503251625812907,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T22:44:48.459303+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealight Resort (ex Otium Sealight Beach Resort)_2026-09-03_22-43_zone_out_+0.7"
+    },
+    {
+      "hotel_name": "Sultan of Side Turcja, Side, Colakli",
+      "duration_bucket": "",
+      "old_price": 7347.0,
+      "new_price": 7347.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-03T22:44:48.459313+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side Turcja, Side, Colakli_2026-09-03_22-43_zone_out_gone"
+    },
+    {
+      "hotel_name": "Golden Rock Beach",
+      "duration_bucket": "",
+      "old_price": 10747.0,
+      "new_price": 9450.0,
+      "price_change": -1297.0,
+      "price_change_pct": -12.068484228156695,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T22:44:48.459341+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Golden Rock Beach_2026-09-03_22-43_comeback_12.1"
+    },
+    {
+      "hotel_name": "Ali Bey Park Manavgat",
+      "duration_bucket": "",
+      "old_price": 11114.0,
+      "new_price": 9982.0,
+      "price_change": -1132.0,
+      "price_change_pct": -10.185351808529783,
+      "timestamp": "2026-09-03 22:43:50.288739+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-03T22:44:48.459368+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ali Bey Park Manavgat_2026-09-03_22-43_comeback_10.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T20:00:44.064484+00:00",
+    "last_processed_run": "2026-09-03T22:43:50.288739+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10924.0,
@@ -5569,8 +5673,8 @@
         "premium_peak": null
       },
       "Antique Roman Palace": {
-        "history_max": 11264.0,
-        "premium_peak": 11264.0
+        "history_max": 11434.0,
+        "premium_peak": 11434.0
       },
       "Castival (ex. La Grande Resort & Spa)": {
         "history_max": 8157.0,
@@ -5745,7 +5849,7 @@
         "premium_peak": 11527.0
       },
       "Cenger Beach Resort Turcja, Side": {
-        "history_max": 7450.0,
+        "history_max": 7487.0,
         "premium_peak": null
       },
       "Garden of Sun Spa & Wellness Turcja, Bodrum, Didim": {
@@ -6006,6 +6110,10 @@
       },
       "Ladonia Adakule": {
         "history_max": 7919.0,
+        "premium_peak": null
+      },
+      "Miarosa Kemer Beach Turcja, Kemer, Kiris": {
+        "history_max": 7479.0,
         "premium_peak": null
       }
     }
