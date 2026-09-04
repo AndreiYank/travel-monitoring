@@ -1417,10 +1417,101 @@
       "created_at": "2026-09-04T06:06:59.873449+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Asteria Family Resort Side_2026-09-04_06-05_comeback_15.6"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 5900.0,
+      "new_price": 7025.0,
+      "price_change": 1125.0,
+      "price_change_pct": 19.06779661016949,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-04T11:33:01.531613+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-04_11-32_+19.1"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 9963.0,
+      "new_price": 10274.0,
+      "price_change": 311.0,
+      "price_change_pct": 3.1215497340158587,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T11:33:01.531658+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-09-04_11-32_zone_out_+3.1"
+    },
+    {
+      "hotel_name": "Eftalia Village",
+      "duration_bucket": "",
+      "old_price": 9918.0,
+      "new_price": 10080.0,
+      "price_change": 162.0,
+      "price_change_pct": 1.6333938294010888,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T11:33:01.531671+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Eftalia Village_2026-09-04_11-32_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Grand Seker",
+      "duration_bucket": "",
+      "old_price": 9715.0,
+      "new_price": 10546.0,
+      "price_change": 831.0,
+      "price_change_pct": 8.553782810087492,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T11:33:01.531682+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Seker_2026-09-04_11-32_zone_out_+8.6"
+    },
+    {
+      "hotel_name": "Raxeria (Side)",
+      "duration_bucket": "",
+      "old_price": 9603.0,
+      "new_price": 11291.0,
+      "price_change": 1688.0,
+      "price_change_pct": 17.577840258252632,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T11:33:01.531691+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Raxeria (Side)_2026-09-04_11-32_zone_out_+17.6"
+    },
+    {
+      "hotel_name": "Viking Star",
+      "duration_bucket": "",
+      "old_price": 9918.0,
+      "new_price": 10080.0,
+      "price_change": 162.0,
+      "price_change_pct": 1.6333938294010888,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T11:33:01.531702+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star_2026-09-04_11-32_zone_out_+1.6"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 10657.0,
+      "new_price": 9500.0,
+      "price_change": -1157.0,
+      "price_change_pct": -10.856713896969127,
+      "timestamp": "2026-09-04 11:32:10.092279+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-04T11:33:01.531725+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-09-04_11-32_comeback_10.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T06:05:45.228271+00:00",
+    "last_processed_run": "2026-09-04T11:32:10.092279+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1443,8 +1534,8 @@
         "premium_peak": 14540.0
       },
       "Ma Biche Kemer by Werde Hotels": {
-        "history_max": 12861.0,
-        "premium_peak": 12861.0
+        "history_max": 12929.0,
+        "premium_peak": 12929.0
       },
       "M. C. Beach Resort (ex. Otium MC Beach Resort)": {
         "history_max": 9900.0,
@@ -1495,16 +1586,16 @@
         "premium_peak": 16215.0
       },
       "Laur Experience & Elegance": {
-        "history_max": 14911.0,
-        "premium_peak": 14911.0
+        "history_max": 15318.0,
+        "premium_peak": 15318.0
       },
       "Lake River Side Spa": {
         "history_max": 9957.0,
         "premium_peak": null
       },
       "Ladonia Adakule": {
-        "history_max": 10624.0,
-        "premium_peak": 10624.0
+        "history_max": 10900.0,
+        "premium_peak": 10900.0
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
         "history_max": 10643.0,
@@ -1547,16 +1638,16 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 12435.0,
-        "premium_peak": 12435.0
+        "history_max": 13426.0,
+        "premium_peak": 13426.0
       },
       "Ozkaymak Incekum": {
-        "history_max": 11309.0,
-        "premium_peak": 11309.0
+        "history_max": 12394.0,
+        "premium_peak": 12394.0
       },
       "Ozkaymak Falez": {
-        "history_max": 11357.0,
-        "premium_peak": 11357.0
+        "history_max": 12910.0,
+        "premium_peak": 12910.0
       },
       "Orange County Belek": {
         "history_max": 13224.0,
@@ -1751,12 +1842,12 @@
         "premium_peak": 14980.0
       },
       "Kirbiyik Resort (ex. Dinler)": {
-        "history_max": 8596.0,
+        "history_max": 8753.0,
         "premium_peak": null
       },
       "Grand Seker": {
-        "history_max": 10494.0,
-        "premium_peak": 10494.0
+        "history_max": 10546.0,
+        "premium_peak": 10546.0
       },
       "Green Garden Suite": {
         "history_max": 13695.0,
@@ -2023,7 +2114,7 @@
         "premium_peak": 10362.0
       },
       "Victory Resort": {
-        "history_max": 9912.0,
+        "history_max": 9961.0,
         "premium_peak": null
       },
       "Victory Be Mine": {
@@ -2063,8 +2154,8 @@
         "premium_peak": 15865.0
       },
       "Turan Prince": {
-        "history_max": 13645.0,
-        "premium_peak": 13645.0
+        "history_max": 13786.0,
+        "premium_peak": 13786.0
       },
       "Trendy Perge Resort & Suites": {
         "history_max": 16646.0,
@@ -2123,8 +2214,8 @@
         "premium_peak": 10447.0
       },
       "Raxeria (Side)": {
-        "history_max": 10809.0,
-        "premium_peak": 10809.0
+        "history_max": 11291.0,
+        "premium_peak": 11291.0
       },
       "Ramada Resort Lara": {
         "history_max": 13236.0,
@@ -2275,8 +2366,8 @@
         "premium_peak": 14745.0
       },
       "Sealife Family Resort": {
-        "history_max": 13172.0,
-        "premium_peak": 13172.0
+        "history_max": 13334.0,
+        "premium_peak": 13334.0
       },
       "Sealife Buket Resort & Beach": {
         "history_max": 11157.0,
@@ -2343,8 +2434,8 @@
         "premium_peak": 16069.0
       },
       "Crystal Centro Pearl Collection (ex. Amara Centro Resort)": {
-        "history_max": 15161.0,
-        "premium_peak": 15161.0
+        "history_max": 15471.0,
+        "premium_peak": 15471.0
       },
       "Arcanus Hotels Sorgun (ex. Asteria Sorgun)": {
         "history_max": 15165.0,
@@ -2419,7 +2510,7 @@
         "premium_peak": 10493.0
       },
       "Armas Green Fugla": {
-        "history_max": 9626.0,
+        "history_max": 9644.0,
         "premium_peak": null
       },
       "Asteria Family Resort Side": {
@@ -2435,8 +2526,8 @@
         "premium_peak": null
       },
       "Aydinbey Queens Palace & Spa": {
-        "history_max": 10535.0,
-        "premium_peak": 10535.0
+        "history_max": 10643.0,
+        "premium_peak": 10643.0
       },
       "Armas Kaplan Paradise": {
         "history_max": 10728.0,
@@ -2591,8 +2682,8 @@
         "premium_peak": 13149.0
       },
       "Crystal Sunset Pearl Collection (ex Crystal Sunset Luxury Resort)": {
-        "history_max": 11502.0,
-        "premium_peak": 11502.0
+        "history_max": 11565.0,
+        "premium_peak": 11565.0
       },
       "Crystal Waterworld Aqua Collection": {
         "history_max": 12516.0,
@@ -2795,8 +2886,8 @@
         "premium_peak": 15738.0
       },
       "Belconti Resort (Belek)": {
-        "history_max": 14454.0,
-        "premium_peak": 14454.0
+        "history_max": 14616.0,
+        "premium_peak": 14616.0
       },
       "Nirvana Dolce Vita (ex. Amara Dolce Vita)": {
         "history_max": 19710.0,
@@ -2823,8 +2914,8 @@
         "premium_peak": 14958.0
       },
       "Palm Wings Beach Resort & SPA (Kusadasi)": {
-        "history_max": 13649.0,
-        "premium_peak": 13649.0
+        "history_max": 17718.0,
+        "premium_peak": 17718.0
       },
       "Terrace Beach Resort (Side)": {
         "history_max": 16105.0,
