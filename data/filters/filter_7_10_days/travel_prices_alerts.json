@@ -3380,10 +3380,75 @@
       "created_at": "2026-09-03T22:43:25.106194+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sentido Naga Bay_2026-09-03_22-42_comeback_12.0"
+    },
+    {
+      "hotel_name": "Amarina Jannah Resort Aquapark",
+      "duration_bucket": "",
+      "old_price": 7799.0,
+      "new_price": 7799.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 01:06:34.275579+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:07:18.376833+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Jannah Resort Aquapark_2026-09-04_01-06_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hilton Marsa Alam Nubian Resort",
+      "duration_bucket": "",
+      "old_price": 9555.0,
+      "new_price": 10025.0,
+      "price_change": 470.0,
+      "price_change_pct": 4.918890633176347,
+      "timestamp": "2026-09-04 01:06:34.275579+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:07:18.376863+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hilton Marsa Alam Nubian Resort_2026-09-04_01-06_zone_out_+4.9"
+    },
+    {
+      "hotel_name": "Jaz Mirabel Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9857.0,
+      "new_price": 10336.0,
+      "price_change": 479.0,
+      "price_change_pct": 4.859490717256771,
+      "timestamp": "2026-09-04 01:06:34.275579+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:07:18.376875+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Mirabel Beach Resort_2026-09-04_01-06_zone_out_+4.9"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 9799.0,
+      "new_price": 10033.0,
+      "price_change": 234.0,
+      "price_change_pct": 2.387998775385243,
+      "timestamp": "2026-09-04 01:06:34.275579+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:07:18.376885+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-09-04_01-06_zone_out_+2.4"
+    },
+    {
+      "hotel_name": "Sea Star Beau Rivage",
+      "duration_bucket": "",
+      "old_price": 13503.0,
+      "new_price": 8190.0,
+      "price_change": -5313.0,
+      "price_change_pct": -39.346811819595644,
+      "timestamp": "2026-09-04 01:06:34.275579+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-04T01:07:18.376913+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sea Star Beau Rivage_2026-09-04_01-06_comeback_39.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T22:42:41.851792+00:00",
+    "last_processed_run": "2026-09-04T01:06:34.275579+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -3470,7 +3535,7 @@
         "premium_peak": 11048.0
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
-        "history_max": 6701.0,
+        "history_max": 6942.0,
         "premium_peak": null
       },
       "Jaz Elite Casa Del Mar Beach": {
@@ -3546,8 +3611,8 @@
         "premium_peak": null
       },
       "Hilton Marsa Alam Nubian Resort": {
-        "history_max": 9689.0,
-        "premium_peak": null
+        "history_max": 10025.0,
+        "premium_peak": 10025.0
       },
       "Fantazia Resort": {
         "history_max": 8247.0,
@@ -3606,15 +3671,15 @@
         "premium_peak": null
       },
       "Jaz Elite Riviera": {
-        "history_max": 14717.0,
-        "premium_peak": 14717.0
+        "history_max": 15214.0,
+        "premium_peak": 15214.0
       },
       "Jaz Grand Marsa (ex Resta Grand Resort)": {
         "history_max": 14667.0,
         "premium_peak": 14667.0
       },
       "Pickalbatros Palace Resort": {
-        "history_max": 9219.0,
+        "history_max": 9550.0,
         "premium_peak": null
       },
       "Lazuli (Marsa Alam)": {
@@ -3698,8 +3763,8 @@
         "premium_peak": 10387.0
       },
       "Old Palace Resort": {
-        "history_max": 9867.0,
-        "premium_peak": null
+        "history_max": 10033.0,
+        "premium_peak": 10033.0
       },
       "Parrotel Lagoon Resort": {
         "history_max": 7225.0,
@@ -4050,7 +4115,7 @@
         "premium_peak": 11844.0
       },
       "Stella Beach Resort & Spa": {
-        "history_max": 8232.0,
+        "history_max": 8322.0,
         "premium_peak": null
       },
       "Cooee Prima Life Makadi Bay": {
@@ -4216,6 +4281,14 @@
       "El Kasr Red Sea": {
         "history_max": 11167.0,
         "premium_peak": 11167.0
+      },
+      "Safir Sharm Waterfalls Resort (ex Hilton Waterfalls Resort)": {
+        "history_max": 8496.0,
+        "premium_peak": null
+      },
+      "Savoy (Sharm El Sheikh)": {
+        "history_max": 13902.0,
+        "premium_peak": 13902.0
       }
     }
   }

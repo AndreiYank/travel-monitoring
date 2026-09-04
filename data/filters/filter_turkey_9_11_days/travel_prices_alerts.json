@@ -1300,10 +1300,62 @@
       "created_at": "2026-09-03T22:44:56.278564+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Prestige Alanya_2026-09-03_22-43_+16.5"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7426.0,
+      "new_price": 6791.0,
+      "price_change": -635.0,
+      "price_change_pct": -8.551036897387556,
+      "timestamp": "2026-09-04 01:07:50.020633+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-04T01:08:56.006975+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-09-04_01-07_-8.6"
+    },
+    {
+      "hotel_name": "Armas Pemar Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9131.0,
+      "new_price": 11120.0,
+      "price_change": 1989.0,
+      "price_change_pct": 21.782937246741866,
+      "timestamp": "2026-09-04 01:07:50.020633+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:08:56.007015+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Pemar Beach Resort_2026-09-04_01-07_zone_out_+21.8"
+    },
+    {
+      "hotel_name": "Asteria Collection Side",
+      "duration_bucket": "",
+      "old_price": 9383.0,
+      "new_price": 9383.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 01:07:50.020633+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:08:56.007026+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Collection Side_2026-09-04_01-07_zone_out_gone"
+    },
+    {
+      "hotel_name": "Asteria Family Resort Side",
+      "duration_bucket": "",
+      "old_price": 9963.0,
+      "new_price": 9963.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 01:07:50.020633+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T01:08:56.007034+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Asteria Family Resort Side_2026-09-04_01-07_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-03T22:43:56.421904+00:00",
+    "last_processed_run": "2026-09-04T01:07:50.020633+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1322,8 +1374,8 @@
         "premium_peak": 14841.0
       },
       "Marine Family Club Beach (ex. Otium Family Club Marine Beach)": {
-        "history_max": 11435.0,
-        "premium_peak": 11435.0
+        "history_max": 14540.0,
+        "premium_peak": 14540.0
       },
       "Ma Biche Kemer by Werde Hotels": {
         "history_max": 12861.0,
@@ -2126,8 +2178,8 @@
         "premium_peak": 14193.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
-        "history_max": 15134.0,
-        "premium_peak": 15134.0
+        "history_max": 15417.0,
+        "premium_peak": 15417.0
       },
       "Selectum Family Resort (ex Letoonia Golf Resort)": {
         "history_max": 18257.0,
@@ -2688,6 +2740,30 @@
       "Palm Wings Ephesus": {
         "history_max": 18399.0,
         "premium_peak": 18399.0
+      },
+      "Yasmin Resort": {
+        "history_max": 15356.0,
+        "premium_peak": 15356.0
+      },
+      "Baska Resort Bodrum": {
+        "history_max": 18138.0,
+        "premium_peak": 18138.0
+      },
+      "Duja Bodrum": {
+        "history_max": 14712.0,
+        "premium_peak": 14712.0
+      },
+      "Duja Didim": {
+        "history_max": 14958.0,
+        "premium_peak": 14958.0
+      },
+      "Palm Wings Beach Resort & SPA (Kusadasi)": {
+        "history_max": 13649.0,
+        "premium_peak": 13649.0
+      },
+      "Terrace Beach Resort (Side)": {
+        "history_max": 16105.0,
+        "premium_peak": 16105.0
       }
     }
   }
