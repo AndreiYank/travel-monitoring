@@ -3822,10 +3822,49 @@
       "created_at": "2026-09-04T16:32:11.000984+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Titanic Beach Spa & Aqua Park_2026-09-04_16-31_comeback_9.9"
+    },
+    {
+      "hotel_name": "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)",
+      "duration_bucket": "",
+      "old_price": 6444.0,
+      "new_price": 8081.0,
+      "price_change": 1637.0,
+      "price_change_pct": 25.403476101800127,
+      "timestamp": "2026-09-04 19:44:00.372206+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-04T19:44:49.527201+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)_2026-09-04_19-44_+25.4"
+    },
+    {
+      "hotel_name": "Jaz Elite Maraya",
+      "duration_bucket": "",
+      "old_price": 9859.0,
+      "new_price": 10043.0,
+      "price_change": 184.0,
+      "price_change_pct": 1.8663150420935186,
+      "timestamp": "2026-09-04 19:44:00.372206+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T19:44:49.527246+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Elite Maraya_2026-09-04_19-44_zone_out_+1.9"
+    },
+    {
+      "hotel_name": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)",
+      "duration_bucket": "",
+      "old_price": 9854.0,
+      "new_price": 11222.0,
+      "price_change": 1368.0,
+      "price_change_pct": 13.882687233610715,
+      "timestamp": "2026-09-04 19:44:00.372206+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T19:44:49.527261+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)_2026-09-04_19-44_zone_out_+13.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T16:31:29.520823+00:00",
+    "last_processed_run": "2026-09-04T19:44:00.372206+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -3860,8 +3899,8 @@
         "premium_peak": 14707.0
       },
       "Jaz Almaza Beach": {
-        "history_max": 11897.0,
-        "premium_peak": 11897.0
+        "history_max": 12045.0,
+        "premium_peak": 12045.0
       },
       "Rixos Premium Seagate": {
         "history_max": 15564.0,
@@ -3956,8 +3995,8 @@
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
-        "history_max": 11693.0,
-        "premium_peak": 11693.0
+        "history_max": 12042.0,
+        "premium_peak": 12042.0
       },
       "Sheraton Soma Bay": {
         "history_max": 10742.0,
@@ -4112,8 +4151,8 @@
         "premium_peak": null
       },
       "Pickalbatros Citadel Sahl Hasheesh (ex. Citadel Azur Resort)": {
-        "history_max": 10629.0,
-        "premium_peak": 10629.0
+        "history_max": 11222.0,
+        "premium_peak": 11222.0
       },
       "Naama Bay Hotel & Resort": {
         "history_max": 8643.0,
@@ -4624,7 +4663,7 @@
         "premium_peak": null
       },
       "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
-        "history_max": 7476.0,
+        "history_max": 8081.0,
         "premium_peak": null
       },
       "Naama Bay Promenade Beach Resort": {
