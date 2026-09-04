@@ -949,10 +949,88 @@
       "created_at": "2026-09-04T11:33:57.489833+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-09-04_11-33_comeback_10.6"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 9728.0,
+      "new_price": 8766.0,
+      "price_change": -962.0,
+      "price_change_pct": -9.888980263157894,
+      "timestamp": "2026-09-04 16:33:44.115794+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-04T16:34:47.202436+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-09-04_16-33_-9.9"
+    },
+    {
+      "hotel_name": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 8266.0,
+      "new_price": 9010.0,
+      "price_change": 744.0,
+      "price_change_pct": 9.000725864989112,
+      "timestamp": "2026-09-04 16:33:44.115794+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-04T16:34:47.202470+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kipriotis Maris Suites (ex Iberostar) Grecja, Kos, Psalidi_2026-09-04_16-33_+9.0"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 9569.0,
+      "new_price": 10149.0,
+      "price_change": 580.0,
+      "price_change_pct": 6.061239418957049,
+      "timestamp": "2026-09-04 16:33:44.115794+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T16:34:47.202508+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-09-04_16-33_zone_out_+6.1"
+    },
+    {
+      "hotel_name": "White Olive Elite Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 9869.0,
+      "new_price": 9869.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 16:33:44.115794+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T16:34:47.202518+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "White Olive Elite Grecja, Zakynthos, Laganas_2026-09-04_16-33_zone_out_gone"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 10663.0,
+      "new_price": 9278.0,
+      "price_change": -1385.0,
+      "price_change_pct": -12.98883991372034,
+      "timestamp": "2026-09-04 16:33:44.115794+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-04T16:34:47.202540+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-09-04_16-33_comeback_13.0"
+    },
+    {
+      "hotel_name": "Ammos (Mastichari) Grecja, Kos, Mastichari",
+      "duration_bucket": "",
+      "old_price": 10957.0,
+      "new_price": 9457.0,
+      "price_change": -1500.0,
+      "price_change_pct": -13.689878616409601,
+      "timestamp": "2026-09-04 16:33:44.115794+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-04T16:34:47.202553+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ammos (Mastichari) Grecja, Kos, Mastichari_2026-09-04_16-33_comeback_13.7"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T11:33:02.462729+00:00",
+    "last_processed_run": "2026-09-04T16:33:44.115794+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -1015,7 +1093,7 @@
         "premium_peak": 13577.0
       },
       "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos": {
-        "history_max": 9973.0,
+        "history_max": 9993.0,
         "premium_peak": null
       },
       "Lyttos Beach": {
@@ -1363,8 +1441,8 @@
         "premium_peak": 18327.0
       },
       "Blue Marine Resort & SPA": {
-        "history_max": 17239.0,
-        "premium_peak": 17239.0
+        "history_max": 17619.0,
+        "premium_peak": 17619.0
       },
       "Alia Palace": {
         "history_max": 16947.0,
@@ -1515,8 +1593,8 @@
         "premium_peak": 10689.0
       },
       "Gaia Palace": {
-        "history_max": 11896.0,
-        "premium_peak": 11896.0
+        "history_max": 12027.0,
+        "premium_peak": 12027.0
       },
       "Valmar Corfu": {
         "history_max": 15025.0,
@@ -1563,8 +1641,8 @@
         "premium_peak": 10397.0
       },
       "Kerkyra Blue N' Spa by Louis (Corfu)": {
-        "history_max": 17958.0,
-        "premium_peak": 17958.0
+        "history_max": 18258.0,
+        "premium_peak": 18258.0
       },
       "Almyra Village": {
         "history_max": 10257.0,
