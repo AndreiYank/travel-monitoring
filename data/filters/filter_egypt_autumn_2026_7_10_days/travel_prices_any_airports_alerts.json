@@ -2899,10 +2899,49 @@
       "created_at": "2026-09-04T19:45:11.265433+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hilton Marsa Alam Nubian Resort Egipt, Marsa Alam_2026-09-04_19-44_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Makadi Saraya (ex Iberotel)",
+      "duration_bucket": "",
+      "old_price": 9131.0,
+      "new_price": 10251.0,
+      "price_change": 1120.0,
+      "price_change_pct": 12.265907348592705,
+      "timestamp": "2026-09-04 22:28:28.690593+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-04T22:29:04.694122+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Makadi Saraya (ex Iberotel)_2026-09-04_22-28_+12.3"
+    },
+    {
+      "hotel_name": "Jaz Palmariva Beach",
+      "duration_bucket": "",
+      "old_price": 7668.0,
+      "new_price": 7668.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 22:28:28.690593+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:29:04.694187+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Palmariva Beach_2026-09-04_22-28_zone_out_gone"
+    },
+    {
+      "hotel_name": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7223.0,
+      "new_price": 7223.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 22:28:28.690593+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:29:04.694196+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada_2026-09-04_22-28_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T19:44:27.442139+00:00",
+    "last_processed_run": "2026-09-04T22:28:28.690593+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -3101,7 +3140,7 @@
         "premium_peak": null
       },
       "Jaz Makadi Saraya (ex Iberotel)": {
-        "history_max": 9603.0,
+        "history_max": 10251.0,
         "premium_peak": null
       },
       "Old Palace Resort Egipt, Hurghada": {
@@ -3457,7 +3496,7 @@
         "premium_peak": null
       },
       "Stella Gardens Resort & Spa (ex Stella Di Mare Gardens)": {
-        "history_max": 8387.0,
+        "history_max": 8400.0,
         "premium_peak": null
       },
       "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh": {
@@ -3645,7 +3684,7 @@
         "premium_peak": null
       },
       "Royal Lagoons Aqua (ex. Premium Blue)": {
-        "history_max": 6740.0,
+        "history_max": 7699.0,
         "premium_peak": null
       },
       "Royal Regency Club": {
@@ -3729,7 +3768,7 @@
         "premium_peak": null
       },
       "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
-        "history_max": 8433.0,
+        "history_max": 8836.0,
         "premium_peak": null
       },
       "Caves Beach Resort": {

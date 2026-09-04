@@ -1053,10 +1053,36 @@
       "created_at": "2026-09-04T19:47:43.299301+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Lindos Royal (ex. COOEE) Grecja, Rodos, Lindos_2026-09-04_19-46_zone_out_+1.8"
+    },
+    {
+      "hotel_name": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 9839.0,
+      "new_price": 10104.0,
+      "price_change": 265.0,
+      "price_change_pct": 2.693363146661246,
+      "timestamp": "2026-09-04 22:30:11.486519+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:30:59.510650+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios_2026-09-04_22-30_zone_out_+2.7"
+    },
+    {
+      "hotel_name": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti",
+      "duration_bucket": "",
+      "old_price": 10420.0,
+      "new_price": 9569.0,
+      "price_change": -851.0,
+      "price_change_pct": -8.166986564299423,
+      "timestamp": "2026-09-04 22:30:11.486519+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-04T22:30:59.510682+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-09-04_22-30_comeback_8.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T19:46:30.083440+00:00",
+    "last_processed_run": "2026-09-04T22:30:11.486519+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -1067,8 +1093,8 @@
         "premium_peak": 10760.0
       },
       "Iberostar Selection Creta Marine": {
-        "history_max": 16405.0,
-        "premium_peak": 16405.0
+        "history_max": 16536.0,
+        "premium_peak": 16536.0
       },
       "Kairaba Sandy Villas Grecja, Korfu, Agios Georgios": {
         "history_max": 10456.0,
@@ -1447,8 +1473,8 @@
         "premium_peak": 10757.0
       },
       "Avra Imperial Beach Resort & Spa": {
-        "history_max": 17368.0,
-        "premium_peak": 17368.0
+        "history_max": 17372.0,
+        "premium_peak": 17372.0
       },
       "All Senses Nautica Blue Exclusive Resort & Spa (ex Aegean Breeze) Grecja, Rodos, Fanes": {
         "history_max": 7715.0,
@@ -1713,6 +1739,10 @@
       "Cavo Spada Luxury Resort & Spa Grecja, Kreta Zachodnia, Rapaniana": {
         "history_max": 10257.0,
         "premium_peak": 10257.0
+      },
+      "Lindos Royal (ex. COOEE)": {
+        "history_max": 10493.0,
+        "premium_peak": 10493.0
       }
     }
   }

@@ -6071,10 +6071,101 @@
       "created_at": "2026-09-04T19:46:28.610773+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Charisma Deluxe (Kusadasi)_2026-09-04_19-45_comeback_14.8"
+    },
+    {
+      "hotel_name": "Sultan of Side",
+      "duration_bucket": "",
+      "old_price": 7478.0,
+      "new_price": 8197.0,
+      "price_change": 719.0,
+      "price_change_pct": 9.614870286172774,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-04T22:30:10.630446+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sultan of Side_2026-09-04_22-29_+9.6"
+    },
+    {
+      "hotel_name": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı",
+      "duration_bucket": "",
+      "old_price": 6375.0,
+      "new_price": 7325.0,
+      "price_change": 950.0,
+      "price_change_pct": 14.901960784313726,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-04T22:30:10.630501+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-09-04_22-29_+14.9"
+    },
+    {
+      "hotel_name": "Armas Bella Sun (ex.Club Bella Sun)",
+      "duration_bucket": "",
+      "old_price": 7344.0,
+      "new_price": 7344.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:30:10.630541+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Bella Sun (ex.Club Bella Sun)_2026-09-04_22-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Campus Hill Turcja, Alanya",
+      "duration_bucket": "",
+      "old_price": 6131.0,
+      "new_price": 6131.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:30:10.630550+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill Turcja, Alanya_2026-09-04_22-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Charisma Deluxe (Kusadasi)",
+      "duration_bucket": "",
+      "old_price": 9371.0,
+      "new_price": 10392.0,
+      "price_change": 1021.0,
+      "price_change_pct": 10.895315334542738,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:30:10.630558+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charisma Deluxe (Kusadasi)_2026-09-04_22-29_zone_out_+10.9"
+    },
+    {
+      "hotel_name": "Infinity by Yelken",
+      "duration_bucket": "",
+      "old_price": 9995.0,
+      "new_price": 10729.0,
+      "price_change": 734.0,
+      "price_change_pct": 7.3436718359179585,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-04T22:30:10.630566+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Infinity by Yelken_2026-09-04_22-29_zone_out_+7.3"
+    },
+    {
+      "hotel_name": "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)",
+      "duration_bucket": "",
+      "old_price": 10357.0,
+      "new_price": 8957.0,
+      "price_change": -1400.0,
+      "price_change_pct": -13.517427826590712,
+      "timestamp": "2026-09-04 22:29:07.951357+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-04T22:30:10.630606+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "SeaLife Kemer Resort (ex. PGS Rose Residence Beach)_2026-09-04_22-29_comeback_13.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T19:45:12.852555+00:00",
+    "last_processed_run": "2026-09-04T22:29:07.951357+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10924.0,
@@ -6453,7 +6544,7 @@
         "premium_peak": 11498.0
       },
       "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı": {
-        "history_max": 7233.0,
+        "history_max": 7325.0,
         "premium_peak": null
       },
       "Elegance (Marmaris)": {
@@ -7617,7 +7708,7 @@
         "premium_peak": 11211.0
       },
       "Ozkaymak Select Resort (ex. Otium Ozkaymak Select)": {
-        "history_max": 7604.0,
+        "history_max": 8030.0,
         "premium_peak": null
       },
       "Adora Hotel & Resort (ex. Adora Golf)": {
@@ -7630,6 +7721,14 @@
       },
       "Andriake Beach Club Turcja, Alanya": {
         "history_max": 7141.0,
+        "premium_peak": null
+      },
+      "Campus Hill": {
+        "history_max": 7381.0,
+        "premium_peak": null
+      },
+      "Ramada By Wyndham Istanbul Pera": {
+        "history_max": 8256.0,
         "premium_peak": null
       }
     }
