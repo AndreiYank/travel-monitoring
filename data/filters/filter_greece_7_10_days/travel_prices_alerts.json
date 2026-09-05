@@ -1079,10 +1079,36 @@
       "created_at": "2026-09-04T22:30:59.510682+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elinotel Apolamare Grecja, Chalkidiki, Hanioti_2026-09-04_22-30_comeback_8.2"
+    },
+    {
+      "hotel_name": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina",
+      "duration_bucket": "",
+      "old_price": 9716.0,
+      "new_price": 8362.0,
+      "price_change": -1354.0,
+      "price_change_pct": -13.935776039522437,
+      "timestamp": "2026-09-05 01:08:53.586427+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-05T01:09:46.688556+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Galini Sea View (Agia Marina) Grecja, Kreta Zachodnia, Agia Marina_2026-09-05_01-08_-13.9"
+    },
+    {
+      "hotel_name": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios",
+      "duration_bucket": "",
+      "old_price": 9278.0,
+      "new_price": 9278.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 01:08:53.586427+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T01:09:46.688585+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Labranda Sandy Beach (ex Aquis Sandy Beach) Grecja, Korfu, Agios Georgios_2026-09-05_01-08_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T22:30:11.486519+00:00",
+    "last_processed_run": "2026-09-05T01:08:53.586427+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -1149,8 +1175,8 @@
         "premium_peak": 10174.0
       },
       "Lyttos Beach": {
-        "history_max": 17417.0,
-        "premium_peak": 17417.0
+        "history_max": 19137.0,
+        "premium_peak": 19137.0
       },
       "MarBella, Mar-Bella Collection (Agios Ioannis)": {
         "history_max": 17173.0,
@@ -1743,6 +1769,26 @@
       "Lindos Royal (ex. COOEE)": {
         "history_max": 10493.0,
         "premium_peak": 10493.0
+      },
+      "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort) Grecja, Kreta Wschodnia, Anissaras": {
+        "history_max": 10197.0,
+        "premium_peak": 10197.0
+      },
+      "Alexandra Elegance (Potos)": {
+        "history_max": 14700.0,
+        "premium_peak": 14700.0
+      },
+      "Costa Lindia Blue Star": {
+        "history_max": 12544.0,
+        "premium_peak": 12544.0
+      },
+      "Atrium Platinum Resort & Spa": {
+        "history_max": 19426.0,
+        "premium_peak": 19426.0
+      },
+      "Possidi Holidays": {
+        "history_max": 13287.0,
+        "premium_peak": 13287.0
       }
     }
   }

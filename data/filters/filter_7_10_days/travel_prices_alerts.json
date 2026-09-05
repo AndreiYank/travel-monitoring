@@ -3900,10 +3900,75 @@
       "created_at": "2026-09-04T22:28:51.776011+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Sentido Naga Bay_2026-09-04_22-28_comeback_12.0"
+    },
+    {
+      "hotel_name": "Pickalbatros Palace Resort",
+      "duration_bucket": "",
+      "old_price": 8681.0,
+      "new_price": 9594.0,
+      "price_change": 913.0,
+      "price_change_pct": 10.517221518258266,
+      "timestamp": "2026-09-05 01:06:51.429363+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T01:07:31.552322+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Palace Resort_2026-09-05_01-06_+10.5"
+    },
+    {
+      "hotel_name": "Albatros Makadi Resort (ex Royal Pharaohs Makadi)",
+      "duration_bucket": "",
+      "old_price": 7876.0,
+      "new_price": 8582.0,
+      "price_change": 706.0,
+      "price_change_pct": 8.963941086846114,
+      "timestamp": "2026-09-05 01:06:51.429363+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T01:07:31.552358+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Makadi Resort (ex Royal Pharaohs Makadi)_2026-09-05_01-06_+9.0"
+    },
+    {
+      "hotel_name": "Titanic Royal",
+      "duration_bucket": "",
+      "old_price": 9537.0,
+      "new_price": 10457.0,
+      "price_change": 920.0,
+      "price_change_pct": 9.646639404424871,
+      "timestamp": "2026-09-05 01:06:51.429363+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T01:07:31.552381+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Royal_2026-09-05_01-06_zone_out_+9.6"
+    },
+    {
+      "hotel_name": "Sentido Mamlouk Palace Resort & Spa (ex Sunrise)",
+      "duration_bucket": "",
+      "old_price": 11033.0,
+      "new_price": 9711.0,
+      "price_change": -1322.0,
+      "price_change_pct": -11.982235112843288,
+      "timestamp": "2026-09-05 01:06:51.429363+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-05T01:07:31.552400+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sentido Mamlouk Palace Resort & Spa (ex Sunrise)_2026-09-05_01-06_comeback_12.0"
+    },
+    {
+      "hotel_name": "Xanadu Club Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 10895.0,
+      "new_price": 9998.0,
+      "price_change": -897.0,
+      "price_change_pct": -8.233134465351078,
+      "timestamp": "2026-09-05 01:06:51.429363+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-05T01:07:31.552409+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Xanadu Club Makadi Bay_2026-09-05_01-06_comeback_8.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-04T22:28:09.742662+00:00",
+    "last_processed_run": "2026-09-05T01:06:51.429363+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -4142,8 +4207,8 @@
         "premium_peak": null
       },
       "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)": {
-        "history_max": 10443.0,
-        "premium_peak": 10443.0
+        "history_max": 10457.0,
+        "premium_peak": 10457.0
       },
       "Marriott Hurghada Beach Resort": {
         "history_max": 9563.0,
@@ -4286,7 +4351,7 @@
         "premium_peak": 12807.0
       },
       "Radisson Individuals Marina Port Ghalib (ex. Sunrise Marina Resort)": {
-        "history_max": 9212.0,
+        "history_max": 9449.0,
         "premium_peak": null
       },
       "Jaz Viva Casa Maza": {
