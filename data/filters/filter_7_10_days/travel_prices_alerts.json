@@ -4368,10 +4368,101 @@
       "created_at": "2026-09-05T13:58:14.001513+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Xanadu Club Makadi Bay_2026-09-05_13-57_zone_out_+5.7"
+    },
+    {
+      "hotel_name": "Cooee Prima Life Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 8957.0,
+      "new_price": 9737.0,
+      "price_change": 780.0,
+      "price_change_pct": 8.708272859216255,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T16:55:57.208107+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Cooee Prima Life Makadi Bay_2026-09-05_16-55_+8.7"
+    },
+    {
+      "hotel_name": "Jasmine Palace",
+      "duration_bucket": "",
+      "old_price": 8257.0,
+      "new_price": 9857.0,
+      "price_change": 1600.0,
+      "price_change_pct": 19.37749788058617,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T16:55:57.208139+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jasmine Palace_2026-09-05_16-55_+19.4"
+    },
+    {
+      "hotel_name": "Calimera Blend Paradise Resort",
+      "duration_bucket": "",
+      "old_price": 8073.0,
+      "new_price": 8073.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:55:57.208175+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Calimera Blend Paradise Resort_2026-09-05_16-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Coral Sea Water World Resort",
+      "duration_bucket": "",
+      "old_price": 8957.0,
+      "new_price": 8957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:55:57.208186+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Coral Sea Water World Resort_2026-09-05_16-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Jaz Solaya Resort (ex Sol Y Mar Solaya)",
+      "duration_bucket": "",
+      "old_price": 9773.0,
+      "new_price": 9773.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:55:57.208194+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Jaz Solaya Resort (ex Sol Y Mar Solaya)_2026-09-05_16-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Titanic Beach Spa & Aqua Park",
+      "duration_bucket": "",
+      "old_price": 9057.0,
+      "new_price": 10057.0,
+      "price_change": 1000.0,
+      "price_change_pct": 11.041183614883515,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:55:57.208204+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Titanic Beach Spa & Aqua Park_2026-09-05_16-55_zone_out_+11.0"
+    },
+    {
+      "hotel_name": "Desert Rose Resort",
+      "duration_bucket": "",
+      "old_price": 17135.0,
+      "new_price": 9048.0,
+      "price_change": -8087.0,
+      "price_change_pct": -47.1957980741173,
+      "timestamp": "2026-09-05 16:55:08.139522+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-05T16:55:57.208228+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Desert Rose Resort_2026-09-05_16-55_comeback_47.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T13:57:23.963195+00:00",
+    "last_processed_run": "2026-09-05T16:55:08.139522+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -4642,8 +4733,8 @@
         "premium_peak": 14737.0
       },
       "Pickalbatros Golf Beach Resort": {
-        "history_max": 11817.0,
-        "premium_peak": 11817.0
+        "history_max": 12717.0,
+        "premium_peak": 12717.0
       },
       "Laguna Vista Garden": {
         "history_max": 11664.0,
@@ -4946,8 +5037,8 @@
         "premium_peak": null
       },
       "Xanadu Makadi Bay": {
-        "history_max": 10857.0,
-        "premium_peak": 10857.0
+        "history_max": 11070.0,
+        "premium_peak": 11070.0
       },
       "Albatros Sea World Resort Marsa Alam": {
         "history_max": 10044.0,

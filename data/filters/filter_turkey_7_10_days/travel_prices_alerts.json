@@ -7267,10 +7267,114 @@
       "created_at": "2026-09-05T13:59:55.854680+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Venosa Beach Resort_2026-09-05_13-58_comeback_13.8"
+    },
+    {
+      "hotel_name": "Grand Cettia",
+      "duration_bucket": "",
+      "old_price": 8811.0,
+      "new_price": 9610.0,
+      "price_change": 799.0,
+      "price_change_pct": 9.068210191805697,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T16:57:42.901048+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Cettia_2026-09-05_16-56_+9.1"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "",
+      "old_price": 8361.0,
+      "new_price": 9266.0,
+      "price_change": 905.0,
+      "price_change_pct": 10.824064107164215,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T16:57:42.901079+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)_2026-09-05_16-56_+10.8"
+    },
+    {
+      "hotel_name": "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 5232.0,
+      "new_price": 5726.0,
+      "price_change": 494.0,
+      "price_change_pct": 9.441896024464832,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T16:57:42.901092+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Scylax Family Club (Kargicak) Turcja, Alanya, Mahmutlar_2026-09-05_16-56_+9.4"
+    },
+    {
+      "hotel_name": "Sealife Buket Resort & Beach",
+      "duration_bucket": "",
+      "old_price": 8157.0,
+      "new_price": 9157.0,
+      "price_change": 1000.0,
+      "price_change_pct": 12.25940909648155,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T16:57:42.901104+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Sealife Buket Resort & Beach_2026-09-05_16-56_+12.3"
+    },
+    {
+      "hotel_name": "Armas Gul Beach",
+      "duration_bucket": "",
+      "old_price": 7119.0,
+      "new_price": 7119.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:57:42.901147+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Gul Beach_2026-09-05_16-56_zone_out_gone"
+    },
+    {
+      "hotel_name": "Casa Fora Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7757.0,
+      "new_price": 7757.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:57:42.901156+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Casa Fora Beach Resort_2026-09-05_16-56_zone_out_gone"
+    },
+    {
+      "hotel_name": "Infinity by Yelken",
+      "duration_bucket": "",
+      "old_price": 9995.0,
+      "new_price": 10035.0,
+      "price_change": 40.0,
+      "price_change_pct": 0.400200100050025,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:57:42.901165+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Infinity by Yelken_2026-09-05_16-56_zone_out_+0.4"
+    },
+    {
+      "hotel_name": "Maril Resort Turcja, Bodrum, Didim",
+      "duration_bucket": "",
+      "old_price": 6957.0,
+      "new_price": 6957.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 16:56:24.698029+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T16:57:42.901173+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Maril Resort Turcja, Bodrum, Didim_2026-09-05_16-56_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T13:58:40.973489+00:00",
+    "last_processed_run": "2026-09-05T16:56:24.698029+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 10924.0,
@@ -7385,7 +7489,7 @@
         "premium_peak": null
       },
       "Side Aluna": {
-        "history_max": 9455.0,
+        "history_max": 9866.0,
         "premium_peak": null
       },
       "Labranda Mares Marmaris (ex Mares Dolphin Park & Spa)": {
@@ -7861,7 +7965,7 @@
         "premium_peak": 11547.0
       },
       "Sealife Buket Resort & Beach": {
-        "history_max": 8557.0,
+        "history_max": 9157.0,
         "premium_peak": null
       },
       "Queens Park Le Jardin Resort": {
@@ -8245,7 +8349,7 @@
         "premium_peak": 10137.0
       },
       "Cenger Blue Collection": {
-        "history_max": 8422.0,
+        "history_max": 8490.0,
         "premium_peak": null
       },
       "Armonia Holiday Village": {
@@ -8871,6 +8975,10 @@
       "Leodikya Kirman Premium": {
         "history_max": 11151.0,
         "premium_peak": 11151.0
+      },
+      "Samara (Bodrum)": {
+        "history_max": 10820.0,
+        "premium_peak": 10820.0
       }
     }
   }
