@@ -1833,10 +1833,75 @@
       "created_at": "2026-09-05T10:50:19.508483+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Calido Maris_2026-09-05_10-49_comeback_14.2"
+    },
+    {
+      "hotel_name": "Campus Hill",
+      "duration_bucket": "",
+      "old_price": 7891.0,
+      "new_price": 6871.0,
+      "price_change": -1020.0,
+      "price_change_pct": -12.926118362691675,
+      "timestamp": "2026-09-05 13:58:49.713765+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-05T14:00:15.660295+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Campus Hill_2026-09-05_13-58_-12.9"
+    },
+    {
+      "hotel_name": "Miarosa Beach (Kemer)",
+      "duration_bucket": "",
+      "old_price": 8712.0,
+      "new_price": 9756.0,
+      "price_change": 1044.0,
+      "price_change_pct": 11.983471074380166,
+      "timestamp": "2026-09-05 13:58:49.713765+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T14:00:15.660327+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Miarosa Beach (Kemer)_2026-09-05_13-58_+12.0"
+    },
+    {
+      "hotel_name": "Kirbiyik Resort (ex. Dinler)",
+      "duration_bucket": "",
+      "old_price": 8642.0,
+      "new_price": 8642.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 13:58:49.713765+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T14:00:15.660350+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kirbiyik Resort (ex. Dinler)_2026-09-05_13-58_zone_out_gone"
+    },
+    {
+      "hotel_name": "Side Moon Palace",
+      "duration_bucket": "",
+      "old_price": 9882.0,
+      "new_price": 10896.0,
+      "price_change": 1014.0,
+      "price_change_pct": 10.261080752884032,
+      "timestamp": "2026-09-05 13:58:49.713765+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T14:00:15.660362+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Side Moon Palace_2026-09-05_13-58_zone_out_+10.3"
+    },
+    {
+      "hotel_name": "Club Nena (Side)",
+      "duration_bucket": "",
+      "old_price": 12976.0,
+      "new_price": 9962.0,
+      "price_change": -3014.0,
+      "price_change_pct": -23.227496917385942,
+      "timestamp": "2026-09-05 13:58:49.713765+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-05T14:00:15.660386+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Club Nena (Side)_2026-09-05_13-58_comeback_23.2"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T10:49:18.978418+00:00",
+    "last_processed_run": "2026-09-05T13:58:49.713765+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1879,8 +1944,8 @@
         "premium_peak": 13217.0
       },
       "Long Beach Club Nature": {
-        "history_max": 14656.0,
-        "premium_peak": 14656.0
+        "history_max": 15489.0,
+        "premium_peak": 15489.0
       },
       "Long Beach (Avsallar)": {
         "history_max": 14441.0,
@@ -1963,16 +2028,16 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 14097.0,
-        "premium_peak": 14097.0
+        "history_max": 14105.0,
+        "premium_peak": 14105.0
       },
       "Ozkaymak Incekum": {
-        "history_max": 12975.0,
-        "premium_peak": 12975.0
+        "history_max": 12982.0,
+        "premium_peak": 12982.0
       },
       "Ozkaymak Falez": {
-        "history_max": 13536.0,
-        "premium_peak": 13536.0
+        "history_max": 13544.0,
+        "premium_peak": 13544.0
       },
       "Orange County Belek": {
         "history_max": 13224.0,
