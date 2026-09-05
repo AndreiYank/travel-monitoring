@@ -3133,10 +3133,49 @@
       "created_at": "2026-09-05T16:56:23.785415+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Domina Coral Bay Oasis Egipt, Sharm El Sheikh_2026-09-05_16-55_zone_out_gone"
+    },
+    {
+      "hotel_name": "Fantazia Resort",
+      "duration_bucket": "",
+      "old_price": 9261.0,
+      "new_price": 8491.0,
+      "price_change": -770.0,
+      "price_change_pct": -8.314436885865458,
+      "timestamp": "2026-09-05 19:09:32.045714+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-05T19:10:21.069389+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Fantazia Resort_2026-09-05_19-09_-8.3"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Oasis",
+      "duration_bucket": "",
+      "old_price": 7656.0,
+      "new_price": 7656.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 19:09:32.045714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T19:10:21.069443+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis_2026-09-05_19-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7645.0,
+      "new_price": 7645.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 19:09:32.045714+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T19:10:21.069456+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort Egipt, Hurghada_2026-09-05_19-09_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T16:55:38.771206+00:00",
+    "last_processed_run": "2026-09-05T19:09:32.045714+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -3247,7 +3286,7 @@
         "premium_peak": null
       },
       "Serenity Alma Heights (ex. Serenity Fun City)": {
-        "history_max": 8478.0,
+        "history_max": 8631.0,
         "premium_peak": null
       },
       "Desert Rose Resort": {
@@ -3563,7 +3602,7 @@
         "premium_peak": null
       },
       "Sunrise Royal Makadi Aqua Resort": {
-        "history_max": 10022.0,
+        "history_max": 10607.0,
         "premium_peak": null
       },
       "Sunrise Montemare Resort": {
@@ -3895,7 +3934,7 @@
         "premium_peak": null
       },
       "Old Palace Resort": {
-        "history_max": 7445.0,
+        "history_max": 7645.0,
         "premium_peak": null
       },
       "Novotel Marsa Alam": {
