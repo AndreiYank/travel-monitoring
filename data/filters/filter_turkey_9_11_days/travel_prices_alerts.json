@@ -1768,10 +1768,49 @@
       "created_at": "2026-09-05T01:09:03.186412+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Armas Beach_2026-09-05_01-08_comeback_12.7"
+    },
+    {
+      "hotel_name": "Perre Delta",
+      "duration_bucket": "",
+      "old_price": 7763.0,
+      "new_price": 8417.0,
+      "price_change": 654.0,
+      "price_change_pct": 8.424578127012753,
+      "timestamp": "2026-09-05 05:55:04.560445+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-05T05:56:24.012937+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Perre Delta_2026-09-05_05-55_+8.4"
+    },
+    {
+      "hotel_name": "Armas Pemar Beach Resort",
+      "duration_bucket": "",
+      "old_price": 9131.0,
+      "new_price": 10368.0,
+      "price_change": 1237.0,
+      "price_change_pct": 13.54725659840105,
+      "timestamp": "2026-09-05 05:55:04.560445+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T05:56:24.012975+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Armas Pemar Beach Resort_2026-09-05_05-55_zone_out_+13.5"
+    },
+    {
+      "hotel_name": "Unique Residence Golf Spa",
+      "duration_bucket": "",
+      "old_price": 8759.0,
+      "new_price": 11998.0,
+      "price_change": 3239.0,
+      "price_change_pct": 36.979107204018725,
+      "timestamp": "2026-09-05 05:55:04.560445+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T05:56:24.012989+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Unique Residence Golf Spa_2026-09-05_05-55_zone_out_+37.0"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T01:08:04.959524+00:00",
+    "last_processed_run": "2026-09-05T05:55:04.560445+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -1870,8 +1909,8 @@
         "premium_peak": 15931.0
       },
       "Kremlin Palace": {
-        "history_max": 16389.0,
-        "premium_peak": 16389.0
+        "history_max": 16682.0,
+        "premium_peak": 16682.0
       },
       "Linda Resort (Side)": {
         "history_max": 11351.0,
@@ -1898,16 +1937,16 @@
         "premium_peak": null
       },
       "Ozkaymak Marina (Kemer)": {
-        "history_max": 13561.0,
-        "premium_peak": 13561.0
+        "history_max": 14097.0,
+        "premium_peak": 14097.0
       },
       "Ozkaymak Incekum": {
-        "history_max": 12528.0,
-        "premium_peak": 12528.0
+        "history_max": 12975.0,
+        "premium_peak": 12975.0
       },
       "Ozkaymak Falez": {
-        "history_max": 13045.0,
-        "premium_peak": 13045.0
+        "history_max": 13536.0,
+        "premium_peak": 13536.0
       },
       "Orange County Belek": {
         "history_max": 13224.0,
@@ -2002,16 +2041,16 @@
         "premium_peak": 17748.0
       },
       "Grand Kolibri Prestige & Spa": {
-        "history_max": 11629.0,
-        "premium_peak": 11629.0
+        "history_max": 13557.0,
+        "premium_peak": 13557.0
       },
       "Grand Kaptan": {
         "history_max": 12774.0,
         "premium_peak": 12774.0
       },
       "Grand Belish": {
-        "history_max": 13537.0,
-        "premium_peak": 13537.0
+        "history_max": 17406.0,
+        "premium_peak": 17406.0
       },
       "Granada Luxury Okurcalar": {
         "history_max": 13332.0,
@@ -2094,12 +2133,12 @@
         "premium_peak": 13336.0
       },
       "Diamond Excellence Resort & Spa": {
-        "history_max": 15183.0,
-        "premium_peak": 15183.0
+        "history_max": 15426.0,
+        "premium_peak": 15426.0
       },
       "Fantasia De Luxe Kusadasi": {
-        "history_max": 14980.0,
-        "premium_peak": 14980.0
+        "history_max": 15104.0,
+        "premium_peak": 15104.0
       },
       "Kirbiyik Resort (ex. Dinler)": {
         "history_max": 8753.0,
@@ -2110,8 +2149,8 @@
         "premium_peak": 10546.0
       },
       "Green Garden Suite": {
-        "history_max": 13695.0,
-        "premium_peak": 13695.0
+        "history_max": 15117.0,
+        "premium_peak": 15117.0
       },
       "Kaya (Belek)": {
         "history_max": 14451.0,
@@ -2158,8 +2197,8 @@
         "premium_peak": 16452.0
       },
       "Green Bay Resort": {
-        "history_max": 16364.0,
-        "premium_peak": 16364.0
+        "history_max": 16938.0,
+        "premium_peak": 16938.0
       },
       "IC Green Palace": {
         "history_max": 16760.0,
@@ -2422,8 +2461,8 @@
         "premium_peak": 16646.0
       },
       "Trendy Lara": {
-        "history_max": 15737.0,
-        "premium_peak": 15737.0
+        "history_max": 17370.0,
+        "premium_peak": 17370.0
       },
       "Trendy Aspendos Beach": {
         "history_max": 16313.0,
@@ -2450,8 +2489,8 @@
         "premium_peak": 13190.0
       },
       "Royal Asarlik Beach": {
-        "history_max": 18365.0,
-        "premium_peak": 18365.0
+        "history_max": 18543.0,
+        "premium_peak": 18543.0
       },
       "Royal Alhambra Palace": {
         "history_max": 15273.0,
@@ -2534,11 +2573,11 @@
         "premium_peak": 13757.0
       },
       "Perre La Mer Resort & Spa (ex. La Mer)": {
-        "history_max": 10782.0,
-        "premium_peak": 10782.0
+        "history_max": 10967.0,
+        "premium_peak": 10967.0
       },
       "Perre Delta": {
-        "history_max": 8010.0,
+        "history_max": 8417.0,
         "premium_peak": null
       },
       "Papillon Zeugma Reluxury": {
@@ -2598,8 +2637,8 @@
         "premium_peak": 15417.0
       },
       "Selectum Family Resort (ex Letoonia Golf Resort)": {
-        "history_max": 18257.0,
-        "premium_peak": 18257.0
+        "history_max": 19157.0,
+        "premium_peak": 19157.0
       },
       "Selectum Family Comfort Side (ex. Lyra Resort)": {
         "history_max": 15323.0,
@@ -2918,8 +2957,8 @@
         "premium_peak": 15660.0
       },
       "Berry Blue": {
-        "history_max": 14247.0,
-        "premium_peak": 14247.0
+        "history_max": 15507.0,
+        "premium_peak": 15507.0
       },
       "Club Melas Prive (ex. Melas Holiday Village)": {
         "history_max": 16934.0,
@@ -3154,12 +3193,12 @@
         "premium_peak": 19859.0
       },
       "Palm Wings Ephesus": {
-        "history_max": 18399.0,
-        "premium_peak": 18399.0
+        "history_max": 19575.0,
+        "premium_peak": 19575.0
       },
       "Yasmin Resort": {
-        "history_max": 15356.0,
-        "premium_peak": 15356.0
+        "history_max": 18569.0,
+        "premium_peak": 18569.0
       },
       "Baska Resort Bodrum": {
         "history_max": 19823.0,
@@ -3206,8 +3245,8 @@
         "premium_peak": 18901.0
       },
       "Side Star Resort": {
-        "history_max": 15582.0,
-        "premium_peak": 15582.0
+        "history_max": 16965.0,
+        "premium_peak": 16965.0
       },
       "Sunis Evren Beach & Spa": {
         "history_max": 13373.0,
@@ -3220,6 +3259,26 @@
       "Eftalia Marin": {
         "history_max": 11471.0,
         "premium_peak": 11471.0
+      },
+      "Club Marco Polo (Kemer)": {
+        "history_max": 19448.0,
+        "premium_peak": 19448.0
+      },
+      "Sunis Efes Royal Palace Resort": {
+        "history_max": 19818.0,
+        "premium_peak": 19818.0
+      },
+      "Titanic Deluxe Lara (ex. Titanic Beach Lara)": {
+        "history_max": 19846.0,
+        "premium_peak": 19846.0
+      },
+      "Fun & Sun Smart Hane Sun": {
+        "history_max": 11196.0,
+        "premium_peak": 11196.0
+      },
+      "Side Star Elegance": {
+        "history_max": 17348.0,
+        "premium_peak": 17348.0
       }
     }
   }
