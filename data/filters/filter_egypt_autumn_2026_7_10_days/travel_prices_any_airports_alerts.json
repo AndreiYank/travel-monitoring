@@ -3172,10 +3172,49 @@
       "created_at": "2026-09-05T19:10:21.069456+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Old Palace Resort Egipt, Hurghada_2026-09-05_19-09_zone_out_gone"
+    },
+    {
+      "hotel_name": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7078.0,
+      "new_price": 6092.0,
+      "price_change": -986.0,
+      "price_change_pct": -13.930488838654986,
+      "timestamp": "2026-09-05 21:23:42.360323+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-05T21:24:22.873061+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Hawaii Paradise Aqua Park Resort Egipt, Hurghada_2026-09-05_21-23_-13.9"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 7468.0,
+      "new_price": 7468.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 21:23:42.360323+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T21:24:22.873132+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort (ex. Sea Club Resort) Egipt, Sharm El Sheikh_2026-09-05_21-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort",
+      "duration_bucket": "",
+      "old_price": 7645.0,
+      "new_price": 7645.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-05 21:23:42.360323+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-05T21:24:22.873143+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort_2026-09-05_21-23_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T19:09:32.045714+00:00",
+    "last_processed_run": "2026-09-05T21:23:42.360323+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -3694,7 +3733,7 @@
         "premium_peak": null
       },
       "True Beach Resort": {
-        "history_max": 8895.0,
+        "history_max": 8973.0,
         "premium_peak": null
       },
       "Amarina Jannah Resort Aquapark": {
@@ -3902,7 +3941,7 @@
         "premium_peak": null
       },
       "Charmillion Club Resort": {
-        "history_max": 6772.0,
+        "history_max": 7757.0,
         "premium_peak": null
       },
       "Rewaya Inn Resort (ex. Hawaii Paradise Aqua Park Resort)": {
