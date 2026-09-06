@@ -351,10 +351,36 @@
       "created_at": "2026-09-05T21:25:52.896533+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Elite Luxury Suite & Spa Turcja, Alanya, Konaklı_2026-09-05_21-24_zone_out_+17.6"
+    },
+    {
+      "hotel_name": "First Class Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 9171.0,
+      "new_price": 10000.0,
+      "price_change": 829.0,
+      "price_change_pct": 9.039363210118854,
+      "timestamp": "2026-09-06 04:53:09.711244+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-06T04:54:30.315428+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class Turcja, Alanya, Mahmutlar_2026-09-06_04-53_+9.0"
+    },
+    {
+      "hotel_name": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat",
+      "duration_bucket": "",
+      "old_price": 9540.0,
+      "new_price": 9540.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 04:53:09.711244+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T04:54:30.315458+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat_2026-09-06_04-53_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T21:24:40.825129+00:00",
+    "last_processed_run": "2026-09-06T04:53:09.711244+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 15146.0,
@@ -493,8 +519,8 @@
         "premium_peak": 11390.0
       },
       "Miarosa Beach (Kemer)": {
-        "history_max": 13019.0,
-        "premium_peak": 13019.0
+        "history_max": 13145.0,
+        "premium_peak": 13145.0
       },
       "Meryan": {
         "history_max": 16479.0,
@@ -841,8 +867,8 @@
         "premium_peak": 13770.0
       },
       "Tusan Beach Resort": {
-        "history_max": 13356.0,
-        "premium_peak": 13356.0
+        "history_max": 14171.0,
+        "premium_peak": 14171.0
       },
       "Turan Prince": {
         "history_max": 18750.0,
@@ -1591,6 +1617,26 @@
       "Royal Alhambra Palace": {
         "history_max": 19712.0,
         "premium_peak": 19712.0
+      },
+      "Eftalia Blue": {
+        "history_max": 16365.0,
+        "premium_peak": 16365.0
+      },
+      "Transatlantik (Kemer)": {
+        "history_max": 14090.0,
+        "premium_peak": 14090.0
+      },
+      "Aqua Fantasy": {
+        "history_max": 18939.0,
+        "premium_peak": 18939.0
+      },
+      "Doganay Beach Club Turcja, Alanya, Konakli": {
+        "history_max": 12191.0,
+        "premium_peak": 12191.0
+      },
+      "Diamond Hill Resort Turcja, Alanya, Incekum": {
+        "history_max": 12285.0,
+        "premium_peak": 12285.0
       }
     }
   }

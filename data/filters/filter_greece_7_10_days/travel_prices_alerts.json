@@ -1222,10 +1222,101 @@
       "created_at": "2026-09-05T19:12:55.169259+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Hersonissos Palace Grecja, Kreta Wschodnia, Hersonissos_2026-09-05_19-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos",
+      "duration_bucket": "",
+      "old_price": 9986.0,
+      "new_price": 9986.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T04:55:22.865915+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aquila Rithymna Beach Grecja, Kreta Zachodnia, Adelianos Kampos_2026-09-06_04-54_zone_out_gone"
+    },
+    {
+      "hotel_name": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti",
+      "duration_bucket": "",
+      "old_price": 9993.0,
+      "new_price": 9993.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T04:55:22.865961+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach Grecja, Kreta Zachodnia, Kiani Akti_2026-09-06_04-54_zone_out_gone"
+    },
+    {
+      "hotel_name": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki",
+      "duration_bucket": "",
+      "old_price": 10634.0,
+      "new_price": 8179.0,
+      "price_change": -2455.0,
+      "price_change_pct": -23.086326876057928,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T04:55:22.865993+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Ramada by Wyndham Loutraki Poseidon Resort Grecja, Zatoka Koryncka, Loutraki_2026-09-06_04-54_comeback_23.1"
+    },
+    {
+      "hotel_name": "Natura Park Village Grecja, Kos, Psalidi",
+      "duration_bucket": "",
+      "old_price": 10925.0,
+      "new_price": 9924.0,
+      "price_change": -1001.0,
+      "price_change_pct": -9.162471395881006,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T04:55:22.866007+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Natura Park Village Grecja, Kos, Psalidi_2026-09-06_04-54_comeback_9.2"
+    },
+    {
+      "hotel_name": "Kiani Beach",
+      "duration_bucket": "",
+      "old_price": 11724.0,
+      "new_price": 9993.0,
+      "price_change": -1731.0,
+      "price_change_pct": -14.764585465711361,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T04:55:22.866020+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Kiani Beach_2026-09-06_04-54_comeback_14.8"
+    },
+    {
+      "hotel_name": "Grand Blue Beach Grecja, kos, Kardamaina",
+      "duration_bucket": "",
+      "old_price": 11012.0,
+      "new_price": 9512.0,
+      "price_change": -1500.0,
+      "price_change_pct": -13.621503814021068,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T04:55:22.866031+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Grand Blue Beach Grecja, kos, Kardamaina_2026-09-06_04-54_comeback_13.6"
+    },
+    {
+      "hotel_name": "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari",
+      "duration_bucket": "",
+      "old_price": 10689.0,
+      "new_price": 8523.0,
+      "price_change": -2166.0,
+      "price_change_pct": -20.26382262138647,
+      "timestamp": "2026-09-06 04:54:13.890841+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T04:55:22.866042+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Egeo Easy Living Resort (ex. Atlantica Holiday Village Kos) Grecja, Kos, Marmari_2026-09-06_04-54_comeback_20.3"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T21:25:40.166604+00:00",
+    "last_processed_run": "2026-09-06T04:54:13.890841+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -1910,6 +2001,34 @@
       "Gennadi Grand Resort": {
         "history_max": 19847.0,
         "premium_peak": 19847.0
+      },
+      "Grecotel Kos Imperial": {
+        "history_max": 19354.0,
+        "premium_peak": 19354.0
+      },
+      "Athina Palace (Agia Pelagia) Grecja, Kreta Wschodnia, Agia Pelagia": {
+        "history_max": 9292.0,
+        "premium_peak": null
+      },
+      "Possidi Holidays Grecja, Chalkidiki, Possidi": {
+        "history_max": 9537.0,
+        "premium_peak": null
+      },
+      "Sandy Villas Resort (ex. Kairaba Sandy Villas)": {
+        "history_max": 10104.0,
+        "premium_peak": 10104.0
+      },
+      "Sitia Beach": {
+        "history_max": 10057.0,
+        "premium_peak": 10057.0
+      },
+      "Nana Royal Premium Resort & Spa": {
+        "history_max": 19014.0,
+        "premium_peak": 19014.0
+      },
+      "Aquila Rithymna Beach": {
+        "history_max": 9986.0,
+        "premium_peak": null
       }
     }
   }

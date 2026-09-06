@@ -1937,10 +1937,62 @@
       "created_at": "2026-09-05T21:25:39.280143+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Campus Hill_2026-09-05_21-24_+16.6"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 7317.0,
+      "new_price": 7989.0,
+      "price_change": 672.0,
+      "price_change_pct": 9.18409184091841,
+      "timestamp": "2026-09-06 04:53:06.927594+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-06T04:54:12.997300+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-06_04-53_+9.2"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "",
+      "old_price": 6066.0,
+      "new_price": 6066.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 04:53:06.927594+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T04:54:12.997338+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)_2026-09-06_04-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rox Royal (ex. Grand Haber)",
+      "duration_bucket": "",
+      "old_price": 9783.0,
+      "new_price": 10445.0,
+      "price_change": 662.0,
+      "price_change_pct": 6.766840437493611,
+      "timestamp": "2026-09-06 04:53:06.927594+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T04:54:12.997351+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rox Royal (ex. Grand Haber)_2026-09-06_04-53_zone_out_+6.8"
+    },
+    {
+      "hotel_name": "Timo Deluxe Resort",
+      "duration_bucket": "",
+      "old_price": 8870.0,
+      "new_price": 10629.0,
+      "price_change": 1759.0,
+      "price_change_pct": 19.830890642615557,
+      "timestamp": "2026-09-06 04:53:06.927594+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T04:54:12.997361+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Timo Deluxe Resort_2026-09-06_04-53_zone_out_+19.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-05T21:24:38.665996+00:00",
+    "last_processed_run": "2026-09-06T04:53:06.927594+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -2751,8 +2803,8 @@
         "premium_peak": 16376.0
       },
       "Sentido Lycus Beach (ex. Lti)": {
-        "history_max": 11657.0,
-        "premium_peak": 11657.0
+        "history_max": 11997.0,
+        "premium_peak": 11997.0
       },
       "Sensitive Premium Resort & Spa": {
         "history_max": 11757.0,
@@ -2827,8 +2879,8 @@
         "premium_peak": 17726.0
       },
       "Royal Taj Mahal": {
-        "history_max": 16574.0,
-        "premium_peak": 16574.0
+        "history_max": 16740.0,
+        "premium_peak": 16740.0
       },
       "Design Plus Seya Beach": {
         "history_max": 12957.0,
@@ -3413,6 +3465,14 @@
       "Calido Sol (Alanya)": {
         "history_max": 11474.0,
         "premium_peak": 11474.0
+      },
+      "The Marilis Hill Resort and Spa (Alanya)": {
+        "history_max": 8371.0,
+        "premium_peak": null
+      },
+      "Well Palace Side (ex. Side Crown Charm Palace)": {
+        "history_max": 10296.0,
+        "premium_peak": 10296.0
       }
     }
   }
