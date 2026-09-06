@@ -5031,10 +5031,36 @@
       "created_at": "2026-09-06T13:47:30.702498+00:00",
       "threshold_percent": 8.0,
       "unique_key": "V Hotel Sharm_2026-09-06_13-46_zone_out_+5.1"
+    },
+    {
+      "hotel_name": "Amarina Queen Resort",
+      "duration_bucket": "",
+      "old_price": 7520.0,
+      "new_price": 6894.0,
+      "price_change": -626.0,
+      "price_change_pct": -8.324468085106384,
+      "timestamp": "2026-09-06 17:11:10.998093+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-06T17:11:58.692498+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Queen Resort_2026-09-06_17-11_-8.3"
+    },
+    {
+      "hotel_name": "Safir Dahab Resort",
+      "duration_bucket": "",
+      "old_price": 9605.0,
+      "new_price": 10356.0,
+      "price_change": 751.0,
+      "price_change_pct": 7.818844351900052,
+      "timestamp": "2026-09-06 17:11:10.998093+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T17:11:58.692555+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort_2026-09-06_17-11_zone_out_+7.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T13:46:34.863677+00:00",
+    "last_processed_run": "2026-09-06T17:11:10.998093+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6948.0,
@@ -5109,8 +5135,8 @@
         "premium_peak": 10787.0
       },
       "Jaz Elite Amara": {
-        "history_max": 18277.0,
-        "premium_peak": 18277.0
+        "history_max": 18297.0,
+        "premium_peak": 18297.0
       },
       "Rewaya Luxury Resort": {
         "history_max": 7583.0,
@@ -5145,8 +5171,8 @@
         "premium_peak": null
       },
       "Safir Dahab Resort": {
-        "history_max": 9605.0,
-        "premium_peak": null
+        "history_max": 10356.0,
+        "premium_peak": 10356.0
       },
       "Sataya Resort (ex. Labranda Sataya Marsa Alam)": {
         "history_max": 9157.0,
@@ -5173,7 +5199,7 @@
         "premium_peak": 10742.0
       },
       "Dream Lagoon & Aqua Park Resort (ex. Floriana Dream Lagoon)": {
-        "history_max": 8057.0,
+        "history_max": 8069.0,
         "premium_peak": null
       },
       "Sheraton Miramar Resort (El Gouna)": {
@@ -5285,8 +5311,8 @@
         "premium_peak": 10163.0
       },
       "Monte Carlo Resort Spa": {
-        "history_max": 11029.0,
-        "premium_peak": 11029.0
+        "history_max": 11040.0,
+        "premium_peak": 11040.0
       },
       "Pickalbatros Luxury Suites": {
         "history_max": 15507.0,

@@ -3367,10 +3367,49 @@
       "created_at": "2026-09-06T13:47:55.134839+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Domina Coral Bay Harem Egipt, Sharm El Sheikh_2026-09-06_13-47_zone_out_gone"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 6147.0,
+      "new_price": 6747.0,
+      "price_change": 600.0,
+      "price_change_pct": 9.760858955588091,
+      "timestamp": "2026-09-06 17:11:40.194025+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-06T17:12:23.888904+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-09-06_17-11_+9.8"
+    },
+    {
+      "hotel_name": "Baron Resort (Sharm El Sheikh)",
+      "duration_bucket": "",
+      "old_price": 10737.0,
+      "new_price": 10737.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 17:11:40.194025+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T17:12:23.888979+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Baron Resort (Sharm El Sheikh)_2026-09-06_17-11_zone_out_gone"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Oasis Egipt, Sharm El Sheikh",
+      "duration_bucket": "",
+      "old_price": 7656.0,
+      "new_price": 7656.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 17:11:40.194025+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T17:12:23.888990+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Oasis Egipt, Sharm El Sheikh_2026-09-06_17-11_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T13:47:05.704193+00:00",
+    "last_processed_run": "2026-09-06T17:11:40.194025+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -3381,7 +3420,7 @@
         "premium_peak": null
       },
       "Rewaya Luxury Resort Egipt, Hurghada": {
-        "history_max": 6587.0,
+        "history_max": 6747.0,
         "premium_peak": null
       },
       "El Malikia Resort Abu Dabbab (ex.Sol Y Mar)": {
@@ -3533,7 +3572,7 @@
         "premium_peak": null
       },
       "Safir Dahab Resort": {
-        "history_max": 9610.0,
+        "history_max": 9822.0,
         "premium_peak": null
       },
       "Double Tree by Hilton Mangroovy El Gouna Resort": {
