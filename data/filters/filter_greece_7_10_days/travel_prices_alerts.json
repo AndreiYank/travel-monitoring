@@ -1352,10 +1352,23 @@
       "created_at": "2026-09-06T09:37:40.940258+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)_2026-09-06_09-36_comeback_22.1"
+    },
+    {
+      "hotel_name": "Aquila Rithymna Beach",
+      "duration_bucket": "",
+      "old_price": 9986.0,
+      "new_price": 10036.0,
+      "price_change": 50.0,
+      "price_change_pct": 0.5007009813739235,
+      "timestamp": "2026-09-06 13:49:26.166522+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T13:50:44.208028+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Aquila Rithymna Beach_2026-09-06_13-49_zone_out_+0.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T11:05:35.292054+00:00",
+    "last_processed_run": "2026-09-06T13:49:26.166522+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -2066,8 +2079,8 @@
         "premium_peak": 19014.0
       },
       "Aquila Rithymna Beach": {
-        "history_max": 9986.0,
-        "premium_peak": null
+        "history_max": 10036.0,
+        "premium_peak": 10036.0
       }
     }
   }
