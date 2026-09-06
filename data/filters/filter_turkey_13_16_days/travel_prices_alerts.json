@@ -377,10 +377,36 @@
       "created_at": "2026-09-06T04:54:30.315458+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat_2026-09-06_04-53_zone_out_gone"
+    },
+    {
+      "hotel_name": "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar",
+      "duration_bucket": "",
+      "old_price": 9909.0,
+      "new_price": 10557.0,
+      "price_change": 648.0,
+      "price_change_pct": 6.539509536784741,
+      "timestamp": "2026-09-06 09:35:19.229153+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:36:43.680747+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar_2026-09-06_09-35_zone_out_+6.5"
+    },
+    {
+      "hotel_name": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat",
+      "duration_bucket": "",
+      "old_price": 12317.0,
+      "new_price": 9540.0,
+      "price_change": -2777.0,
+      "price_change_pct": -22.54607453113583,
+      "timestamp": "2026-09-06 09:35:19.229153+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T09:36:43.680787+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Otium Family Club Marine Beach (ex Aqua Marin Beach Resort) Turcja, Side, Manavgat_2026-09-06_09-35_comeback_22.5"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T04:53:09.711244+00:00",
+    "last_processed_run": "2026-09-06T09:35:19.229153+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 15146.0,
@@ -395,8 +421,8 @@
         "premium_peak": 15642.0
       },
       "Loxia Comfort Beach Alanya (ex. Fun & Sun Smart Club Prestige) Turcja, Alanya, Mahmutlar": {
-        "history_max": 9986.0,
-        "premium_peak": null
+        "history_max": 10557.0,
+        "premium_peak": 10557.0
       },
       "Long Beach Club Nature": {
         "history_max": 19153.0,
@@ -695,8 +721,8 @@
         "premium_peak": 14257.0
       },
       "Grand Belish": {
-        "history_max": 18718.0,
-        "premium_peak": 18718.0
+        "history_max": 19203.0,
+        "premium_peak": 19203.0
       },
       "Galeri Resort": {
         "history_max": 15752.0,
@@ -887,8 +913,8 @@
         "premium_peak": 14357.0
       },
       "Selectum Family Resort Side (ex. Silence Beach Resort)": {
-        "history_max": 16970.0,
-        "premium_peak": 16970.0
+        "history_max": 17024.0,
+        "premium_peak": 17024.0
       },
       "Rai Foresta Tekirova": {
         "history_max": 19863.0,
@@ -959,8 +985,8 @@
         "premium_peak": 19735.0
       },
       "Raxeria (Side)": {
-        "history_max": 14657.0,
-        "premium_peak": 14657.0
+        "history_max": 14931.0,
+        "premium_peak": 14931.0
       },
       "Selectum Noa": {
         "history_max": 17469.0,
@@ -1231,8 +1257,8 @@
         "premium_peak": 19458.0
       },
       "Calimera Hane Garden (ex. PrimaSol Hane Garden)": {
-        "history_max": 16029.0,
-        "premium_peak": 16029.0
+        "history_max": 16308.0,
+        "premium_peak": 16308.0
       },
       "Club Turan Prince World": {
         "history_max": 19230.0,
@@ -1637,6 +1663,10 @@
       "Diamond Hill Resort Turcja, Alanya, Incekum": {
         "history_max": 12285.0,
         "premium_peak": 12285.0
+      },
+      "Swissotel Resort Bodrum": {
+        "history_max": 19721.0,
+        "premium_peak": 19721.0
       }
     }
   }

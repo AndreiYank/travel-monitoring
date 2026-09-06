@@ -2509,10 +2509,101 @@
       "created_at": "2026-09-06T04:53:08.827225+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Dreams Beach Sharm Resort (Sharm El Sheikh)_2026-09-06_04-52_zone_out_gone"
+    },
+    {
+      "hotel_name": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna",
+      "duration_bucket": "",
+      "old_price": 9326.0,
+      "new_price": 8102.0,
+      "price_change": -1224.0,
+      "price_change_pct": -13.124597898348703,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-06T09:35:18.339748+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna_2026-09-06_09-34_-13.1"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 9854.0,
+      "new_price": 8434.0,
+      "price_change": -1420.0,
+      "price_change_pct": -14.410391719098842,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-06T09:35:18.339779+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-09-06_09-34_-14.4"
+    },
+    {
+      "hotel_name": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay",
+      "duration_bucket": "",
+      "old_price": 10662.0,
+      "new_price": 9742.0,
+      "price_change": -920.0,
+      "price_change_pct": -8.628775089101481,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-06T09:35:18.339793+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay_2026-09-06_09-34_-8.6"
+    },
+    {
+      "hotel_name": "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr",
+      "duration_bucket": "",
+      "old_price": 9772.0,
+      "new_price": 9772.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:35:18.339814+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Albatros Sea World Resort Marsa Alam Egipt, Marsa Alam, Al-Kusajr_2026-09-06_09-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)",
+      "duration_bucket": "",
+      "old_price": 10904.0,
+      "new_price": 10904.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:35:18.339824+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)_2026-09-06_09-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk",
+      "duration_bucket": "",
+      "old_price": 10618.0,
+      "new_price": 10618.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:35:18.339850+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk_2026-09-06_09-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)",
+      "duration_bucket": "",
+      "old_price": 10956.0,
+      "new_price": 10956.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 09:34:56.944105+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:35:18.339861+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Pickalbatros Palace Port Ghalib (ex. Red Sea The Palace)_2026-09-06_09-34_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T04:52:47.980534+00:00",
+    "last_processed_run": "2026-09-06T09:34:56.944105+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 10180.0,
@@ -2812,6 +2903,10 @@
       },
       "Xperience Sea Breeze Egipt, Sharm El Sheikh": {
         "history_max": 10207.0,
+        "premium_peak": null
+      },
+      "Pharaoh Azur Resort (ex Sonesta Pharaoh) Egipt, Hurghada": {
+        "history_max": 9907.0,
         "premium_peak": null
       }
     }

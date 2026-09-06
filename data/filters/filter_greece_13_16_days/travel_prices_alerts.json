@@ -299,10 +299,36 @@
       "created_at": "2026-09-05T16:59:02.095495+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Majestic & Spa Grecja, Zakynthos, Laganas_2026-09-05_16-57_comeback_20.6"
+    },
+    {
+      "hotel_name": "Majestic & Spa Grecja, Zakynthos, Laganas",
+      "duration_bucket": "",
+      "old_price": 9879.0,
+      "new_price": 10187.0,
+      "price_change": 308.0,
+      "price_change_pct": 3.1177244660390726,
+      "timestamp": "2026-09-06 09:36:43.367680+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:37:46.839404+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Majestic & Spa Grecja, Zakynthos, Laganas_2026-09-06_09-36_zone_out_+3.1"
+    },
+    {
+      "hotel_name": "Olimpion Melathron Grecja, Riwiera Olimpijska, Platamonas",
+      "duration_bucket": "",
+      "old_price": 11765.0,
+      "new_price": 9661.0,
+      "price_change": -2104.0,
+      "price_change_pct": -17.88355291117722,
+      "timestamp": "2026-09-06 09:36:43.367680+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T09:37:46.839444+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Olimpion Melathron Grecja, Riwiera Olimpijska, Platamonas_2026-09-06_09-36_comeback_17.9"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T04:54:30.803348+00:00",
+    "last_processed_run": "2026-09-06T09:36:43.367680+00:00",
     "premium_state": {
       "Aelius by Lavris": {
         "history_max": 17257.0,
@@ -537,8 +563,8 @@
         "premium_peak": 14197.0
       },
       "Noho Grecja, Kreta Zachodnia, SCALETA": {
-        "history_max": 11201.0,
-        "premium_peak": 11201.0
+        "history_max": 11775.0,
+        "premium_peak": 11775.0
       },
       "Sandy Beach Faliraki by Sun Palace": {
         "history_max": 13525.0,
@@ -837,8 +863,8 @@
         "premium_peak": 18495.0
       },
       "Alexander House": {
-        "history_max": 14314.0,
-        "premium_peak": 14314.0
+        "history_max": 14374.0,
+        "premium_peak": 14374.0
       },
       "Artemis Apartments": {
         "history_max": 16491.0,
@@ -1153,8 +1179,12 @@
         "premium_peak": 19457.0
       },
       "Anavadia": {
-        "history_max": 12807.0,
-        "premium_peak": 12807.0
+        "history_max": 13197.0,
+        "premium_peak": 13197.0
+      },
+      "Kipriotis Aqualand Grecja, Kos, Psalidi": {
+        "history_max": 11838.0,
+        "premium_peak": 11838.0
       }
     }
   }

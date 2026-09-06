@@ -3250,10 +3250,62 @@
       "created_at": "2026-09-06T04:52:53.733449+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Fantazia Resort_2026-09-06_04-52_+9.1"
+    },
+    {
+      "hotel_name": "Rewaya Luxury Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 5687.0,
+      "new_price": 6577.0,
+      "price_change": 890.0,
+      "price_change_pct": 15.649727448566908,
+      "timestamp": "2026-09-06 09:34:08.644238+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-06T09:35:05.219129+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Rewaya Luxury Resort Egipt, Hurghada_2026-09-06_09-34_+15.6"
+    },
+    {
+      "hotel_name": "Domina Coral Bay Sultan",
+      "duration_bucket": "",
+      "old_price": 7862.0,
+      "new_price": 10284.0,
+      "price_change": 2422.0,
+      "price_change_pct": 30.80641058254897,
+      "timestamp": "2026-09-06 09:34:08.644238+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-06T09:35:05.219162+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Domina Coral Bay Sultan_2026-09-06_09-34_+30.8"
+    },
+    {
+      "hotel_name": "Marriott Hurghada Beach Resort",
+      "duration_bucket": "",
+      "old_price": 7767.0,
+      "new_price": 7767.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 09:34:08.644238+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:35:05.219194+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marriott Hurghada Beach Resort_2026-09-06_09-34_zone_out_gone"
+    },
+    {
+      "hotel_name": "Old Palace Resort Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 7645.0,
+      "new_price": 7645.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 09:34:08.644238+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T09:35:05.219204+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Old Palace Resort Egipt, Hurghada_2026-09-06_09-34_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T04:52:07.535678+00:00",
+    "last_processed_run": "2026-09-06T09:34:08.644238+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 6363.0,
@@ -3412,7 +3464,7 @@
         "premium_peak": null
       },
       "Domina Coral Bay Sultan": {
-        "history_max": 10255.0,
+        "history_max": 10284.0,
         "premium_peak": null
       },
       "Safir Dahab Resort": {
@@ -3540,7 +3592,7 @@
         "premium_peak": null
       },
       "Jaz Makadi Oasis Resort": {
-        "history_max": 8677.0,
+        "history_max": 8779.0,
         "premium_peak": null
       },
       "Jaz Lamaya Resort (ex Iberotel)": {

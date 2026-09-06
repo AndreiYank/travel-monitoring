@@ -1989,10 +1989,75 @@
       "created_at": "2026-09-06T04:54:12.997361+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Timo Deluxe Resort_2026-09-06_04-53_zone_out_+19.8"
+    },
+    {
+      "hotel_name": "Seher Sun Palace Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 9284.0,
+      "new_price": 8424.0,
+      "price_change": -860.0,
+      "price_change_pct": -9.26324859974149,
+      "timestamp": "2026-09-06 09:35:16.101330+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-06T09:36:26.127503+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Sun Palace Resort & Spa_2026-09-06_09-35_-9.3"
+    },
+    {
+      "hotel_name": "First Class",
+      "duration_bucket": "",
+      "old_price": 7989.0,
+      "new_price": 7317.0,
+      "price_change": -672.0,
+      "price_change_pct": -8.411565903116786,
+      "timestamp": "2026-09-06 09:35:16.101330+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-06T09:36:26.127536+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "First Class_2026-09-06_09-35_-8.4"
+    },
+    {
+      "hotel_name": "Seher Resort & Spa",
+      "duration_bucket": "",
+      "old_price": 11383.0,
+      "new_price": 9491.0,
+      "price_change": -1892.0,
+      "price_change_pct": -16.621277343406835,
+      "timestamp": "2026-09-06 09:35:16.101330+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T09:36:26.127570+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Seher Resort & Spa_2026-09-06_09-35_comeback_16.6"
+    },
+    {
+      "hotel_name": "Viking Star",
+      "duration_bucket": "",
+      "old_price": 13487.0,
+      "new_price": 9617.0,
+      "price_change": -3870.0,
+      "price_change_pct": -28.69429821309409,
+      "timestamp": "2026-09-06 09:35:16.101330+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T09:36:26.127584+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Viking Star_2026-09-06_09-35_comeback_28.7"
+    },
+    {
+      "hotel_name": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)",
+      "duration_bucket": "",
+      "old_price": 14540.0,
+      "new_price": 5445.0,
+      "price_change": -9095.0,
+      "price_change_pct": -62.551581843191194,
+      "timestamp": "2026-09-06 09:35:16.101330+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T09:36:26.127597+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Marine Family Club Beach (ex. Otium Family Club Marine Beach)_2026-09-06_09-35_comeback_62.6"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T04:53:06.927594+00:00",
+    "last_processed_run": "2026-09-06T09:35:16.101330+00:00",
     "premium_state": {
       "A Good Life Utopia Family Resort (ex. Water Planet & Aquapark)": {
         "history_max": 11832.0,
@@ -2227,8 +2292,8 @@
         "premium_peak": 13557.0
       },
       "Grand Kaptan": {
-        "history_max": 12774.0,
-        "premium_peak": 12774.0
+        "history_max": 13054.0,
+        "premium_peak": 13054.0
       },
       "Grand Belish": {
         "history_max": 17406.0,
