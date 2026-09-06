@@ -1391,10 +1391,36 @@
       "created_at": "2026-09-06T17:14:40.460335+00:00",
       "threshold_percent": 8.0,
       "unique_key": "White Olive Elite Rethymno Grecja, Kreta Zachodnia, Sfakaki_2026-09-06_17-13_zone_out_gone"
+    },
+    {
+      "hotel_name": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort) Grecja, Kreta Wschodnia, Anissaras",
+      "duration_bucket": "",
+      "old_price": 9987.0,
+      "new_price": 9987.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-06 19:23:38.592221+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-06T19:24:49.097839+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort) Grecja, Kreta Wschodnia, Anissaras_2026-09-06_19-23_zone_out_gone"
+    },
+    {
+      "hotel_name": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)",
+      "duration_bucket": "",
+      "old_price": 12827.0,
+      "new_price": 9987.0,
+      "price_change": -2840.0,
+      "price_change_pct": -22.140796756841038,
+      "timestamp": "2026-09-06 19:23:38.592221+00:00",
+      "alert_type": "premium_comeback",
+      "created_at": "2026-09-06T19:24:49.097879+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Annabelle Beach Resort (ex. AKS Annabelle Beach Resort)_2026-09-06_19-23_comeback_22.1"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-06T17:13:38.389552+00:00",
+    "last_processed_run": "2026-09-06T19:23:38.592221+00:00",
     "premium_state": {
       "Ajul Luxury & Spa Resort (Ayios Nikolaos) Grecja, Chalkidiki, Loutra": {
         "history_max": 10389.0,
@@ -2065,8 +2091,8 @@
         "premium_peak": 14700.0
       },
       "Costa Lindia Blue Star": {
-        "history_max": 12794.0,
-        "premium_peak": 12794.0
+        "history_max": 12960.0,
+        "premium_peak": 12960.0
       },
       "Atrium Platinum Resort & Spa": {
         "history_max": 19426.0,
@@ -2085,7 +2111,7 @@
         "premium_peak": 19354.0
       },
       "Athina Palace (Agia Pelagia) Grecja, Kreta Wschodnia, Agia Pelagia": {
-        "history_max": 9292.0,
+        "history_max": 9392.0,
         "premium_peak": null
       },
       "Possidi Holidays Grecja, Chalkidiki, Possidi": {
