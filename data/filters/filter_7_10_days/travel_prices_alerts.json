@@ -26,10 +26,49 @@
       "created_at": "2026-09-07T04:56:28.310956+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Red Sea Grand Makadi (Makadi Bay)_2026-09-07_04-55_zone_out_+6.0"
+    },
+    {
+      "hotel_name": "Dreams Vacation Sharm Resort",
+      "duration_bucket": "",
+      "old_price": 8197.0,
+      "new_price": 9147.0,
+      "price_change": 950.0,
+      "price_change_pct": 11.589605953397584,
+      "timestamp": "2026-09-07 06:29:19.075562+00:00",
+      "alert_type": "price_increase",
+      "created_at": "2026-09-07T06:29:58.741776+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Dreams Vacation Sharm Resort_2026-09-07_06-29_+11.6"
+    },
+    {
+      "hotel_name": "Amarina Star Resort & Aqua Park (ex. Raouf Star)",
+      "duration_bucket": "",
+      "old_price": 8301.0,
+      "new_price": 8301.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-07 06:29:19.075562+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-07T06:29:58.741830+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Amarina Star Resort & Aqua Park (ex. Raouf Star)_2026-09-07_06-29_zone_out_gone"
+    },
+    {
+      "hotel_name": "Charmillion Club Resort",
+      "duration_bucket": "",
+      "old_price": 9977.0,
+      "new_price": 10257.0,
+      "price_change": 280.0,
+      "price_change_pct": 2.806454846146136,
+      "timestamp": "2026-09-07 06:29:19.075562+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-07T06:29:58.741844+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Charmillion Club Resort_2026-09-07_06-29_zone_out_+2.8"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-07T04:55:54.631817+00:00",
+    "last_processed_run": "2026-09-07T06:29:19.075562+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort)": {
         "history_max": 6612.0,
@@ -272,8 +311,8 @@
         "premium_peak": 10624.0
       },
       "Red Sea Grand Makadi (Makadi Bay)": {
-        "history_max": 10602.0,
-        "premium_peak": 10602.0
+        "history_max": 12276.0,
+        "premium_peak": 12276.0
       },
       "Red Sea Grand Waterworld Makadi (ex. Sunwing Waterworld Makadi)": {
         "history_max": 10202.0,
@@ -480,8 +519,8 @@
         "premium_peak": 10057.0
       },
       "Charmillion Club Resort": {
-        "history_max": 9977.0,
-        "premium_peak": null
+        "history_max": 10257.0,
+        "premium_peak": 10257.0
       },
       "Charmillion Garden Aqua Park": {
         "history_max": 8871.0,
@@ -636,8 +675,8 @@
         "premium_peak": 14997.0
       },
       "Baron Resort (Sharm El Sheikh)": {
-        "history_max": 12457.0,
-        "premium_peak": 12457.0
+        "history_max": 13937.0,
+        "premium_peak": 13937.0
       },
       "Tropitel Sahl Hasheesh": {
         "history_max": 8054.0,
@@ -712,7 +751,7 @@
         "premium_peak": 13667.0
       },
       "Dreams Vacation Sharm Resort": {
-        "history_max": 8197.0,
+        "history_max": 9147.0,
         "premium_peak": null
       },
       "Sunrise Diamond Beach Resort Grand Select": {

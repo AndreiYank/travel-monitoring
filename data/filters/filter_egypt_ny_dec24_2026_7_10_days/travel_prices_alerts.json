@@ -26,10 +26,49 @@
       "created_at": "2026-09-07T04:57:01.726231+00:00",
       "threshold_percent": 8.0,
       "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-09-07_04-56_zone_out_gone"
+    },
+    {
+      "hotel_name": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada",
+      "duration_bucket": "",
+      "old_price": 9794.0,
+      "new_price": 8434.0,
+      "price_change": -1360.0,
+      "price_change_pct": -13.88605268531754,
+      "timestamp": "2026-09-07 06:30:12.669691+00:00",
+      "alert_type": "price_drop",
+      "created_at": "2026-09-07T06:30:31.310247+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada_2026-09-07_06-30_-13.9"
+    },
+    {
+      "hotel_name": "Safir Dahab Resort",
+      "duration_bucket": "",
+      "old_price": 10694.0,
+      "new_price": 10694.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-07 06:30:12.669691+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-07T06:30:31.310294+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort_2026-09-07_06-30_zone_out_gone"
+    },
+    {
+      "hotel_name": "Utopia Blue Resort Egipt, Marsa Alam",
+      "duration_bucket": "",
+      "old_price": 10267.0,
+      "new_price": 10267.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-07 06:30:12.669691+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-07T06:30:31.310310+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Utopia Blue Resort Egipt, Marsa Alam_2026-09-07_06-30_zone_out_gone"
     }
   ],
   "meta": {
-    "last_processed_run": "2026-09-07T04:56:43.863645+00:00",
+    "last_processed_run": "2026-09-07T06:30:12.669691+00:00",
     "premium_state": {
       "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
         "history_max": 9854.0,
