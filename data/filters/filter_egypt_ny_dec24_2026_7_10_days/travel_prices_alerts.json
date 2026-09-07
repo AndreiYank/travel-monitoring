@@ -1,5 +1,196 @@
 {
   "version": 2,
-  "alerts": [],
-  "meta": {}
+  "alerts": [
+    {
+      "hotel_name": "Safir Dahab Resort Egipt, Dahab",
+      "duration_bucket": "",
+      "old_price": 10694.0,
+      "new_price": 10694.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-07 04:56:43.863645+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-07T04:57:01.726199+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Safir Dahab Resort Egipt, Dahab_2026-09-07_04-56_zone_out_gone"
+    },
+    {
+      "hotel_name": "Three Corners Fayrouz Plaza Beach Resort",
+      "duration_bucket": "",
+      "old_price": 10954.0,
+      "new_price": 10954.0,
+      "price_change": 0.0,
+      "price_change_pct": 0.0,
+      "timestamp": "2026-09-07 04:56:43.863645+00:00",
+      "alert_type": "zone_exit",
+      "created_at": "2026-09-07T04:57:01.726231+00:00",
+      "threshold_percent": 8.0,
+      "unique_key": "Three Corners Fayrouz Plaza Beach Resort_2026-09-07_04-56_zone_out_gone"
+    }
+  ],
+  "meta": {
+    "last_processed_run": "2026-09-07T04:56:43.863645+00:00",
+    "premium_state": {
+      "AMC Royal Hotel & Spa (ex. AMC Azur Resort) Egipt, Hurghada": {
+        "history_max": 9854.0,
+        "premium_peak": null
+      },
+      "Le Meridien Dahab Resort Egipt, Dahab": {
+        "history_max": 9968.0,
+        "premium_peak": null
+      },
+      "Movenpick Sirena Beach Egipt, Marsa Alam, Al-Kusajr": {
+        "history_max": 10339.0,
+        "premium_peak": null
+      },
+      "Novotel Marsa Alam Egipt, Marsa Alam": {
+        "history_max": 9326.0,
+        "premium_peak": null
+      },
+      "Park Inn (Sharm El Sheikh) Egipt, Sharm El Sheikh": {
+        "history_max": 10346.0,
+        "premium_peak": null
+      },
+      "Xperience Kiroseiz Premier Egipt, Sharm El Sheikh": {
+        "history_max": 10680.0,
+        "premium_peak": null
+      },
+      "Parrotel Lagoon Resort Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 9574.0,
+        "premium_peak": null
+      },
+      "Radisson Blu Resort (El Quseir) Egipt, Marsa Alam, Al-Kusajr": {
+        "history_max": 9960.0,
+        "premium_peak": null
+      },
+      "Raouf Star Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 10286.0,
+        "premium_peak": null
+      },
+      "Raouf Sun International Aqua Park & SPA Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 9973.0,
+        "premium_peak": null
+      },
+      "Regency Plaza Aqua Park Spa Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 10603.0,
+        "premium_peak": null
+      },
+      "Jaz Solaya (ex Sol Y Mar Solaya) Egipt, Marsa Alam": {
+        "history_max": 10511.0,
+        "premium_peak": null
+      },
+      "Rehana Royal Beach Resort & Spa": {
+        "history_max": 10948.0,
+        "premium_peak": null
+      },
+      "Rewaya Majestic Resort Egipt, Hurghada": {
+        "history_max": 9147.0,
+        "premium_peak": null
+      },
+      "Royal Lagoons Aqua (ex. Premium Blue) Egipt, Hurghada": {
+        "history_max": 9673.0,
+        "premium_peak": null
+      },
+      "Safir Dahab Resort Egipt, Dahab": {
+        "history_max": 10694.0,
+        "premium_peak": null
+      },
+      "Sea Star Beau Rivage Egipt, Hurghada": {
+        "history_max": 8858.0,
+        "premium_peak": null
+      },
+      "Sharm Grand Plaza Resort": {
+        "history_max": 10872.0,
+        "premium_peak": null
+      },
+      "Stella Di Mare Beach Resort & Spa (ex. Stella Makadi Resort) Egipt, Hurghada, Makadi Bay": {
+        "history_max": 10334.0,
+        "premium_peak": null
+      },
+      "Swiss Inn Resort Hurghada (ex. Hilton Hurghada Resort) Egipt, Hurghada": {
+        "history_max": 10127.0,
+        "premium_peak": null
+      },
+      "Three Corners Fayrouz Plaza Beach Resort": {
+        "history_max": 10954.0,
+        "premium_peak": null
+      },
+      "Utopia Blue Resort Egipt, Marsa Alam": {
+        "history_max": 10267.0,
+        "premium_peak": null
+      },
+      "Xperience Kiroseiz Parkland": {
+        "history_max": 10993.0,
+        "premium_peak": null
+      },
+      "Rewaya Luxury Resort Egipt, Hurghada": {
+        "history_max": 8967.0,
+        "premium_peak": null
+      },
+      "IL Mercato (ex. Iberotel Il Mercato) Egipt, Sharm El Sheikh": {
+        "history_max": 10056.0,
+        "premium_peak": null
+      },
+      "Parrotel Beach Resort (ex. Radisson Blu) Egipt, Sharm El Sheikh": {
+        "history_max": 10205.0,
+        "premium_peak": null
+      },
+      "Creek Hotel & Residences Egipt, Hurghada, Al-Dżuna": {
+        "history_max": 9470.0,
+        "premium_peak": null
+      },
+      "Hawaii Paradise Aqua Park Resort Egipt, Hurghada": {
+        "history_max": 9376.0,
+        "premium_peak": null
+      },
+      "Dreams Beach (Sharm El Sheikh) Egipt, Sharm El Sheikh, Szarm el-Szejk": {
+        "history_max": 10618.0,
+        "premium_peak": null
+      },
+      "Albatros Sea World Resort Marsa Alam": {
+        "history_max": 10976.0,
+        "premium_peak": null
+      },
+      "Gravity Hotel & Aquapark Hurghada (ex. Samra Bay Resort)": {
+        "history_max": 10867.0,
+        "premium_peak": null
+      },
+      "Concorde Moreen Beach Resort & Spa Egipt, Marsa Alam": {
+        "history_max": 9357.0,
+        "premium_peak": null
+      },
+      "Fantazia Resort Egipt, Marsa Alam": {
+        "history_max": 9932.0,
+        "premium_peak": null
+      },
+      "Amarina Jannah Resort Aquapark Egipt, Marsa Alam, Port Ghalib": {
+        "history_max": 10507.0,
+        "premium_peak": null
+      },
+      "Gorgonia Beach Egipt, Marsa Alam": {
+        "history_max": 9940.0,
+        "premium_peak": null
+      },
+      "Bellagio Beach Resort & Spa (ex. Panorama Bungalows Hurghada)": {
+        "history_max": 10912.0,
+        "premium_peak": null
+      },
+      "Gemma Resort (ex. Labranda Gemma Premium Resort) Egipt, Marsa Alam": {
+        "history_max": 9556.0,
+        "premium_peak": null
+      },
+      "Safir Dahab Resort": {
+        "history_max": 10694.0,
+        "premium_peak": null
+      },
+      "Three Corners Fayrouz Plaza Beach Resort Egipt, Marsa Alam": {
+        "history_max": 10264.0,
+        "premium_peak": null
+      },
+      "Gravity Sahl Hasheesh (Ex. Ocean Breeze)": {
+        "history_max": 10959.0,
+        "premium_peak": null
+      }
+    }
+  }
 }
